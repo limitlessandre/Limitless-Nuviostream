@@ -7,5 +7,6 @@
     "enabled": true,
     "allowed": ["en", "ja", "ko", "zh"],
     "keep_unknown": true
-  }
+  },
+  "note": "Focused on English, Japanese, Korean, and Chinese providers; unknown language metadata is kept for manual review."
 }
