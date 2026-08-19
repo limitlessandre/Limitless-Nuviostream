@@ -33,12 +33,12 @@ jobs:
       - name: Commit generated files when changed
         shell: bash
         run: |
-          if git diff --quiet -- manifest.json duplicates.json build-status.json language-filter-report.json; then
+          git add manifest.json duplicates.json build-status.json language-filter-report.json
+          if git diff --cached --quiet; then
             echo "No provider changes detected."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manifest.json duplicates.json build-status.json language-filter-report.json
           git commit -m "chore: refresh upstream Nuvio providers"
           git push
