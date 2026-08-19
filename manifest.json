@@ -478,6 +478,31 @@
       ]
     },
     {
+      "id": "limitless-cinestream",
+      "name": "CineStream",
+      "description": "Clean Nuvio-native CineStream core using a small sequential set of HTTPS sources (Hexa, VidFast, VidCore). CineSimkl/CineTmdb metadata frontends and torrent sources are intentionally omitted.",
+      "version": "1.0.0",
+      "author": "Limitless clean-room port based on CSX CineStream behavior",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/cinestream.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "contentLanguage": [
+        "en",
+        "ja",
+        "ko",
+        "zh"
+      ]
+    },
+    {
       "id": "cinevibe",
       "name": "Cinevibe",
       "description": "Auto-generated description for Cinevibe",
@@ -1017,6 +1042,29 @@
       ]
     },
     {
+      "id": "limitless-jpfilms",
+      "name": "JPFilms",
+      "description": "Japanese movies and TV from JPFilms, focused on Japanese-language content with English-subtitled releases.",
+      "version": "1.0.0",
+      "author": "Limitless port based on cs-Karma JPFilms",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/jpfilms.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://jp-films.com/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
       "id": "jyniq",
       "name": "Jyniq.",
       "description": "Provider: MovieBlast | English, Hindi",
@@ -1537,6 +1585,30 @@
         "en",
         "hi",
         "bn"
+      ]
+    },
+    {
+      "id": "limitless-onetouchtv",
+      "name": "OneTouchTV",
+      "description": "Asian drama provider with Korean, Chinese, and Japanese coverage plus subtitle tracks when available.",
+      "version": "1.0.0",
+      "author": "Limitless port based on the OneTouchTV implementations used by CloudStream/YaStream",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/onetouchtv.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "contentLanguage": [
+        "en",
+        "ja",
+        "ko",
+        "zh"
       ]
     },
     {

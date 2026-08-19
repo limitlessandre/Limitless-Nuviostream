@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
-Native Limitless providers: **121**  
+Native Limitless providers: **124**  
 Filtered CloudStream providers: **64**  
-No obvious native overlap: **52**  
+No obvious native overlap: **49**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **12**
+Exact/alias overlap: **15**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -14,13 +14,10 @@ Exact/alias overlap: **12**
 - **StreamPlay** (`StreamPlay`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — #1 best extention based on MultiAPI
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies
-- **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
 - **OHLI24** (`OHLI24`) — ko; AsianDrama, TvSeries, Movie — Anime and movies with Korean subtitles only (no Korean audio)
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
-- **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **FullyMaza** (`FullyMaza`) — en; Movie, TvSeries, AnimeMovie, Cartoon
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
-- **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 
 ## Medium-priority unique candidates
 
@@ -78,8 +75,11 @@ None.
 
 ## Exact or alias overlaps
 
+- **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents — native match: CineStream
 - **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: 💋 Kisskh
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox. — native match: ShowBox
+- **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas — native match: OneTouchTV
+- **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle. — native match: JPFilms
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: 💋 Kisskh
 - **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free. — native match: WCoflix
 - **AllWish** (`AllWish`) — en; All — Anime from all-wish.me — native match: 🌟 All-Wish

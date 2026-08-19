@@ -3,7 +3,7 @@
     {
       "name": "Limitless Native Ports",
       "status": "ok",
-      "providers": 1
+      "providers": 4
     },
     {
       "name": "All-in-One-Nuvio",
@@ -46,7 +46,7 @@
       "providers": 29
     }
   ],
-  "unique_providers": 121,
+  "unique_providers": 124,
   "duplicate_groups": 41,
   "language_filtered_entries": 10,
   "unknown_language_metadata_entries": 0,

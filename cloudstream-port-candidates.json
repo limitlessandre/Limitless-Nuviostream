@@ -1,9 +1,9 @@
 {
-  "native_provider_count": 121,
+  "native_provider_count": 124,
   "cloudstream_provider_count": 64,
-  "no_obvious_native_overlap_count": 52,
+  "no_obvious_native_overlap_count": 49,
   "likely_overlap_count": 0,
-  "exact_or_alias_overlap_count": 12,
+  "exact_or_alias_overlap_count": 15,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
@@ -127,34 +127,6 @@
       ]
     },
     {
-      "internalName": "CineStream",
-      "name": "CineStream",
-      "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-      "language": "en",
-      "tvTypes": [
-        "TvSeries",
-        "Movie",
-        "AsianDrama",
-        "Anime",
-        "Torrent"
-      ],
-      "version": 480,
-      "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
-      "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.8,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 12,
-      "reasons": [
-        "Asian drama / K-drama coverage",
-        "Anime coverage",
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "OHLI24",
       "name": "OHLI24",
       "description": "Anime and movies with Korean subtitles only (no Korean audio)",
@@ -205,30 +177,6 @@
       "reasons": [
         "Asian drama / K-drama coverage",
         "Anime coverage",
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "OneTouchTV",
-      "name": "OneTouchTV",
-      "description": "Asian Dramas",
-      "language": "en",
-      "tvTypes": [
-        "AsianDrama",
-        "TvSeries"
-      ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OneTouchTV.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.526,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 8,
-      "reasons": [
-        "Asian drama / K-drama coverage",
         "Movies / Western TV coverage"
       ]
     },
@@ -287,28 +235,6 @@
         "Anime coverage",
         "Movies / Western TV coverage",
         "Cartoon coverage"
-      ]
-    },
-    {
-      "internalName": "JPFilms",
-      "name": "JPFilms",
-      "description": "Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.",
-      "language": "en",
-      "tvTypes": [
-        "AsianDrama"
-      ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.625,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 6,
-      "reasons": [
-        "Asian drama / K-drama coverage"
       ]
     },
     {
@@ -629,7 +555,7 @@
       "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.5,
+        "score": 0.545,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -917,7 +843,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.417,
+        "score": 0.48,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1229,6 +1155,40 @@
       ]
     },
     {
+      "internalName": "CineStream",
+      "name": "CineStream",
+      "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
+      "language": "en",
+      "tvTypes": [
+        "TvSeries",
+        "Movie",
+        "AsianDrama",
+        "Anime",
+        "Torrent"
+      ],
+      "version": 480,
+      "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
+      "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-cinestream",
+            "name": "CineStream",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/cinestream.js"
+          }
+        ]
+      },
+      "priority": "high-priority",
+      "priority_score": 12,
+      "reasons": [
+        "Asian drama / K-drama coverage",
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "KisskhProvider",
       "name": "KisskhProvider",
       "description": null,
@@ -1292,6 +1252,64 @@
         "Asian drama / K-drama coverage",
         "Anime coverage",
         "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "OneTouchTV",
+      "name": "OneTouchTV",
+      "description": "Asian Dramas",
+      "language": "en",
+      "tvTypes": [
+        "AsianDrama",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OneTouchTV.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-onetouchtv",
+            "name": "OneTouchTV",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/onetouchtv.js"
+          }
+        ]
+      },
+      "priority": "high-priority",
+      "priority_score": 8,
+      "reasons": [
+        "Asian drama / K-drama coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "JPFilms",
+      "name": "JPFilms",
+      "description": "Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.",
+      "language": "en",
+      "tvTypes": [
+        "AsianDrama"
+      ],
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-jpfilms",
+            "name": "JPFilms",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/jpfilms.js"
+          }
+        ]
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Asian drama / K-drama coverage"
       ]
     },
     {
