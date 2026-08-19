@@ -1,0 +1,54 @@
+{
+  "source_status": [
+    {
+      "name": "All-in-One-Nuvio",
+      "status": "ok",
+      "providers": 61
+    },
+    {
+      "name": "Asura Synthesis",
+      "status": "ok",
+      "providers": 17
+    },
+    {
+      "name": "CENSORED's Repo",
+      "status": "ok",
+      "providers": 20
+    },
+    {
+      "name": "Eclipsia",
+      "status": "ok",
+      "providers": 30
+    },
+    {
+      "name": "Michat88 Repo",
+      "status": "ok",
+      "providers": 30
+    },
+    {
+      "name": "Phisher's Repo",
+      "status": "ok",
+      "providers": 2
+    },
+    {
+      "name": "Ray's Plugins",
+      "status": "ok",
+      "providers": 18
+    },
+    {
+      "name": "Yoru's Repo",
+      "status": "ok",
+      "providers": 29
+    }
+  ],
+  "unique_providers": 131,
+  "duplicate_groups": 40,
+  "language_filtered_entries": 10,
+  "unknown_language_metadata_entries": 0,
+  "allowed_languages": [
+    "en",
+    "ja",
+    "ko",
+    "zh"
+  ]
+}
