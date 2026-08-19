@@ -111,24 +111,6 @@
     "fileHash": "sha256-6032aeba37c8e4b02f74d0d400daab2c4bf2a587b738ebdc8db24b77a7a2f39f"
   },
   {
-    "iconUrl": "https://images.anime3rb.com/favicon/apple-touch-icon.png",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
-    "fileSize": 22300,
-    "status": 1,
-    "authors": [
-      "Abodabodd"
-    ],
-    "tvTypes": [
-      "TvSeries",
-      "Anime"
-    ],
-    "version": 1,
-    "internalName": "Anime3rb",
-    "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anim3rb.cs3",
-    "name": "Anime3rb"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
     "status": 1,
     "version": 11,
@@ -250,24 +232,6 @@
     "jarHash": "sha256-ba729b1183344dc0f0c6717d0a92b5ba0231fa609b9b2ae71a0d83038ee803a9"
   },
   {
-    "iconUrl": "https://www.google.com/s2/favicons?domain=aniyomi.org&sz=%size%",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/CranberrySoup/AniyomiCompatExtension",
-    "fileSize": 36701,
-    "status": 1,
-    "authors": [
-      "CranberrySoup"
-    ],
-    "tvTypes": [
-      "Others"
-    ],
-    "version": 8,
-    "internalName": "AniyomiProvider",
-    "description": "Use Aniyomi Extensions in CloudStream!\nNot guaranteed to work perfectly.",
-    "url": "https://raw.githubusercontent.com/CranberrySoup/AniyomiCompatExtension/builds/AniyomiProvider.cs3",
-    "name": "AniyomiProvider"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
     "status": 1,
     "version": 4,
@@ -348,24 +312,6 @@
     "fileHash": "sha256-eca4da96f1d304068b67fdd5edf97b9f801dee2aa1d4a71ec249bcd268666b13"
   },
   {
-    "iconUrl": "https://raw.githubusercontent.com/rockhero1234/cinephile/refs/heads/master/BingedReview/icon.png",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/rockhero1234/cinephile",
-    "fileSize": 17968,
-    "status": 1,
-    "authors": [
-      "Dilip"
-    ],
-    "tvTypes": [
-      "Movie"
-    ],
-    "version": 3,
-    "internalName": "BingedReview",
-    "description": "Data about streaming and review",
-    "url": "https://raw.githubusercontent.com/rockhero1234/cinephile/builds/BingedReview.cs3",
-    "name": "BingedReview"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
     "status": 1,
     "version": 23,
@@ -429,44 +375,6 @@
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/cloudplay.jpg",
     "apiVersion": 1,
     "fileHash": "sha256-7c68d19bf4129261666385fc8e4679b8579627794ea239eaef5ee1761e5cef74"
-  },
-  {
-    "iconUrl": "https://clouding.vn/wp-content/uploads/2022/10/cropped-Cloud-Services-192x192.png",
-    "apiVersion": 1,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "fileSize": 42324,
-    "status": 1,
-    "authors": [
-      "anhdaden",
-      "RowdyRushya"
-    ],
-    "version": 9,
-    "internalName": "SyncProvider",
-    "description": "Đồng bộ cài đặt và lịch sử xem giữa các thiết bị",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/SyncProvider.cs3",
-    "name": "Cross-Device Sync"
-  },
-  {
-    "iconUrl": "https://www.google.com/s2/favicons?domain=www.dailymotion.com&sz=%size%",
-    "jarFileSize": 49791,
-    "fileHash": "sha256-9036525a64e8b3c8fe04f94e9fe89a744c13d69af684ed0d2ad2a7eb0f332cd9",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/recloudstream/extensions",
-    "fileSize": 11472,
-    "status": 1,
-    "authors": [
-      "Luna712"
-    ],
-    "tvTypes": [
-      "Others"
-    ],
-    "version": 4,
-    "internalName": "DailymotionProvider",
-    "jarUrl": "https://raw.githubusercontent.com/recloudstream/extensions/builds/DailymotionProvider.jar",
-    "description": "Watch content from Dailymotion",
-    "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/DailymotionProvider.cs3",
-    "name": "DailymotionProvider",
-    "jarHash": "sha256-542c325f2e1e1f61db60952d161325b62ff58712b1b2020e6df50727fdd03bf2"
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=divicast.study&sz=64",
@@ -619,27 +527,6 @@
     "jarHash": "sha256-c1f606afbf0f6f2b5743d45d2f5e9942c031eeb1d69185be09fc249ab82446a1"
   },
   {
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/FshareProvider.cs3",
-    "status": 1,
-    "version": 35,
-    "name": "FshareProvider",
-    "internalName": "FshareProvider",
-    "authors": [
-      "anhdaden"
-    ],
-    "description": "Download FullHD, 2K, 4K with Fshare Vip account",
-    "fileSize": 176879,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "tvTypes": [
-      "Anime",
-      "TvSeries",
-      "Movie"
-    ],
-    "iconUrl": "https://play-lh.googleusercontent.com/TOTj0uMWp7cXkjXDXkcTZnPigUmpLRRiH956lHRJxStlY7ucxmtwMs_Kr2wOWYm0fSY=w240-h480-rw",
-    "apiVersion": 1,
-    "fileHash": "sha256-2d30c914d5d105040890193a8c44f2e980b6a8ae184c76e493d507804af43f9f"
-  },
-  {
     "iconUrl": "https://fullmatchshows.com/wp-content/uploads/2024/04/LOGOSASO.png",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
@@ -764,125 +651,6 @@
     "jarFileSize": 175454,
     "jarUrl": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Goojara.jar",
     "jarHash": "sha256-4856b72cd9bbad59a1fe6bcf493fc910d6b99ee02fc08aa37dbb4b66676f4ab8"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Huhu.cs3",
-    "status": 1,
-    "version": 7,
-    "name": "Huhu",
-    "internalName": "Huhu",
-    "authors": [
-      "DieGon"
-    ],
-    "description": "Canali TV da Huhu",
-    "fileSize": 31737,
-    "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
-    "tvTypes": [
-      "Live"
-    ],
-    "iconUrl": "https://huhu.to/favicon.ico",
-    "apiVersion": 1,
-    "fileHash": "sha256-71e521eaefc6b49a571723928c34e15ee0bf4699c601b72e941ee77fa590823f"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/Luna712/Luna712-CloudStream-Extensions/builds/InternetArchiveProvider.cs3",
-    "status": 1,
-    "version": 22,
-    "name": "InternetArchiveProvider",
-    "internalName": "InternetArchiveProvider",
-    "authors": [
-      "Luna712"
-    ],
-    "description": "Watch content from the Internet Archive at archive.org",
-    "fileSize": 27774,
-    "repositoryUrl": "https://github.com/Luna712/Luna712-CloudStream-Extensions",
-    "tvTypes": [
-      "Others"
-    ],
-    "iconUrl": "https://www.google.com/s2/favicons?domain=archive.org&sz=%size%",
-    "apiVersion": 1,
-    "fileHash": "sha256-dd70f0e9d706d9885e3ce268b426eb24277399adb01c6e2ef1fd1528398686a3"
-  },
-  {
-    "iconUrl": "https://www.google.com/s2/favicons?domain=invidious.io&sz=%size%",
-    "jarFileSize": 62289,
-    "fileHash": "sha256-a0a2ff7e8484f69118598d347458774935733399ba0f76ef0d4921886a7db4a9",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/recloudstream/extensions",
-    "fileSize": 13695,
-    "status": 1,
-    "authors": [
-      "Cloudburst"
-    ],
-    "tvTypes": [
-      "Others"
-    ],
-    "version": 9,
-    "internalName": "InvidiousProvider",
-    "jarUrl": "https://raw.githubusercontent.com/recloudstream/extensions/builds/InvidiousProvider.jar",
-    "description": "Watch content from any invidious instance",
-    "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/InvidiousProvider.cs3",
-    "name": "InvidiousProvider",
-    "jarHash": "sha256-d38e909bceba6c65c47a028a8aadfe83d09da976ffaef9cb2dd35a7c227b8453"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/IPTV.cs3",
-    "status": 1,
-    "version": 1,
-    "name": "IPTV",
-    "internalName": "IPTV",
-    "authors": [
-      "anhdaden",
-      "dogior"
-    ],
-    "description": "General IPTV player. Add a list in the settings and you'll see it in the plugins list in the home",
-    "fileSize": 40007,
-    "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
-    "tvTypes": [
-      "Live"
-    ],
-    "iconUrl": "https://www.shutterstock.com/image-vector/iptv-vector-line-icon-ip-260nw-1841427610.jpg",
-    "apiVersion": 1,
-    "fileHash": "sha256-044395200b35f3497926e5d92cce39c2639fe9e48b21cd7a37da28cbddcdad82"
-  },
-  {
-    "iconUrl": "https://avatars.githubusercontent.com/iptv-org?s=%size%",
-    "fileHash": "sha256-fdea100bf68d00420008b1d1eb0902b551212bfce9c0778cdf68d3c3974fde20",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-    "fileSize": 22813,
-    "status": 1,
-    "authors": [
-      "Adippe",
-      "Phisher98",
-      "Bnyro"
-    ],
-    "tvTypes": [
-      "Live"
-    ],
-    "version": 2,
-    "internalName": "IptvOrg",
-    "description": "Collection of publicly available IPTV channels from all over the world",
-    "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/IptvOrg.cs3",
-    "name": "IptvOrg"
-  },
-  {
-    "iconUrl": "https://www.shutterstock.com/image-vector/iptv-vector-line-icon-ip-260nw-1841427610.jpg",
-    "apiVersion": 1,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "fileSize": 30703,
-    "status": 1,
-    "authors": [
-      "anhdaden"
-    ],
-    "tvTypes": [
-      "Live"
-    ],
-    "version": 9,
-    "internalName": "IPTVProvider",
-    "description": "Cần nhập link IPTV để xem",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/IPTVProvider.cs3",
-    "name": "IPTVProvider"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Iwatchtheoffice.cs3",
@@ -1042,46 +810,6 @@
     "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/builds/LibraryOfLadev.cs3",
     "name": "LibraryOfLadev",
     "jarHash": "sha256-8fc13e3ff4ebe4e69fcd6fcfeb48b5d3757b95b2b6dc1d3bb138055b1afc87fc"
-  },
-  {
-    "iconUrl": "https://monplayer.org/images/favicon.ico",
-    "apiVersion": 1,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "fileSize": 55806,
-    "status": 1,
-    "authors": [
-      "anhdaden"
-    ],
-    "tvTypes": [
-      "Others"
-    ],
-    "version": 9,
-    "internalName": "MonPlayerProvider",
-    "description": "Dùng được những link ghim trên nhóm tele",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/MonPlayerProvider.cs3",
-    "name": "MonPlayerProvider"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/Moviesmod.cs3",
-    "status": 1,
-    "version": 33,
-    "name": "Moviesmod",
-    "internalName": "Moviesmod",
-    "authors": [
-      "megix"
-    ],
-    "description": "Includes Topmovies",
-    "fileSize": 44518,
-    "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
-    "tvTypes": [
-      "TvSeries",
-      "Movie",
-      "AsianDrama",
-      "Anime"
-    ],
-    "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/Moviesmod/icon.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-9433fd970480a53f52f3ec4b49d3213c7bda5a26b109dc80ef82cd2ec13a37a7"
   },
   {
     "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/MoviPK.cs3",
@@ -1417,27 +1145,6 @@
     "fileHash": "sha256-88c88a841709168f09c97921b79a0d0bd4b0e250ee2e47b8bd6d6b2a7338eb4a"
   },
   {
-    "iconUrl": "https://www.stremio.com/website/favicon.ico",
-    "apiVersion": 1,
-    "repositoryUrl": "https://codeberg.org/frezza147/test",
-    "fileSize": 109635,
-    "status": 1,
-    "authors": [
-      "anhdaden",
-      "hexated"
-    ],
-    "tvTypes": [
-      "TvSeries",
-      "Anime",
-      "Movie"
-    ],
-    "version": 7,
-    "internalName": "StremioProvider",
-    "description": "Addon use Streamio",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/StremioProvider.cs3",
-    "name": "StremioProvider"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioX.cs3",
     "status": 1,
     "version": 24,
@@ -1548,25 +1255,6 @@
     "fileHash": "sha256-e6f6a4d9910dbc4b775d7ddafb6c3a262e31942a430d853b5a41a392205450f8"
   },
   {
-    "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/TV.cs3",
-    "status": 1,
-    "version": 5,
-    "name": "TV",
-    "internalName": "TV",
-    "authors": [
-      "DieGon"
-    ],
-    "description": "TV live da TV github repository",
-    "fileSize": 29032,
-    "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
-    "tvTypes": [
-      "Live"
-    ],
-    "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/master/TV/television.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-903499754d91f88cb2a7d207a6ca1fe7e6d1c2bb98ee4e2c614057b7da195586"
-  },
-  {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3",
     "status": 1,
     "version": 11,
@@ -1585,28 +1273,6 @@
     "iconUrl": "https://favicons.teamtailor-cdn.com/icon?size=80..120..200&url=tv.garden",
     "apiVersion": 1,
     "fileHash": "sha256-fa1be17e37a8eb43e2153c8c9638fd18521ce2194dd2355839ab18925a5e8571"
-  },
-  {
-    "iconUrl": "https://www.google.com/s2/favicons?domain=twitch.tv&sz=%size%",
-    "jarFileSize": 56997,
-    "fileHash": "sha256-a7cc95f77bbd00a311d122201c63babe70b63fb398641fa28bf2b2c77346150a",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/recloudstream/extensions",
-    "fileSize": 15239,
-    "status": 1,
-    "authors": [
-      "CranberrySoup"
-    ],
-    "tvTypes": [
-      "Live"
-    ],
-    "version": 2,
-    "internalName": "TwitchProvider",
-    "jarUrl": "https://raw.githubusercontent.com/recloudstream/extensions/builds/TwitchProvider.jar",
-    "description": "Watch livestreams from Twitch",
-    "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/TwitchProvider.cs3",
-    "name": "TwitchProvider",
-    "jarHash": "sha256-88086809ed6ccc21cca611ce2ba4f2563b1082486ffda3daa6350da9126b548b"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
@@ -1628,46 +1294,6 @@
     "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/UHDmoviesProvider/icon.png",
     "apiVersion": 1,
     "fileHash": "sha256-5decc22388ad63b50030aac8e312a58fcc02028e87b3ddef6cc6b7ff85b03904"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Vavoo.cs3",
-    "status": 1,
-    "version": 7,
-    "name": "Vavoo",
-    "internalName": "Vavoo",
-    "authors": [
-      "doGior"
-    ],
-    "description": "⚠️ W.I.P. ⚠️ TV channels from vavoo.to",
-    "fileSize": 36183,
-    "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
-    "tvTypes": [
-      "Live"
-    ],
-    "iconUrl": "https://vavoo.tv/favicon.ico",
-    "apiVersion": 1,
-    "fileHash": "sha256-90d25c3a26300098fba8b4174a622479d26b650f5c4ec8dd8a75df3356fb6ee3"
-  },
-  {
-    "iconUrl": "https://www.google.com/s2/favicons?domain=uncutmaza.cc&sz=%size%",
-    "apiVersion": 1,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "fileSize": 313377,
-    "status": 1,
-    "authors": [
-      "anhdaden",
-      "hexated"
-    ],
-    "tvTypes": [
-      "TvSeries",
-      "Anime",
-      "Movie"
-    ],
-    "version": 35,
-    "internalName": "ViStreamProvider",
-    "description": "Download FullHD, 2K, 4K from torrent and cloud driver",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/ViStreamProvider.cs3",
-    "name": "ViStreamProvider"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
@@ -1737,24 +1363,6 @@
     "fileHash": "sha256-e509978bda732b6c737409c6272294565136373eaaa27c4889e45263d3ab7207"
   },
   {
-    "iconUrl": "https://play-lh.googleusercontent.com/gMB8Eq9g9Uq6CXiOHcqatXpx-6HTexAzcQibTgpqAE756Fnt1Jyyp0j7S3UDKPztkA=w480-h960-rw",
-    "apiVersion": 1,
-    "repositoryUrl": "https://gitlab.com/tearrs/cloudstream-vietnamese",
-    "fileSize": 28540,
-    "status": 1,
-    "authors": [
-      "anhdaden"
-    ],
-    "tvTypes": [
-      "Live"
-    ],
-    "version": 1,
-    "internalName": "XtreamIPTVProvider",
-    "description": "Cần nhập link Xtream IPTV, tài khoản và mật khẩu để xem",
-    "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/XtreamIPTVProvider.cs3",
-    "name": "XtreamIPTVProvider"
-  },
-  {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",
     "status": 1,
     "version": 4,
@@ -1773,49 +1381,6 @@
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=yoturkish.to",
     "apiVersion": 1,
     "fileHash": "sha256-b9b3bcf59a3025434d512c34c63e1c1e468b5263d2f156c9a5ec52b742f7314d"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/YouTube.cs3",
-    "status": 1,
-    "version": 14,
-    "name": "YouTube",
-    "internalName": "YouTube",
-    "authors": [
-      "doGior"
-    ],
-    "description": "Videos, playlists and channels from YouTube",
-    "fileSize": 40001,
-    "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
-    "tvTypes": [
-      "Others"
-    ],
-    "iconUrl": "https://www.youtube.com/s/desktop/711fd789/img/logos/favicon_144x144.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-5abdeac48b9d4cbdeccd3b4b5944462906599061ac93088addb60f24dd3608fa"
-  },
-  {
-    "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/3840px-YouTube_full-color_icon_%282017%29.svg.png",
-    "jarFileSize": 46472,
-    "fileHash": "sha256-a246eb1584cec9e69ba8c50136b9e8dc11a2fc0ab225710c31ad66c2ec4f4efe",
-    "apiVersion": 1,
-    "repositoryUrl": "https://github.com/recloudstream/extensions",
-    "fileSize": 13152,
-    "status": 1,
-    "authors": [
-      "KaifTaufiq"
-    ],
-    "tvTypes": [
-      "Other",
-      "Live",
-      "TvSeries"
-    ],
-    "version": 1,
-    "internalName": "YoutubeProvider",
-    "jarUrl": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.jar",
-    "description": "Watch Youtube in Cloudstream",
-    "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.cs3",
-    "name": "YoutubeProvider",
-    "jarHash": "sha256-0d83e79f196464e50b8b1aa4c13683b2428fc3556651a0d190981c1149b3ea41"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",

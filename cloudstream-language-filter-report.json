@@ -5,9 +5,9 @@
     "ko",
     "zh"
   ],
-  "keep_unknown_language": true,
+  "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 255,
+  "excluded_count": 280,
   "excluded": [
     {
       "internalName": "3isk",
@@ -148,6 +148,14 @@
       ],
       "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anime-Phoenix.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Anime3rb",
+      "name": "Anime3rb",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anim3rb.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "Anime3rbtest",
@@ -528,6 +536,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AniyomiProvider",
+      "name": "AniyomiProvider",
+      "source": "Aniyomi Compat",
+      "sourceRepo": "https://raw.githubusercontent.com/CranberrySoup/AniyomiCompatExtension/master/repo.json",
+      "url": "https://raw.githubusercontent.com/CranberrySoup/AniyomiCompatExtension/builds/AniyomiProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "Anoboy",
       "name": "Anoboy",
       "source": "Indostream Repo",
@@ -750,6 +766,14 @@
       ],
       "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixRoarZoneTV.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "BingedReview",
+      "name": "BingedReview",
+      "source": "Cinephile",
+      "sourceRepo": "https://raw.githubusercontent.com/rockhero1234/cinephile/refs/heads/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/rockhero1234/cinephile/builds/BingedReview.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "Bollyflix",
@@ -1102,6 +1126,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "SyncProvider",
+      "name": "Cross-Device Sync",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/SyncProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "CuevanaProvider",
       "name": "CuevanaProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -1114,6 +1146,14 @@
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/CuevanaProvider.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DailymotionProvider",
+      "name": "DailymotionProvider",
+      "source": "Cloudstream providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/DailymotionProvider.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "DeporTVProvider",
@@ -1606,6 +1646,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "FshareProvider",
+      "name": "FshareProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/FshareProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "FStream",
       "name": "FStream",
       "source": "FStream",
@@ -1802,6 +1850,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Huhu",
+      "name": "Huhu",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Huhu.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "HuhuTo",
       "name": "HuhuTo",
       "source": "German providers repository",
@@ -1872,6 +1928,46 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "InternetArchiveProvider",
+      "name": "InternetArchiveProvider",
+      "source": "Cloudstream providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/InternetArchiveProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "InternetArchiveProvider",
+      "name": "InternetArchiveProvider",
+      "source": "Luna712's CloudStream extension repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Luna712/Luna712-CloudStream-Extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/Luna712/Luna712-CloudStream-Extensions/builds/InternetArchiveProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "InvidiousProvider",
+      "name": "InvidiousProvider",
+      "source": "Cloudstream providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/InvidiousProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "IPTV",
+      "name": "IPTV",
+      "source": "doGior's Had Enough",
+      "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/IPTV.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "IptvOrg",
+      "name": "IptvOrg",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/IptvOrg.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "IPTVPlayer",
       "name": "IPTVPlayer",
       "source": "Phisher Repo",
@@ -1884,6 +1980,14 @@
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/IPTVPlayer.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "IPTVProvider",
+      "name": "IPTVProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/IPTVProvider.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "IStreamFlare",
@@ -2292,6 +2396,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "MonPlayerProvider",
+      "name": "MonPlayerProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/MonPlayerProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "MovieBlast",
       "name": "MovieBlast",
       "source": "Phisher Repo",
@@ -2346,6 +2458,14 @@
       ],
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/MoviesDrive.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Moviesmod",
+      "name": "Moviesmod",
+      "source": "Megix Repo(Hindi & English)",
+      "sourceRepo": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CS.json",
+      "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/Moviesmod.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "Movix",
@@ -3118,6 +3238,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "StremioProvider",
+      "name": "StremioProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/StremioProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "SyncPlugin",
       "name": "SyncPlugin",
       "source": "CakesTwix Providers Repository Codeberg",
@@ -3342,6 +3470,22 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "TV",
+      "name": "TV",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/TV.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "TV",
+      "name": "TV",
+      "source": "doGior's Had Enough",
+      "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/TV.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "TVgarden(Famelack)",
       "name": "TVgarden(Famelack)",
       "source": "3rabi عربي",
@@ -3354,6 +3498,14 @@
       ],
       "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TVgarden.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TwitchProvider",
+      "name": "TwitchProvider",
+      "source": "Cloudstream providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/TwitchProvider.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "UAFlixProvider",
@@ -3440,6 +3592,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Vavoo",
+      "name": "Vavoo",
+      "source": "doGior's Had Enough",
+      "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Vavoo.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "VegaMovies",
       "name": "VegaMovies",
       "source": "Megix Repo(Hindi & English)",
@@ -3452,6 +3612,14 @@
       ],
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ViStreamProvider",
+      "name": "ViStreamProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/ViStreamProvider.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "Viu",
@@ -3538,6 +3706,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "XtreamIPTVProvider",
+      "name": "XtreamIPTVProvider",
+      "source": "Vietnamese Extension",
+      "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
+      "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/XtreamIPTVProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "Yablom",
       "name": "Yablom",
       "source": "cs-karma",
@@ -3564,6 +3740,30 @@
       ],
       "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Yacintv.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "YouTube",
+      "name": "YouTube",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Youtube.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "YouTube",
+      "name": "YouTube",
+      "source": "doGior's Had Enough",
+      "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/YouTube.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "YoutubeProvider",
+      "name": "YoutubeProvider",
+      "source": "Cloudstream providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
+      "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "Zinkmovies",
