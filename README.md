@@ -1,34 +1,62 @@
 # Limitless Nuviostream
 
-A single Nuvio plugin repository that combines several upstream provider repositories, removes duplicate providers, and filters out providers that do not advertise English, Japanese, Korean, or Chinese content.
+Limitless Nuviostream builds two clean provider feeds from one GitHub project:
 
-## What this does
+1. **Limitless Nuviostream** — native Nuvio JavaScript providers.
+2. **Limitless CloudStream** — filtered CloudStream `.cs3` extensions for NuvioTV's compatibility layer.
+
+Both feeds remove duplicate provider entries and focus on English, Japanese, Korean, and Chinese content.
+
+## Native Nuvio feed
+
+The native builder:
 
 - Pulls the upstream provider manifests listed in `sources.json`.
 - Converts every provider's relative JavaScript filename into an absolute upstream URL.
-- Deduplicates providers by normalized provider ID, ignoring capitalization and punctuation differences.
-- Chooses the highest provider version when duplicate providers are found.
+- Deduplicates providers by normalized provider ID and provider name.
+- Chooses the highest provider version when duplicates are found.
 - Uses source priority as a tie-breaker when versions match.
-- Writes every duplicate decision to `duplicates.json` so nothing is hidden.
 - Filters providers to English, Japanese, Korean, or Chinese when language metadata is available.
-- Keeps providers with missing language metadata for review rather than accidentally deleting useful sources.
-- Records language removals and unknown-language providers in `language-filter-report.json`.
-- Updates automatically once per day with GitHub Actions.
-- Stops the automatic update if an upstream source fails instead of silently publishing a partial manifest.
+- Writes duplicate and language decisions to audit files.
 
-The actual provider JavaScript remains hosted by its original upstream repository. This repository only generates the master manifest.
+The actual JavaScript remains hosted by its original upstream repository.
 
-## Install in Nuvio
-
-After the first GitHub Action finishes successfully, install:
+### Install native providers
 
 ```text
 https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/main/manifest.json
 ```
 
-You only need this one repository in Nuvio. Remove the eight separate upstream repository entries after verifying the master repository works.
+This replaces the eight separate Nuvio provider repositories used to build the master feed.
 
-## Included upstream repositories
+## CloudStream compatibility feed
+
+CloudStream's MegaRepo normally installs a `MegaProvider.cs3` extension whose job is to add many CloudStream repositories inside CloudStream itself. NuvioTV does not need that installer plugin. Instead, this project performs the aggregation during the GitHub Action build.
+
+The CloudStream builder:
+
+- Reads CloudStream's public repository database.
+- Follows each compatible `repo.json` and its `pluginLists` files.
+- Collects the upstream `.cs3` extension metadata and preserves each original download URL.
+- Excludes the MegaProvider repository-installer plugin itself.
+- Removes inactive extensions by default.
+- Filters languages to English, Japanese, Korean, and Chinese, while keeping explicitly multilingual extensions.
+- Deduplicates by normalized `internalName`, then by normalized display name.
+- Prefers newer plugin versions and verified repositories when duplicates overlap.
+- Uses a metadata cache so a temporarily unavailable upstream repository does not immediately erase previously known providers.
+- Generates reports for failed repositories, duplicates, language filtering, and cache use.
+
+No `.cs3` binaries are copied into this repository. The generated feed points NuvioTV directly to the original upstream extension URLs.
+
+### Install CloudStream providers
+
+```text
+https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/main/cloudstream-repo.json
+```
+
+**Platform note:** this feed targets NuvioTV's external DEX/CloudStream compatibility layer. Nuvio Mobile and Nuvio Desktop should be tested separately and should not be assumed to support CloudStream `.cs3` extensions in the same way.
+
+## Included native upstream repositories
 
 1. All-in-One-Nuvio
 2. Asura Synthesis
@@ -41,31 +69,54 @@ You only need this one repository in Nuvio. Remove the eight separate upstream r
 
 See `sources.json` for their live manifest URLs.
 
-## Choosing a different duplicate
+## Native provider overrides
 
 Normally the newest provider version wins. If a particular implementation works better from another source, edit `overrides.json`.
 
-`prefer_source` pins the selected copy of a duplicate provider.
+- `prefer_source` pins the selected copy of a duplicate provider.
+- `keep_separate` tells the builder not to merge that provider across repositories.
+- `disable` keeps a provider in the manifest but makes it disabled by default.
+- `exclude` removes a provider entirely from the generated manifest.
+- `language_filter` controls the native language allow-list.
 
-`keep_separate` tells the builder not to merge that provider across repositories.
+## CloudStream configuration
 
-`disable` keeps a provider in the manifest but makes it disabled by default.
+`cloudstream-config.json` controls the CloudStream aggregation. It currently:
 
-`exclude` removes a provider entirely from the generated manifest.
+- allows `en`, `ja`, `ko`, and `zh`;
+- keeps explicitly multilingual providers;
+- temporarily keeps providers with missing language metadata so they can be audited;
+- excludes inactive extensions;
+- excludes `MegaProvider` itself;
+- excludes MegaRepo's installer repository from recursive aggregation.
 
-The `language_filter` section is currently configured for `en`, `ja`, `ko`, and `zh`. A provider with declared language metadata must include at least one of those languages to stay in the master manifest. Providers that do not declare language metadata are temporarily kept and listed in `language-filter-report.json` so they can be reviewed manually.
+## Generated files
 
-## Files
+### Native Nuvio
 
-- `manifest.json`: generated Nuvio manifest.
-- `sources.json`: upstream repositories.
-- `overrides.json`: manual duplicate/enable rules.
-- `duplicates.json`: generated audit of duplicate decisions.
-- `build-status.json`: generated source-health summary.
-- `language-filter-report.json`: generated audit of language-based exclusions and unknown metadata.
-- `scripts/build_manifest.py`: dependency-free manifest builder.
-- `.github/workflows/update-manifest.yml`: automatic updater.
+- `manifest.json` — generated Nuvio manifest.
+- `duplicates.json` — duplicate-selection audit.
+- `build-status.json` — native source-health summary.
+- `language-filter-report.json` — native language audit.
+
+### CloudStream
+
+- `cloudstream-repo.json` — NuvioTV-installable CloudStream repository manifest.
+- `cloudstream-plugins.json` — deduplicated CloudStream extension list.
+- `cloudstream-duplicates.json` — CloudStream duplicate-selection audit.
+- `cloudstream-build-status.json` — repository and provider-count summary.
+- `cloudstream-language-filter-report.json` — CloudStream language audit.
+- `cloudstream-source-cache.json` — last-known-good extension metadata for temporarily unavailable repos.
+
+### Builder files
+
+- `sources.json` — native upstream repositories.
+- `overrides.json` — native manual rules.
+- `cloudstream-config.json` — CloudStream aggregation rules.
+- `scripts/build_manifest.py` — native manifest builder.
+- `scripts/build_cloudstream.py` — CloudStream aggregation builder.
+- `.github/workflows/update-manifest.yml` — daily and on-change automatic updater.
 
 ## Safety note
 
-This project reduces duplicate provider execution, but it does not guarantee that every upstream provider itself is stable. If Nuvio still crashes with the deduplicated repository, `overrides.json` gives us a simple way to disable or exclude suspect providers while keeping one clean manifest URL.
+Reducing duplicate provider execution should lower unnecessary load, but it cannot guarantee that every upstream provider or extension is stable. The audit files make it possible to identify and remove troublesome providers without changing the public install URLs.
