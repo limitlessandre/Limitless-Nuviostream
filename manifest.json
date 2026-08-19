@@ -2267,6 +2267,30 @@
       ]
     },
     {
+      "id": "limitless-wcoflix",
+      "name": "WCoflix",
+      "description": "Anime and cartoons from WCOForever/WCOfilx with explicit English DUB and Japanese SUB labels.",
+      "version": "1.0.0",
+      "author": "Limitless port based on cs-Karma / CloudStream MegaRepo",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/wcoflix.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcoforever.net/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
       "id": "wrenok",
       "name": "Wrenok.",
       "description": "Provider: Purstream | English, French",

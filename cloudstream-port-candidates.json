@@ -1,9 +1,9 @@
 {
-  "native_provider_count": 120,
+  "native_provider_count": 121,
   "cloudstream_provider_count": 64,
-  "no_obvious_native_overlap_count": 53,
+  "no_obvious_native_overlap_count": 52,
   "likely_overlap_count": 0,
-  "exact_or_alias_overlap_count": 11,
+  "exact_or_alias_overlap_count": 12,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
@@ -352,30 +352,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.75,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 5,
-      "reasons": [
-        "Anime coverage",
-        "Cartoon coverage"
-      ]
-    },
-    {
-      "internalName": "Wcoflix",
-      "name": "Wcoflix",
-      "description": "We have wide range of cartoons and anime that you can watch in HD and High quality for free.",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "Cartoon"
-      ],
-      "version": 9,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.714,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1344,6 +1320,36 @@
       "priority_score": 6,
       "reasons": [
         "Asian drama / K-drama coverage"
+      ]
+    },
+    {
+      "internalName": "Wcoflix",
+      "name": "Wcoflix",
+      "description": "We have wide range of cartoons and anime that you can watch in HD and High quality for free.",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "Cartoon"
+      ],
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-wcoflix",
+            "name": "WCoflix",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/wcoflix.js"
+          }
+        ]
+      },
+      "priority": "medium-priority",
+      "priority_score": 5,
+      "reasons": [
+        "Anime coverage",
+        "Cartoon coverage"
       ]
     },
     {

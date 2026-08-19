@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
-Native Limitless providers: **120**  
+Native Limitless providers: **121**  
 Filtered CloudStream providers: **64**  
-No obvious native overlap: **53**  
+No obvious native overlap: **52**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **11**
+Exact/alias overlap: **12**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -26,7 +26,6 @@ Exact/alias overlap: **11**
 
 - **Animenosub** (`Animenosub`) — en; AnimeMovie, Anime, Cartoon — Anime and Movies
 - **Animexin** (`Animexin`) — en; AnimeMovie, Anime, Cartoon — Anime and Movies
-- **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free.
 - **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
@@ -82,6 +81,7 @@ None.
 - **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: 💋 Kisskh
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox. — native match: ShowBox
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: 💋 Kisskh
+- **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free. — native match: WCoflix
 - **AllWish** (`AllWish`) — en; All — Anime from all-wish.me — native match: 🌟 All-Wish
 - **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes — native match: AniDB
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie — AniKoto — native match: AnikotoTV
