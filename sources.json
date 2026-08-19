@@ -1,0 +1,50 @@
+[
+  {
+    "name": "All-in-One-Nuvio",
+    "url": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/manifest.json",
+    "priority": 10,
+    "enabled": true
+  },
+  {
+    "name": "Asura Synthesis",
+    "url": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/manifest.json",
+    "priority": 20,
+    "enabled": true
+  },
+  {
+    "name": "CENSORED's Repo",
+    "url": "https://raw.githubusercontent.com/sapariyaneel/nuvio-plugin/refs/heads/main/manifest.json",
+    "priority": 30,
+    "enabled": true
+  },
+  {
+    "name": "Eclipsia",
+    "url": "https://codeberg.org/eclipsia/eclipsia-nuvio/raw/branch/main/stable/manifest.json",
+    "priority": 40,
+    "enabled": true
+  },
+  {
+    "name": "Michat88 Repo",
+    "url": "https://raw.githubusercontent.com/michat88/nuvio-providers/refs/heads/main/manifest.json",
+    "priority": 50,
+    "enabled": true
+  },
+  {
+    "name": "Phisher's Repo",
+    "url": "https://raw.githubusercontent.com/phisher98/phisher-nuvio-providers/refs/heads/main/manifest.json",
+    "priority": 60,
+    "enabled": true
+  },
+  {
+    "name": "Ray's Plugins",
+    "url": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/manifest.json",
+    "priority": 70,
+    "enabled": true
+  },
+  {
+    "name": "Yoru's Repo",
+    "url": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/manifest.json",
+    "priority": 80,
+    "enabled": true
+  }
+]
