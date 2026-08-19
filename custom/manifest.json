@@ -1,8 +1,48 @@
 {
   "name": "Limitless Native Ports",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nuvio-native ports maintained directly by Limitless.",
   "scrapers": [
+    {
+      "id": "limitless-cinestream",
+      "name": "CineStream",
+      "description": "Clean Nuvio-native CineStream core using a small sequential set of HTTPS sources (Hexa, VidFast, VidCore). CineSimkl/CineTmdb metadata frontends and torrent sources are intentionally omitted.",
+      "version": "1.0.0",
+      "author": "Limitless clean-room port based on CSX CineStream behavior",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "providers/cinestream.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": ["mp4", "m3u8"],
+      "contentLanguage": ["en", "ja", "ko", "zh"]
+    },
+    {
+      "id": "limitless-jpfilms",
+      "name": "JPFilms",
+      "description": "Japanese movies and TV from JPFilms, focused on Japanese-language content with English-subtitled releases.",
+      "version": "1.0.0",
+      "author": "Limitless port based on cs-Karma JPFilms",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "providers/jpfilms.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://jp-films.com/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-onetouchtv",
+      "name": "OneTouchTV",
+      "description": "Asian drama provider with Korean, Chinese, and Japanese coverage plus subtitle tracks when available.",
+      "version": "1.0.0",
+      "author": "Limitless port based on the OneTouchTV implementations used by CloudStream/YaStream",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "providers/onetouchtv.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": ["mp4", "m3u8"],
+      "contentLanguage": ["en", "ja", "ko", "zh"]
+    },
     {
       "id": "limitless-wcoflix",
       "name": "WCoflix",
