@@ -34,7 +34,7 @@
         "name": "4KHDHub",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/4khdhub.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/4khdhub.js"
       },
       {
         "id": "FourKHDHub",
@@ -107,8 +107,8 @@
       "id": "anikototv",
       "name": "AnikotoTV",
       "version": "1.0.5",
-      "source": "All-in-One-Nuvio",
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/anikototv.js"
+      "source": "Asura Synthesis",
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/anikototv.js"
     },
     "candidates": [
       {
@@ -123,7 +123,7 @@
         "name": "AnikotoTV",
         "version": "1.0.5",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/anikototv.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/anikototv.js"
       }
     ]
   },
@@ -205,7 +205,7 @@
         "name": "Animetsu",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/animetsu.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/animetsu.js"
       }
     ]
   },
@@ -287,7 +287,7 @@
         "name": "CineFreak",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/cinefreak.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/cinefreak.js"
       }
     ]
   },
@@ -465,7 +465,7 @@
         "name": "HDHub4u",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/hdhub4u.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/hdhub4u.js"
       },
       {
         "id": "HDhub4u",
@@ -529,7 +529,7 @@
         "name": "KissKH",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/kisskh.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/kisskh.js"
       },
       {
         "id": "kisskh",
@@ -671,7 +671,7 @@
         "name": "MoviesDrive",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/moviesdrive.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/moviesdrive.js"
       },
       {
         "id": "moviesdrive",
@@ -688,7 +688,7 @@
       "name": "MoviesHunt",
       "version": "1.0.1",
       "source": "Asura Synthesis",
-      "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/movieshunt.js"
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/movieshunt.js"
     },
     "candidates": [
       {
@@ -696,7 +696,7 @@
         "name": "MoviesHunt",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/movieshunt.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/movieshunt.js"
       },
       {
         "id": "movieshunt",
@@ -777,7 +777,7 @@
       "name": "Peachify",
       "version": "1.0.1",
       "source": "Asura Synthesis",
-      "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/peachify.js"
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/peachify.js"
     },
     "candidates": [
       {
@@ -785,7 +785,7 @@
         "name": "Peachify",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/peachify.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/peachify.js"
       },
       {
         "id": "peachify",
@@ -817,7 +817,7 @@
         "name": "PlayIMDb",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/playimdb.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/playimdb.js"
       }
     ]
   },
@@ -920,7 +920,7 @@
         "name": "UHDMovies",
         "version": "1.0.0",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/uhdmovies.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/uhdmovies.js"
       },
       {
         "id": "UHDmovies",
@@ -959,7 +959,7 @@
         "name": "VegaMovies",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/vegamovies.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/vegamovies.js"
       },
       {
         "id": "Vegamovies",
@@ -1250,7 +1250,7 @@
       "name": "ZinkMovies",
       "version": "1.0.1",
       "source": "Asura Synthesis",
-      "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/zinkmovies.js"
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/zinkmovies.js"
     },
     "candidates": [
       {
@@ -1258,7 +1258,7 @@
         "name": "ZinkMovies",
         "version": "1.0.1",
         "source": "Asura Synthesis",
-        "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/zinkmovies.js"
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/zinkmovies.js"
       },
       {
         "id": "zinkmovies",
