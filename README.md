@@ -85,7 +85,7 @@ Normally the newest provider version wins. If a particular implementation works 
 
 - allows `en`, `ja`, `ko`, and `zh`;
 - keeps explicitly multilingual providers;
-- temporarily keeps providers with missing language metadata so they can be audited;
+- excludes providers that do not declare one of the allowed languages;
 - excludes inactive extensions;
 - excludes `MegaProvider` itself;
 - excludes MegaRepo's installer repository from recursive aggregation.
