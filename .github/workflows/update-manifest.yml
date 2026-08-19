@@ -1,0 +1,44 @@
+name: Update master Nuvio manifest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 10 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "sources.json"
+      - "overrides.json"
+      - "scripts/build_manifest.py"
+      - ".github/workflows/update-manifest.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build deduplicated manifest
+        run: python scripts/build_manifest.py
+
+      - name: Commit generated files when changed
+        shell: bash
+        run: |
+          if git diff --quiet -- manifest.json duplicates.json build-status.json language-filter-report.json; then
+            echo "No provider changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest.json duplicates.json build-status.json language-filter-report.json
+          git commit -m "chore: refresh upstream Nuvio providers"
+          git push
