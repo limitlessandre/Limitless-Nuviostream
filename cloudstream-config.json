@@ -2,7 +2,7 @@
   "repo_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "generated_plugins_url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/main/cloudstream-plugins.json",
   "allowed_languages": ["en", "ja", "ko", "zh"],
-  "keep_unknown_language": true,
+  "keep_unknown_language": false,
   "keep_multilingual": true,
   "include_inactive": false,
   "exclude_internal_names": ["MegaProvider"],
