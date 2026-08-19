@@ -1,0 +1,11 @@
+{
+  "prefer_source": {},
+  "keep_separate": [],
+  "disable": [],
+  "exclude": [],
+  "language_filter": {
+    "enabled": true,
+    "allowed": ["en", "ja", "ko", "zh"],
+    "keep_unknown": true
+  }
+}
