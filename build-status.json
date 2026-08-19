@@ -41,8 +41,8 @@
       "providers": 29
     }
   ],
-  "unique_providers": 131,
-  "duplicate_groups": 40,
+  "unique_providers": 120,
+  "duplicate_groups": 41,
   "language_filtered_entries": 10,
   "unknown_language_metadata_entries": 0,
   "allowed_languages": [

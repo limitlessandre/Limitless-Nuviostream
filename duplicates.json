@@ -1,13 +1,20 @@
 {
   "4khdhub": {
     "chosen": {
-      "id": "4khdhub",
+      "id": "nuvio-4khdhub",
       "name": "4KHDHub",
-      "version": "1.0.2",
-      "source": "Yoru's Repo",
-      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/4khdhub.js"
+      "version": "1.5",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/4khdhub.js"
     },
     "candidates": [
+      {
+        "id": "nuvio-4khdhub",
+        "name": "4KHDHub",
+        "version": "1.5",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/4khdhub.js"
+      },
       {
         "id": "4khdhub",
         "name": "4KHDHub",
@@ -28,6 +35,13 @@
         "version": "1.0.1",
         "source": "Asura Synthesis",
         "filename": "https://raw.githubusercontent.com/PirateZoro9/asura-providers/refs/heads/main/providers/4khdhub.js"
+      },
+      {
+        "id": "FourKHDHub",
+        "name": "4KHDHub",
+        "version": "1.0.0",
+        "source": "CENSORED's Repo",
+        "filename": "https://raw.githubusercontent.com/sapariyaneel/nuvio-plugin/refs/heads/main/providers/fourkHDhub.js"
       },
       {
         "id": "4khdhub",
@@ -160,6 +174,13 @@
         "version": "1.0.1",
         "source": "Yoru's Repo",
         "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/animepahe.js"
+      },
+      {
+        "id": "nuvio-animepahe",
+        "name": "AnimePahe",
+        "version": "1.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/animepahe.js"
       }
     ]
   },
@@ -322,13 +343,20 @@
   },
   "dahmermovies": {
     "chosen": {
-      "id": "dahmermovies",
+      "id": "nuvio-dahmermovies",
       "name": "DahmerMovies",
-      "version": "1.0.2",
-      "source": "Yoru's Repo",
-      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/dahmermovies.js"
+      "version": "1.5",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/dahmermovies.js"
     },
     "candidates": [
+      {
+        "id": "nuvio-dahmermovies",
+        "name": "DahmerMovies",
+        "version": "1.5",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/dahmermovies.js"
+      },
       {
         "id": "dahmermovies",
         "name": "DahmerMovies",
@@ -404,13 +432,20 @@
   },
   "hdhub4u": {
     "chosen": {
-      "id": "hdhub4u",
+      "id": "nuvio-hdhub4u",
       "name": "HDHub4u",
-      "version": "1.1.0",
-      "source": "Yoru's Repo",
-      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/hdhub4u.js"
+      "version": "1.2",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/hdhub4u.js"
     },
     "candidates": [
+      {
+        "id": "nuvio-hdhub4u",
+        "name": "HDHub4u",
+        "version": "1.2",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/hdhub4u.js"
+      },
       {
         "id": "hdhub4u",
         "name": "HDHub4u",
@@ -552,6 +587,13 @@
         "version": "1.0.0",
         "source": "Yoru's Repo",
         "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/movieblast.js"
+      },
+      {
+        "id": "nuvio-movieblast",
+        "name": "MovieBlast",
+        "version": "1.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/movieblast.js"
       }
     ]
   },
@@ -781,13 +823,20 @@
   },
   "showbox": {
     "chosen": {
-      "id": "showbox",
+      "id": "nuvio-showbox",
       "name": "ShowBox",
-      "version": "1.0.0",
-      "source": "All-in-One-Nuvio",
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/showbox.js"
+      "version": "2.0",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/showbox.js"
     },
     "candidates": [
+      {
+        "id": "nuvio-showbox",
+        "name": "ShowBox",
+        "version": "2.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/showbox.js"
+      },
       {
         "id": "showbox",
         "name": "ShowBox",
@@ -838,13 +887,20 @@
   },
   "uhdmovies": {
     "chosen": {
-      "id": "uhdmovies",
+      "id": "nuvio-uhdmovies",
       "name": "UHDMovies",
-      "version": "1.2.0",
-      "source": "Yoru's Repo",
-      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/uhdmovies.js"
+      "version": "1.3",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/uhdmovies.js"
     },
     "candidates": [
+      {
+        "id": "nuvio-uhdmovies",
+        "name": "UHDMovies",
+        "version": "1.3",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/uhdmovies.js"
+      },
       {
         "id": "uhdmovies",
         "name": "UHDMovies",
@@ -943,6 +999,38 @@
         "version": "1.0.0",
         "source": "Yoru's Repo",
         "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/videasy.js"
+      },
+      {
+        "id": "nuvio-videasy",
+        "name": "VidEasy",
+        "version": "1.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/videasy.js"
+      }
+    ]
+  },
+  "vidfast": {
+    "chosen": {
+      "id": "nuvio-vidfast",
+      "name": "VidFast",
+      "version": "2.0",
+      "source": "Ray's Plugins",
+      "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/vidfast.js"
+    },
+    "candidates": [
+      {
+        "id": "nuvio-vidfast",
+        "name": "VidFast",
+        "version": "2.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/vidfast.js"
+      },
+      {
+        "id": "vidfast",
+        "name": "VidFast",
+        "version": "1.0.0",
+        "source": "All-in-One-Nuvio",
+        "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/vidfast.js"
       }
     ]
   },
@@ -975,6 +1063,13 @@
         "version": "1.0.0",
         "source": "Yoru's Repo",
         "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/vidlink.js"
+      },
+      {
+        "id": "nuvio-vidlink",
+        "name": "VidLink",
+        "version": "1.0",
+        "source": "Ray's Plugins",
+        "filename": "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/refs/heads/main/providers/vidlink.js"
       }
     ]
   },
