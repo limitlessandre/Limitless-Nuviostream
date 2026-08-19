@@ -106,11 +106,14 @@ const parseEpisodePages = html => {
   });
   if (!scriptText) return [];
 
-  const match = scriptText.match(/var\s+jsonEpisodes\s*=\s*(\[[\s\S]*?\])\s*;/);
-  if (!match) return [];
+  const marker = scriptText.indexOf("var jsonEpisodes");
+  const equals = scriptText.indexOf("=", marker);
+  const semicolon = equals >= 0 ? scriptText.indexOf(";", equals) : -1;
+  if (equals < 0 || semicolon < 0) return [];
+  const jsonText = scriptText.slice(equals + 1, semicolon).trim();
 
   try {
-    const groups = JSON.parse(match[1]);
+    const groups = JSON.parse(jsonText);
     const out = [];
     for (const group of Array.isArray(groups) ? groups : []) {
       for (const ep of Array.isArray(group) ? group : []) {
