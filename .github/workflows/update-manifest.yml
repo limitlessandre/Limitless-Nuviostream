@@ -31,6 +31,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate Limitless native provider JavaScript
+        shell: bash
+        run: |
+          set -e
+          for file in custom/providers/*.js; do
+            echo "Checking $file"
+            node --check "$file"
+          done
+
       - name: Build native Nuvio manifest
         run: python scripts/build_manifest.py
 
