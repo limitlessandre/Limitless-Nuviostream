@@ -108,8 +108,26 @@ def normalize_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
 
 
+def provider_aliases(provider: dict[str, Any]) -> set[str]:
+    aliases = {
+        normalize_key(str(provider.get("id") or "").strip()),
+        normalize_key(str(provider.get("name") or "").strip()),
+    }
+    aliases.discard("")
+    return aliases
+
+
 def provider_key(provider: dict[str, Any]) -> str:
-    return normalize_key(str(provider.get("id") or provider.get("name") or "").strip())
+    """Prefer the display name for cross-repository identity, then fall back to ID.
+
+    Repositories sometimes publish the same provider under different IDs, e.g.
+    `4khdhub` and `FourKHDHub`, while keeping the same display name. Using the
+    normalized name catches those aliases without requiring a hand-maintained
+    mapping table.
+    """
+    name_key = normalize_key(str(provider.get("name") or "").strip())
+    id_key = normalize_key(str(provider.get("id") or "").strip())
+    return name_key or id_key
 
 
 def version_tuple(value: Any) -> tuple[int, ...]:
@@ -132,8 +150,19 @@ def sanitize_provider(provider: dict[str, Any], manifest_url: str) -> dict[str, 
     return item
 
 
+def preferred_source_for_group(key: str, candidates: list[dict[str, Any]], prefer_source: dict[str, str]) -> str | None:
+    lookup_keys = [key]
+    for candidate in candidates:
+        lookup_keys.extend(sorted(provider_aliases(candidate["provider"])))
+    for lookup_key in lookup_keys:
+        requested = prefer_source.get(lookup_key)
+        if requested:
+            return requested
+    return None
+
+
 def choose_candidate(key: str, candidates: list[dict[str, Any]], prefer_source: dict[str, str]) -> dict[str, Any]:
-    requested = prefer_source.get(key) or prefer_source.get(str(candidates[0]["provider"].get("id", "")))
+    requested = preferred_source_for_group(key, candidates, prefer_source)
     if requested:
         requested_norm = requested.strip().lower()
         preferred = [c for c in candidates if str(c["source"].get("name", "")).strip().lower() == requested_norm]
@@ -176,8 +205,9 @@ def main() -> int:
 
         for provider in scrapers:
             cleaned = sanitize_provider(provider, url)
+            aliases = provider_aliases(cleaned)
             key = provider_key(cleaned)
-            if not key or key in exclude or not cleaned.get("filename"):
+            if not key or aliases & exclude or not cleaned.get("filename"):
                 continue
             keep_for_language, language_reason, raw_languages, normalized_languages = language_filter_decision(cleaned, language_filter)
             if language_reason == "unknown-language-metadata":
@@ -185,16 +215,17 @@ def main() -> int:
             if not keep_for_language:
                 filtered_out.append({"id": cleaned.get("id"), "name": cleaned.get("name"), "source": name, "contentLanguage": raw_languages, "normalizedLanguages": sorted(normalized_languages), "reason": language_reason})
                 continue
-            if key in keep_separate:
+            if aliases & keep_separate:
                 key = f"{key}::{normalize_key(name)}"
             candidates_by_key[key].append({"provider": cleaned, "source": {"name": name, "url": url, "priority": int(source.get("priority", 9999))}})
 
     winners: list[dict[str, Any]] = []
     duplicate_report: dict[str, Any] = {}
     for key, candidates in sorted(candidates_by_key.items()):
-        winner = choose_candidate(key.split("::", 1)[0], candidates, prefer_source)
+        base_key = key.split("::", 1)[0]
+        winner = choose_candidate(base_key, candidates, prefer_source)
         chosen = dict(winner["provider"])
-        if key.split("::", 1)[0] in disable:
+        if base_key in disable or provider_aliases(chosen) & disable:
             chosen["enabled"] = False
         winners.append(chosen)
         if len(candidates) > 1:
@@ -224,7 +255,7 @@ def main() -> int:
     ok_sources = sum(1 for x in source_status if x.get("status") == "ok")
     failed_sources = sum(1 for x in source_status if x.get("status") == "error")
     print(f"Built {len(winners)} unique providers from {ok_sources} source repositories.")
-    print(f"Deduplicated {len(duplicate_report)} overlapping provider IDs.")
+    print(f"Deduplicated {len(duplicate_report)} overlapping provider identities.")
     print(f"Language filter removed {len(filtered_out)} provider entries that had no English/Japanese/Korean/Chinese metadata.")
     if unknown_language_metadata:
         print(f"Kept {len(unknown_language_metadata)} provider entries with missing language metadata for manual review.")
