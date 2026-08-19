@@ -1,4 +1,4 @@
-name: Update master Nuvio manifest
+name: Update Limitless provider manifests
 
 on:
   workflow_dispatch:
@@ -9,7 +9,9 @@ on:
     paths:
       - "sources.json"
       - "overrides.json"
+      - "cloudstream-config.json"
       - "scripts/build_manifest.py"
+      - "scripts/build_cloudstream.py"
       - ".github/workflows/update-manifest.yml"
 
 permissions:
@@ -27,18 +29,33 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build deduplicated manifest
+      - name: Build native Nuvio manifest
         run: python scripts/build_manifest.py
+
+      - name: Build CloudStream compatibility repository
+        id: cloudstream
+        continue-on-error: true
+        run: python scripts/build_cloudstream.py
 
       - name: Commit generated files when changed
         shell: bash
         run: |
           git add manifest.json duplicates.json build-status.json language-filter-report.json
+
+          if [ "${{ steps.cloudstream.outcome }}" = "success" ]; then
+            git add cloudstream-repo.json cloudstream-plugins.json cloudstream-duplicates.json \
+              cloudstream-build-status.json cloudstream-language-filter-report.json \
+              cloudstream-source-cache.json
+          else
+            echo "CloudStream build failed; keeping the last known CloudStream files unchanged."
+          fi
+
           if git diff --cached --quiet; then
             echo "No provider changes detected."
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: refresh upstream Nuvio providers"
+          git commit -m "chore: refresh Limitless provider manifests"
           git push
