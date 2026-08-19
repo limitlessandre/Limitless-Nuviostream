@@ -10,6 +10,7 @@ on:
       - "sources.json"
       - "overrides.json"
       - "cloudstream-config.json"
+      - "custom/**"
       - "scripts/build_manifest.py"
       - "scripts/build_cloudstream.py"
       - "scripts/audit_port_candidates.py"
