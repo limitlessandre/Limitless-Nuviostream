@@ -12,6 +12,7 @@ on:
       - "cloudstream-config.json"
       - "scripts/build_manifest.py"
       - "scripts/build_cloudstream.py"
+      - "scripts/audit_port_candidates.py"
       - ".github/workflows/update-manifest.yml"
 
 permissions:
@@ -37,6 +38,12 @@ jobs:
         continue-on-error: true
         run: python scripts/build_cloudstream.py
 
+      - name: Audit CloudStream providers not represented natively
+        id: portaudit
+        if: steps.cloudstream.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/audit_port_candidates.py
+
       - name: Commit generated files when changed
         shell: bash
         run: |
@@ -48,6 +55,12 @@ jobs:
               cloudstream-source-cache.json
           else
             echo "CloudStream build failed; keeping the last known CloudStream files unchanged."
+          fi
+
+          if [ "${{ steps.portaudit.outcome }}" = "success" ]; then
+            git add cloudstream-port-candidates.json cloudstream-port-candidates.md
+          else
+            echo "Port candidate audit failed or was skipped; keeping the last audit unchanged."
           fi
 
           if git diff --cached --quiet; then
