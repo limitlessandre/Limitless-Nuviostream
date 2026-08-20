@@ -18,7 +18,7 @@
     {
       "name": "CENSORED's Repo",
       "status": "ok",
-      "providers": 20
+      "providers": 17
     },
     {
       "name": "Eclipsia",
@@ -47,8 +47,8 @@
     }
   ],
   "unique_providers": 124,
-  "duplicate_groups": 41,
-  "language_filtered_entries": 10,
+  "duplicate_groups": 40,
+  "language_filtered_entries": 9,
   "unknown_language_metadata_entries": 0,
   "allowed_languages": [
     "en",

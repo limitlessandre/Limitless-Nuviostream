@@ -405,31 +405,6 @@
       }
     ]
   },
-  "goated": {
-    "chosen": {
-      "id": "goated",
-      "name": "🐐 Goated",
-      "version": "1.0.0",
-      "source": "All-in-One-Nuvio",
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/goated.js"
-    },
-    "candidates": [
-      {
-        "id": "goated",
-        "name": "🐐 Goated",
-        "version": "1.0.0",
-        "source": "All-in-One-Nuvio",
-        "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/goated.js"
-      },
-      {
-        "id": "Goated",
-        "name": "Goated",
-        "version": "1.0.0",
-        "source": "CENSORED's Repo",
-        "filename": "https://raw.githubusercontent.com/sapariyaneel/nuvio-plugin/refs/heads/main/providers/goated.js"
-      }
-    ]
-  },
   "hdhub4u": {
     "chosen": {
       "id": "nuvio-hdhub4u",
@@ -1266,13 +1241,6 @@
         "version": "1.0.0",
         "source": "All-in-One-Nuvio",
         "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/zinkmovies.js"
-      },
-      {
-        "id": "Zinkmovies",
-        "name": "Zinkmovies",
-        "version": "1.0.0",
-        "source": "CENSORED's Repo",
-        "filename": "https://raw.githubusercontent.com/sapariyaneel/nuvio-plugin/refs/heads/main/providers/zinkmovies.js"
       }
     ]
   }

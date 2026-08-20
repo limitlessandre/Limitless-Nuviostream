@@ -9,22 +9,8 @@
     ],
     "keep_unknown": true
   },
-  "excluded_count": 10,
+  "excluded_count": 9,
   "excluded": [
-    {
-      "id": "Fivemovierulz",
-      "name": "5movierulz",
-      "source": "CENSORED's Repo",
-      "contentLanguage": [
-        "hi",
-        "te"
-      ],
-      "normalizedLanguages": [
-        "hi",
-        "te"
-      ],
-      "reason": "no-allowed-language"
-    },
     {
       "id": "Desicinemas",
       "name": "Desicinemas",
