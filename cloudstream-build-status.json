@@ -1,15 +1,15 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "repository_database_entries": 26,
-  "repositories_loaded": 24,
-  "repositories_using_cache": 0,
+  "repositories_loaded": 23,
+  "repositories_using_cache": 1,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 366,
+  "raw_plugin_entries": 367,
   "eligible_plugin_entries_before_dedupe": 67,
   "unique_plugins": 64,
   "duplicate_groups": 3,
-  "language_filtered_entries": 280,
+  "language_filtered_entries": 281,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 19,
   "meta_plugin_entries_filtered": 0,
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 78,
+      "plugins": 79,
       "verified": false
     },
     {
@@ -139,9 +139,10 @@
     {
       "name": "DiziPal & NeonSpor | sarapcanagii",
       "url": "https://raw.githubusercontent.com/sarapcanagii/Pitipitii/master/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 1,
-      "verified": false
+      "verified": false,
+      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "Indostream Repo",

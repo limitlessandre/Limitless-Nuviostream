@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 280,
+  "excluded_count": 281,
   "excluded": [
     {
       "internalName": "3isk",
@@ -2015,6 +2015,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/JKAnimeProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Kartoons",
+      "name": "Kartoons",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kartoons.cs3",
       "reason": "no-allowed-language"
     },
     {

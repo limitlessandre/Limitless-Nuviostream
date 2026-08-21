@@ -1554,7 +1554,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 23,
+      "version": 24,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
