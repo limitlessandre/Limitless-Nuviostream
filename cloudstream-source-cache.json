@@ -702,14 +702,14 @@
       {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
         "status": 1,
-        "version": 480,
+        "version": 481,
         "name": "CineStream",
         "internalName": "CineStream",
         "authors": [
           "megix"
         ],
         "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-        "fileSize": 730499,
+        "fileSize": 731446,
         "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "en",
         "tvTypes": [
@@ -721,7 +721,7 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-44f60181676e767095bdbb828379f4a7cfdda2c41431806ea9cf6a0d238f7eb6"
+        "fileHash": "sha256-0bae959eca25630f9c738c4286c8bd82d010def0d9b2af8a88180184fcb56893"
       },
       {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/GDIndex.cs3",
@@ -2126,14 +2126,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OneTouchTV.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "OneTouchTV",
         "internalName": "OneTouchTV",
         "authors": [
           "Phisher98"
         ],
         "description": "Asian Dramas",
-        "fileSize": 43162,
+        "fileSize": 62863,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2142,10 +2142,10 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=onetouchtv.xyz/&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-9fc6fc7125ca170c5aa38c7eba12090a5436c86a4826691db5405d717b7b02d0",
-        "jarFileSize": 204201,
+        "fileHash": "sha256-1ae90439081467764ed3a5eab0a37ecea8eb8dcc0b43aef68ba5ab1e723ae82c",
+        "jarFileSize": 294295,
         "jarUrl": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OneTouchTV.jar",
-        "jarHash": "sha256-b771abf4df4daa3091e4d6ccfc79200f3ada886cbe37dca8e19a092143827f5a"
+        "jarHash": "sha256-2932189ada9eea6b6fe3ca977ddb66cd21d1e2810c86f6eda8cee7c27f6c9220"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Pencurimovie.cs3",
@@ -4988,10 +4988,10 @@
       },
       {
         "iconUrl": "https://hdfilme.my/templates/hdfilme/images/favicon-%size%x%size%.png",
-        "fileHash": "sha256-f34ab0d1f6521b7164f2186854fa51603dd468e18ddb55c35b0449b4d1f9cc67",
+        "fileHash": "sha256-4c8df8274427f59b794ee58423c2d885ef4c2e460fe78d4c6ed20b845753d1d5",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 19380,
+        "fileSize": 19379,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5051,10 +5051,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinoger.com&sz=%size%",
-        "fileHash": "sha256-84e78b8ae98bd49d5daf7730b8f69b62a26618f40e1f05800709dc290ad4a268",
+        "fileHash": "sha256-0c853082b077bdc97c9a3370f372a301308443dd7d5830f4c0601d313b356a17",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 17373,
+        "fileSize": 17382,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6209,14 +6209,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeYTX.cs3",
         "status": 1,
-        "version": 6,
+        "version": 7,
         "name": "AnimeYTX",
         "internalName": "AnimeYTX",
         "authors": [
           "ByAyzen"
         ],
         "description": "Únete a la familia de AnimeYT.es y disfruta del anime online gratis. Disfruta con tus amigos del contenido más popular de la animación japonesa.",
-        "fileSize": 28244,
+        "fileSize": 39103,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -6224,7 +6224,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animeyt.cc&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-834a33c49cb901a062c9a69a474f9d674ff4e94dcef4b6345985a6bd6d3197af"
+        "fileHash": "sha256-ffa6f188d9900efd86ce4e212369600d05cd783ff100425c284a3bb426c13395"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
@@ -6289,14 +6289,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Dramaizle.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "Dramaizle",
         "internalName": "Dramaizle",
         "authors": [
           "ByAyzen"
         ],
         "description": "Reels formatında Çin, Kore ve Japon mini dizileri! Her gün güncellenen bölümler, Türkçe altyazı seçenekleriyle seni bekliyor. Hemen izle!",
-        "fileSize": 22683,
+        "fileSize": 24513,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "tr",
         "tvTypes": [
@@ -6304,7 +6304,7 @@
         ],
         "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://dramaizle.net&size=16",
         "apiVersion": 1,
-        "fileHash": "sha256-b0e760dc66073569370411235726c8f508d10708deabb3d494d5c1cfcf758dc7"
+        "fileHash": "sha256-d49be5fa23d39bb22cbee355dbfbe2a824a94dd14f23edfd53c797f2f811c3c7"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Dubbindo.cs3",
@@ -6471,14 +6471,15 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
         "status": 1,
-        "version": 4,
+        "version": 6,
         "name": "FullRaces",
         "internalName": "FullRaces",
         "authors": [
+          "kraptor123",
           "kerimmkirac"
         ],
         "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-        "fileSize": 10413,
+        "fileSize": 33798,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -6486,19 +6487,19 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-39b3886542034c0b002e7bf1d25024d2470796f2878f4da350249f32e520a001"
+        "fileHash": "sha256-b139cb370328df95ff860c30d18503dd4d3f4728226413e50d51030d5b0a5c39"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Gnulahd.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "Gnulahd",
         "internalName": "Gnulahd",
         "authors": [
           "ByAyzen"
         ],
         "description": "GnulaHD",
-        "fileSize": 31505,
+        "fileSize": 32956,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -6508,7 +6509,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ww3.gnulahd.nu/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-e940c34f66236534a441baca28dc00d60347de365235fd77ea7bc0102207c178"
+        "fileHash": "sha256-df26feffd07a4a0607bf112037f29d9472e9042b58d3a7a3f802679c51a08482"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Henaojara.cs3",
@@ -6658,14 +6659,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Movix.cs3",
         "status": 1,
-        "version": 28,
+        "version": 29,
         "name": "Movix",
         "internalName": "Movix",
         "authors": [
           "ByAyzen"
         ],
         "description": "Explorez les films, séries, collections, alertes et recommandations Movix.",
-        "fileSize": 123452,
+        "fileSize": 135582,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "fr",
         "tvTypes": [
@@ -6675,7 +6676,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movix.rodeo/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-4c784b58bc12938be76ede7f37d32af68c63aff6414cb2df44bbb716af499d0d"
+        "fileHash": "sha256-fc6f2e35fd408b21520d8bb47b7f635d667aad6b590842ceeb3d8621f9568c76"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OK.cs3",
