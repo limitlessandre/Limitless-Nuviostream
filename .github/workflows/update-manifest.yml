@@ -1,88 +1,237 @@
-name: Update Limitless provider manifests
+name: Maintain frozen Limitless anime baseline
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "17 10 * * *"
   push:
-    branches: [main]
-    paths:
-      - "sources.json"
-      - "overrides.json"
-      - "cloudstream-config.json"
-      - "custom/**"
-      - "scripts/build_manifest.py"
-      - "scripts/build_cloudstream.py"
-      - "scripts/audit_port_candidates.py"
-      - ".github/workflows/update-manifest.yml"
+    branches: [Limitless-Nuviotest]
+  workflow_dispatch:
 
 concurrency:
-  group: limitless-provider-manifest-${{ github.ref }}
+  group: limitless-anime-baseline-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  baseline:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out test branch
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Validate Limitless native provider JavaScript
+      - name: Vendor baseline once, then validate only
         shell: bash
         run: |
-          set -e
-          for file in custom/providers/*.js; do
-            echo "Checking $file"
+          set -euo pipefail
+
+          FIRST_BUILD=false
+          if [ ! -f .anime-baseline-frozen ]; then
+            FIRST_BUILD=true
+            cp manifest.json /tmp/limitless-old-manifest.json
+            rm -rf providers
+            mkdir -p providers
+
+            # Preserve the two Limitless-maintained anime ports from this branch.
+            cp custom/providers/animekai.js providers/animekai.js
+            cp custom/providers/wcoflix.js providers/wcoflix.js
+
+            grab() {
+              local file="$1"
+              local url="$2"
+              echo "Vendoring $file"
+              curl --fail --location --silent --show-error --retry 3 --retry-delay 2 "$url" -o "providers/$file"
+              test -s "providers/$file"
+            }
+
+            # Every URL is pinned to a reviewed commit. These are bootstrap inputs only.
+            grab allanime.js "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/allanime.js"
+            grab allwish.js "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/allwish.js"
+            grab anidb.js "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/anidb.js"
+            grab anineko.js "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/fbfed1a4f25d849f2b61f62c12fd138162a32213/providers/anineko.js"
+            grab anikototv.js "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d/providers/anikototv.js"
+            grab animepahe.js "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/animepahe.js"
+            grab animezey.js "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/animezey.js"
+            grab animetsu.js "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d/providers/animetsu.js"
+            grab anizone.js "https://raw.githubusercontent.com/yoruix/nuvio-providers/ed38d1aee0024f56479369c9423fefb278e0b62a/providers/anizone.js"
+            grab hianime.js "https://raw.githubusercontent.com/yoruix/nuvio-providers/ed38d1aee0024f56479369c9423fefb278e0b62a/providers/hianime.js"
+            grab kisskh.js "https://raw.githubusercontent.com/michat88/nuvio-providers/1f6fd4a3c40d31e9d7a8ed1322ce130d2635242f/providers/kisskh.js"
+            grab kurage.js "https://raw.githubusercontent.com/yoruix/nuvio-providers/ed38d1aee0024f56479369c9423fefb278e0b62a/providers/kurage.js"
+            grab tokyoinsider.js "https://raw.githubusercontent.com/hihihihihiiray/nuvio-plugins/fbfed1a4f25d849f2b61f62c12fd138162a32213/providers/tokyoinsider.js"
+            grab vidnest-anime.js "https://raw.githubusercontent.com/yoruix/nuvio-providers/ed38d1aee0024f56479369c9423fefb278e0b62a/providers/vidnest-anime.js"
+
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          old = json.loads(Path('/tmp/limitless-old-manifest.json').read_text(encoding='utf-8'))
+          by_id = {item.get('id'): item for item in old.get('scrapers', [])}
+
+          wanted = [
+              ('allanime', 'allanime.js'),
+              ('allwish', 'allwish.js'),
+              ('anidb', 'anidb.js'),
+              ('nuvio-anineko', 'anineko.js'),
+              ('anikototv', 'anikototv.js'),
+              ('limitless-animekai', 'animekai.js'),
+              ('animepahe', 'animepahe.js'),
+              ('animezey', 'animezey.js'),
+              ('animetsu', 'animetsu.js'),
+              ('anizone', 'anizone.js'),
+              ('hianime', 'hianime.js'),
+              ('kisskh', 'kisskh.js'),
+              ('kurage', 'kurage.js'),
+              ('nuvio-tokyoinsider', 'tokyoinsider.js'),
+              ('vidnest-anime', 'vidnest-anime.js'),
+              ('limitless-wcoflix', 'wcoflix.js'),
+          ]
+
+          scrapers = []
+          for provider_id, filename in wanted:
+              if provider_id not in by_id:
+                  raise SystemExit(f'Missing baseline metadata for {provider_id}')
+              item = dict(by_id[provider_id])
+              item['filename'] = f'providers/{filename}'
+              item['enabled'] = True
+              if provider_id == 'kisskh':
+                  item['id'] = 'kisskh-anime'
+                  item['name'] = 'KissKH Anime'
+                  item['description'] = 'KissKH Asian drama and anime implementation retained for anime coverage testing.'
+                  item['author'] = 'Michat88'
+                  item['contentLanguage'] = ['en', 'id']
+                  item['formats'] = ['mp4', 'm3u8']
+                  item['logo'] = 'https://kisskh.ovh/favicon.ico'
+              scrapers.append(item)
+
+          manifest = {
+              'name': 'Limitless Anime Baseline',
+              'version': '0.1.0',
+              'description': 'Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.',
+              'scrapers': scrapers,
+          }
+          Path('manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          origins = [
+              ('allanime.js','NuvioPlugin/All-in-One-Nuvio','716057b2a0d55a634da88c1d0d2db7352df07c69','providers/allanime.js'),
+              ('allwish.js','NuvioPlugin/All-in-One-Nuvio','716057b2a0d55a634da88c1d0d2db7352df07c69','providers/allwish.js'),
+              ('anidb.js','NuvioPlugin/All-in-One-Nuvio','716057b2a0d55a634da88c1d0d2db7352df07c69','providers/anidb.js'),
+              ('anineko.js','hihihihihiiray/nuvio-plugins','fbfed1a4f25d849f2b61f62c12fd138162a32213','providers/anineko.js'),
+              ('anikototv.js','NuvioPlugin/asura-providers','f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d','providers/anikototv.js'),
+              ('animekai.js','limitlessandre/Limitless-Nuviostream','f96a8f5d633a4ac3575910ae3be02d814fc13a84','custom/providers/animekai.js'),
+              ('animepahe.js','NuvioPlugin/All-in-One-Nuvio','716057b2a0d55a634da88c1d0d2db7352df07c69','providers/animepahe.js'),
+              ('animezey.js','NuvioPlugin/All-in-One-Nuvio','716057b2a0d55a634da88c1d0d2db7352df07c69','providers/animezey.js'),
+              ('animetsu.js','NuvioPlugin/asura-providers','f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d','providers/animetsu.js'),
+              ('anizone.js','yoruix/nuvio-providers','ed38d1aee0024f56479369c9423fefb278e0b62a','providers/anizone.js'),
+              ('hianime.js','yoruix/nuvio-providers','ed38d1aee0024f56479369c9423fefb278e0b62a','providers/hianime.js'),
+              ('kisskh.js','michat88/nuvio-providers','1f6fd4a3c40d31e9d7a8ed1322ce130d2635242f','providers/kisskh.js'),
+              ('kurage.js','yoruix/nuvio-providers','ed38d1aee0024f56479369c9423fefb278e0b62a','providers/kurage.js'),
+              ('tokyoinsider.js','hihihihihiiray/nuvio-plugins','fbfed1a4f25d849f2b61f62c12fd138162a32213','providers/tokyoinsider.js'),
+              ('vidnest-anime.js','yoruix/nuvio-providers','ed38d1aee0024f56479369c9423fefb278e0b62a','providers/vidnest-anime.js'),
+              ('wcoflix.js','limitlessandre/Limitless-Nuviostream','f96a8f5d633a4ac3575910ae3be02d814fc13a84','custom/providers/wcoflix.js'),
+          ]
+          lock = {
+              'baseline': 'anime-v0.1.0',
+              'frozenOn': '2026-08-23',
+              'updateMode': 'manual',
+              'upstreamAutoSync': False,
+              'providers': [
+                  {'filename': f, 'repository': r, 'commit': c, 'path': p}
+                  for f, r, c, p in origins
+              ],
+          }
+          Path('sources-lock.json').write_text(json.dumps(lock, indent=2) + '\n', encoding='utf-8')
+          PY
+
+            cat > README.md <<'EOF'
+          # Limitless Anime Baseline
+
+          `Limitless-Nuviotest` is the clean anime-first rebuild of Limitless Nuviostream.
+
+          ## Design
+
+          This branch is a frozen, self-contained baseline rather than a live upstream aggregator.
+
+          - Provider JavaScript lives in this repository under `providers/`.
+          - The initial imports are pinned to exact upstream commits in `sources-lock.json`.
+          - After the first bootstrap, the workflow performs validation only and never fetches upstream changes again.
+          - Duplicate implementations of the same anime source are intentionally collapsed.
+          - Updates are manual so we can test a provider before changing our baseline.
+
+          ## Included anime providers
+
+          AllAnime, All-Wish, AniDB, AniNeko, AnikotoTV, AnimeKai, AnimePahe, AnimeZeY, Animetsu, AniZone, HiAnime, KissKH Anime, Kurage, TokyoInsider, VidnestAnime, and WCoflix.
+
+          AnimeKai and WCoflix are the Limitless-maintained builds carried forward from the previous custom branch.
+
+          The first baseline prioritizes English and Japanese anime, while retaining useful Asian-language coverage. Providers focused primarily on unrelated language catalogs are excluded from this test set.
+
+          ## Nuvio install URL
+
+          ```text
+          https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/Limitless-Nuviotest/manifest.json
+          ```
+
+          ## Files
+
+          - `manifest.json`: Nuvio install manifest with local provider paths.
+          - `providers/`: frozen provider JavaScript.
+          - `sources-lock.json`: provenance for the initial snapshot.
+          - `.anime-baseline-frozen`: prevents any later automatic upstream import.
+          - `.github/workflows/update-manifest.yml`: first-run bootstrap, then validation-only.
+          EOF
+
+            # Remove the former aggregator, reports, CloudStream feed, and native-port staging area.
+            rm -rf custom scripts
+            rm -f build-status.json duplicates.json language-filter-report.json overrides.json sources.json
+            rm -f cloudstream-build-status.json cloudstream-config.json cloudstream-duplicates.json
+            rm -f cloudstream-language-filter-report.json cloudstream-plugins.json cloudstream-port-candidates.json
+            rm -f cloudstream-port-candidates.md cloudstream-repo.json cloudstream-source-cache.json
+            touch .anime-baseline-frozen
+          fi
+
+          echo "Validating frozen anime baseline"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
+          lock = json.loads(Path('sources-lock.json').read_text(encoding='utf-8'))
+          scrapers = manifest.get('scrapers', [])
+          if len(scrapers) != 16:
+              raise SystemExit(f'Expected 16 providers, found {len(scrapers)}')
+
+          ids = [item['id'].casefold() for item in scrapers]
+          names = [item['name'].casefold() for item in scrapers]
+          if len(ids) != len(set(ids)):
+              raise SystemExit('Duplicate provider id found')
+          if len(names) != len(set(names)):
+              raise SystemExit('Duplicate provider name found')
+
+          manifest_files = set()
+          for item in scrapers:
+              filename = item['filename']
+              if not filename.startswith('providers/'):
+                  raise SystemExit(f'Non-local provider path: {filename}')
+              if not Path(filename).is_file():
+                  raise SystemExit(f'Missing provider file: {filename}')
+              manifest_files.add(Path(filename).name)
+
+          lock_files = {item['filename'] for item in lock['providers']}
+          if manifest_files != lock_files:
+              raise SystemExit('Manifest and sources-lock provider lists differ')
+          print(f'Validated {len(scrapers)} frozen anime providers')
+          PY
+
+          for file in providers/*.js; do
+            echo "Syntax checking $file"
             node --check "$file"
           done
 
-      - name: Build native Nuvio manifest
-        run: python scripts/build_manifest.py
-
-      - name: Build CloudStream compatibility repository
-        id: cloudstream
-        continue-on-error: true
-        run: python scripts/build_cloudstream.py
-
-      - name: Audit CloudStream providers not represented natively
-        id: portaudit
-        if: steps.cloudstream.outcome == 'success'
-        continue-on-error: true
-        run: python scripts/audit_port_candidates.py
-
-      - name: Commit generated files when changed
-        shell: bash
-        run: |
-          git add manifest.json duplicates.json build-status.json language-filter-report.json
-
-          if [ "${{ steps.cloudstream.outcome }}" = "success" ]; then
-            git add cloudstream-repo.json cloudstream-plugins.json cloudstream-duplicates.json \
-              cloudstream-build-status.json cloudstream-language-filter-report.json \
-              cloudstream-source-cache.json
-          else
-            echo "CloudStream build failed; keeping the last known CloudStream files unchanged."
+          if [ "$FIRST_BUILD" = true ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            if ! git diff --cached --quiet; then
+              git commit -m "build: freeze anime provider baseline"
+              git push
+            fi
           fi
-
-          if [ "${{ steps.portaudit.outcome }}" = "success" ]; then
-            git add cloudstream-port-candidates.json cloudstream-port-candidates.md
-          else
-            echo "Port candidate audit failed or was skipped; keeping the last audit unchanged."
-          fi
-
-          if git diff --cached --quiet; then
-            echo "No provider changes detected."
-            exit 0
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: refresh Limitless provider manifests"
-          git push
