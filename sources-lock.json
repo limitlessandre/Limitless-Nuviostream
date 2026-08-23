@@ -1,28 +1,36 @@
 {
-  "baseline": "anime-v0.1.1",
+  "baseline": "anime-v0.1.6",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
   "providers": [
     {
       "filename": "allanime.js",
-      "repository": "NuvioPlugin/All-in-One-Nuvio",
-      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
-      "path": "providers/allanime.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/allanime.js",
+      "maintainedLocally": true,
+      "localVersion": "2.0.0",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/All-in-One-Nuvio",
+        "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+        "path": "providers/allanime.js"
+      },
+      "notes": "Limitless rewrite replaces the retired pre-July 2026 AllAnime API/static-key flow with the current MKissa rotating-key protocol, season-aware MAL mapping, finite verified AniList/TMDB aliases, and explicit SUB/DUB streams."
     },
     {
       "filename": "allwish.js",
       "repository": "limitlessandre/Limitless-Nuviostream",
-      "commit": "bfac1b7976347f6d917b70550e2777f3d8b326db",
+      "commit": "Limitless-Nuviotest",
       "path": "providers/allwish.js",
       "maintainedLocally": true,
-      "localVersion": "1.1.0",
+      "localVersion": "1.2.3",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/allwish.js"
       },
-      "notes": "Limitless rewrite adds season-aware MAL episode mapping, explicit DUB/SUB handling, and Nuvio-native soft subtitle metadata."
+      "notes": "Limitless rewrite adds season-aware MAL episode mapping, finite MAL/AniList/Kitsu/TMDB aliases, explicit DUB/SUB handling, and one preferred Nuvio-native soft subtitle track per language."
     },
     {
       "filename": "anidb.js",
