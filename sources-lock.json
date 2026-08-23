@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.0",
+  "baseline": "anime-v0.1.1",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -12,9 +12,17 @@
     },
     {
       "filename": "allwish.js",
-      "repository": "NuvioPlugin/All-in-One-Nuvio",
-      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
-      "path": "providers/allwish.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "bfac1b7976347f6d917b70550e2777f3d8b326db",
+      "path": "providers/allwish.js",
+      "maintainedLocally": true,
+      "localVersion": "1.1.0",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/All-in-One-Nuvio",
+        "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+        "path": "providers/allwish.js"
+      },
+      "notes": "Limitless rewrite adds season-aware MAL episode mapping, explicit DUB/SUB handling, and Nuvio-native soft subtitle metadata."
     },
     {
       "filename": "anidb.js",
