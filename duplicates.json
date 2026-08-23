@@ -220,7 +220,7 @@
     "chosen": {
       "id": "limitless-anizone",
       "name": "AniZone",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "source": "Limitless Native Ports",
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
     },
@@ -228,7 +228,7 @@
       {
         "id": "limitless-anizone",
         "name": "AniZone",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "source": "Limitless Native Ports",
         "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
       },
