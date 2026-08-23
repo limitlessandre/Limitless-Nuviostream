@@ -1,28 +1,13 @@
 {
   "name": "Limitless Native Ports",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Nuvio-native ports maintained directly by Limitless.",
   "scrapers": [
     {
-      "id": "limitless-animekai",
-      "name": "AnimeKai",
-      "description": "AnimeKai DUB and Japanese HARDSUB streams. Selectable subtitle files are exposed separately and labeled as soft subtitles only when the source actually provides them.",
-      "version": "2.1.0",
-      "author": "Limitless maintained port based on AnimeKai native extraction behavior",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/animekai.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://i.postimg.cc/MKJd7fy7/animekai.png",
-      "contentLanguage": ["en", "ja"]
-    },
-    {
       "id": "limitless-anizone",
       "name": "AniZone",
-      "description": "AniZone Japanese-audio anime streams with source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
-      "version": "2.0.0",
+      "description": "AniZone Japanese-audio anime streams with MAL/Jikan alias-aware lookup and source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
+      "version": "2.1.0",
       "author": "Limitless maintained port based on current AniZone/Nuvio behavior",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/anizone.js",
