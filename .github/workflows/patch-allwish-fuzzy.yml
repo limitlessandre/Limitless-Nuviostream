@@ -1,0 +1,97 @@
+name: Patch All-Wish fuzzy title fallback
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+
+      - name: Patch All-Wish matcher
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          p = Path('providers/allwish.js')
+          s = p.read_text(encoding='utf-8')
+
+          helper = r'''
+function fallbackSearchTerms(titles) {
+  const stop = new Set([
+    "anime", "season", "movie", "special", "episode", "part",
+    "the", "and", "with", "from", "this", "that", "girl", "child",
+    "favorite", "favourite"
+  ]);
+  const seen = new Set();
+  const out = [];
+
+  for (const title of uniq(titles)) {
+    const words = clean(title).split(/\s+/).filter(Boolean);
+    if (words.length < 2) continue;
+
+    const meaningful = words.filter(w =>
+      w.length >= 4 &&
+      !stop.has(w) &&
+      !/^\d+$/.test(w)
+    );
+
+    for (const word of meaningful.slice().reverse()) {
+      if (!seen.has(word)) {
+        seen.add(word);
+        out.push(word);
+      }
+    }
+  }
+
+  return out.slice(0, 12);
+}
+
+'''
+
+          marker = 'function b64(bytes) {'
+          if 'function fallbackSearchTerms(titles)' not in s:
+              if marker not in s:
+                  raise SystemExit('Could not find b64 insertion marker')
+              s = s.replace(marker, helper + marker, 1)
+
+          old = '''    const candidates = await search(aliases);\n\n    let hit = null;\n    let matchedTitle = null;\n\n    for (const candidate of candidates.slice(0, 20)) {\n      const ep = choose(await episodes(candidate.url), mal, target);\n      if (ep) {\n        hit = ep;\n        matchedTitle = candidate.title;\n        break;\n      }\n    }\n\n    if (!hit) return [];'''
+
+          new = '''    let candidates = await search(aliases);\n\n    let hit = null;\n    let matchedTitle = null;\n\n    for (const candidate of candidates.slice(0, 20)) {\n      const ep = choose(await episodes(candidate.url), mal, target);\n      if (ep) {\n        hit = ep;\n        matchedTitle = candidate.title;\n        break;\n      }\n    }\n\n    // Some anime sites use translated or localized aliases that are not\n    // present verbatim in MAL/AniList/Kitsu. If the full-title pass fails,\n    // search distinctive words from the known aliases, then let the MAL ID\n    // on All-Wish's episode list make the final identity decision.\n    if (!hit && mal) {\n      const fallbackTerms = fallbackSearchTerms(aliases);\n      if (fallbackTerms.length) {\n        console.log(`[${NAME}] Fuzzy fallback terms: ${fallbackTerms.join(" | ")}`);\n        const fuzzyCandidates = await search(fallbackTerms);\n\n        for (const candidate of fuzzyCandidates.slice(0, 80)) {\n          const ep = choose(await episodes(candidate.url), mal, target);\n          if (ep) {\n            hit = ep;\n            matchedTitle = candidate.title;\n            break;\n          }\n        }\n      }\n    }\n\n    if (!hit) return [];'''
+
+          if old in s:
+              s = s.replace(old, new, 1)
+          elif 'Fuzzy fallback terms:' not in s:
+              raise SystemExit('Could not find getStreams candidate block')
+
+          p.write_text(s, encoding='utf-8')
+
+          mpath = Path('manifest.json')
+          manifest = json.loads(mpath.read_text(encoding='utf-8'))
+          manifest['version'] = '0.1.4'
+          for item in manifest.get('scrapers', []):
+              if item.get('id') == 'allwish':
+                  item['version'] = '1.2.2'
+                  item['description'] = 'Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, MAL/AniList/Kitsu/TMDB aliases, MAL-verified fuzzy title fallback, and one preferred soft-subtitle track per language.'
+          mpath.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+
+          node --check providers/allwish.js
+
+          rm -f .github/workflows/patch-allwish-fuzzy.yml
+
+          git config user.name "Limitless Baseline Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add providers/allwish.js manifest.json .github/workflows/patch-allwish-fuzzy.yml
+          git commit -m "Add MAL-verified fuzzy title fallback to All-Wish"
+          git push origin HEAD:Limitless-Nuviotest
