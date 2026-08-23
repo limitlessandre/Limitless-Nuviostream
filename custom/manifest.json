@@ -1,6 +1,6 @@
 {
   "name": "Limitless Native Ports",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Nuvio-native ports maintained directly by Limitless.",
   "scrapers": [
     {
@@ -15,6 +15,20 @@
       "hasSettings": false,
       "formats": ["mp4", "m3u8"],
       "logo": "https://i.postimg.cc/dV1HWbqX/cineby.png",
+      "contentLanguage": ["en", "ja", "ko", "zh"]
+    },
+    {
+      "id": "limitless-anizone",
+      "name": "AniZone",
+      "description": "AniZone Japanese-audio anime streams with source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
+      "version": "2.0.0",
+      "author": "Limitless maintained port based on current AniZone/Nuvio behavior",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "providers/anizone.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": ["m3u8"],
+      "logo": "https://anizone.to/favicon.ico",
       "contentLanguage": ["en", "ja", "ko", "zh"]
     },
     {
