@@ -1,9 +1,7 @@
 {
   "prefer_source": {
     "anikototv": "Asura Synthesis",
-    "cineby": "Limitless Native Ports",
-    "anizone": "Limitless Native Ports",
-    "animekai": "Limitless Native Ports"
+    "cineby": "Limitless Native Ports"
   },
   "keep_separate": [],
   "disable": [],
@@ -13,5 +11,5 @@
     "allowed": ["en", "ja", "ko", "zh"],
     "keep_unknown": true
   },
-  "note": "Focused on English, Japanese, Korean, and Chinese providers; unknown language metadata is kept for manual review. Torrentio is excluded because Limitless is intended to remain HTTPS/direct-stream focused when P2P is disabled. AnikotoTV is pinned to the Asura Synthesis implementation because it reports stream variants directly as SUB/DUB without the mixed English/Japanese labels seen in the All-in-One copy. Cineby, AniZone, and AnimeKai are pinned to Limitless Native Ports so source-matched subtitle support is preserved across upstream updates."
+  "note": "Focused on English, Japanese, Korean, and Chinese providers; unknown language metadata is kept for manual review. Torrentio is excluded because Limitless is intended to remain HTTPS/direct-stream focused when P2P is disabled. AnikotoTV is pinned to the Asura Synthesis implementation because it reports stream variants directly as SUB/DUB without the mixed English/Japanese labels seen in the All-in-One copy. Cineby is pinned to the Limitless Native Ports implementation for source-matched subtitle support. AniZone and AnimeKai use their upstream lookup engines until subtitle-only patches can be applied without changing episode discovery."
 }
