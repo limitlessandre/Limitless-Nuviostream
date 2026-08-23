@@ -2,7 +2,8 @@
   "prefer_source": {
     "anikototv": "Asura Synthesis",
     "cineby": "Limitless Native Ports",
-    "anizone": "Limitless Native Ports"
+    "anizone": "Limitless Native Ports",
+    "animekai": "Limitless Native Ports"
   },
   "keep_separate": [],
   "disable": [],
@@ -12,5 +13,5 @@
     "allowed": ["en", "ja", "ko", "zh"],
     "keep_unknown": true
   },
-  "note": "Focused on English, Japanese, Korean, and Chinese providers; unknown language metadata is kept for manual review. AnikotoTV is pinned to the Asura Synthesis implementation because it reports stream variants directly as SUB/DUB without the mixed English/Japanese labels seen in the All-in-One copy. Cineby and AniZone are pinned to Limitless Native Ports so source-matched subtitle support is preserved across upstream updates."
+  "note": "Focused on English, Japanese, Korean, and Chinese providers; unknown language metadata is kept for manual review. AnikotoTV is pinned to the Asura Synthesis implementation because it reports stream variants directly as SUB/DUB without the mixed English/Japanese labels seen in the All-in-One copy. Cineby, AniZone, and AnimeKai are pinned to Limitless Native Ports so source-matched subtitle support is preserved across upstream updates."
 }
