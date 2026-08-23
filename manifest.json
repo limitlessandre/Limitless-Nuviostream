@@ -184,19 +184,18 @@
       ]
     },
     {
-      "id": "limitless-animekai",
+      "id": "animekai",
       "name": "AnimeKai",
-      "description": "AnimeKai DUB and Japanese HARDSUB streams. Selectable subtitle files are exposed separately and labeled as soft subtitles only when the source actually provides them.",
-      "version": "2.1.0",
-      "author": "Limitless maintained port based on AnimeKai native extraction behavior",
+      "description": "AnimeKai TV episodes via AnimeKai servers",
+      "version": "1.0.0",
+      "author": "Nuvio Team",
       "supportedTypes": [
         "movie",
-        "tv",
-        "anime"
+        "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js",
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/animekai.js",
       "enabled": true,
-      "hasSettings": false,
+      "hasSettings": true,
       "limited": true,
       "formats": [
         "mp4",
@@ -204,8 +203,7 @@
       ],
       "logo": "https://i.postimg.cc/MKJd7fy7/animekai.png",
       "contentLanguage": [
-        "en",
-        "ja"
+        "en"
       ]
     },
     {
@@ -302,8 +300,8 @@
     {
       "id": "limitless-anizone",
       "name": "AniZone",
-      "description": "AniZone Japanese-audio anime streams with source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
-      "version": "2.0.0",
+      "description": "AniZone Japanese-audio anime streams with MAL/Jikan alias-aware lookup and source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
+      "version": "2.1.0",
       "author": "Limitless maintained port based on current AniZone/Nuvio behavior",
       "supportedTypes": [
         "movie",

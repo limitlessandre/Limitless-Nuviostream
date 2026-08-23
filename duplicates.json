@@ -129,20 +129,13 @@
   },
   "animekai": {
     "chosen": {
-      "id": "limitless-animekai",
+      "id": "animekai",
       "name": "AnimeKai",
-      "version": "2.1.0",
-      "source": "Limitless Native Ports",
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js"
+      "version": "1.0.0",
+      "source": "All-in-One-Nuvio",
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/animekai.js"
     },
     "candidates": [
-      {
-        "id": "limitless-animekai",
-        "name": "AnimeKai",
-        "version": "2.1.0",
-        "source": "Limitless Native Ports",
-        "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js"
-      },
       {
         "id": "animekai",
         "name": "AnimeKai",
@@ -220,7 +213,7 @@
     "chosen": {
       "id": "limitless-anizone",
       "name": "AniZone",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "source": "Limitless Native Ports",
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
     },
@@ -228,7 +221,7 @@
       {
         "id": "limitless-anizone",
         "name": "AniZone",
-        "version": "2.0.0",
+        "version": "2.1.0",
         "source": "Limitless Native Ports",
         "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
       },
