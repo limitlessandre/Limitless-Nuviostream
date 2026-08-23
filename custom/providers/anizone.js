@@ -51,6 +51,13 @@ function decodeEscapedTitle(value) {
     .replace(/\\\"/g, '"');
 }
 
+function addUnique(list, value) {
+  const clean = String(value || "").trim();
+  if (!clean) return;
+  const key = clean.toLowerCase();
+  if (!list.some(item => String(item).toLowerCase() === key)) list.push(clean);
+}
+
 async function resolveTmdbId(inputId, mediaType) {
   const raw = String(inputId || "").trim();
   if (/^\d+$/.test(raw)) return parseInt(raw, 10);
@@ -84,11 +91,32 @@ async function resolveAnimeMapping(imdbId, season, episode) {
   );
 }
 
-async function getMalTitle(malId) {
-  if (!malId) return "";
+async function getMalTitles(malId) {
+  const titles = [];
+  if (!malId) return titles;
+
   const data = await fetchJson(`https://api.jikan.moe/v4/anime/${malId}`);
-  if (!data || !data.data) return "";
-  return data.data.title_english || data.data.title || data.data.title_japanese || "";
+  const anime = data && data.data;
+  if (!anime) return titles;
+
+  // IMPORTANT: AniZone commonly indexes anime by the MAL/Japanese romanized
+  // title (for example "Youjo Senki II") rather than the English localized
+  // title ("Saga of Tanya the Evil Season 2"). Keep every MAL alias and put
+  // the canonical romanized title first so search uses the site's own naming.
+  addUnique(titles, anime.title);
+  addUnique(titles, anime.title_english);
+  addUnique(titles, anime.title_japanese);
+
+  if (Array.isArray(anime.titles)) {
+    for (const entry of anime.titles) {
+      if (entry && entry.title) addUnique(titles, entry.title);
+    }
+  }
+  if (Array.isArray(anime.title_synonyms)) {
+    for (const title of anime.title_synonyms) addUnique(titles, title);
+  }
+
+  return titles;
 }
 
 function extractCards(html) {
@@ -104,7 +132,7 @@ function extractCards(html) {
 
     const titles = new Set();
     const xData = card.attr("x-data") || "";
-    let defaultMatch = xData.match(/(?:window\.)?getTitle\(this\.anmTitles,\s*'([^']+)'\)/i);
+    const defaultMatch = xData.match(/(?:window\.)?getTitle\(this\.anmTitles,\s*'([^']+)'\)/i);
     if (defaultMatch && defaultMatch[1]) titles.add(decodeEscapedTitle(defaultMatch[1]));
 
     const jsonMatch = xData.match(/JSON\.parse\('([^']+)'\)/i);
@@ -136,9 +164,16 @@ function seasonLooksRight(titles, season) {
   if ((season || 1) <= 1) {
     return !/(?:season\s*[2-9]|\b2nd\s+season\b|\b3rd\s+season\b|\b4th\s+season\b|\sII\b|\sIII\b|\sIV\b)/i.test(joined);
   }
+
   const n = String(season);
   const roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"][season] || "";
-  return new RegExp(`season\\s*${n}|${n}(?:nd|rd|th)\\s+season|\\b${n}\\b${roman ? `|\\b${roman}\\b` : ""}`, "i").test(joined);
+  const patterns = [
+    new RegExp(`season\\s*${n}`, "i"),
+    new RegExp(`${n}(?:nd|rd|th)\\s+season`, "i"),
+    new RegExp(`\\b${n}\\b`, "i")
+  ];
+  if (roman) patterns.push(new RegExp(`\\b${roman}\\b`, "i"));
+  return patterns.some(regex => regex.test(joined));
 }
 
 function pickCard(cards, candidateTitles, season, mediaType) {
@@ -213,6 +248,28 @@ function extractEpisode(html) {
   return { masterUrl, subtitles };
 }
 
+function buildQueries(candidateTitles) {
+  const queries = [];
+  for (const title of candidateTitles) {
+    const clean = String(title || "").trim();
+    if (!clean) continue;
+
+    addUnique(queries, clean);
+
+    const beforeColon = clean.split(":")[0].trim();
+    addUnique(queries, beforeColon);
+
+    // Some English databases append "Season 2" while AniZone stores the
+    // Japanese romanized name with "II". The MAL romanized alias normally
+    // handles this, but a base-title fallback improves coverage for other shows.
+    const withoutSeason = beforeColon
+      .replace(/\s+(?:season\s*\d+|\d+(?:nd|rd|th)\s+season)$/i, "")
+      .trim();
+    addUnique(queries, withoutSeason);
+  }
+  return queries;
+}
+
 async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
   try {
     const normalizedType = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
@@ -224,34 +281,30 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
 
     let mappedEpisode = normalizedType === "movie" ? 1 : (parseFloat(episode) || 1);
     let mapping = null;
-    let malTitle = "";
+    let malTitles = [];
 
     if (normalizedType === "tv") {
       mapping = await resolveAnimeMapping(tmdb.imdbId, parseInt(season, 10) || 1, parseFloat(episode) || 1);
       if (mapping) {
         mappedEpisode = mapping.mal_episode || mappedEpisode;
-        malTitle = await getMalTitle(mapping.mal_id);
+        malTitles = await getMalTitles(mapping.mal_id);
       }
     }
 
-    const candidateTitles = [
-      malTitle,
-      mapping && mapping.anime_title,
-      tmdb.title,
-      tmdb.originalTitle
-    ].filter(Boolean);
+    const candidateTitles = [];
+    for (const title of malTitles) addUnique(candidateTitles, title);
+    addUnique(candidateTitles, mapping && mapping.anime_title);
+    addUnique(candidateTitles, tmdb.title);
+    addUnique(candidateTitles, tmdb.originalTitle);
 
-    const queries = [];
-    for (const title of candidateTitles) {
-      const cleaned = String(title).split(":")[0].trim();
-      if (cleaned && !queries.includes(cleaned)) queries.push(cleaned);
-    }
+    const seasonNumber = parseInt(season, 10) || 1;
+    const queries = buildQueries(candidateTitles);
 
     let animeSlug = null;
-    for (const query of queries.slice(0, 3)) {
+    for (const query of queries.slice(0, 8)) {
       const html = await fetchText(`/anime?search=${encodeURIComponent(query)}`);
       if (!html) continue;
-      animeSlug = pickCard(extractCards(html), candidateTitles, parseInt(season, 10) || 1, normalizedType);
+      animeSlug = pickCard(extractCards(html), candidateTitles, seasonNumber, normalizedType);
       if (animeSlug) break;
     }
 
