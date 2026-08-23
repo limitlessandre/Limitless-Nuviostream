@@ -16,6 +16,10 @@ on:
       - "scripts/audit_port_candidates.py"
       - ".github/workflows/update-manifest.yml"
 
+concurrency:
+  group: limitless-provider-manifest-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 

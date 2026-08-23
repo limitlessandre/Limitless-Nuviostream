@@ -95,6 +95,29 @@ def fetch_json(url: str) -> Any:
     return json.loads(text)
 
 
+def load_source_payload(source: dict[str, Any]) -> Any:
+    """Load a source manifest locally when configured, otherwise fetch it.
+
+    Limitless Native Ports lives in this repository. Reading it from the
+    checked-out tree avoids raw.githubusercontent.com cache lag and guarantees
+    a build always reflects the exact commit that triggered GitHub Actions.
+    """
+    local_path = str(source.get("local_path") or "").strip()
+    if local_path:
+        root = ROOT.resolve()
+        candidate = (ROOT / local_path).resolve()
+        if not candidate.is_relative_to(root):
+            raise ValueError(f"Local source path escapes repository root: {local_path}")
+        if not candidate.is_file():
+            raise ValueError(f"Local source manifest not found: {local_path}")
+        return load_json(candidate, {})
+
+    url = str(source.get("url") or "").strip()
+    if not url:
+        raise ValueError("Missing URL")
+    return fetch_json(url)
+
+
 def extract_scrapers(payload: Any) -> list[dict[str, Any]]:
     if isinstance(payload, dict):
         scrapers = payload.get("scrapers", [])
@@ -195,10 +218,15 @@ def main() -> int:
             source_status.append({"name": name, "status": "error", "error": "Missing URL"})
             continue
         try:
-            payload = fetch_json(url)
+            payload = load_source_payload(source)
             scrapers = extract_scrapers(payload)
-            source_status.append({"name": name, "status": "ok", "providers": len(scrapers)})
-        except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError, ValueError) as exc:
+            source_status.append({
+                "name": name,
+                "status": "ok",
+                "providers": len(scrapers),
+                "origin": "local" if source.get("local_path") else "remote",
+            })
+        except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError, ValueError, OSError) as exc:
             print(f"WARNING: {name}: {exc}", file=sys.stderr)
             source_status.append({"name": name, "status": "error", "error": str(exc)})
             continue
