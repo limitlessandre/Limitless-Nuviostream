@@ -133,8 +133,6 @@ function findEpisodeToken(dbData, episodeNumber) {
   const target = String(episodeNumber);
   const keys = Object.keys(episodes);
 
-  // Prefer sub-labelled buckets, but fall back to any bucket because AnimeKai's
-  // DB shape has changed over time and the token itself can expose all language groups.
   keys.sort((a, b) => Number(/sub/i.test(b)) - Number(/sub/i.test(a)));
 
   for (const key of keys) {
@@ -199,11 +197,22 @@ function subtitleTracks(mediaData, embedUrl) {
     result.push({
       url: track.file,
       language: lang.code,
-      name: `${lang.display}${extra} [AnimeKai Source]`,
+      name: `${lang.display}${extra} [AnimeKai Soft Subtitle]`,
       headers
     });
   }
   return result;
+}
+
+function softSubtitleSummary(subtitles) {
+  if (!Array.isArray(subtitles) || subtitles.length === 0) return "";
+  const names = [];
+  for (const subtitle of subtitles) {
+    const lang = normalizeLanguage(subtitle && subtitle.name, subtitle && subtitle.url);
+    const display = lang ? lang.display : "Soft Sub";
+    if (!names.includes(display)) names.push(display);
+  }
+  return names.length ? ` • Soft Subs: ${names.join(", ")}` : " • Soft Subs Available";
 }
 
 function serverPriority(type) {
@@ -228,25 +237,29 @@ async function resolveServer(serverType, serverKey, serverData) {
   const mediaData = await decryptMegaMedia(decrypted.url);
   if (!mediaData || !Array.isArray(mediaData.sources)) return [];
 
-  // Keep subtitles tied to THIS exact server/encode. Never pool them across mirrors.
   const subtitles = subtitleTracks(mediaData, decrypted.url);
   const headers = playbackHeadersFor(decrypted.url);
   const serverName = serverData.name || serverData.title || serverData.label || `Server ${serverKey}`;
-  const languageType = /dub/i.test(serverType) ? "DUB" : /sub|hsub/i.test(serverType) ? "SUB" : String(serverType || "Source").toUpperCase();
+  const rawType = String(serverType || "").toLowerCase();
+  const isDub = /dub/i.test(rawType);
+  const isSub = /sub|hsub/i.test(rawType);
+  const audioLanguage = isDub ? "English" : "Japanese";
+  const sourceMode = isDub ? "DUB" : isSub ? "HARDSUB" : "Source";
+  const softSummary = softSubtitleSummary(subtitles);
 
   const streams = [];
   for (const source of mediaData.sources) {
     if (!source || !source.file || !/^https?:\/\//i.test(source.file)) continue;
     const quality = qualityFromSource(source);
     streams.push({
-      name: `${PROVIDER_NAME} • ${languageType} • ${serverName} • ${quality}`,
-      title: `${PROVIDER_NAME} ${languageType}`,
+      name: `${PROVIDER_NAME} • ${quality} • ${audioLanguage} [${sourceMode}] • ${serverName}${softSummary}`,
+      title: `${PROVIDER_NAME} ${audioLanguage} [${sourceMode}]`,
       url: source.file,
       quality,
       provider: PROVIDER_NAME,
       type: /\.m3u8(?:$|[?#])/i.test(source.file) ? "m3u8" : "mp4",
       headers,
-      language: languageType === "DUB" ? "English" : "Japanese",
+      language: audioLanguage,
       subtitles
     });
   }
@@ -311,7 +324,7 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     const streams = await resolveTokenStreams(token);
     const title = anilist.title && (anilist.title.english || anilist.title.romaji) ? (anilist.title.english || anilist.title.romaji) : tmdb.title;
     streams.forEach(stream => {
-      stream.title = `${title} • Episode ${mappedEpisode}`;
+      stream.title = `${title} • Episode ${mappedEpisode} • ${stream.title}`;
     });
     return streams;
   } catch (error) {
