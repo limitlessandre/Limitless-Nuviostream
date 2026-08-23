@@ -1533,9 +1533,9 @@
         "score": 1.0,
         "native_matches": [
           {
-            "id": "anizone",
+            "id": "limitless-anizone",
             "name": "AniZone",
-            "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/anizone.js"
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
           }
         ]
       },

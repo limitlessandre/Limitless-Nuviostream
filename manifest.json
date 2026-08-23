@@ -184,18 +184,19 @@
       ]
     },
     {
-      "id": "animekai",
+      "id": "limitless-animekai",
       "name": "AnimeKai",
-      "description": "AnimeKai TV episodes via AnimeKai servers",
-      "version": "1.0.0",
-      "author": "Nuvio Team",
+      "description": "AnimeKai DUB and Japanese HARDSUB streams. Selectable subtitle files are exposed separately and labeled as soft subtitles only when the source actually provides them.",
+      "version": "2.1.0",
+      "author": "Limitless maintained port based on AnimeKai native extraction behavior",
       "supportedTypes": [
         "movie",
-        "tv"
+        "tv",
+        "anime"
       ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/animekai.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js",
       "enabled": true,
-      "hasSettings": true,
+      "hasSettings": false,
       "limited": true,
       "formats": [
         "mp4",
@@ -203,7 +204,8 @@
       ],
       "logo": "https://i.postimg.cc/MKJd7fy7/animekai.png",
       "contentLanguage": [
-        "en"
+        "en",
+        "ja"
       ]
     },
     {
@@ -298,23 +300,28 @@
       ]
     },
     {
-      "id": "anizone",
+      "id": "limitless-anizone",
       "name": "AniZone",
-      "description": "AniZone high-quality anime streaming with multi-audio and soft subtitles",
-      "version": "1.0.0",
-      "author": "Nuvio Team",
+      "description": "AniZone Japanese-audio anime streams with source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
+      "version": "2.0.0",
+      "author": "Limitless maintained port based on current AniZone/Nuvio behavior",
       "supportedTypes": [
         "movie",
-        "tv"
+        "tv",
+        "anime"
       ],
-      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/anizone.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js",
       "enabled": true,
+      "hasSettings": false,
       "formats": [
         "m3u8"
       ],
       "logo": "https://anizone.to/favicon.ico",
       "contentLanguage": [
-        "en"
+        "en",
+        "ja",
+        "ko",
+        "zh"
       ]
     },
     {
