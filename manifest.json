@@ -387,25 +387,28 @@
       ]
     },
     {
-      "id": "Cineby",
+      "id": "limitless-cineby",
       "name": "Cineby",
-      "description": "Multi-server movie and TV streaming — 4K/1080p/720p from Videasy network without subtitles",
-      "version": "1.9.2",
-      "author": "Nuvio Team",
+      "description": "Original-audio Cineby streams with source-matched English/Japanese/Korean/Chinese subtitle tracks when exposed by the source.",
+      "version": "2.0.0",
+      "author": "Limitless maintained port",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/cineby.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/cineby.js",
       "enabled": true,
-      "hasSettings": true,
+      "hasSettings": false,
       "formats": [
+        "mp4",
         "m3u8"
       ],
       "logo": "https://i.postimg.cc/dV1HWbqX/cineby.png",
       "contentLanguage": [
-        "ar",
-        "en"
+        "en",
+        "ja",
+        "ko",
+        "zh"
       ]
     },
     {

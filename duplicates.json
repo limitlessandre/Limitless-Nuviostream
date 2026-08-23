@@ -243,13 +243,20 @@
   },
   "cineby": {
     "chosen": {
-      "id": "Cineby",
+      "id": "limitless-cineby",
       "name": "Cineby",
-      "version": "1.9.2",
-      "source": "All-in-One-Nuvio",
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/cineby.js"
+      "version": "2.0.0",
+      "source": "Limitless Native Ports",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/cineby.js"
     },
     "candidates": [
+      {
+        "id": "limitless-cineby",
+        "name": "Cineby",
+        "version": "2.0.0",
+        "source": "Limitless Native Ports",
+        "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/cineby.js"
+      },
       {
         "id": "Cineby",
         "name": "Cineby",
