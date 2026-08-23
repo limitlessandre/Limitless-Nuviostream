@@ -1,0 +1,104 @@
+{
+  "baseline": "anime-v0.1.0",
+  "frozenOn": "2026-08-23",
+  "updateMode": "manual",
+  "upstreamAutoSync": false,
+  "providers": [
+    {
+      "filename": "allanime.js",
+      "repository": "NuvioPlugin/All-in-One-Nuvio",
+      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+      "path": "providers/allanime.js"
+    },
+    {
+      "filename": "allwish.js",
+      "repository": "NuvioPlugin/All-in-One-Nuvio",
+      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+      "path": "providers/allwish.js"
+    },
+    {
+      "filename": "anidb.js",
+      "repository": "NuvioPlugin/All-in-One-Nuvio",
+      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+      "path": "providers/anidb.js"
+    },
+    {
+      "filename": "anineko.js",
+      "repository": "hihihihihiiray/nuvio-plugins",
+      "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
+      "path": "providers/anineko.js"
+    },
+    {
+      "filename": "anikototv.js",
+      "repository": "NuvioPlugin/asura-providers",
+      "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
+      "path": "providers/anikototv.js"
+    },
+    {
+      "filename": "animekai.js",
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
+      "path": "custom/providers/animekai.js"
+    },
+    {
+      "filename": "animepahe.js",
+      "repository": "NuvioPlugin/All-in-One-Nuvio",
+      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+      "path": "providers/animepahe.js"
+    },
+    {
+      "filename": "animezey.js",
+      "repository": "NuvioPlugin/All-in-One-Nuvio",
+      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+      "path": "providers/animezey.js"
+    },
+    {
+      "filename": "animetsu.js",
+      "repository": "NuvioPlugin/asura-providers",
+      "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
+      "path": "providers/animetsu.js"
+    },
+    {
+      "filename": "anizone.js",
+      "repository": "yoruix/nuvio-providers",
+      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+      "path": "providers/anizone.js"
+    },
+    {
+      "filename": "hianime.js",
+      "repository": "yoruix/nuvio-providers",
+      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+      "path": "providers/hianime.js"
+    },
+    {
+      "filename": "kisskh.js",
+      "repository": "michat88/nuvio-providers",
+      "commit": "1f6fd4a3c40d31e9d7a8ed1322ce130d2635242f",
+      "path": "providers/kisskh.js"
+    },
+    {
+      "filename": "kurage.js",
+      "repository": "yoruix/nuvio-providers",
+      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+      "path": "providers/kurage.js"
+    },
+    {
+      "filename": "tokyoinsider.js",
+      "repository": "hihihihihiiray/nuvio-plugins",
+      "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
+      "path": "providers/tokyoinsider.js"
+    },
+    {
+      "filename": "vidnest-anime.js",
+      "repository": "yoruix/nuvio-providers",
+      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+      "path": "providers/vidnest-anime.js"
+    },
+    {
+      "filename": "wcoflix.js",
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
+      "path": "custom/providers/wcoflix.js"
+    }
+  ]
+}

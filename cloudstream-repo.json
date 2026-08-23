@@ -1,8 +1,0 @@
-{
-  "name": "Limitless CloudStream",
-  "description": "Deduplicated CloudStream extensions focused on English, Japanese, Korean, and Chinese content for NuvioTV.",
-  "manifestVersion": 1,
-  "pluginLists": [
-    "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/main/cloudstream-plugins.json"
-  ]
-}
