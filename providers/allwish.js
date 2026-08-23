@@ -254,37 +254,6 @@ async function search(titles) {
   return out;
 }
 
-
-function fallbackSearchTerms(titles) {
-  const stop = new Set([
-    "anime", "season", "movie", "special", "episode", "part",
-    "the", "and", "with", "from", "this", "that", "girl", "child",
-    "favorite", "favourite"
-  ]);
-  const seen = new Set();
-  const out = [];
-
-  for (const title of uniq(titles)) {
-    const words = clean(title).split(/\s+/).filter(Boolean);
-    if (words.length < 2) continue;
-
-    const meaningful = words.filter(w =>
-      w.length >= 4 &&
-      !stop.has(w) &&
-      !/^\d+$/.test(w)
-    );
-
-    for (const word of meaningful.slice().reverse()) {
-      if (!seen.has(word)) {
-        seen.add(word);
-        out.push(word);
-      }
-    }
-  }
-
-  return out.slice(0, 12);
-}
-
 function b64(bytes) {
   let s = "";
   for (const b of bytes) s += String.fromCharCode(b);
@@ -401,7 +370,8 @@ function lang(label, url) {
 }
 
 function subs(tracks, headers, assumeEnglish) {
-  const bestByLanguage = new Map();
+  const out = [];
+  const seen = new Set();
 
   for (const t of Array.isArray(tracks) ? tracks : []) {
     if (!t) continue;
@@ -412,39 +382,24 @@ function subs(tracks, headers, assumeEnglish) {
     const u = t.file || t.url || t.src;
     if (!u) continue;
 
-    const rawLabel = String(t.label || t.name || t.language || t.lang || "").trim();
-    let l = lang(rawLabel, u);
-
-    if (!l && assumeEnglish && /\.(?:vtt|srt|ass|ssa)(?:$|[?#])/i.test(u)) {
-      l = ["en", "English"];
-    }
+    let l = lang(t.label || t.name || t.language || t.lang, u);
+    if (!l && assumeEnglish) l = ["en", "English"];
     if (!l) continue;
 
-    const label = rawLabel.toLowerCase();
-    let score = 0;
+    const key = l[0] + "|" + u;
+    if (seen.has(key)) continue;
+    seen.add(key);
 
-    if (t.default === true || String(t.default).toLowerCase() === "true") score += 100;
-    if (kind === "captions" || kind === "subtitles") score += 20;
-    if (/\.vtt(?:$|[?#])/i.test(u)) score += 10;
-    if (label === l[1].toLowerCase() || label === l[0]) score += 30;
-    if (/(?:sdh|hearing|forced|signs?|songs?|commentary)/i.test(label)) score -= 50;
-
-    const current = bestByLanguage.get(l[0]);
-    if (!current || score > current.score) {
-      bestByLanguage.set(l[0], {
-        score,
-        subtitle: {
-          url: u,
-          language: l[0],
-          lang: l[0],
-          name: `${l[1]} [All-Wish Soft Subtitle]`,
-          headers
-        }
-      });
-    }
+    out.push({
+      url: u,
+      language: l[0],
+      lang: l[0],
+      name: `${l[1]} [All-Wish Soft Subtitle]`,
+      headers
+    });
   }
 
-  return Array.from(bestByLanguage.values()).map(x => x.subtitle);
+  return out;
 }
 
 function stream(url, server, section, hard, st, headers, ctx) {
@@ -644,7 +599,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     console.log(`[${NAME}] Search aliases: ${aliases.join(" | ")}`);
 
-    let candidates = await search(aliases);
+    const candidates = await search(aliases);
 
     let hit = null;
     let matchedTitle = null;
@@ -655,26 +610,6 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
         hit = ep;
         matchedTitle = candidate.title;
         break;
-      }
-    }
-
-    // If a site-localized title is not present verbatim in MAL/AniList/Kitsu,
-    // search distinctive words from the known aliases. The candidate still
-    // has to expose the correct MAL ID and mapped episode before it is used.
-    if (!hit && mal) {
-      const fallbackTerms = fallbackSearchTerms(aliases);
-      if (fallbackTerms.length) {
-        console.log(`[${NAME}] Fuzzy fallback terms: ${fallbackTerms.join(" | ")}`);
-        const fuzzyCandidates = await search(fallbackTerms);
-
-        for (const candidate of fuzzyCandidates.slice(0, 80)) {
-          const ep = choose(await episodes(candidate.url), mal, target);
-          if (ep) {
-            hit = ep;
-            matchedTitle = candidate.title;
-            break;
-          }
-        }
       }
     }
 
