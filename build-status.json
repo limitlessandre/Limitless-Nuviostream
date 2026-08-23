@@ -3,7 +3,7 @@
     {
       "name": "Limitless Native Ports",
       "status": "ok",
-      "providers": 7,
+      "providers": 5,
       "origin": "local"
     },
     {
@@ -56,7 +56,7 @@
     }
   ],
   "unique_providers": 123,
-  "duplicate_groups": 41,
+  "duplicate_groups": 40,
   "language_filtered_entries": 9,
   "unknown_language_metadata_entries": 0,
   "allowed_languages": [

@@ -129,20 +129,13 @@
   },
   "animekai": {
     "chosen": {
-      "id": "limitless-animekai",
+      "id": "animekai",
       "name": "AnimeKai",
-      "version": "2.0.0",
-      "source": "Limitless Native Ports",
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js"
+      "version": "1.0.0",
+      "source": "All-in-One-Nuvio",
+      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/animekai.js"
     },
     "candidates": [
-      {
-        "id": "limitless-animekai",
-        "name": "AnimeKai",
-        "version": "2.0.0",
-        "source": "Limitless Native Ports",
-        "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/animekai.js"
-      },
       {
         "id": "animekai",
         "name": "AnimeKai",
@@ -213,31 +206,6 @@
         "version": "1.0.0",
         "source": "Asura Synthesis",
         "filename": "https://raw.githubusercontent.com/NuvioPlugin/asura-providers/refs/heads/main/providers/animetsu.js"
-      }
-    ]
-  },
-  "anizone": {
-    "chosen": {
-      "id": "limitless-anizone",
-      "name": "AniZone",
-      "version": "2.0.0",
-      "source": "Limitless Native Ports",
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
-    },
-    "candidates": [
-      {
-        "id": "limitless-anizone",
-        "name": "AniZone",
-        "version": "2.0.0",
-        "source": "Limitless Native Ports",
-        "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
-      },
-      {
-        "id": "anizone",
-        "name": "AniZone",
-        "version": "1.0.0",
-        "source": "Yoru's Repo",
-        "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/anizone.js"
       }
     ]
   },
