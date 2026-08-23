@@ -370,8 +370,7 @@ function lang(label, url) {
 }
 
 function subs(tracks, headers, assumeEnglish) {
-  const out = [];
-  const seen = new Set();
+  const bestByLanguage = new Map();
 
   for (const t of Array.isArray(tracks) ? tracks : []) {
     if (!t) continue;
@@ -382,24 +381,39 @@ function subs(tracks, headers, assumeEnglish) {
     const u = t.file || t.url || t.src;
     if (!u) continue;
 
-    let l = lang(t.label || t.name || t.language || t.lang, u);
-    if (!l && assumeEnglish) l = ["en", "English"];
+    const rawLabel = String(t.label || t.name || t.language || t.lang || "").trim();
+    let l = lang(rawLabel, u);
+
+    if (!l && assumeEnglish && /\.(?:vtt|srt|ass|ssa)(?:$|[?#])/i.test(u)) {
+      l = ["en", "English"];
+    }
     if (!l) continue;
 
-    const key = l[0] + "|" + u;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const label = rawLabel.toLowerCase();
+    let score = 0;
 
-    out.push({
-      url: u,
-      language: l[0],
-      lang: l[0],
-      name: `${l[1]} [All-Wish Soft Subtitle]`,
-      headers
-    });
+    if (t.default === true || String(t.default).toLowerCase() === "true") score += 100;
+    if (kind === "captions" || kind === "subtitles") score += 20;
+    if (/\.vtt(?:$|[?#])/i.test(u)) score += 10;
+    if (label === l[1].toLowerCase() || label === l[0]) score += 30;
+    if (/(?:sdh|hearing|forced|signs?|songs?|commentary)/i.test(label)) score -= 50;
+
+    const current = bestByLanguage.get(l[0]);
+    if (!current || score > current.score) {
+      bestByLanguage.set(l[0], {
+        score,
+        subtitle: {
+          url: u,
+          language: l[0],
+          lang: l[0],
+          name: `${l[1]} [All-Wish Soft Subtitle]`,
+          headers
+        }
+      });
+    }
   }
 
-  return out;
+  return Array.from(bestByLanguage.values()).map(x => x.subtitle);
 }
 
 function stream(url, server, section, hard, st, headers, ctx) {
