@@ -2772,29 +2772,6 @@
       ]
     },
     {
-      "id": "torrentio",
-      "name": "🧲 Torrentio",
-      "description": "Torrentio – Torrent streaming. Supports optional debrid services.",
-      "version": "1.0.0",
-      "author": "Nuvio Team",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/refs/heads/main/providers/torrentio.js",
-      "enabled": true,
-      "hasSettings": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://i.postimg.cc/ZRYTCy0T/torrentio.png",
-      "contentLanguage": [
-        "en",
-        "hi"
-      ]
-    },
-    {
       "id": "vidrock",
       "name": "🪨 VidRock",
       "description": "VidRock - 1080p 480p and 360p",
