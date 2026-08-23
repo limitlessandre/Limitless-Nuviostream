@@ -254,6 +254,37 @@ async function search(titles) {
   return out;
 }
 
+
+function fallbackSearchTerms(titles) {
+  const stop = new Set([
+    "anime", "season", "movie", "special", "episode", "part",
+    "the", "and", "with", "from", "this", "that", "girl", "child",
+    "favorite", "favourite"
+  ]);
+  const seen = new Set();
+  const out = [];
+
+  for (const title of uniq(titles)) {
+    const words = clean(title).split(/\s+/).filter(Boolean);
+    if (words.length < 2) continue;
+
+    const meaningful = words.filter(w =>
+      w.length >= 4 &&
+      !stop.has(w) &&
+      !/^\d+$/.test(w)
+    );
+
+    for (const word of meaningful.slice().reverse()) {
+      if (!seen.has(word)) {
+        seen.add(word);
+        out.push(word);
+      }
+    }
+  }
+
+  return out.slice(0, 12);
+}
+
 function b64(bytes) {
   let s = "";
   for (const b of bytes) s += String.fromCharCode(b);
@@ -613,7 +644,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     console.log(`[${NAME}] Search aliases: ${aliases.join(" | ")}`);
 
-    const candidates = await search(aliases);
+    let candidates = await search(aliases);
 
     let hit = null;
     let matchedTitle = null;
@@ -624,6 +655,26 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
         hit = ep;
         matchedTitle = candidate.title;
         break;
+      }
+    }
+
+    // If a site-localized title is not present verbatim in MAL/AniList/Kitsu,
+    // search distinctive words from the known aliases. The candidate still
+    // has to expose the correct MAL ID and mapped episode before it is used.
+    if (!hit && mal) {
+      const fallbackTerms = fallbackSearchTerms(aliases);
+      if (fallbackTerms.length) {
+        console.log(`[${NAME}] Fuzzy fallback terms: ${fallbackTerms.join(" | ")}`);
+        const fuzzyCandidates = await search(fallbackTerms);
+
+        for (const candidate of fuzzyCandidates.slice(0, 80)) {
+          const ep = choose(await episodes(candidate.url), mal, target);
+          if (ep) {
+            hit = ep;
+            matchedTitle = candidate.title;
+            break;
+          }
+        }
       }
     }
 

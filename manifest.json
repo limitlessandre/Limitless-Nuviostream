@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
@@ -30,8 +30,8 @@
     {
       "id": "allwish",
       "name": "🌟 All-Wish",
-      "description": "Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, MAL/AniList/Kitsu/TMDB title aliases, and one preferred soft-subtitle track per language.",
-      "version": "1.2.1",
+      "description": "Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, MAL/AniList/Kitsu/TMDB aliases, MAL-verified fuzzy title fallback, and one preferred soft-subtitle track per language.",
+      "version": "1.2.2",
       "author": "Limitless maintained port based on All-Wish native extraction behavior",
       "supportedTypes": [
         "movie",
