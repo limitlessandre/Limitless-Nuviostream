@@ -2632,14 +2632,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
         "status": 1,
-        "version": 9,
+        "version": 11,
         "name": "XDMovies",
         "internalName": "XDMovies",
         "authors": [
           "Phisher98"
         ],
         "description": "Watch Latest Movies",
-        "fileSize": 111361,
+        "fileSize": 115008,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2652,7 +2652,7 @@
         ],
         "iconUrl": "https://top.xdmovies.wtf/assets/logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e509978bda732b6c737409c6272294565136373eaaa27c4889e45263d3ab7207"
+        "fileHash": "sha256-b6934453a3161337f8a338be86154c55a384ef5bebd7bdebdf7d89876b2e97ab"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",
@@ -4966,6 +4966,46 @@
         "name": "EinschaltenIn"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmfrei24.com&sz=%size%",
+        "fileHash": "sha256-fc7cede1f3c77299c889a1eee34273c4e27906ff6a0eb04f557751f3c6d4071a",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
+        "fileSize": 14440,
+        "status": 1,
+        "language": "de",
+        "authors": [
+          "Bnyro"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "FilmFrei24",
+        "description": "Filme kostenlos online schauen",
+        "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/FilmFrei24.cs3",
+        "name": "FilmFrei24"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=kinoking.cc&sz=%size%",
+        "fileHash": "sha256-023ae28d2ad34cda920810f910ab04f504bcd9f8242eaf1e137ff519ed603f77",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
+        "fileSize": 12510,
+        "status": 1,
+        "language": "de",
+        "authors": [
+          "Bnyro"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "Filmo",
+        "description": "Filme entdecken",
+        "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Filmo.cs3",
+        "name": "Filmo"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://filmpalast.to&sz=%size%",
         "fileHash": "sha256-e6770003a8efe0f5d878868df92df326559f625746a356e9375857e55635693e",
         "apiVersion": 1,
@@ -5050,6 +5090,26 @@
         "name": "IptvOrg"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.kellerkino.com&sz=%size%",
+        "fileHash": "sha256-a9bdb3f1f133bd1d1ed0ddcf263be08c01489ec09253e7ae0211264ecd85120b",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
+        "fileSize": 12730,
+        "status": 1,
+        "language": "de",
+        "authors": [
+          "Bnyro"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "KellerKino",
+        "description": "Filme per Stream anschauen",
+        "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/KellerKino.cs3",
+        "name": "KellerKino"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinoger.com&sz=%size%",
         "fileHash": "sha256-0c853082b077bdc97c9a3370f372a301308443dd7d5830f4c0601d313b356a17",
         "apiVersion": 1,
@@ -5073,10 +5133,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinoking.cc&sz=%size%",
-        "fileHash": "sha256-76ea91f29f31473b6b3511624e82df768bf7db71359c15fd212d24074915ef88",
+        "fileHash": "sha256-82bb978f913cc949a017097bc1948559557db98441ca464ea1083d3b87a8d702",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 22446,
+        "fileSize": 21913,
         "status": 1,
         "language": "de",
         "authors": [

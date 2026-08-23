@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 281,
+  "excluded_count": 284,
   "excluded": [
     {
       "internalName": "3isk",
@@ -1576,6 +1576,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "FilmFrei24",
+      "name": "FilmFrei24",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/FilmFrei24.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Filmmirasım",
       "name": "Filmmirasım",
       "source": "cs-karma",
@@ -1587,6 +1601,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Filmmirasım.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Filmo",
+      "name": "Filmo",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Filmo.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2029,6 +2057,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kartoons.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "KellerKino",
+      "name": "KellerKino",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/KellerKino.cs3",
       "reason": "no-allowed-language"
     },
     {
