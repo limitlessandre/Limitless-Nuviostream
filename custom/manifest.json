@@ -1,6 +1,6 @@
 {
   "name": "Limitless Native Ports",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Nuvio-native ports maintained directly by Limitless.",
   "scrapers": [
     {
@@ -30,6 +30,21 @@
       "formats": ["m3u8"],
       "logo": "https://anizone.to/favicon.ico",
       "contentLanguage": ["en", "ja", "ko", "zh"]
+    },
+    {
+      "id": "limitless-animekai",
+      "name": "AnimeKai",
+      "description": "AnimeKai SUB/DUB streams with each mirror's source subtitle tracks kept attached to the exact matching encode.",
+      "version": "2.0.0",
+      "author": "Limitless maintained port based on AnimeKai native extraction behavior",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "providers/animekai.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://i.postimg.cc/MKJd7fy7/animekai.png",
+      "contentLanguage": ["en", "ja"]
     },
     {
       "id": "limitless-cinestream",
