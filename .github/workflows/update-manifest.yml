@@ -1,150 +1,89 @@
-name: Maintain frozen Limitless anime baseline
+name: Revert All-Wish fuzzy fallback
 
 on:
   push:
     branches: [Limitless-Nuviotest]
   workflow_dispatch:
 
-concurrency:
-  group: limitless-anime-baseline-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
   contents: write
 
 jobs:
-  baseline:
+  revert-allwish-fuzzy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out test branch
         uses: actions/checkout@v4
         with:
-          ref: Limitless-Nuviotest
+          fetch-depth: 0
 
-      - name: Apply pending Limitless patches and validate
+      - name: Restore bounded All-Wish matcher
         shell: bash
         run: |
           set -euo pipefail
-          PATCHED=false
 
-          if [ ! -f .allwish-fuzzy-v122 ]; then
-            echo "Applying MAL-verified fuzzy title fallback to All-Wish"
-            python - <<'PY'
-          from pathlib import Path
-          import json
+          # Restore the proven v1.2.1 provider implementation from immediately
+          # before the experimental broad/fuzzy search was added. This keeps:
+          # - season-aware MAL episode mapping
+          # - MAL/Jikan + AniList + Kitsu + TMDB exact/normal aliases
+          # - DUB/SUB separation
+          # - one preferred subtitle track per language
+          # and removes only the broad single-word fallback search.
+          curl --fail --location --silent --show-error \
+            "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/3f9865d4d497eeeb275cf4324ee1e160ac5f95c1/providers/allwish.js" \
+            -o providers/allwish.js
 
-          p = Path('providers/allwish.js')
-          s = p.read_text(encoding='utf-8')
-
-          helper = r'''
-          function fallbackSearchTerms(titles) {
-            const stop = new Set([
-              "anime", "season", "movie", "special", "episode", "part",
-              "the", "and", "with", "from", "this", "that", "girl", "child",
-              "favorite", "favourite"
-            ]);
-            const seen = new Set();
-            const out = [];
-
-            for (const title of uniq(titles)) {
-              const words = clean(title).split(/\s+/).filter(Boolean);
-              if (words.length < 2) continue;
-
-              const meaningful = words.filter(w =>
-                w.length >= 4 &&
-                !stop.has(w) &&
-                !/^\d+$/.test(w)
-              );
-
-              for (const word of meaningful.slice().reverse()) {
-                if (!seen.has(word)) {
-                  seen.add(word);
-                  out.push(word);
-                }
-              }
-            }
-
-            return out.slice(0, 12);
-          }
-
-          '''
-
-          marker = 'function b64(bytes) {'
-          if 'function fallbackSearchTerms(titles)' not in s:
-              if marker not in s:
-                  raise SystemExit('Could not find All-Wish b64 insertion marker')
-              s = s.replace(marker, helper + marker, 1)
-
-          old = '''    const candidates = await search(aliases);\n\n    let hit = null;\n    let matchedTitle = null;\n\n    for (const candidate of candidates.slice(0, 20)) {\n      const ep = choose(await episodes(candidate.url), mal, target);\n      if (ep) {\n        hit = ep;\n        matchedTitle = candidate.title;\n        break;\n      }\n    }\n\n    if (!hit) return [];'''
-
-          new = '''    let candidates = await search(aliases);\n\n    let hit = null;\n    let matchedTitle = null;\n\n    for (const candidate of candidates.slice(0, 20)) {\n      const ep = choose(await episodes(candidate.url), mal, target);\n      if (ep) {\n        hit = ep;\n        matchedTitle = candidate.title;\n        break;\n      }\n    }\n\n    // If a site-localized title is not present verbatim in MAL/AniList/Kitsu,\n    // search distinctive words from the known aliases. The candidate still\n    // has to expose the correct MAL ID and mapped episode before it is used.\n    if (!hit && mal) {\n      const fallbackTerms = fallbackSearchTerms(aliases);\n      if (fallbackTerms.length) {\n        console.log(`[${NAME}] Fuzzy fallback terms: ${fallbackTerms.join(" | ")}`);\n        const fuzzyCandidates = await search(fallbackTerms);\n\n        for (const candidate of fuzzyCandidates.slice(0, 80)) {\n          const ep = choose(await episodes(candidate.url), mal, target);\n          if (ep) {\n            hit = ep;\n            matchedTitle = candidate.title;\n            break;\n          }\n        }\n      }\n    }\n\n    if (!hit) return [];'''
-
-          if old in s:
-              s = s.replace(old, new, 1)
-          elif 'Fuzzy fallback terms:' not in s:
-              raise SystemExit('Could not find All-Wish candidate block')
-
-          p.write_text(s, encoding='utf-8')
-
-          mpath = Path('manifest.json')
-          manifest = json.loads(mpath.read_text(encoding='utf-8'))
-          manifest['version'] = '0.1.4'
-          for item in manifest.get('scrapers', []):
-              if item.get('id') == 'allwish':
-                  item['version'] = '1.2.2'
-                  item['description'] = 'Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, MAL/AniList/Kitsu/TMDB aliases, MAL-verified fuzzy title fallback, and one preferred soft-subtitle track per language.'
-          mpath.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-          PY
-
-            touch .allwish-fuzzy-v122
-            rm -f .github/workflows/patch-allwish-fuzzy.yml
-            PATCHED=true
-          fi
-
-          echo "Validating frozen anime baseline"
           python - <<'PY'
           import json
           from pathlib import Path
 
-          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
-          lock = json.loads(Path('sources-lock.json').read_text(encoding='utf-8'))
-          scrapers = manifest.get('scrapers', [])
+          path = Path('manifest.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          manifest['version'] = '0.1.5'
 
-          if len(scrapers) != 16:
-              raise SystemExit(f'Expected 16 providers, found {len(scrapers)}')
+          for item in manifest.get('scrapers', []):
+              if item.get('id') == 'allwish':
+                  item['name'] = 'All-Wish'
+                  item['version'] = '1.2.3'
+                  item['description'] = (
+                      'Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, '
+                      'MAL/AniList/Kitsu/TMDB title aliases, DUB/SUB separation, and one preferred '
+                      'soft-subtitle track per language.'
+                  )
+                  break
+          else:
+              raise SystemExit('All-Wish manifest entry not found')
 
-          ids = [item['id'].casefold() for item in scrapers]
-          names = [item['name'].casefold() for item in scrapers]
-          if len(ids) != len(set(ids)):
-              raise SystemExit('Duplicate provider id found')
-          if len(names) != len(set(names)):
-              raise SystemExit('Duplicate provider name found')
-
-          manifest_files = set()
-          for item in scrapers:
-              filename = item['filename']
-              if not filename.startswith('providers/'):
-                  raise SystemExit(f'Non-local provider path: {filename}')
-              if not Path(filename).is_file():
-                  raise SystemExit(f'Missing provider file: {filename}')
-              manifest_files.add(Path(filename).name)
-
-          lock_files = {item['filename'] for item in lock['providers']}
-          if manifest_files != lock_files:
-              raise SystemExit('Manifest and sources-lock provider lists differ')
-
-          print(f'Validated {len(scrapers)} frozen anime providers')
+          path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
           PY
 
-          for file in providers/*.js; do
-            echo "Syntax checking $file"
-            node --check "$file"
-          done
+          rm -f .allwish-fuzzy-v122
 
-          if [ "$PATCHED" = true ]; then
-            git config user.name "Limitless Baseline Bot"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "Add MAL-verified fuzzy title fallback to All-Wish"
-            git push origin HEAD:Limitless-Nuviotest
+          # Restore the clean validation-only workflow from before the fuzzy experiment.
+          curl --fail --location --silent --show-error \
+            "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/3f9865d4d497eeeb275cf4324ee1e160ac5f95c1/.github/workflows/update-manifest.yml" \
+            -o .github/workflows/update-manifest.yml
+
+          node --check providers/allwish.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
+          a = next(x for x in m['scrapers'] if x['id'] == 'allwish')
+          assert m['version'] == '0.1.5'
+          assert a['name'] == 'All-Wish'
+          assert a['version'] == '1.2.3'
+          assert 'fuzzy' not in a['description'].lower()
+          code = Path('providers/allwish.js').read_text(encoding='utf-8')
+          assert 'fallbackSearchTerms' not in code
+          assert 'Fuzzy fallback' not in code
+          print('All-Wish fuzzy fallback removed; retained bounded alias matching and subtitle fixes')
+          PY
+
+          git config user.name "Limitless Baseline Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Revert All-Wish fuzzy search and normalize provider name"
+            git push
           fi
