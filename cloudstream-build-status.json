@@ -1,8 +1,8 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "repository_database_entries": 26,
-  "repositories_loaded": 23,
-  "repositories_using_cache": 1,
+  "repositories_loaded": 22,
+  "repositories_using_cache": 2,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
   "raw_plugin_entries": 370,
@@ -69,9 +69,10 @@
     {
       "name": "FStream",
       "url": "https://git.disroot.org/ayza/FStream/raw/branch/main/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 1,
-      "verified": false
+      "verified": false,
+      "error": "HTTP Error 502: Bad Gateway"
     },
     {
       "name": "Phisher Repo",

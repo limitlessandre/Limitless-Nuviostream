@@ -298,28 +298,23 @@
       ]
     },
     {
-      "id": "limitless-anizone",
+      "id": "anizone",
       "name": "AniZone",
-      "description": "AniZone Japanese-audio anime streams with source-matched soft ASS/VTT/SRT subtitles extracted directly from the episode page.",
-      "version": "2.0.0",
-      "author": "Limitless maintained port based on current AniZone/Nuvio behavior",
+      "description": "AniZone high-quality anime streaming with multi-audio and soft subtitles",
+      "version": "1.0.0",
+      "author": "Nuvio Team",
       "supportedTypes": [
         "movie",
-        "tv",
-        "anime"
+        "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js",
+      "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/anizone.js",
       "enabled": true,
-      "hasSettings": false,
       "formats": [
         "m3u8"
       ],
       "logo": "https://anizone.to/favicon.ico",
       "contentLanguage": [
-        "en",
-        "ja",
-        "ko",
-        "zh"
+        "en"
       ]
     },
     {

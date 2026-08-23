@@ -209,31 +209,6 @@
       }
     ]
   },
-  "anizone": {
-    "chosen": {
-      "id": "limitless-anizone",
-      "name": "AniZone",
-      "version": "2.0.0",
-      "source": "Limitless Native Ports",
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
-    },
-    "candidates": [
-      {
-        "id": "limitless-anizone",
-        "name": "AniZone",
-        "version": "2.0.0",
-        "source": "Limitless Native Ports",
-        "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/main/custom/providers/anizone.js"
-      },
-      {
-        "id": "anizone",
-        "name": "AniZone",
-        "version": "1.0.0",
-        "source": "Yoru's Repo",
-        "filename": "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/providers/anizone.js"
-      }
-    ]
-  },
   "castle": {
     "chosen": {
       "id": "castle",
