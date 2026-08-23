@@ -91,32 +91,64 @@ async function resolveAnimeMapping(imdbId, season, episode) {
   );
 }
 
-async function getMalTitles(malId) {
-  const titles = [];
-  if (!malId) return titles;
-
-  const data = await fetchJson(`https://api.jikan.moe/v4/anime/${malId}`);
-  const anime = data && data.data;
-  if (!anime) return titles;
-
-  // IMPORTANT: AniZone commonly indexes anime by the MAL/Japanese romanized
-  // title (for example "Youjo Senki II") rather than the English localized
-  // title ("Saga of Tanya the Evil Season 2"). Keep every MAL alias and put
-  // the canonical romanized title first so search uses the site's own naming.
-  addUnique(titles, anime.title);
-  addUnique(titles, anime.title_english);
-  addUnique(titles, anime.title_japanese);
-
+function addAnimeTitles(target, anime) {
+  if (!anime) return;
+  addUnique(target, anime.title);
+  addUnique(target, anime.title_english);
+  addUnique(target, anime.title_japanese);
   if (Array.isArray(anime.titles)) {
     for (const entry of anime.titles) {
-      if (entry && entry.title) addUnique(titles, entry.title);
+      if (entry && entry.title) addUnique(target, entry.title);
     }
   }
   if (Array.isArray(anime.title_synonyms)) {
-    for (const title of anime.title_synonyms) addUnique(titles, title);
+    for (const title of anime.title_synonyms) addUnique(target, title);
+  }
+}
+
+async function getMalTitles(malId) {
+  const titles = [];
+  if (!malId) return titles;
+  const data = await fetchJson(`https://api.jikan.moe/v4/anime/${malId}`);
+  addAnimeTitles(titles, data && data.data);
+  return titles;
+}
+
+async function searchJikanAliases(query, season) {
+  const output = [];
+  const clean = String(query || "").trim();
+  if (!clean) return output;
+
+  const data = await fetchJson(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(clean)}&limit=15`);
+  const results = data && Array.isArray(data.data) ? data.data.slice() : [];
+
+  // New seasons frequently appear in Jikan before third-party season mapping
+  // databases update. Prefer entries whose aliases explicitly look like the
+  // requested season, then retain nearby results as additional aliases.
+  results.sort((a, b) => {
+    const aTitles = [];
+    const bTitles = [];
+    addAnimeTitles(aTitles, a);
+    addAnimeTitles(bTitles, b);
+    const aScore = seasonLooksRight(aTitles, season) ? 0 : 1;
+    const bScore = seasonLooksRight(bTitles, season) ? 0 : 1;
+    return aScore - bScore;
+  });
+
+  for (const anime of results.slice(0, 8)) {
+    const titles = [];
+    addAnimeTitles(titles, anime);
+    if ((season || 1) > 1 && !seasonLooksRight(titles, season)) continue;
+    for (const title of titles) addUnique(output, title);
   }
 
-  return titles;
+  // If the season marker is not represented in Jikan's localized aliases yet,
+  // keep the top search-result aliases as a final discovery fallback.
+  if (!output.length) {
+    for (const anime of results.slice(0, 4)) addAnimeTitles(output, anime);
+  }
+
+  return output;
 }
 
 function extractCards(html) {
@@ -159,6 +191,18 @@ function extractCards(html) {
   return cards;
 }
 
+function firstAnimeSlug(html) {
+  const $ = cheerio.load(html);
+  let slug = null;
+  $('main a[href*="/anime/"], a[href*="/anime/"]').each((_, el) => {
+    if (slug) return;
+    const href = String($(el).attr("href") || "");
+    const match = href.match(/\/anime\/([^/?#]+)/i);
+    if (match && match[1] && match[1] !== "anime") slug = match[1];
+  });
+  return slug;
+}
+
 function seasonLooksRight(titles, season) {
   const joined = titles.join(" ");
   if ((season || 1) <= 1) {
@@ -198,6 +242,10 @@ function pickCard(cards, candidateTitles, season, mediaType) {
         return card.slug;
       }
     }
+  }
+
+  if (cards.length === 1 && (mediaType === "movie" || seasonLooksRight(cards[0].titles, season))) {
+    return cards[0].slug;
   }
 
   return null;
@@ -253,15 +301,9 @@ function buildQueries(candidateTitles) {
   for (const title of candidateTitles) {
     const clean = String(title || "").trim();
     if (!clean) continue;
-
     addUnique(queries, clean);
-
     const beforeColon = clean.split(":")[0].trim();
     addUnique(queries, beforeColon);
-
-    // Some English databases append "Season 2" while AniZone stores the
-    // Japanese romanized name with "II". The MAL romanized alias normally
-    // handles this, but a base-title fallback improves coverage for other shows.
     const withoutSeason = beforeColon
       .replace(/\s+(?:season\s*\d+|\d+(?:nd|rd|th)\s+season)$/i, "")
       .trim();
@@ -279,32 +321,46 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     const tmdb = await getTmdbDetails(tmdbId, normalizedType);
     if (!tmdb || !tmdb.title) return [];
 
+    const seasonNumber = parseInt(season, 10) || 1;
     let mappedEpisode = normalizedType === "movie" ? 1 : (parseFloat(episode) || 1);
     let mapping = null;
     let malTitles = [];
 
     if (normalizedType === "tv") {
-      mapping = await resolveAnimeMapping(tmdb.imdbId, parseInt(season, 10) || 1, parseFloat(episode) || 1);
+      mapping = await resolveAnimeMapping(tmdb.imdbId, seasonNumber, parseFloat(episode) || 1);
       if (mapping) {
         mappedEpisode = mapping.mal_episode || mappedEpisode;
         malTitles = await getMalTitles(mapping.mal_id);
       }
     }
 
+    // Independent fallback for newly airing seasons whose IMDb->MAL season
+    // mapping has not propagated yet.
+    const jikanAliases = normalizedType === "tv"
+      ? await searchJikanAliases(tmdb.title, seasonNumber)
+      : [];
+
     const candidateTitles = [];
     for (const title of malTitles) addUnique(candidateTitles, title);
+    for (const title of jikanAliases) addUnique(candidateTitles, title);
     addUnique(candidateTitles, mapping && mapping.anime_title);
     addUnique(candidateTitles, tmdb.title);
     addUnique(candidateTitles, tmdb.originalTitle);
 
-    const seasonNumber = parseInt(season, 10) || 1;
     const queries = buildQueries(candidateTitles);
-
     let animeSlug = null;
-    for (const query of queries.slice(0, 8)) {
+
+    for (const query of queries.slice(0, 12)) {
       const html = await fetchText(`/anime?search=${encodeURIComponent(query)}`);
       if (!html) continue;
+
       animeSlug = pickCard(extractCards(html), candidateTitles, seasonNumber, normalizedType);
+
+      // Preserve the useful fallback from Yoru's original implementation. With
+      // a highly specific alias such as "Youjo Senki II", the first anime card
+      // is preferable to dropping the provider just because AniZone changed
+      // some Alpine/x-data markup on its search page.
+      if (!animeSlug) animeSlug = firstAnimeSlug(html);
       if (animeSlug) break;
     }
 
