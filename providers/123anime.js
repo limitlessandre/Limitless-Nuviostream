@@ -472,9 +472,48 @@ function quality(url) {
   return m ? `${m[1]}p` : "HD";
 }
 
-function makeStream(url, mode, server, variant, tracks, headers, ctx) {
+async function normalizeHls(url, headers) {
+  const fallback = { url, quality: quality(url) };
+  if (!url || !/m3u8/i.test(String(url))) return fallback;
+
+  const body = await text(url, { headers }, 10000);
+  if (!body || !body.trimStart().startsWith("#EXTM3U")) return fallback;
+
+  const lines = body.split(/\r?\n/).map(x => x.trim()).filter(Boolean);
+  const variants = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line.startsWith("#EXT-X-STREAM-INF:")) continue;
+    const res = line.match(/RESOLUTION=(\d+)x(\d+)/i);
+    const bw = line.match(/BANDWIDTH=(\d+)/i);
+    let uri = null;
+    for (let j = i + 1; j < lines.length; j++) {
+      if (lines[j].startsWith("#")) continue;
+      uri = lines[j];
+      break;
+    }
+    if (!uri) continue;
+    variants.push({
+      uri,
+      height: res ? parseInt(res[2], 10) : 0,
+      bandwidth: bw ? parseInt(bw[1], 10) : 0
+    });
+  }
+
+  if (!variants.length) return fallback;
+  variants.sort((a, b) => (b.height - a.height) || (b.bandwidth - a.bandwidth));
+  const best = variants[0];
+  let child = abs(best.uri, url);
+  if (!child) return fallback;
+  if (!/\.m3u8(?:$|[?#])/i.test(child)) {
+    child += (child.includes("?") ? "&" : "?") + "nuvio.m3u8";
+  }
+  return { url: child, quality: best.height ? `${best.height}p` : fallback.quality };
+}
+
+function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {
   if (!url) return null;
-  const q = quality(url);
+  const q = qualityOverride || quality(url);
   const tag = mode === "dub" ? "DUB" : (tracks.length ? "SUB + Soft Subs" : "SUB");
   return {
     name: `${NAME} | ${q} [${tag}] • ${server} ${variant}`,
@@ -529,12 +568,15 @@ async function extractServer(base, slug, ep, server, mode, ctx) {
   const seen = new Set();
   const variants = ["JW", "SBv2"];
   for (let i = 0; i < results.length; i++) {
-    const u = results[i];
-    if (!u || seen.has(u)) continue;
-    seen.add(u);
-    const s = makeStream(u, mode, server.label, variants[i], tracks, headers, ctx);
-    if (s) out.push(s);
-  }
+  const u = results[i];
+  if (!u) continue;
+  const normalized = await normalizeHls(u, headers);
+  const finalUrl = normalized.url;
+  if (!finalUrl || seen.has(finalUrl)) continue;
+  seen.add(finalUrl);
+  const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
+  if (stream) out.push(stream);
+}
   return out;
 }
 
@@ -598,7 +640,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     const seen = new Set();
     const out = all.flat().filter(stream => {
-      const key = `${stream.url}|${stream.language}|${stream.name}`;
+      const key = `${stream.url}|${stream.language}`;
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
