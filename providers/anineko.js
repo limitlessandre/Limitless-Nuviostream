@@ -322,6 +322,16 @@ function unpack(source) {
   });
 }
 
+function streamTag(label, hasSoftSub) {
+  var text = String(label || "").toLowerCase();
+  if (text.indexOf("dub") !== -1) return hasSoftSub ? "DUB+SUBS" : "DUB";
+  if (text.indexOf("hard") !== -1 && text.indexOf("sub") !== -1) {
+    return hasSoftSub ? "HARDSUB+SUBS" : "HARDSUB";
+  }
+  if (text.indexOf("soft") !== -1 && text.indexOf("sub") !== -1) return "SOFTSUB";
+  return hasSoftSub ? "SOFTSUB" : "";
+}
+
 // ===== MAIN =====
 
 function getStreams(tmdbId, mediaType, season, episode) {
@@ -376,16 +386,25 @@ function getStreams(tmdbId, mediaType, season, episode) {
         var streamTitle = info.title + " E" + ep;
         if (info.year) streamTitle += " (" + info.year + ")";
 
+        var subtitles = result.subtitleUrl ? [{
+          url: result.subtitleUrl,
+          language: "en",
+          lang: "en",
+          name: "English [SOFTSUB]"
+        }] : [];
+
         return result.streams.map(function(s) {
+          var tag = streamTag(s.label, subtitles.length > 0);
+          var tagText = tag ? " [" + tag + "]" : "";
           return {
-            name: PROVIDER_NAME + " [" + s.serverName + "] " + s.label + " - HD",
-            title: s.serverName + " (" + s.label + ") 1080p",
+            name: PROVIDER_NAME + " [" + s.serverName + "]" + tagText + " - HD",
+            title: s.serverName + tagText + " 1080p",
             url: s.streamUrl,
             headers: {
               "User-Agent": DEFAULT_HEADERS["User-Agent"],
               "Referer": BASE_URL + "/"
             },
-            subtitles: result.subtitleUrl ? [{ url: result.subtitleUrl, lang: "English" }] : []
+            subtitles: subtitles
           };
         });
       });
