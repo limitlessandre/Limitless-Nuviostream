@@ -1,0 +1,31 @@
+name: Inspect Eclipsia Praxiel
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/inspect-eclipsia.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Eclipsia and inspect Praxiel/AniDB
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://gitea.com/eclipsia/nuvio-plugin.git /tmp/eclipsia
+          echo '=== MANIFEST FILES ==='
+          find /tmp/eclipsia -maxdepth 3 -iname 'manifest*.json' -print
+          echo '=== STABLE MANIFEST ==='
+          cat /tmp/eclipsia/stable/manifest.json || true
+          echo '=== PRAXIEL MATCHES ==='
+          grep -RniE 'prax|praxiel' /tmp/eclipsia --exclude-dir=.git || true
+          echo '=== ANIDB MATCHES ==='
+          grep -RniE 'anidb|api/frontend/anime|api/frontend/episode' /tmp/eclipsia --exclude-dir=.git || true
+          echo '=== PROVIDER TREE ==='
+          find /tmp/eclipsia -maxdepth 4 -type f | sort
