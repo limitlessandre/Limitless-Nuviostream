@@ -1,0 +1,123 @@
+name: Finalize AniDB frozen-index rebuild
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths:
+      - .github/workflows/finalize-anidb.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate frozen AniDB index and clean provider
+        shell: bash
+        run: |
+          set -euo pipefail
+          pip install -q curl_cffi beautifulsoup4
+          python3 - <<'PY'
+          import re, textwrap
+          from pathlib import Path
+
+          source = Path('.github/workflows/rebuild-anidb.yml').read_text(encoding='utf-8')
+          match = re.search(r"          python3 - <<'PY'\n(.*?)\n          PY\n", source, re.S)
+          if not match:
+              raise SystemExit('Could not extract AniDB generator')
+          script = textwrap.dedent(match.group(1))
+
+          script = script.replace(
+              "from curl_cffi import requests\n",
+              "from curl_cffi import requests\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\n"
+          )
+          script = script.replace(
+              "r = session.get(url, headers={'User-Agent':UA,'Referer':BASE+'/'}, timeout=25)",
+              "r = requests.get(url, impersonate='chrome', headers={'User-Agent':UA,'Referer':BASE+'/'}, timeout=25)"
+          )
+
+          old = '''for page in range(2, pages + 1):
+    collect(get_page(page))
+    if page % 25 == 0:
+        print(f'Indexed page {page}/{pages}: {len(by_id)} titles')
+    time.sleep(0.08)'''
+          new = '''with ThreadPoolExecutor(max_workers=2) as pool:
+    pending = {pool.submit(get_page, page): page for page in range(2, pages + 1)}
+    completed = 1
+    for future in as_completed(pending):
+        page = pending[future]
+        collect(future.result())
+        completed += 1
+        if completed % 25 == 0 or completed == pages:
+            print(f'Indexed {completed}/{pages} pages: {len(by_id)} titles')'''
+          if old not in script:
+              raise SystemExit('Sequential crawl anchor not found')
+          script = script.replace(old, new, 1)
+          exec(compile(script, 'finalize-anidb.py', 'exec'), {})
+          PY
+          node --check providers/anidb.js
+
+      - name: Live validate Tanya and Frieren
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const provider = require('./providers/anidb.js');
+          async function check(id, title) {
+            const streams = await provider.getStreams(id, 'tv', 1, 1);
+            console.log(`\n${title}: ${streams.length} streams`);
+            for (const s of streams) console.log(`${s.name} :: ${s.url}`);
+            if (!Array.isArray(streams) || streams.length < 2) throw new Error(`${title}: expected DUB + HARDSUB`);
+            if (!streams.some(s => /\[DUB\]/.test(s.name))) throw new Error(`${title}: missing DUB`);
+            if (!streams.some(s => /\[HARDSUB\]/.test(s.name))) throw new Error(`${title}: missing HARDSUB`);
+            for (const stream of streams) {
+              if (stream.type !== 'm3u8') throw new Error(`${title}: wrong stream type`);
+              const r = await fetch(stream.url, { headers: stream.headers });
+              const body = await r.text();
+              console.log(`${stream.name}: HTTP ${r.status} ${r.headers.get('content-type')}`);
+              if (!r.ok || !body.trim().startsWith('#EXTM3U')) throw new Error(`${title}: invalid HLS master`);
+            }
+          }
+          (async()=>{
+            await check('69346', 'Saga of Tanya the Evil');
+            await check('209867', "Frieren: Beyond Journey's End");
+          })().catch(e=>{ console.error(e); process.exit(1); });
+          NODE
+
+      - name: Validate repository and clean maintenance files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
+          lock = json.loads(Path('sources-lock.json').read_text(encoding='utf-8'))
+          assert manifest['version'] == '0.1.15'
+          assert lock['baseline'] == 'anime-v0.1.15'
+          assert len(manifest['scrapers']) == 17
+          ani = next(x for x in manifest['scrapers'] if x['id'] == 'anidb')
+          assert ani['version'] == '1.0.2'
+          PY
+          for file in providers/*.js; do node --check "$file" >/dev/null; done
+
+          rm -f .anidb-*.txt
+          rm -f .github/workflows/*anidb*.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
+          git commit -m "Rebuild AniDB around frozen exact index [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
