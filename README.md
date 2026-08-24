@@ -10,7 +10,20 @@ This branch is a frozen, self-contained baseline rather than a live upstream agg
 - The initial imports are pinned to exact upstream commits in `sources-lock.json`.
 - After the first bootstrap, the workflow performs validation only and never fetches upstream changes again.
 - Duplicate implementations of the same anime source are intentionally collapsed.
+- Multiple player/extractor routes may be tried internally, but identical final streams are collapsed before they reach Nuvio.
 - Updates are manual so we can test a provider before changing our baseline.
+
+## Stream naming standard
+
+Limitless uses compact, behavior-based stream tags:
+
+- `[DUB]` = dubbed audio with no selectable subtitle track.
+- `[HARDSUB]` = subtitles are burned into the video.
+- `[SOFTSUB]` = selectable subtitle track(s).
+- `[DUB+SUBS]` = dubbed audio plus selectable subtitle track(s).
+- `[HARDSUB+SUBS]` = burned-in subtitles plus additional selectable subtitle track(s).
+
+A generic `SUB` label is not promoted to one of these tags unless the provider actually proves whether the subtitles are hardcoded or selectable.
 
 ## Included anime providers
 
@@ -32,4 +45,4 @@ https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/Limitless
 - `providers/`: frozen provider JavaScript.
 - `sources-lock.json`: provenance for the initial snapshot.
 - `.anime-baseline-frozen`: prevents any later automatic upstream import.
-- `.github/workflows/update-manifest.yml`: first-run bootstrap, then validation-only.
+- `.github/workflows/update-manifest.yml`: validation-only workflow for the frozen baseline.
