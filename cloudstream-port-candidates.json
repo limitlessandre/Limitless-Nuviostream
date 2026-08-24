@@ -1,7 +1,7 @@
 {
   "native_provider_count": 123,
-  "cloudstream_provider_count": 64,
-  "no_obvious_native_overlap_count": 49,
+  "cloudstream_provider_count": 65,
+  "no_obvious_native_overlap_count": 50,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 15,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -624,6 +624,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.727,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "OnShort",
+      "name": "OnShort",
+      "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
+      "language": "en",
+      "tvTypes": [
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
         "native_matches": []
       },
       "priority": "low-priority",

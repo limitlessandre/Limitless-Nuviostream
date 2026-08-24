@@ -922,6 +922,26 @@
     "jarHash": "sha256-2932189ada9eea6b6fe3ca977ddb66cd21d1e2810c86f6eda8cee7c27f6c9220"
   },
   {
+    "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "OnShort",
+    "internalName": "OnShort",
+    "authors": [
+      "kraptor"
+    ],
+    "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
+    "fileSize": 21448,
+    "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+    "language": "en",
+    "tvTypes": [
+      "TvSeries"
+    ],
+    "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=https://onshort.net",
+    "apiVersion": 1,
+    "fileHash": "sha256-7726189155f9cadfd1af57ae30b887f9cc2933d316b8aef6f2f2b69e1fd1624c"
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/PublicSportsIPTV.cs3",
     "status": 1,
     "version": 3,

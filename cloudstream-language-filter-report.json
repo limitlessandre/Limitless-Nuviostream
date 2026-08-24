@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 284,
+  "excluded_count": 285,
   "excluded": [
     {
       "internalName": "3isk",
@@ -1643,6 +1643,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fivemovierulz.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FlixiTV",
+      "name": "FlixiTV",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/FlixiTV.cs3",
       "reason": "no-allowed-language"
     },
     {

@@ -3943,7 +3943,7 @@
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134265,
+        "fileSize": 134264,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -3953,7 +3953,7 @@
         ],
         "iconUrl": "https://www.animeunity.so/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-086f102857282636f5fb80500da42bc226c55c1de2cfad462bc50424c4aafe0d"
+        "fileHash": "sha256-8d8600e7c9e19ded59af881ca7892bd4b8b5927ddef5f52dbfac3cad68f7eef0"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -4001,7 +4001,7 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/CalcioStreaming.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "CalcioStreaming",
         "internalName": "CalcioStreaming",
         "authors": [
@@ -4010,7 +4010,7 @@
           "doGior"
         ],
         "description": "⚠️Use AdGuard DNS in the app settings⚠️ Live streams from the CalcioStreaming. Forked from the CalcioStreaming plugin in the ItalianProvider repo",
-        "fileSize": 16087,
+        "fileSize": 23141,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4018,7 +4018,7 @@
         ],
         "iconUrl": "https://fig.direttecommunity.online/templates/calciostreaming1/images/icons/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e250fd87da8d3e09d4064feb24de05b609e0885e1ee810af115e99cdcd296fdc"
+        "fileHash": "sha256-f075d0314b2593d647e8683b4535ec0fa037d65543afbcb5339440bce0499c27"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/CorsaroNero.cs3",
@@ -4140,7 +4140,7 @@
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1407719,
+        "fileSize": 1407712,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4152,7 +4152,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f1a21bb3d5286aa5ac5e9a15ba5d8f03bec5bbf2433cfd33ee69474ab49c72f0"
+        "fileHash": "sha256-6df2952bc627974ac317f618bfdb1b1bae83d9aae7f6170f6c095f4891e7b55b"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -4986,7 +4986,7 @@
         "name": "FilmFrei24"
       },
       {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=kinoking.cc&sz=%size%",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmo.to&sz=%size%",
         "fileHash": "sha256-023ae28d2ad34cda920810f910ab04f504bcd9f8242eaf1e137ff519ed603f77",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
@@ -5025,6 +5025,27 @@
         "description": "Filme & Serien sofort und kostenlos ansehen",
         "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/FilmPalast.cs3",
         "name": "FilmPalast"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=flixitv-stream.eu&sz=%size%",
+        "fileHash": "sha256-6bc1af7e7af3696c3a83756fd90848b450ef599afe45c251f1ed2479356367e5",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
+        "fileSize": 10342,
+        "status": 1,
+        "language": "de",
+        "authors": [
+          "Bnyro"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "FlixiTV",
+        "description": "Deine alten Schätze; Serien und Filme. Kostenlos auf Abruf und in Full HD.",
+        "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/FlixiTV.cs3",
+        "name": "FlixiTV"
       },
       {
         "iconUrl": "https://hdfilme.my/templates/hdfilme/images/favicon-%size%x%size%.png",
@@ -6726,7 +6747,7 @@
           "ByAyzen"
         ],
         "description": "Explorez les films, séries, collections, alertes et recommandations Movix.",
-        "fileSize": 135582,
+        "fileSize": 150483,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "fr",
         "tvTypes": [
@@ -6734,9 +6755,9 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movix.rodeo/&size=128",
+        "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movix.fun/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-fc6f2e35fd408b21520d8bb47b7f635d667aad6b590842ceeb3d8621f9568c76"
+        "fileHash": "sha256-40f60f355ea31ffbc9f015f0bbb80e71babbfe45da229bf7301b5dc673492154"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OK.cs3",
@@ -6758,6 +6779,26 @@
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ok.ru/video/c12842395&size=128",
         "apiVersion": 1,
         "fileHash": "sha256-2e2296ca953ef1529c7042483f1e142e006f8be2a0a0d978b58c657a3c68ca22"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "OnShort",
+        "internalName": "OnShort",
+        "authors": [
+          "kraptor"
+        ],
+        "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
+        "fileSize": 21448,
+        "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+        "language": "en",
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=https://onshort.net",
+        "apiVersion": 1,
+        "fileHash": "sha256-7726189155f9cadfd1af57ae30b887f9cc2933d316b8aef6f2f2b69e1fd1624c"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Sokuja.cs3",

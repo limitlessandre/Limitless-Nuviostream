@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **123**  
-Filtered CloudStream providers: **64**  
-No obvious native overlap: **49**  
+Filtered CloudStream providers: **65**  
+No obvious native overlap: **50**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **15**
 
@@ -41,6 +41,7 @@ Exact/alias overlap: **15**
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **MoviPK** (`MoviPK`) — en; Movie, TvSeries
+- **OnShort** (`OnShort`) — en; TvSeries — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
