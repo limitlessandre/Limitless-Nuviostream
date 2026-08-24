@@ -1,4 +1,4 @@
-name: Finalize AniDB frozen-index rebuild
+name: Finalize AniDB season-aware import
 
 on:
   push:
@@ -68,30 +68,56 @@ jobs:
           PY
           node --check providers/anidb.js
 
-      - name: Live validate Tanya and Frieren
+      - name: Live validate season mapping and playback
         shell: bash
         run: |
           set -euo pipefail
           node <<'NODE'
           const provider = require('./providers/anidb.js');
-          async function check(id, title) {
-            const streams = await provider.getStreams(id, 'tv', 1, 1);
-            console.log(`\n${title}: ${streams.length} streams`);
-            for (const s of streams) console.log(`${s.name} :: ${s.url}`);
-            if (!Array.isArray(streams) || streams.length < 2) throw new Error(`${title}: expected DUB + HARDSUB`);
-            if (!streams.some(s => /\[DUB\]/.test(s.name))) throw new Error(`${title}: missing DUB`);
-            if (!streams.some(s => /\[HARDSUB\]/.test(s.name))) throw new Error(`${title}: missing HARDSUB`);
+
+          async function check(id, title, season, episode) {
+            const streams = await provider.getStreams(id, 'tv', season, episode);
+            const label = `${title} S${season}E${episode}`;
+            console.log(`\n${label}: ${streams.length} streams`);
+            for (const s of streams) console.log(`${s.name} :: ${s.title || ''} :: ${s.url}`);
+
+            if (!Array.isArray(streams) || streams.length < 2) {
+              throw new Error(`${label}: expected DUB + HARDSUB`);
+            }
+            if (!streams.some(s => /\[DUB\]/.test(s.name))) {
+              throw new Error(`${label}: missing DUB`);
+            }
+            if (!streams.some(s => /\[HARDSUB\]/.test(s.name))) {
+              throw new Error(`${label}: missing HARDSUB`);
+            }
+            if (!streams.every(s => String(s.title || '').includes(`S${season}E${episode}`))) {
+              throw new Error(`${label}: provider result lost requested season/episode identity`);
+            }
+
             for (const stream of streams) {
-              if (stream.type !== 'm3u8') throw new Error(`${title}: wrong stream type`);
+              if (stream.type !== 'm3u8') throw new Error(`${label}: wrong stream type`);
               const r = await fetch(stream.url, { headers: stream.headers });
               const body = await r.text();
               console.log(`${stream.name}: HTTP ${r.status} ${r.headers.get('content-type')}`);
-              if (!r.ok || !body.trim().startsWith('#EXTM3U')) throw new Error(`${title}: invalid HLS master`);
+              if (!r.ok || !body.trim().startsWith('#EXTM3U')) {
+                throw new Error(`${label}: invalid HLS master`);
+              }
             }
+            return streams;
           }
+
           (async()=>{
-            await check('69346', 'Saga of Tanya the Evil');
-            await check('209867', "Frieren: Beyond Journey's End");
+            const tanyaS1 = await check('69346', 'Saga of Tanya the Evil', 1, 1);
+            const tanyaS2 = await check('69346', 'Saga of Tanya the Evil', 2, 1);
+
+            const s1Urls = new Set(tanyaS1.map(x => x.url));
+            const shared = tanyaS2.filter(x => s1Urls.has(x.url));
+            if (shared.length) {
+              throw new Error(`Tanya S2E1 reused S1E1 playback URL(s): ${shared.map(x => x.url).join(', ')}`);
+            }
+
+            await check('209867', "Frieren: Beyond Journey's End", 1, 1);
+            console.log('\nSeason-aware AniDB validation passed.');
           })().catch(e=>{ console.error(e); process.exit(1); });
           NODE
 
@@ -119,5 +145,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
-          git commit -m "Rebuild AniDB around frozen exact index [skip ci]"
+          git commit -m "Import season-aware AniDB provider [skip ci]"
           git push origin HEAD:Limitless-Nuviotest
