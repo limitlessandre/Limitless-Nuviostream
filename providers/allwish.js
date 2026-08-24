@@ -394,7 +394,7 @@ function subs(tracks, headers, assumeEnglish) {
       url: u,
       language: l[0],
       lang: l[0],
-      name: `${l[1]} [All-Wish Soft Subtitle]`,
+      name: `${l[1]} [SOFTSUB]`,
       headers
     });
   }
@@ -406,16 +406,17 @@ function stream(url, server, section, hard, st, headers, ctx) {
   if (!url) return null;
 
   const dub = String(section).toLowerCase().includes("dub");
-  const mode = dub
-    ? "DUB"
+  const tag = dub
+    ? (st.length ? "DUB+SUBS" : "DUB")
     : hard
-      ? "HARDSUB"
+      ? (st.length ? "HARDSUB+SUBS" : "HARDSUB")
       : st.length
-        ? "SUB + Soft Subs"
-        : "SUB";
+        ? "SOFTSUB"
+        : "";
+  const tagText = tag ? ` [${tag}]` : "";
 
   return {
-    name: `${NAME} | 1080p [${mode}] • ${server}`,
+    name: `${NAME} | 1080p${tagText} • ${server}`,
     title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${dub ? "English Dub" : "Japanese"}`,
     url,
     quality: "1080p",
@@ -630,8 +631,8 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     out.sort(
       (a, b) =>
-        Number(/\[DUB\]/i.test(b.name)) -
-        Number(/\[DUB\]/i.test(a.name))
+        Number(/\[DUB(?:\+SUBS)?\]/i.test(b.name)) -
+        Number(/\[DUB(?:\+SUBS)?\]/i.test(a.name))
     );
 
     return out;
