@@ -1,8 +1,10 @@
 name: Temporary AniDB import trigger
 
 on:
-  issues:
-    types: [opened]
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/trigger-anidb-import.yml
 
 permissions:
   contents: write
@@ -10,13 +12,12 @@ permissions:
 
 jobs:
   rebuild:
-    if: github.event.issue.title == 'RUN LIMITLESS ANIDB IMPORT'
     runs-on: ubuntu-latest
     steps:
       - name: Report start
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body "AniDB guarded import started."
+        run: gh issue comment 2 --repo ${{ github.repository }} --body "AniDB guarded import started from the main-branch push trigger."
 
       - uses: actions/checkout@v4
         with:
@@ -172,4 +173,4 @@ jobs:
                   print('\n'.join(lines[-35:])[-5000:])
                   print('```')
           PY
-          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body-file /tmp/anidb-report.txt
+          gh issue comment 2 --repo ${{ github.repository }} --body-file /tmp/anidb-report.txt
