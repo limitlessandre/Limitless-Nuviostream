@@ -34,7 +34,6 @@ jobs:
 
       - name: Generate AniDB index and provider
         id: build
-        continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
@@ -43,14 +42,16 @@ jobs:
             pip install -q curl_cffi beautifulsoup4
             cat > /tmp/run_anidb_generator.py <<'PY'
           import re
-          import textwrap
           from pathlib import Path
 
           source = Path(".github/workflows/rebuild-anidb.yml").read_text(encoding="utf-8")
           match = re.search(r"          python3 - <<'PY'\n(.*?)\n          PY\n", source, re.S)
           if not match:
               raise SystemExit("Could not extract AniDB generator")
-          script = textwrap.dedent(match.group(1))
+          script = "\n".join(
+              line[10:] if line.startswith("          ") else line
+              for line in match.group(1).splitlines()
+          ) + "\n"
           exec(compile(script, "anidb-import.py", "exec"), {})
           PY
             python3 /tmp/run_anidb_generator.py
@@ -60,7 +61,6 @@ jobs:
       - name: Validate season mapping and playback
         id: playback
         if: steps.build.outcome == 'success'
-        continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
@@ -119,7 +119,6 @@ jobs:
       - name: Validate repository and commit test branch
         id: commit
         if: steps.build.outcome == 'success' && steps.playback.outcome == 'success'
-        continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
