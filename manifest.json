@@ -1,12 +1,12 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
       "id": "allanime",
       "name": "AllAnime",
-      "description": "Limitless-maintained AllAnime provider using the current MKissa rotating-key protocol, Aniyomi-aligned authenticated episode query registration, season-aware MAL mapping, finite verified title aliases, and explicit SUB/DUB streams.",
+      "description": "Limitless-maintained AllAnime/MKissa provider. Disabled by default because MKissa rotates its client crypto frequently; retained for future repair/testing.",
       "version": "2.0.3",
       "author": "Limitless maintained port based on current AllAnime/MKissa protocol",
       "supportedTypes": [
@@ -15,7 +15,7 @@
         "anime"
       ],
       "filename": "providers/allanime.js",
-      "enabled": true,
+      "enabled": false,
       "hasSettings": false,
       "formats": [
         "mp4",
