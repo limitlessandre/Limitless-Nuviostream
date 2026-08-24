@@ -1,0 +1,205 @@
+name: Patch AniDB season discovery 1.0.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/patch-anidb-104.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Patch AniDB season discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('providers/anidb.js')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('// Limitless AniDB 1.0.3', '// Limitless AniDB 1.0.4', 1)
+
+          anchor = '''async function resolveAnimeIdentity(tmdb, mapping, season, type) {
+          '''
+          helper = '''async function findSeasonCandidateFromBroadSearch(baseAliases, seasonAliases) {
+            const targetKeys = new Set((seasonAliases || []).map(normalizeTitle).filter(Boolean));
+            if (!targetKeys.size) return null;
+
+            for (const baseAlias of baseAliases || []) {
+              const results = await searchAnime(baseAlias);
+              for (const candidate of results) {
+                if (targetKeys.has(normalizeTitle(candidate.title))) {
+                  return { ...candidate, matchedAlias: baseAlias, broadSeasonMatch: true };
+                }
+              }
+            }
+            return null;
+          }
+
+          async function resolveAnimeIdentity(tmdb, mapping, season, type) {
+          '''
+          if anchor not in s:
+              raise SystemExit('resolveAnimeIdentity anchor missing')
+          s = s.replace(anchor, helper, 1)
+
+          old = '''    const generatedMatch = await findCandidate(generatedAliases, null, false);
+              if (generatedMatch) {
+                return { ...generatedMatch, identitySource: "generated-season" };
+              }
+
+              const mappedAliases = await buildMappedSeasonAliases(mapping);
+          '''
+          new = '''    const generatedMatch = await findCandidate(generatedAliases, null, false);
+              if (generatedMatch) {
+                return { ...generatedMatch, identitySource: "generated-season" };
+              }
+
+              // Some AniDB titles use decorative punctuation that the suggestions endpoint
+              // does not reliably match when included in the query. Search the base title,
+              // then accept only a candidate whose normalized title exactly matches one of
+              // our generated season forms. This remains deterministic and non-fuzzy.
+              const broadSeasonMatch = await findSeasonCandidateFromBroadSearch(genericAliases, generatedAliases);
+              if (broadSeasonMatch) {
+                return { ...broadSeasonMatch, identitySource: "broad-exact-season" };
+              }
+
+              const mappedAliases = await buildMappedSeasonAliases(mapping);
+          '''
+          if old not in s:
+              raise SystemExit('generated season block missing')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          if manifest['version'] != '0.1.16':
+              raise SystemExit(f"unexpected baseline {manifest['version']}")
+          manifest['version'] = '0.1.17'
+          ani = next(x for x in manifest['scrapers'] if x['id'] == 'anidb')
+          if ani['version'] != '1.0.3':
+              raise SystemExit(f"unexpected AniDB version {ani['version']}")
+          ani['version'] = '1.0.4'
+          ani['description'] = 'Limitless-maintained AniDB based on Eclipsia Praxiel runtime access, with exact S2+ season discovery across styled titles, MAL fallback, and standardized DUB/HARDSUB labels.'
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+
+          lock_path = Path('sources-lock.json')
+          lock = json.loads(lock_path.read_text(encoding='utf-8'))
+          lock['baseline'] = 'anime-v0.1.17'
+          lock['frozenOn'] = '2026-08-24'
+          entry = next(x for x in lock['providers'] if x['filename'] == 'anidb.js')
+          entry['localVersion'] = '1.0.4'
+          entry['notes'] = 'Praxiel-based runtime access. Later seasons first try explicit season-shaped aliases, then a broad base-title search that accepts only normalized exact season-title matches. This handles styled titles such as [Oshi No Ko] Season 2 without fuzzy matching, while preserving the Tanya S2 anti-fallback guard and DUB/HARDSUB labels.'
+          lock_path.write_text(json.dumps(lock, indent=2) + '\n', encoding='utf-8')
+          PY
+
+          node --check providers/anidb.js
+
+      - name: Gate Oshi no Ko and Tanya season identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const requests = [];
+          function jsonResponse(body) { return { ok: true, status: 200, json: async () => body, text: async () => JSON.stringify(body) }; }
+          function textResponse(body) { return { ok: true, status: 200, json: async () => { throw new Error('not json'); }, text: async () => body }; }
+
+          global.fetch = async (url, options={}) => {
+            const u = String(url);
+            requests.push(u);
+
+            if (u.includes('/3/tv/203737?')) return jsonResponse({
+              name: 'Oshi no Ko', original_name: 'Oshi no Ko',
+              external_ids: { imdb_id: 'tt21030032' }, genres: [{ id: 16 }], alternative_titles: { results: [] }
+            });
+            if (u.includes('/3/tv/69346?')) return jsonResponse({
+              name: 'Saga of Tanya the Evil', original_name: '幼女戦記',
+              external_ids: { imdb_id: 'tt6455986' }, genres: [{ id: 16 }], alternative_titles: { results: [] }
+            });
+
+            if (u.includes('id-mapping-api-malid') && u.includes('tt21030032')) {
+              return jsonResponse({ mal_id: 52034, mal_episode: 1, anime_title: 'Oshi no Ko' });
+            }
+            if (u.includes('id-mapping-api-malid') && u.includes('tt6455986')) {
+              return jsonResponse({ mal_id: 32615, mal_episode: 1, anime_title: 'Youjo Senki' });
+            }
+
+            if (u.includes('api.jikan.moe/v4/anime/52034')) return jsonResponse({ data: { title: 'Oshi no Ko', title_english: 'Oshi no Ko', titles: [] } });
+            if (u.includes('api.jikan.moe/v4/anime/32615')) return jsonResponse({ data: { title: 'Youjo Senki', title_english: 'Saga of Tanya the Evil', titles: [] } });
+            if (u.includes('graphql.anilist.co')) return jsonResponse({ data: { Media: { title: { english: null, romaji: null, native: null }, synonyms: [] } } });
+
+            // Oshi: season-specific queries fail to expose the styled title, but broad base search does.
+            if (u.includes('/search/suggestions?q=Oshi%20no%20Ko%20II') ||
+                u.includes('/search/suggestions?q=Oshi%20no%20Ko%20Season%202') ||
+                u.includes('/search/suggestions?q=Oshi%20no%20Ko%202nd%20Season')) {
+              return textResponse('<a href="/anime/oshi-no-ko-21"><img alt="[Oshi No Ko]"></a>');
+            }
+            if (u.includes('/search/suggestions?q=Oshi%20no%20Ko')) {
+              return textResponse('<a href="/anime/oshi-no-ko-21"><img alt="[Oshi No Ko]"></a><a href="/anime/oshi-no-ko-season-2-22"><img alt="[Oshi No Ko] Season 2"></a><a href="/anime/oshi-no-ko-season-3-23"><img alt="[Oshi No Ko] Season 3"></a>');
+            }
+
+            // Tanya continues to resolve directly through its Roman-numeral season title.
+            if (u.includes('/search/suggestions?q=Saga%20of%20Tanya%20the%20Evil%20II')) {
+              return textResponse('<a href="/anime/saga-of-tanya-the-evil-ii-6383"><img alt="Saga of Tanya the Evil II"></a>');
+            }
+            if (u.includes('/search/suggestions')) return textResponse('');
+
+            if (u.includes('/api/frontend/anime/22/episodes')) return jsonResponse({ episodes: [{ id: 'oshi-s2e1', number: 1 }] });
+            if (u.includes('/api/frontend/anime/6383/episodes')) return jsonResponse({ episodes: [{ id: 'tanya-s2e1', number: 1 }] });
+            if (u.includes('/api/frontend/anime/21/episodes')) throw new Error('BUG: Oshi S2 collapsed to S1 record 21');
+            if (u.includes('/api/frontend/anime/4517/episodes')) throw new Error('BUG: Tanya S2 collapsed to S1 record 4517');
+
+            if (u.includes('/api/frontend/episode/oshi-s2e1/languages') || u.includes('/api/frontend/episode/tanya-s2e1/languages')) {
+              const key = u.includes('oshi') ? 'oshi' : 'tanya';
+              return jsonResponse([
+                { code: 'eng', embed_url: `https://embed.test/${key}-eng` },
+                { code: 'jpn', embed_url: `https://embed.test/${key}-jpn` }
+              ]);
+            }
+            if (u.startsWith('https://embed.test/')) return textResponse("file: 'https://cdn.test/stream.m3u8'");
+
+            throw new Error('Unhandled mock URL: ' + u);
+          };
+
+          const provider = require('./providers/anidb.js');
+          (async () => {
+            const oshi = await provider.getStreams('203737', 'tv', 2, 1);
+            if (oshi.length !== 2) throw new Error('Oshi S2 expected 2 streams, got ' + oshi.length);
+            if (!requests.some(x => x.includes('/api/frontend/anime/22/episodes'))) throw new Error('Oshi did not select AniDB 22');
+            if (requests.some(x => x.includes('/api/frontend/anime/21/episodes'))) throw new Error('Oshi selected AniDB 21');
+
+            requests.length = 0;
+            const tanya = await provider.getStreams('69346', 'tv', 2, 1);
+            if (tanya.length !== 2) throw new Error('Tanya S2 expected 2 streams, got ' + tanya.length);
+            if (!requests.some(x => x.includes('/api/frontend/anime/6383/episodes'))) throw new Error('Tanya did not select AniDB 6383');
+            if (requests.some(x => x.includes('/api/frontend/anime/4517/episodes'))) throw new Error('Tanya selected AniDB 4517');
+
+            console.log('PASS: Oshi S2 -> AniDB 22, Tanya S2 -> AniDB 6383');
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
+      - name: Validate repository and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in providers/*.js; do node --check "$f" >/dev/null; done
+          node -e "const m=require('./manifest.json'); if(m.version!=='0.1.17') process.exit(1); const a=m.scrapers.find(x=>x.id==='anidb'); if(!a||a.version!=='1.0.4') process.exit(1)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add providers/anidb.js manifest.json sources-lock.json
+          git commit -m "Fix AniDB styled later-season discovery [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
