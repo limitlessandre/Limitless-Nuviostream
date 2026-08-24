@@ -1,144 +1,61 @@
-name: Apply 123Anime semantic dedupe
+name: Validate frozen Limitless anime baseline
 
 on:
   push:
     branches: [Limitless-Nuviotest]
-    paths:
-      - .github/workflows/update-manifest.yml
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  patch:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: Limitless-Nuviotest
-      - name: Patch 123Anime and restore validation workflow
-        shell: bash
+
+      - name: Validate manifest and provenance
         run: |
-          set -euo pipefail
           python3 - <<'PY'
-          from pathlib import Path
           import json
+          from pathlib import Path
 
-          p = Path('providers/123anime.js')
-          s = p.read_text()
-          old = '''    const routeKey = `${variants[i]}|${finalUrl}`;
-    if (!finalUrl || seen.has(routeKey)) continue;
-    seen.add(routeKey);'''
-          new = '''    // Try every player route, but expose a second entry only when it resolves
-    // to a materially different final stream.
-    const routeKey = finalUrl;
-    if (!finalUrl || seen.has(routeKey)) continue;
-    seen.add(routeKey);'''
-          if old not in s:
-              raise SystemExit('local dedupe anchor not found')
-          s = s.replace(old, new, 1)
+          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
+          lock = json.loads(Path('sources-lock.json').read_text(encoding='utf-8'))
+          scrapers = manifest.get('scrapers', [])
 
-          old = '''    const seen = new Set();
-    const out = all.flat().filter(stream => {
-      const key = `${stream.url}|${stream.language}|${stream.name}`;
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });'''
-          new = '''    const seen = new Set();
-    const out = all.flat().filter(stream => {
-      const headerKey = Object.entries(stream.headers || {})
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([k, v]) => `${k.toLowerCase()}=${v}`)
-        .join('&');
-      const subtitleKey = (stream.subtitles || [])
-        .map(sub => `${sub.language || ''}|${sub.url || ''}`)
-        .sort()
-        .join(',');
-      // Player/server labels are deliberately excluded. JW, Legacy, SBv2,
-      // and site server aliases remain internal fallbacks when they resolve
-      // to the same media with the same playback semantics.
-      const key = `${stream.url}|${stream.language}|${headerKey}|${subtitleKey}`;
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });'''
-          if old not in s:
-              raise SystemExit('global dedupe anchor not found')
-          p.write_text(s.replace(old, new, 1))
+          if len(scrapers) != 17:
+              raise SystemExit(f'Expected 17 providers, found {len(scrapers)}')
 
-          m = Path('manifest.json')
-          data = json.loads(m.read_text())
-          data['version'] = '0.1.14'
-          for scraper in data.get('scrapers', []):
-              if scraper.get('id') == 'limitless-123anime':
-                  scraper['version'] = '1.1.1'
-                  scraper['description'] = 'Limitless AniYomi-to-Nuvio port of 123Anime with season-aware MAL mapping, exact aliases, DUB/HARDSUB labeling, mirror failover, and JW/Legacy/SBv2 fallback extraction with semantic duplicate collapsing.'
-          m.write_text(json.dumps(data, indent=2) + '\n')
+          ids = [item['id'].casefold() for item in scrapers]
+          names = [item['name'].casefold() for item in scrapers]
+          if len(ids) != len(set(ids)):
+              raise SystemExit('Duplicate provider id found')
+          if len(names) != len(set(names)):
+              raise SystemExit('Duplicate provider name found')
 
-          l = Path('sources-lock.json')
-          lock = json.loads(l.read_text())
-          lock['baseline'] = 'anime-v0.1.14'
-          for provider in lock.get('providers', []):
-              if provider.get('filename') == '123anime.js':
-                  provider['localVersion'] = '1.1.1'
-                  provider['notes'] = 'AniYomi-to-Nuvio port. Tries JW, Legacy, and SBv2 internally for resilience, but collapses outputs that resolve to the same final media URL with the same headers/audio/subtitle semantics. Distinct routes remain visible. Japanese burned-in subtitle streams are labeled HARDSUB.'
-          l.write_text(json.dumps(lock, indent=2) + '\n')
+          manifest_files = set()
+          for item in scrapers:
+              filename = item['filename']
+              if not filename.startswith('providers/'):
+                  raise SystemExit(f'Non-local provider path: {filename}')
+              if not Path(filename).is_file():
+                  raise SystemExit(f'Missing provider file: {filename}')
+              manifest_files.add(Path(filename).name)
+
+          lock_files = {item['filename'] for item in lock.get('providers', [])}
+          if manifest_files != lock_files:
+              raise SystemExit('Manifest and sources-lock provider lists differ')
+
+          if lock.get('baseline') != f"anime-v{manifest.get('version')}":
+              raise SystemExit('Manifest version and sources-lock baseline differ')
+
+          print(f'Validated {len(scrapers)} providers')
           PY
 
-          rm -f .github/workflows/collapse-123anime.yml
-
-          cat > .github/workflows/update-manifest.yml <<'EOF'
-          name: Validate frozen Limitless anime baseline
-
-          on:
-            push:
-              branches: [Limitless-Nuviotest]
-            workflow_dispatch:
-
-          permissions:
-            contents: read
-
-          jobs:
-            validate:
-              runs-on: ubuntu-latest
-              steps:
-                - uses: actions/checkout@v4
-                - name: Validate manifest and provenance
-                  run: |
-                    python3 - <<'PY'
-                    import json
-                    from pathlib import Path
-                    manifest = json.loads(Path('manifest.json').read_text())
-                    lock = json.loads(Path('sources-lock.json').read_text())
-                    scrapers = manifest.get('scrapers', [])
-                    if len(scrapers) != 17:
-                        raise SystemExit(f'Expected 17 providers, found {len(scrapers)}')
-                    ids = [x['id'].casefold() for x in scrapers]
-                    names = [x['name'].casefold() for x in scrapers]
-                    if len(ids) != len(set(ids)):
-                        raise SystemExit('Duplicate provider id found')
-                    if len(names) != len(set(names)):
-                        raise SystemExit('Duplicate provider name found')
-                    manifest_files = set()
-                    for item in scrapers:
-                        filename = item['filename']
-                        if not filename.startswith('providers/') or not Path(filename).is_file():
-                            raise SystemExit(f'Invalid local provider path: {filename}')
-                        manifest_files.add(Path(filename).name)
-                    lock_files = {x['filename'] for x in lock.get('providers', [])}
-                    if manifest_files != lock_files:
-                        raise SystemExit('Manifest and sources-lock provider lists differ')
-                    print(f'Validated {len(scrapers)} providers')
-                    PY
-                - name: Syntax check providers
-                  run: |
-                    for file in providers/*.js; do node --check "$file"; done
-          EOF
-
-          node --check providers/123anime.js
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add providers/123anime.js manifest.json sources-lock.json .github/workflows
-          git commit -m "Collapse duplicate 123Anime player outputs [skip ci]"
-          git push origin HEAD:Limitless-Nuviotest
+      - name: Syntax check providers
+        run: |
+          for file in providers/*.js; do
+            echo "Syntax checking $file"
+            node --check "$file"
+          done
