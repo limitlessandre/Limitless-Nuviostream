@@ -197,22 +197,11 @@ function subtitleTracks(mediaData, embedUrl) {
     result.push({
       url: track.file,
       language: lang.code,
-      name: `${lang.display}${extra} [AnimeKai Soft Subtitle]`,
+      name: `${lang.display}${extra} [SOFTSUB]`,
       headers
     });
   }
   return result;
-}
-
-function softSubtitleSummary(subtitles) {
-  if (!Array.isArray(subtitles) || subtitles.length === 0) return "";
-  const names = [];
-  for (const subtitle of subtitles) {
-    const lang = normalizeLanguage(subtitle && subtitle.name, subtitle && subtitle.url);
-    const display = lang ? lang.display : "Soft Sub";
-    if (!names.includes(display)) names.push(display);
-  }
-  return names.length ? ` • Soft Subs: ${names.join(", ")}` : " • Soft Subs Available";
 }
 
 function serverPriority(type) {
@@ -244,16 +233,22 @@ async function resolveServer(serverType, serverKey, serverData) {
   const isDub = /dub/i.test(rawType);
   const isSub = /sub|hsub/i.test(rawType);
   const audioLanguage = isDub ? "English" : "Japanese";
-  const sourceMode = isDub ? "DUB" : isSub ? "HARDSUB" : "Source";
-  const softSummary = softSubtitleSummary(subtitles);
+  const tag = isDub
+    ? (subtitles.length ? "DUB+SUBS" : "DUB")
+    : isSub
+      ? (subtitles.length ? "HARDSUB+SUBS" : "HARDSUB")
+      : subtitles.length
+        ? "SOFTSUB"
+        : "";
+  const tagText = tag ? ` [${tag}]` : "";
 
   const streams = [];
   for (const source of mediaData.sources) {
     if (!source || !source.file || !/^https?:\/\//i.test(source.file)) continue;
     const quality = qualityFromSource(source);
     streams.push({
-      name: `${PROVIDER_NAME} • ${quality} • ${audioLanguage} [${sourceMode}] • ${serverName}${softSummary}`,
-      title: `${PROVIDER_NAME} ${audioLanguage} [${sourceMode}]`,
+      name: `${PROVIDER_NAME} • ${quality} • ${audioLanguage}${tagText} • ${serverName}`,
+      title: `${PROVIDER_NAME} ${audioLanguage}${tagText}`,
       url: source.file,
       quality,
       provider: PROVIDER_NAME,
