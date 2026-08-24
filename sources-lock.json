@@ -72,9 +72,17 @@
     },
     {
       "filename": "anikototv.js",
-      "repository": "NuvioPlugin/asura-providers",
-      "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
-      "path": "providers/anikototv.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/anikototv.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.6",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/asura-providers",
+        "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
+        "path": "providers/anikototv.js"
+      },
+      "notes": "Local output wrapper only. Existing AnikotoTV external caption tracks are normalized to Nuvio subtitle metadata; SUB becomes SOFTSUB when tracks exist and DUB becomes DUB or DUB+SUBS. Extraction remains upstream behavior."
     },
     {
       "filename": "animekai.js",
@@ -104,9 +112,17 @@
     },
     {
       "filename": "animetsu.js",
-      "repository": "NuvioPlugin/asura-providers",
-      "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
-      "path": "providers/animetsu.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/animetsu.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/asura-providers",
+        "commit": "f0b7eac00dcdaf112ecc8efeec51f1a8e4429c6d",
+        "path": "providers/animetsu.js"
+      },
+      "notes": "Local output wrapper only. Explicit dubbed output is tagged DUB; the upstream generic SUB marker is removed until subtitle behavior is verified. Extraction remains upstream behavior."
     },
     {
       "filename": "anizone.js",
