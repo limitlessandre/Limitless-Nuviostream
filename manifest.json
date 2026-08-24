@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
@@ -79,25 +79,23 @@
     {
       "id": "anidb",
       "name": "AniDB",
-      "description": "AniDB with the Limitless output naming normalizer for verified DUB/HARDSUB/SOFTSUB behavior.",
-      "version": "1.0.1",
-      "author": "Nuvio Team (ChillPill)",
+      "description": "Limitless-maintained AniDB based on Eclipsia Praxiel runtime access, with MAL season identity locking, finite exact aliases, and standardized DUB/HARDSUB labels.",
+      "version": "1.0.2",
+      "author": "Limitless maintained port based on Eclipsia Praxiel (GPL-3.0)",
       "supportedTypes": [
         "movie",
         "tv"
       ],
       "filename": "providers/anidb.js",
       "enabled": true,
-      "hasSettings": true,
+      "hasSettings": false,
       "formats": [
-        "mp4",
         "m3u8"
       ],
       "logo": "https://i.postimg.cc/rmMzZ45K/anidb.png",
       "contentLanguage": [
         "en",
-        "ja",
-        "ko"
+        "ja"
       ]
     },
     {

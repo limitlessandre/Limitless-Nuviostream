@@ -1,6 +1,6 @@
 {
-  "baseline": "anime-v0.1.14",
-  "frozenOn": "2026-08-23",
+  "baseline": "anime-v0.1.15",
+  "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
   "providers": [
@@ -56,13 +56,23 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.1",
+      "localVersion": "1.0.2",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Output-only Limitless naming wrapper. Normalizes any existing subtitle objects and verified DUB/HARDSUB/SOFTSUB markers without changing extraction or matching."
+      "notes": "Rebuilt from Eclipsia Praxiel 1.1.0 runtime access/extraction behavior. Limitless adds TMDB-to-MAL season mapping, season-specific finite aliases, MAL-verified generic fallback to prevent later seasons from falling into season 1, an animation-only guard, and standardized English [DUB] / Japanese [HARDSUB] labels. Praxiel itself was confirmed working in Nuvio Desktop but mapped Tanya S2E1 to S1E1; this rebuild specifically fixes that identity bug.",
+      "license": "GPL-3.0-only",
+      "referenceImplementations": [
+        {
+          "repository": "gitea.com/eclipsia/nuvio-plugin",
+          "commit": "b774c55",
+          "path": "providers/praxiel.js",
+          "name": "Praxiel 1.1.0",
+          "license": "GPL-3.0"
+        }
+      ]
     },
     {
       "filename": "anineko.js",
