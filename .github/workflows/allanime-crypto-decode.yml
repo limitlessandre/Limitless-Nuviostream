@@ -1,0 +1,84 @@
+name: AllAnime Crypto Decode
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths: [.github/workflows/allanime-crypto-decode.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Decode current crypto config
+        shell: bash
+        run: |
+          node <<'NODE' > allanime-crypto-decode.txt 2>&1
+          const fs=require('fs'),Module=require('module'),path=require('path');
+          let code=fs.readFileSync('providers/allanime.js','utf8');
+          code+=`\nmodule.exports.__decode={decoderMaps,seedBodies,seedsAt,resolveCall,parseBundle};\n`;
+          const mod=new Module(path.resolve('providers/allanime-decode-runtime.js'),module);mod.filename=path.resolve('providers/allanime-decode-runtime.js');mod.paths=module.paths;mod._compile(code,mod.filename);
+          const d=mod.exports.__decode;
+          const SITE='https://mkissa.to', H={'User-Agent':'Mozilla/5.0','Referer':SITE+'/'};
+          const resolve=(v,b)=>new URL(v,b).toString();
+          const eq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+          function decodeExpr(expr,rot,maps){
+            let out='';
+            const tokenRe=/([$A-Za-z0-9_]+\(\s*-?\d+\s*(?:,\s*-?\d+\s*)?\))|(["'])(.*?)\2/g;
+            let m; while((m=tokenRe.exec(expr))){
+              if(m[1]){const v=d.resolveCall(m[1],rot,maps);out+=v===null?`<${m[1]}?>`:v;} else out+=m[3];
+            }
+            return out;
+          }
+          (async()=>{
+            const html=await (await fetch(SITE+'/',{headers:H})).text();
+            let m=/import\("([^"]*\/entry\/app\.[^"]*\.js)"\)/.exec(html)||/src=["']([^"']*\/entry\/app\.[^"']*\.js)["']/.exec(html);
+            const appUrl=resolve(m[1],SITE+'/'),app=await(await fetch(appUrl,{headers:H})).text();
+            const refs=[];for(const x of app.matchAll(/["'](\.\.?\/[\w./-]+\.js)["']/g))if(!refs.includes(x[1]))refs.push(x[1]);
+            refs.sort((a,b)=>Number(b.includes('/chunks/'))-Number(a.includes('/chunks/')));
+            let body=null,url=null,parsed=null;
+            for(const ref of refs.slice(0,60)){
+              const u=resolve(ref,appUrl);let t;try{const r=await fetch(u,{headers:H});if(!r.ok)continue;t=await r.text();}catch{continue}
+              if(!/aaReq/.test(t))continue;const p=d.parseBundle(t);if(p){body=t;url=u;parsed=p;break;}
+            }
+            if(!body)throw new Error('crypto chunk not found');
+            console.log('CHUNK',url);console.log('PARSED',JSON.stringify(parsed));
+            const maps=d.decoderMaps(body);let rotation=null;
+            outer:for(const calls of d.seedBodies(body)){
+              const first=/^([$A-Za-z0-9_]+)/.exec(calls[0]);if(!first)continue;
+              const alias=maps.aliases.get(first[1]),base=alias&&maps.bases.get(alias.base),table=base&&maps.tables.get(base.table);if(!table)continue;
+              for(let rot=0;rot<table.length;rot++){const s=d.seedsAt(calls,rot,maps);if(s&&eq(s,parsed.seeds)){rotation=rot;break outer;}}
+            }
+            console.log('ROTATION',rotation);if(rotation===null)throw new Error('rotation not resolved');
+            const cfg=/\{v:1,saltMul:(\d+),saltAdd:(\d+),fragMul:(\d+),fragAdd:(\d+),bootPrefix:([^,]+),join:(["'][^"']*["']),parts:\[([^\]]+)\],omitEmptyLane:(!0|!1)\}/.exec(body);
+            if(!cfg)throw new Error('config literal not found');
+            console.log('SALT',cfg[1],cfg[2],cfg[3],cfg[4]);
+            console.log('BOOT_EXPR',cfg[5]);console.log('BOOT_VALUE',decodeExpr(cfg[5],rotation,maps));
+            console.log('JOIN',cfg[6]);
+            console.log('PARTS_EXPR',cfg[7]);
+            const calls=[...cfg[7].matchAll(/[$A-Za-z0-9_]+\(\s*-?\d+\s*(?:,\s*-?\d+\s*)?\)/g)].map(x=>x[0]);
+            console.log('PART_CALLS',JSON.stringify(calls));
+            console.log('PART_VALUES',JSON.stringify(calls.map(x=>d.resolveCall(x,rotation,maps))));
+            console.log('PARTS_DECODED_RAW',decodeExpr(cfg[7],rotation,maps));
+            console.log('OMIT',cfg[8]);
+            const ux=body.indexOf('function Ux');if(ux>=0)console.log('UX_SNIP',body.slice(ux,ux+1800).replace(/\s+/g,' '));
+            const mx=body.indexOf('function Mx');if(mx>=0)console.log('MX_SNIP',body.slice(mx,mx+2500).replace(/\s+/g,' '));
+          })().catch(e=>{console.error('FAILED',e.stack||e);process.exitCode=1});
+          NODE
+          cat allanime-crypto-decode.txt
+      - name: Commit decode
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add allanime-crypto-decode.txt
+          git commit -m "Record temporary MKissa config decode [skip ci]" || exit 0
+          git push origin HEAD:Limitless-Nuviotest
