@@ -1,0 +1,52 @@
+name: Probe AniDB suggestions endpoint
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths:
+      - .github/workflows/probe-anidb-suggestions.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Probe with Nuvio-style fetch
+        run: |
+          node <<'NODE' > .anidb-suggestions-probe.txt 2>&1
+          const base='https://anidb.app';
+          const headers={
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            'Accept':'text/html,application/xhtml+xml,application/json,*/*;q=0.8',
+            'Accept-Language':'en-US,en;q=0.9',
+            'Referer':base+'/',
+            'Origin':base,
+            'X-Requested-With':'XMLHttpRequest'
+          };
+          for (const q of ['Saga of Tanya the Evil','Frieren: Beyond Journey’s End']) {
+            for (const path of ['/search/suggestions?q='+encodeURIComponent(q),'/browse?q='+encodeURIComponent(q)]) {
+              try {
+                const r=await fetch(base+path,{headers,redirect:'follow'});
+                const t=await r.text();
+                console.log('\nQUERY',q,'PATH',path,'STATUS',r.status,'CT',r.headers.get('content-type'),'LEN',t.length,'CHALLENGE',/Just a moment|cf_chl_opt|__cf_chl/i.test(t));
+                console.log(t.slice(0,1800).replace(/\n/g,' '));
+              } catch(e) { console.log('ERR',q,path,e.stack||e); }
+            }
+          }
+          NODE
+      - name: Commit report and self-remove
+        run: |
+          rm -f .github/workflows/probe-anidb-suggestions.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Probe AniDB suggestions endpoint [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
