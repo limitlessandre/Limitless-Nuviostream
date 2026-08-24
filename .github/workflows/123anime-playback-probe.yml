@@ -29,33 +29,22 @@ jobs:
           path = Path('providers/123anime.js')
           s = path.read_text()
 
-          quality_fn = '''function quality(url) {
-            const m = String(url || "").match(/(?:^|[^0-9])(2160|1440|1080|720|480|360)p(?:[^0-9]|$)/i);
-            return m ? `${m[1]}p` : "HD";
-          }
-          '''
-          normalize_fn = quality_fn + '''
-          // 123Anime's CDN currently disguises HLS playlists as image/jpeg and
-          // serves child playlists from extensionless /cdn/<hash> URLs. mpv on
-          // Nuvio Desktop can follow the master but then mis-detect the child as
-          // a one-frame image. Resolve the best master variant here and append a
-          // harmless .m3u8 query hint so libavformat stays in HLS mode.
-          async function normalizeHls(url, headers) {
+          if 'async function normalizeHls(' not in s:
+              anchor = s.index('function makeStream(')
+              block = r'''async function normalizeHls(url, headers) {
             const fallback = { url, quality: quality(url) };
             if (!url || !/m3u8/i.test(String(url))) return fallback;
 
             const body = await text(url, { headers }, 10000);
             if (!body || !body.trimStart().startsWith("#EXTM3U")) return fallback;
 
-            const lines = body.split(/\\r?\\n/).map(x => x.trim()).filter(Boolean);
+            const lines = body.split(/\r?\n/).map(x => x.trim()).filter(Boolean);
             const variants = [];
-
             for (let i = 0; i < lines.length; i++) {
               const line = lines[i];
               if (!line.startsWith("#EXT-X-STREAM-INF:")) continue;
-
-              const res = line.match(/RESOLUTION=(\\d+)x(\\d+)/i);
-              const bw = line.match(/BANDWIDTH=(\\d+)/i);
+              const res = line.match(/RESOLUTION=(\d+)x(\d+)/i);
+              const bw = line.match(/BANDWIDTH=(\d+)/i);
               let uri = null;
               for (let j = i + 1; j < lines.length; j++) {
                 if (lines[j].startsWith("#")) continue;
@@ -63,7 +52,6 @@ jobs:
                 break;
               }
               if (!uri) continue;
-
               variants.push({
                 uri,
                 height: res ? parseInt(res[2], 10) : 0,
@@ -73,55 +61,27 @@ jobs:
 
             if (!variants.length) return fallback;
             variants.sort((a, b) => (b.height - a.height) || (b.bandwidth - a.bandwidth));
-
             const best = variants[0];
             let child = abs(best.uri, url);
             if (!child) return fallback;
-
-            if (!/\\.m3u8(?:$|[?#])/i.test(child)) {
+            if (!/\.m3u8(?:$|[?#])/i.test(child)) {
               child += (child.includes("?") ? "&" : "?") + "nuvio.m3u8";
             }
-
-            return {
-              url: child,
-              quality: best.height ? `${best.height}p` : fallback.quality
-            };
+            return { url: child, quality: best.height ? `${best.height}p` : fallback.quality };
           }
-          '''
-          if 'async function normalizeHls(' not in s:
-              if quality_fn not in s:
-                  raise SystemExit('quality function anchor missing')
-              s = s.replace(quality_fn, normalize_fn, 1)
 
-          s = s.replace(
-              'function makeStream(url, mode, server, variant, tracks, headers, ctx) {',
-              'function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {',
-              1,
-          )
+          '''
+              s = s[:anchor] + block + s[anchor:]
+
+          old_sig = 'function makeStream(url, mode, server, variant, tracks, headers, ctx) {'
+          if old_sig in s:
+              s = s.replace(old_sig, 'function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {', 1)
           s = s.replace('  const q = quality(url);', '  const q = qualityOverride || quality(url);', 1)
 
-          old_direct = '''  if (/\\.(?:m3u8|mp4)(?:$|[?#])/i.test(embedUrl)) {
-            const s = makeStream(embedUrl, mode, server.label, "Direct", tracks, headers, ctx);
-            return s ? [s] : [];
-          }
-          '''
-          new_direct = '''  if (/\\.(?:m3u8|mp4)(?:$|[?#])/i.test(embedUrl)) {
-            const normalized = await normalizeHls(embedUrl, headers);
-            const s = makeStream(normalized.url, mode, server.label, "Direct", tracks, headers, ctx, normalized.quality);
-            return s ? [s] : [];
-          }
-          '''
-          if old_direct in s:
-              s = s.replace(old_direct, new_direct, 1)
-
-          old_loop = '''  for (let i = 0; i < results.length; i++) {
-            const u = results[i];
-            if (!u || seen.has(u)) continue;
-            seen.add(u);
-            const s = makeStream(u, mode, server.label, variants[i], tracks, headers, ctx);
-            if (s) out.push(s);
-          }
-          '''
+          marker = '  const variants = ["JW", "SBv2"];'
+          marker_pos = s.index(marker)
+          loop_start = s.index('  for (let i = 0; i < results.length; i++) {', marker_pos)
+          loop_end = s.index('  return out;', loop_start)
           new_loop = '''  for (let i = 0; i < results.length; i++) {
             const u = results[i];
             if (!u) continue;
@@ -129,19 +89,12 @@ jobs:
             const finalUrl = normalized.url;
             if (!finalUrl || seen.has(finalUrl)) continue;
             seen.add(finalUrl);
-            const s = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
-            if (s) out.push(s);
+            const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
+            if (stream) out.push(stream);
           }
           '''
-          if old_loop not in s:
-              raise SystemExit('result loop anchor missing')
-          s = s.replace(old_loop, new_loop, 1)
-
-          s = s.replace(
-              '      const key = `${stream.url}|${stream.language}|${stream.name}`;',
-              '      const key = `${stream.url}|${stream.language}`;',
-              1,
-          )
+          s = s[:loop_start] + new_loop + s[loop_end:]
+          s = s.replace('      const key = `${stream.url}|${stream.language}|${stream.name}`;', '      const key = `${stream.url}|${stream.language}`;', 1)
           path.write_text(s)
 
           manifest_path = Path('manifest.json')
@@ -159,57 +112,35 @@ jobs:
           for provider in lock['providers']:
               if provider.get('filename') == '123anime.js':
                   provider['localVersion'] = '1.0.1'
-                  provider['notes'] = 'AniYomi-to-Nuvio port. Adds Nuvio-specific master-playlist resolution because the 123Anime CDN labels extensionless HLS child playlists as image/jpeg; the selected child is returned with a harmless .m3u8 query hint and duplicate server aliases are collapsed.'
+                  provider['notes'] = 'AniYomi-to-Nuvio port. Nuvio-specific workaround resolves the CDN master playlist to the best child and appends an HLS query hint because the CDN labels extensionless playlists as image/jpeg. Duplicate server aliases resolving to the same stream are collapsed.'
           lock_path.write_text(json.dumps(lock, indent=2) + '\n')
           PY
           node --check providers/123anime.js
       - run: npm install cheerio@1.0.0-rc.12
-      - name: Validate 123Anime returned media
+      - name: Validate patched streams
         shell: bash
         run: |
           node <<'NODE' > 123anime-playback-probe.txt 2>&1
-          const fs=require('fs');
-          const Module=require('module');
-          const path=require('path');
+          const fs=require('fs'),Module=require('module'),path=require('path');
           let code=fs.readFileSync('providers/123anime.js','utf8').replace('cheerio-without-node-native','cheerio');
-          const mod=new Module(path.resolve('providers/123anime-probe-runtime.js'),module);
-          mod.filename=path.resolve('providers/123anime-probe-runtime.js');
-          mod.paths=module.paths;
-          mod._compile(code,mod.filename);
-          const p=mod.exports;
-          const KEY='1865f43a0549ca50d341dd9ab8b29f49';
-          async function main(){
-            const q = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${KEY}&query=${encodeURIComponent('Saga of Tanya the Evil')}`);
-            const j = await q.json();
-            const hit=(j.results||[])[0];
-            console.log('TMDB', hit && {id:hit.id,name:hit.name,original_name:hit.original_name});
-            if(!hit) throw new Error('TMDB title not found');
-            const streams=await p.getStreams(String(hit.id),'tv',1,1);
-            console.log('STREAM_COUNT',streams.length);
-            for (let i=0;i<streams.length;i++){
-              const s=streams[i];
-              console.log(`\n=== STREAM ${i+1} ===`);
-              console.log(JSON.stringify({name:s.name,title:s.title,url:s.url,type:s.type,headers:s.headers,language:s.language},null,2));
-              const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'});
-              console.log('FETCH',r.status,r.url,r.headers.get('content-type'));
-              const body=await r.text();
-              console.log('BODY_HEAD',JSON.stringify(body.slice(0,900)));
-              if(!body.trimStart().startsWith('#EXTM3U')) throw new Error('Returned stream is not HLS');
-              const lines=body.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-              const media=lines.find(x=>!x.startsWith('#'));
-              console.log('FIRST_MEDIA_LINE',media||'NONE');
-              if(media){
-                const mediaUrl=new URL(media,r.url).toString();
-                const rr=await fetch(mediaUrl,{headers:s.headers||{},redirect:'follow'});
-                console.log('FIRST_MEDIA_FETCH',rr.status,rr.url,rr.headers.get('content-type'));
-                const ab=await rr.arrayBuffer();
-                console.log('FIRST_MEDIA_BYTES',ab.byteLength,Buffer.from(ab).subarray(0,32).toString('hex'));
-              }
+          const mod=new Module(path.resolve('providers/123anime-probe-runtime.js'),module); mod.filename=path.resolve('providers/123anime-probe-runtime.js'); mod.paths=module.paths; mod._compile(code,mod.filename);
+          const p=mod.exports, KEY='1865f43a0549ca50d341dd9ab8b29f49';
+          (async()=>{
+            const q=await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${KEY}&query=${encodeURIComponent('Saga of Tanya the Evil')}`); const j=await q.json(); const hit=(j.results||[])[0];
+            console.log('TMDB',hit&&{id:hit.id,name:hit.name});
+            const streams=await p.getStreams(String(hit.id),'tv',1,1); console.log('STREAM_COUNT',streams.length);
+            for(const s of streams){
+              console.log('\nSTREAM',JSON.stringify({name:s.name,url:s.url,quality:s.quality,headers:s.headers},null,2));
+              const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'}); const body=await r.text();
+              console.log('PLAYLIST',r.status,r.headers.get('content-type'),JSON.stringify(body.slice(0,500)));
+              if(!body.trimStart().startsWith('#EXTM3U')) throw new Error('not HLS');
+              const lines=body.split(/\r?\n/).map(x=>x.trim()).filter(Boolean); const seg=lines.find(x=>!x.startsWith('#'));
+              console.log('FIRST_URI',seg||'NONE');
+              if(seg){ const u=new URL(seg,r.url).toString(); const rr=await fetch(u,{headers:s.headers||{},redirect:'follow'}); const ab=await rr.arrayBuffer(); console.log('FIRST_FETCH',rr.status,rr.headers.get('content-type'),ab.byteLength,Buffer.from(ab).subarray(0,16).toString('hex')); }
             }
-          }
-          main().catch(e=>{console.error('PROBE_FAILED',e&&e.stack||e);process.exitCode=1});
+          })().catch(e=>{console.error('PROBE_FAILED',e&&e.stack||e);process.exitCode=1});
           NODE
-      - name: Commit fix and probe result
+      - name: Commit fix and result
         if: always()
         shell: bash
         run: |
