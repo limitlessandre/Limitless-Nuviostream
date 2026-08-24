@@ -25,44 +25,31 @@ jobs:
           rm -rf /tmp/eclipsia
           git clone --depth 1 https://gitea.com/eclipsia/nuvio-plugin.git /tmp/eclipsia
 
+          cp /tmp/eclipsia/providers/praxiel.js .praxiel-source.js
+          cp /tmp/eclipsia/stable/manifest.json .eclipsia-stable-manifest.json
+
           {
             echo '=== ECLIPSIA HEAD ==='
             git -C /tmp/eclipsia log -1 --oneline
             echo
-            echo '=== MANIFEST FILES ==='
-            find /tmp/eclipsia -maxdepth 4 -iname 'manifest*.json' -print | sort
+            echo '=== PRAXIEL MANIFEST ENTRY ==='
+            python3 - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('/tmp/eclipsia/stable/manifest.json').read_text())
+          for s in m.get('scrapers',[]):
+              if s.get('id')=='praxiel':
+                  print(json.dumps(s,indent=2))
+          PY
             echo
-            echo '=== STABLE MANIFEST ==='
-            cat /tmp/eclipsia/stable/manifest.json || true
-            echo
-            echo '=== PRAXIEL MATCHES ==='
-            grep -RniE 'prax|praxiel' /tmp/eclipsia --exclude-dir=.git || true
-            echo
-            echo '=== ANIDB MATCHES ==='
-            grep -RniE 'anidb|api/frontend/anime|api/frontend/episode' /tmp/eclipsia --exclude-dir=.git || true
-            echo
-            echo '=== LIKELY FILES ==='
-            find /tmp/eclipsia -type f \( -iname '*anidb*' -o -iname '*prax*' \) -print | sort
-            echo
-            echo '=== FULL CONTENT OF LIKELY FILES ==='
-            while IFS= read -r file; do
-              [ -f "$file" ] || continue
-              size=$(wc -c < "$file")
-              if [ "$size" -le 250000 ]; then
-                echo
-                echo "--- $file ($size bytes) ---"
-                cat "$file"
-              fi
-            done < <(find /tmp/eclipsia -type f \( -iname '*anidb*' -o -iname '*prax*' \) -print | sort)
-            echo
-            echo '=== PROVIDER TREE ==='
-            find /tmp/eclipsia -maxdepth 5 -type f | sort
+            echo '=== PRAXIEL SOURCE ==='
+            cat /tmp/eclipsia/providers/praxiel.js
           } > .eclipsia-inspection.txt
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .eclipsia-inspection.txt
+          git add .eclipsia-inspection.txt .praxiel-source.js .eclipsia-stable-manifest.json
           if ! git diff --cached --quiet; then
-            git commit -m "Capture Eclipsia Praxiel inspection [skip ci]"
+            git commit -m "Capture Praxiel AniDB source [skip ci]"
             git push origin HEAD:main
           fi
