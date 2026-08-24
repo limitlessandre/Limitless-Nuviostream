@@ -8,24 +8,61 @@ on:
       - .github/workflows/inspect-eclipsia.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone Eclipsia and inspect Praxiel/AniDB
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Clone Eclipsia and capture Praxiel/AniDB source
         shell: bash
         run: |
           set -euo pipefail
+          rm -rf /tmp/eclipsia
           git clone --depth 1 https://gitea.com/eclipsia/nuvio-plugin.git /tmp/eclipsia
-          echo '=== MANIFEST FILES ==='
-          find /tmp/eclipsia -maxdepth 3 -iname 'manifest*.json' -print
-          echo '=== STABLE MANIFEST ==='
-          cat /tmp/eclipsia/stable/manifest.json || true
-          echo '=== PRAXIEL MATCHES ==='
-          grep -RniE 'prax|praxiel' /tmp/eclipsia --exclude-dir=.git || true
-          echo '=== ANIDB MATCHES ==='
-          grep -RniE 'anidb|api/frontend/anime|api/frontend/episode' /tmp/eclipsia --exclude-dir=.git || true
-          echo '=== PROVIDER TREE ==='
-          find /tmp/eclipsia -maxdepth 4 -type f | sort
+
+          {
+            echo '=== ECLIPSIA HEAD ==='
+            git -C /tmp/eclipsia log -1 --oneline
+            echo
+            echo '=== MANIFEST FILES ==='
+            find /tmp/eclipsia -maxdepth 4 -iname 'manifest*.json' -print | sort
+            echo
+            echo '=== STABLE MANIFEST ==='
+            cat /tmp/eclipsia/stable/manifest.json || true
+            echo
+            echo '=== PRAXIEL MATCHES ==='
+            grep -RniE 'prax|praxiel' /tmp/eclipsia --exclude-dir=.git || true
+            echo
+            echo '=== ANIDB MATCHES ==='
+            grep -RniE 'anidb|api/frontend/anime|api/frontend/episode' /tmp/eclipsia --exclude-dir=.git || true
+            echo
+            echo '=== LIKELY FILES ==='
+            find /tmp/eclipsia -type f \( -iname '*anidb*' -o -iname '*prax*' \) -print | sort
+            echo
+            echo '=== FULL CONTENT OF LIKELY FILES ==='
+            while IFS= read -r file; do
+              [ -f "$file" ] || continue
+              size=$(wc -c < "$file")
+              if [ "$size" -le 250000 ]; then
+                echo
+                echo "--- $file ($size bytes) ---"
+                cat "$file"
+              fi
+            done < <(find /tmp/eclipsia -type f \( -iname '*anidb*' -o -iname '*prax*' \) -print | sort)
+            echo
+            echo '=== PROVIDER TREE ==='
+            find /tmp/eclipsia -maxdepth 5 -type f | sort
+          } > .eclipsia-inspection.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .eclipsia-inspection.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Capture Eclipsia Praxiel inspection [skip ci]"
+            git push origin HEAD:main
+          fi
