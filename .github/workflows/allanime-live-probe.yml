@@ -7,19 +7,25 @@ on:
     paths:
       - .github/workflows/allanime-live-probe.yml
 
+permissions:
+  contents: write
+
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Probe AllAnime against Oshi no Ko S1E1
         shell: bash
         run: |
-          node <<'NODE'
+          set +e
+          node <<'NODE' > allanime-probe-result.txt 2>&1
           const fs = require('fs');
           const Module = require('module');
           const path = require('path');
@@ -105,3 +111,15 @@ jobs:
             process.exitCode = 1;
           });
           NODE
+          status=$?
+          echo "PROBE_EXIT=$status" >> allanime-probe-result.txt
+          cat allanime-probe-result.txt
+          exit 0
+      - name: Commit probe result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add allanime-probe-result.txt
+          git commit -m "Record temporary AllAnime live probe [skip ci]" || exit 0
+          git push origin HEAD:Limitless-Nuviotest
