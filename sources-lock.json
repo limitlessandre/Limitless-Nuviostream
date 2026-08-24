@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.16",
+  "baseline": "anime-v0.1.17",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.3",
+      "localVersion": "1.0.4",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Rebuilt from Eclipsia Praxiel 1.1.0 runtime access/extraction behavior. S2+ now tries exact season-shaped aliases before MAL metadata, rejects collapse to the generic base-series record, and prefers the requested episode number inside the selected AniDB season record before MAL episode fallback. Uses standardized English [DUB] / Japanese [HARDSUB] labels.",
+      "notes": "Praxiel-based runtime access. Later seasons first try explicit season-shaped aliases, then a broad base-title search that accepts only normalized exact season-title matches. This handles styled titles such as [Oshi No Ko] Season 2 without fuzzy matching, while preserving the Tanya S2 anti-fallback guard and DUB/HARDSUB labels.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 "use strict";
 
-// Limitless AniDB 1.0.3
+// Limitless AniDB 1.0.4
 // Runtime access/extraction is based on Eclipsia Praxiel 1.1.0 (GPL-3.0).
 // Limitless adds MAL season identity locking, exact finite aliases, animation guard,
 // and the repository's DUB/HARDSUB naming convention.
@@ -278,6 +278,21 @@ async function findCandidate(aliases, malId, requireMalVerification) {
   return null;
 }
 
+async function findSeasonCandidateFromBroadSearch(baseAliases, seasonAliases) {
+  const targetKeys = new Set((seasonAliases || []).map(normalizeTitle).filter(Boolean));
+  if (!targetKeys.size) return null;
+
+  for (const baseAlias of baseAliases || []) {
+    const results = await searchAnime(baseAlias);
+    for (const candidate of results) {
+      if (targetKeys.has(normalizeTitle(candidate.title))) {
+        return { ...candidate, matchedAlias: baseAlias, broadSeasonMatch: true };
+      }
+    }
+  }
+  return null;
+}
+
 async function resolveAnimeIdentity(tmdb, mapping, season, type) {
   const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
   const seasonNumber = Number(season) || 1;
@@ -292,6 +307,15 @@ async function resolveAnimeIdentity(tmdb, mapping, season, type) {
     const generatedMatch = await findCandidate(generatedAliases, null, false);
     if (generatedMatch) {
       return { ...generatedMatch, identitySource: "generated-season" };
+    }
+
+    // Some AniDB titles use decorative punctuation that the suggestions endpoint
+    // does not reliably match when included in the query. Search the base title,
+    // then accept only a candidate whose normalized title exactly matches one of
+    // our generated season forms. This remains deterministic and non-fuzzy.
+    const broadSeasonMatch = await findSeasonCandidateFromBroadSearch(genericAliases, generatedAliases);
+    if (broadSeasonMatch) {
+      return { ...broadSeasonMatch, identitySource: "broad-exact-season" };
     }
 
     const mappedAliases = await buildMappedSeasonAliases(mapping);
