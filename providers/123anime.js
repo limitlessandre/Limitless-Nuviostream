@@ -372,7 +372,7 @@ function subtitleTracks(raw, base, headers, assumeEnglish) {
       url: u,
       language: l[0],
       lang: l[0],
-      name: `${l[1]} [123Anime Soft Subtitle]`,
+      name: `${l[1]} [SOFTSUB]`,
       headers
     });
   }
@@ -529,7 +529,9 @@ async function normalizeHls(url, headers) {
 function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {
   if (!url) return null;
   const q = qualityOverride || quality(url);
-  const tag = mode === "dub" ? "DUB" : (tracks.length ? "HARDSUB + Soft Subs" : "HARDSUB");
+  const tag = mode === "dub"
+    ? (tracks.length ? "DUB+SUBS" : "DUB")
+    : (tracks.length ? "HARDSUB+SUBS" : "HARDSUB");
   return {
     name: `${NAME} | ${q} [${tag}] • ${server} ${variant}`,
     title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${mode === "dub" ? "English Dub" : "Japanese Hard Sub"}`,
@@ -588,9 +590,8 @@ async function extractServer(base, slug, ep, server, mode, ctx) {
     if (!u) continue;
     const normalized = await normalizeHls(u, headers);
     const finalUrl = normalized.url;
-    const routeKey = `${variants[i]}|${finalUrl}`;
-    if (!finalUrl || seen.has(routeKey)) continue;
-    seen.add(routeKey);
+    if (!finalUrl || seen.has(finalUrl)) continue;
+    seen.add(finalUrl);
     const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
     if (stream) out.push(stream);
   }
@@ -611,6 +612,18 @@ async function candidateStreams(base, candidate, targetEp, ctx) {
     )
   );
   return all.flat();
+}
+
+function semanticStreamKey(stream) {
+  const headerKey = Object.entries(stream.headers || {})
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([k, v]) => `${k.toLowerCase()}=${v}`)
+    .join("&");
+  const subtitleKey = (stream.subtitles || [])
+    .map(sub => `${sub.language || sub.lang || ""}|${sub.url || ""}`)
+    .sort()
+    .join(",");
+  return `${stream.url}|${stream.language || ""}|${headerKey}|${subtitleKey}`;
 }
 
 async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
@@ -657,14 +670,14 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     const seen = new Set();
     const out = all.flat().filter(stream => {
-      const key = `${stream.url}|${stream.language}|${stream.name}`;
+      const key = semanticStreamKey(stream);
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
     });
 
     out.sort((a, b) => {
-      const dub = Number(/\[DUB\]/i.test(b.name)) - Number(/\[DUB\]/i.test(a.name));
+      const dub = Number(/\[DUB(?:\+SUBS)?\]/i.test(b.name)) - Number(/\[DUB(?:\+SUBS)?\]/i.test(a.name));
       if (dub) return dub;
       const qa = parseInt(a.quality, 10) || 0;
       const qb = parseInt(b.quality, 10) || 0;
