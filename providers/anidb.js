@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 "use strict";
 
-// Limitless AniDB 1.0.4
+// Limitless AniDB 1.0.5
 // Runtime access/extraction is based on Eclipsia Praxiel 1.1.0 (GPL-3.0).
 // Limitless adds MAL season identity locking, exact finite aliases, animation guard,
 // and the repository's DUB/HARDSUB naming convention.
@@ -293,6 +293,41 @@ async function findSeasonCandidateFromBroadSearch(baseAliases, seasonAliases) {
   return null;
 }
 
+async function findSeasonCandidateFromBaseRelations(baseAliases, seasonAliases) {
+  const targets = new Map();
+  for (const alias of seasonAliases || []) {
+    const key = normalizeTitle(alias);
+    if (key && !targets.has(key)) targets.set(key, alias);
+  }
+  if (!targets.size) return null;
+
+  for (const baseAlias of baseAliases || []) {
+    const results = await searchAnime(baseAlias);
+    const baseKey = normalizeTitle(baseAlias);
+    const baseCandidate = results.find(item => normalizeTitle(item.title) === baseKey);
+    if (!baseCandidate) continue;
+
+    const html = await fetchText(`${BASE_URL}/anime/${baseCandidate.slug}-${baseCandidate.numId}`, HEADERS);
+    if (!html) continue;
+
+    const pattern = /href=["'](?:https?:\/\/anidb\.app)?\/anime\/([a-z0-9-]+)-(\d+)["']/gi;
+    let match;
+    while ((match = pattern.exec(html)) !== null) {
+      if (String(match[2]) === String(baseCandidate.numId)) continue;
+      const slugKey = normalizeTitle(String(match[1]).replace(/-/g, " "));
+      if (!targets.has(slugKey)) continue;
+      return {
+        slug: match[1],
+        numId: match[2],
+        title: targets.get(slugKey),
+        matchedAlias: baseAlias,
+        relationSeasonMatch: true
+      };
+    }
+  }
+  return null;
+}
+
 async function resolveAnimeIdentity(tmdb, mapping, season, type) {
   const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
   const seasonNumber = Number(season) || 1;
@@ -316,6 +351,15 @@ async function resolveAnimeIdentity(tmdb, mapping, season, type) {
     const broadSeasonMatch = await findSeasonCandidateFromBroadSearch(genericAliases, generatedAliases);
     if (broadSeasonMatch) {
       return { ...broadSeasonMatch, identitySource: "broad-exact-season" };
+    }
+
+    // AniDB's suggestions can return only the base season even when a later-season
+    // record exists. The base page already links its related/sequel records, so use
+    // those links as a deterministic fallback and accept only an exact generated
+    // season slug such as oshi-no-ko-season-2. No fuzzy title scoring is involved.
+    const relationSeasonMatch = await findSeasonCandidateFromBaseRelations(genericAliases, generatedAliases);
+    if (relationSeasonMatch) {
+      return { ...relationSeasonMatch, identitySource: "relation-exact-season" };
     }
 
     const mappedAliases = await buildMappedSeasonAliases(mapping);

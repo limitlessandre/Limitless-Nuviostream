@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.17",
+  "baseline": "anime-v0.1.18",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.4",
+      "localVersion": "1.0.5",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Praxiel-based runtime access. Later seasons first try explicit season-shaped aliases, then a broad base-title search that accepts only normalized exact season-title matches. This handles styled titles such as [Oshi No Ko] Season 2 without fuzzy matching, while preserving the Tanya S2 anti-fallback guard and DUB/HARDSUB labels.",
+      "notes": "Praxiel-based runtime access. Later seasons use exact generated season aliases first, then exact candidates from broad search, then the base AniDB page relations/sequel links where the related slug must exactly match a generated season alias. This handles Oshi no Ko S2 when suggestions expose only S1, preserves Tanya S2 behavior, and keeps DUB/HARDSUB labels.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {
