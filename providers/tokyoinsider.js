@@ -327,3 +327,65 @@ if (typeof module !== 'undefined' && module.exports) {
 } else {
     global.getStreams = getStreams;
 }
+
+;(function limitlessNormalizeStreamTags() {
+  if (typeof module === "undefined" || !module.exports || typeof module.exports.getStreams !== "function") return;
+  const originalGetStreams = module.exports.getStreams;
+  module.exports.getStreams = async function(...args) {
+    const value = await originalGetStreams.apply(this, args);
+    const rows = Array.isArray(value) ? value : [];
+    return rows.map(function(row) {
+      if (!row || typeof row !== "object") return row;
+
+      const originalLabel = `${row.name || ""} ${row.title || ""}`;
+      const isDub = /(^|[\s(\[])dub(?:bed)?(?=$|[\s)\]])/i.test(originalLabel) || /english\s*dub/i.test(originalLabel);
+      const isHard = /hard[\s_-]*sub|hardsub/i.test(originalLabel);
+      const saysSoft = /soft[\s_-]*sub|softsub/i.test(originalLabel);
+
+      let subtitles = Array.isArray(row.subtitles) ? row.subtitles : [];
+      subtitles = subtitles.map(function(sub) {
+        if (!sub) return null;
+        if (typeof sub === "string") {
+          return { url: sub, language: "Unknown", name: "Subtitle [SOFTSUB]" };
+        }
+        const url = sub.url || sub.file || sub.src;
+        if (!url) return null;
+        let language = sub.language || sub.lang || "Unknown";
+        if (String(language).toLowerCase() === "eng") language = "en";
+        let baseName = sub.name || sub.label || sub.id || language || "Subtitle";
+        baseName = String(baseName)
+          .replace(/\s*\[(?:softsub|hardsub|dub(?:\+subs)?|hardsub\+subs)\]\s*/gi, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+        return Object.assign({}, sub, {
+          url,
+          language,
+          name: `${baseName} [SOFTSUB]`
+        });
+      }).filter(Boolean);
+      row.subtitles = subtitles;
+
+      const hasSoft = subtitles.length > 0 || saysSoft;
+      const tag = isDub
+        ? (subtitles.length ? "DUB+SUBS" : "DUB")
+        : isHard
+          ? (subtitles.length ? "HARDSUB+SUBS" : "HARDSUB")
+          : hasSoft
+            ? "SOFTSUB"
+            : "";
+
+      const clean = function(input) {
+        return String(input || "")
+          .replace(/\s*[\[(](?:SUB|DUB)[\])]\s*/gi, " ")
+          .replace(/\s*\[(?:SOFTSUB|HARDSUB|DUB(?:\+SUBS)?|HARDSUB\+SUBS)\]\s*/gi, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+      };
+
+      row.name = clean(row.name) + (tag ? ` [${tag}]` : "");
+      row.title = clean(row.title) + (tag ? ` [${tag}]` : "");
+      return row;
+    });
+  };
+})();
+

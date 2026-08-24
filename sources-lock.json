@@ -52,9 +52,17 @@
     },
     {
       "filename": "anidb.js",
-      "repository": "NuvioPlugin/All-in-One-Nuvio",
-      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
-      "path": "providers/anidb.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/anidb.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/All-in-One-Nuvio",
+        "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+        "path": "providers/anidb.js"
+      },
+      "notes": "Output-only Limitless naming wrapper. Normalizes any existing subtitle objects and verified DUB/HARDSUB/SOFTSUB markers without changing extraction or matching."
     },
     {
       "filename": "anineko.js",
@@ -100,15 +108,31 @@
     },
     {
       "filename": "animepahe.js",
-      "repository": "NuvioPlugin/All-in-One-Nuvio",
-      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
-      "path": "providers/animepahe.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/animepahe.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.2",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/All-in-One-Nuvio",
+        "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+        "path": "providers/animepahe.js"
+      },
+      "notes": "Output-only Limitless naming wrapper. Verified markers and selectable subtitle objects are normalized; ambiguous generic SUB output remains unclassified."
     },
     {
       "filename": "animezey.js",
-      "repository": "NuvioPlugin/All-in-One-Nuvio",
-      "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
-      "path": "providers/animezey.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/animezey.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "NuvioPlugin/All-in-One-Nuvio",
+        "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
+        "path": "providers/animezey.js"
+      },
+      "notes": "Output-only Limitless naming wrapper. Normalizes verified stream/subtitle metadata without changing extraction or matching."
     },
     {
       "filename": "animetsu.js",
@@ -154,9 +178,17 @@
     },
     {
       "filename": "kisskh.js",
-      "repository": "michat88/nuvio-providers",
-      "commit": "1f6fd4a3c40d31e9d7a8ed1322ce130d2635242f",
-      "path": "providers/kisskh.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/kisskh.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "michat88/nuvio-providers",
+        "commit": "1f6fd4a3c40d31e9d7a8ed1322ce130d2635242f",
+        "path": "providers/kisskh.js"
+      },
+      "notes": "Output-only Limitless naming wrapper. Normalizes verified stream/subtitle metadata without changing KissKH extraction."
     },
     {
       "filename": "kurage.js",
@@ -174,9 +206,17 @@
     },
     {
       "filename": "tokyoinsider.js",
-      "repository": "hihihihihiiray/nuvio-plugins",
-      "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
-      "path": "providers/tokyoinsider.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/tokyoinsider.js",
+      "maintainedLocally": true,
+      "localVersion": "1.1.1",
+      "upstreamOrigin": {
+        "repository": "hihihihihiiray/nuvio-plugins",
+        "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
+        "path": "providers/tokyoinsider.js"
+      },
+      "notes": "Output-only Limitless naming wrapper. Normalizes verified stream metadata without changing TokyoInsider download extraction."
     },
     {
       "filename": "vidnest-anime.js",
