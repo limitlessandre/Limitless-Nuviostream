@@ -1,31 +1,3 @@
-=== ECLIPSIA HEAD ===
-b774c55 Update
-
-=== PRAXIEL MANIFEST ENTRY ===
-{
-  "id": "praxiel",
-  "name": "Praxiel.",
-  "description": "Provider: AniDB | Anime Only",
-  "version": "1.1.0",
-  "author": "Eclipsia",
-  "supportedTypes": [
-    "movie",
-    "tv"
-  ],
-  "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/praxiel.js",
-  "enabled": true,
-  "formats": [
-    "m3u8",
-    "mp4"
-  ],
-  "logo": "",
-  "contentLanguage": [
-    "en",
-    "ja"
-  ]
-}
-
-=== PRAXIEL SOURCE ===
 "use strict";
 
 const BASE_URL = 'https://anidb.app';
