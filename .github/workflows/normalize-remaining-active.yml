@@ -1,0 +1,174 @@
+name: Normalize remaining active provider output tags
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths:
+      - .github/workflows/normalize-remaining-active.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+
+      - name: Apply output-only naming normalizer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          WRAPPER = r'''
+
+          ;(function limitlessNormalizeStreamTags() {
+            if (typeof module === "undefined" || !module.exports || typeof module.exports.getStreams !== "function") return;
+            const originalGetStreams = module.exports.getStreams;
+            module.exports.getStreams = async function(...args) {
+              const value = await originalGetStreams.apply(this, args);
+              const rows = Array.isArray(value) ? value : [];
+              return rows.map(function(row) {
+                if (!row || typeof row !== "object") return row;
+
+                const originalLabel = `${row.name || ""} ${row.title || ""}`;
+                const isDub = /(^|[\s(\[])dub(?:bed)?(?=$|[\s)\]])/i.test(originalLabel) || /english\s*dub/i.test(originalLabel);
+                const isHard = /hard[\s_-]*sub|hardsub/i.test(originalLabel);
+                const saysSoft = /soft[\s_-]*sub|softsub/i.test(originalLabel);
+
+                let subtitles = Array.isArray(row.subtitles) ? row.subtitles : [];
+                subtitles = subtitles.map(function(sub) {
+                  if (!sub) return null;
+                  if (typeof sub === "string") {
+                    return { url: sub, language: "Unknown", name: "Subtitle [SOFTSUB]" };
+                  }
+                  const url = sub.url || sub.file || sub.src;
+                  if (!url) return null;
+                  let language = sub.language || sub.lang || "Unknown";
+                  if (String(language).toLowerCase() === "eng") language = "en";
+                  let baseName = sub.name || sub.label || sub.id || language || "Subtitle";
+                  baseName = String(baseName)
+                    .replace(/\s*\[(?:softsub|hardsub|dub(?:\+subs)?|hardsub\+subs)\]\s*/gi, " ")
+                    .replace(/\s+/g, " ")
+                    .trim();
+                  return Object.assign({}, sub, {
+                    url,
+                    language,
+                    name: `${baseName} [SOFTSUB]`
+                  });
+                }).filter(Boolean);
+                row.subtitles = subtitles;
+
+                const hasSoft = subtitles.length > 0 || saysSoft;
+                const tag = isDub
+                  ? (subtitles.length ? "DUB+SUBS" : "DUB")
+                  : isHard
+                    ? (subtitles.length ? "HARDSUB+SUBS" : "HARDSUB")
+                    : hasSoft
+                      ? "SOFTSUB"
+                      : "";
+
+                const clean = function(input) {
+                  return String(input || "")
+                    .replace(/\s*[\[(](?:SUB|DUB)[\])]\s*/gi, " ")
+                    .replace(/\s*\[(?:SOFTSUB|HARDSUB|DUB(?:\+SUBS)?|HARDSUB\+SUBS)\]\s*/gi, " ")
+                    .replace(/\s+/g, " ")
+                    .trim();
+                };
+
+                row.name = clean(row.name) + (tag ? ` [${tag}]` : "");
+                row.title = clean(row.title) + (tag ? ` [${tag}]` : "");
+                return row;
+              });
+            };
+          })();
+          '''
+
+          targets = {
+              'anidb.js': '1.0.1',
+              'animepahe.js': '1.0.2',
+              'animezey.js': '1.0.1',
+              'kisskh.js': '1.0.1',
+              'tokyoinsider.js': '1.1.1',
+          }
+
+          for filename in targets:
+              p = Path('providers') / filename
+              text = p.read_text(encoding='utf-8')
+              if 'limitlessNormalizeStreamTags' not in text:
+                  p.write_text(text.rstrip() + WRAPPER + '\n', encoding='utf-8')
+
+          m = Path('manifest.json')
+          manifest = json.loads(m.read_text(encoding='utf-8'))
+          descriptions = {
+              'anidb': 'AniDB with the Limitless output naming normalizer for verified DUB/HARDSUB/SOFTSUB behavior.',
+              'animepahe': 'AnimePahe with the Limitless output naming normalizer; ambiguous generic SUB labels are not guessed as hard or soft.',
+              'animezey': 'AnimeZeY with the Limitless output naming normalizer for verified subtitle/audio behavior.',
+              'kisskh-anime': 'KissKH Asian drama and anime implementation with the Limitless output naming normalizer.',
+              'nuvio-tokyoinsider': 'TokyoInsider high-quality direct links with the Limitless output naming normalizer.',
+          }
+          versions = {
+              'anidb': '1.0.1',
+              'animepahe': '1.0.2',
+              'animezey': '1.0.1',
+              'kisskh-anime': '1.0.1',
+              'nuvio-tokyoinsider': '1.1.1',
+          }
+          for item in manifest.get('scrapers', []):
+              pid = item.get('id')
+              if pid in versions:
+                  item['version'] = versions[pid]
+                  item['description'] = descriptions[pid]
+          m.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          l = Path('sources-lock.json')
+          lock = json.loads(l.read_text(encoding='utf-8'))
+          notes = {
+              'anidb.js': 'Output-only Limitless naming wrapper. Normalizes any existing subtitle objects and verified DUB/HARDSUB/SOFTSUB markers without changing extraction or matching.',
+              'animepahe.js': 'Output-only Limitless naming wrapper. Verified markers and selectable subtitle objects are normalized; ambiguous generic SUB output remains unclassified.',
+              'animezey.js': 'Output-only Limitless naming wrapper. Normalizes verified stream/subtitle metadata without changing extraction or matching.',
+              'kisskh.js': 'Output-only Limitless naming wrapper. Normalizes verified stream/subtitle metadata without changing KissKH extraction.',
+              'tokyoinsider.js': 'Output-only Limitless naming wrapper. Normalizes verified stream metadata without changing TokyoInsider download extraction.',
+          }
+          for provider in lock.get('providers', []):
+              filename = provider.get('filename')
+              if filename not in targets:
+                  continue
+              origin = {
+                  'repository': provider.get('repository'),
+                  'commit': provider.get('commit'),
+                  'path': provider.get('path')
+              }
+              provider.clear()
+              provider.update({
+                  'filename': filename,
+                  'repository': 'limitlessandre/Limitless-Nuviostream',
+                  'commit': 'Limitless-Nuviotest',
+                  'path': f'providers/{filename}',
+                  'maintainedLocally': True,
+                  'localVersion': targets[filename],
+                  'upstreamOrigin': origin,
+                  'notes': notes[filename]
+              })
+          l.write_text(json.dumps(lock, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+
+          for file in providers/*.js; do
+            node --check "$file" >/dev/null
+          done
+
+      - name: Commit and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/normalize-remaining-active.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add providers/anidb.js providers/animepahe.js providers/animezey.js providers/kisskh.js providers/tokyoinsider.js manifest.json sources-lock.json .github/workflows/normalize-remaining-active.yml
+          git commit -m "Apply Limitless naming standard across active providers [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
