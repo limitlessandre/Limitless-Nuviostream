@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.13",
+  "baseline": "anime-v0.1.14",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,7 +10,7 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/123anime.js",
       "maintainedLocally": true,
-      "localVersion": "1.1.0",
+      "localVersion": "1.1.1",
       "upstreamOrigin": {
         "repository": "yuzono/anime-extensions",
         "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
@@ -20,7 +20,7 @@
         ]
       },
       "license": "Apache-2.0",
-      "notes": "AniYomi-to-Nuvio port. Preserves separate 123Anime server/player routes for maximum fallback options (JW, Legacy, and SBv2 when available), labels Japanese burned-in subtitle streams as HARDSUB, and retains the Nuvio HLS compatibility handling."
+      "notes": "AniYomi-to-Nuvio port. Tries JW, Legacy, and SBv2 internally for resilience, collapses outputs that resolve to the same final media with the same playback semantics, retains the Nuvio HLS compatibility handling, and uses the Limitless DUB/HARDSUB/SOFTSUB naming standard."
     },
     {
       "filename": "allanime.js",
@@ -34,7 +34,7 @@
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/allanime.js"
       },
-      "notes": "Limitless MKissa rewrite. Episode streaming now follows the current Aniyomi protocol: the full GraphQL stream query is sent beside the SHA-256 persisted-query hash and the episode selection includes show {_id}, which MKissa requires while resolving sourceUrls."
+      "notes": "Limitless MKissa rewrite retained disabled by default because the live MKissa client crypto rotates frequently."
     },
     {
       "filename": "allwish.js",
@@ -42,13 +42,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/allwish.js",
       "maintainedLocally": true,
-      "localVersion": "1.2.3",
+      "localVersion": "1.2.4",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/allwish.js"
       },
-      "notes": "Limitless rewrite adds season-aware MAL episode mapping, finite MAL/AniList/Kitsu/TMDB aliases, explicit DUB/SUB handling, and one preferred Nuvio-native soft subtitle track per language."
+      "notes": "Limitless rewrite adds season-aware MAL episode mapping, finite MAL/AniList/Kitsu/TMDB aliases, one preferred Nuvio-native soft subtitle track per language, and the Limitless DUB/HARDSUB/SOFTSUB naming standard."
     },
     {
       "filename": "anidb.js",
@@ -58,9 +58,17 @@
     },
     {
       "filename": "anineko.js",
-      "repository": "hihihihihiiray/nuvio-plugins",
-      "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
-      "path": "providers/anineko.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/anineko.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "hihihihihiiray/nuvio-plugins",
+        "commit": "fbfed1a4f25d849f2b61f62c12fd138162a32213",
+        "path": "providers/anineko.js"
+      },
+      "notes": "Local compatibility pass only: standardized verified DUB/HARDSUB/SOFTSUB labels and converted the existing subtitle URL into Nuvio-native subtitle metadata without changing extraction logic."
     },
     {
       "filename": "anikototv.js",
@@ -71,8 +79,16 @@
     {
       "filename": "animekai.js",
       "repository": "limitlessandre/Limitless-Nuviostream",
-      "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
-      "path": "custom/providers/animekai.js"
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/animekai.js",
+      "maintainedLocally": true,
+      "localVersion": "2.1.1",
+      "upstreamOrigin": {
+        "repository": "limitlessandre/Limitless-Nuviostream",
+        "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
+        "path": "custom/providers/animekai.js"
+      },
+      "notes": "Limitless-maintained AnimeKai port. Current pass standardizes DUB/HARDSUB/SOFTSUB labels from actual server type and selectable tracks while preserving extraction behavior."
     },
     {
       "filename": "animepahe.js",
@@ -94,15 +110,31 @@
     },
     {
       "filename": "anizone.js",
-      "repository": "yoruix/nuvio-providers",
-      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
-      "path": "providers/anizone.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/anizone.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "yoruix/nuvio-providers",
+        "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+        "path": "providers/anizone.js"
+      },
+      "notes": "Local naming pass only: selectable track output is labeled SOFTSUB, and dubbed multi-audio output uses DUB or DUB+SUBS as appropriate."
     },
     {
       "filename": "hianime.js",
-      "repository": "yoruix/nuvio-providers",
-      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
-      "path": "providers/hianime.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/hianime.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "yoruix/nuvio-providers",
+        "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+        "path": "providers/hianime.js"
+      },
+      "notes": "Local naming pass only: selectable tracks use SOFTSUB and dubbed routes use DUB or DUB+SUBS based on the returned caption tracks."
     },
     {
       "filename": "kisskh.js",
@@ -112,9 +144,17 @@
     },
     {
       "filename": "kurage.js",
-      "repository": "yoruix/nuvio-providers",
-      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
-      "path": "providers/kurage.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/kurage.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "yoruix/nuvio-providers",
+        "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+        "path": "providers/kurage.js"
+      },
+      "notes": "Local naming pass only: explicit dubbed output is tagged DUB; the upstream generic SUB label is intentionally left unclassified until hard-vs-soft subtitle behavior is verified."
     },
     {
       "filename": "tokyoinsider.js",
@@ -124,15 +164,31 @@
     },
     {
       "filename": "vidnest-anime.js",
-      "repository": "yoruix/nuvio-providers",
-      "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
-      "path": "providers/vidnest-anime.js"
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/vidnest-anime.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "yoruix/nuvio-providers",
+        "commit": "ed38d1aee0024f56479369c9423fefb278e0b62a",
+        "path": "providers/vidnest-anime.js"
+      },
+      "notes": "Local compatibility pass: existing subtitle arrays are translated to Nuvio-native url/language/name/header objects, then DUB/DUB+SUBS/SOFTSUB tags are applied from actual returned tracks. Core extraction is unchanged."
     },
     {
       "filename": "wcoflix.js",
       "repository": "limitlessandre/Limitless-Nuviostream",
-      "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
-      "path": "custom/providers/wcoflix.js"
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/wcoflix.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.1",
+      "upstreamOrigin": {
+        "repository": "limitlessandre/Limitless-Nuviostream",
+        "commit": "f96a8f5d633a4ac3575910ae3be02d814fc13a84",
+        "path": "custom/providers/wcoflix.js"
+      },
+      "notes": "Limitless-maintained WCO port. Current pass standardizes DUB/DUB+SUBS/SOFTSUB labels based on the actual WCO subtitle response and normalizes the subtitle language/name metadata."
     }
   ]
 }
