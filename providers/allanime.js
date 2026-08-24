@@ -2,32 +2,69 @@
 
 const NAME = "AllAnime";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36";
-const REFERER = "https://mkissa.to";
+const SITE = "https://mkissa.to";
 const API = "https://api.mkissa.net";
 const API_URL = API + "/api";
-const BASE = "https://allanime.day";
-const DISCOVERY_PATH = "/anime/attack-on-titan-Ycid9tDZd2FxGCJ8o/sub/1";
-const CONTENT_LANE = "k7";
-const REFERER_HOST = "mkissa.to";
+const PLAYER = "https://allanime.day";
+const LANE = "k7";
 const KEY_GROUP = "mkissa";
-const BOOT_EPOCH_MS = 604800000;
-const BOOT_GRACE_MS = 86400000;
-const AA_REQ_MS = 300000;
-const EPISODE_QUERY_HASH = "b0a4efecd8df8fce709468d54aaa716b712c93b5b7e351888ddc242898abc38e";
+const SITE_HOST = "mkissa.to";
+const BOOT_EPOCH_MS = 7 * 24 * 60 * 60 * 1000;
+const BOOT_GRACE_MS = 24 * 60 * 60 * 1000;
+const AA_WINDOW_MS = 5 * 60 * 1000;
 const TMDB_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
 const MAL_MAP = "https://id-mapping-api-malid.hf.space/api/resolve";
+const LEGACY_SECRET = "Xot36i3lK3";
 
-const HEX_TABLE = {
-  "79":"A","7a":"B","7b":"C","7c":"D","7d":"E","7e":"F","7f":"G","70":"H","71":"I","72":"J","73":"K","74":"L","75":"M","76":"N","77":"O","68":"P","69":"Q","6a":"R","6b":"S","6c":"T","6d":"U","6e":"V","6f":"W","60":"X","61":"Y","62":"Z",
-  "59":"a","5a":"b","5b":"c","5c":"d","5d":"e","5e":"f","5f":"g","50":"h","51":"i","52":"j","53":"k","54":"l","55":"m","56":"n","57":"o","48":"p","49":"q","4a":"r","4b":"s","4c":"t","4d":"u","4e":"v","4f":"w","40":"x","41":"y","42":"z",
-  "08":"0","09":"1","0a":"2","0b":"3","0c":"4","0d":"5","0e":"6","0f":"7","00":"8","01":"9","15":"-","16":".","67":"_","46":"~","02":":","17":"/","07":"?","1b":"#","63":"[","65":"]","78":"@","19":"!","1c":"$","1e":"&","10":"(","11":")","12":"*","13":"+","14":",","03":";","05":"=","1d":"%"
-};
+const SEARCH_QUERY = `query(
+  $search: SearchInput
+  $limit: Int
+  $page: Int
+  $translationType: VaildTranslationTypeEnumType
+  $countryOrigin: VaildCountryOriginEnumType
+) {
+  shows(
+    search: $search
+    limit: $limit
+    page: $page
+    translationType: $translationType
+    countryOrigin: $countryOrigin
+  ) {
+    pageInfo { total }
+    edges {
+      _id
+      name
+      englishName
+      nativeName
+      slugTime
+      availableEpisodes
+      availableEpisodesDetail
+      aniListId
+    }
+  }
+}`;
 
-let cryptoConfigCache = null;
-let bootstrapCache = null;
+const STREAM_QUERY = `query(
+  $showId: String!
+  $translationType: VaildTranslationTypeEnumType!
+  $episodeString: String!
+) {
+  episode(
+    showId: $showId
+    translationType: $translationType
+    episodeString: $episodeString
+  ) {
+    sourceUrls
+    show {
+      _id
+    }
+  }
+}`;
+
+let materialPromise = null;
 const sessionCookies = new Map();
 
-function headers(extra) {
+function baseHeaders(extra) {
   return Object.assign({
     "User-Agent": UA,
     "Accept": "*/*",
@@ -35,12 +72,15 @@ function headers(extra) {
   }, extra || {});
 }
 
-function storeCookies(response) {
+function saveCookies(response) {
   try {
-    const raw = response && response.headers && response.headers.get ? response.headers.get("set-cookie") : null;
+    const raw = response && response.headers && response.headers.get
+      ? response.headers.get("set-cookie")
+      : null;
     if (!raw) return;
-    for (const part of String(raw).split(/,(?=[^;,]+=)/)) {
-      const pair = part.split(";")[0].trim();
+    const chunks = String(raw).split(/,(?=[^;,]+=)/);
+    for (const chunk of chunks) {
+      const pair = chunk.split(";")[0].trim();
       const i = pair.indexOf("=");
       if (i > 0) sessionCookies.set(pair.slice(0, i), pair.slice(i + 1));
     }
@@ -48,7 +88,9 @@ function storeCookies(response) {
 }
 
 function cookieHeader() {
-  return Array.from(sessionCookies.entries()).map(function (x) { return x[0] + "=" + x[1]; }).join("; ");
+  return Array.from(sessionCookies.entries())
+    .map(function (p) { return p[0] + "=" + p[1]; })
+    .join("; ");
 }
 
 async function sessionFetch(url, options) {
@@ -57,15 +99,13 @@ async function sessionFetch(url, options) {
   const cookie = cookieHeader();
   if (cookie && !h.Cookie) h.Cookie = cookie;
   const r = await fetch(url, Object.assign({}, options, { headers: h }));
-  storeCookies(r);
+  saveCookies(r);
   return r;
 }
 
-async function fetchText(url, extraHeaders) {
-  const r = await sessionFetch(url, {
-    headers: headers(Object.assign({ "Referer": REFERER + "/" }, extraHeaders || {}))
-  });
-  if (!r || !r.ok) throw new Error("Fetch " + (r ? r.status : "?") + ": " + url);
+async function fetchText(url, h) {
+  const r = await sessionFetch(url, { headers: baseHeaders(h) });
+  if (!r || !r.ok) throw new Error("HTTP " + (r ? r.status : "?") + " " + url);
   return r.text();
 }
 
@@ -79,28 +119,26 @@ async function fetchJson(url, options) {
   }
 }
 
-function sleep(ms) { return new Promise(function (resolve) { setTimeout(resolve, ms); }); }
-function utf8(value) { return new TextEncoder().encode(String(value)); }
-function fromUtf8(bytes) { return new TextDecoder("utf-8").decode(bytes); }
+function utf8(s) { return new TextEncoder().encode(String(s)); }
+function fromUtf8(b) { return new TextDecoder("utf-8").decode(b); }
 
 function concatBytes() {
-  let total = 0;
+  let n = 0;
   const parts = [];
   for (let i = 0; i < arguments.length; i++) {
     const p = arguments[i] instanceof Uint8Array ? arguments[i] : new Uint8Array(arguments[i]);
-    parts.push(p);
-    total += p.length;
+    parts.push(p); n += p.length;
   }
-  const out = new Uint8Array(total);
-  let offset = 0;
-  for (const p of parts) { out.set(p, offset); offset += p.length; }
+  const out = new Uint8Array(n);
+  let off = 0;
+  for (const p of parts) { out.set(p, off); off += p.length; }
   return out;
 }
 
 function bytesToHex(bytes) {
-  let out = "";
-  for (const b of bytes) out += b.toString(16).padStart(2, "0");
-  return out;
+  let s = "";
+  for (const b of bytes) s += b.toString(16).padStart(2, "0");
+  return s;
 }
 
 function bytesToBase64(bytes) {
@@ -110,16 +148,11 @@ function bytesToBase64(bytes) {
 }
 
 function base64ToBytes(value) {
-  const s = atob(String(value || ""));
-  const out = new Uint8Array(s.length);
-  for (let i = 0; i < s.length; i++) out[i] = s.charCodeAt(i) & 255;
-  return out;
-}
-
-function hexToBytes(hex) {
-  const cleanHex = String(hex || "").replace(/[^0-9a-f]/gi, "");
-  const out = new Uint8Array(Math.floor(cleanHex.length / 2));
-  for (let i = 0; i < out.length; i++) out[i] = parseInt(cleanHex.slice(i * 2, i * 2 + 2), 16);
+  let s = String(value || "").trim().replace(/-/g, "+").replace(/_/g, "/");
+  while (s.length % 4) s += "=";
+  const raw = atob(s);
+  const out = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i) & 255;
   return out;
 }
 
@@ -127,11 +160,12 @@ async function sha256Bytes(value) {
   const data = value instanceof Uint8Array ? value : utf8(value);
   return new Uint8Array(await crypto.subtle.digest("SHA-256", data));
 }
-
 async function sha256Hex(value) { return bytesToHex(await sha256Bytes(value)); }
 
 async function hmacBytes(keyBytes, value) {
-  const key = await crypto.subtle.importKey("raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const key = await crypto.subtle.importKey(
+    "raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
   const data = value instanceof Uint8Array ? value : utf8(value);
   return new Uint8Array(await crypto.subtle.sign("HMAC", key, data));
 }
@@ -146,360 +180,494 @@ async function aesGcmDecrypt(keyBytes, iv, value) {
   return new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv, tagLength: 128 }, key, value));
 }
 
-async function aesCbcDecryptHex(hex) {
-  const keyBytes = utf8("kiemtienmua911ca");
-  const iv = utf8("1234567890oiuytr");
-  const key = await crypto.subtle.importKey("raw", keyBytes, { name: "AES-CBC" }, false, ["decrypt"]);
-  const plain = await crypto.subtle.decrypt({ name: "AES-CBC", iv: iv }, key, hexToBytes(hex));
-  return fromUtf8(new Uint8Array(plain));
-}
-
-function resolveUrl(value, base) {
+function xorHexSource(value) {
   value = String(value || "");
-  base = String(base || REFERER + "/");
-  if (/^https?:\/\//i.test(value)) return value;
-  if (value.startsWith("//")) return "https:" + value;
-  const root = base.match(/^(https?:\/\/[^/]+)/i);
-  if (value.startsWith("/")) return (root ? root[1] : REFERER) + value;
-  const baseNoQuery = base.split(/[?#]/)[0];
-  const dir = baseNoQuery.replace(/\/[^/]*$/, "/");
-  const combined = dir + value;
-  const m = combined.match(/^(https?:\/\/[^/]+)(\/.*)?$/i);
-  if (!m) return combined;
-  const stack = [];
-  for (const part of (m[2] || "/").split("/")) {
-    if (!part || part === ".") continue;
-    if (part === "..") stack.pop(); else stack.push(part);
+  let payload = value;
+  let mask = null;
+  if (value.startsWith("--")) { payload = value.slice(2); mask = 56; }
+  else if (value.startsWith("#-")) { payload = value.slice(2); mask = 49; }
+  else if (value.startsWith("##")) { payload = value.slice(2); mask = 48; }
+  else if (value.startsWith("-#")) { payload = value.slice(2); mask = 59; }
+  else if (value.startsWith("#")) { payload = value.slice(1); mask = 0; }
+
+  if (!/^[0-9a-f]+$/i.test(payload) || payload.length % 2) return value;
+  const bytes = [];
+  for (let i = 0; i < payload.length; i += 2) bytes.push(parseInt(payload.slice(i, i + 2), 16));
+
+  function decode(m) {
+    let out = "";
+    for (const b of bytes) out += String.fromCharCode((b ^ m) & 255);
+    return out;
   }
-  return m[1] + "/" + stack.join("/");
+
+  if (mask !== null) return decode(mask);
+  for (const m of [56, 0, 48, 49, 59]) {
+    const d = decode(m);
+    if (d.indexOf("/clock") >= 0 || d.indexOf("http") >= 0) return d;
+  }
+  return value;
 }
 
-function normalizeCryptoConfig(out) {
-  if (!out || !out.buildId || !Array.isArray(out.maskParts) || out.maskParts.length < 4) return null;
-  return { buildId: String(out.buildId), maskParts: out.maskParts.slice(0, 4).map(String) };
+/* ---------------- MKissa bundle parser ---------------- */
+
+const IDENT = "[$A-Za-z0-9_]+";
+const CALL_SRC = IDENT + "\\(\\s*-?\\d+\\s*(?:,\\s*-?\\d+\\s*)?\\)";
+const SEED_RE = /^[A-Za-z0-9+/]{11}=$/;
+const BUILD_DIGITS_RE = /^\d{2,10}$/;
+
+function foldMath(expression) {
+  const terms = String(expression || "").replace(/\s/g, "").match(/[-+]*[^-+]+/g) || [];
+  let total = 0;
+  for (let term of terms) {
+    let sign = 1;
+    while (term[0] === "+" || term[0] === "-") {
+      if (term[0] === "-") sign = -sign;
+      term = term.slice(1);
+    }
+    if (!term) continue;
+    let value = 1;
+    const factors = term.split("*");
+    for (const f of factors) {
+      const n = parseInt(f, 10);
+      if (!Number.isFinite(n)) return 0;
+      value *= n;
+    }
+    total += sign * value;
+  }
+  return total;
 }
 
-function evalOldCryptoChunk(chunk) {
-  const cryptoStart = chunk.search(/const\s+[A-Za-z_$][\w$]*\s*=[^;]{0,180}\?"\d+":"",\s*[A-Za-z_$][\w$]*=\[/);
-  if (cryptoStart < 0) return null;
-  const tableMatches = Array.from(chunk.slice(0, cryptoStart).matchAll(/function\s+([A-Za-z_$][\w$]*)\s*\(\)\{const e=\[/g));
-  const tableStart = tableMatches.length ? tableMatches[tableMatches.length - 1].index : -1;
-  const asyncStart = chunk.indexOf("async function", cryptoStart);
-  if (tableStart < 0 || asyncStart < 0) return null;
-  let code = chunk.slice(tableStart, asyncStart);
-  const buildMatch = code.match(/const\s+([A-Za-z_$][\w$]*)\s*=([^;]+?\?"(\d+)":"")\s*,\s*([A-Za-z_$][\w$]*)=\[/);
-  if (!buildMatch) return null;
-  const buildName = buildMatch[1];
-  const maskName = buildMatch[4];
-  code = code.replace(new RegExp("\\b[A-Za-z_$][\\w$]*\\(\\);\\s*const\\s+" + buildName + "="), "const " + buildName + "=");
-  code = code.replace(new RegExp("const\\s+" + buildName + "="), "var " + buildName + "=");
-  code = code.replace(new RegExp(",\\s*" + maskName + "=\\["), ";var " + maskName + "=[");
-  code += "\nreturn { buildId: " + buildName + ", maskParts: " + maskName + " };";
-  return normalizeCryptoConfig(Function(code)());
+function readStringArray(jsText, openIndex) {
+  const items = [];
+  let i = openIndex + 1;
+  while (i < jsText.length) {
+    const c = jsText[i];
+    if (c === "]") return items;
+    if (c === "," || c === " " || c === "\n" || c === "\r" || c === "\t") { i++; continue; }
+    if (c === '"' || c === "'") {
+      const quote = c;
+      let s = "";
+      i++;
+      while (i < jsText.length && jsText[i] !== quote) {
+        if (jsText[i] === "\\") {
+          if (i + 1 >= jsText.length) return null;
+          s += jsText[i + 1];
+          i += 2;
+        } else {
+          s += jsText[i++];
+        }
+      }
+      if (i >= jsText.length) return null;
+      i++;
+      items.push(s);
+      continue;
+    }
+    return null;
+  }
+  return null;
 }
 
-function evalModernCryptoChunk(chunk) {
-  const cryptoStart = chunk.search(/const\s+[A-Za-z_$][\w$]*\s*=[^;]{0,220}\?"\d+":"",\s*[A-Za-z_$][\w$]*=\[/);
-  if (cryptoStart < 0) return null;
-  const wrappers = Array.from(chunk.slice(0, cryptoStart).matchAll(/const\s+[A-Za-z_$][\w$]*=\(function\(\)\{/g));
-  const wrapperStart = wrappers.length ? wrappers[wrappers.length - 1].index : -1;
-  const tables = wrapperStart >= 0 ? Array.from(chunk.slice(0, wrapperStart).matchAll(/function\s+[A-Za-z_$][\w$]*\s*\(\)\{const\s+[A-Za-z_$][\w$]*=\[/g)) : [];
-  const tableStart = tables.length ? tables[tables.length - 1].index : -1;
-  const decoders = tableStart >= 0 ? Array.from(chunk.slice(0, tableStart).matchAll(/function\s+[A-Za-z_$][\w$]*\s*\([A-Za-z_$][\w$]*(?:,[A-Za-z_$][\w$]*)?\)\{return\s+[A-Za-z_$][\w$]*=[A-Za-z_$][\w$]*-\d+,[A-Za-z_$][\w$]*\(\)\[[A-Za-z_$][\w$]*\]\}/g)) : [];
-  const decoderStart = decoders.length ? decoders[decoders.length - 1].index : -1;
-  const asyncStart = chunk.indexOf("async function", cryptoStart);
-  if (decoderStart < 0 || wrapperStart < 0 || asyncStart < 0) return null;
-  const head = chunk.slice(decoderStart, wrapperStart);
-  let body = chunk.slice(cryptoStart, asyncStart);
-  const buildMatch = body.match(/const\s+([A-Za-z_$][\w$]*)=/);
-  const maskMatch = body.match(/,([A-Za-z_$][\w$]*)=\[/);
-  const maskFunction = body.match(/function\s+([A-Za-z_$][\w$]*)\s*\([^)]*=\s*([A-Za-z_$][\w$]*)\)/);
-  if (!buildMatch || !maskMatch || !maskFunction) return null;
-  const buildName = buildMatch[1];
-  const maskName = maskMatch[1];
-  const maskFunctionName = maskFunction[1];
-  body = body.replace(new RegExp("const\\s+" + buildName + "="), "var " + buildName + "=");
-  body = body.replace(new RegExp("," + maskName + "=\\["), ";var " + maskName + "=[");
-  body += "\nreturn { buildId: " + buildName + ", maskParts: " + maskName + ", mask: Array.from(" + maskFunctionName + "(" + buildName + ") || []) };";
-  return normalizeCryptoConfig(Function(head + body)());
+function decoderMaps(jsText) {
+  const tables = new Map();
+  const tableRe = new RegExp("function\\s+(" + IDENT + ")\\(\\)\\s*\\{\\s*(?:const|let|var)\\s+" + IDENT + "\\s*=\\s*\\[", "g");
+  let m;
+  while ((m = tableRe.exec(jsText))) {
+    const open = m.index + m[0].lastIndexOf("[");
+    const arr = readStringArray(jsText, open);
+    if (arr && arr.length) tables.set(m[1], arr);
+  }
+
+  const bases = new Map();
+  const baseRe = new RegExp(
+    "function\\s+(" + IDENT + ")\\((" + IDENT + ")(?:," + IDENT + ")*\\)\\{return\\s+\\2=\\2-\\(?([-\\d+*\\s]+?)\\)?,(" + IDENT + ")\\(\\)\\[\\2\\]\\}",
+    "g"
+  );
+  while ((m = baseRe.exec(jsText))) {
+    bases.set(m[1], { table: m[4], offset: foldMath(m[3]) });
+  }
+
+  const aliases = new Map();
+  for (const k of bases.keys()) aliases.set(k, { base: k, argIndex: 0, delta: 0 });
+
+  const aliasRe = new RegExp(
+    "function\\s+(" + IDENT + ")\\((" + IDENT + "),(" + IDENT + ")\\)\\{return\\s+(" + IDENT + ")\\((" + IDENT + ")((?:[-+][\\d+*\\s-]+)?)\\)\\}",
+    "g"
+  );
+  while ((m = aliasRe.exec(jsText))) {
+    if (!bases.has(m[4])) continue;
+    aliases.set(m[1], {
+      base: m[4],
+      argIndex: m[5] === m[2] ? 0 : 1,
+      delta: m[6] ? foldMath(m[6]) : 0
+    });
+  }
+  return { tables: tables, bases: bases, aliases: aliases };
 }
 
-function evalCryptoChunk(chunk) {
-  try { const x = evalModernCryptoChunk(chunk); if (x) return x; } catch (_) {}
-  try { return evalOldCryptoChunk(chunk); } catch (_) { return null; }
+function parseCall(call) {
+  const re = new RegExp("^(" + IDENT + ")\\(\\s*(-?\\d+)\\s*(?:,\\s*(-?\\d+)\\s*)?\\)$");
+  const m = re.exec(String(call || ""));
+  if (!m) return null;
+  return { name: m[1], args: [parseInt(m[2], 10), m[3] ? parseInt(m[3], 10) : null] };
 }
 
-function buildMaskSeed(buildId) {
-  const n = String(buildId || "");
-  const out = new Uint8Array(32);
-  for (let i = 0; i < 32; i++) out[i] = (n.charCodeAt(i % n.length) || 0) ^ ((i * 17 + 31) & 255);
+function resolveCall(call, rotation, maps) {
+  const c = parseCall(call);
+  if (!c) return null;
+  const alias = maps.aliases.get(c.name);
+  if (!alias) return null;
+  const base = maps.bases.get(alias.base);
+  if (!base) return null;
+  const table = maps.tables.get(base.table);
+  if (!table || !table.length) return null;
+  const args = c.args.filter(function (x) { return x !== null; });
+  const arg = args[alias.argIndex];
+  if (!Number.isFinite(arg)) return null;
+  const rawIndex = arg + alias.delta - base.offset + rotation;
+  const idx = ((rawIndex % table.length) + table.length) % table.length;
+  return table[idx];
+}
+
+function seedBodies(jsText) {
+  const bodies = [];
+  const arrayRe = /=\[([^\]]{20,900})\]/g;
+  let m;
+  while ((m = arrayRe.exec(jsText))) {
+    const body = m[1];
+    if ((body.match(/\+/g) || []).length < 4) continue;
+    const calls = body.match(new RegExp(CALL_SRC, "g")) || [];
+    if (calls.length === 8) bodies.push(calls);
+  }
+  return bodies;
+}
+
+function seedsAt(calls, rotation, maps) {
+  if (!calls || calls.length !== 8) return null;
+  const out = [];
+  for (let i = 0; i < 8; i += 2) {
+    const a = resolveCall(calls[i], rotation, maps);
+    const b = resolveCall(calls[i + 1], rotation, maps);
+    if (a === null || b === null) return null;
+    const seed = a + b;
+    if (!SEED_RE.test(seed)) return null;
+    out.push(seed);
+  }
+  return out.length === 4 ? out : null;
+}
+
+function extractSeeds(jsText, maps, forcedRotation) {
+  const groups = seedBodies(jsText);
+  for (const calls of groups) {
+    const first = parseCall(calls[0]);
+    if (!first) continue;
+    const alias = maps.aliases.get(first.name);
+    const base = alias && maps.bases.get(alias.base);
+    const table = base && maps.tables.get(base.table);
+    if (!table || !table.length) continue;
+
+    if (forcedRotation !== undefined && forcedRotation !== null) {
+      const s = seedsAt(calls, forcedRotation, maps);
+      if (s) return s;
+      continue;
+    }
+
+    const matches = [];
+    for (let rot = 0; rot < table.length; rot++) {
+      const s = seedsAt(calls, rot, maps);
+      if (s) matches.push({ rotation: rot, seeds: s });
+    }
+    if (matches.length === 1) return matches[0].seeds;
+  }
+  return null;
+}
+
+function extractBuildIdNew(jsText, maps) {
+  const candidates = [];
+  const defaultRe = new RegExp("function\\s+" + IDENT + "\\s*\\(\\s*" + IDENT + "\\s*=\\s*(" + IDENT + ")\\s*[,)]", "g");
+  let m;
+  let defaultVar = null;
+  while ((m = defaultRe.exec(jsText))) {
+    const varName = m[1];
+    const assignRe = new RegExp("\\b" + varName.replace(/\\$/g, "\\$&") + "\\s*=\\s*(" + CALL_SRC + ")");
+    if (assignRe.test(jsText)) { defaultVar = varName; break; }
+  }
+  if (defaultVar) {
+    const esc = defaultVar.replace(/[$]/g, "\\$&");
+    const r = new RegExp("\\b" + esc + "\\s*=\\s*(" + CALL_SRC + ")", "g");
+    while ((m = r.exec(jsText))) candidates.push(m[1]);
+  }
+
+  const sfIndex = jsText.indexOf("sf=");
+  if (sfIndex >= 0) {
+    const win = jsText.slice(Math.max(0, sfIndex - 2500), sfIndex);
+    const r = new RegExp("\\b" + IDENT + "\\s*=\\s*(" + CALL_SRC + ")\\s*(?:,|;|\\n)", "g");
+    while ((m = r.exec(win))) candidates.push(m[1]);
+  }
+
+  if (!candidates.length) {
+    const r = new RegExp("\\b" + IDENT + "\\s*=\\s*(" + CALL_SRC + ")", "g");
+    while ((m = r.exec(jsText))) candidates.push(m[1]);
+  }
+
+  function tryCall(call) {
+    const c = parseCall(call);
+    if (!c) return null;
+    const alias = maps.aliases.get(c.name);
+    const base = alias && maps.bases.get(alias.base);
+    const table = base && maps.tables.get(base.table);
+    if (!table) return null;
+    for (let rot = 0; rot < table.length; rot++) {
+      const decoded = resolveCall(call, rot, maps);
+      if (!decoded || !BUILD_DIGITS_RE.test(decoded)) continue;
+      if (extractSeeds(jsText, maps, rot)) return decoded;
+    }
+    return null;
+  }
+
+  for (const call of candidates) {
+    const id = tryCall(call);
+    if (id) return id;
+  }
+
+  const allCalls = jsText.match(new RegExp(CALL_SRC, "g")) || [];
+  for (const call of allCalls) {
+    const id = tryCall(call);
+    if (id && id.length >= 2 && id.length <= 8) return id;
+  }
+  return null;
+}
+
+function parseBundle(jsText) {
+  const legacy = /!==\s*["']string["']\s*\?\s*["'](\d+)["']\s*:\s*["']["']/.exec(jsText);
+  const maps = decoderMaps(jsText);
+  if (legacy) {
+    const seeds = extractSeeds(jsText, maps, null);
+    if (seeds) return { buildId: legacy[1], seeds: seeds };
+  }
+  const buildId = extractBuildIdNew(jsText, maps);
+  if (!buildId) return null;
+  const seeds = extractSeeds(jsText, maps, null);
+  return seeds ? { buildId: buildId, seeds: seeds } : null;
+}
+
+/* ---------------- current MKissa crypto ---------------- */
+
+function maskCandidates(buildId, seeds) {
+  const params = [
+    { saltMul: 211, saltAdd: 222, fragMul: 200, fragAdd: 176 },
+    { saltMul: 17, saltAdd: 31, fragMul: 41, fragAdd: 7 }
+  ];
+  const out = [];
+  for (const p of params) {
+    const stream = new Uint8Array(32);
+    for (let i = 0; i < 32; i++) {
+      stream[i] = (buildId.charCodeAt(i % buildId.length) ^ ((i * p.saltMul + p.saltAdd) & 255)) & 255;
+    }
+    const mask = new Uint8Array(32);
+    let ok = true;
+    for (let index = 0; index < 4; index++) {
+      let bytes;
+      try { bytes = base64ToBytes(seeds[index]); } catch (_) { ok = false; break; }
+      if (!bytes || bytes.length < 8) { ok = false; break; }
+      const base = index * 8;
+      for (let off = 0; off < 8; off++) {
+        mask[base + off] = (bytes[off] ^ stream[base + off] ^ ((index * p.fragMul + off * p.fragAdd) & 255)) & 255;
+      }
+    }
+    if (ok) out.push(mask);
+  }
   return out;
 }
 
-function buildMask(buildId, maskParts) {
-  const seed = buildMaskSeed(buildId);
-  const out = new Uint8Array(32);
-  for (let i = 0; i < maskParts.length; i++) {
-    const part = base64ToBytes(maskParts[i]);
-    const offset = i * 8;
-    for (let j = 0; j < 8; j++) out[offset + j] = (part[j] ^ seed[offset + j]) ^ ((i * 41 + j * 7) & 255);
-  }
-  return out;
-}
-
-function currentEpochs(now) {
+function epochCandidates(now) {
   now = now || Date.now();
-  const epoch = Math.floor(now / BOOT_EPOCH_MS);
-  const previousGrace = now - epoch * BOOT_EPOCH_MS < BOOT_GRACE_MS && epoch > 0 ? epoch - 1 : epoch;
-  return previousGrace === epoch ? [epoch] : [previousGrace, epoch];
+  const current = Math.floor(now / BOOT_EPOCH_MS);
+  const inGrace = now - current * BOOT_EPOCH_MS < BOOT_GRACE_MS && current > 0;
+  return inGrace ? [current - 1, current] : [current];
+}
+function skewedEpochCandidates(now) {
+  now = now || Date.now();
+  const current = Math.floor(now / BOOT_EPOCH_MS);
+  const normal = new Set(epochCandidates(now));
+  return [current + 1, current - 1].filter(function (x) { return x > 0 && !normal.has(x); });
 }
 
-async function makeBootToken(config, epoch, lane) {
-  lane = lane || CONTENT_LANE;
-  const mask = buildMask(config.buildId, config.maskParts);
-  const bootKey = await hmacBytes(mask, "aa-boot:" + config.buildId);
-  const token = await hmacBytes(bootKey, config.buildId + ":" + KEY_GROUP + ":" + REFERER_HOST + ":" + epoch + ":" + lane);
-  return bytesToHex(token);
+async function bootTokenNew(mask, buildId, epoch) {
+  const inner = await hmacBytes(mask, "kNk1YgwkSI:" + buildId);
+  const msg = [String(epoch), KEY_GROUP, SITE_HOST, buildId, LANE].join(".");
+  return bytesToHex(await hmacBytes(inner, msg));
+}
+async function bootTokenLegacy(mask, buildId, epoch) {
+  const inner = await hmacBytes(mask, "aa-boot:" + buildId);
+  const msg = buildId + ":" + KEY_GROUP + ":" + SITE_HOST + ":" + epoch + ":" + LANE;
+  return bytesToHex(await hmacBytes(inner, msg));
 }
 
-async function validateCryptoConfig(config) {
-  for (const epoch of currentEpochs()) {
+async function bootstrap(build, masks, epochs) {
+  const url = API + "/client-crypto/v1/bootstrap?buildId=" + encodeURIComponent(build.buildId) + "&k=" + encodeURIComponent(LANE);
+  for (const mask of masks) {
+    for (const epoch of epochs) {
+      const tokens = [
+        await bootTokenNew(mask, build.buildId, epoch),
+        await bootTokenLegacy(mask, build.buildId, epoch)
+      ];
+      for (const token of tokens) {
+        try {
+          const r = await sessionFetch(url, {
+            headers: baseHeaders({
+              "x-build-id": build.buildId,
+              "x-aa-boot": token,
+              "Origin": SITE,
+              "Referer": SITE + "/"
+            })
+          });
+          if (!r || !r.ok) continue;
+          const d = await r.json();
+          if (!d || !d.partB) continue;
+          if (d.k && d.k !== LANE) continue;
+          const partB = base64ToBytes(d.partB);
+          if (partB.length < 32) continue;
+          const key = new Uint8Array(32);
+          for (let i = 0; i < 32; i++) key[i] = partB[i] ^ mask[i % mask.length];
+          return {
+            key: key,
+            epoch: d.epoch !== undefined ? d.epoch : epoch,
+            buildId: build.buildId
+          };
+        } catch (_) {}
+      }
+    }
+  }
+  return null;
+}
+
+function resolveRelative(value, base) {
+  try { return new URL(value, base).toString(); }
+  catch (_) {
+    if (/^https?:\/\//i.test(value)) return value;
+    if (value.startsWith("//")) return "https:" + value;
+    if (value.startsWith("/")) return SITE + value;
+    return SITE + "/" + value.replace(/^\.?\//, "");
+  }
+}
+
+async function resolveBuild() {
+  const pages = [SITE + "/", SITE + "/anime/attack-on-titan-Ycid9tDZd2FxGCJ8o/sub/1"];
+  let html = null;
+  let basePage = null;
+  for (const page of pages) {
     try {
-      const token = await makeBootToken(config, epoch, CONTENT_LANE);
-      const r = await sessionFetch(API + "/client-crypto/v1/bootstrap?buildId=" + encodeURIComponent(config.buildId) + "&k=" + encodeURIComponent(CONTENT_LANE), {
-        headers: headers({
-          "Referer": REFERER + "/",
-          "Origin": REFERER,
-          "x-build-id": config.buildId,
-          "x-aa-boot": token
-        })
-      });
-      if (r && r.ok) return true;
+      html = await fetchText(page, { "Referer": SITE + "/", "Accept": "text/html,*/*" });
+      if (html && /entry\/app\.[^"'()]+\.js/.test(html)) { basePage = page; break; }
     } catch (_) {}
   }
-  return false;
-}
+  if (!html || !basePage) throw new Error("MKissa app entry unavailable");
 
-async function discoverCryptoConfig(force) {
-  if (!force && cryptoConfigCache && Date.now() < cryptoConfigCache.expiresAt) return cryptoConfigCache;
-  cryptoConfigCache = null;
-  const html = await fetchText(REFERER + DISCOVERY_PATH, { "Accept": "text/html,*/*" });
-  let appPath = (html.match(/import\("([^"]+\/_app\/immutable\/entry\/app\.[^"]+\.js)"\)/) || [])[1];
-  if (!appPath) appPath = (html.match(/src="([^"]+\/_app\/immutable\/entry\/app\.[^"]+\.js)"/) || [])[1];
-  if (!appPath) throw new Error("MKissa app entry not found");
-  const appUrl = resolveUrl(appPath, REFERER + DISCOVERY_PATH);
-  const queue = [appUrl];
-  const seen = new Set();
-  let scanned = 0;
+  let m = /import\("([^"]*\/entry\/app\.[^"]*\.js)"\)/.exec(html);
+  if (!m) m = /src=["']([^"']*\/entry\/app\.[^"']*\.js)["']/.exec(html);
+  if (!m) throw new Error("MKissa app entry not found");
 
-  while (queue.length && scanned < 180) {
-    const batch = [];
-    while (queue.length && batch.length < 12) {
-      const u = queue.shift();
-      if (!seen.has(u)) { seen.add(u); batch.push(u); }
-    }
-    if (!batch.length) continue;
-    const loaded = await Promise.all(batch.map(async function (u) {
-      try { return { url: u, text: await fetchText(u, { "Accept": "application/javascript,*/*" }) }; }
+  const appUrl = resolveRelative(m[1], basePage);
+  const appJs = await fetchText(appUrl, { "Referer": SITE + "/", "Accept": "application/javascript,*/*" });
+
+  const refs = [];
+  const refRe = /["'](\.\.?\/[\w./-]+\.js)["']/g;
+  while ((m = refRe.exec(appJs))) {
+    if (refs.indexOf(m[1]) < 0) refs.push(m[1]);
+  }
+  refs.sort(function (a, b) { return Number(b.indexOf("/chunks/") >= 0) - Number(a.indexOf("/chunks/") >= 0); });
+
+  const max = Math.min(refs.length, 48);
+  for (let start = 0; start < max; start += 4) {
+    const batch = refs.slice(start, Math.min(start + 4, max));
+    const loaded = await Promise.all(batch.map(async function (ref) {
+      const u = resolveRelative(ref, appUrl);
+      try { return await fetchText(u, { "Referer": SITE + "/", "Accept": "application/javascript,*/*" }); }
       catch (_) { return null; }
     }));
-    scanned += batch.length;
-    for (const item of loaded.filter(Boolean)) {
-      const imports = [];
-      for (const m of item.text.matchAll(/(?:import\(|from\s*)["']([^"']+\.js)["']/g)) imports.push(m[1]);
-      for (const m of item.text.matchAll(/"(\.\.\/(?:chunks|nodes)\/[^"\n]+\.js)"/g)) imports.push(m[1]);
-      for (const value of imports) {
-        if (!value || (!value.startsWith(".") && !value.startsWith("/"))) continue;
-        const next = resolveUrl(value, item.url);
-        if (!seen.has(next)) queue.push(next);
-      }
-      if (!/client-crypto|x-aa-boot|aaReq|partB/.test(item.text)) continue;
-      const config = evalCryptoChunk(item.text);
-      if (config && await validateCryptoConfig(config)) {
-        cryptoConfigCache = Object.assign(config, { expiresAt: Date.now() + 30 * 60 * 1000 });
-        console.log("[AllAnime] crypto config found after " + scanned + " assets");
-        return cryptoConfigCache;
-      }
+    for (const body of loaded) {
+      if (!body || body.indexOf("aaReq") < 0) continue;
+      const parsed = parseBundle(body);
+      if (parsed) return parsed;
     }
   }
-  throw new Error("MKissa crypto config not found after " + scanned + " assets");
+  throw new Error("MKissa crypto bundle not found");
 }
 
-async function fetchBootstrap(force) {
-  const config = await discoverCryptoConfig(force);
-  if (!force && bootstrapCache && bootstrapCache.buildId === config.buildId && Date.now() < bootstrapCache.expiresAt) return bootstrapCache;
-  for (const epoch of currentEpochs()) {
-    const token = await makeBootToken(config, epoch, CONTENT_LANE);
-    const r = await sessionFetch(API + "/client-crypto/v1/bootstrap?buildId=" + encodeURIComponent(config.buildId) + "&k=" + encodeURIComponent(CONTENT_LANE), {
-      headers: headers({
-        "Referer": REFERER + "/",
-        "Origin": REFERER,
-        "x-build-id": config.buildId,
-        "x-aa-boot": token
-      })
-    });
-    if (!r || !r.ok) continue;
-    const d = await r.json();
-    if (!d || !d.partB) continue;
-    bootstrapCache = Object.assign({}, d, config, { expiresAt: Date.now() + 10 * 60 * 1000 });
-    return bootstrapCache;
+async function getMaterial(force) {
+  if (force) materialPromise = null;
+  if (!materialPromise) {
+    materialPromise = (async function () {
+      const build = await resolveBuild();
+      const masks = maskCandidates(build.buildId, build.seeds);
+      let material = await bootstrap(build, masks, epochCandidates());
+      if (!material) material = await bootstrap(build, masks, skewedEpochCandidates());
+      if (!material) throw new Error("MKissa bootstrap rejected current build");
+      return material;
+    })();
   }
-  throw new Error("MKissa bootstrap failed");
+  return materialPromise;
 }
 
-function deriveLaneKey(partB, config) {
-  const encrypted = base64ToBytes(partB);
-  const mask = buildMask(config.buildId, config.maskParts);
-  const key = new Uint8Array(32);
-  for (let i = 0; i < 32; i++) key[i] = encrypted[i] ^ mask[i % mask.length];
-  return key;
-}
-
-async function getLaneKey(force) {
-  const boot = await fetchBootstrap(force);
-  return { key: deriveLaneKey(boot.partB, boot), epoch: boot.epoch, buildId: boot.buildId };
-}
-
-async function makeAaReq(key, epoch, buildId, queryHash) {
-  const ts = Math.floor(Date.now() / AA_REQ_MS) * AA_REQ_MS;
-  const payload = utf8(JSON.stringify({ v: 1, ts: ts, epoch: epoch, buildId: buildId, qh: queryHash, k: CONTENT_LANE }));
-  const iv = (await sha256Bytes(epoch + ":" + buildId + ":" + queryHash + ":" + ts + ":" + CONTENT_LANE)).slice(0, 12);
-  const body = await aesGcmEncrypt(key, iv, payload);
+async function buildAaReq(material, qh) {
+  const ts = Math.floor(Date.now() / AA_WINDOW_MS) * AA_WINDOW_MS;
+  const payload = utf8(JSON.stringify({
+    v: 1,
+    ts: ts,
+    epoch: material.epoch,
+    buildId: material.buildId,
+    qh: qh,
+    k: LANE
+  }));
+  const iv = (await sha256Bytes(material.epoch + ":" + material.buildId + ":" + qh + ":" + ts + ":" + LANE)).slice(0, 12);
+  const body = await aesGcmEncrypt(material.key, iv, payload);
   return bytesToBase64(concatBytes(new Uint8Array([1]), iv, body));
 }
 
-async function decryptTobeparsed(b64, key) {
-  const buf = base64ToBytes(b64);
-  if (buf[0] !== 1) throw new Error("Unsupported MKissa crypto version " + buf[0]);
-  const iv = buf.slice(1, 13);
-  const body = buf.slice(13);
-  const plain = await aesGcmDecrypt(key, iv, body);
-  return JSON.parse(fromUtf8(plain));
+async function legacyKey(version) {
+  return sha256Bytes(LEGACY_SECRET + ":v" + version);
 }
 
-async function apiPost(query, variables, options) {
-  options = options || {};
-  const config = options.buildId ? options : await discoverCryptoConfig(!!options.force);
-  const body = { query: query, variables: variables };
-  if (options.extensions) body.extensions = options.extensions;
+async function decryptPayload(blob, material) {
+  const raw = base64ToBytes(blob);
+  if (raw.length < 29) throw new Error("MKissa encrypted payload too short");
+  const version = raw[0];
+  const iv = raw.slice(1, 13);
+  const body = raw.slice(13);
+  const keys = [material.key, await legacyKey(version)];
+  for (const key of keys) {
+    try {
+      const plain = await aesGcmDecrypt(key, iv, body);
+      return JSON.parse(fromUtf8(plain));
+    } catch (_) {}
+  }
+  throw new Error("MKissa payload decrypt failed");
+}
+
+/* ---------------- GraphQL ---------------- */
+
+async function graphQLPost(query, variables) {
   const r = await sessionFetch(API_URL, {
     method: "POST",
-    headers: headers({
-      "Referer": REFERER + "/",
-      "Origin": REFERER,
+    headers: baseHeaders({
       "Content-Type": "application/json",
-      "x-build-id": config.buildId,
-      "Sec-Fetch-Dest": "empty",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-site"
+      "Origin": "https://youtu-chan.com",
+      "Referer": "https://youtu-chan.com/"
     }),
-    body: JSON.stringify(body)
+    body: JSON.stringify({ query: query, variables: variables })
   });
-  const raw = await r.text();
-  if (!r || !r.ok) {
-    const err = new Error("AllAnime API POST " + (r ? r.status : "?"));
-    err.rawBody = raw;
-    throw err;
-  }
-  const d = JSON.parse(raw);
-  const messages = d && d.errors ? d.errors.map(function (x) { return x.message || (x.extensions && x.extensions.code) || "GraphQL error"; }) : [];
-  if (messages.length) {
-    const err = new Error(messages.join(" · "));
-    if (messages.indexOf("NEED_CAPTCHA") >= 0) err.code = "NEED_CAPTCHA";
-    err.rawBody = raw;
-    throw err;
+  if (!r || !r.ok) throw new Error("MKissa GraphQL " + (r ? r.status : "?"));
+  const d = await r.json();
+  if (d && d.errors && d.errors.length) {
+    throw new Error(d.errors.map(function (x) { return x.message || (x.extensions && x.extensions.code) || "GraphQL error"; }).join(" · "));
   }
   return d && d.data;
 }
 
-const SEARCH_QUERY = "query($search:SearchInput $limit:Int $page:Int $translationType:VaildTranslationTypeEnumType $countryOrigin:VaildCountryOriginEnumType){shows(search:$search limit:$limit page:$page translationType:$translationType countryOrigin:$countryOrigin){edges{_id name englishName nativeName slugTime availableEpisodes availableEpisodesDetail aniListId __typename}}}";
-const EPISODE_QUERY = "query($showId:String! $translationType:VaildTranslationTypeEnumType! $episodeString:String!){episode(showId:$showId translationType:$translationType episodeString:$episodeString){sourceUrls show{_id}}}";
-
-async function apiEpisode(query, variables, options) {
-  options = options || {};
-  const force = !!options.force;
-  const hashIndex = options.hashIndex || 0;
-  const captchaRetry = options.captchaRetry || 0;
-  const postFallback = !!options.postFallback;
-  const dynamicHash = await sha256Hex(query);
-  const hashes = [dynamicHash];
-  const hash = hashes[Math.min(hashIndex, hashes.length - 1)];
-  const lane = await getLaneKey(force);
-  const extensions = {
-    persistedQuery: { version: 1, sha256Hash: hash },
-    k: CONTENT_LANE,
-    aaReq: await makeAaReq(lane.key, lane.epoch, lane.buildId, hash)
-  };
-  const url = API_URL + "?query=" + encodeURIComponent(query) + "&variables=" + encodeURIComponent(JSON.stringify(variables)) + "&extensions=" + encodeURIComponent(JSON.stringify(extensions));
-  const r = await sessionFetch(url, {
-    headers: headers({
-      "Referer": REFERER + "/",
-      "Origin": REFERER,
-      "x-build-id": lane.buildId,
-      "Sec-Fetch-Dest": "empty",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-site"
-    })
-  });
-  const raw = await r.text();
-  if (!r || !r.ok) {
-    const err = new Error("AllAnime episode API " + (r ? r.status : "?"));
-    err.rawBody = raw;
-    throw err;
-  }
-  const d = JSON.parse(raw);
-  const messages = d && d.errors ? d.errors.map(function (x) { return x.message || (x.extensions && x.extensions.code); }).filter(Boolean) : [];
-
-  if (messages.indexOf("PersistedQueryNotFound") >= 0 || messages.some(function (m) { return /Context creation failed/i.test(m); })) {
-    if (hashIndex + 1 < hashes.length) {
-      return apiEpisode(query, variables, { force: false, hashIndex: hashIndex + 1, captchaRetry: captchaRetry, postFallback: postFallback });
-    }
-    const posted = await apiPost(query, variables, { buildId: lane.buildId, extensions: extensions });
-    return posted && posted.tobeparsed ? decryptTobeparsed(posted.tobeparsed, lane.key) : posted;
-  }
-
-  if (messages.indexOf("NEED_CAPTCHA") >= 0) {
-    if (!postFallback) {
-      try {
-        const postExtensions = {
-          persistedQuery: { version: 1, sha256Hash: dynamicHash },
-          k: CONTENT_LANE,
-          aaReq: await makeAaReq(lane.key, lane.epoch, lane.buildId, dynamicHash)
-        };
-        const posted = await apiPost(query, variables, { buildId: lane.buildId, extensions: postExtensions });
-        return posted && posted.tobeparsed ? decryptTobeparsed(posted.tobeparsed, lane.key) : posted;
-      } catch (err) {
-        if (err.code !== "NEED_CAPTCHA") throw err;
-      }
-    }
-    if (captchaRetry < 2) {
-      await sleep(1200 + captchaRetry * 1000);
-      return apiEpisode(query, variables, { force: false, hashIndex: hashIndex, captchaRetry: captchaRetry + 1, postFallback: true });
-    }
-    const err = new Error("MKissa requested captcha");
-    err.code = "NEED_CAPTCHA";
-    err.rawBody = raw;
-    throw err;
-  }
-
-  if (messages.some(function (m) { return /^AA_CRYPTO_/.test(m); })) {
-    if (!force) {
-      cryptoConfigCache = null;
-      bootstrapCache = null;
-      return apiEpisode(query, variables, { force: true, hashIndex: hashIndex, captchaRetry: captchaRetry, postFallback: postFallback });
-    }
-    throw new Error(messages.join(" · "));
-  }
-
-  if (d && d.data && d.data.tobeparsed) return decryptTobeparsed(d.data.tobeparsed, lane.key);
-  if (messages.length) throw new Error(messages.join(" · "));
-  return d && d.data;
-}
-
-async function searchAnime(query, mode) {
-  const data = await apiPost(SEARCH_QUERY, {
-    search: { allowAdult: false, allowUnknown: false, query: query },
-    limit: 40,
+async function searchAnime(title, mode) {
+  const data = await graphQLPost(SEARCH_QUERY, {
+    search: { query: title, allowAdult: false, allowUnknown: false },
+    limit: 26,
     page: 1,
     translationType: mode,
     countryOrigin: "ALL"
@@ -507,40 +675,86 @@ async function searchAnime(query, mode) {
   return data && data.shows && Array.isArray(data.shows.edges) ? data.shows.edges : [];
 }
 
-async function getEpisode(showId, episode, mode) {
-  const data = await apiEpisode(EPISODE_QUERY, { showId: showId, translationType: mode, episodeString: String(episode) }, {});
+async function streamEpisode(showId, mode, episode, retry) {
+  retry = retry || 0;
+  const material = await getMaterial(retry > 0);
+  const qh = await sha256Hex(STREAM_QUERY);
+  const extensions = {
+    persistedQuery: { version: 1, sha256Hash: qh },
+    k: LANE,
+    aaReq: await buildAaReq(material, qh)
+  };
+  const params =
+    "?query=" + encodeURIComponent(STREAM_QUERY) +
+    "&variables=" + encodeURIComponent(JSON.stringify({
+      showId: showId,
+      translationType: mode,
+      episodeString: String(episode)
+    })) +
+    "&extensions=" + encodeURIComponent(JSON.stringify(extensions));
+
+  const r = await sessionFetch(API_URL + params, {
+    headers: baseHeaders({
+      "Origin": SITE,
+      "Referer": SITE + "/",
+      "x-build-id": material.buildId,
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "cors",
+      "Sec-Fetch-Site": "same-site"
+    })
+  });
+  if (!r || !r.ok) throw new Error("MKissa stream API " + (r ? r.status : "?"));
+  const rawText = await r.text();
+  let d;
+  try { d = JSON.parse(rawText); } catch (_) { throw new Error("MKissa stream response was not JSON"); }
+
+  const errors = d && d.errors ? d.errors.map(function (x) {
+    return x.message || (x.extensions && x.extensions.code) || "GraphQL error";
+  }) : [];
+  if (errors.length) {
+    if (retry < 1 && errors.some(function (x) { return /^AA_CRYPTO/.test(x); })) {
+      return streamEpisode(showId, mode, episode, retry + 1);
+    }
+    throw new Error(errors.join(" · "));
+  }
+
+  let data = d && d.data;
+  if (data && data.tobeparsed) data = await decryptPayload(data.tobeparsed, material);
+  if (data && data.data) data = data.data;
   return data && data.episode ? data.episode : null;
 }
 
-function clean(s) {
-  return String(s || "").toLowerCase().replace(/[^a-z0-9\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]+/g, "").trim();
-}
+/* ---------------- mapping and matching ---------------- */
 
+function clean(s) {
+  return String(s || "").toLowerCase().normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]+/g, "");
+}
 function uniq(values) {
-  const out = [];
-  const seen = new Set();
-  for (const value of values || []) {
-    if (!value) continue;
-    const s = String(value).trim();
-    const k = clean(s);
+  const out = [], seen = new Set();
+  for (const v of values || []) {
+    if (!v) continue;
+    const s = String(v).trim(), k = clean(s);
     if (!k || seen.has(k)) continue;
-    seen.add(k);
-    out.push(s);
+    seen.add(k); out.push(s);
   }
   return out;
 }
 
-async function tmdbId(id, type) {
-  id = String(id || "").trim();
+async function tmdbId(inputId, type) {
+  const id = String(inputId || "").trim();
   if (/^\d+$/.test(id)) return +id;
   if (!/^tt\d+$/i.test(id)) return null;
-  const d = await fetchJson("https://api.themoviedb.org/3/find/" + encodeURIComponent(id) + "?api_key=" + TMDB_KEY + "&external_source=imdb_id");
+  const d = await fetchJson("https://api.themoviedb.org/3/find/" + encodeURIComponent(id) +
+    "?api_key=" + TMDB_KEY + "&external_source=imdb_id");
   const list = type === "movie" ? d && d.movie_results : d && d.tv_results;
   return list && list[0] && list[0].id ? +list[0].id : null;
 }
 
 async function tmdbInfo(id, type) {
-  const d = await fetchJson("https://api.themoviedb.org/3/" + type + "/" + id + "?api_key=" + TMDB_KEY + "&append_to_response=external_ids");
+  const d = await fetchJson("https://api.themoviedb.org/3/" + type + "/" + id +
+    "?api_key=" + TMDB_KEY + "&append_to_response=external_ids");
   if (!d) return null;
   return {
     title: type === "movie" ? (d.title || d.original_title) : (d.name || d.original_name),
@@ -551,12 +765,13 @@ async function tmdbInfo(id, type) {
 
 async function malMap(imdb, season, episode) {
   if (!imdb) return null;
-  return fetchJson(MAL_MAP + "?id=" + encodeURIComponent(imdb) + "&s=" + encodeURIComponent(season) + "&e=" + encodeURIComponent(episode));
+  return fetchJson(MAL_MAP + "?id=" + encodeURIComponent(imdb) +
+    "&s=" + encodeURIComponent(season) + "&e=" + encodeURIComponent(episode));
 }
 
 async function anilistByMal(mal) {
   if (!mal) return null;
-  const query = "query($idMal:Int){Media(idMal:$idMal,type:ANIME){id idMal title{english romaji native} synonyms}}";
+  const query = `query($idMal:Int){Media(idMal:$idMal,type:ANIME){id idMal title{english romaji native} synonyms}}`;
   try {
     const r = await fetch("https://graphql.anilist.co", {
       method: "POST",
@@ -576,7 +791,7 @@ async function armAnilist(tmdb) {
 
 async function anilistById(id) {
   if (!id) return null;
-  const query = "query($id:Int){Media(id:$id,type:ANIME){id idMal title{english romaji native} synonyms}}";
+  const query = `query($id:Int){Media(id:$id,type:ANIME){id idMal title{english romaji native} synonyms}}`;
   try {
     const r = await fetch("https://graphql.anilist.co", {
       method: "POST",
@@ -595,16 +810,16 @@ function exactCandidate(results, targetAniList, aliases) {
   }
   const keys = new Set(uniq(aliases).map(clean));
   for (const r of results || []) {
-    const names = [r.name, r.englishName, r.nativeName];
-    if (names.some(function (x) { return keys.has(clean(x)); })) return r;
+    if ([r.name, r.englishName, r.nativeName].some(function (x) { return keys.has(clean(x)); })) return r;
   }
   return null;
 }
 
 async function findShow(aliases, mode, targetAniList) {
-  for (const alias of uniq(aliases).slice(0, 4)) {
+  const tries = uniq(aliases).slice(0, 5);
+  for (const alias of tries) {
     let results = [];
-    try { results = await searchAnime(alias, mode); } catch (_) { results = []; }
+    try { results = await searchAnime(alias, mode); } catch (_) {}
     if (!results.length) continue;
     const exact = exactCandidate(results, targetAniList, aliases);
     if (exact) return exact;
@@ -612,205 +827,164 @@ async function findShow(aliases, mode, targetAniList) {
   return null;
 }
 
-function slugifyTitle(value) {
-  return String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
+/* ---------------- source extraction ---------------- */
 
-async function warmWatchPage(show, epNum, mode) {
+async function warmWatchPage(show, ep, mode) {
   if (!show || !show._id) return;
-  const slug = show.slugTime || slugifyTitle(show.englishName || show.name || show.nativeName);
+  const slug = show.slugTime || clean(show.englishName || show.name || show.nativeName).replace(/\s+/g, "-");
   if (!slug) return;
-  const page = REFERER + "/anime/" + slug + "-" + show._id + "/" + mode + "/" + epNum;
+  const url = SITE + "/anime/" + slug + "-" + show._id + "/" + mode + "/" + ep;
   try {
-    await sessionFetch(page, {
-      headers: headers({
+    await sessionFetch(url, {
+      headers: baseHeaders({
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Referer": REFERER + "/",
-        "Sec-Fetch-Dest": "document",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-User": "?1",
-        "Upgrade-Insecure-Requests": "1"
+        "Origin": SITE,
+        "Referer": SITE + "/"
       })
     });
   } catch (_) {}
 }
 
-function decodeHexUrl(hex) {
-  let out = "";
-  for (let i = 0; i < hex.length; i += 2) {
-    const pair = hex.substring(i, i + 2).toLowerCase();
-    out += HEX_TABLE[pair] || pair;
-  }
-  return out.replace(/([^:])\/\//g, "$1/").replace("/clock", "/clock.json");
+async function extractMp4Upload(url) {
+  try {
+    const r = await fetch(url, { headers: baseHeaders({ "Referer": "https://www.mp4upload.com/" }) });
+    if (!r || !r.ok) return null;
+    const h = await r.text();
+    const m = /player\.src\s*\(\s*\{[^}]*\bsrc\s*:\s*"([^"]+)"/.exec(h) ||
+              /"file"\s*:\s*"(https?:[^"]+\.mp4[^"]*)"/.exec(h) ||
+              /\bsrc\s*:\s*"(https?:[^"]+\.mp4[^"]*)"/.exec(h);
+    return m && m[1] ? { url: m[1].replace(/\\/g, ""), headers: { "Referer": "https://www.mp4upload.com/", "User-Agent": UA } } : null;
+  } catch (_) { return null; }
+}
+
+async function extractOk(url) {
+  try {
+    let id = null;
+    const m = /\/(?:videoembed\/)?(\d+)(?:[/?#]|$)/.exec(url);
+    if (m) id = m[1];
+    if (!id) return null;
+    const r = await fetch("https://ok.ru/videoembed/" + id, { headers: baseHeaders({ "Referer": "https://ok.ru/" }) });
+    if (!r || !r.ok) return null;
+    const h = await r.text();
+    const x = /ondemandHls\\&quot;:\\&quot;(https?:\/\/.*?)\\&quot;/.exec(h);
+    return x && x[1] ? { url: x[1].replace(/\\u0026/g, "&"), headers: { "Referer": "https://ok.ru/", "User-Agent": UA } } : null;
+  } catch (_) { return null; }
 }
 
 async function extractClock(url) {
   try {
-    const clockUrl = url.replace("/clock?", "/clock.json?").replace(/\/clock$/, "/clock.json");
-    const r = await fetch(clockUrl, {
-      headers: headers({
-        "Referer": BASE + "/player.html",
-        "Accept": "*/*",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin"
-      })
+    let u = url;
+    if (u.startsWith("/")) u = PLAYER + u;
+    u = u.replace("/clock?", "/clock.json?").replace(/\/clock$/, "/clock.json");
+    const r = await fetch(u, {
+      headers: baseHeaders({ "Referer": PLAYER + "/player.html", "Origin": PLAYER })
     });
-    if (!r || !r.ok) return null;
+    if (!r || !r.ok) return [];
     const d = await r.json();
     const links = d && Array.isArray(d.links) ? d.links : [];
-    const best = links.find(function (x) { return x && x.hls && x.link; }) || links.find(function (x) { return x && x.link; });
-    return best && best.link ? { url: best.link, headers: { "Referer": BASE + "/player.html", "User-Agent": UA } } : null;
-  } catch (_) { return null; }
-}
-
-async function extractMp4Upload(id) {
-  try {
-    const r = await fetch("https://www.mp4upload.com/embed-" + id + ".html", { headers: headers({ "Referer": "https://mp4upload.com/" }) });
-    if (!r || !r.ok) return null;
-    const h = await r.text();
-    const m = h.match(/player\.src\s*\(\s*\{[^}]*\bsrc\s*:\s*"([^"]+)"/) || h.match(/"file"\s*:\s*"(https?:[^"]+\.mp4[^"]*)"/) || h.match(/\bsrc\s*:\s*"(https?:[^"]+\.mp4[^"]*)"/);
-    return m && m[1] ? { url: m[1].replace(/\\/g, ""), headers: { "Referer": "https://mp4upload.com/", "User-Agent": UA } } : null;
-  } catch (_) { return null; }
-}
-
-async function extractUns(url) {
-  try {
-    const p = new URL(url);
-    const id = String(p.hash || "").replace(/^#/, "").split("&")[0];
-    if (!id) return null;
-    const base = p.protocol + "//" + p.host;
-    const r = await fetch(base + "/api/v1/video?id=" + encodeURIComponent(id) + "&w=1280&h=720&r=", {
-      headers: headers({ "Referer": base + "/#" + id, "Origin": base })
+    return links.filter(function (x) { return x && x.link; }).map(function (x) {
+      return {
+        url: x.link,
+        quality: x.resolutionStr || "1080p",
+        subtitles: Array.isArray(x.subtitles) ? x.subtitles : [],
+        headers: Object.assign({ "User-Agent": UA }, x.headers || { "Referer": PLAYER + "/player.html" })
+      };
     });
-    if (!r || !r.ok) return null;
-    const hex = (await r.text()).trim();
-    if (!hex || !/^[0-9a-f]+$/i.test(hex)) return null;
-    const data = JSON.parse(await aesCbcDecryptHex(hex));
-    const out = data && (data.source || data.cf);
-    return out ? { url: out, headers: { "Referer": base + "/#" + id, "User-Agent": UA } } : null;
-  } catch (_) { return null; }
+  } catch (_) { return []; }
 }
 
-async function extractOk(id) {
-  try {
-    const r = await fetch("https://ok.ru/videoembed/" + id, { headers: headers({ "Referer": "https://ok.ru/" }) });
-    if (!r || !r.ok) return null;
-    const h = await r.text();
-    const m = h.match(/ondemandHls\\&quot;:\\&quot;(https?:\/\/.*?)\\&quot;/);
-    return m && m[1] ? { url: m[1].replace(/\\u0026/g, "&"), headers: { "Referer": "https://ok.ru/", "User-Agent": UA } } : null;
-  } catch (_) { return null; }
-}
-
-async function extractStreamSB(id) {
-  try {
-    const baseHeaders = headers({ "Referer": REFERER + "/", "watchsb": "streamsb", "Accept": "application/json, text/plain, */*" });
-    const r1 = await fetch("https://streamsb.net/api/v1/video?id=" + id, { headers: baseHeaders });
-    if (!r1 || !r1.ok) return null;
-    const sid = ((r1.headers.get("set-cookie") || "").match(/sid=([^;]+)/) || [])[1] || "";
-    const h = await r1.text();
-    const m = h.match(/window\.location\.replace\('([^']+)'\)/);
-    if (!m) return null;
-    const r2 = await fetch(m[1], { headers: Object.assign({}, baseHeaders, { "Cookie": "sid=" + sid, "Referer": "https://streamsb.net/e/" + id + ".html" }) });
-    if (!r2 || !r2.ok) return null;
-    const data = await r2.json();
-    const out = data && ((data.stream_data && data.stream_data.file) || (data.data && data.data.file));
-    return out ? { url: out, headers: { "Referer": "https://streamsb.net/", "User-Agent": UA } } : null;
-  } catch (_) { return null; }
-}
-
-async function extractStreamlare(id) {
-  try {
-    const r = await fetch("https://streamlare.com/api/video/stream/get", {
-      method: "POST",
-      headers: headers({ "Content-Type": "application/json", "Referer": "https://streamlare.com/", "Origin": "https://streamlare.com", "Accept": "application/json, */*" }),
-      body: JSON.stringify({ id: id })
-    });
-    if (!r || !r.ok) return null;
-    const data = await r.json();
-    const out = data && data.data && data.data.file;
-    return out ? { url: out, headers: { "Referer": "https://streamlare.com/", "User-Agent": UA } } : null;
-  } catch (_) { return null; }
-}
-
-async function extractSource(src) {
-  if (!src || !src.sourceUrl) return null;
-  let url = src.sourceUrl;
-  if (url.startsWith("--")) url = decodeHexUrl(url.slice(2));
-  if (url.startsWith("/apivtwo/clock")) url = BASE + url.replace("/clock", "/clock.json");
-  if (url.startsWith("/")) url = BASE + url;
-  if (/^https?:\/\/allanime\.day\/apivtwo\/clock(?:\.json)?/i.test(url)) url = url.replace("/clock?", "/clock.json?");
-
-  if (/\.(?:m3u8|mp4)(?:$|[?#])/i.test(url) || /fast4speed/i.test(url)) {
-    return { url: url, headers: { "Referer": REFERER + "/", "User-Agent": UA }, sourceName: src.sourceName || "Direct" };
-  }
-
-  try {
-    const p = new URL(url);
-    const host = String(p.hostname || "").replace(/^www\./, "");
-    let result = null;
-    if (host === "allanime.day" && /\/apivtwo\/clock(?:\.json)?/i.test(p.pathname)) {
-      result = await extractClock(url);
-    } else if (src.type === "player") {
-      result = { url: url, headers: { "Referer": REFERER + "/", "User-Agent": UA } };
-    } else if (host === "mp4upload.com") {
-      const m = url.match(/embed-([a-zA-Z0-9]+)\.html/i);
-      if (m && m[1]) result = await extractMp4Upload(m[1]);
-    } else if (/uns\.bio$/i.test(host)) {
-      result = await extractUns(url);
-    } else if (host === "ok.ru") {
-      const m = url.match(/\/(?:videoembed\/)?(\d+)(?:[/?#]|$)/i);
-      if (m && m[1]) result = await extractOk(m[1]);
-    } else if (/streamsb\./i.test(host)) {
-      const m = url.match(/\/(?:e\/|embed-)([a-zA-Z0-9]+)(?:\.html)?/i);
-      if (m && m[1]) result = await extractStreamSB(m[1]);
-    } else if (/streamlare\./i.test(host)) {
-      const m = url.match(/\/e\/([a-zA-Z0-9]+)/i);
-      if (m && m[1]) result = await extractStreamlare(m[1]);
-    }
-    if (result && result.url) {
-      result.sourceName = src.sourceName || host || "Source";
-      return result;
-    }
-  } catch (_) {}
-  return null;
-}
-
-function qualityFrom(value) {
-  const m = String(value || "").match(/\b(2160|1440|1080|720|480|360)p\b/i);
-  return m ? m[1] + "p" : "1080p";
-}
-
-async function resolveEpisodeStreams(show, epNum, mode) {
-  await warmWatchPage(show, epNum, mode);
-  const episode = await getEpisode(show._id, epNum, mode);
-  if (!episode || !Array.isArray(episode.sourceUrls)) return [];
-  console.log("[AllAnime] " + mode.toUpperCase() + " raw sources=" + episode.sourceUrls.length);
-  const extracted = await Promise.all(episode.sourceUrls.map(extractSource));
-  const out = [];
-  const seen = new Set();
-  for (const item of extracted.filter(Boolean)) {
-    if (!item.url || seen.has(item.url)) continue;
-    seen.add(item.url);
-    const q = qualityFrom(item.url + " " + item.sourceName);
-    out.push({
-      name: NAME + " [" + mode.toUpperCase() + "] • " + item.sourceName,
-      title: (mode === "dub" ? "English DUB" : "Japanese SUB") + " • " + q,
-      url: item.url,
-      quality: q,
-      provider: NAME,
-      type: /\.m3u8(?:$|[?#])/i.test(item.url) ? "m3u8" : "mp4",
-      headers: item.headers || { "Referer": REFERER + "/", "User-Agent": UA },
-      language: mode === "dub" ? "English" : "Japanese"
-    });
+function normalizeSubs(list) {
+  const out = [], seen = new Set();
+  for (const s of list || []) {
+    const url = s && (s.src || s.url);
+    const lang = String(s && (s.lang || s.label || s.language) || "Unknown");
+    if (!url) continue;
+    const key = lang.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ url: url, language: lang, name: s.label || lang });
   }
   return out;
 }
 
-async function getStreams(inputId, type, season, episode) {
+async function extractSource(src) {
+  if (!src || !src.sourceUrl) return [];
+  let url = xorHexSource(src.sourceUrl);
+  if (url.startsWith("//")) url = "https:" + url;
+
+  if (url.startsWith("/apivtwo/") || /allanime\.day\/apivtwo\/clock/.test(url)) {
+    return extractClock(url);
+  }
+
+  if (src.type === "player" || /tools\.fast4speed\.rsvp/.test(url)) {
+    return [{
+      url: url,
+      quality: "1080p",
+      headers: { "Referer": PLAYER + "/", "User-Agent": UA },
+      subtitles: []
+    }];
+  }
+
+  if (/\.m3u8(?:$|[?#])|\.mp4(?:$|[?#])/.test(url)) {
+    return [{
+      url: url,
+      quality: "1080p",
+      headers: { "Referer": SITE + "/", "User-Agent": UA },
+      subtitles: []
+    }];
+  }
+
+  if (/mp4upload\.com/.test(url)) {
+    const r = await extractMp4Upload(url);
+    return r ? [Object.assign(r, { quality: "1080p", subtitles: [] })] : [];
+  }
+  if (/ok\.ru/.test(url)) {
+    const r = await extractOk(url);
+    return r ? [Object.assign(r, { quality: "1080p", subtitles: [] })] : [];
+  }
+
+  return [];
+}
+
+function qualityOf(v) {
+  const m = String(v || "").match(/\b(2160|1440|1080|720|480|360|240)p\b/i);
+  return m ? m[1] + "p" : "1080p";
+}
+
+async function resolveMode(show, mode, ep) {
+  await warmWatchPage(show, ep, mode);
+  const episode = await streamEpisode(show._id, mode, ep, 0);
+  if (!episode || !Array.isArray(episode.sourceUrls)) return [];
+  const groups = await Promise.all(episode.sourceUrls.map(extractSource));
+  const out = [], seen = new Set();
+  for (let i = 0; i < groups.length; i++) {
+    const src = episode.sourceUrls[i] || {};
+    for (const item of groups[i] || []) {
+      if (!item || !item.url || seen.has(item.url)) continue;
+      seen.add(item.url);
+      const q = qualityOf((item.quality || "") + " " + item.url);
+      const subs = normalizeSubs(item.subtitles || []);
+      out.push({
+        name: NAME + " [" + mode.toUpperCase() + "] • " + (src.sourceName || "Source"),
+        title: (mode === "dub" ? "English DUB" : "Japanese SUB") + " • " + q + (subs.length ? " • Soft Subs" : ""),
+        url: item.url,
+        quality: q,
+        provider: NAME,
+        type: /\.m3u8(?:$|[?#])/i.test(item.url) ? "m3u8" : "mp4",
+        headers: item.headers || { "Referer": SITE + "/", "User-Agent": UA },
+        language: mode === "dub" ? "English" : "Japanese",
+        subtitles: subs
+      });
+    }
+  }
+  return out;
+}
+
+/* ---------------- entrypoint ---------------- */
+
+async function getStreams(inputId, mediaType, season, episode) {
   try {
-    type = String(type || "tv").toLowerCase() === "movie" ? "movie" : "tv";
+    const type = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
     const s = type === "movie" ? 1 : (parseInt(season, 10) || 1);
     const e = type === "movie" ? 1 : (parseFloat(episode) || 1);
     const tid = await tmdbId(inputId, type);
@@ -821,10 +995,11 @@ async function getStreams(inputId, type, season, episode) {
     let mapping = null;
     let media = null;
     let targetEp = e;
+
     if (type === "tv") {
       mapping = await malMap(tmdb.imdb, s, e);
       if (mapping && mapping.mal_id) media = await anilistByMal(mapping.mal_id);
-      if (mapping && mapping.mal_episode != null) targetEp = parseFloat(mapping.mal_episode);
+      if (mapping && mapping.mal_episode !== undefined && mapping.mal_episode !== null) targetEp = parseFloat(mapping.mal_episode);
     }
     if (!media) media = await anilistById(await armAnilist(tid));
 
@@ -835,36 +1010,32 @@ async function getStreams(inputId, type, season, episode) {
       mapping && mapping.anime_title,
       tmdb.title,
       tmdb.original,
-      media && media.title && media.title.native,
-      ...(media && Array.isArray(media.synonyms) ? media.synonyms : [])
-    ]);
-    if (!aliases.length) return [];
+      media && media.title && media.title.native
+    ].concat(media && Array.isArray(media.synonyms) ? media.synonyms : []));
 
-    console.log("[AllAnime] TMDB=" + tid + " AniList=" + (targetAniList || "none") + " episode=" + targetEp + " aliases=" + aliases.slice(0, 4).join(" | "));
+    if (!aliases.length) return [];
 
     const matches = await Promise.all([
       findShow(aliases, "sub", targetAniList),
       findShow(aliases, "dub", targetAniList)
     ]);
-    const subShow = matches[0];
-    const dubShow = matches[1];
-    console.log("[AllAnime] matches sub=" + (subShow ? subShow._id : "none") + " dub=" + (dubShow ? dubShow._id : "none"));
-
     const jobs = [];
-    if (subShow) jobs.push(resolveEpisodeStreams(subShow, targetEp, "sub").catch(function (err) { console.log("[AllAnime] SUB " + err.message); return []; }));
-    if (dubShow) jobs.push(resolveEpisodeStreams(dubShow, targetEp, "dub").catch(function (err) { console.log("[AllAnime] DUB " + err.message); return []; }));
+    if (matches[0]) jobs.push(resolveMode(matches[0], "sub", targetEp).catch(function () { return []; }));
+    if (matches[1]) jobs.push(resolveMode(matches[1], "dub", targetEp).catch(function () { return []; }));
     if (!jobs.length) return [];
 
-    const groups = await Promise.all(jobs);
-    const streams = groups.flat();
-    streams.sort(function (a, b) { return Number(/\[DUB\]/.test(b.name)) - Number(/\[DUB\]/.test(a.name)); });
-    console.log("[AllAnime] playable streams=" + streams.length);
+    const streams = (await Promise.all(jobs)).flat();
+    streams.sort(function (a, b) {
+      return Number(/\[DUB\]/.test(b.name)) - Number(/\[DUB\]/.test(a.name));
+    });
     return streams;
-  } catch (err) {
-    console.log("[AllAnime] " + (err && err.message ? err.message : err));
+  } catch (_) {
     return [];
   }
 }
 
-if (typeof module !== "undefined" && module.exports) module.exports = { name: NAME, getStreams: getStreams };
-else globalThis.getStreams = getStreams;
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { name: NAME, getStreams: getStreams };
+} else {
+  globalThis.getStreams = getStreams;
+}
