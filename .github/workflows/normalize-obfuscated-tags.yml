@@ -1,0 +1,155 @@
+name: Normalize remaining obfuscated stream tags
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths:
+      - .github/workflows/normalize-obfuscated-tags.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+
+      - name: Normalize returned stream metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          WRAPPER = r'''
+
+          ;(function limitlessNormalizeStreamTags() {
+            if (typeof module === "undefined" || !module.exports || typeof module.exports.getStreams !== "function") return;
+            const originalGetStreams = module.exports.getStreams;
+            module.exports.getStreams = async function(...args) {
+              const value = await originalGetStreams.apply(this, args);
+              const rows = Array.isArray(value) ? value : [];
+              return rows.map(function(row) {
+                if (!row || typeof row !== "object") return row;
+                const originalLabel = `${row.name || ""} ${row.title || ""} ${row.language || ""}`;
+                const isDub = /(^|[\s(\[])dub(?:bed)?(?=$|[\s)\]])/i.test(originalLabel) || /english\s*dub/i.test(originalLabel);
+
+                let subtitles = Array.isArray(row.subtitles) ? row.subtitles : [];
+                subtitles = subtitles.map(function(sub) {
+                  if (!sub) return null;
+                  if (typeof sub === "string") {
+                    return { url: sub, language: "Unknown", name: "Subtitle [SOFTSUB]" };
+                  }
+                  const url = sub.url || sub.file || sub.src;
+                  if (!url) return null;
+                  let language = sub.language || sub.lang || "Unknown";
+                  if (String(language).toLowerCase() === "eng") language = "en";
+                  let baseName = sub.name || sub.label || sub.id || language || "Subtitle";
+                  baseName = String(baseName)
+                    .replace(/\s*\[(?:softsub|hardsub|dub(?:\+subs)?|hardsub\+subs)\]\s*/gi, " ")
+                    .replace(/\s+/g, " ")
+                    .trim();
+                  return Object.assign({}, sub, {
+                    url,
+                    language,
+                    name: `${baseName} [SOFTSUB]`
+                  });
+                }).filter(Boolean);
+                row.subtitles = subtitles;
+
+                const tag = isDub
+                  ? (subtitles.length ? "DUB+SUBS" : "DUB")
+                  : (subtitles.length ? "SOFTSUB" : "");
+
+                const clean = function(input) {
+                  return String(input || "")
+                    .replace(/\s*[\[(](?:SUB|DUB)[\])]\s*/gi, " ")
+                    .replace(/\s*\[(?:SOFTSUB|HARDSUB|DUB(?:\+SUBS)?|HARDSUB\+SUBS)\]\s*/gi, " ")
+                    .replace(/\s+/g, " ")
+                    .trim();
+                };
+
+                row.name = clean(row.name) + (tag ? ` [${tag}]` : "");
+                row.title = clean(row.title) + (tag ? ` [${tag}]` : "");
+                if (row.size) row.size = clean(row.size);
+                return row;
+              });
+            };
+          })();
+          '''
+
+          for filename in ('providers/anikototv.js', 'providers/animetsu.js'):
+              p = Path(filename)
+              text = p.read_text(encoding='utf-8')
+              if 'limitlessNormalizeStreamTags' not in text:
+                  p.write_text(text.rstrip() + WRAPPER + '\n', encoding='utf-8')
+
+          m = Path('manifest.json')
+          manifest = json.loads(m.read_text(encoding='utf-8'))
+          for item in manifest.get('scrapers', []):
+              if item.get('id') == 'anikototv':
+                  item['version'] = '1.0.6'
+                  item['description'] = 'AnikotoTV with standardized DUB/SOFTSUB/DUB+SUBS output labels based on the provider\'s existing selectable caption tracks.'
+              elif item.get('id') == 'animetsu':
+                  item['version'] = '1.0.1'
+                  item['description'] = 'Animetsu with explicit DUB labeling; generic SUB output remains unclassified until hard-vs-soft subtitle behavior is verified.'
+          m.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          l = Path('sources-lock.json')
+          lock = json.loads(l.read_text(encoding='utf-8'))
+          for provider in lock.get('providers', []):
+              if provider.get('filename') == 'anikototv.js':
+                  origin = {
+                      'repository': provider.get('repository'),
+                      'commit': provider.get('commit'),
+                      'path': provider.get('path')
+                  }
+                  provider.clear()
+                  provider.update({
+                      'filename': 'anikototv.js',
+                      'repository': 'limitlessandre/Limitless-Nuviostream',
+                      'commit': 'Limitless-Nuviotest',
+                      'path': 'providers/anikototv.js',
+                      'maintainedLocally': True,
+                      'localVersion': '1.0.6',
+                      'upstreamOrigin': origin,
+                      'notes': 'Local output wrapper only. Existing AnikotoTV external caption tracks are normalized to Nuvio subtitle metadata; SUB becomes SOFTSUB when tracks exist and DUB becomes DUB or DUB+SUBS. Extraction remains upstream behavior.'
+                  })
+              elif provider.get('filename') == 'animetsu.js':
+                  origin = {
+                      'repository': provider.get('repository'),
+                      'commit': provider.get('commit'),
+                      'path': provider.get('path')
+                  }
+                  provider.clear()
+                  provider.update({
+                      'filename': 'animetsu.js',
+                      'repository': 'limitlessandre/Limitless-Nuviostream',
+                      'commit': 'Limitless-Nuviotest',
+                      'path': 'providers/animetsu.js',
+                      'maintainedLocally': True,
+                      'localVersion': '1.0.1',
+                      'upstreamOrigin': origin,
+                      'notes': 'Local output wrapper only. Explicit dubbed output is tagged DUB; the upstream generic SUB marker is removed until subtitle behavior is verified. Extraction remains upstream behavior.'
+                  })
+          l.write_text(json.dumps(lock, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+
+          node --check providers/anikototv.js
+          node --check providers/animetsu.js
+          for file in providers/*.js; do node --check "$file" >/dev/null; done
+
+      - name: Commit normalized providers and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/normalize-obfuscated-tags.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add providers/anikototv.js providers/animetsu.js manifest.json sources-lock.json .github/workflows/normalize-obfuscated-tags.yml
+          git commit -m "Standardize remaining verified anime stream tags [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
