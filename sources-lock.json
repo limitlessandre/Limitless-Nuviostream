@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.7",
+  "baseline": "anime-v0.1.9",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,13 +10,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/allanime.js",
       "maintainedLocally": true,
-      "localVersion": "2.0.1",
+      "localVersion": "2.0.3",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/allanime.js"
       },
-      "notes": "Limitless rewrite replaces the retired pre-July 2026 AllAnime API/static-key flow with the current MKissa rotating-key protocol. v2.0.1 adds the current persisted episode-query handshake, watch-page session warmup, crypto/captcha recovery paths, broader native source extraction, season-aware MAL mapping, finite verified AniList/TMDB aliases, and explicit SUB/DUB streams."
+      "notes": "Limitless MKissa rewrite. Episode streaming now follows the current Aniyomi protocol: the full GraphQL stream query is sent beside the SHA-256 persisted-query hash and the episode selection includes show {_id}, which MKissa requires while resolving sourceUrls."
     },
     {
       "filename": "allwish.js",

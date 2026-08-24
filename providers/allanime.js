@@ -413,7 +413,7 @@ async function apiPost(query, variables, options) {
 }
 
 const SEARCH_QUERY = "query($search:SearchInput $limit:Int $page:Int $translationType:VaildTranslationTypeEnumType $countryOrigin:VaildCountryOriginEnumType){shows(search:$search limit:$limit page:$page translationType:$translationType countryOrigin:$countryOrigin){edges{_id name englishName nativeName slugTime availableEpisodes availableEpisodesDetail aniListId __typename}}}";
-const EPISODE_QUERY = "query($showId:String! $translationType:VaildTranslationTypeEnumType! $episodeString:String!){episode(showId:$showId translationType:$translationType episodeString:$episodeString){episodeString sourceUrls}}";
+const EPISODE_QUERY = "query($showId:String! $translationType:VaildTranslationTypeEnumType! $episodeString:String!){episode(showId:$showId translationType:$translationType episodeString:$episodeString){sourceUrls show{_id}}}";
 
 async function apiEpisode(query, variables, options) {
   options = options || {};
@@ -422,7 +422,7 @@ async function apiEpisode(query, variables, options) {
   const captchaRetry = options.captchaRetry || 0;
   const postFallback = !!options.postFallback;
   const dynamicHash = await sha256Hex(query);
-  const hashes = EPISODE_QUERY_HASH === dynamicHash ? [EPISODE_QUERY_HASH] : [EPISODE_QUERY_HASH, dynamicHash];
+  const hashes = [dynamicHash];
   const hash = hashes[Math.min(hashIndex, hashes.length - 1)];
   const lane = await getLaneKey(force);
   const extensions = {
@@ -430,7 +430,7 @@ async function apiEpisode(query, variables, options) {
     k: CONTENT_LANE,
     aaReq: await makeAaReq(lane.key, lane.epoch, lane.buildId, hash)
   };
-  const url = API_URL + "?variables=" + encodeURIComponent(JSON.stringify(variables)) + "&extensions=" + encodeURIComponent(JSON.stringify(extensions));
+  const url = API_URL + "?query=" + encodeURIComponent(query) + "&variables=" + encodeURIComponent(JSON.stringify(variables)) + "&extensions=" + encodeURIComponent(JSON.stringify(extensions));
   const r = await sessionFetch(url, {
     headers: headers({
       "Referer": REFERER + "/",

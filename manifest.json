@@ -1,21 +1,31 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
       "id": "allanime",
       "name": "AllAnime",
-      "description": "Temporary diagnostic build of the Limitless-maintained AllAnime/MKissa provider. Failed anime scrapes surface stage information instead of disappearing; diagnostics will be removed after the MKissa failure is isolated.",
-      "version": "2.0.2",
+      "description": "Limitless-maintained AllAnime provider using the current MKissa rotating-key protocol, Aniyomi-aligned authenticated episode query registration, season-aware MAL mapping, finite verified title aliases, and explicit SUB/DUB streams.",
+      "version": "2.0.3",
       "author": "Limitless maintained port based on current AllAnime/MKissa protocol",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/allanime-debug.js",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "providers/allanime.js",
       "enabled": true,
       "hasSettings": false,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/DwpqLJWV/allanime.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "allwish",
@@ -23,14 +33,24 @@
       "description": "Limitless-maintained All-Wish anime provider with season-aware MAL episode mapping, MAL/AniList/Kitsu/TMDB title aliases, DUB/SUB separation, and one preferred soft-subtitle track per language.",
       "version": "1.2.3",
       "author": "Limitless maintained port based on All-Wish native extraction behavior",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/allwish.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/WpFW45WQ/allwish.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "anidb",
@@ -38,13 +58,23 @@
       "description": "Subbed and dubbed anime from AniDB.",
       "version": "1.0.0",
       "author": "Nuvio Team (ChillPill)",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/anidb.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/rmMzZ45K/anidb.png",
-      "contentLanguage": ["en", "ja", "ko"]
+      "contentLanguage": [
+        "en",
+        "ja",
+        "ko"
+      ]
     },
     {
       "id": "nuvio-anineko",
@@ -52,12 +82,20 @@
       "description": "AniNeko streaming with multiple servers in good quality (~5s)",
       "version": "1.0",
       "author": "raymondnoodles",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/anineko.js",
       "enabled": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://files.catbox.moe/qlvz36.jpeg",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "anikototv",
@@ -65,12 +103,21 @@
       "description": "Anime provider for AnikotoTV.to",
       "version": "1.0.5",
       "author": "piratezoro9",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/anikototv.js",
       "enabled": true,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://anikototv.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-animekai",
@@ -78,14 +125,24 @@
       "description": "AnimeKai DUB and Japanese HARDSUB streams. Selectable subtitle files are exposed separately and labeled as soft subtitles only when the source actually provides them.",
       "version": "2.1.0",
       "author": "Limitless maintained port based on AnimeKai native extraction behavior",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/animekai.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/MKJd7fy7/animekai.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "animepahe",
@@ -93,13 +150,22 @@
       "description": "Watch anime online free in HD with fast streaming servers. Stream latest anime episodes and movies daily",
       "version": "1.0.1",
       "author": "Nuvio Team",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/animepahe.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["m3u8", "mp4"],
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
       "logo": "https://i.postimg.cc/c4ZBGNNs/animepahe.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "animezey",
@@ -107,13 +173,23 @@
       "description": "Movies via AnimeZeY, indexed by TMDB",
       "version": "1.0.0",
       "author": "Nuvio Team",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/animezey.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["mp4", "mkv", "m3u8"],
+      "formats": [
+        "mp4",
+        "mkv",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/RVTy2djk/ainimezey.png",
-      "contentLanguage": ["en", "pt"]
+      "contentLanguage": [
+        "en",
+        "pt"
+      ]
     },
     {
       "id": "animetsu",
@@ -121,13 +197,22 @@
       "description": "Lightning fast sub & dub anime streams via Animetsu",
       "version": "1.0.0",
       "author": "piratezoro9",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/animetsu.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/0Q3DvLx7/animetsu.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "anizone",
@@ -135,12 +220,19 @@
       "description": "AniZone high-quality anime streaming with multi-audio and soft subtitles",
       "version": "1.0.0",
       "author": "Nuvio Team",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/anizone.js",
       "enabled": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://anizone.to/favicon.ico",
-      "contentLanguage": ["en"]
+      "contentLanguage": [
+        "en"
+      ]
     },
     {
       "id": "hianime",
@@ -148,13 +240,21 @@
       "description": "HiAnime multi-server anime streaming with real-time mapping and subtitles",
       "version": "1.0.0",
       "author": "Nuvio Team",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/hianime.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/13SYJPTx/hianime.png",
-      "contentLanguage": ["ja", "en"]
+      "contentLanguage": [
+        "ja",
+        "en"
+      ]
     },
     {
       "id": "kisskh-anime",
@@ -162,13 +262,22 @@
       "description": "KissKH Asian drama and anime implementation retained for anime coverage testing.",
       "version": "1.0.0",
       "author": "Michat88",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/kisskh.js",
       "enabled": true,
       "hasSettings": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://kisskh.ovh/favicon.ico",
-      "contentLanguage": ["en", "id"]
+      "contentLanguage": [
+        "en",
+        "id"
+      ]
     },
     {
       "id": "kurage",
@@ -176,14 +285,25 @@
       "description": "Kurage.live anime streaming with tRPC API and multi-server proxy support",
       "version": "1.0.0",
       "author": "Paregi12",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/kurage.js",
       "enabled": true,
       "hasSettings": true,
-      "resources": ["stream"],
-      "formats": ["mkv", "m3u8"],
+      "resources": [
+        "stream"
+      ],
+      "formats": [
+        "mkv",
+        "m3u8"
+      ],
       "logo": "https://i.postimg.cc/3N2V7pHc/kurage.png",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "nuvio-tokyoinsider",
@@ -191,12 +311,22 @@
       "description": "TokyoInsider streaming with high-quality links, sub or dub (~7s)",
       "version": "1.1",
       "author": "raymondnoodles",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/tokyoinsider.js",
       "enabled": true,
-      "formats": ["mp4", "mkv"],
+      "formats": [
+        "mp4",
+        "mkv"
+      ],
       "logo": "https://www.google.com/s2/favicons?domain=tokyoinsider.com&sz=256",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "vidnest-anime",
@@ -204,12 +334,20 @@
       "description": "Auto-generated description for Vidnest-anime",
       "version": "1.0.0",
       "author": "Michat88",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "providers/vidnest-anime.js",
       "enabled": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://via.placeholder.com/150",
-      "contentLanguage": ["en"]
+      "contentLanguage": [
+        "en"
+      ]
     },
     {
       "id": "limitless-wcoflix",
@@ -217,13 +355,23 @@
       "description": "Anime and cartoons from WCOForever/WCOfilx with explicit English DUB and Japanese SUB labels.",
       "version": "1.0.0",
       "author": "Limitless port based on cs-Karma / CloudStream MegaRepo",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "providers/wcoflix.js",
       "enabled": true,
       "hasSettings": false,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://www.wcoforever.net/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     }
   ]
 }
