@@ -1,0 +1,61 @@
+name: Probe current AniDB curl request pattern
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths:
+      - .github/workflows/probe-anidb-curl-pattern.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+      - name: Probe Anivexa/Yorumi style curl
+        shell: bash
+        run: |
+          set -euo pipefail
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
+          JAR=/tmp/anidb-cookies.txt
+          : > .anidb-curl-pattern.txt
+          probe() {
+            label="$1"; url="$2"; shift 2
+            body=$(mktemp)
+            code=$(curl -sS -L --compressed -A "$UA" -c "$JAR" -b "$JAR" -o "$body" -w '%{http_code}' "$@" "$url" || true)
+            len=$(wc -c < "$body" | tr -d ' ')
+            if grep -Eqi 'Just a moment|cf_chl_opt|__cf_chl' "$body"; then challenge=true; else challenge=false; fi
+            printf '%s STATUS=%s LEN=%s CHALLENGE=%s\n' "$label" "$code" "$len" "$challenge" >> .anidb-curl-pattern.txt
+            head -c 1200 "$body" | tr '\n' ' ' >> .anidb-curl-pattern.txt
+            printf '\n\n' >> .anidb-curl-pattern.txt
+            rm -f "$body"
+          }
+          probe 'HOME' 'https://anidb.app/' \
+            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
+            -H 'sec-ch-ua: "Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"' \
+            -H 'sec-ch-ua-mobile: ?0' -H 'sec-ch-ua-platform: "Windows"' \
+            -H 'sec-fetch-dest: document' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-site: none' -H 'sec-fetch-user: ?1' \
+            -H 'upgrade-insecure-requests: 1'
+          probe 'SUGGEST' 'https://anidb.app/search/suggestions?q=Saga%20of%20Tanya%20the%20Evil' \
+            -H 'Accept: application/json, text/html, */*;q=0.8' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
+            -H 'sec-ch-ua: "Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"' \
+            -H 'sec-ch-ua-mobile: ?0' -H 'sec-ch-ua-platform: "Windows"' \
+            -H 'sec-fetch-dest: empty' -H 'sec-fetch-mode: cors' -H 'sec-fetch-site: same-origin' \
+            -H 'X-Requested-With: XMLHttpRequest' -H 'Referer: https://anidb.app/home'
+          probe 'BROWSE' 'https://anidb.app/browse?q=Saga%20of%20Tanya%20the%20Evil' \
+            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Referer: https://anidb.app/home'
+          cat .anidb-curl-pattern.txt
+      - name: Commit report and self-remove
+        run: |
+          rm -f .github/workflows/probe-anidb-curl-pattern.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Probe current AniDB curl request pattern [skip ci]"
+          git push origin HEAD:Limitless-Nuviotest
