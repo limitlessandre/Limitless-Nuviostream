@@ -23,12 +23,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: Limitless-Nuviotest
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Generate AniDB index and provider
         id: build
@@ -39,42 +41,19 @@ jobs:
           {
             set -euo pipefail
             pip install -q curl_cffi beautifulsoup4
-            python3 - <<'PY'
-          import re, textwrap
+            cat > /tmp/run_anidb_generator.py <<'PY'
+          import re
+          import textwrap
           from pathlib import Path
 
-          source = Path('.github/workflows/rebuild-anidb.yml').read_text(encoding='utf-8')
+          source = Path(".github/workflows/rebuild-anidb.yml").read_text(encoding="utf-8")
           match = re.search(r"          python3 - <<'PY'\n(.*?)\n          PY\n", source, re.S)
           if not match:
-              raise SystemExit('Could not extract AniDB generator')
+              raise SystemExit("Could not extract AniDB generator")
           script = textwrap.dedent(match.group(1))
-          script = script.replace(
-              "from curl_cffi import requests\n",
-              "from curl_cffi import requests\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\n"
-          )
-          script = script.replace(
-              "r = session.get(url, headers={'User-Agent':UA,'Referer':BASE+'/'}, timeout=25)",
-              "r = requests.get(url, impersonate='chrome', headers={'User-Agent':UA,'Referer':BASE+'/'}, timeout=25)"
-          )
-          old = '''for page in range(2, pages + 1):
-    collect(get_page(page))
-    if page % 25 == 0:
-        print(f'Indexed page {page}/{pages}: {len(by_id)} titles')
-    time.sleep(0.08)'''
-          new = '''with ThreadPoolExecutor(max_workers=2) as pool:
-    pending = {pool.submit(get_page, page): page for page in range(2, pages + 1)}
-    completed = 1
-    for future in as_completed(pending):
-        page = pending[future]
-        collect(future.result())
-        completed += 1
-        if completed % 25 == 0 or completed == pages:
-            print(f'Indexed {completed}/{pages} pages: {len(by_id)} titles')'''
-          if old not in script:
-              raise SystemExit('Sequential crawl anchor not found')
-          script = script.replace(old, new, 1)
-          exec(compile(script, 'anidb-import.py', 'exec'), {})
+          exec(compile(script, "anidb-import.py", "exec"), {})
           PY
+            python3 /tmp/run_anidb_generator.py
             node --check providers/anidb.js
           } 2>&1 | tee anidb-build.log
 
@@ -89,31 +68,51 @@ jobs:
             set -euo pipefail
             node <<'NODE'
           const provider = require('./providers/anidb.js');
+
           async function check(id, title, season, episode) {
             const streams = await provider.getStreams(id, 'tv', season, episode);
             const label = `${title} S${season}E${episode}`;
             console.log(`\n${label}: ${streams.length} streams`);
-            for (const s of streams) console.log(`${s.name} :: ${s.title || ''} :: ${s.url}`);
-            if (!Array.isArray(streams) || streams.length < 2) throw new Error(`${label}: expected DUB + HARDSUB`);
-            if (!streams.some(s => /\[DUB\]/.test(s.name))) throw new Error(`${label}: missing DUB`);
-            if (!streams.some(s => /\[HARDSUB\]/.test(s.name))) throw new Error(`${label}: missing HARDSUB`);
-            if (!streams.every(s => String(s.title || '').includes(`S${season}E${episode}`))) throw new Error(`${label}: result lost requested identity`);
+            for (const s of streams) {
+              console.log(`${s.name} :: ${s.title || ''} :: ${s.url}`);
+            }
+            if (!Array.isArray(streams) || streams.length < 2) {
+              throw new Error(`${label}: expected DUB + HARDSUB`);
+            }
+            if (!streams.some(s => /\[DUB\]/.test(s.name))) {
+              throw new Error(`${label}: missing DUB`);
+            }
+            if (!streams.some(s => /\[HARDSUB\]/.test(s.name))) {
+              throw new Error(`${label}: missing HARDSUB`);
+            }
+            if (!streams.every(s => String(s.title || '').includes(`S${season}E${episode}`))) {
+              throw new Error(`${label}: result lost requested identity`);
+            }
             for (const stream of streams) {
-              if (stream.type !== 'm3u8') throw new Error(`${label}: wrong stream type`);
-              const r = await fetch(stream.url, { headers: stream.headers });
-              const body = await r.text();
-              if (!r.ok || !body.trim().startsWith('#EXTM3U')) throw new Error(`${label}: invalid HLS master`);
+              if (stream.type !== 'm3u8') {
+                throw new Error(`${label}: wrong stream type`);
+              }
+              const response = await fetch(stream.url, { headers: stream.headers });
+              const body = await response.text();
+              if (!response.ok || !body.trim().startsWith('#EXTM3U')) {
+                throw new Error(`${label}: invalid HLS master`);
+              }
             }
             return streams;
           }
-          (async()=>{
+
+          (async () => {
             const s1 = await check('69346', 'Saga of Tanya the Evil', 1, 1);
             const s2 = await check('69346', 'Saga of Tanya the Evil', 2, 1);
             const s1Urls = new Set(s1.map(x => x.url));
-            const reused = s2.filter(x => s1Urls.has(x.url));
-            if (reused.length) throw new Error('Tanya S2E1 reused S1E1 playback URL');
+            if (s2.some(x => s1Urls.has(x.url))) {
+              throw new Error('Tanya S2E1 reused S1E1 playback URL');
+            }
             await check('209867', "Frieren: Beyond Journey's End", 1, 1);
-          })().catch(e => { console.error(e); process.exit(1); });
+          })().catch(error => {
+            console.error(error);
+            process.exit(1);
+          });
           NODE
           } 2>&1 | tee anidb-playback.log
 
@@ -129,22 +128,25 @@ jobs:
             python3 - <<'PY'
           import json
           from pathlib import Path
-          manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
-          lock = json.loads(Path('sources-lock.json').read_text(encoding='utf-8'))
-          assert manifest['version'] == '0.1.15'
-          assert lock['baseline'] == 'anime-v0.1.15'
-          assert len(manifest['scrapers']) == 17
-          ani = next(x for x in manifest['scrapers'] if x['id'] == 'anidb')
-          assert ani['version'] == '1.0.2'
+
+          manifest = json.loads(Path("manifest.json").read_text(encoding="utf-8"))
+          lock = json.loads(Path("sources-lock.json").read_text(encoding="utf-8"))
+          assert manifest["version"] == "0.1.15"
+          assert lock["baseline"] == "anime-v0.1.15"
+          assert len(manifest["scrapers"]) == 17
+          ani = next(item for item in manifest["scrapers"] if item["id"] == "anidb")
+          assert ani["version"] == "1.0.2"
           PY
-            for file in providers/*.js; do node --check "$file" >/dev/null; done
+            for file in providers/*.js; do
+              node --check "$file" >/dev/null
+            done
             rm -f .anidb-*.txt
             rm -f .github/workflows/*anidb*.yml
             rm -f anidb-build.log anidb-playback.log
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
-            git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
+            git diff --cached --quiet && { echo "No changes to commit"; exit 1; }
             git commit -m "Import season-aware AniDB provider [skip ci]"
             git push origin HEAD:Limitless-Nuviotest
           } 2>&1 | tee anidb-commit.log
@@ -158,20 +160,16 @@ jobs:
           COMMIT: ${{ steps.commit.outcome }}
         shell: bash
         run: |
-          python3 - <<'PY' > /tmp/anidb-report.txt
-          import os
-          from pathlib import Path
-          build=os.environ.get('BUILD','skipped')
-          playback=os.environ.get('PLAYBACK','skipped')
-          commit=os.environ.get('COMMIT','skipped')
-          print(f"AniDB import outcome: build={build}, playback={playback}, commit={commit}\n")
-          for fn in ('anidb-build.log','anidb-playback.log','anidb-commit.log'):
-              p=Path(fn)
-              if p.exists():
-                  lines=p.read_text(errors='replace').splitlines()
-                  print(f"### {fn} tail")
-                  print('```')
-                  print('\n'.join(lines[-35:])[-5000:])
-                  print('```')
-          PY
+          {
+            echo "AniDB import outcome: build=${BUILD:-skipped}, playback=${PLAYBACK:-skipped}, commit=${COMMIT:-skipped}"
+            echo
+            for file in anidb-build.log anidb-playback.log anidb-commit.log; do
+              if [ -f "$file" ]; then
+                echo "### $file tail"
+                echo '```'
+                tail -n 35 "$file"
+                echo '```'
+              fi
+            done
+          } > /tmp/anidb-report.txt
           gh issue comment 2 --repo ${{ github.repository }} --body-file /tmp/anidb-report.txt
