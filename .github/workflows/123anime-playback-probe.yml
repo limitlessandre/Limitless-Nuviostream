@@ -19,12 +19,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install cheerio-without-node-native@1.0.0-rc.12
+      - run: npm install cheerio@1.0.0-rc.12
       - name: Validate 123Anime returned media
         shell: bash
         run: |
           node <<'NODE' > 123anime-playback-probe.txt 2>&1
-          const p = require('./providers/123anime.js');
+          const fs=require('fs');
+          const Module=require('module');
+          const path=require('path');
+          let code=fs.readFileSync('providers/123anime.js','utf8').replace('cheerio-without-node-native','cheerio');
+          const mod=new Module(path.resolve('providers/123anime-probe-runtime.js'),module);
+          mod.filename=path.resolve('providers/123anime-probe-runtime.js');
+          mod.paths=module.paths;
+          mod._compile(code,mod.filename);
+          const p=mod.exports;
           const KEY='1865f43a0549ca50d341dd9ab8b29f49';
           async function main(){
             const q = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${KEY}&query=${encodeURIComponent('Saga of Tanya the Evil')}`);
@@ -42,9 +50,9 @@ jobs:
                 const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'});
                 console.log('FETCH',r.status,r.url,r.headers.get('content-type'),r.headers.get('content-length'));
                 const body=await r.text();
-                console.log('BODY_HEAD',JSON.stringify(body.slice(0,700)));
-                if(body.startsWith('#EXTM3U')){
-                  const lines=body.split(/\r?\n/).filter(Boolean);
+                console.log('BODY_HEAD',JSON.stringify(body.slice(0,900)));
+                if(body.trimStart().startsWith('#EXTM3U')){
+                  const lines=body.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
                   const media=lines.find(x=>!x.startsWith('#'));
                   console.log('FIRST_MEDIA_LINE',media||'NONE');
                   if(media){
