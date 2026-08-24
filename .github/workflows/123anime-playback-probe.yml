@@ -1,0 +1,71 @@
+name: 123Anime Playback Probe
+
+on:
+  push:
+    branches:
+      - Limitless-Nuviotest
+    paths:
+      - .github/workflows/123anime-playback-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install cheerio-without-node-native@1.0.0-rc.12
+      - name: Validate 123Anime returned media
+        shell: bash
+        run: |
+          node <<'NODE' > 123anime-playback-probe.txt 2>&1
+          const p = require('./providers/123anime.js');
+          const KEY='1865f43a0549ca50d341dd9ab8b29f49';
+          async function main(){
+            const q = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${KEY}&query=${encodeURIComponent('Saga of Tanya the Evil')}`);
+            const j = await q.json();
+            const hit=(j.results||[])[0];
+            console.log('TMDB', hit && {id:hit.id,name:hit.name,original_name:hit.original_name});
+            if(!hit) throw new Error('TMDB title not found');
+            const streams=await p.getStreams(String(hit.id),'tv',1,1);
+            console.log('STREAM_COUNT',streams.length);
+            for (let i=0;i<streams.length;i++){
+              const s=streams[i];
+              console.log(`\n=== STREAM ${i+1} ===`);
+              console.log(JSON.stringify({name:s.name,title:s.title,url:s.url,type:s.type,headers:s.headers,language:s.language,subtitles:s.subtitles},null,2));
+              try{
+                const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'});
+                console.log('FETCH',r.status,r.url,r.headers.get('content-type'),r.headers.get('content-length'));
+                const body=await r.text();
+                console.log('BODY_HEAD',JSON.stringify(body.slice(0,700)));
+                if(body.startsWith('#EXTM3U')){
+                  const lines=body.split(/\r?\n/).filter(Boolean);
+                  const media=lines.find(x=>!x.startsWith('#'));
+                  console.log('FIRST_MEDIA_LINE',media||'NONE');
+                  if(media){
+                    const mediaUrl=new URL(media,r.url).toString();
+                    const rr=await fetch(mediaUrl,{headers:s.headers||{},redirect:'follow'});
+                    console.log('FIRST_MEDIA_FETCH',rr.status,rr.url,rr.headers.get('content-type'),rr.headers.get('content-length'));
+                    const ab=await rr.arrayBuffer();
+                    console.log('FIRST_MEDIA_BYTES',ab.byteLength,Buffer.from(ab).subarray(0,32).toString('hex'));
+                  }
+                }
+              }catch(e){ console.log('FETCH_ERROR',e && e.stack || e); }
+            }
+          }
+          main().catch(e=>{console.error('PROBE_FAILED',e&&e.stack||e);process.exitCode=1});
+          NODE
+      - name: Commit result
+        if: always()
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add 123anime-playback-probe.txt
+          git commit -m 'Record temporary 123Anime playback probe [skip ci]' || true
+          git push
