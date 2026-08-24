@@ -1,0 +1,84 @@
+TMDB { id: 69346, name: 'Saga of Tanya the Evil', original_name: '幼女戦記' }
+[123Anime] mirror https://123animehub.cc
+[123Anime] aliases Saga of Tanya the Evil | Youjo Senki | 幼女戦記 | The Military Chronicles of a Little Girl | Saga of Tanya the Evil (Youjo Senki) | 幼女战记 | The Saga of Tanya the Evil
+STREAM_COUNT 4
+
+=== STREAM 1 ===
+{
+  "name": "123Anime | HD [DUB] • F5 - HQ JW",
+  "title": "Youjo Senki • S1E1 • English Dub",
+  "url": "https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad5386790a33259f1b39b6fc5bf7672a9430ba1133196d585e9242960f65ab7ac8a925e34faaa1c21d9c6fad08dc33e7aecd8?t.m3u8",
+  "type": "m3u8",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+    "Referer": "https://play2.echovideo.ru/",
+    "Origin": "https://play2.echovideo.ru"
+  },
+  "language": "English",
+  "subtitles": []
+}
+FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad5386790a33259f1b39b6fc5bf7672a9430ba1133196d585e9242960f65ab7ac8a925e34faaa1c21d9c6fad08dc33e7aecd8?t.m3u8 image/jpeg null
+BODY_HEAD "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720\n/cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62"
+FIRST_MEDIA_LINE /cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62
+FIRST_MEDIA_FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62 image/jpeg null
+FIRST_MEDIA_BYTES 52954 234558544d33550a234558542d582d56455253494f4e3a330a234558542d582d
+
+=== STREAM 2 ===
+{
+  "name": "123Anime | HD [DUB] • No Ads 4 JW",
+  "title": "Youjo Senki • S1E1 • English Dub",
+  "url": "https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad5386790a33259f1b39b6fc5bf7672a9430ba1133196d585e9242960f65ab7ac8a925e34faaa1c21d9c6fad08dc33e7aecd8?t.m3u8",
+  "type": "m3u8",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+    "Referer": "https://play2.echovideo.ru/",
+    "Origin": "https://play2.echovideo.ru"
+  },
+  "language": "English",
+  "subtitles": []
+}
+FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad5386790a33259f1b39b6fc5bf7672a9430ba1133196d585e9242960f65ab7ac8a925e34faaa1c21d9c6fad08dc33e7aecd8?t.m3u8 image/jpeg null
+BODY_HEAD "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720\n/cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62"
+FIRST_MEDIA_LINE /cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62
+FIRST_MEDIA_FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867908ab246a320df1a0ed41828a6935b041b3196d585e9242960f65ab7ac8a925e34faaa1c7b8a85a1dc91893631b78d626e62 image/jpeg null
+FIRST_MEDIA_BYTES 52954 234558544d33550a234558542d582d56455253494f4e3a330a234558542d582d
+
+=== STREAM 3 ===
+{
+  "name": "123Anime | HD [SUB] • F5 - HQ JW",
+  "title": "Youjo Senki • S1E1 • Japanese",
+  "url": "https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867904fe6a594d4641f78cb3057d176e068273196d585e9242960f65ab7ac88c4043bb4eb4729ca9be3868ad5?t.m3u8",
+  "type": "m3u8",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+    "Referer": "https://play2.echovideo.ru/",
+    "Origin": "https://play2.echovideo.ru"
+  },
+  "language": "Japanese",
+  "subtitles": []
+}
+FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867904fe6a594d4641f78cb3057d176e068273196d585e9242960f65ab7ac88c4043bb4eb4729ca9be3868ad5?t.m3u8 image/jpeg null
+BODY_HEAD "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720\n/cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1"
+FIRST_MEDIA_LINE /cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1
+FIRST_MEDIA_FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1 image/jpeg null
+FIRST_MEDIA_BYTES 48750 234558544d33550a234558542d582d56455253494f4e3a330a234558542d582d
+
+=== STREAM 4 ===
+{
+  "name": "123Anime | HD [SUB] • No Ads 4 JW",
+  "title": "Youjo Senki • S1E1 • Japanese",
+  "url": "https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867904fe6a594d4641f78cb3057d176e068273196d585e9242960f65ab7ac88c4043bb4eb4729ca9be3868ad5?t.m3u8",
+  "type": "m3u8",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+    "Referer": "https://play2.echovideo.ru/",
+    "Origin": "https://play2.echovideo.ru"
+  },
+  "language": "Japanese",
+  "subtitles": []
+}
+FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad53867904fe6a594d4641f78cb3057d176e068273196d585e9242960f65ab7ac88c4043bb4eb4729ca9be3868ad5?t.m3u8 image/jpeg null
+BODY_HEAD "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720\n/cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1"
+FIRST_MEDIA_LINE /cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1
+FIRST_MEDIA_FETCH 200 https://imgcdn44.dpopdrop89.store/cdn/092e3d2d14736a0ad538679033583579afe5694de9ab25b792edefa93196d585e9242960f65ab7ac88c40461e7a81c25d6d1ebcdd180603ca1 image/jpeg null
+FIRST_MEDIA_BYTES 48750 234558544d33550a234558542d582d56455253494f4e3a330a234558542d582d
