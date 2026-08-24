@@ -65,13 +65,7 @@ const getTmdbInfo = async (tmdbId, mediaType) => {
     const alt = type === "movie"
       ? (data.alternative_titles?.titles || []).map(x => x.title)
       : (data.alternative_titles?.results || []).map(x => x.title);
-    const titles = [
-      data.title,
-      data.name,
-      data.original_title,
-      data.original_name,
-      ...alt
-    ].filter(Boolean);
+    const titles = [data.title, data.name, data.original_title, data.original_name, ...alt].filter(Boolean);
     return {
       title: data.title || data.name || data.original_title || data.original_name || `TMDB ${tmdbId}`,
       titles: [...new Set(titles)],
@@ -185,11 +179,7 @@ const extractWcoStream = async (embedUrl, variant, displayTitle) => {
     }
 
     const apiRes = await fetch(apiPath, {
-      headers: {
-        ...HEADERS,
-        "Referer": embedUrl,
-        "X-Requested-With": "XMLHttpRequest"
-      }
+      headers: { ...HEADERS, "Referer": embedUrl, "X-Requested-With": "XMLHttpRequest" }
     });
     if (!apiRes.ok) return [];
     const rawData = await apiRes.text();
@@ -203,8 +193,8 @@ const extractWcoStream = async (embedUrl, variant, displayTitle) => {
     if (data.sub) {
       subtitles.push({
         url: `${host}getvid?evid=${data.sub}`,
-        language: "English",
-        name: `${PROVIDER_NAME} English`
+        language: "en",
+        name: "English [SOFTSUB]"
       });
     }
 
@@ -219,11 +209,7 @@ const extractWcoStream = async (embedUrl, variant, displayTitle) => {
       try {
         const vidPath = `${host}getvid?evid=${item.evid}&json`;
         const resp = await fetch(vidPath, {
-          headers: {
-            ...HEADERS,
-            "Referer": `${EMBED_URL}/`,
-            "Origin": EMBED_URL
-          }
+          headers: { ...HEADERS, "Referer": `${EMBED_URL}/`, "Origin": EMBED_URL }
         });
         if (!resp.ok) continue;
         let videoUrl = (await resp.text()).trim().replace(/^"|"$/g, "").replace(/\\/g, "");
@@ -232,11 +218,7 @@ const extractWcoStream = async (embedUrl, variant, displayTitle) => {
         if (videoUrl.includes("/getvid?evid=")) {
           try {
             const resolved = await fetch(videoUrl, {
-              headers: {
-                ...HEADERS,
-                "Referer": host,
-                "Origin": host.replace(/\/$/, "")
-              }
+              headers: { ...HEADERS, "Referer": host, "Origin": host.replace(/\/$/, "") }
             });
             if (resolved && resolved.url && /^https?:\/\//i.test(resolved.url) && !resolved.url.includes("/getvid?evid=")) {
               videoUrl = resolved.url;
@@ -245,19 +227,21 @@ const extractWcoStream = async (embedUrl, variant, displayTitle) => {
         }
 
         const language = variant === "Dub" ? "English" : variant === "Sub" ? "Japanese" : "English";
-        const variantLabel = variant === "Dub" ? "English DUB" : variant === "Sub" ? "Japanese SUB + English Subs" : "English";
+        const tag = variant === "Dub"
+          ? (subtitles.length ? "DUB+SUBS" : "DUB")
+          : subtitles.length
+            ? "SOFTSUB"
+            : "";
+        const tagText = tag ? ` [${tag}]` : "";
         streams.push({
-          name: `${PROVIDER_NAME} [${variantLabel}] - ${item.quality}`,
-          title: displayTitle,
+          name: `${PROVIDER_NAME}${tagText} - ${item.quality}`,
+          title: `${displayTitle}${tagText}`,
           url: videoUrl,
           quality: item.quality,
           language,
           provider: PROVIDER_NAME,
           type: videoUrl.includes(".m3u8") ? "m3u8" : "mp4",
-          headers: {
-            "Referer": `${EMBED_URL}/`,
-            "Origin": EMBED_URL
-          },
+          headers: { "Referer": `${EMBED_URL}/`, "Origin": EMBED_URL },
           subtitles
         });
       } catch (e) {
@@ -293,7 +277,7 @@ const getTvStreams = async (info, season, episode) => {
   const output = [];
   for (const entry of matches.slice(0, 4)) {
     const iframe = await getIframe(entry.href);
-    const displayTitle = `${info.title} S${String(s).padStart(2, "0")}E${String(e).padStart(2, "0")} (${entry.variant})`;
+    const displayTitle = `${info.title} S${String(s).padStart(2, "0")}E${String(e).padStart(2, "0")}`;
     output.push(...await extractWcoStream(iframe, entry.variant, displayTitle));
   }
   return output;
@@ -320,7 +304,7 @@ const getMovieStreams = async (info) => {
       }
     } catch (_) {}
     const iframe = await getIframe(target);
-    output.push(...await extractWcoStream(iframe, variant, `${info.title}${info.year ? ` (${info.year})` : ""} (${variant})`));
+    output.push(...await extractWcoStream(iframe, variant, `${info.title}${info.year ? ` (${info.year})` : ""}`));
   }
   return output;
 };
