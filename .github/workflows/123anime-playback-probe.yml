@@ -19,6 +19,150 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Patch 123Anime for Nuvio desktop HLS detection
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import json
+
+          path = Path('providers/123anime.js')
+          s = path.read_text()
+
+          quality_fn = '''function quality(url) {
+            const m = String(url || "").match(/(?:^|[^0-9])(2160|1440|1080|720|480|360)p(?:[^0-9]|$)/i);
+            return m ? `${m[1]}p` : "HD";
+          }
+          '''
+          normalize_fn = quality_fn + '''
+          // 123Anime's CDN currently disguises HLS playlists as image/jpeg and
+          // serves child playlists from extensionless /cdn/<hash> URLs. mpv on
+          // Nuvio Desktop can follow the master but then mis-detect the child as
+          // a one-frame image. Resolve the best master variant here and append a
+          // harmless .m3u8 query hint so libavformat stays in HLS mode.
+          async function normalizeHls(url, headers) {
+            const fallback = { url, quality: quality(url) };
+            if (!url || !/m3u8/i.test(String(url))) return fallback;
+
+            const body = await text(url, { headers }, 10000);
+            if (!body || !body.trimStart().startsWith("#EXTM3U")) return fallback;
+
+            const lines = body.split(/\\r?\\n/).map(x => x.trim()).filter(Boolean);
+            const variants = [];
+
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i];
+              if (!line.startsWith("#EXT-X-STREAM-INF:")) continue;
+
+              const res = line.match(/RESOLUTION=(\\d+)x(\\d+)/i);
+              const bw = line.match(/BANDWIDTH=(\\d+)/i);
+              let uri = null;
+              for (let j = i + 1; j < lines.length; j++) {
+                if (lines[j].startsWith("#")) continue;
+                uri = lines[j];
+                break;
+              }
+              if (!uri) continue;
+
+              variants.push({
+                uri,
+                height: res ? parseInt(res[2], 10) : 0,
+                bandwidth: bw ? parseInt(bw[1], 10) : 0
+              });
+            }
+
+            if (!variants.length) return fallback;
+            variants.sort((a, b) => (b.height - a.height) || (b.bandwidth - a.bandwidth));
+
+            const best = variants[0];
+            let child = abs(best.uri, url);
+            if (!child) return fallback;
+
+            if (!/\\.m3u8(?:$|[?#])/i.test(child)) {
+              child += (child.includes("?") ? "&" : "?") + "nuvio.m3u8";
+            }
+
+            return {
+              url: child,
+              quality: best.height ? `${best.height}p` : fallback.quality
+            };
+          }
+          '''
+          if 'async function normalizeHls(' not in s:
+              if quality_fn not in s:
+                  raise SystemExit('quality function anchor missing')
+              s = s.replace(quality_fn, normalize_fn, 1)
+
+          s = s.replace(
+              'function makeStream(url, mode, server, variant, tracks, headers, ctx) {',
+              'function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {',
+              1,
+          )
+          s = s.replace('  const q = quality(url);', '  const q = qualityOverride || quality(url);', 1)
+
+          old_direct = '''  if (/\\.(?:m3u8|mp4)(?:$|[?#])/i.test(embedUrl)) {
+            const s = makeStream(embedUrl, mode, server.label, "Direct", tracks, headers, ctx);
+            return s ? [s] : [];
+          }
+          '''
+          new_direct = '''  if (/\\.(?:m3u8|mp4)(?:$|[?#])/i.test(embedUrl)) {
+            const normalized = await normalizeHls(embedUrl, headers);
+            const s = makeStream(normalized.url, mode, server.label, "Direct", tracks, headers, ctx, normalized.quality);
+            return s ? [s] : [];
+          }
+          '''
+          if old_direct in s:
+              s = s.replace(old_direct, new_direct, 1)
+
+          old_loop = '''  for (let i = 0; i < results.length; i++) {
+            const u = results[i];
+            if (!u || seen.has(u)) continue;
+            seen.add(u);
+            const s = makeStream(u, mode, server.label, variants[i], tracks, headers, ctx);
+            if (s) out.push(s);
+          }
+          '''
+          new_loop = '''  for (let i = 0; i < results.length; i++) {
+            const u = results[i];
+            if (!u) continue;
+            const normalized = await normalizeHls(u, headers);
+            const finalUrl = normalized.url;
+            if (!finalUrl || seen.has(finalUrl)) continue;
+            seen.add(finalUrl);
+            const s = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
+            if (s) out.push(s);
+          }
+          '''
+          if old_loop not in s:
+              raise SystemExit('result loop anchor missing')
+          s = s.replace(old_loop, new_loop, 1)
+
+          s = s.replace(
+              '      const key = `${stream.url}|${stream.language}|${stream.name}`;',
+              '      const key = `${stream.url}|${stream.language}`;',
+              1,
+          )
+          path.write_text(s)
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text())
+          manifest['version'] = '0.1.12'
+          for provider in manifest['scrapers']:
+              if provider.get('id') == 'limitless-123anime':
+                  provider['version'] = '1.0.1'
+                  provider['description'] = 'Limitless Nuvio port of AniYomi 123Anime with mirror failover, season-aware MAL mapping, exact finite aliases, SUB/DUB extraction, and a Nuvio-specific HLS child-playlist MIME workaround.'
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
+
+          lock_path = Path('sources-lock.json')
+          lock = json.loads(lock_path.read_text())
+          lock['baseline'] = 'anime-v0.1.12'
+          for provider in lock['providers']:
+              if provider.get('filename') == '123anime.js':
+                  provider['localVersion'] = '1.0.1'
+                  provider['notes'] = 'AniYomi-to-Nuvio port. Adds Nuvio-specific master-playlist resolution because the 123Anime CDN labels extensionless HLS child playlists as image/jpeg; the selected child is returned with a harmless .m3u8 query hint and duplicate server aliases are collapsed.'
+          lock_path.write_text(json.dumps(lock, indent=2) + '\n')
+          PY
+          node --check providers/123anime.js
       - run: npm install cheerio@1.0.0-rc.12
       - name: Validate 123Anime returned media
         shell: bash
@@ -45,35 +189,32 @@ jobs:
             for (let i=0;i<streams.length;i++){
               const s=streams[i];
               console.log(`\n=== STREAM ${i+1} ===`);
-              console.log(JSON.stringify({name:s.name,title:s.title,url:s.url,type:s.type,headers:s.headers,language:s.language,subtitles:s.subtitles},null,2));
-              try{
-                const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'});
-                console.log('FETCH',r.status,r.url,r.headers.get('content-type'),r.headers.get('content-length'));
-                const body=await r.text();
-                console.log('BODY_HEAD',JSON.stringify(body.slice(0,900)));
-                if(body.trimStart().startsWith('#EXTM3U')){
-                  const lines=body.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-                  const media=lines.find(x=>!x.startsWith('#'));
-                  console.log('FIRST_MEDIA_LINE',media||'NONE');
-                  if(media){
-                    const mediaUrl=new URL(media,r.url).toString();
-                    const rr=await fetch(mediaUrl,{headers:s.headers||{},redirect:'follow'});
-                    console.log('FIRST_MEDIA_FETCH',rr.status,rr.url,rr.headers.get('content-type'),rr.headers.get('content-length'));
-                    const ab=await rr.arrayBuffer();
-                    console.log('FIRST_MEDIA_BYTES',ab.byteLength,Buffer.from(ab).subarray(0,32).toString('hex'));
-                  }
-                }
-              }catch(e){ console.log('FETCH_ERROR',e && e.stack || e); }
+              console.log(JSON.stringify({name:s.name,title:s.title,url:s.url,type:s.type,headers:s.headers,language:s.language},null,2));
+              const r=await fetch(s.url,{headers:s.headers||{},redirect:'follow'});
+              console.log('FETCH',r.status,r.url,r.headers.get('content-type'));
+              const body=await r.text();
+              console.log('BODY_HEAD',JSON.stringify(body.slice(0,900)));
+              if(!body.trimStart().startsWith('#EXTM3U')) throw new Error('Returned stream is not HLS');
+              const lines=body.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+              const media=lines.find(x=>!x.startsWith('#'));
+              console.log('FIRST_MEDIA_LINE',media||'NONE');
+              if(media){
+                const mediaUrl=new URL(media,r.url).toString();
+                const rr=await fetch(mediaUrl,{headers:s.headers||{},redirect:'follow'});
+                console.log('FIRST_MEDIA_FETCH',rr.status,rr.url,rr.headers.get('content-type'));
+                const ab=await rr.arrayBuffer();
+                console.log('FIRST_MEDIA_BYTES',ab.byteLength,Buffer.from(ab).subarray(0,32).toString('hex'));
+              }
             }
           }
           main().catch(e=>{console.error('PROBE_FAILED',e&&e.stack||e);process.exitCode=1});
           NODE
-      - name: Commit result
+      - name: Commit fix and probe result
         if: always()
         shell: bash
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add 123anime-playback-probe.txt
-          git commit -m 'Record temporary 123Anime playback probe [skip ci]' || true
+          git add providers/123anime.js manifest.json sources-lock.json 123anime-playback-probe.txt
+          git commit -m 'Fix 123Anime HLS playback on Nuvio Desktop [skip ci]' || true
           git push
