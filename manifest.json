@@ -1,8 +1,32 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
+    {
+      "id": "limitless-123anime",
+      "name": "123Anime",
+      "description": "Limitless Nuvio port of the current AniYomi 123Anime extension with mirror failover, season-aware MAL mapping, exact finite title aliases, separate SUB/DUB listings, multi-server extraction, and direct HLS playback.",
+      "version": "1.0.0",
+      "author": "Limitless port based on AniYomi 123Anime (Apache-2.0)",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "providers/123anime.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=123anime.ru&sz=256",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
     {
       "id": "allanime",
       "name": "AllAnime",

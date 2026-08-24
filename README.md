@@ -14,9 +14,9 @@ This branch is a frozen, self-contained baseline rather than a live upstream agg
 
 ## Included anime providers
 
-AllAnime, All-Wish, AniDB, AniNeko, AnikotoTV, AnimeKai, AnimePahe, AnimeZeY, Animetsu, AniZone, HiAnime, KissKH Anime, Kurage, TokyoInsider, VidnestAnime, and WCoflix.
+123Anime, AllAnime (disabled by default), All-Wish, AniDB, AniNeko, AnikotoTV, AnimeKai, AnimePahe, AnimeZeY, Animetsu, AniZone, HiAnime, KissKH Anime, Kurage, TokyoInsider, VidnestAnime, and WCoflix.
 
-AnimeKai and WCoflix are the Limitless-maintained builds carried forward from the previous custom branch.
+123Anime is the first intentional AniYomi-to-Nuvio Limitless port. AnimeKai, All-Wish, AllAnime, and WCoflix are also maintained locally; AllAnime is parked disabled because MKissa rotates its client crypto frequently.
 
 The first baseline prioritizes English and Japanese anime, while retaining useful Asian-language coverage. Providers focused primarily on unrelated language catalogs are excluded from this test set.
 

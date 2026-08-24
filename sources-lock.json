@@ -1,9 +1,27 @@
 {
-  "baseline": "anime-v0.1.9",
+  "baseline": "anime-v0.1.11",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
   "providers": [
+    {
+      "filename": "123anime.js",
+      "repository": "limitlessandre/Limitless-Nuviostream",
+      "commit": "Limitless-Nuviotest",
+      "path": "providers/123anime.js",
+      "maintainedLocally": true,
+      "localVersion": "1.0.0",
+      "upstreamOrigin": {
+        "repository": "yuzono/anime-extensions",
+        "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
+        "paths": [
+          "src/en/onetwothreeanime/src/eu/kanade/tachiyomi/animeextension/en/onetwothreeanime/OneThreeTwoAnime.kt",
+          "src/en/onetwothreeanime/src/eu/kanade/tachiyomi/animeextension/en/onetwothreeanime/OneThreeTwoAnimeExtractor.kt"
+        ]
+      },
+      "license": "Apache-2.0",
+      "notes": "First intentional AniYomi-to-Nuvio Limitless port. Reuses Limitless MAL/title mapping and ports 123Anime mirror, AJAX episode/server, JW player, SBv2, playback-header, and subtitle extraction behavior."
+    },
     {
       "filename": "allanime.js",
       "repository": "limitlessandre/Limitless-Nuviostream",
