@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.12",
+  "baseline": "anime-v0.1.13",
   "frozenOn": "2026-08-23",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,7 +10,7 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/123anime.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.1",
+      "localVersion": "1.1.0",
       "upstreamOrigin": {
         "repository": "yuzono/anime-extensions",
         "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
@@ -20,7 +20,7 @@
         ]
       },
       "license": "Apache-2.0",
-      "notes": "AniYomi-to-Nuvio port. Nuvio-specific workaround resolves the CDN master playlist to the best child and appends an HLS query hint because the CDN labels extensionless playlists as image/jpeg. Duplicate server aliases resolving to the same stream are collapsed."
+      "notes": "AniYomi-to-Nuvio port. Preserves separate 123Anime server/player routes for maximum fallback options (JW, Legacy, and SBv2 when available), labels Japanese burned-in subtitle streams as HARDSUB, and retains the Nuvio HLS compatibility handling."
     },
     {
       "filename": "allanime.js",

@@ -445,6 +445,21 @@ async function resolveJw(embedBase, token) {
   return findMedia(body);
 }
 
+async function resolveLegacy(embedBase, token) {
+  const page = `${embedBase}/hs/${token}?pl_usn=1`;
+  const body = await text(page, { headers: { "Referer": embedBase + "/" } }, 12000);
+  if (!body) return null;
+
+  const $ = cheerio.load(body);
+  const raw = $("#sources").first().text().trim();
+  if (raw) {
+    const parsed = sourceUrl(raw);
+    if (parsed) return parsed;
+  }
+
+  return findMedia(body);
+}
+
 async function resolveSbv2(embedBase, token) {
   const page = `${embedBase}/sbv2/${token}`;
   const body = await text(page, { headers: { "Referer": embedBase + "/" } }, 12000);
@@ -514,10 +529,10 @@ async function normalizeHls(url, headers) {
 function makeStream(url, mode, server, variant, tracks, headers, ctx, qualityOverride) {
   if (!url) return null;
   const q = qualityOverride || quality(url);
-  const tag = mode === "dub" ? "DUB" : (tracks.length ? "SUB + Soft Subs" : "SUB");
+  const tag = mode === "dub" ? "DUB" : (tracks.length ? "HARDSUB + Soft Subs" : "HARDSUB");
   return {
     name: `${NAME} | ${q} [${tag}] • ${server} ${variant}`,
-    title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${mode === "dub" ? "English Dub" : "Japanese"}`,
+    title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${mode === "dub" ? "English Dub" : "Japanese Hard Sub"}`,
     url,
     quality: q,
     provider: NAME,
@@ -561,22 +576,24 @@ async function extractServer(base, slug, ep, server, mode, ctx) {
 
   const results = await Promise.all([
     resolveJw(embedBase, token),
+    resolveLegacy(embedBase, token),
     resolveSbv2(embedBase, token)
   ]);
 
   const out = [];
   const seen = new Set();
-  const variants = ["JW", "SBv2"];
+  const variants = ["JW", "Legacy", "SBv2"];
   for (let i = 0; i < results.length; i++) {
-  const u = results[i];
-  if (!u) continue;
-  const normalized = await normalizeHls(u, headers);
-  const finalUrl = normalized.url;
-  if (!finalUrl || seen.has(finalUrl)) continue;
-  seen.add(finalUrl);
-  const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
-  if (stream) out.push(stream);
-}
+    const u = results[i];
+    if (!u) continue;
+    const normalized = await normalizeHls(u, headers);
+    const finalUrl = normalized.url;
+    const routeKey = `${variants[i]}|${finalUrl}`;
+    if (!finalUrl || seen.has(routeKey)) continue;
+    seen.add(routeKey);
+    const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);
+    if (stream) out.push(stream);
+  }
   return out;
 }
 
@@ -640,7 +657,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
 
     const seen = new Set();
     const out = all.flat().filter(stream => {
-      const key = `${stream.url}|${stream.language}`;
+      const key = `${stream.url}|${stream.language}|${stream.name}`;
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
