@@ -1,0 +1,139 @@
+name: Add 123Anime Port
+
+on:
+  push:
+    branches:
+      - Limitless-Nuviotest
+    paths:
+      - .github/workflows/add-123anime.yml
+
+permissions:
+  contents: write
+
+jobs:
+  add-provider:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate provider syntax
+        run: node --check providers/123anime.js
+
+      - name: Live probe 123Anime
+        shell: bash
+        run: |
+          npm install --no-save --no-package-lock cheerio@1.0.0 >/dev/null 2>&1
+          node <<'NODE'
+          const Module = require('module');
+          const originalLoad = Module._load;
+          Module._load = function(request, parent, isMain) {
+            if (request === 'cheerio-without-node-native') return originalLoad('cheerio', parent, isMain);
+            return originalLoad(request, parent, isMain);
+          };
+
+          const provider = require('./providers/123anime.js');
+          (async () => {
+            const streams = await provider.getStreams('203737', 'tv', 1, 1);
+            console.log('123Anime Oshi no Ko S1E1 streams:', streams.length);
+            console.log(JSON.stringify(streams.slice(0, 6).map(s => ({
+              name: s.name,
+              quality: s.quality,
+              language: s.language,
+              type: s.type,
+              url: String(s.url || '').slice(0, 160),
+              subtitles: Array.isArray(s.subtitles) ? s.subtitles.length : 0
+            })), null, 2));
+            if (!streams.length) process.exit(2);
+          })().catch(err => {
+            console.error(err && err.stack ? err.stack : err);
+            process.exit(1);
+          });
+          NODE
+
+      - name: Register provider in baseline
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          manifest['version'] = '0.1.11'
+          entry = {
+              'id': 'limitless-123anime',
+              'name': '123Anime',
+              'description': 'Limitless Nuvio port of the current AniYomi 123Anime extension with mirror failover, season-aware MAL mapping, exact finite title aliases, separate SUB/DUB listings, multi-server extraction, and direct HLS playback.',
+              'version': '1.0.0',
+              'author': 'Limitless port based on AniYomi 123Anime (Apache-2.0)',
+              'supportedTypes': ['movie', 'tv', 'anime'],
+              'filename': 'providers/123anime.js',
+              'enabled': True,
+              'hasSettings': False,
+              'formats': ['m3u8', 'mp4'],
+              'logo': 'https://www.google.com/s2/favicons?domain=123anime.ru&sz=256',
+              'contentLanguage': ['en', 'ja']
+          }
+          manifest['scrapers'] = [s for s in manifest.get('scrapers', []) if s.get('id') != entry['id']]
+          manifest['scrapers'].insert(0, entry)
+          manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          lock_path = Path('sources-lock.json')
+          lock = json.loads(lock_path.read_text(encoding='utf-8'))
+          lock['baseline'] = 'anime-v0.1.11'
+          lock_entry = {
+              'filename': '123anime.js',
+              'repository': 'limitlessandre/Limitless-Nuviostream',
+              'commit': 'Limitless-Nuviotest',
+              'path': 'providers/123anime.js',
+              'maintainedLocally': True,
+              'localVersion': '1.0.0',
+              'upstreamOrigin': {
+                  'repository': 'yuzono/anime-extensions',
+                  'commit': '1e0d69547b7ac14893b6beab80fd8c8597d091c3',
+                  'paths': [
+                      'src/en/onetwothreeanime/src/eu/kanade/tachiyomi/animeextension/en/onetwothreeanime/OneThreeTwoAnime.kt',
+                      'src/en/onetwothreeanime/src/eu/kanade/tachiyomi/animeextension/en/onetwothreeanime/OneThreeTwoAnimeExtractor.kt'
+                  ]
+              },
+              'license': 'Apache-2.0',
+              'notes': 'First intentional AniYomi-to-Nuvio Limitless port. Reuses Limitless MAL/title mapping and ports 123Anime mirror, AJAX episode/server, JW player, SBv2, playback-header, and subtitle extraction behavior.'
+          }
+          lock['providers'] = [p for p in lock.get('providers', []) if p.get('filename') != '123anime.js']
+          lock['providers'].insert(0, lock_entry)
+          lock_path.write_text(json.dumps(lock, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          readme_path = Path('README.md')
+          readme = readme_path.read_text(encoding='utf-8')
+          old = 'AllAnime, All-Wish, AniDB, AniNeko, AnikotoTV, AnimeKai, AnimePahe, AnimeZeY, Animetsu, AniZone, HiAnime, KissKH Anime, Kurage, TokyoInsider, VidnestAnime, and WCoflix.'
+          new = '123Anime, AllAnime (disabled by default), All-Wish, AniDB, AniNeko, AnikotoTV, AnimeKai, AnimePahe, AnimeZeY, Animetsu, AniZone, HiAnime, KissKH Anime, Kurage, TokyoInsider, VidnestAnime, and WCoflix.'
+          readme = readme.replace(old, new)
+          readme = readme.replace(
+              'AnimeKai and WCoflix are the Limitless-maintained builds carried forward from the previous custom branch.',
+              '123Anime is the first intentional AniYomi-to-Nuvio Limitless port. AnimeKai, All-Wish, AllAnime, and WCoflix are also maintained locally; AllAnime is parked disabled because MKissa rotates its client crypto frequently.'
+          )
+          readme_path.write_text(readme, encoding='utf-8')
+
+      - name: Validate manifest
+        run: |
+          python -m json.tool manifest.json >/dev/null
+          python -m json.tool sources-lock.json >/dev/null
+          test "$(python - <<'PY'
+          import json
+          print(len(json.load(open('manifest.json'))['scrapers']))
+          PY
+          )" = "17"
+
+      - name: Remove one-time workflow and commit
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/add-123anime.yml
+          git add manifest.json sources-lock.json README.md providers/123anime.js
+          git commit -m 'Add 123Anime as first AniYomi-to-Nuvio port'
+          git push
