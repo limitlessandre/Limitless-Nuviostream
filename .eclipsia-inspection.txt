@@ -1,0 +1,657 @@
+=== ECLIPSIA HEAD ===
+b774c55 Update
+
+=== MANIFEST FILES ===
+/tmp/eclipsia/english/manifest.json
+/tmp/eclipsia/manifest.json
+/tmp/eclipsia/stable/manifest.json
+
+=== STABLE MANIFEST ===
+{
+  "name": "Eclipsia",
+  "version": "9.2.0",
+  "scrapers": [
+    {
+      "id": "brellor",
+      "name": "Brellor.",
+      "description": "Provider: 1Embed | English",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/brellor.js",
+      "enabled": true,
+      "formats": ["m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "fastrion",
+      "name": "Fastrion.",
+      "description": "Provider: FshareTV | Vintage Content",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/fastrion.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "evyrith",
+      "name": "Evyrith.",
+      "description": "Provider: Vidrock | English",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/evyrith.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "fendrix",
+      "name": "Fendrix.",
+      "description": "Provider: VidKing | Multi-Lang",
+      "version": "1.5.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/fendrix.js",
+      "enabled": true,
+      "formats": ["m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "gravix",
+      "name": "Gravix.",
+      "description": "Provider: AnimeSalt | Anime",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/gravix.js",
+      "enabled": true,
+      "formats": ["m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "ja", "hi", "te", "ta"]
+    },
+    {
+      "id": "hexion",
+      "name": "Hexion.",
+      "description": "Provider: 4kHdHub | Multi-lang",
+      "version": "1.4.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/hexion.js",
+      "enabled": true,
+      "formats": ["mkv", "m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "jyniq",
+      "name": "Jyniq.",
+      "description": "Provider: MovieBlast | English, Hindi",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/jyniq.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "karnis",
+      "name": "Karnis.",
+      "description": "Provider: Castle | English, Hindi",
+      "version": "1.6.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/karnis.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "kethrax",
+      "name": "Kethrax.",
+      "description": "Provider: VixSrc | English, Italian",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/kethrax.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "it"]
+    },
+    {
+      "id": "kryxalia",
+      "name": "Kryxalia.",
+      "description": "Provider: MoviesHunt | Multi-Lang",
+      "version": "1.5.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/kryxalia.js",
+      "enabled": true,
+      "formats": ["m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "mavonyx",
+      "name": "Mavonyx.",
+      "description": "Provider: MovieBox | English, Bangla, Hindi",
+      "version": "1.7.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/mavonyx.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mpd"],
+      "logo": "",
+      "contentLanguage": ["en", "hi", "bn"]
+    },
+    {
+      "id": "novus",
+      "name": "Novus.",
+      "description": "Provider: CineFreak | Bangla, English, Hindi",
+      "version": "3.3.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/novus.js",
+      "enabled": true,
+      "formats": ["mkv", "mp4"],
+      "logo": "",
+      "contentLanguage": ["bn", "hi", "en"]
+    },
+    {
+      "id": "nyxora",
+      "name": "Nyxora.",
+      "description": "Provider: VidFast | English",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/nyxora.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "hi", "bn"]
+    },
+    {
+      "id": "onyxia",
+      "name": "Onyxia.",
+      "description": "Provider: AnimeWorld | Anime Only",
+      "version": "2.7.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/onyxia.js",
+      "enabled": true,
+      "formats": ["m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "praxiel",
+      "name": "Praxiel.",
+      "description": "Provider: AniDB | Anime Only",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/praxiel.js",
+      "enabled": true,
+      "formats": ["m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "pynvix",
+      "name": "Pynvix.",
+      "description": "Provider: ShowBox | Multi-lang",
+      "version": "1.8.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/pynvix.js",
+      "enabled": true,
+      "hasSettings": true,
+      "formats": ["m3u8", "mp4", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "bn", "hi", "ja", "pt", "ar"]
+    },
+    {
+      "id": "qorva",
+      "name": "Qorva.",
+      "description": "Provider: VidUp | English",
+      "version": "1.0.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/qorva.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "quinox",
+      "name": "Quinox.",
+      "description": "Provider: VidLove | English",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/quinox.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "qyrvaen",
+      "name": "Qyrvaen.",
+      "description": "Provider: HDHub4u | Multi-lang",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/qyrvaen.js",
+      "enabled": true,
+      "formats": ["mkv", "m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "solunix",
+      "name": "Solunix.",
+      "description": "Provider: VegaMovies (HC & VC) | Multi-lang",
+      "version": "1.4.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/solunix.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "soryn",
+      "name": "Soryn.",
+      "description": "Provider: Netmirror | English, Hindi",
+      "version": "3.4.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/soryn.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "svartok",
+      "name": "Svartok.",
+      "description": "Provider: CinemaCity | Multi-Lang",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/svartok.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "bn", "hi", "cs", "fr", "de", "hu", "it", "pl", "pt", "es", "tr"]
+    },
+    {
+      "id": "vornix",
+      "name": "Vornix.",
+      "description": "Provider: MoviesDrive (FSL) | Multi-lang",
+      "version": "1.7.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/vornix.js",
+      "enabled": true,
+      "formats": ["m3u8", "mp4", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "bn", "hi", "pt", "ta", "te"]
+    },
+    {
+      "id": "vyranel",
+      "name": "Vyranel.",
+      "description": "Provider: HindMovie | Multi-lang",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/vyranel.js",
+      "enabled": true,
+      "formats": ["mp4", "mkv", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "bn", "hi", "ar", "ta", "te"]
+    },
+    {
+      "id": "waelum",
+      "name": "Waelum.",
+      "description": "Provider: HdGharTV | Multi-lang",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/waelum.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "wrenok",
+      "name": "Wrenok.",
+      "description": "Provider: Purstream | English, French",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/wrenok.js",
+      "enabled": true,
+      "formats": ["m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "fr"]
+    },
+    {
+      "id": "xandril",
+      "name": "Xandril.",
+      "description": "Provider: Bingr | English, Hindi",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/xandril.js",
+      "enabled": true,
+      "formats": ["mp4", "m3u8", "mpd"],
+      "logo": "",
+      "contentLanguage": ["en", "hi"]
+    },
+    {
+      "id": "xylos",
+      "name": "Xylos.",
+      "description": "Provider: AniNeko | Anime Only",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv", "series"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/xylos.js",
+      "enabled": true,
+      "formats": ["mp4", "mkv", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en", "jp"]
+    },
+    {
+      "id": "zevran",
+      "name": "Zevran.",
+      "description": "Provider: VAplayer | English",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv", "series"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/zevran.js",
+      "enabled": true,
+      "formats": ["mp4", "mkv", "m3u8"],
+      "logo": "",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "zyrvael",
+      "name": "Zyrvael.",
+      "description": "Provider: Anikoto API | Anime Only",
+      "version": "1.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/zyrvael.js",
+      "enabled": true,
+      "limited": true,
+      "formats": ["m3u8", "mp4"],
+      "logo": "",
+      "contentLanguage": ["en", "ja"]
+    }
+  ]
+}
+
+=== PRAXIEL MATCHES ===
+/tmp/eclipsia/english/manifest.json:175:      "id": "praxiel",
+/tmp/eclipsia/english/manifest.json:176:      "name": "Praxiel.",
+/tmp/eclipsia/english/manifest.json:181:      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/praxiel.js",
+/tmp/eclipsia/stable/manifest.json:188:      "id": "praxiel",
+/tmp/eclipsia/stable/manifest.json:189:      "name": "Praxiel.",
+/tmp/eclipsia/stable/manifest.json:194:      "filename": "https://gitea.com/eclipsia/nuvio-plugin/raw/branch/main/providers/praxiel.js",
+/tmp/eclipsia/manifest.json:227:      "id": "praxiel",
+/tmp/eclipsia/manifest.json:228:      "name": "Praxiel.",
+/tmp/eclipsia/manifest.json:233:      "filename": "providers/praxiel.js",
+
+=== ANIDB MATCHES ===
+/tmp/eclipsia/providers/praxiel.js:3:const BASE_URL = 'https://anidb.app';
+/tmp/eclipsia/providers/praxiel.js:70:    const pattern = /<a href="(?:https?:\/\/anidb\.app)?\/anime\/([a-z0-9-]+?)-(\d+)"[^>]*>[\s\S]{0,400}?<img[^>]*alt="([^"]*)"/g;
+/tmp/eclipsia/providers/praxiel.js:89:    const json = await fetchJson(BASE_URL + '/api/frontend/anime/' + animeId + '/episodes', HEADERS);
+/tmp/eclipsia/providers/praxiel.js:99:    const data = await fetchJson(BASE_URL + '/api/frontend/episode/' + episodeId + '/languages', HEADERS);
+/tmp/eclipsia/providers/praxiel.js:118:        name: 'AniDB \u2022 ' + label,
+/tmp/eclipsia/providers/praxiel.js:119:        title: 'AniDB \u2022 ' + label,
+/tmp/eclipsia/english/manifest.json:177:      "description": "Provider: AniDB | Anime Only",
+/tmp/eclipsia/stable/manifest.json:190:      "description": "Provider: AniDB | Anime Only",
+/tmp/eclipsia/manifest.json:229:      "description": "Provider: AniDB | Anime Only",
+
+=== LIKELY FILES ===
+/tmp/eclipsia/providers/praxiel.js
+
+=== FULL CONTENT OF LIKELY FILES ===
+
+--- /tmp/eclipsia/providers/praxiel.js (5172 bytes) ---
+"use strict";
+
+const BASE_URL = 'https://anidb.app';
+const TMDB_KEY = '307b7b8ef035c6aa336900aef4e203bd';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36';
+
+const HEADERS = {
+    'User-Agent': USER_AGENT,
+    'Referer': BASE_URL + '/',
+    'Accept': 'application/json, text/plain, */*'
+};
+
+function normalizeTitle(str) {
+    return String(str).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function computeTitleSimilarity(titleA, titleB) {
+    titleA = normalizeTitle(titleA);
+    titleB = normalizeTitle(titleB);
+    if (!titleA || !titleB) return 0;
+    const tokensA = titleA.split(' ');
+    const tokensB = titleB.split(' ');
+    let intersection = 0;
+    for (let i = 0; i < tokensA.length; i++) if (tokensB.indexOf(tokensA[i]) !== -1) intersection++;
+    return (2 * intersection) / (tokensA.length + tokensB.length);
+}
+
+function deduplicateByUrl(streams) {
+    const seen = new Set();
+    return streams.filter(function (s) { return s.url && !seen.has(s.url) && seen.add(s.url); });
+}
+
+async function fetchText(url, headers) {
+    try {
+        const res = await fetch(url, { headers: headers || { 'User-Agent': USER_AGENT } });
+        if (!res.ok) return null;
+        return await res.text();
+    } catch {
+        return null;
+    }
+}
+
+async function fetchJson(url, headers) {
+    try {
+        const res = await fetch(url, { headers: headers || { 'User-Agent': USER_AGENT } });
+        if (!res.ok) return null;
+        return await res.json();
+    } catch {
+        return null;
+    }
+}
+
+async function fetchTmdbSeriesTitle(tmdbId) {
+    const data = await fetchJson(
+        'https://api.themoviedb.org/3/tv/' + tmdbId + '?api_key=' + TMDB_KEY,
+        { 'Accept': 'application/json' }
+    );
+    if (!data) return null;
+    return data.name || data.original_name || null;
+}
+
+async function searchAnime(query) {
+    const html = await fetchText(
+        BASE_URL + '/search/suggestions?q=' + encodeURIComponent(query),
+        HEADERS
+    );
+    if (!html) return [];
+
+    const results = [];
+    const pattern = /<a href="(?:https?:\/\/anidb\.app)?\/anime\/([a-z0-9-]+?)-(\d+)"[^>]*>[\s\S]{0,400}?<img[^>]*alt="([^"]*)"/g;
+    let match;
+    while ((match = pattern.exec(html)) !== null) {
+        results.push({ numId: match[2], title: match[3] || match[1].replace(/-/g, ' ') });
+    }
+    return results;
+}
+
+function selectBestMatch(candidates, targetTitle) {
+    let bestMatch = null, bestScore = 0;
+    for (let i = 0; i < candidates.length; i++) {
+        if (normalizeTitle(candidates[i].title) === normalizeTitle(targetTitle)) return candidates[i];
+        const score = computeTitleSimilarity(candidates[i].title, targetTitle);
+        if (score > bestScore) { bestScore = score; bestMatch = candidates[i]; }
+    }
+    return bestScore >= 0.5 ? bestMatch : null;
+}
+
+async function resolveEpisodeId(animeId, episodeNumber) {
+    const json = await fetchJson(BASE_URL + '/api/frontend/anime/' + animeId + '/episodes', HEADERS);
+    if (!json) return null;
+    const episodes = json.episodes || [];
+    for (let i = 0; i < episodes.length; i++) {
+        if (String(episodes[i].number) === String(episodeNumber)) return episodes[i].id;
+    }
+    return null;
+}
+
+async function fetchEpisodeLanguages(episodeId) {
+    const data = await fetchJson(BASE_URL + '/api/frontend/episode/' + episodeId + '/languages', HEADERS);
+    if (!data) return [];
+    return Array.isArray(data) ? data : (Array.isArray(data.languages) ? data.languages : []);
+}
+
+async function resolveStreamFromLanguage(language) {
+    const embedUrl = language.embed_url || '';
+    if (!embedUrl) return null;
+
+    const html = await fetchText(embedUrl, { 'User-Agent': USER_AGENT, 'Referer': BASE_URL + '/' });
+    if (!html) return null;
+
+    const match = html.match(/file\s*:\s*'(https?:\/\/[^']+\.m3u8[^']*)'/);
+    if (!match) return null;
+
+    const langCode = String(language.code || '').toLowerCase();
+    const label = langCode === 'eng' ? 'English' : 'Japanese';
+
+    return {
+        name: 'AniDB \u2022 ' + label,
+        title: 'AniDB \u2022 ' + label,
+        url: match[1],
+        quality: '1080p',
+        headers: { 'User-Agent': USER_AGENT, 'Referer': embedUrl },
+    };
+}
+
+async function getStreams(tmdbId, mediaType, season, episode) {
+    if (mediaType !== 'tv') return [];
+
+    try {
+        const seriesTitle = await fetchTmdbSeriesTitle(tmdbId);
+        if (!seriesTitle) return [];
+
+        const episodeNumber = episode || 1;
+        const candidates = await searchAnime(seriesTitle);
+        const bestMatch = selectBestMatch(candidates, seriesTitle);
+        if (!bestMatch) return [];
+
+        const episodeId = await resolveEpisodeId(bestMatch.numId, episodeNumber);
+        if (!episodeId) return [];
+
+        const languages = await fetchEpisodeLanguages(episodeId);
+        if (!languages.length) return [];
+
+        const streams = await Promise.all(languages.map(function (lang) { return resolveStreamFromLanguage(lang); }));
+
+        return deduplicateByUrl(streams.filter(Boolean));
+    } catch {
+        return [];
+    }
+}
+
+module.exports = { getStreams };
+=== PROVIDER TREE ===
+/tmp/eclipsia/.git/HEAD
+/tmp/eclipsia/.git/config
+/tmp/eclipsia/.git/description
+/tmp/eclipsia/.git/hooks/applypatch-msg.sample
+/tmp/eclipsia/.git/hooks/commit-msg.sample
+/tmp/eclipsia/.git/hooks/fsmonitor-watchman.sample
+/tmp/eclipsia/.git/hooks/post-update.sample
+/tmp/eclipsia/.git/hooks/pre-applypatch.sample
+/tmp/eclipsia/.git/hooks/pre-commit.sample
+/tmp/eclipsia/.git/hooks/pre-merge-commit.sample
+/tmp/eclipsia/.git/hooks/pre-push.sample
+/tmp/eclipsia/.git/hooks/pre-rebase.sample
+/tmp/eclipsia/.git/hooks/pre-receive.sample
+/tmp/eclipsia/.git/hooks/prepare-commit-msg.sample
+/tmp/eclipsia/.git/hooks/push-to-checkout.sample
+/tmp/eclipsia/.git/hooks/sendemail-validate.sample
+/tmp/eclipsia/.git/hooks/update.sample
+/tmp/eclipsia/.git/index
+/tmp/eclipsia/.git/info/exclude
+/tmp/eclipsia/.git/logs/HEAD
+/tmp/eclipsia/.git/logs/refs/heads/main
+/tmp/eclipsia/.git/objects/pack/pack-22e9ec93d64458ae273e8221526494438cc4261d7fd5b5a15aa94278af4ecfbe.idx
+/tmp/eclipsia/.git/objects/pack/pack-22e9ec93d64458ae273e8221526494438cc4261d7fd5b5a15aa94278af4ecfbe.pack
+/tmp/eclipsia/.git/objects/pack/pack-22e9ec93d64458ae273e8221526494438cc4261d7fd5b5a15aa94278af4ecfbe.rev
+/tmp/eclipsia/.git/packed-refs
+/tmp/eclipsia/.git/refs/heads/main
+/tmp/eclipsia/.git/refs/remotes/origin/HEAD
+/tmp/eclipsia/.git/shallow
+/tmp/eclipsia/LICENSE
+/tmp/eclipsia/README.md
+/tmp/eclipsia/english/manifest.json
+/tmp/eclipsia/manifest.json
+/tmp/eclipsia/providers/brellor.js
+/tmp/eclipsia/providers/durnel.js
+/tmp/eclipsia/providers/evyrith.js
+/tmp/eclipsia/providers/fastrion.js
+/tmp/eclipsia/providers/fendrix.js
+/tmp/eclipsia/providers/fjoral.js
+/tmp/eclipsia/providers/gravix.js
+/tmp/eclipsia/providers/hexion.js
+/tmp/eclipsia/providers/jyniq.js
+/tmp/eclipsia/providers/karnis.js
+/tmp/eclipsia/providers/kethrax.js
+/tmp/eclipsia/providers/kryxalia.js
+/tmp/eclipsia/providers/lyrin.js
+/tmp/eclipsia/providers/mavonyx.js
+/tmp/eclipsia/providers/novus.js
+/tmp/eclipsia/providers/nyxora.js
+/tmp/eclipsia/providers/onyxia.js
+/tmp/eclipsia/providers/praxiel.js
+/tmp/eclipsia/providers/pynvix.js
+/tmp/eclipsia/providers/qorva.js
+/tmp/eclipsia/providers/quinox.js
+/tmp/eclipsia/providers/qyrvaen.js
+/tmp/eclipsia/providers/rynara.js
+/tmp/eclipsia/providers/solunix.js
+/tmp/eclipsia/providers/soryn.js
+/tmp/eclipsia/providers/svartok.js
+/tmp/eclipsia/providers/sylphera.js
+/tmp/eclipsia/providers/vornix.js
+/tmp/eclipsia/providers/vyranel.js
+/tmp/eclipsia/providers/waelum.js
+/tmp/eclipsia/providers/wrenok.js
+/tmp/eclipsia/providers/xandril.js
+/tmp/eclipsia/providers/xylos.js
+/tmp/eclipsia/providers/zevran.js
+/tmp/eclipsia/providers/zyrvael.js
+/tmp/eclipsia/stable/manifest.json
