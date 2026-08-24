@@ -1,0 +1,122 @@
+name: 123Anime Player Variant Update
+
+on:
+  push:
+    branches:
+      - Limitless-Nuviotest
+    paths:
+      - .github/workflows/123anime-player-options.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Add Legacy player and HARDSUB labels
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import json
+
+          path = Path('providers/123anime.js')
+          s = path.read_text()
+
+          jw_anchor = '''async function resolveSbv2(embedBase, token) {\n'''
+          legacy = '''async function resolveLegacy(embedBase, token) {\n  const page = `${embedBase}/hs/${token}?pl_usn=1`;\n  const body = await text(page, { headers: { "Referer": embedBase + "/" } }, 12000);\n  if (!body) return null;\n\n  const $ = cheerio.load(body);\n  const raw = $("#sources").first().text().trim();\n  if (raw) {\n    const parsed = sourceUrl(raw);\n    if (parsed) return parsed;\n  }\n\n  return findMedia(body);\n}\n\n'''
+          if 'async function resolveLegacy(' not in s:
+              if jw_anchor not in s:
+                  raise SystemExit('resolveSbv2 anchor missing')
+              s = s.replace(jw_anchor, legacy + jw_anchor, 1)
+
+          old_tag = '  const tag = mode === "dub" ? "DUB" : (tracks.length ? "SUB + Soft Subs" : "SUB");'
+          new_tag = '  const tag = mode === "dub" ? "DUB" : (tracks.length ? "HARDSUB + Soft Subs" : "HARDSUB");'
+          if old_tag not in s and new_tag not in s:
+              raise SystemExit('stream tag anchor missing')
+          s = s.replace(old_tag, new_tag, 1)
+
+          old_title = '    title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${mode === "dub" ? "English Dub" : "Japanese"}`,'
+          new_title = '    title: `${ctx.title} • S${ctx.s}E${ctx.e} • ${mode === "dub" ? "English Dub" : "Japanese Hard Sub"}`,'
+          if old_title not in s and new_title not in s:
+              raise SystemExit('title anchor missing')
+          s = s.replace(old_title, new_title, 1)
+
+          old_results = '''  const results = await Promise.all([\n    resolveJw(embedBase, token),\n    resolveSbv2(embedBase, token)\n  ]);\n\n  const out = [];\n  const seen = new Set();\n  const variants = ["JW", "SBv2"];\n  for (let i = 0; i < results.length; i++) {\n  const u = results[i];\n  if (!u) continue;\n  const normalized = await normalizeHls(u, headers);\n  const finalUrl = normalized.url;\n  if (!finalUrl || seen.has(finalUrl)) continue;\n  seen.add(finalUrl);\n  const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);\n  if (stream) out.push(stream);\n}\n'''
+          new_results = '''  const results = await Promise.all([\n    resolveJw(embedBase, token),\n    resolveLegacy(embedBase, token),\n    resolveSbv2(embedBase, token)\n  ]);\n\n  const out = [];\n  const seen = new Set();\n  const variants = ["JW", "Legacy", "SBv2"];\n  for (let i = 0; i < results.length; i++) {\n    const u = results[i];\n    if (!u) continue;\n    const normalized = await normalizeHls(u, headers);\n    const finalUrl = normalized.url;\n    const routeKey = `${variants[i]}|${finalUrl}`;\n    if (!finalUrl || seen.has(routeKey)) continue;\n    seen.add(routeKey);\n    const stream = makeStream(finalUrl, mode, server.label, variants[i], tracks, headers, ctx, normalized.quality);\n    if (stream) out.push(stream);\n  }\n'''
+          if old_results not in s and new_results not in s:
+              raise SystemExit('player result block anchor missing')
+          s = s.replace(old_results, new_results, 1)
+
+          old_global = '      const key = `${stream.url}|${stream.language}`;'
+          new_global = '      const key = `${stream.url}|${stream.language}|${stream.name}`;'
+          if old_global not in s and new_global not in s:
+              raise SystemExit('global dedupe anchor missing')
+          s = s.replace(old_global, new_global, 1)
+
+          path.write_text(s)
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text())
+          manifest['version'] = '0.1.13'
+          for provider in manifest.get('scrapers', []):
+              if provider.get('id') == 'limitless-123anime':
+                  provider['version'] = '1.1.0'
+                  provider['description'] = 'Limitless AniYomi-to-Nuvio port of 123Anime with season-aware MAL mapping, exact aliases, explicit DUB/HARDSUB labeling, mirror failover, and all available EchoVideo JW, Legacy, and SBv2 player routes.'
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
+
+          lock_path = Path('sources-lock.json')
+          lock = json.loads(lock_path.read_text())
+          lock['baseline'] = 'anime-v0.1.13'
+          for provider in lock.get('providers', []):
+              if provider.get('filename') == '123anime.js':
+                  provider['localVersion'] = '1.1.0'
+                  provider['notes'] = 'AniYomi-to-Nuvio port. Preserves separate 123Anime server/player routes for maximum fallback options (JW, Legacy, and SBv2 when available), labels Japanese burned-in subtitle streams as HARDSUB, and retains the Nuvio HLS compatibility handling.'
+          lock_path.write_text(json.dumps(lock, indent=2) + '\n')
+          PY
+
+          node --check providers/123anime.js
+          grep -q 'resolveLegacy' providers/123anime.js
+          grep -q 'HARDSUB' providers/123anime.js
+
+      - run: npm install cheerio@1.0.0-rc.12
+
+      - name: Live probe Saga of Tanya S1E1 player routes
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const Module = require('module');
+          const path = require('path');
+          let code = fs.readFileSync('providers/123anime.js', 'utf8').replace('cheerio-without-node-native', 'cheerio');
+          const mod = new Module(path.resolve('providers/123anime-live-probe.js'), module);
+          mod.filename = path.resolve('providers/123anime-live-probe.js');
+          mod.paths = module.paths;
+          mod._compile(code, mod.filename);
+          const p = mod.exports;
+
+          (async () => {
+            const streams = await p.getStreams('69346', 'tv', 1, 1);
+            console.log(streams.map(s => s.name).join('\n'));
+            if (!streams.some(s => /\bJW\b/i.test(s.name))) throw new Error('JW route missing');
+            if (!streams.some(s => /\bLegacy\b/i.test(s.name))) throw new Error('Legacy route missing');
+            if (!streams.some(s => /\[HARDSUB(?:\s|\])/i.test(s.name))) throw new Error('HARDSUB label missing');
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
+
+      - name: Commit validated update and remove temporary workflow
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git rm .github/workflows/123anime-player-options.yml
+          git add providers/123anime.js manifest.json sources-lock.json
+          git commit -m 'Expose all 123Anime player routes and label hardsubs [skip ci]'
+          git push
