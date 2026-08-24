@@ -1,0 +1,83 @@
+name: AllAnime Live Probe 2
+
+on:
+  push:
+    branches: [Limitless-Nuviotest]
+    paths: [.github/workflows/allanime-live-probe2.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: Limitless-Nuviotest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Probe fallback mapping, MKissa and streams
+        shell: bash
+        run: |
+          set +e
+          node <<'NODE' > allanime-probe-result2.txt 2>&1
+          const fs=require('fs'), Module=require('module'), path=require('path');
+          const nativeFetch=global.fetch;
+          global.fetch=async(url,opt={})=>{
+            const t=Date.now();
+            try {
+              const r=await nativeFetch(url,opt), u=String(url);
+              if (/mkissa|allanime|anilist|haglund|themoviedb|hf\.space/.test(u)||!r.ok)
+                console.log(`[fetch] ${opt.method||'GET'} ${r.status} ${Date.now()-t}ms ${u.slice(0,260)}`);
+              return r;
+            } catch(e) { console.log(`[fetch-error] ${String(url).slice(0,220)} :: ${e.message}`); throw e; }
+          };
+          let code=fs.readFileSync('providers/allanime.js','utf8');
+          code+=`\nmodule.exports.__probe={tmdbInfo,malMap,anilistByMal,armAnilist,anilistById,searchAnime,exactCandidate,resolveBuild,maskCandidates,getMaterial,streamEpisode,uniq};\n`;
+          const mod=new Module(path.resolve('providers/allanime-probe2-runtime.js'),module);
+          mod.filename=path.resolve('providers/allanime-probe2-runtime.js'); mod.paths=module.paths; mod._compile(code,mod.filename);
+          const p=mod.exports,d=p.__probe;
+          (async()=>{
+            console.log('=== AllAnime live probe 2: Oshi no Ko S1E1 ===');
+            const tmdb=await d.tmdbInfo(203737,'tv'); console.log('TMDB',JSON.stringify(tmdb));
+            const map=await d.malMap(tmdb.imdb,1,1); console.log('MAL map',JSON.stringify(map));
+            let media=map?.mal_id?await d.anilistByMal(map.mal_id):null;
+            if(!media){ const aid=await d.armAnilist(203737); console.log('ARM AniList id',aid); media=await d.anilistById(aid); }
+            console.log('AniList',JSON.stringify(media));
+            const targetId=media?.id||null, targetEp=map?.mal_episode!=null?Number(map.mal_episode):1;
+            const aliases=d.uniq([media?.title?.english,media?.title?.romaji,map?.anime_title,tmdb.title,tmdb.original,media?.title?.native,...(media?.synonyms||[])]);
+            console.log('Aliases',JSON.stringify(aliases));
+            let all=[];
+            for(const alias of aliases.slice(0,5)){
+              const r=await d.searchAnime(alias,'sub').catch(e=>{console.log('SEARCH_ERR',alias,e.message);return[]});
+              console.log('SEARCH',JSON.stringify(alias),'COUNT',r.length,'TOP',JSON.stringify(r.slice(0,3).map(x=>({_id:x._id,name:x.name,englishName:x.englishName,aniListId:x.aniListId}))));
+              all.push(...r);
+              const exact=d.exactCandidate(r,targetId,aliases); if(exact){all=[exact];break;}
+            }
+            const show=d.exactCandidate(all,targetId,aliases); console.log('EXACT',JSON.stringify(show&&{_id:show._id,name:show.name,englishName:show.englishName,aniListId:show.aniListId,slugTime:show.slugTime}));
+            if(!show) throw new Error('MKissa exact title match failed');
+            const build=await d.resolveBuild(); console.log('BUILD',JSON.stringify(build));
+            console.log('MASKS',d.maskCandidates(build.buildId,build.seeds).length);
+            const material=await d.getMaterial(false); console.log('MATERIAL',JSON.stringify({buildId:material.buildId,epoch:material.epoch,keyBytes:material.key.length}));
+            const ep=await d.streamEpisode(show._id,'sub',targetEp,0);
+            console.log('EPISODE',JSON.stringify(ep&&{count:(ep.sourceUrls||[]).length,sources:(ep.sourceUrls||[]).map(x=>({name:x.sourceName,type:x.type,url:String(x.sourceUrl||'').slice(0,120)}))},null,2));
+            if(!ep||(ep.sourceUrls||[]).length===0) throw new Error('No sourceUrls');
+            const streams=await p.getStreams('203737','tv',1,1); console.log('STREAMS',JSON.stringify(streams.map(x=>({name:x.name,title:x.title,url:String(x.url).slice(0,120)})),null,2));
+            if(!streams.length) throw new Error('No playable streams after extraction');
+            console.log('PROBE_OK');
+          })().catch(e=>{console.error('PROBE_FAILED',e.stack||e);process.exitCode=1});
+          NODE
+          status=$?
+          echo "PROBE_EXIT=$status" >> allanime-probe-result2.txt
+          cat allanime-probe-result2.txt
+          exit 0
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add allanime-probe-result2.txt
+          git commit -m "Record AllAnime live probe 2 [skip ci]" || exit 0
+          git push origin HEAD:Limitless-Nuviotest
