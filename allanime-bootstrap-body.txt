@@ -1,0 +1,15 @@
+BUILD {"buildId":"139","seeds":["RIzhJTHORgE=","JF78CKeveGk=","MnO1nbWsRKU=","bFlizGKD+f4="]}
+MASKS 2
+EPOCHS [ 2955, 2956, 2954 ]
+TRY {"mask":0,"epoch":2955,"kind":"new","status":403,"tokenPrefix":"2a061208344d7c1e","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":0,"epoch":2955,"kind":"legacy","status":403,"tokenPrefix":"89c898fd84fb1067","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":0,"epoch":2956,"kind":"new","status":403,"tokenPrefix":"92407cb067c4f190","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":0,"epoch":2956,"kind":"legacy","status":403,"tokenPrefix":"1a18fa9e8bbf1ba0","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":0,"epoch":2954,"kind":"new","status":403,"tokenPrefix":"96d3f10e30acb44c","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":0,"epoch":2954,"kind":"legacy","status":403,"tokenPrefix":"f6b407c95ff9d276","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2955,"kind":"new","status":403,"tokenPrefix":"86243fb353678616","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2955,"kind":"legacy","status":403,"tokenPrefix":"092d767edfc594c5","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2956,"kind":"new","status":403,"tokenPrefix":"efbef1addc61332b","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2956,"kind":"legacy","status":403,"tokenPrefix":"e40069601af6c470","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2954,"kind":"new","status":403,"tokenPrefix":"836b361567358b5f","body":"{\"error\":\"invalid_boot_token\"}"}
+TRY {"mask":1,"epoch":2954,"kind":"legacy","status":403,"tokenPrefix":"8c30d3553873421b","body":"{\"error\":\"invalid_boot_token\"}"}
