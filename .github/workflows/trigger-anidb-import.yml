@@ -6,12 +6,18 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   rebuild:
     if: github.event.issue.title == 'RUN LIMITLESS ANIDB IMPORT'
     runs-on: ubuntu-latest
     steps:
+      - name: Report start
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body "AniDB guarded import started."
+
       - uses: actions/checkout@v4
         with:
           ref: Limitless-Nuviotest
@@ -23,11 +29,15 @@ jobs:
           node-version: '20'
 
       - name: Generate AniDB index and provider
+        id: build
+        continue-on-error: true
         shell: bash
         run: |
-          set -euo pipefail
-          pip install -q curl_cffi beautifulsoup4
-          python3 - <<'PY'
+          set -o pipefail
+          {
+            set -euo pipefail
+            pip install -q curl_cffi beautifulsoup4
+            python3 - <<'PY'
           import re, textwrap
           from pathlib import Path
 
@@ -63,13 +73,19 @@ jobs:
           script = script.replace(old, new, 1)
           exec(compile(script, 'anidb-import.py', 'exec'), {})
           PY
-          node --check providers/anidb.js
+            node --check providers/anidb.js
+          } 2>&1 | tee anidb-build.log
 
       - name: Validate season mapping and playback
+        id: playback
+        if: steps.build.outcome == 'success'
+        continue-on-error: true
         shell: bash
         run: |
-          set -euo pipefail
-          node <<'NODE'
+          set -o pipefail
+          {
+            set -euo pipefail
+            node <<'NODE'
           const provider = require('./providers/anidb.js');
           async function check(id, title, season, episode) {
             const streams = await provider.getStreams(id, 'tv', season, episode);
@@ -97,12 +113,18 @@ jobs:
             await check('209867', "Frieren: Beyond Journey's End", 1, 1);
           })().catch(e => { console.error(e); process.exit(1); });
           NODE
+          } 2>&1 | tee anidb-playback.log
 
       - name: Validate repository and commit test branch
+        id: commit
+        if: steps.build.outcome == 'success' && steps.playback.outcome == 'success'
+        continue-on-error: true
         shell: bash
         run: |
-          set -euo pipefail
-          python3 - <<'PY'
+          set -o pipefail
+          {
+            set -euo pipefail
+            python3 - <<'PY'
           import json
           from pathlib import Path
           manifest = json.loads(Path('manifest.json').read_text(encoding='utf-8'))
@@ -113,12 +135,41 @@ jobs:
           ani = next(x for x in manifest['scrapers'] if x['id'] == 'anidb')
           assert ani['version'] == '1.0.2'
           PY
-          for file in providers/*.js; do node --check "$file" >/dev/null; done
-          rm -f .anidb-*.txt
-          rm -f .github/workflows/*anidb*.yml
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
-          git commit -m "Import season-aware AniDB provider [skip ci]"
-          git push origin HEAD:Limitless-Nuviotest
+            for file in providers/*.js; do node --check "$file" >/dev/null; done
+            rm -f .anidb-*.txt
+            rm -f .github/workflows/*anidb*.yml
+            rm -f anidb-build.log anidb-playback.log
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git diff --cached --quiet && { echo 'No changes to commit'; exit 1; }
+            git commit -m "Import season-aware AniDB provider [skip ci]"
+            git push origin HEAD:Limitless-Nuviotest
+          } 2>&1 | tee anidb-commit.log
+
+      - name: Report outcome
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD: ${{ steps.build.outcome }}
+          PLAYBACK: ${{ steps.playback.outcome }}
+          COMMIT: ${{ steps.commit.outcome }}
+        shell: bash
+        run: |
+          python3 - <<'PY' > /tmp/anidb-report.txt
+          import os
+          from pathlib import Path
+          build=os.environ.get('BUILD','skipped')
+          playback=os.environ.get('PLAYBACK','skipped')
+          commit=os.environ.get('COMMIT','skipped')
+          print(f"AniDB import outcome: build={build}, playback={playback}, commit={commit}\n")
+          for fn in ('anidb-build.log','anidb-playback.log','anidb-commit.log'):
+              p=Path(fn)
+              if p.exists():
+                  lines=p.read_text(errors='replace').splitlines()
+                  print(f"### {fn} tail")
+                  print('```')
+                  print('\n'.join(lines[-35:])[-5000:])
+                  print('```')
+          PY
+          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body-file /tmp/anidb-report.txt
