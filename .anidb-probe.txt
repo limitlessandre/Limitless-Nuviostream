@@ -1,0 +1,32 @@
+=== MODERN API: Frieren 1663 ===
+DIRECT 200 https://anidb.app/api/frontend/anime/1663/episodes
+{"episodes":[{"id":3062,"number":1,"number2":null,"filler":false},{"id":3063,"number":2,"number2":null,"filler":false},{"id":3064,"number":3,"number2":null,"filler":false},{"id":3065,"number":4,"number2":null,"filler":false},{"id":3066,"number":5,"number2":null,"filler":false},{"id":3067,"number":6,"number2":null,"filler":false},{"id":3068,"number":7,"number2":null,"filler":false},{"id":3069,"number":8,"number2":null,"filler":false},{"id":3070,"number":9,"number2":null,"filler":false},{"id":3071,"number":10,"number2":null,"filler":false},{"id":3072,"number":11,"number2":null,"filler":false},{"id":3073,"number":12,"number2":null,"filler":false},{"id":3074,"number":13,"number2":null,"filler":false},{"id":3075,"number":14,"number2":null,"filler":false},{"id":3076,"number":15,"number2":null,"filler":false},{"id":3077,"number":16,"number2":null,"filler":false},{"id":3078,"number":17,"number2":null,"filler":false},{"id":3079,"number":18,"number2":null,"filler":false},{"id":3080,"number":19,"number2":null,"filler":false},{"id":3081,"number":20,"number2":null,"filler":false},{"id":3082,"number":21,"number2":null,"filler":false},{"id":3083,"number":22,"number2":null,"filler":false},{"id":3084,"number":23,"number2":null,"filler":false},{"id":3085,"number":24,"number2":null,"filler":false},{"id":3086,"number":25,"number2":null,"filler":false},{"id":3087,"number":26,"number2":null,"filler":false},{"id":3088,"number":27,"number2":null,"filler":false},{"id":3089,"number":28,"number2":null,"filler":false}]}
+=== LANGUAGES: episode 3062 ===
+DIRECT 200 https://anidb.app/api/frontend/episode/3062/languages
+{"languages":[{"code":"eng","name":"English","embed_url":"https:\/\/anidb.app\/embed\/49QG9lxYWRYn7x6gM4vGQ17OcIjCx_zwCuyaJa_0RbQ"},{"code":"jpn","name":"Japanese","embed_url":"https:\/\/anidb.app\/embed\/cQJwQ7Kz4Bq3EVgfHLlCvb4tR9aGBstbEVTucdl4d6w"}]}
+=== MODERN API: Tanya 4517 ===
+DIRECT 200 https://anidb.app/api/frontend/anime/4517/episodes
+{"episodes":[{"id":26404,"number":1,"number2":null,"filler":false},{"id":26405,"number":2,"number2":null,"filler":false},{"id":26406,"number":3,"number2":null,"filler":false},{"id":26407,"number":4,"number2":null,"filler":false},{"id":26408,"number":5,"number2":null,"filler":false},{"id":26409,"number":6,"number2":null,"filler":false},{"id":26410,"number":7,"number2":null,"filler":false},{"id":26411,"number":8,"number2":null,"filler":false},{"id":26412,"number":9,"number2":null,"filler":false},{"id":26413,"number":10,"number2":null,"filler":false},{"id":26414,"number":11,"number2":null,"filler":false},{"id":26415,"number":12,"number2":null,"filler":false}]}
+=== OLD CANDIDATE ENDPOINTS: Frieren ===
+DIRECT 404 https://anidb.app/api/anime/1663/episodes
+{"message":"Not found."}
+DIRECT 404 https://anidb.app/ajax/anime/1663/episodes
+{"message":"Not found."}
+DIRECT 404 https://anidb.app/anime/1663/episodes
+{"message":"Not found."}
+=== CURRENT LIMITLESS PROVIDER: Frieren TMDB 209867 S1E1 ===
+FETCH 200 https://api.themoviedb.org/3/tv/209867?api_key=1865f43a0549ca50d341dd9ab8b29f49
+FETCH 200 https://api.themoviedb.org/3/tv/209867/season/1/episode/1?api_key=1865f43a0549ca50d341dd9ab8b29f49
+[AniDB] tv "Frieren: Beyond Journey's End" S1E1
+FETCH 403 https://anidb.app/browse?q=Frieren%3A%20Beyond%20Journey's%20End
+[AniDB] no streams found
+RESULT_COUNT 0
+[]
+=== CURRENT LIMITLESS PROVIDER: Tanya TMDB 69346 S1E1 ===
+FETCH 200 https://api.themoviedb.org/3/tv/69346?api_key=1865f43a0549ca50d341dd9ab8b29f49
+FETCH 200 https://api.themoviedb.org/3/tv/69346/season/1/episode/1?api_key=1865f43a0549ca50d341dd9ab8b29f49
+[AniDB] tv "Saga of Tanya the Evil" S1E1
+FETCH 403 https://anidb.app/browse?q=Saga%20of%20Tanya%20the%20Evil
+[AniDB] no streams found
+RESULT_COUNT 0
+[]
