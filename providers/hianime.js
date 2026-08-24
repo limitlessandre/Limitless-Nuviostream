@@ -15,12 +15,10 @@ var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __spreadValues = (a, b) => {
   for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
+    if (__hasOwnProp.call(b, prop)) __defNormalProp(a, prop, b[prop]);
   if (__getOwnPropSymbols)
     for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+      if (__propIsEnum.call(b, prop)) __defNormalProp(a, prop, b[prop]);
     }
   return a;
 };
@@ -34,38 +32,19 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
+    var fulfilled = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } };
+    var rejected = (value) => { try { step(generator.throw(value)); } catch (e) { reject(e); } };
     var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
 
-// src/hianime/index.js
 var import_cheerio_without_node_native = __toESM(require("cheerio-without-node-native"));
-
-// src/hianime/constants.js
 var MEGAPLAY_BASE = "https://megaplay.buzz";
 var VIDWISH_BASE = "https://vidwish.live";
 var MEGACLOUD_BASE = "https://megacloud.bloggy.click";
@@ -76,14 +55,12 @@ var DEFAULT_HEADERS = {
   "Connection": "keep-alive"
 };
 
-// src/hianime/utils.js
 function fetchText(_0) {
   return __async(this, arguments, function* (url, options = {}) {
     const response = yield fetch(url, __spreadValues({
       headers: __spreadValues(__spreadValues({}, DEFAULT_HEADERS), options.headers)
     }, options));
-    if (!response.ok)
-      throw new Error(`HTTP ${response.status} on ${url}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status} on ${url}`);
     return yield response.text();
   });
 }
@@ -99,9 +76,7 @@ function getImdbId(tmdbId, mediaType) {
       const url = `https://api.themoviedb.org/3/${mediaType === "tv" ? "tv" : "movie"}/${tmdbId}/external_ids?api_key=${TMDB_API_KEY}`;
       const data = yield fetchJson(url);
       return data.imdb_id || null;
-    } catch (e) {
-      return null;
-    }
+    } catch (e) { return null; }
   });
 }
 function getTmdbShowTitle(tmdbId, mediaType) {
@@ -110,9 +85,7 @@ function getTmdbShowTitle(tmdbId, mediaType) {
       const url = `https://api.themoviedb.org/3/${mediaType === "tv" ? "tv" : "movie"}/${tmdbId}?api_key=${TMDB_API_KEY}`;
       const data = yield fetchJson(url);
       return data.name || data.title || data.original_title || null;
-    } catch (e) {
-      return null;
-    }
+    } catch (e) { return null; }
   });
 }
 function resolveMapping(imdbId, season, episode) {
@@ -120,12 +93,9 @@ function resolveMapping(imdbId, season, episode) {
     try {
       const url = `https://id-mapping-api-malid.hf.space/api/resolve?id=${imdbId}&s=${season}&e=${episode}`;
       const data = yield fetchJson(url);
-      if (data.error)
-        return null;
+      if (data.error) return null;
       return data;
-    } catch (e) {
-      return null;
-    }
+    } catch (e) { return null; }
   });
 }
 function searchMalId(title, mediaType) {
@@ -134,17 +104,12 @@ function searchMalId(title, mediaType) {
       const type = mediaType === "movie" ? "movie" : "tv";
       const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&type=${type}&limit=1`;
       const data = yield fetchJson(url);
-      if (data.data && data.data.length > 0) {
-        return data.data[0].mal_id;
-      }
+      if (data.data && data.data.length > 0) return data.data[0].mal_id;
       return null;
-    } catch (e) {
-      return null;
-    }
+    } catch (e) { return null; }
   });
 }
 
-// src/hianime/index.js
 function extractSources(apiUrl, referer, origin, serverName, animeTitle, episodeNum, type) {
   return __async(this, null, function* () {
     var _a;
@@ -157,12 +122,25 @@ function extractSources(apiUrl, referer, origin, serverName, animeTitle, episode
         }
       });
       const file = (_a = json.sources) == null ? void 0 : _a.file;
-      if (!file)
-        return [];
-      const streamTitle = `${animeTitle} - Episode ${episodeNum} (${type.toUpperCase()})`;
+      if (!file) return [];
+
+      const subtitles = json.tracks && json.tracks.length > 0
+        ? json.tracks.filter((t) => t.file && t.kind === "captions").map((t) => ({
+            url: t.file,
+            name: `${t.label || "English"} [SOFTSUB]`,
+            language: t.label ? t.label.slice(0, 3).toLowerCase() : "en"
+          }))
+        : [];
+      const tag = type === "dub"
+        ? (subtitles.length ? "DUB+SUBS" : "DUB")
+        : subtitles.length
+          ? "SOFTSUB"
+          : "";
+      const tagText = tag ? ` [${tag}]` : "";
+      const streamTitle = `${animeTitle} - Episode ${episodeNum}${tagText}`;
       const streams = [];
       streams.push({
-        name: `HiAnime [${serverName}] (${type.toUpperCase()})`,
+        name: `HiAnime [${serverName}]${tagText}`,
         title: streamTitle,
         url: file,
         quality: "Auto",
@@ -171,16 +149,9 @@ function extractSources(apiUrl, referer, origin, serverName, animeTitle, episode
           "Origin": origin
         }),
         provider: "hianime",
-        type: "m3u8"
+        type: "m3u8",
+        subtitles
       });
-      if (json.tracks && json.tracks.length > 0) {
-        const subtitles = json.tracks.filter((t) => t.file && t.kind === "captions").map((t) => ({
-          url: t.file,
-          name: t.label || "English",
-          language: t.label ? t.label.slice(0, 3).toLowerCase() : "en"
-        }));
-        streams[0].subtitles = subtitles;
-      }
       return streams;
     } catch (e) {
       return [];
@@ -192,21 +163,16 @@ function scrapeType(malId, episode, type, animeTitle) {
     const streams = [];
     const megaUrl = `${MEGAPLAY_BASE}/stream/mal/${malId}/${episode}/${type}`;
     try {
-      const html = yield fetchText(megaUrl, {
-        headers: { "Referer": megaUrl }
-      });
+      const html = yield fetchText(megaUrl, { headers: { "Referer": megaUrl } });
       const $ = import_cheerio_without_node_native.default.load(html);
       const player = $("div.fix-area#megaplay-player");
-      if (!player.length)
-        return [];
+      if (!player.length) return [];
       const dataId = player.attr("data-id");
       const realId = player.attr("data-realid");
       const extractions = [];
       if (dataId) {
         const apiUrl = `${MEGAPLAY_BASE}/stream/getSources?id=${dataId}&id=${dataId}`;
-        extractions.push(
-          extractSources(apiUrl, megaUrl, MEGAPLAY_BASE, "MegaPlay", animeTitle, episode, type)
-        );
+        extractions.push(extractSources(apiUrl, megaUrl, MEGAPLAY_BASE, "MegaPlay", animeTitle, episode, type));
       }
       if (realId) {
         const vidPage = `${VIDWISH_BASE}/stream/s-2/${realId}/${type}`;
@@ -220,8 +186,7 @@ function scrapeType(malId, episode, type, animeTitle) {
               const apiUrl = `${VIDWISH_BASE}/stream/getSources?id=${vDataId}&id=${vDataId}`;
               return yield extractSources(apiUrl, vidPage, VIDWISH_BASE, "Vidwish", animeTitle, episode, type);
             }
-          } catch (err) {
-          }
+          } catch (err) {}
           return [];
         }))());
       }
@@ -237,17 +202,13 @@ function scrapeType(malId, episode, type, animeTitle) {
               const apiUrl = `${MEGACLOUD_BASE}/stream/getSources?id=${mDataId}&id=${mDataId}`;
               return yield extractSources(apiUrl, megacloudPage, MEGACLOUD_BASE, "MegaCloud", animeTitle, episode, type);
             }
-          } catch (err) {
-          }
+          } catch (err) {}
           return [];
         }))());
       }
       const results = yield Promise.all(extractions);
-      for (const res of results) {
-        streams.push(...res);
-      }
-    } catch (e) {
-    }
+      for (const res of results) streams.push(...res);
+    } catch (e) {}
     return streams;
   });
 }
@@ -277,8 +238,7 @@ function getStreams(tmdbId, mediaType = "tv", season = 1, episode = 1) {
       let showTitle = "";
       const imdbId = yield getImdbId(tmdbId, mediaType);
       showTitle = (yield getTmdbShowTitle(tmdbId, mediaType)) || (mediaType === "movie" ? "Movie" : "Anime");
-      if (!imdbId)
-        return [];
+      if (!imdbId) return [];
       const s = mediaType === "movie" ? 1 : season;
       const e = mediaType === "movie" ? 1 : episode;
       if (mediaType === "movie") {
@@ -292,8 +252,7 @@ function getStreams(tmdbId, mediaType = "tv", season = 1, episode = 1) {
           mappedEp = mapping.mal_episode || episode;
         }
       }
-      if (!malId)
-        return [];
+      if (!malId) return [];
       const settings = globalThis.SCRAPER_SETTINGS || {};
       const preference = settings.subDub || "both";
       let allStreams = [];
@@ -308,8 +267,7 @@ function getStreams(tmdbId, mediaType = "tv", season = 1, episode = 1) {
       }
       const seen = /* @__PURE__ */ new Set();
       return allStreams.filter((s2) => {
-        if (seen.has(s2.url))
-          return false;
+        if (seen.has(s2.url)) return false;
         seen.add(s2.url);
         return true;
       });
