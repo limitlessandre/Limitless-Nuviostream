@@ -53,48 +53,15 @@ jobs:
               for line in match.group(1).splitlines()
           ) + "\n"
 
-          old_count = '''first = get_page(1)
-m = re.search(r'Page\\s+1\\s+of\\s+(\\d+)', first, re.I)
-if not m:
-    raise SystemExit('Could not determine AniDB browse page count')
-pages = int(m.group(1))
-if pages < 250 or pages > 500:
-    raise SystemExit(f'Unexpected AniDB page count: {pages}')'''
-          new_count = '''first = get_page(1)
-pages = 500
-print('AniDB pagination total is not exposed; scanning until the catalog ends')'''
-          if old_count not in script:
-              raise SystemExit("AniDB page-count anchor changed")
-          script = script.replace(old_count, new_count, 1)
+          count_start = script.index("first = get_page(1)")
+          count_end = script.index("\n\nby_id = {}", count_start)
+          count_replacement = "first = get_page(1)\npages = 500\nprint('AniDB pagination total is not exposed; scanning until the catalog ends')"
+          script = script[:count_start] + count_replacement + script[count_end:]
 
-          old_loop = '''collect(first)
-for page in range(2, pages + 1):
-    collect(get_page(page))
-    if page % 25 == 0:
-        print(f'Indexed page {page}/{pages}: {len(by_id)} titles')
-    time.sleep(0.08)'''
-          new_loop = '''collect(first)
-for page in range(2, pages + 1):
-    try:
-        html = get_page(page)
-    except RuntimeError:
-        if len(by_id) >= 6000:
-            print(f'Catalog ended before page {page}: {len(by_id)} titles')
-            break
-        raise
-    before = len(by_id)
-    collect(html)
-    if len(by_id) == before:
-        if len(by_id) >= 6000:
-            print(f'Catalog repeated/ended at page {page}: {len(by_id)} titles')
-            break
-        raise SystemExit(f'AniDB browse page {page} added no new titles before minimum index size')
-    if page % 25 == 0:
-        print(f'Indexed page {page}: {len(by_id)} titles')
-    time.sleep(0.08)'''
-          if old_loop not in script:
-              raise SystemExit("AniDB crawl-loop anchor changed")
-          script = script.replace(old_loop, new_loop, 1)
+          loop_start = script.index("collect(first)\nfor page in range(2, pages + 1):")
+          loop_end = script.index("\n\nif len(by_id) < 6000:", loop_start)
+          loop_replacement = "collect(first)\nfor page in range(2, pages + 1):\n    try:\n        html = get_page(page)\n    except RuntimeError:\n        if len(by_id) >= 6000:\n            print(f'Catalog ended before page {page}: {len(by_id)} titles')\n            break\n        raise\n    before = len(by_id)\n    collect(html)\n    if len(by_id) == before:\n        if len(by_id) >= 6000:\n            print(f'Catalog repeated/ended at page {page}: {len(by_id)} titles')\n            break\n        raise SystemExit(f'AniDB browse page {page} added no new titles before minimum index size')\n    if page % 25 == 0:\n        print(f'Indexed page {page}: {len(by_id)} titles')\n    time.sleep(0.08)"
+          script = script[:loop_start] + loop_replacement + script[loop_end:]
 
           exec(compile(script, "anidb-import.py", "exec"), {})
           PY
