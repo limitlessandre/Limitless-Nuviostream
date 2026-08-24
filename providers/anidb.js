@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 "use strict";
 
-// Limitless AniDB 1.0.2
+// Limitless AniDB 1.0.3
 // Runtime access/extraction is based on Eclipsia Praxiel 1.1.0 (GPL-3.0).
 // Limitless adds MAL season identity locking, exact finite aliases, animation guard,
 // and the repository's DUB/HARDSUB naming convention.
@@ -186,27 +186,25 @@ async function fetchAniListAliases(malId) {
   ]);
 }
 
-async function buildSeasonAliases(tmdb, mapping, season, type) {
+function buildGeneratedSeasonAliases(tmdb, season, type) {
+  if (type !== "tv" || Number(season) <= 1 || !tmdb || !tmdb.title) return [];
+  return unique([
+    `${tmdb.title} ${roman(season)}`,
+    `${tmdb.title} Season ${season}`,
+    `${tmdb.title} ${ordinal(season)} Season`
+  ]);
+}
+
+async function buildMappedSeasonAliases(mapping) {
   const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
   const metadataAliases = malId
     ? await Promise.all([fetchJikanAliases(malId), fetchAniListAliases(malId)])
     : [[], []];
-
-  const generated = [];
-  if (type === "tv" && Number(season) > 1 && tmdb && tmdb.title) {
-    generated.push(
-      `${tmdb.title} ${roman(season)}`,
-      `${tmdb.title} Season ${season}`,
-      `${tmdb.title} ${ordinal(season)} Season`
-    );
-  }
-
   return unique([
     mapping && mapping.anime_title,
     ...metadataAliases[0],
-    ...metadataAliases[1],
-    ...generated
-  ]).slice(0, 18);
+    ...metadataAliases[1]
+  ]).slice(0, 15);
 }
 
 function buildGenericAliases(tmdb) {
@@ -282,23 +280,45 @@ async function findCandidate(aliases, malId, requireMalVerification) {
 
 async function resolveAnimeIdentity(tmdb, mapping, season, type) {
   const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
-  const seasonAliases = await buildSeasonAliases(tmdb, mapping, season, type);
-
-  if (seasonAliases.length) {
-    const seasonMatch = await findCandidate(seasonAliases, malId, false);
-    if (seasonMatch) return seasonMatch;
-  }
-
-  // For mapped episodes, generic-title fallback is allowed only when the candidate
-  // can be verified against the mapped MAL entry. This prevents S2 from falling into S1.
+  const seasonNumber = Number(season) || 1;
   const genericAliases = buildGenericAliases(tmdb);
-  if (malId) {
-    return await findCandidate(genericAliases, malId, true);
+  const genericKeys = new Set(genericAliases.map(normalizeTitle));
+
+  // AniDB.app stores many later seasons as separate anime records. For S2+,
+  // try explicit season-shaped titles before trusting MAL mapping, because the
+  // mapping service can lag behind newly separated seasons.
+  if (type === "tv" && seasonNumber > 1) {
+    const generatedAliases = buildGeneratedSeasonAliases(tmdb, seasonNumber, type);
+    const generatedMatch = await findCandidate(generatedAliases, null, false);
+    if (generatedMatch) {
+      return { ...generatedMatch, identitySource: "generated-season" };
+    }
+
+    const mappedAliases = await buildMappedSeasonAliases(mapping);
+    const mappedMatch = await findCandidate(mappedAliases, malId, false);
+    if (mappedMatch && !genericKeys.has(normalizeTitle(mappedMatch.title))) {
+      return { ...mappedMatch, identitySource: "mapped-season" };
+    }
+
+    // Correctness beats a false positive: never collapse S2+ back to the generic
+    // base-series record just because that record also contains episode 1.
+    return null;
   }
 
-  // If season mapping is unavailable, only season 1/movie may use an exact generic title.
-  if (type === "movie" || Number(season) === 1) {
-    return await findCandidate(genericAliases, null, false);
+  const mappedAliases = await buildMappedSeasonAliases(mapping);
+  if (mappedAliases.length) {
+    const mappedMatch = await findCandidate(mappedAliases, malId, false);
+    if (mappedMatch) return { ...mappedMatch, identitySource: "mapped" };
+  }
+
+  if (malId) {
+    const verified = await findCandidate(genericAliases, malId, true);
+    return verified ? { ...verified, identitySource: "generic-verified" } : null;
+  }
+
+  if (type === "movie" || seasonNumber === 1) {
+    const exact = await findCandidate(genericAliases, null, false);
+    return exact ? { ...exact, identitySource: "generic" } : null;
   }
 
   return null;
@@ -376,9 +396,6 @@ async function getStreams(inputId, inputMediaType, season, episode) {
     const requestedSeason = type === "movie" ? 1 : (Number.parseInt(season, 10) || 1);
     const requestedEpisode = type === "movie" ? 1 : (Number.parseFloat(episode) || 1);
     const mapping = await mapMalEpisode(tmdb.imdb, requestedSeason, requestedEpisode);
-    const targetEpisode = type === "movie"
-      ? 1
-      : (mapping && mapping.mal_episode != null ? Number(mapping.mal_episode) : requestedEpisode);
 
     const candidate = await resolveAnimeIdentity(tmdb, mapping, requestedSeason, type);
     if (!candidate) {
@@ -392,7 +409,12 @@ async function getStreams(inputId, inputMediaType, season, episode) {
       ` -> ${candidate.title} (${candidate.numId}) via ${candidate.matchedAlias}`
     );
 
-    const episodeId = await resolveEpisodeId(candidate.numId, targetEpisode);
+    // AniDB.app's separated season records normally restart at episode 1.
+    // Prefer the requested local episode. MAL episode numbering is only a fallback.
+    let episodeId = await resolveEpisodeId(candidate.numId, requestedEpisode);
+    if (!episodeId && mapping && mapping.mal_episode != null && Number(mapping.mal_episode) !== requestedEpisode) {
+      episodeId = await resolveEpisodeId(candidate.numId, Number(mapping.mal_episode));
+    }
     if (!episodeId) return [];
 
     const languages = await fetchEpisodeLanguages(episodeId);

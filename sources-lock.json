@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.15",
+  "baseline": "anime-v0.1.16",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.2",
+      "localVersion": "1.0.3",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Rebuilt from Eclipsia Praxiel 1.1.0 runtime access/extraction behavior. Limitless adds TMDB-to-MAL season mapping, season-specific finite aliases, MAL-verified generic fallback to prevent later seasons from falling into season 1, an animation-only guard, and standardized English [DUB] / Japanese [HARDSUB] labels. Praxiel itself was confirmed working in Nuvio Desktop but mapped Tanya S2E1 to S1E1; this rebuild specifically fixes that identity bug.",
+      "notes": "Rebuilt from Eclipsia Praxiel 1.1.0 runtime access/extraction behavior. S2+ now tries exact season-shaped aliases before MAL metadata, rejects collapse to the generic base-series record, and prefers the requested episode number inside the selected AniDB season record before MAL episode fallback. Uses standardized English [DUB] / Japanese [HARDSUB] labels.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {
