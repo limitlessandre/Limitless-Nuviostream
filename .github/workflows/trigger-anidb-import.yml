@@ -1,6 +1,7 @@
 name: Temporary AniDB import trigger
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -17,7 +18,7 @@ jobs:
       - name: Report start
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue comment 2 --repo ${{ github.repository }} --body "AniDB guarded import started from the main-branch push trigger."
+        run: gh issue comment 2 --repo ${{ github.repository }} --body "AniDB guarded import started."
 
       - uses: actions/checkout@v4
         with:
