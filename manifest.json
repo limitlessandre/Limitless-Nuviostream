@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
@@ -79,12 +79,13 @@
     {
       "id": "anidb",
       "name": "AniDB",
-      "description": "Limitless-maintained AniDB with explicit live season-title matching before cross-database mapping, live AniDB.app URL identifiers, current frontend episode/language APIs, and standardized DUB/HARDSUB labels.",
-      "version": "1.0.8",
+      "description": "Limitless-maintained AniDB with explicit live season-title matching, continuous-number episode translation for season-specific records, live AniDB.app frontend APIs, and standardized DUB/HARDSUB labels.",
+      "version": "1.0.9",
       "author": "Limitless maintained port based on Eclipsia Praxiel (GPL-3.0)",
       "supportedTypes": [
         "movie",
-        "tv"
+        "tv",
+        "anime"
       ],
       "filename": "providers/anidb.js",
       "enabled": true,
