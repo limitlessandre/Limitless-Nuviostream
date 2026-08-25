@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Frozen anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
@@ -79,8 +79,8 @@
     {
       "id": "anidb",
       "name": "AniDB",
-      "description": "Limitless-maintained AniDB based on Eclipsia Praxiel runtime access, with exact S2+ discovery through direct search, base-title results, and AniDB relation links; MAL fallback and standardized DUB/HARDSUB labels.",
-      "version": "1.0.5",
+      "description": "Limitless-maintained AniDB using Eclipsia Praxiel playback access plus a frozen exact AniDB.app identity index for deterministic season matching, with network discovery only as a fallback and standardized DUB/HARDSUB labels.",
+      "version": "1.0.6",
       "author": "Limitless maintained port based on Eclipsia Praxiel (GPL-3.0)",
       "supportedTypes": [
         "movie",

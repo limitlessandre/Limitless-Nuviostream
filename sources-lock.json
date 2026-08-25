@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.18",
+  "baseline": "anime-v0.1.19",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.5",
+      "localVersion": "1.0.6",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Praxiel-based runtime access. Later seasons use exact generated season aliases first, then exact candidates from broad search, then the base AniDB page relations/sequel links where the related slug must exactly match a generated season alias. This handles Oshi no Ko S2 when suggestions expose only S1, preserves Tanya S2 behavior, and keeps DUB/HARDSUB labels.",
+      "notes": "Hybrid AniDB provider: Praxiel runtime playback/API behavior is retained, while identity resolution now uses a frozen exact AniDB.app catalog index generated on 2026-08-24. This removes suggestions/relation-page dependence for indexed titles, keeps finite non-fuzzy season aliases, and leaves live search only as a future-title fallback.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {
