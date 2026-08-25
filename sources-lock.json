@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.19",
+  "baseline": "anime-v0.1.20",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.6",
+      "localVersion": "1.0.7",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Hybrid AniDB provider: Praxiel runtime playback/API behavior is retained, while identity resolution now uses a frozen exact AniDB.app catalog index generated on 2026-08-24. This removes suggestions/relation-page dependence for indexed titles, keeps finite non-fuzzy season aliases, and leaves live search only as a future-title fallback.",
+      "notes": "Limitless AniDB provider using live AniDB.app URL identifiers rather than a frozen catalog. Season identity is resolved with MAL episode mapping plus Jikan/AniList/TMDB aliases, then the current AniDB.app episode/language APIs and embed HLS extraction are used for playback. This avoids stale numeric identifiers when AniDB.app regenerates its catalog IDs.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {
@@ -71,6 +71,12 @@
           "path": "providers/praxiel.js",
           "name": "Praxiel 1.1.0",
           "license": "GPL-3.0"
+        },
+        {
+          "repository": "sdaqo/anipy-cli",
+          "commit": "ab99477cc220278ee9a593eeaf76530d0c461625",
+          "path": "api/src/anipy_api/provider/providers/anidbapp_provider.py",
+          "name": "AniDBApp provider live identifier reference"
         }
       ]
     },
