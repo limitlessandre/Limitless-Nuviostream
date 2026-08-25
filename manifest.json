@@ -1,13 +1,13 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
       "id": "limitless-123anime",
       "name": "123Anime",
-      "description": "Rollback diagnostic build using the known-good 1.1.2 provider behavior. Mirror-selection experiments are removed so Season/Cour identity fixes can be isolated cleanly.",
-      "version": "1.1.5",
+      "description": "Known-good 1.1.2 behavior with mirror/search experiments removed; adds only explicit Season 2+ identity lookup and targeted split Part/Cour discovery for season-local episode stitching.",
+      "version": "1.1.6",
       "author": "Limitless port based on AniYomi 123Anime (Apache-2.0)",
       "supportedTypes": [
         "movie",
