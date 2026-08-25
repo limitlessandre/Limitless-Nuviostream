@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.23",
+  "baseline": "anime-v0.1.24",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,7 +10,7 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/123anime.js",
       "maintainedLocally": true,
-      "localVersion": "1.1.2",
+      "localVersion": "1.1.3",
       "upstreamOrigin": {
         "repository": "yuzono/anime-extensions",
         "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
@@ -20,7 +20,7 @@
         ]
       },
       "license": "Apache-2.0",
-      "notes": "AniYomi-to-Nuvio port. Keeps exact MAL/title matching as the primary path, then uses a finite Part/Cour family fallback when a Nuvio season is split across separate provider records. Split records are stitched by their live episode counts so a request such as S1E12 can map to Part 2 local E1 without fuzzy title matching. JW, Legacy, SBv2, HLS compatibility handling, deduplication, and Limitless DUB/HARDSUB/SOFTSUB naming remain intact."
+      "notes": "AniYomi-to-Nuvio port. Current pass uses both the live /search route and legacy /filter route, prefers verified 123anime.la and 123animehub.cc mirrors while retaining older fallbacks, resolves explicit Season 2+ records before generic base titles, and compares the requested episode MAL identity to episode 1 of the same Nuvio season. When those MAL identities differ, the provider forces Part/Cour stitching instead of trusting a potentially ambiguous episode number. Cour discovery is anchored with episode-1 aliases and stitched by each live provider record's actual episode count. JW, Legacy, SBv2, HLS compatibility handling, deduplication, and Limitless DUB/HARDSUB/SOFTSUB naming remain intact."
     },
     {
       "filename": "allanime.js",
