@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.21",
+  "baseline": "anime-v0.1.22",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -56,13 +56,13 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/anidb.js",
       "maintainedLocally": true,
-      "localVersion": "1.0.8",
+      "localVersion": "1.0.9",
       "upstreamOrigin": {
         "repository": "NuvioPlugin/All-in-One-Nuvio",
         "commit": "716057b2a0d55a634da88c1d0d2db7352df07c69",
         "path": "providers/anidb.js"
       },
-      "notes": "Limitless AniDB provider using live AniDB.app URL identifiers. For later seasons, an exact live season title is resolved before MAL/TMDB-derived aliases so cross-database episode-order differences cannot collapse Season 2+ onto the base anime. Mapping metadata remains fallback-only, followed by the current AniDB.app episode/language APIs and embed HLS extraction.",
+      "notes": "Limitless AniDB provider using live AniDB.app URL identifiers. Later-season records are matched by explicit live season title first. When a season-specific AniDB record uses continuous numbering, such as Season 2 containing episodes 12-24, Nuvio's season-local episode number is translated by position before language and HLS extraction. Mapping metadata remains fallback-only.",
       "license": "GPL-3.0-only",
       "referenceImplementations": [
         {
