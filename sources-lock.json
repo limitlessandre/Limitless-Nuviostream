@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.22",
+  "baseline": "anime-v0.1.23",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,7 +10,7 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/123anime.js",
       "maintainedLocally": true,
-      "localVersion": "1.1.1",
+      "localVersion": "1.1.2",
       "upstreamOrigin": {
         "repository": "yuzono/anime-extensions",
         "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
@@ -20,7 +20,7 @@
         ]
       },
       "license": "Apache-2.0",
-      "notes": "AniYomi-to-Nuvio port. Tries JW, Legacy, and SBv2 internally for resilience, collapses outputs that resolve to the same final media with the same playback semantics, retains the Nuvio HLS compatibility handling, and uses the Limitless DUB/HARDSUB/SOFTSUB naming standard."
+      "notes": "AniYomi-to-Nuvio port. Keeps exact MAL/title matching as the primary path, then uses a finite Part/Cour family fallback when a Nuvio season is split across separate provider records. Split records are stitched by their live episode counts so a request such as S1E12 can map to Part 2 local E1 without fuzzy title matching. JW, Legacy, SBv2, HLS compatibility handling, deduplication, and Limitless DUB/HARDSUB/SOFTSUB naming remain intact."
     },
     {
       "filename": "allanime.js",
