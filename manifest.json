@@ -1,13 +1,13 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
       "id": "limitless-123anime",
       "name": "123Anime",
-      "description": "Limitless AniYomi-to-Nuvio port of 123Anime with explicit Season 2+ identity matching, MAL-anchored split Part/Cour stitching, current /search plus legacy /filter discovery, mirror failover, compact subtitle tags, and JW/Legacy/SBv2 extraction.",
-      "version": "1.1.3",
+      "description": "Limitless AniYomi-to-Nuvio port of 123Anime with explicit Season 2+ identity matching, per-title mirror failover, split Part/Cour episode stitching, current /search plus legacy /filter discovery, compact subtitle tags, and JW/Legacy/SBv2 extraction.",
+      "version": "1.1.4",
       "author": "Limitless port based on AniYomi 123Anime (Apache-2.0)",
       "supportedTypes": [
         "movie",
