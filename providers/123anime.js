@@ -5,8 +5,11 @@
  * Upstream reference: yuzono/anime-extensions (Apache-2.0)
  * Ported to Nuvio's getStreams(TMDB/type/season/episode) provider interface.
  *
- * Limitless 1.1.2 adds cour/part stitching for providers that split a Nuvio
- * season across separate records (for example S1E1-11 + Part 2 E1-12).
+ * Limitless 1.1.6 is intentionally based on the known-good 1.1.2 path.
+ * Only two identity fixes are layered on top:
+ * - explicit Season 2+ records are tried before generic mapped/base titles
+ * - split Part/Cour records are actively discovered by explicit part queries
+ * Mirror selection and search routing remain on the original behavior.
  */
 
 const cheerio = require("cheerio-without-node-native");
@@ -21,7 +24,6 @@ const MIRRORS = [
   "https://123anime.la",
   "https://123anime.cc",
   "https://123anime.info",
-  "https://123animehub.cc",
   "https://w1.123animes.ru"
 ];
 
@@ -143,6 +145,23 @@ function uniq(values) {
   return out;
 }
 
+function roman(number) {
+  const n = Number(number);
+  const table = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+  return Number.isInteger(n) && n > 0 && n < table.length ? table[n] : String(number || "");
+}
+
+function ordinal(number) {
+  const n = Number(number);
+  if (!Number.isFinite(n)) return String(number || "");
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+  if (n % 10 === 1) return `${n}st`;
+  if (n % 10 === 2) return `${n}nd`;
+  if (n % 10 === 3) return `${n}rd`;
+  return `${n}th`;
+}
+
 async function malAliases(mal) {
   if (!mal) return [];
   const d = await json(`https://api.jikan.moe/v4/anime/${encodeURIComponent(mal)}`, {}, 15000);
@@ -199,6 +218,18 @@ async function titleAliases(mal, tmdb, mapping) {
     ...parts[0], ...parts[1], ...parts[2],
     tmdb && tmdb.title, tmdb && tmdb.original
   ]).slice(0, 20);
+}
+
+function generatedSeasonAliases(tmdb, season) {
+  const s = Number(season) || 1;
+  if (s <= 1) return [];
+  const out = [];
+  for (const base of uniq([tmdb && tmdb.title, tmdb && tmdb.original]).slice(0, 4)) {
+    out.push(`${base} Season ${s}`);
+    out.push(`${base} ${ordinal(s)} Season`);
+    out.push(`${base} ${roman(s)}`);
+  }
+  return uniq(out);
 }
 
 function cardMode(nodeText, title) {
@@ -261,14 +292,29 @@ function splitTitleInfo(value) {
   return { root: title, part: 1, explicit: false };
 }
 
+function rawFamilyRoot(value) {
+  let title = String(value || "").trim().replace(/\s*\((?:dub|dubbed|sub|subbed)\)\s*$/i, "");
+  const suffixes = [
+    /\s+(?:part|cour)\s+\d+\s*$/i,
+    /\s+\d+(?:st|nd|rd|th)\s+(?:part|cour)\s*$/i,
+    /\s+(?:first|second|third|fourth|fifth)\s+(?:part|cour)\s*$/i,
+    /\s+(?:part|cour)\s+(?:first|second|third|fourth|fifth)\s*$/i
+  ];
+  for (const suffix of suffixes) {
+    if (suffix.test(title)) return title.replace(suffix, "").trim();
+  }
+  return title;
+}
+
 function familyRoots(aliases) {
   const out = [];
   const seen = new Set();
   for (const alias of uniq(aliases).slice(0, 12)) {
-    const root = splitTitleInfo(alias).root;
-    if (!root || seen.has(root)) continue;
-    seen.add(root);
-    out.push({ raw: root, clean: root });
+    const raw = rawFamilyRoot(alias);
+    const key = clean(raw);
+    if (!raw || !key || seen.has(key)) continue;
+    seen.add(key);
+    out.push({ raw, clean: key });
   }
   return out.slice(0, 8);
 }
@@ -279,13 +325,25 @@ async function searchCourFamily(base, aliases) {
   const seen = new Set();
 
   for (const root of roots) {
-    const cards = await searchCards(base, root.raw);
-    for (const card of cards) {
-      const info = splitTitleInfo(card.title);
-      if (info.root !== root.clean) continue;
-      if (seen.has(card.url)) continue;
-      seen.add(card.url);
-      found.push({ ...card, part: info.part, explicitPart: info.explicit });
+    const queries = uniq([
+      root.raw,
+      `${root.raw} Part 1`,
+      `${root.raw} Part 2`,
+      `${root.raw} 1st Cour`,
+      `${root.raw} 2nd Cour`,
+      `${root.raw} First Cour`,
+      `${root.raw} Second Cour`
+    ]);
+
+    for (const query of queries) {
+      const cards = await searchCards(base, query);
+      for (const card of cards) {
+        const info = splitTitleInfo(card.title);
+        if (info.root !== root.clean) continue;
+        if (seen.has(card.url)) continue;
+        seen.add(card.url);
+        found.push({ ...card, part: info.part, explicitPart: info.explicit });
+      }
     }
   }
 
@@ -542,7 +600,7 @@ async function courFallbackStreams(base, aliases, requestedEpisode, ctx) {
   if (!family.length) return [];
 
   const enriched = [];
-  for (const candidate of family.slice(0, 16)) {
+  for (const candidate of family.slice(0, 20)) {
     const slug = animeSlug(candidate.url);
     if (!slug) continue;
     const sheet = await episodeSheet(base, slug);
@@ -568,7 +626,7 @@ async function courFallbackStreams(base, aliases, requestedEpisode, ctx) {
     for (const item of parts) {
       const localPosition = requestedEpisode - offset;
       if (localPosition >= 1 && localPosition <= item.ordered.length) {
-        const localEpisode = item.ordered[localPosition - 1];
+        const localEpisode = item.ordered[Math.floor(localPosition) - 1];
         selections.push({ item, localEpisode });
         console.log(`[${NAME}] stitched S${ctx.s}E${ctx.e} -> ${item.title} ${mode} local E${localEpisode} (part ${item.part}, offset ${offset})`);
         break;
@@ -626,8 +684,24 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
     if (!base) return [];
 
     console.log(`[${NAME}] request ${tmdb.title} S${s}E${e} mapMAL=${mal || "?"} mapEp=${Number.isFinite(targetEp) ? targetEp : "?"}`);
-    console.log(`[${NAME}] aliases ${aliases.slice(0, 10).join(" | ")}`);
 
+    if (type === "tv" && s > 1) {
+      const seasonAliases = generatedSeasonAliases(tmdb, s);
+      const seasonCandidates = await searchExact(base, seasonAliases);
+      if (seasonCandidates.length) {
+        const seasonCtx = { title: seasonCandidates[0].title || seasonAliases[0] || tmdb.title, s, e };
+        const seasonAll = await Promise.all(seasonCandidates.slice(0, 6).map(c =>
+          candidateStreams(base, c, e, seasonCtx).catch(() => [])
+        ));
+        const seasonStreams = finalize(seasonAll.flat());
+        if (seasonStreams.length) {
+          console.log(`[${NAME}] explicit season match ${seasonCtx.title} for S${s}E${e}`);
+          return seasonStreams;
+        }
+      }
+    }
+
+    console.log(`[${NAME}] aliases ${aliases.slice(0, 10).join(" | ")}`);
     const candidates = await searchExact(base, aliases);
     const ctx = { title: candidates[0] && candidates[0].title || aliases[0] || tmdb.title, s, e };
     if (candidates.length) {
