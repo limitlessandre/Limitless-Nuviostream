@@ -1,5 +1,5 @@
 {
-  "baseline": "anime-v0.1.24",
+  "baseline": "anime-v0.1.25",
   "frozenOn": "2026-08-24",
   "updateMode": "manual",
   "upstreamAutoSync": false,
@@ -10,7 +10,7 @@
       "commit": "Limitless-Nuviotest",
       "path": "providers/123anime.js",
       "maintainedLocally": true,
-      "localVersion": "1.1.3",
+      "localVersion": "1.1.4",
       "upstreamOrigin": {
         "repository": "yuzono/anime-extensions",
         "commit": "1e0d69547b7ac14893b6beab80fd8c8597d091c3",
@@ -20,7 +20,7 @@
         ]
       },
       "license": "Apache-2.0",
-      "notes": "AniYomi-to-Nuvio port. Current pass uses both the live /search route and legacy /filter route, prefers verified 123anime.la and 123animehub.cc mirrors while retaining older fallbacks, resolves explicit Season 2+ records before generic base titles, and compares the requested episode MAL identity to episode 1 of the same Nuvio season. When those MAL identities differ, the provider forces Part/Cour stitching instead of trusting a potentially ambiguous episode number. Cour discovery is anchored with episode-1 aliases and stitched by each live provider record's actual episode count. JW, Legacy, SBv2, HLS compatibility handling, deduplication, and Limitless DUB/HARDSUB/SOFTSUB naming remain intact."
+      "notes": "AniYomi-to-Nuvio port. Keeps explicit Season 2+ identity matching so later seasons cannot collapse onto a generic base-series record, while restoring the simple exact MAL/title path for ordinary titles and Season 1. Mirror selection is now per requested title/episode: 123animehub.cc, 123anime.la, and retained legacy mirrors are probed in order, but a reachable mirror is only accepted when it actually resolves a stream; otherwise resolution falls through to the next mirror. Both current /search and legacy /filter discovery routes remain. Split Part/Cour records are stitched by each live record's actual episode count using episode 1 of the requested Nuvio season as the family anchor. JW, Legacy, SBv2, HLS compatibility handling, deduplication, and Limitless DUB/HARDSUB/SOFTSUB naming remain intact."
     },
     {
       "filename": "allanime.js",
