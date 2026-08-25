@@ -5,8 +5,14 @@
  * Upstream reference: yuzono/anime-extensions (Apache-2.0)
  * Ported to Nuvio's getStreams(TMDB/type/season/episode) provider interface.
  *
- * Limitless 1.1.2 adds cour/part stitching for providers that split a Nuvio
- * season across separate records (for example S1E1-11 + Part 2 E1-12).
+ * Limitless 1.1.3:
+ * - prefers currently verified mirrors while retaining legacy fallbacks
+ * - searches both the current /search route and the older /filter route
+ * - resolves explicit Season 2+ records before generic mapped/base titles
+ * - rejects obvious base-series fallbacks for later seasons
+ * - detects MAL identity changes inside one Nuvio season and forces cour stitching
+ * - anchors cour discovery to episode 1 of the same Nuvio season so split parts
+ *   such as Mushoku Tensei S1E1-11 + Part 2 E1-12 stitch correctly
  */
 
 const cheerio = require("cheerio-without-node-native");
@@ -17,11 +23,11 @@ const MAP = "https://id-mapping-api-malid.hf.space/api/resolve";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36";
 
 const MIRRORS = [
-  "https://123anime.ru",
   "https://123anime.la",
+  "https://123animehub.cc",
+  "https://123anime.ru",
   "https://123anime.cc",
   "https://123anime.info",
-  "https://123animehub.cc",
   "https://w1.123animes.ru"
 ];
 
@@ -105,13 +111,18 @@ async function tmdbId(id, type) {
 }
 
 async function tmdbInfo(id, type) {
-  const d = await json(`https://api.themoviedb.org/3/${type}/${id}?api_key=${TMDB_KEY}&append_to_response=external_ids`);
+  const d = await json(`https://api.themoviedb.org/3/${type}/${id}?api_key=${TMDB_KEY}&append_to_response=external_ids,alternative_titles`);
   if (!d) return null;
+  const altBlock = d.alternative_titles || {};
+  const alternatives = type === "movie" ? altBlock.titles : altBlock.results;
   return {
     title: type === "movie" ? (d.title || d.original_title) : (d.name || d.original_name),
     original: type === "movie" ? d.original_title : d.original_name,
     imdb: (d.external_ids && d.external_ids.imdb_id) || d.imdb_id || null,
-    genres: Array.isArray(d.genres) ? d.genres.map(x => x.id) : []
+    genres: Array.isArray(d.genres) ? d.genres.map(x => x.id) : [],
+    alternatives: Array.isArray(alternatives)
+      ? alternatives.map(x => x && (x.title || x.name)).filter(Boolean).slice(0, 12)
+      : []
   };
 }
 
@@ -141,6 +152,23 @@ function uniq(values) {
     out.push(s);
   }
   return out;
+}
+
+function roman(number) {
+  const n = Number(number);
+  const table = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+  return Number.isInteger(n) && n > 0 && n < table.length ? table[n] : String(number || "");
+}
+
+function ordinal(number) {
+  const n = Number(number);
+  if (!Number.isFinite(n)) return String(number || "");
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+  if (n % 10 === 1) return `${n}st`;
+  if (n % 10 === 2) return `${n}nd`;
+  if (n % 10 === 3) return `${n}rd`;
+  return `${n}th`;
 }
 
 async function malAliases(mal) {
@@ -192,13 +220,43 @@ async function kitsuAliases(mal) {
 }
 
 async function titleAliases(mal, tmdb, mapping) {
-  if (!mal) return uniq([mapping && mapping.anime_title, tmdb && tmdb.title, tmdb && tmdb.original]);
+  if (!mal) {
+    return uniq([
+      mapping && mapping.anime_title,
+      tmdb && tmdb.title,
+      tmdb && tmdb.original,
+      ...(tmdb && tmdb.alternatives || [])
+    ]);
+  }
   const parts = await Promise.all([malAliases(mal), aniAliases(mal), kitsuAliases(mal)]);
   return uniq([
     mapping && mapping.anime_title,
     ...parts[0], ...parts[1], ...parts[2],
-    tmdb && tmdb.title, tmdb && tmdb.original
-  ]).slice(0, 20);
+    tmdb && tmdb.title,
+    tmdb && tmdb.original,
+    ...(tmdb && tmdb.alternatives || [])
+  ]).slice(0, 24);
+}
+
+function genericBaseAliases(tmdb) {
+  return uniq([
+    tmdb && tmdb.title,
+    tmdb && tmdb.original,
+    ...(tmdb && tmdb.alternatives || [])
+  ]).slice(0, 14);
+}
+
+function generatedSeasonAliases(tmdb, season) {
+  const s = Number(season) || 1;
+  if (s <= 1) return [];
+  const bases = genericBaseAliases(tmdb).slice(0, 8);
+  const out = [];
+  for (const base of bases) {
+    out.push(`${base} Season ${s}`);
+    out.push(`${base} ${ordinal(s)} Season`);
+    out.push(`${base} ${roman(s)}`);
+  }
+  return uniq(out).slice(0, 24);
 }
 
 function cardMode(nodeText, title) {
@@ -226,14 +284,32 @@ function parseCards(base, html) {
 }
 
 async function searchCards(base, query) {
-  const url = `${base}/filter?sort=default&keyword=${encodeURIComponent(query)}`;
-  const h = await text(url, { headers: { "Referer": base + "/" } }, 12000);
-  return parseCards(base, h);
+  const q = encodeURIComponent(query);
+  const urls = [
+    `${base}/search?keyword=${q}`,
+    `${base}/filter?sort=default&keyword=${q}`
+  ];
+  const merged = [];
+  const seen = new Set();
+  for (const url of urls) {
+    const h = await text(url, { headers: { "Referer": base + "/" } }, 12000);
+    for (const item of parseCards(base, h)) {
+      if (seen.has(item.url)) continue;
+      seen.add(item.url);
+      merged.push(item);
+    }
+  }
+  return merged;
 }
 
-async function searchExact(base, aliases) {
-  for (const alias of uniq(aliases).slice(0, 10)) {
-    const hits = (await searchCards(base, alias)).filter(item => clean(item.title) === clean(alias));
+async function searchExact(base, aliases, rejectKeys) {
+  const rejected = rejectKeys instanceof Set ? rejectKeys : new Set(rejectKeys || []);
+  for (const alias of uniq(aliases).slice(0, 14)) {
+    const key = clean(alias);
+    const hits = (await searchCards(base, alias)).filter(item => {
+      const itemKey = clean(item.title);
+      return itemKey === key && !rejected.has(itemKey);
+    });
     if (hits.length) {
       hits.sort((a, b) => Number(a.mode === "dub") - Number(b.mode === "dub"));
       return hits;
@@ -264,13 +340,13 @@ function splitTitleInfo(value) {
 function familyRoots(aliases) {
   const out = [];
   const seen = new Set();
-  for (const alias of uniq(aliases).slice(0, 12)) {
+  for (const alias of uniq(aliases).slice(0, 18)) {
     const root = splitTitleInfo(alias).root;
     if (!root || seen.has(root)) continue;
     seen.add(root);
     out.push({ raw: root, clean: root });
   }
-  return out.slice(0, 8);
+  return out.slice(0, 12);
 }
 
 async function searchCourFamily(base, aliases) {
@@ -520,6 +596,12 @@ async function extractServer(base, slug, ep, server, mode, ctx) {
   return out;
 }
 
+function sortedRegularEpisodes(sheet) {
+  return Array.from(new Set((sheet && sheet.episodes || [])
+    .filter(x => Number.isFinite(x) && x > 0)
+    .sort((a, b) => a - b)));
+}
+
 async function candidateStreams(base, candidate, targetEp, ctx, knownSheet) {
   const slug = animeSlug(candidate.url);
   if (!slug) return [];
@@ -531,10 +613,24 @@ async function candidateStreams(base, candidate, targetEp, ctx, knownSheet) {
   return all.flat();
 }
 
-function sortedRegularEpisodes(sheet) {
-  return Array.from(new Set((sheet && sheet.episodes || [])
-    .filter(x => Number.isFinite(x) && x > 0)
-    .sort((a, b) => a - b)));
+async function seasonCandidateStreams(base, candidate, requestedEpisode, ctx) {
+  const slug = animeSlug(candidate.url);
+  if (!slug) return [];
+  const sheet = await episodeSheet(base, slug);
+  const ordered = sortedRegularEpisodes(sheet);
+  if (!sheet || !ordered.length || !sheet.servers.length) return [];
+
+  let providerEp = requestedEpisode;
+  if (ordered[0] > 1) {
+    const pos = Math.floor(Number(requestedEpisode)) - 1;
+    providerEp = pos >= 0 && pos < ordered.length ? ordered[pos] : requestedEpisode;
+  } else if (!ordered.some(x => Math.abs(x - requestedEpisode) < 0.001)) {
+    const pos = Math.floor(Number(requestedEpisode)) - 1;
+    providerEp = pos >= 0 && pos < ordered.length ? ordered[pos] : requestedEpisode;
+  }
+
+  console.log(`[${NAME}] season record ${candidate.title} S${ctx.s}E${ctx.e} -> provider E${providerEp}`);
+  return candidateStreams(base, candidate, providerEp, ctx, sheet);
 }
 
 async function courFallbackStreams(base, aliases, requestedEpisode, ctx) {
@@ -542,7 +638,7 @@ async function courFallbackStreams(base, aliases, requestedEpisode, ctx) {
   if (!family.length) return [];
 
   const enriched = [];
-  for (const candidate of family.slice(0, 16)) {
+  for (const candidate of family.slice(0, 20)) {
     const slug = animeSlug(candidate.url);
     if (!slug) continue;
     const sheet = await episodeSheet(base, slug);
@@ -568,7 +664,7 @@ async function courFallbackStreams(base, aliases, requestedEpisode, ctx) {
     for (const item of parts) {
       const localPosition = requestedEpisode - offset;
       if (localPosition >= 1 && localPosition <= item.ordered.length) {
-        const localEpisode = item.ordered[localPosition - 1];
+        const localEpisode = item.ordered[Math.floor(localPosition) - 1];
         selections.push({ item, localEpisode });
         console.log(`[${NAME}] stitched S${ctx.s}E${ctx.e} -> ${item.title} ${mode} local E${localEpisode} (part ${item.part}, offset ${offset})`);
         break;
@@ -625,22 +721,63 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
     const base = await resolveBase();
     if (!base) return [];
 
-    console.log(`[${NAME}] request ${tmdb.title} S${s}E${e} mapMAL=${mal || "?"} mapEp=${Number.isFinite(targetEp) ? targetEp : "?"}`);
-    console.log(`[${NAME}] aliases ${aliases.slice(0, 10).join(" | ")}`);
+    let anchorMapping = mapping;
+    if (type === "tv" && e > 1 && tmdb.imdb) {
+      anchorMapping = await malMap(tmdb.imdb, s, 1) || mapping;
+    }
+    const anchorMal = anchorMapping && anchorMapping.mal_id ? +anchorMapping.mal_id : null;
+    const splitAcrossMal = !!(type === "tv" && e > 1 && mal && anchorMal && mal !== anchorMal);
 
-    const candidates = await searchExact(base, aliases);
-    const ctx = { title: candidates[0] && candidates[0].title || aliases[0] || tmdb.title, s, e };
-    if (candidates.length) {
-      const directAll = await Promise.all(candidates.slice(0, 6).map(c => candidateStreams(base, c, targetEp, ctx).catch(() => [])));
-      const direct = finalize(directAll.flat());
-      if (direct.length) return direct;
-      console.log(`[${NAME}] exact candidate produced no stream for S${s}E${e}; trying cour stitching`);
+    console.log(
+      `[${NAME}] request ${tmdb.title} S${s}E${e}` +
+      ` mapMAL=${mal || "?"} mapEp=${Number.isFinite(targetEp) ? targetEp : "?"}` +
+      ` anchorMAL=${anchorMal || "?"} split=${splitAcrossMal ? "yes" : "no"}`
+    );
+
+    if (type === "tv" && s > 1) {
+      const explicitAliases = generatedSeasonAliases(tmdb, s);
+      const explicitCandidates = await searchExact(base, explicitAliases);
+      if (explicitCandidates.length) {
+        const ctx = { title: explicitCandidates[0].title || explicitAliases[0] || tmdb.title, s, e };
+        const all = await Promise.all(explicitCandidates.slice(0, 6).map(c =>
+          seasonCandidateStreams(base, c, e, ctx).catch(() => [])
+        ));
+        const streams = finalize(all.flat());
+        if (streams.length) return streams;
+        console.log(`[${NAME}] explicit season record produced no stream for S${s}E${e}; trying mapped sequel aliases`);
+      }
+    }
+
+    if (!splitAcrossMal) {
+      const rejectedBase = new Set();
+      if (type === "tv" && s > 1) {
+        for (const item of genericBaseAliases(tmdb)) rejectedBase.add(clean(item));
+      }
+      const candidates = await searchExact(base, aliases, rejectedBase);
+      const ctx = { title: candidates[0] && candidates[0].title || aliases[0] || tmdb.title, s, e };
+      if (candidates.length) {
+        const directAll = await Promise.all(candidates.slice(0, 6).map(c =>
+          candidateStreams(base, c, targetEp, ctx).catch(() => [])
+        ));
+        const direct = finalize(directAll.flat());
+        if (direct.length) return direct;
+        console.log(`[${NAME}] exact candidate produced no stream for S${s}E${e}; trying cour stitching`);
+      } else {
+        console.log(`[${NAME}] season-safe exact title miss for S${s}E${e}; trying cour stitching`);
+      }
     } else {
-      console.log(`[${NAME}] exact title miss for S${s}E${e}; trying cour stitching`);
+      console.log(`[${NAME}] MAL identity changed inside S${s}; forcing cour stitching for E${e}`);
     }
 
     if (type !== "tv") return [];
-    const stitched = await courFallbackStreams(base, aliases, e, { title: aliases[0] || tmdb.title, s, e });
+
+    let familyAliases = aliases;
+    if (e > 1 && anchorMapping) {
+      const anchorAliases = await titleAliases(anchorMal, tmdb, anchorMapping);
+      familyAliases = uniq([...anchorAliases, ...aliases]);
+    }
+
+    const stitched = await courFallbackStreams(base, familyAliases, e, { title: familyAliases[0] || tmdb.title, s, e });
     return finalize(stitched);
   } catch (e) {
     console.log(`[${NAME}] ${e && e.message ? e.message : e}`);
