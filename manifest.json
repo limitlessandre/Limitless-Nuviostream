@@ -1,13 +1,13 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
       "id": "limitless-123anime",
       "name": "123Anime",
-      "description": "Limitless AniYomi-to-Nuvio port of 123Anime with season-aware MAL mapping, exact aliases, compact subtitle tags, mirror failover, and JW/Legacy/SBv2 fallback routes collapsed when they resolve to the same final stream.",
-      "version": "1.1.1",
+      "description": "Limitless AniYomi-to-Nuvio port of 123Anime with season-aware MAL mapping, exact aliases first, split Part/Cour episode stitching fallback, mirror failover, compact subtitle tags, and JW/Legacy/SBv2 extraction.",
+      "version": "1.1.2",
       "author": "Limitless port based on AniYomi 123Anime (Apache-2.0)",
       "supportedTypes": [
         "movie",
