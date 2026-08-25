@@ -4551,22 +4551,21 @@
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/SyncStream.cs3",
         "status": 3,
-        "version": 8,
+        "version": 11,
         "name": "SyncStream",
         "internalName": "SyncStream",
         "authors": [
-          "anhdaden",
           "DieGon"
         ],
         "description": "Sincronizza Cloudstream tra dispositivi",
-        "fileSize": 54001,
+        "fileSize": 79184,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "tvTypes": [
           "Others"
         ],
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/SyncStream/SyncStream_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9675b35a13a3eb92d933c9aa25c90a575a1ea6e8056eb0d3765db88a6bcd582f"
+        "fileHash": "sha256-c815f488288d5577adff519b1fa2c9e5acc36cc260470f2b6a867c5dd93f6705"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Torrentio.cs3",
@@ -4614,21 +4613,21 @@
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/WatchParty.cs3",
         "status": 3,
-        "version": 2,
+        "version": 3,
         "name": "WatchParty",
         "internalName": "WatchParty",
         "authors": [
           "DieGon"
         ],
-        "description": "⚠️ BETA ⚠️ Watch movies and TV series together in real-time with live chat (Max 2 users for now).",
-        "fileSize": 77342,
+        "description": "⚠️ BETA ⚠️ Watch movies and TV series together in real-time with live chat (Up to 5 users).",
+        "fileSize": 98699,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "tvTypes": [
           "Others"
         ],
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/WatchParty/WatchParty_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8c2b71cc8e17aa578de0960d048d9a59a09f8b1e14815c01e0663516d8626d72"
+        "fileHash": "sha256-bafe4ab9fe644abfd1a92f4f0a85c48c221abc6a520899bc062067e75ffc2ad4"
       }
     ]
   },
