@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-only
 "use strict";
 
-// Limitless AniDB 1.0.7
-// Runtime access/extraction follows the current AniDB.app frontend API behavior.
-// Identity resolution intentionally uses live AniDB.app URL identifiers rather than
-// a frozen catalog, because AniDB.app identifiers can be regenerated/migrated.
+// Limitless AniDB 1.0.8
+// Live AniDB.app identifiers are authoritative. Explicit season titles are
+// resolved before external ID mappings so split/absolute episode orders cannot
+// silently collapse a later anime season back onto the base record.
 
 const NAME = "AniDB";
 const BASE_URL = "https://anidb.app";
@@ -76,8 +76,8 @@ function absolutize(url) {
   const value = String(url || "").trim();
   if (!value) return "";
   if (/^https?:\/\//i.test(value)) return value;
-  if (value.indexOf("//") === 0) return "https:" + value;
-  if (value.charAt(0) === "/") return BASE_URL + value;
+  if (value.startsWith("//")) return "https:" + value;
+  if (value.startsWith("/")) return BASE_URL + value;
   return BASE_URL + "/" + value;
 }
 
@@ -207,18 +207,27 @@ async function fetchAniListAliases(malId) {
   ]);
 }
 
-function buildGeneratedSeasonAliases(tmdb, season, type) {
-  if (type !== "tv" || Number(season) <= 1 || !tmdb || !tmdb.title) return [];
+function buildGenericAliases(tmdb) {
   return unique([
-    `${tmdb.title} Season ${season}`,
-    `${tmdb.title} ${roman(season)}`,
-    `${tmdb.title} ${ordinal(season)} Season`,
-    tmdb.original && `${tmdb.original} Season ${season}`,
-    tmdb.original && `${tmdb.original} ${roman(season)}`
-  ]);
+    tmdb && tmdb.title,
+    tmdb && tmdb.original,
+    ...(tmdb && Array.isArray(tmdb.alternatives) ? tmdb.alternatives : [])
+  ]).slice(0, 14);
 }
 
-async function buildMappedSeasonAliases(mapping) {
+function buildGeneratedSeasonAliases(tmdb, season, type) {
+  if (type !== "tv" || Number(season) <= 1 || !tmdb || !tmdb.title) return [];
+  const bases = unique([tmdb.title, tmdb.original, ...(tmdb.alternatives || [])]).slice(0, 6);
+  const out = [];
+  for (const base of bases) {
+    out.push(`${base} Season ${season}`);
+    out.push(`${base} ${ordinal(season)} Season`);
+    out.push(`${base} ${roman(season)}`);
+  }
+  return unique(out).slice(0, 18);
+}
+
+async function buildMappedAliases(mapping) {
   const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
   const metadataAliases = malId
     ? await Promise.all([fetchJikanAliases(malId), fetchAniListAliases(malId)])
@@ -228,14 +237,6 @@ async function buildMappedSeasonAliases(mapping) {
     ...metadataAliases[0],
     ...metadataAliases[1]
   ]).slice(0, 18);
-}
-
-function buildGenericAliases(tmdb) {
-  return unique([
-    tmdb && tmdb.title,
-    tmdb && tmdb.original,
-    ...(tmdb && Array.isArray(tmdb.alternatives) ? tmdb.alternatives : [])
-  ]).slice(0, 14);
 }
 
 function parseAnimeLinks(html) {
@@ -248,8 +249,14 @@ function parseAnimeLinks(html) {
   while ((match = pattern.exec(html)) !== null) {
     const inner = match[3] || "";
     const alt = inner.match(/<img\b[^>]*alt=["']([^"']+)["']/i);
+    const titleAttr = match[0].match(/\btitle=["']([^"']+)["']/i);
     const p = inner.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
-    const title = stripHtml((alt && alt[1]) || (p && p[1]) || match[1].replace(/-/g, " "));
+    const title = stripHtml(
+      (alt && alt[1]) ||
+      (titleAttr && titleAttr[1]) ||
+      (p && p[1]) ||
+      match[1].replace(/-/g, " ")
+    );
     const item = { slug: match[1], numId: match[2], title };
     if (!item.title || seen.has(item.numId)) continue;
     seen.add(item.numId);
@@ -279,72 +286,43 @@ async function searchAnime(query) {
   return merged;
 }
 
-async function verifyCandidateMal(candidate, malId) {
-  if (!candidate || !candidate.numId || !malId) return false;
-  const pageUrl = `${BASE_URL}/anime/${candidate.slug}-${candidate.numId}`;
-  const html = await fetchText(pageUrl, HEADERS);
-  if (!html) return false;
-  const match = html.match(/myanimelist\.net\/anime\/(\d+)/i);
-  return !!(match && Number(match[1]) === Number(malId));
-}
-
-async function findCandidate(aliases, malId, requireMalVerification) {
-  const queued = [];
-  const seenIds = new Set();
-
+async function findExactCandidate(aliases) {
   for (const alias of aliases || []) {
-    const aliasKey = normalizeTitle(alias);
-    if (!aliasKey) continue;
+    const key = normalizeTitle(alias);
+    if (!key) continue;
     const results = await searchAnime(alias);
-
-    for (const candidate of results) {
-      if (!seenIds.has(candidate.numId)) {
-        seenIds.add(candidate.numId);
-        queued.push({ ...candidate, matchedAlias: alias });
-      }
-      if (normalizeTitle(candidate.title) !== aliasKey) continue;
-      if (!requireMalVerification || !malId || await verifyCandidateMal(candidate, malId)) {
-        return { ...candidate, matchedAlias: alias };
-      }
-    }
+    const exact = results.find(item => normalizeTitle(item.title) === key);
+    if (exact) return { ...exact, matchedAlias: alias };
   }
-
-  if (malId) {
-    for (const candidate of queued.slice(0, 12)) {
-      if (await verifyCandidateMal(candidate, malId)) return candidate;
-    }
-  }
-
   return null;
 }
 
-async function findSeasonCandidateFromBroadSearch(baseAliases, seasonAliases, malId) {
-  const targets = new Map();
+async function findSeasonCandidateFromBroadSearch(baseAliases, seasonAliases) {
+  const targetMap = new Map();
   for (const alias of seasonAliases || []) {
     const key = normalizeTitle(alias);
-    if (key && !targets.has(key)) targets.set(key, alias);
+    if (key && !targetMap.has(key)) targetMap.set(key, alias);
   }
-  if (!targets.size) return null;
+  if (!targetMap.size) return null;
 
   for (const baseAlias of baseAliases || []) {
     const results = await searchAnime(baseAlias);
     for (const candidate of results) {
       const key = normalizeTitle(candidate.title);
-      if (!targets.has(key)) continue;
-      if (malId && !(await verifyCandidateMal(candidate, malId))) continue;
-      return { ...candidate, matchedAlias: targets.get(key), broadSeasonMatch: true };
+      if (!targetMap.has(key)) continue;
+      return { ...candidate, matchedAlias: targetMap.get(key), broadSeasonMatch: true };
     }
   }
   return null;
 }
 
-async function findSeasonCandidateFromBaseRelations(baseAliases, seasonAliases, malId) {
-  const targets = new Map();
+async function findSeasonCandidateFromRelations(baseAliases, seasonAliases) {
+  const targetMap = new Map();
   for (const alias of seasonAliases || []) {
     const key = normalizeTitle(alias);
-    if (key && !targets.has(key)) targets.set(key, alias);
+    if (key && !targetMap.has(key)) targetMap.set(key, alias);
   }
-  if (!targets.size) return null;
+  if (!targetMap.size) return null;
 
   for (const baseAlias of baseAliases || []) {
     const results = await searchAnime(baseAlias);
@@ -354,72 +332,106 @@ async function findSeasonCandidateFromBaseRelations(baseAliases, seasonAliases, 
 
     const html = await fetchText(`${BASE_URL}/anime/${baseCandidate.slug}-${baseCandidate.numId}`, HEADERS);
     if (!html) continue;
-    const related = parseAnimeLinks(html);
 
-    for (const candidate of related) {
+    for (const candidate of parseAnimeLinks(html)) {
       if (String(candidate.numId) === String(baseCandidate.numId)) continue;
       const key = normalizeTitle(candidate.title || candidate.slug.replace(/-/g, " "));
-      if (!targets.has(key)) continue;
-      if (malId && !(await verifyCandidateMal(candidate, malId))) continue;
-      return { ...candidate, title: candidate.title || targets.get(key), matchedAlias: targets.get(key), relationSeasonMatch: true };
+      if (!targetMap.has(key)) continue;
+      return {
+        ...candidate,
+        title: candidate.title || targetMap.get(key),
+        matchedAlias: targetMap.get(key),
+        relationSeasonMatch: true
+      };
     }
   }
   return null;
 }
 
+function rejectGenericSeasonCandidate(candidate, genericAliases) {
+  if (!candidate) return null;
+  const genericKeys = new Set((genericAliases || []).map(normalizeTitle));
+  return genericKeys.has(normalizeTitle(candidate.title)) ? null : candidate;
+}
+
 async function resolveAnimeIdentity(tmdb, mapping, season, type) {
-  const malId = mapping && mapping.mal_id ? Number(mapping.mal_id) : null;
   const seasonNumber = Number(season) || 1;
   const genericAliases = buildGenericAliases(tmdb);
-  const mappedAliases = await buildMappedSeasonAliases(mapping);
 
   if (type === "tv" && seasonNumber > 1) {
     const generatedAliases = buildGeneratedSeasonAliases(tmdb, seasonNumber, type);
-    const seasonAliases = unique([...mappedAliases, ...generatedAliases]);
 
-    // Live identifiers are authoritative. AniDB.app can regenerate numeric IDs,
-    // so never let a cached/frozen catalog short-circuit these searches.
-    if (mappedAliases.length) {
-      const mapped = await findCandidate(mappedAliases, malId, !!malId);
-      if (mapped) return { ...mapped, identitySource: "live-mapped-season" };
-    }
+    // 1) Explicit live season title wins. Do not MAL-verify this path: an exact
+    // AniDB title like "[Oshi No Ko] Season 2" is safer than cross-database
+    // numbering for shows whose TMDB/IMDb/TVDB season orders disagree.
+    const generated = await findExactCandidate(generatedAliases);
+    if (generated) return { ...generated, identitySource: "live-explicit-season" };
 
-    const generated = await findCandidate(generatedAliases, malId, !!malId);
-    if (generated) return { ...generated, identitySource: "live-generated-season" };
+    // 2) Mapping metadata can add alternate season names, but never allow a
+    // generic/base title to satisfy a later-season request.
+    const mappedAliases = await buildMappedAliases(mapping);
+    const mapped = rejectGenericSeasonCandidate(
+      await findExactCandidate(mappedAliases),
+      genericAliases
+    );
+    if (mapped) return { ...mapped, identitySource: "live-mapped-season" };
 
-    const broad = await findSeasonCandidateFromBroadSearch(genericAliases, seasonAliases, malId);
+    const seasonAliases = unique([...generatedAliases, ...mappedAliases]);
+    const broad = await findSeasonCandidateFromBroadSearch(genericAliases, seasonAliases);
     if (broad) return { ...broad, identitySource: "live-broad-season" };
 
-    const relation = await findSeasonCandidateFromBaseRelations(genericAliases, seasonAliases, malId);
+    const relation = await findSeasonCandidateFromRelations(genericAliases, seasonAliases);
     if (relation) return { ...relation, identitySource: "live-relation-season" };
 
     return null;
   }
 
-  if (mappedAliases.length) {
-    const mapped = await findCandidate(mappedAliases, malId, !!malId);
-    if (mapped) return { ...mapped, identitySource: "live-mapped" };
-  }
+  const mappedAliases = await buildMappedAliases(mapping);
+  const mapped = await findExactCandidate(mappedAliases);
+  if (mapped) return { ...mapped, identitySource: "live-mapped" };
 
-  if (malId) {
-    const verified = await findCandidate(genericAliases, malId, true);
-    if (verified) return { ...verified, identitySource: "live-generic-verified" };
-  }
-
-  const exact = await findCandidate(genericAliases, null, false);
-  return exact ? { ...exact, identitySource: "live-generic" } : null;
+  const generic = await findExactCandidate(genericAliases);
+  return generic ? { ...generic, identitySource: "live-generic" } : null;
 }
 
-async function resolveEpisodeId(animeId, episodeNumber) {
+async function fetchEpisodes(animeId) {
   const json = await fetchJson(
     BASE_URL + "/api/frontend/anime/" + animeId + "/episodes",
     HEADERS
   );
-  if (!json) return null;
-  const episodes = Array.isArray(json) ? json : (Array.isArray(json.episodes) ? json.episodes : []);
-  for (const item of episodes) {
+  if (!json) return [];
+  return Array.isArray(json) ? json : (Array.isArray(json.episodes) ? json.episodes : []);
+}
+
+function findEpisodeId(episodes, episodeNumber) {
+  for (const item of episodes || []) {
     if (String(item && item.number) === String(episodeNumber)) return item.id;
   }
+  return null;
+}
+
+async function resolveEpisodeId(animeId, requestedEpisode, mapping) {
+  const episodes = await fetchEpisodes(animeId);
+  if (!episodes.length) {
+    console.log(`[${NAME}] Live AniDB id ${animeId} returned 0 episodes`);
+    return null;
+  }
+
+  const tries = unique([
+    String(requestedEpisode),
+    mapping && mapping.mal_episode != null ? String(mapping.mal_episode) : null,
+    mapping && mapping.episode != null ? String(mapping.episode) : null
+  ]);
+
+  for (const number of tries) {
+    const id = findEpisodeId(episodes, number);
+    if (id) return id;
+  }
+
+  console.log(
+    `[${NAME}] Episode miss on live id ${animeId}. Requested ${requestedEpisode}; ` +
+    `available=${episodes.slice(0, 30).map(item => item && item.number).join(",")}`
+  );
   return null;
 }
 
@@ -471,7 +483,7 @@ async function resolveStreamFromLanguage(language, context) {
     language && (language.stream_url || language.streamUrl || language.hls_url || language.hlsUrl || "")
   );
   let streamUrl = /\.m3u8(?:$|\?)/i.test(direct) ? direct : "";
-  let embedUrl = absolutize(language && (language.embed_url || language.embedUrl || language.url || ""));
+  const embedUrl = absolutize(language && (language.embed_url || language.embedUrl || language.url || ""));
 
   if (!streamUrl) {
     if (!embedUrl) return null;
@@ -483,7 +495,7 @@ async function resolveStreamFromLanguage(language, context) {
   }
 
   if (!streamUrl) return null;
-  if (streamUrl.indexOf("//") === 0) streamUrl = "https:" + streamUrl;
+  if (streamUrl.startsWith("//")) streamUrl = "https:" + streamUrl;
 
   return {
     name: `${NAME} | 1080p [${lang.tag}]`,
@@ -515,28 +527,27 @@ async function getStreams(inputId, inputMediaType, season, episode) {
     const requestedEpisode = type === "movie" ? 1 : (Number.parseFloat(episode) || 1);
     const mapping = await mapMalEpisode(tmdb.imdb, requestedSeason, requestedEpisode);
 
+    console.log(
+      `[${NAME}] request ${tmdb.title} S${requestedSeason}E${requestedEpisode}` +
+      ` mapMAL=${mapping && mapping.mal_id ? mapping.mal_id : "?"}` +
+      ` mapTitle=${mapping && mapping.anime_title ? mapping.anime_title : "?"}` +
+      ` mapEp=${mapping && mapping.mal_episode != null ? mapping.mal_episode : "?"}`
+    );
+
     const candidate = await resolveAnimeIdentity(tmdb, mapping, requestedSeason, type);
     if (!candidate) {
-      console.log(`[${NAME}] No season-safe live AniDB match for ${tmdb.title} S${requestedSeason}E${requestedEpisode}`);
+      console.log(`[${NAME}] No season-safe live match for ${tmdb.title} S${requestedSeason}E${requestedEpisode}`);
       return [];
     }
 
     console.log(
-      `[${NAME}] ${tmdb.title} S${requestedSeason}E${requestedEpisode}` +
-      ` -> MAL ${mapping && mapping.mal_id ? mapping.mal_id : "?"}` +
-      ` -> ${candidate.title} (${candidate.numId}) via ${candidate.identitySource || candidate.matchedAlias || "live"}`
+      `[${NAME}] matched ${candidate.title} id=${candidate.numId}` +
+      ` source=${candidate.identitySource || "live"}` +
+      ` alias=${candidate.matchedAlias || "?"}`
     );
 
-    // AniDB.app season records restart at local episode 1. The MAL mapping is a
-    // fallback for providers/records that expose absolute or split-cour numbering.
-    let episodeId = await resolveEpisodeId(candidate.numId, requestedEpisode);
-    if (!episodeId && mapping && mapping.mal_episode != null && Number(mapping.mal_episode) !== requestedEpisode) {
-      episodeId = await resolveEpisodeId(candidate.numId, Number(mapping.mal_episode));
-    }
-    if (!episodeId) {
-      console.log(`[${NAME}] No episode ${requestedEpisode} on live AniDB id ${candidate.numId}`);
-      return [];
-    }
+    const episodeId = await resolveEpisodeId(candidate.numId, requestedEpisode, mapping);
+    if (!episodeId) return [];
 
     const languages = await fetchEpisodeLanguages(episodeId);
     if (!languages.length) {
