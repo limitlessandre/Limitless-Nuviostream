@@ -867,6 +867,26 @@
       ]
     },
     {
+      "id": "haylox",
+      "name": "Haylox.",
+      "description": "Provider: Vidlink | English",
+      "version": "2.1.0",
+      "author": "Eclipsia",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://codeberg.org/eclipsia/nuvio-plugin/raw/branch/main/providers/haylox.js",
+      "enabled": true,
+      "formats": [
+        "m3u8"
+      ],
+      "logo": "",
+      "contentLanguage": [
+        "en"
+      ]
+    },
+    {
       "id": "hdghartv",
       "name": "HDGharTV",
       "description": "HDGhar TV allows users to watch movies, TV shows and web series in English & Hindi.",

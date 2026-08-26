@@ -505,14 +505,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
     "status": 1,
-    "version": 35,
+    "version": 36,
     "name": "FourKHDHub",
     "internalName": "FourKHDHub",
     "authors": [
       "Phisher98"
     ],
     "description": "4K Movies Extension by HDHUB4U",
-    "fileSize": 66772,
+    "fileSize": 66777,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -521,10 +521,10 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/4KHDHUB-Bright-Logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-7963af48ac35e62f98b2f00b6b29547dcdb3677ccd9108a92ba9ca1c9cdffff6",
-    "jarFileSize": 293799,
+    "fileHash": "sha256-d4defff18809ab57a5617a83ebd8ca836ac4f502bef693024e79558bec9cebc9",
+    "jarFileSize": 293813,
     "jarUrl": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.jar",
-    "jarHash": "sha256-c1f606afbf0f6f2b5743d45d2f5e9942c031eeb1d69185be09fc249ab82446a1"
+    "jarHash": "sha256-bed933118286154fef82074e7dab1d34fde3cb1ef9201d7460face1f87595dd6"
   },
   {
     "iconUrl": "https://fullmatchshows.com/wp-content/uploads/2024/04/LOGOSASO.png",
@@ -1120,7 +1120,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 659,
+    "version": 661,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -1128,7 +1128,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1015708,
+    "fileSize": 1020168,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1141,7 +1141,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-2161323d6b0728424c2f840a86f6a173fa96f211c2f1e31be750370f19f3eae8"
+    "fileHash": "sha256-98f5bfae9c689d425b1e59f88cc841d30bb9ee3d2a2a9cb65c564bdb2c7008fd"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -1298,14 +1298,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
     "status": 1,
-    "version": 37,
+    "version": 38,
     "name": "UHDmoviesProvider",
     "internalName": "UHDmoviesProvider",
     "authors": [
       "Phisher98"
     ],
     "description": "Indian Multi-language 4K Provider",
-    "fileSize": 51277,
+    "fileSize": 52055,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1314,7 +1314,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/UHDmoviesProvider/icon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-5decc22388ad63b50030aac8e312a58fcc02028e87b3ddef6cc6b7ff85b03904"
+    "fileHash": "sha256-c61672a5b588621d090a625b1f48e0216f28cc3c322759b5f6e59ac0c957b20a"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
@@ -1361,14 +1361,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
     "status": 1,
-    "version": 11,
+    "version": 12,
     "name": "XDMovies",
     "internalName": "XDMovies",
     "authors": [
       "Phisher98"
     ],
     "description": "Watch Latest Movies",
-    "fileSize": 115008,
+    "fileSize": 115006,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1381,7 +1381,7 @@
     ],
     "iconUrl": "https://top.xdmovies.wtf/assets/logo1.png",
     "apiVersion": 1,
-    "fileHash": "sha256-b6934453a3161337f8a338be86154c55a384ef5bebd7bdebdf7d89876b2e97ab"
+    "fileHash": "sha256-de84fe12d4df51393ff49955b1569a9a79118077568a4d115cd3271d547fbb5d"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",

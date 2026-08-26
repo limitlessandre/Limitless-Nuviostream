@@ -27,7 +27,7 @@
     {
       "name": "Eclipsia",
       "status": "ok",
-      "providers": 31,
+      "providers": 32,
       "origin": "remote"
     },
     {
@@ -55,7 +55,7 @@
       "origin": "remote"
     }
   ],
-  "unique_providers": 124,
+  "unique_providers": 125,
   "duplicate_groups": 40,
   "language_filtered_entries": 9,
   "unknown_language_metadata_entries": 0,
