@@ -1,19 +1,21 @@
 "use strict";
 
 /*
- * Limitless 123Anime NEXT 2.0.0-alpha.3
+ * Limitless 123Anime NEXT 2.0.0-alpha.4
  * Runtime wrapper around the immutable alpha.1 aggregator core.
  *
  * alpha.2 fixed the Nuvio HLS handoff for extensionless child playlists.
  * alpha.3 keeps that fix and tightens candidate aggregation so each source can
  * contribute only its highest-ranked card per audio mode (DUB/SUB/MIXED).
- * This prevents a weaker false-positive card from the same source from adding
- * a second wrong stream while preserving one valid DUB and one valid SUB card.
+ * alpha.4 adds deep HLS health validation for HARDSUB results. A master playlist
+ * is not considered playable until at least one media playlist beneath it can be
+ * fetched and contains actual media segments. Dead/stale subtitle sources are
+ * filtered instead of being returned to Nuvio as an endless-loading stream.
  */
 
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8cd3f91b0b671cf84eaded086d84cea610ecd6f8/providers/123anime-next.js";
 const NAME = "123Anime NEXT";
-const VERSION = "2.0.0-alpha.3";
+const VERSION = "2.0.0-alpha.4";
 let corePromise = null;
 
 function patchCoreSource(code) {
@@ -130,13 +132,110 @@ function preserveHlsMetadata(stream) {
   return stream;
 }
 
+function isHardSubStream(stream) {
+  return !!stream && /\[HARDSUB(?:\+SUBS)?\]/i.test(String(stream.name || ""));
+}
+
+function playlistLines(body) {
+  return String(body || "").split(/\r?\n/).map(x => x.trim()).filter(Boolean);
+}
+
+function hasMediaSegments(lines) {
+  let hasExtinf = false;
+  let hasUri = false;
+  for (const line of lines || []) {
+    if (line.startsWith("#EXTINF:")) hasExtinf = true;
+    else if (line && !line.startsWith("#")) hasUri = true;
+  }
+  return hasExtinf && hasUri;
+}
+
+function variantUrls(lines, baseUrl) {
+  const out = [];
+  const seen = new Set();
+  for (let i = 0; i < (lines || []).length; i++) {
+    if (!lines[i].startsWith("#EXT-X-STREAM-INF:")) continue;
+    for (let j = i + 1; j < lines.length; j++) {
+      if (lines[j].startsWith("#")) continue;
+      let resolved = null;
+      try { resolved = new URL(lines[j], baseUrl).toString(); } catch (_) {}
+      if (resolved && !seen.has(resolved)) {
+        seen.add(resolved);
+        out.push(resolved);
+      }
+      break;
+    }
+  }
+  return out;
+}
+
+async function fetchPlaylist(url, headers, timeout = 8000) {
+  try {
+    const signal = typeof AbortSignal !== "undefined" && AbortSignal.timeout
+      ? AbortSignal.timeout(timeout)
+      : undefined;
+    const response = await fetch(url, {
+      headers: { ...(headers || {}) },
+      redirect: "follow",
+      signal,
+      skipSizeCheck: true
+    });
+    if (!response || !response.ok) return null;
+    const body = await response.text();
+    if (!body || !body.trimStart().startsWith("#EXTM3U")) return null;
+    return {
+      url: response.url || url,
+      lines: playlistLines(body)
+    };
+  } catch (_) {
+    return null;
+  }
+}
+
+async function validateHlsUrl(url, headers, depth = 0) {
+  if (!url || depth > 2) return false;
+  const playlist = await fetchPlaylist(url, headers);
+  if (!playlist) return false;
+  if (hasMediaSegments(playlist.lines)) return true;
+
+  const variants = variantUrls(playlist.lines, playlist.url || url).slice(0, 4);
+  if (!variants.length) return false;
+
+  for (const child of variants) {
+    if (await validateHlsUrl(child, headers, depth + 1)) return true;
+  }
+  return false;
+}
+
+async function filterDeadHardSubs(streams) {
+  const health = new Map();
+  const checks = (streams || []).map(async stream => {
+    if (!isHardSubStream(stream) || !stream.url) return stream;
+    const key = `${stream.url}|${JSON.stringify(stream.headers || {})}`;
+    let promise = health.get(key);
+    if (!promise) {
+      promise = validateHlsUrl(stream.url, stream.headers || {});
+      health.set(key, promise);
+    }
+    const ok = await promise;
+    if (!ok) {
+      console.log(`[${NAME}] dropping dead HARDSUB source: ${stream.name || stream.url}`);
+      return null;
+    }
+    return stream;
+  });
+  const settled = await Promise.allSettled(checks);
+  return settled.flatMap(r => r.status === "fulfilled" && r.value ? [r.value] : []);
+}
+
 async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
   try {
     const core = await loadCore();
     const streams = await core.getStreams(inputId, type, season, episode);
     const fixed = Array.isArray(streams) ? streams.map(preserveHlsMetadata) : [];
-    console.log(`[${NAME}] v${VERSION} candidate-dedup + HLS handoff verified for ${fixed.length} stream(s)`);
-    return fixed;
+    const healthy = await filterDeadHardSubs(fixed);
+    console.log(`[${NAME}] v${VERSION} candidate-dedup + HLS health verified ${healthy.length}/${fixed.length} stream(s)`);
+    return healthy;
   } catch (e) {
     console.log(`[${NAME}] v${VERSION} wrapper error: ${e && e.message ? e.message : e}`);
     return [];
