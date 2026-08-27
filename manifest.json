@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream.",
   "scrapers": [
     {
@@ -30,8 +30,8 @@
     {
       "id": "limitless-123anime-next",
       "name": "123Anime NEXT",
-      "description": "Alpha multi-source rebuild that aggregates legacy 123Anime-family domains plus the independently adapted Aniwaves source, ranks title/season/cour identity instead of exact matching, and labels each returned stream by source. Guts is cataloged for discovery while its playback adapter is still being verified.",
-      "version": "2.0.0-alpha.1",
+      "description": "Alpha multi-source rebuild that aggregates legacy 123Anime-family domains plus the independently adapted Aniwaves source, ranks title/season/cour identity instead of exact matching, filters dead HLS and special/OVA false positives, and labels each returned stream by source. Guts is cataloged for discovery while its playback adapter is still being verified.",
+      "version": "2.0.0-alpha.6",
       "author": "Limitless clean rebuild; architecture references documented in research/scraper-reference-index.md",
       "supportedTypes": [
         "movie",
