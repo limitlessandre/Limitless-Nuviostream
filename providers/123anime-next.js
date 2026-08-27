@@ -1,21 +1,20 @@
 "use strict";
 
 /*
- * Limitless 123Anime NEXT 2.0.0-alpha.4
+ * Limitless 123Anime NEXT 2.0.0-alpha.5
  * Runtime wrapper around the immutable alpha.1 aggregator core.
  *
  * alpha.2 fixed the Nuvio HLS handoff for extensionless child playlists.
  * alpha.3 keeps that fix and tightens candidate aggregation so each source can
  * contribute only its highest-ranked card per audio mode (DUB/SUB/MIXED).
- * alpha.4 adds deep HLS health validation for HARDSUB results. A master playlist
- * is not considered playable until at least one media playlist beneath it can be
- * fetched and contains actual media segments. Dead/stale subtitle sources are
- * filtered instead of being returned to Nuvio as an endless-loading stream.
+ * alpha.4 adds deep HLS health validation for HARDSUB results.
+ * alpha.5 improves long-title family discovery and normalizes Unicode Roman
+ * numerals used inconsistently by 123Anime mirrors (e.g. II vs Ⅱ).
  */
 
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8cd3f91b0b671cf84eaded086d84cea610ecd6f8/providers/123anime-next.js";
 const NAME = "123Anime NEXT";
-const VERSION = "2.0.0-alpha.4";
+const VERSION = "2.0.0-alpha.5";
 let corePromise = null;
 
 function patchCoreSource(code) {
@@ -74,6 +73,47 @@ function patchCoreSource(code) {
     '  return selected;'
   ].join('\n');
 
+  const normalizeBefore = [
+    '  return String(value || "")',
+    '    .toLowerCase()'
+  ].join('\n');
+  const normalizeAfter = [
+    '  return String(value || "")',
+    '    .replace(/[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]/g, ch => ({ "Ⅰ": "I", "Ⅱ": "II", "Ⅲ": "III", "Ⅳ": "IV", "Ⅴ": "V", "Ⅵ": "VI", "Ⅶ": "VII", "Ⅷ": "VIII", "Ⅸ": "IX", "Ⅹ": "X" }[ch] || ch))',
+    '    .toLowerCase()'
+  ].join('\n');
+
+  const queryBefore = [
+    '  const queries = uniq([',
+    '    mappedTitle,',
+    '    tmdb && tmdb.title,',
+    '    tmdb && tmdb.original,',
+    '    all.find(x => /[a-z]/i.test(x || "") && normalizeLoose(x) !== normalizeLoose(mappedTitle)),',
+    '    ...(s > 1 ? explicitSeasonAliases(tmdb && tmdb.title, s) : [])',
+    '  ]).slice(0, MAX_QUERY_TITLES);'
+  ].join('\n');
+
+  const queryAfter = [
+    '  const stop = new Set(["the", "a", "an", "of", "and", "to", "in", "on"]);',
+    '  const compactQueries = uniq(roots.map(root => {',
+    '    const tokens = String(root || "").split(/\\s+/).filter(Boolean);',
+    '    if (tokens.length < 5) return null;',
+    '    const useful = tokens.filter(token => /^[a-z0-9]+$/i.test(token) && !stop.has(token.toLowerCase()));',
+    '    if (useful.length < 2) return null;',
+    '    const phrase = useful.slice(0, 2).join(" ");',
+    '    return phrase.length >= 8 ? phrase : null;',
+    '  }).filter(Boolean)).slice(0, 2);',
+    '',
+    '  const queries = uniq([',
+    '    mappedTitle,',
+    '    tmdb && tmdb.title,',
+    '    ...compactQueries,',
+    '    tmdb && tmdb.original,',
+    '    all.find(x => /[a-z]/i.test(x || "") && normalizeLoose(x) !== normalizeLoose(mappedTitle)),',
+    '    ...(s > 1 ? explicitSeasonAliases(tmdb && tmdb.title, s) : [])',
+    '  ]).slice(0, 6);'
+  ].join('\n');
+
   let patched = code;
   if (!patched.includes(detectBefore)) throw new Error("NEXT core HLS detector patch point not found");
   patched = patched.replace(detectBefore, detectAfter);
@@ -83,6 +123,12 @@ function patchCoreSource(code) {
 
   if (!patched.includes(candidateBefore)) throw new Error("NEXT core candidate selector patch point not found");
   patched = patched.replace(candidateBefore, candidateAfter);
+
+  if (!patched.includes(normalizeBefore)) throw new Error("NEXT core title normalizer patch point not found");
+  patched = patched.replace(normalizeBefore, normalizeAfter);
+
+  if (!patched.includes(queryBefore)) throw new Error("NEXT core query builder patch point not found");
+  patched = patched.replace(queryBefore, queryAfter);
 
   return patched;
 }
@@ -183,10 +229,7 @@ async function fetchPlaylist(url, headers, timeout = 8000) {
     if (!response || !response.ok) return null;
     const body = await response.text();
     if (!body || !body.trimStart().startsWith("#EXTM3U")) return null;
-    return {
-      url: response.url || url,
-      lines: playlistLines(body)
-    };
+    return { url: response.url || url, lines: playlistLines(body) };
   } catch (_) {
     return null;
   }
@@ -197,10 +240,8 @@ async function validateHlsUrl(url, headers, depth = 0) {
   const playlist = await fetchPlaylist(url, headers);
   if (!playlist) return false;
   if (hasMediaSegments(playlist.lines)) return true;
-
   const variants = variantUrls(playlist.lines, playlist.url || url).slice(0, 4);
   if (!variants.length) return false;
-
   for (const child of variants) {
     if (await validateHlsUrl(child, headers, depth + 1)) return true;
   }
@@ -234,7 +275,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
     const streams = await core.getStreams(inputId, type, season, episode);
     const fixed = Array.isArray(streams) ? streams.map(preserveHlsMetadata) : [];
     const healthy = await filterDeadHardSubs(fixed);
-    console.log(`[${NAME}] v${VERSION} candidate-dedup + HLS health verified ${healthy.length}/${fixed.length} stream(s)`);
+    console.log(`[${NAME}] v${VERSION} compact-discovery + roman-normalization + HLS health verified ${healthy.length}/${fixed.length} stream(s)`);
     return healthy;
   } catch (e) {
     console.log(`[${NAME}] v${VERSION} wrapper error: ${e && e.message ? e.message : e}`);
