@@ -1,20 +1,20 @@
 "use strict";
 
 /*
- * Limitless 123Anime NEXT 2.0.0-alpha.5
+ * Limitless 123Anime NEXT 2.0.0-alpha.6
  * Runtime wrapper around the immutable alpha.1 aggregator core.
  *
  * alpha.2 fixed the Nuvio HLS handoff for extensionless child playlists.
- * alpha.3 keeps that fix and tightens candidate aggregation so each source can
- * contribute only its highest-ranked card per audio mode (DUB/SUB/MIXED).
+ * alpha.3 tightens candidate aggregation to one best card per source/audio mode.
  * alpha.4 adds deep HLS health validation for HARDSUB results.
- * alpha.5 improves long-title family discovery and normalizes Unicode Roman
- * numerals used inconsistently by 123Anime mirrors (e.g. II vs Ⅱ).
+ * alpha.5 improves long-title family discovery and Unicode Roman numeral handling.
+ * alpha.6 rejects Special/OVA/OAD/ONA/Recap/Episode 0 cards for ordinary series
+ * requests unless the resolved anime identity itself is explicitly a special.
  */
 
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8cd3f91b0b671cf84eaded086d84cea610ecd6f8/providers/123anime-next.js";
 const NAME = "123Anime NEXT";
-const VERSION = "2.0.0-alpha.5";
+const VERSION = "2.0.0-alpha.6";
 let corePromise = null;
 
 function patchCoreSource(code) {
@@ -114,22 +114,40 @@ function patchCoreSource(code) {
     '  ]).slice(0, 6);'
   ].join('\n');
 
+  const scoreBefore = [
+    'function scoreCard(card, identity, tmdb, requestedSeason) {',
+    '  const shape = titleShape(card.title);'
+  ].join('\n');
+
+  const scoreAfter = [
+    'function isSpecialLikeTitle(value) {',
+    '  const t = normalizeLoose(value);',
+    '  return /\\b(?:special|specials|ova|oad|ona|recap)\\b/i.test(t) || /\\bepisode\\s*0\\b/i.test(t);',
+    '}',
+    '',
+    'function scoreCard(card, identity, tmdb, requestedSeason) {',
+    '  const shape = titleShape(card.title);',
+    '  // Search results can place one-off specials beside the parent TV series.',
+    '  // Do not let an Episode 0 / Special / OVA card satisfy an ordinary episode',
+    '  // unless the mapped identity itself explicitly describes that special.',
+    '  const cardIsSpecial = isSpecialLikeTitle(card.title);',
+    '  const identityWantsSpecial = (identity.aliases || []).some(isSpecialLikeTitle);',
+    '  if (cardIsSpecial && !identityWantsSpecial) return { score: 0, reject: true, shape, bestAlias: "" };'
+  ].join('\n');
+
   let patched = code;
   if (!patched.includes(detectBefore)) throw new Error("NEXT core HLS detector patch point not found");
   patched = patched.replace(detectBefore, detectAfter);
-
   if (!patched.includes(selectBefore)) throw new Error("NEXT core HLS selector patch point not found");
   patched = patched.replace(selectBefore, selectAfter);
-
   if (!patched.includes(candidateBefore)) throw new Error("NEXT core candidate selector patch point not found");
   patched = patched.replace(candidateBefore, candidateAfter);
-
   if (!patched.includes(normalizeBefore)) throw new Error("NEXT core title normalizer patch point not found");
   patched = patched.replace(normalizeBefore, normalizeAfter);
-
   if (!patched.includes(queryBefore)) throw new Error("NEXT core query builder patch point not found");
   patched = patched.replace(queryBefore, queryAfter);
-
+  if (!patched.includes(scoreBefore)) throw new Error("NEXT core special-filter patch point not found");
+  patched = patched.replace(scoreBefore, scoreAfter);
   return patched;
 }
 
@@ -137,32 +155,16 @@ async function loadCore() {
   if (corePromise) return corePromise;
   corePromise = (async () => {
     const response = await fetch(CORE_URL, {
-      headers: {
-        "User-Agent": "NuvioTV/1.0",
-        "Accept": "text/plain,*/*"
-      }
+      headers: { "User-Agent": "NuvioTV/1.0", "Accept": "text/plain,*/*" }
     });
-    if (!response || !response.ok) {
-      throw new Error(`Failed to load NEXT core: HTTP ${response ? response.status : "?"}`);
-    }
-
+    if (!response || !response.ok) throw new Error(`Failed to load NEXT core: HTTP ${response ? response.status : "?"}`);
     const rawCode = await response.text();
-    if (!rawCode || !rawCode.includes("123Anime NEXT 2.0.0-alpha.1")) {
-      throw new Error("Unexpected NEXT core payload");
-    }
+    if (!rawCode || !rawCode.includes("123Anime NEXT 2.0.0-alpha.1")) throw new Error("Unexpected NEXT core payload");
     const code = patchCoreSource(rawCode);
-
     const childModule = { exports: {} };
-    const loader = new Function(
-      "module",
-      "exports",
-      "require",
-      `${code}\n;return module.exports;`
-    );
+    const loader = new Function("module", "exports", "require", `${code}\n;return module.exports;`);
     const exported = loader(childModule, childModule.exports, require) || childModule.exports;
-    if (!exported || typeof exported.getStreams !== "function") {
-      throw new Error("NEXT core did not export getStreams");
-    }
+    if (!exported || typeof exported.getStreams !== "function") throw new Error("NEXT core did not export getStreams");
     return exported;
   })();
   return corePromise;
@@ -205,10 +207,7 @@ function variantUrls(lines, baseUrl) {
       if (lines[j].startsWith("#")) continue;
       let resolved = null;
       try { resolved = new URL(lines[j], baseUrl).toString(); } catch (_) {}
-      if (resolved && !seen.has(resolved)) {
-        seen.add(resolved);
-        out.push(resolved);
-      }
+      if (resolved && !seen.has(resolved)) { seen.add(resolved); out.push(resolved); }
       break;
     }
   }
@@ -217,22 +216,13 @@ function variantUrls(lines, baseUrl) {
 
 async function fetchPlaylist(url, headers, timeout = 8000) {
   try {
-    const signal = typeof AbortSignal !== "undefined" && AbortSignal.timeout
-      ? AbortSignal.timeout(timeout)
-      : undefined;
-    const response = await fetch(url, {
-      headers: { ...(headers || {}) },
-      redirect: "follow",
-      signal,
-      skipSizeCheck: true
-    });
+    const signal = typeof AbortSignal !== "undefined" && AbortSignal.timeout ? AbortSignal.timeout(timeout) : undefined;
+    const response = await fetch(url, { headers: { ...(headers || {}) }, redirect: "follow", signal, skipSizeCheck: true });
     if (!response || !response.ok) return null;
     const body = await response.text();
     if (!body || !body.trimStart().startsWith("#EXTM3U")) return null;
     return { url: response.url || url, lines: playlistLines(body) };
-  } catch (_) {
-    return null;
-  }
+  } catch (_) { return null; }
 }
 
 async function validateHlsUrl(url, headers, depth = 0) {
@@ -242,9 +232,7 @@ async function validateHlsUrl(url, headers, depth = 0) {
   if (hasMediaSegments(playlist.lines)) return true;
   const variants = variantUrls(playlist.lines, playlist.url || url).slice(0, 4);
   if (!variants.length) return false;
-  for (const child of variants) {
-    if (await validateHlsUrl(child, headers, depth + 1)) return true;
-  }
+  for (const child of variants) if (await validateHlsUrl(child, headers, depth + 1)) return true;
   return false;
 }
 
@@ -254,10 +242,7 @@ async function filterDeadHardSubs(streams) {
     if (!isHardSubStream(stream) || !stream.url) return stream;
     const key = `${stream.url}|${JSON.stringify(stream.headers || {})}`;
     let promise = health.get(key);
-    if (!promise) {
-      promise = validateHlsUrl(stream.url, stream.headers || {});
-      health.set(key, promise);
-    }
+    if (!promise) { promise = validateHlsUrl(stream.url, stream.headers || {}); health.set(key, promise); }
     const ok = await promise;
     if (!ok) {
       console.log(`[${NAME}] dropping dead HARDSUB source: ${stream.name || stream.url}`);
@@ -275,7 +260,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
     const streams = await core.getStreams(inputId, type, season, episode);
     const fixed = Array.isArray(streams) ? streams.map(preserveHlsMetadata) : [];
     const healthy = await filterDeadHardSubs(fixed);
-    console.log(`[${NAME}] v${VERSION} compact-discovery + roman-normalization + HLS health verified ${healthy.length}/${fixed.length} stream(s)`);
+    console.log(`[${NAME}] v${VERSION} special-filter + compact-discovery + HLS health verified ${healthy.length}/${fixed.length} stream(s)`);
     return healthy;
   } catch (e) {
     console.log(`[${NAME}] v${VERSION} wrapper error: ${e && e.message ? e.message : e}`);
