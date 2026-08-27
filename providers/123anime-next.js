@@ -1,23 +1,19 @@
 "use strict";
 
 /*
- * Limitless 123Anime NEXT 2.0.0-alpha.2
+ * Limitless 123Anime NEXT 2.0.0-alpha.3
  * Runtime wrapper around the immutable alpha.1 aggregator core.
  *
- * alpha.2 fixes the Nuvio HLS handoff without changing the new identity,
- * season/cour, mirror, or multi-source aggregation logic.
- *
- * Nuvio's local-plugin bridge currently drops LocalScraperResult.type before
- * playback, so an extensionless child HLS playlist can be treated as a
- * progressive file and appear as a 1-second video. The alpha.1 core is patched
- * in memory so that when a valid .m3u8 master points at an extensionless child,
- * NEXT returns the original master playlist URL and lets ExoPlayer choose the
- * variant itself. This keeps an unmistakable HLS URL all the way to playback.
+ * alpha.2 fixed the Nuvio HLS handoff for extensionless child playlists.
+ * alpha.3 keeps that fix and tightens candidate aggregation so each source can
+ * contribute only its highest-ranked card per audio mode (DUB/SUB/MIXED).
+ * This prevents a weaker false-positive card from the same source from adding
+ * a second wrong stream while preserving one valid DUB and one valid SUB card.
  */
 
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8cd3f91b0b671cf84eaded086d84cea610ecd6f8/providers/123anime-next.js";
 const NAME = "123Anime NEXT";
-const VERSION = "2.0.0-alpha.2";
+const VERSION = "2.0.0-alpha.3";
 let corePromise = null;
 
 function patchCoreSource(code) {
@@ -40,12 +36,51 @@ function patchCoreSource(code) {
     '  return { url: playable, quality: best.height ? `${best.height}p` : fallback.quality };'
   ].join('\n');
 
+  const candidateBefore = [
+    '  const selected = [];',
+    '  const counts = new Map();',
+    '  for (const item of ranked) {',
+    '    const count = counts.get(item.source.id) || 0;',
+    '    if (count >= 2) continue;',
+    '    selected.push(item); counts.set(item.source.id, count + 1);',
+    '    if (selected.length >= MAX_CANDIDATES) break;',
+    '  }',
+    '  if (selected.length < MAX_CANDIDATES) {',
+    '    for (const item of ranked) {',
+    '      if (selected.includes(item)) continue;',
+    '      selected.push(item);',
+    '      if (selected.length >= MAX_CANDIDATES) break;',
+    '    }',
+    '  }',
+    '  return selected;'
+  ].join('\n');
+
+  const candidateAfter = [
+    '  const selected = [];',
+    '  const sourceModeBuckets = new Set();',
+    '  for (const item of ranked) {',
+    '    // ranked is already best-first. Keep only the strongest identity card',
+    '    // from each source for each audio-mode family. Legacy 123Anime uses',
+    '    // separate SUB/DUB cards; Aniwaves uses one MIXED card.',
+    '    const mode = item.adapter === "aniwaves" ? "mixed" : String(item.mode || "mixed").toLowerCase();',
+    '    const bucket = `${item.source.id}|${mode}`;',
+    '    if (sourceModeBuckets.has(bucket)) continue;',
+    '    sourceModeBuckets.add(bucket);',
+    '    selected.push(item);',
+    '    if (selected.length >= MAX_CANDIDATES) break;',
+    '  }',
+    '  return selected;'
+  ].join('\n');
+
   let patched = code;
   if (!patched.includes(detectBefore)) throw new Error("NEXT core HLS detector patch point not found");
   patched = patched.replace(detectBefore, detectAfter);
 
   if (!patched.includes(selectBefore)) throw new Error("NEXT core HLS selector patch point not found");
   patched = patched.replace(selectBefore, selectAfter);
+
+  if (!patched.includes(candidateBefore)) throw new Error("NEXT core candidate selector patch point not found");
+  patched = patched.replace(candidateBefore, candidateAfter);
 
   return patched;
 }
@@ -100,7 +135,7 @@ async function getStreams(inputId, type = "tv", season = 1, episode = 1) {
     const core = await loadCore();
     const streams = await core.getStreams(inputId, type, season, episode);
     const fixed = Array.isArray(streams) ? streams.map(preserveHlsMetadata) : [];
-    console.log(`[${NAME}] v${VERSION} verified HLS handoff for ${fixed.length} stream(s)`);
+    console.log(`[${NAME}] v${VERSION} candidate-dedup + HLS handoff verified for ${fixed.length} stream(s)`);
     return fixed;
   } catch (e) {
     console.log(`[${NAME}] v${VERSION} wrapper error: ${e && e.message ? e.message : e}`);
