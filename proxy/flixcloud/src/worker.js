@@ -89,11 +89,24 @@ function ensureToken(childUrl, parentUrl) {
   }
 }
 
+function encodePathPayload(data) {
+  return encodeURIComponent(JSON.stringify(data));
+}
+
+function decodePathPayload(pathname, prefix) {
+  if (!pathname.startsWith(prefix)) return null;
+  const raw = pathname.slice(prefix.length);
+  if (!raw) return null;
+  try {
+    const value = JSON.parse(decodeURIComponent(raw));
+    return value && typeof value === "object" ? value : null;
+  } catch (_) {
+    return null;
+  }
+}
+
 function makeProxyUrl(proxyBase, upstreamUrl, maskHex) {
-  const u = new URL("/proxy", proxyBase);
-  u.searchParams.set("u", upstreamUrl);
-  u.searchParams.set("m", maskHex);
-  return u.toString();
+  return `${String(proxyBase).replace(/\/+$/, "")}/proxy/${encodePathPayload({ u: upstreamUrl, m: maskHex })}`;
 }
 
 function fixBandwidth(line) {
@@ -177,18 +190,24 @@ function proxyHeadersFrom(upstream, extra = {}) {
   }
   for (const [k, v] of Object.entries(CORS_HEADERS)) headers.set(k, v);
   headers.set("Cache-Control", "no-store");
-  headers.set("X-Limitless-Proxy", "flixcloud-v1");
+  headers.set("X-Limitless-Proxy", "flixcloud-v1.1");
   for (const [k, v] of Object.entries(extra)) headers.set(k, v);
   return headers;
 }
 
-async function handleInitialManifest(request, url) {
-  const upstream = url.searchParams.get("u") || "";
-  const wPayload = url.searchParams.get("w") || "";
-  const maskHex = (url.searchParams.get("m") || DEFAULT_MASK_HEX).toLowerCase();
-  if (!isAllowedFlixUrl(upstream)) return text("Invalid or blocked FlixCloud URL", 400);
-  if (!wPayload) return text("Missing w payload", 400);
-  if (!parseMaskHex(maskHex)) return text("Invalid XOR mask", 400);
+function initialManifestParams(url, payload) {
+  return {
+    upstream: String(payload?.u || url.searchParams.get("u") || ""),
+    wPayload: String(payload?.w || url.searchParams.get("w") || ""),
+    maskHex: String(payload?.m || url.searchParams.get("m") || DEFAULT_MASK_HEX).toLowerCase(),
+  };
+}
+
+async function handleInitialManifest(request, url, payload = null) {
+  const { upstream, wPayload, maskHex } = initialManifestParams(url, payload);
+  if (!isAllowedFlixUrl(upstream)) return text("Invalid or blocked FlixCloud URL", 400, { "X-Limitless-Upstream": "invalid-upstream" });
+  if (!wPayload) return text("Missing w payload", 400, { "X-Limitless-Upstream": "missing-w" });
+  if (!parseMaskHex(maskHex)) return text("Invalid XOR mask", 400, { "X-Limitless-Upstream": "invalid-mask" });
 
   const parsedUrl = new URL(ENC_DEC_PARSE);
   parsedUrl.searchParams.set("url", upstream);
@@ -203,7 +222,7 @@ async function handleInitialManifest(request, url) {
       "Accept-Encoding": "identity",
     },
   });
-  if (!response.ok) return text(`Manifest decoder HTTP ${response.status}`, 502);
+  if (!response.ok) return text(`Manifest decoder HTTP ${response.status}`, 502, { "X-Limitless-Upstream": "decoder" });
   const body = await response.text();
   const rewritten = rewriteManifest(body, upstream, normalizeProxyBase(request.url), maskHex);
   return new Response(rewritten, {
@@ -212,7 +231,7 @@ async function handleInitialManifest(request, url) {
       ...CORS_HEADERS,
       "Content-Type": "application/vnd.apple.mpegurl",
       "Cache-Control": "no-store",
-      "X-Limitless-Proxy": "flixcloud-v1",
+      "X-Limitless-Proxy": "flixcloud-v1.1",
       "X-Limitless-Upstream": "manifest",
     },
   });
@@ -231,15 +250,21 @@ function looksLikeSubtitle(url, contentType = "") {
   }
 }
 
-async function handleProxy(request, url) {
-  const upstream = url.searchParams.get("u") || "";
-  const maskHex = (url.searchParams.get("m") || DEFAULT_MASK_HEX).toLowerCase();
+function proxyParams(url, payload) {
+  return {
+    upstream: String(payload?.u || url.searchParams.get("u") || ""),
+    maskHex: String(payload?.m || url.searchParams.get("m") || DEFAULT_MASK_HEX).toLowerCase(),
+  };
+}
+
+async function handleProxy(request, url, payload = null) {
+  const { upstream, maskHex } = proxyParams(url, payload);
   const mask = parseMaskHex(maskHex);
-  if (!isAllowedFlixUrl(upstream)) return text("Invalid or blocked FlixCloud URL", 400);
-  if (!mask) return text("Invalid XOR mask", 400);
+  if (!isAllowedFlixUrl(upstream)) return text("Invalid or blocked FlixCloud URL", 400, { "X-Limitless-Upstream": "invalid-upstream" });
+  if (!mask) return text("Invalid XOR mask", 400, { "X-Limitless-Upstream": "invalid-mask" });
 
   const response = await fetchFlix(upstream, request);
-  if (!response.ok && response.status !== 206) return text(`FlixCloud HTTP ${response.status}`, 502);
+  if (!response.ok && response.status !== 206) return text(`FlixCloud HTTP ${response.status}`, 502, { "X-Limitless-Upstream": "cdn" });
   const contentType = response.headers.get("Content-Type") || "";
 
   if (looksLikeManifest(upstream) || /mpegurl/i.test(contentType)) {
@@ -251,7 +276,7 @@ async function handleProxy(request, url) {
         ...CORS_HEADERS,
         "Content-Type": "application/vnd.apple.mpegurl",
         "Cache-Control": "no-store",
-        "X-Limitless-Proxy": "flixcloud-v1",
+        "X-Limitless-Proxy": "flixcloud-v1.1",
         "X-Limitless-Upstream": "child-manifest",
       },
     });
@@ -271,23 +296,23 @@ async function handleProxy(request, url) {
     return new Response(input, { status: response.status, headers });
   }
 
-  const payload = input.slice(headerSize);
-  const shouldXor = payload.length > 0 && payload[0] !== 0x47;
+  const payloadBytes = input.slice(headerSize);
+  const shouldXor = payloadBytes.length > 0 && payloadBytes[0] !== 0x47;
   if (shouldXor) {
-    if ((payload[0] ^ mask[0]) !== 0x47) {
+    if ((payloadBytes[0] ^ mask[0]) !== 0x47) {
       return text("FlixCloud XOR mask validation failed", 502, { "X-Limitless-Upstream": "bad-mask" });
     }
-    xorPayload(payload, mask);
+    xorPayload(payloadBytes, mask);
   }
 
   const headers = proxyHeadersFrom(response, {
     "Content-Type": "video/mp2t",
-    "Content-Length": String(payload.byteLength),
+    "Content-Length": String(payloadBytes.byteLength),
     "X-Limitless-Upstream": shouldXor ? "xor-segment" : "stripped-segment",
   });
   headers.delete("Content-Range");
   headers.delete("Accept-Ranges");
-  return new Response(payload, { status: 200, headers });
+  return new Response(payloadBytes, { status: 200, headers });
 }
 
 async function handleRequest(request) {
@@ -297,8 +322,19 @@ async function handleRequest(request) {
   const url = new URL(request.url);
   try {
     if (url.pathname === "/" || url.pathname === "/health") {
-      return json({ ok: true, service: "Limitless Nexus FlixCloud Proxy", version: "1.0.0" });
+      return json({ ok: true, service: "Limitless Nexus FlixCloud Proxy", version: "1.1.0", protocol: "path-payload-v1" });
     }
+    if (url.pathname.startsWith("/manifest/")) {
+      const payload = decodePathPayload(url.pathname, "/manifest/");
+      if (!payload) return text("Invalid manifest path payload", 400, { "X-Limitless-Upstream": "invalid-path-payload" });
+      return await handleInitialManifest(request, url, payload);
+    }
+    if (url.pathname.startsWith("/proxy/")) {
+      const payload = decodePathPayload(url.pathname, "/proxy/");
+      if (!payload) return text("Invalid proxy path payload", 400, { "X-Limitless-Upstream": "invalid-path-payload" });
+      return await handleProxy(request, url, payload);
+    }
+    // Backward compatibility for Re:ANIME 1.2.0 and any old cached HLS URLs.
     if (url.pathname === "/manifest") return await handleInitialManifest(request, url);
     if (url.pathname === "/proxy") return await handleProxy(request, url);
     return text("Not found", 404);
@@ -307,7 +343,7 @@ async function handleRequest(request) {
   }
 }
 
-export { detectHeader, ensureToken, isAllowedFlixUrl, parseMaskHex, rewriteManifest, xorPayload };
+export { decodePathPayload, detectHeader, encodePathPayload, ensureToken, isAllowedFlixUrl, parseMaskHex, rewriteManifest, xorPayload };
 
 export default {
   fetch: handleRequest,
