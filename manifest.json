@@ -1,14 +1,14 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. DUB prefers direct MKV. SUB uses the shared Limitless FlixCloud proxy with query-free path payloads, token-preserving HLS rewriting, live XOR-mask discovery, and decoded FlixCloud media segments.",
-      "version": "1.3.0",
-      "author": "Limitless Nexus port based on maintained Re:ANIME and FlixCloud reference implementations",
+      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. DUB prefers direct MKV. SUB now follows AniYomi's proven approach: decode and parse the FlixCloud master during scraping, expose concrete quality child playlists to Nuvio, then use the shared Limitless FlixCloud proxy only for child-playlist rewriting and media-segment decoding.",
+      "version": "1.4.0",
+      "author": "Limitless Nexus port based on maintained Re:ANIME, AniYomi playlist parsing, and FlixCloud reference implementations",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime.js",
       "enabled": true,
