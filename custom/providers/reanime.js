@@ -114,14 +114,42 @@ function selectServers(servers) {
     const bb = audioLabel(b.dataType).tag === "DUB" ? 0 : 1;
     return aa !== bb ? aa - bb : serverPreference(a.serverName) - serverPreference(b.serverName);
   });
-  const result = [], seen = new Set(), counts = { DUB: 0, SUB: 0, SOURCE: 0 };
+
+  const selected = [];
+  const seenLinks = new Set();
+  const counts = { DUB: 0, SUB: 0, SOURCE: 0 };
+
   for (const server of ordered) {
     const audio = audioLabel(server.dataType).tag;
-    const key = `${audio}|${String(server.serverName || "server").toLowerCase()}`;
-    if (seen.has(key) || counts[audio] >= 2) continue;
-    seen.add(key); counts[audio]++; result.push(server);
+    const link = String(server.dataLink || "");
+    const key = `${audio}|${link}`;
+    if (!link || seenLinks.has(key) || counts[audio] >= 2) continue;
+    seenLinks.add(key);
+    counts[audio]++;
+    selected.push({ ...server });
+    if (selected.length >= 5) break;
   }
-  return result.slice(0, 5);
+
+  const groups = new Map();
+  for (const server of selected) {
+    const audio = audioLabel(server.dataType).tag;
+    const key = `${audio}|${String(server.serverName || "server").toLowerCase()}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(server);
+  }
+  for (const group of groups.values()) {
+    group.forEach((server, index) => {
+      server._mirrorIndex = index + 1;
+      server._mirrorCount = group.length;
+    });
+  }
+
+  return selected;
+}
+
+function displayServerName(server, fallback = "Server") {
+  const base = String(server && server.serverName || fallback).trim() || fallback;
+  return server && server._mirrorCount > 1 ? `${base} • Mirror ${server._mirrorIndex}` : base;
 }
 
 function extractAid(dataLink) {
@@ -140,6 +168,11 @@ function qualityRank(value) {
 }
 
 async function resolveDirectDownload(server) {
+  const audio = audioLabel(server && server.dataType);
+  // FlixCloud's direct-download endpoint can resolve to the default/dub file even
+  // when Re:ANIME's server metadata says SUB. Never use it for SUB-labelled sources.
+  if (audio.tag === "SUB") return null;
+
   const aid = extractAid(server && server.dataLink);
   if (!aid) return null;
   const text = await fetchText(`${FLIXCLOUD}/d/${aid}/__data.json`, { headers: FLIX_HEADERS });
@@ -148,7 +181,7 @@ async function resolveDirectDownload(server) {
   const base = firstMatch(text, /(https:\/\/fetch\d*\.flixcloud\.cc)/i) || FLIXCLOUD;
   const resolution = firstMatch(text, /(\d{3,4}p)/i) || "Original";
   if (!fileId || !token) return null;
-  const audio = audioLabel(server.dataType), serverName = String(server.serverName || "Direct");
+  const serverName = displayServerName(server, "Direct");
   return {
     name: `${PROVIDER_NAME} • ${serverName} • ${resolution} • ${audio.language} [${audio.tag}] • MKV`,
     title: `${PROVIDER_NAME} ${audio.language} [${audio.tag}]`,
@@ -200,7 +233,7 @@ async function resolveHlsFallback(server) {
   if (!stream || stream.status !== 200 || !stream.result || !stream.result.stream) return null;
   const w = stream.result.context && stream.result.context.w_payload;
   if (!w) return null;
-  const audio = audioLabel(server.dataType), serverName = String(server.serverName || "HLS");
+  const audio = audioLabel(server.dataType), serverName = displayServerName(server, "HLS");
   return {
     name: `${PROVIDER_NAME} • ${serverName} • Auto • ${audio.language} [${audio.tag}] • HLS`,
     title: `${PROVIDER_NAME} ${audio.language} [${audio.tag}]`,
@@ -210,6 +243,10 @@ async function resolveHlsFallback(server) {
 }
 
 async function resolveServer(server) {
+  const audio = audioLabel(server && server.dataType);
+  // Preserve the exact Re:ANIME/FlixCloud embed variant for SUB. For DUB, keep
+  // the simpler direct MKV first and fall back to HLS if the download is absent.
+  if (audio.tag === "SUB") return await resolveHlsFallback(server).catch(() => null);
   return await resolveDirectDownload(server).catch(() => null) || await resolveHlsFallback(server).catch(() => null);
 }
 
