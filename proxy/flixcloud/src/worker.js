@@ -95,7 +95,8 @@ function encodePathPayload(data) {
 
 function decodePathPayload(pathname, prefix) {
   if (!pathname.startsWith(prefix)) return null;
-  const raw = pathname.slice(prefix.length);
+  const remainder = pathname.slice(prefix.length);
+  const raw = remainder.split("/")[0];
   if (!raw) return null;
   try {
     const value = JSON.parse(decodeURIComponent(raw));
@@ -105,8 +106,24 @@ function decodePathPayload(pathname, prefix) {
   }
 }
 
+function resourceSuffix(upstreamUrl) {
+  try {
+    const path = new URL(upstreamUrl).pathname.toLowerCase();
+    if (path.includes(".m3u8")) return "playlist.m3u8";
+    if (path.endsWith(".vtt")) return "subtitle.vtt";
+    if (path.endsWith(".srt")) return "subtitle.srt";
+    if (path.endsWith(".ass") || path.endsWith(".ssa")) return "subtitle.ass";
+  } catch (_) {}
+  return "segment.ts";
+}
+
 function makeProxyUrl(proxyBase, upstreamUrl, maskHex) {
-  return `${String(proxyBase).replace(/\/+$/, "")}/proxy/${encodePathPayload({ u: upstreamUrl, m: maskHex })}`;
+  const payload = encodePathPayload({ u: upstreamUrl, m: maskHex });
+  return `${String(proxyBase).replace(/\/+$/, "")}/proxy/${payload}/${resourceSuffix(upstreamUrl)}`;
+}
+
+function makeManifestPath(proxyBase, payload) {
+  return `${String(proxyBase).replace(/\/+$/, "")}/manifest/${encodePathPayload(payload)}/master.m3u8`;
 }
 
 function fixBandwidth(line) {
@@ -147,6 +164,20 @@ function rewriteManifest(body, parentUrl, proxyBase, maskHex) {
       return trimmed;
     }
   }).join("\n");
+}
+
+function manifestStats(body, rewritten = "") {
+  const source = String(body || "");
+  const output = String(rewritten || "");
+  return {
+    bytes: new TextEncoder().encode(source).byteLength,
+    startsExtm3u: source.replace(/^\uFEFF/, "").trimStart().startsWith("#EXTM3U"),
+    variants: (source.match(/#EXT-X-STREAM-INF/gi) || []).length,
+    mediaTags: (source.match(/#EXT-X-MEDIA:/gi) || []).length,
+    targetDurations: (source.match(/#EXT-X-TARGETDURATION:/gi) || []).length,
+    uriAttrs: (source.match(/\bURI="/gi) || []).length,
+    rewrittenProxyRefs: (output.match(/\/proxy\//g) || []).length,
+  };
 }
 
 function flixHeaders() {
@@ -190,7 +221,7 @@ function proxyHeadersFrom(upstream, extra = {}) {
   }
   for (const [k, v] of Object.entries(CORS_HEADERS)) headers.set(k, v);
   headers.set("Cache-Control", "no-store");
-  headers.set("X-Limitless-Proxy", "flixcloud-v1.1");
+  headers.set("X-Limitless-Proxy", "flixcloud-v1.2");
   for (const [k, v] of Object.entries(extra)) headers.set(k, v);
   return headers;
 }
@@ -201,6 +232,21 @@ function initialManifestParams(url, payload) {
     wPayload: String(payload?.w || url.searchParams.get("w") || ""),
     maskHex: String(payload?.m || url.searchParams.get("m") || DEFAULT_MASK_HEX).toLowerCase(),
   };
+}
+
+function hlsResponse(body, upstreamLabel, version = "flixcloud-v1.2") {
+  const length = new TextEncoder().encode(body).byteLength;
+  return new Response(body, {
+    status: 200,
+    headers: {
+      ...CORS_HEADERS,
+      "Content-Type": "application/vnd.apple.mpegurl",
+      "Content-Length": String(length),
+      "Cache-Control": "no-store",
+      "X-Limitless-Proxy": version,
+      "X-Limitless-Upstream": upstreamLabel,
+    },
+  });
 }
 
 async function handleInitialManifest(request, url, payload = null) {
@@ -217,24 +263,29 @@ async function handleInitialManifest(request, url, payload = null) {
     headers: {
       "User-Agent": USER_AGENT,
       "Accept": "application/vnd.apple.mpegurl,application/x-mpegURL,text/plain,*/*",
-      "Origin": ENC_DEC_ORIGIN,
-      "Referer": `${ENC_DEC_ORIGIN}/`,
       "Accept-Encoding": "identity",
     },
   });
   if (!response.ok) return text(`Manifest decoder HTTP ${response.status}`, 502, { "X-Limitless-Upstream": "decoder" });
+
   const body = await response.text();
   const rewritten = rewriteManifest(body, upstream, normalizeProxyBase(request.url), maskHex);
-  return new Response(rewritten, {
-    status: 200,
-    headers: {
-      ...CORS_HEADERS,
-      "Content-Type": "application/vnd.apple.mpegurl",
-      "Cache-Control": "no-store",
-      "X-Limitless-Proxy": "flixcloud-v1.1",
-      "X-Limitless-Upstream": "manifest",
-    },
-  });
+  const stats = manifestStats(body, rewritten);
+  console.log(JSON.stringify({
+    event: "flixcloud-master-manifest",
+    decoderStatus: response.status,
+    decoderContentType: response.headers.get("Content-Type") || "",
+    ...stats,
+  }));
+
+  if (!stats.startsExtm3u) {
+    return text("Manifest decoder did not return a valid HLS playlist", 502, { "X-Limitless-Upstream": "invalid-manifest" });
+  }
+  if (stats.variants + stats.mediaTags + stats.targetDurations === 0) {
+    return text("Decoded HLS playlist contained no playable HLS tags", 502, { "X-Limitless-Upstream": "empty-manifest" });
+  }
+
+  return hlsResponse(rewritten, "manifest");
 }
 
 function looksLikeManifest(url) {
@@ -270,16 +321,18 @@ async function handleProxy(request, url, payload = null) {
   if (looksLikeManifest(upstream) || /mpegurl/i.test(contentType)) {
     const body = await response.text();
     const rewritten = rewriteManifest(body, upstream, normalizeProxyBase(request.url), maskHex);
-    return new Response(rewritten, {
-      status: 200,
-      headers: {
-        ...CORS_HEADERS,
-        "Content-Type": "application/vnd.apple.mpegurl",
-        "Cache-Control": "no-store",
-        "X-Limitless-Proxy": "flixcloud-v1.1",
-        "X-Limitless-Upstream": "child-manifest",
-      },
-    });
+    const stats = manifestStats(body, rewritten);
+    console.log(JSON.stringify({
+      event: "flixcloud-child-manifest",
+      upstreamHost: new URL(upstream).hostname,
+      upstreamStatus: response.status,
+      upstreamContentType: contentType,
+      ...stats,
+    }));
+    if (!stats.startsExtm3u) {
+      return text("FlixCloud child manifest was not valid HLS", 502, { "X-Limitless-Upstream": "invalid-child-manifest" });
+    }
+    return hlsResponse(rewritten, "child-manifest");
   }
 
   if (looksLikeSubtitle(upstream, contentType)) {
@@ -305,6 +358,15 @@ async function handleProxy(request, url, payload = null) {
     xorPayload(payloadBytes, mask);
   }
 
+  console.log(JSON.stringify({
+    event: "flixcloud-segment",
+    upstreamHost: new URL(upstream).hostname,
+    upstreamStatus: response.status,
+    headerSize,
+    xor: shouldXor,
+    outputBytes: payloadBytes.byteLength,
+  }));
+
   const headers = proxyHeadersFrom(response, {
     "Content-Type": "video/mp2t",
     "Content-Length": String(payloadBytes.byteLength),
@@ -315,6 +377,11 @@ async function handleProxy(request, url, payload = null) {
   return new Response(payloadBytes, { status: 200, headers });
 }
 
+function redirectToTypedManifest(requestUrl, payload) {
+  const base = normalizeProxyBase(requestUrl);
+  return Response.redirect(makeManifestPath(base, payload), 302);
+}
+
 async function handleRequest(request) {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS_HEADERS });
   if (request.method !== "GET" && request.method !== "HEAD") return text("Method not allowed", 405, { Allow: "GET, HEAD, OPTIONS" });
@@ -322,11 +389,17 @@ async function handleRequest(request) {
   const url = new URL(request.url);
   try {
     if (url.pathname === "/" || url.pathname === "/health") {
-      return json({ ok: true, service: "Limitless Nexus FlixCloud Proxy", version: "1.1.0", protocol: "path-payload-v1" });
+      return json({ ok: true, service: "Limitless Nexus FlixCloud Proxy", version: "1.2.0", protocol: "path-payload-v1.1" });
     }
     if (url.pathname.startsWith("/manifest/")) {
       const payload = decodePathPayload(url.pathname, "/manifest/");
       if (!payload) return text("Invalid manifest path payload", 400, { "X-Limitless-Upstream": "invalid-path-payload" });
+
+      // Old v1.1-style source URLs did not end in .m3u8. Redirect once so libmpv gets
+      // an explicitly typed HLS URL while preserving the payload in the path.
+      const afterPayload = url.pathname.slice("/manifest/".length).split("/").slice(1).join("/");
+      if (!afterPayload) return redirectToTypedManifest(request.url, payload);
+
       return await handleInitialManifest(request, url, payload);
     }
     if (url.pathname.startsWith("/proxy/")) {
@@ -334,7 +407,7 @@ async function handleRequest(request) {
       if (!payload) return text("Invalid proxy path payload", 400, { "X-Limitless-Upstream": "invalid-path-payload" });
       return await handleProxy(request, url, payload);
     }
-    // Backward compatibility for Re:ANIME 1.2.0 and any old cached HLS URLs.
+    // Backward compatibility for cached v1.0/v1.1 URLs.
     if (url.pathname === "/manifest") return await handleInitialManifest(request, url);
     if (url.pathname === "/proxy") return await handleProxy(request, url);
     return text("Not found", 404);
@@ -343,7 +416,19 @@ async function handleRequest(request) {
   }
 }
 
-export { decodePathPayload, detectHeader, encodePathPayload, ensureToken, isAllowedFlixUrl, parseMaskHex, rewriteManifest, xorPayload };
+export {
+  decodePathPayload,
+  detectHeader,
+  encodePathPayload,
+  ensureToken,
+  isAllowedFlixUrl,
+  makeManifestPath,
+  makeProxyUrl,
+  manifestStats,
+  parseMaskHex,
+  rewriteManifest,
+  xorPayload,
+};
 
 export default {
   fetch: handleRequest,
