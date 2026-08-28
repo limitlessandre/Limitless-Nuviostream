@@ -1,13 +1,13 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. Uses direct MKV when available, HLS fallback for missing Sub/Dub paths, soft subtitle extraction, and exact TMDB/IMDb verification for anime-movie fallback matching.",
-      "version": "1.1.0",
+      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. DUB prefers direct MKV; SUB preserves the exact FlixCloud HLS audio variant. Includes soft subtitle extraction, distinct mirror labels, and exact TMDB/IMDb verification for anime-movie fallback matching.",
+      "version": "1.1.1",
       "author": "Limitless Nexus port based on maintained Re:ANIME and FlixCloud reference implementations",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/reanime.js",
