@@ -6,6 +6,7 @@ const REANIME_DOMAINS = ["https://reanime.to", "https://reanime.cz", "https://re
 const FLIXCLOUD = "https://flixcloud.cc";
 const ENC_DEC_API = "https://enc-dec.app/api";
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36";
+const FALLBACK_XOR_MASK_HEX = "9d2af147b38e5c70a619e43bd8620fc5";
 
 const BASE_HEADERS = { "User-Agent": USER_AGENT, "Accept": "*/*", "Accept-Language": "en-US,en;q=0.9" };
 const FLIX_HEADERS = { ...BASE_HEADERS, "Origin": FLIXCLOUD, "Referer": `${FLIXCLOUD}/` };
@@ -22,6 +23,15 @@ async function fetchJson(url, options = {}) {
 
 async function fetchText(url, options = {}) {
   try { return String(await (await request(url, options)).text() || ""); } catch (_) { return ""; }
+}
+
+function settings() {
+  try { return globalThis.SCRAPER_SETTINGS || {}; } catch (_) { return {}; }
+}
+
+function getFlixProxyBase() {
+  const raw = String(settings().flixProxyBase || "").trim().replace(/\/+$/, "");
+  return /^https?:\/\//i.test(raw) ? raw : "";
 }
 
 function normalizedMediaType(mediaType) {
@@ -56,14 +66,18 @@ async function malToAniList(malId) {
   if (!malId) return null;
   const query = "query($idMal:Int){Media(idMal:$idMal,type:ANIME){id title{english romaji native}}}";
   const data = await fetchJson("https://graphql.anilist.co", {
-    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query, variables: { idMal: parseInt(malId, 10) } })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, variables: { idMal: parseInt(malId, 10) } })
   });
   return data && data.data && data.data.Media ? data.data.Media : null;
 }
 
 async function fetchReAnimeApi(path) {
   for (const base of REANIME_DOMAINS) {
-    const data = await fetchJson(`${base}${path}`, { headers: { "Accept": "application/json, text/plain, */*", "Referer": `${base}/home` } });
+    const data = await fetchJson(`${base}${path}`, {
+      headers: { "Accept": "application/json, text/plain, */*", "Referer": `${base}/home` }
+    });
     if (data) return data;
   }
   return null;
@@ -114,11 +128,9 @@ function selectServers(servers) {
     const bb = audioLabel(b.dataType).tag === "DUB" ? 0 : 1;
     return aa !== bb ? aa - bb : serverPreference(a.serverName) - serverPreference(b.serverName);
   });
-
   const selected = [];
   const seenLinks = new Set();
   const counts = { DUB: 0, SUB: 0, SOURCE: 0 };
-
   for (const server of ordered) {
     const audio = audioLabel(server.dataType).tag;
     const link = String(server.dataLink || "");
@@ -129,7 +141,6 @@ function selectServers(servers) {
     selected.push({ ...server });
     if (selected.length >= 5) break;
   }
-
   const groups = new Map();
   for (const server of selected) {
     const audio = audioLabel(server.dataType).tag;
@@ -143,7 +154,6 @@ function selectServers(servers) {
       server._mirrorCount = group.length;
     });
   }
-
   return selected;
 }
 
@@ -169,10 +179,7 @@ function qualityRank(value) {
 
 async function resolveDirectDownload(server) {
   const audio = audioLabel(server && server.dataType);
-  // FlixCloud's direct-download endpoint can resolve to the default/dub file even
-  // when Re:ANIME's server metadata says SUB. Never use it for SUB-labelled sources.
   if (audio.tag === "SUB") return null;
-
   const aid = extractAid(server && server.dataLink);
   if (!aid) return null;
   const text = await fetchText(`${FLIXCLOUD}/d/${aid}/__data.json`, { headers: FLIX_HEADERS });
@@ -186,12 +193,20 @@ async function resolveDirectDownload(server) {
     name: `${PROVIDER_NAME} • ${serverName} • ${resolution} • ${audio.language} [${audio.tag}] • MKV`,
     title: `${PROVIDER_NAME} ${audio.language} [${audio.tag}]`,
     url: `${base}/download/${fileId}?token=${encodeURIComponent(token)}`,
-    quality: resolution, provider: PROVIDER_NAME, type: "mp4", headers: FLIX_HEADERS, language: audio.language, subtitles: []
+    quality: resolution,
+    provider: PROVIDER_NAME,
+    type: "mp4",
+    headers: FLIX_HEADERS,
+    language: audio.language,
+    subtitles: []
   };
 }
 
 function json5ToJson(value) {
-  return String(value || "").replace(/([{,]\s*)([\w_]+)(\s*:)/g, '$1"$2"$3').replace(/,\s*([}\]])/g, "$1").replace(/:\s*undefined\b/g, ": null");
+  return String(value || "")
+    .replace(/([{,]\s*)([\w_]+)(\s*:)/g, '$1"$2"$3')
+    .replace(/,\s*([}\]])/g, "$1")
+    .replace(/:\s*undefined\b/g, ": null");
 }
 
 function extractSoftSubs(html) {
@@ -199,7 +214,8 @@ function extractSoftSubs(html) {
   const re = /\{\s*url:\s*"([^"]+)"\s*,\s*language:\s*"([^"]+)"[^}]*\}/g;
   let m;
   while ((m = re.exec(String(html || ""))) !== null) {
-    const url = m[1], label = m[2].replace(/\\u0028/g, "(").replace(/\\u0029/g, ")");
+    const url = m[1];
+    const label = m[2].replace(/\\u0028/g, "(").replace(/\\u0029/g, ")");
     if (!/^https?:\/\//i.test(url) || seen.has(url)) continue;
     seen.add(url);
     const low = label.toLowerCase();
@@ -207,6 +223,45 @@ function extractSoftSubs(html) {
     out.push({ url, language, name: `${label} [Re:ANIME Soft Subtitle]`, headers: FLIX_HEADERS });
   }
   return out;
+}
+
+function bytesToHex(values) {
+  return values.map(v => Number(v).toString(16).padStart(2, "0")).join("");
+}
+
+async function resolveXorMask(html) {
+  try {
+    const scriptPath = String(html || "").match(/(?:href|src)=["']([^"']*hls\.js[^"']*)["']/i)?.[1];
+    if (scriptPath) {
+      const scriptUrl = /^https?:\/\//i.test(scriptPath) ? scriptPath : new URL(scriptPath, FLIXCLOUD).toString();
+      const js = await fetchText(scriptUrl, { headers: FLIX_HEADERS });
+      const raw = js.match(/for\(var f=\[(\d{1,3}(?:,\d{1,3}){15})\]/)?.[1];
+      if (raw) {
+        const values = raw.split(",").map(v => parseInt(v.trim(), 10));
+        if (values.length === 16 && values.every(v => Number.isFinite(v) && v >= 0 && v <= 255)) return bytesToHex(values);
+      }
+    }
+  } catch (_) {}
+  return FALLBACK_XOR_MASK_HEX;
+}
+
+function proxyUrl(base, path, params) {
+  const url = new URL(path, `${base}/`);
+  for (const [key, value] of Object.entries(params)) url.searchParams.set(key, String(value));
+  return url.toString();
+}
+
+function proxySoftSubs(subtitles, proxyBase, maskHex) {
+  if (!proxyBase) return subtitles;
+  return (subtitles || []).map(sub => {
+    try {
+      const host = new URL(sub.url).hostname.toLowerCase();
+      if (host !== "flixcloud.cc" && !host.endsWith(".flixcloud.cc")) return sub;
+      return { ...sub, url: proxyUrl(proxyBase, "/proxy", { u: sub.url, m: maskHex }), headers: {} };
+    } catch (_) {
+      return sub;
+    }
+  });
 }
 
 async function resolveHlsFallback(server) {
@@ -217,52 +272,82 @@ async function resolveHlsFallback(server) {
   if (!match) return null;
   let data;
   try { data = JSON.parse(json5ToJson(match[1])); } catch (_) { return null; }
-  const subtitles = extractSoftSubs(html);
-  delete data.subtitles; delete data.intro_chapter; delete data.outro_chapter;
+
+  const proxyBase = getFlixProxyBase();
+  const maskHex = await resolveXorMask(html);
+  const subtitles = proxySoftSubs(extractSoftSubs(html), proxyBase, maskHex);
+  delete data.subtitles;
+  delete data.intro_chapter;
+  delete data.outro_chapter;
 
   const token = await fetchJson(`${ENC_DEC_API}/dec-flixcloud?type=token`, {
-    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ data })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ data })
   });
   if (!token || token.status !== 200 || !token.result || !token.result.token) return null;
+
   const encrypted = await fetchJson(`${FLIXCLOUD}/api/m3u8/${encodeURIComponent(token.result.token)}`, { headers: FLIX_HEADERS });
   if (!encrypted) return null;
+
   const stream = await fetchJson(`${ENC_DEC_API}/dec-flixcloud?type=stream`, {
-    method: "POST", headers: { "Content-Type": "application/json" },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ data: { context: token.result.context, stream_response: encrypted } })
   });
   if (!stream || stream.status !== 200 || !stream.result || !stream.result.stream) return null;
+
   const w = stream.result.context && stream.result.context.w_payload;
   if (!w) return null;
-  const audio = audioLabel(server.dataType), serverName = displayServerName(server, "HLS");
+  const audio = audioLabel(server.dataType);
+  const serverName = displayServerName(server, "HLS");
+  const playbackUrl = proxyBase
+    ? proxyUrl(proxyBase, "/manifest", { u: stream.result.stream, w, m: maskHex })
+    : `${ENC_DEC_API}/parse-flixcloud?url=${encodeURIComponent(stream.result.stream)}&w_payload=${encodeURIComponent(w)}`;
+
   return {
-    name: `${PROVIDER_NAME} • ${serverName} • Auto • ${audio.language} [${audio.tag}] • HLS`,
+    name: `${PROVIDER_NAME} • ${serverName} • Auto • ${audio.language} [${audio.tag}] • ${proxyBase ? "HLS Proxy" : "HLS"}`,
     title: `${PROVIDER_NAME} ${audio.language} [${audio.tag}]`,
-    url: `${ENC_DEC_API}/parse-flixcloud?url=${encodeURIComponent(stream.result.stream)}&w_payload=${encodeURIComponent(w)}`,
-    quality: "Auto", provider: PROVIDER_NAME, type: "m3u8", headers: FLIX_HEADERS, language: audio.language, subtitles
+    url: playbackUrl,
+    quality: "Auto",
+    provider: PROVIDER_NAME,
+    type: "m3u8",
+    headers: proxyBase ? { "User-Agent": USER_AGENT } : FLIX_HEADERS,
+    language: audio.language,
+    subtitles
   };
 }
 
 async function resolveServer(server) {
   const audio = audioLabel(server && server.dataType);
-  // Preserve the exact Re:ANIME/FlixCloud embed variant for SUB. For DUB, keep
-  // the simpler direct MKV first and fall back to HLS if the download is absent.
   if (audio.tag === "SUB") return await resolveHlsFallback(server).catch(() => null);
   return await resolveDirectDownload(server).catch(() => null) || await resolveHlsFallback(server).catch(() => null);
 }
 
 async function fetchReAnimeServers(anilistId, episodeNumber) {
   for (const base of REANIME_DOMAINS) {
-    const data = await fetchJson(`${base}/api/flix/${anilistId}/${episodeNumber}`, { headers: { "Accept": "application/json, text/plain, */*", "Referer": `${base}/home` } });
+    const data = await fetchJson(`${base}/api/flix/${anilistId}/${episodeNumber}`, {
+      headers: { "Accept": "application/json, text/plain, */*", "Referer": `${base}/home` }
+    });
     if (data && data.success && Array.isArray(data.servers) && data.servers.length) return data.servers;
   }
   return [];
 }
 
 async function resolveTarget(tmdbId, type, tmdb, season, episode) {
-  const mapping = await resolveMalEpisode(tmdb.imdbId, type === "movie" ? 1 : (parseInt(season, 10) || 1), type === "movie" ? 1 : (parseFloat(episode) || 1));
+  const mapping = await resolveMalEpisode(
+    tmdb.imdbId,
+    type === "movie" ? 1 : (parseInt(season, 10) || 1),
+    type === "movie" ? 1 : (parseFloat(episode) || 1)
+  );
   if (mapping && mapping.mal_id) {
     const anilist = await malToAniList(mapping.mal_id);
-    if (anilist && anilist.id) return { anilist, episode: type === "movie" ? 1 : (parseFloat(mapping.mal_episode) || parseFloat(episode) || 1) };
+    if (anilist && anilist.id) {
+      return {
+        anilist,
+        episode: type === "movie" ? 1 : (parseFloat(mapping.mal_episode) || parseFloat(episode) || 1)
+      };
+    }
   }
   if (type === "movie") {
     const anilist = await findMovieByExactIdentity(tmdbId, tmdb);
@@ -288,11 +373,15 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     return settled.filter(Boolean).filter(stream => {
       const key = `${stream.url}|${stream.language}|${stream.type}`;
       if (!stream.url || seen.has(key)) return false;
-      seen.add(key); stream.title = `${animeTitle} • Episode ${target.episode} • ${stream.title}`; return true;
+      seen.add(key);
+      stream.title = `${animeTitle} • Episode ${target.episode} • ${stream.title}`;
+      return true;
     }).sort((a, b) => {
-      const dubA = a.language === "English" ? 1 : 0, dubB = b.language === "English" ? 1 : 0;
+      const dubA = a.language === "English" ? 1 : 0;
+      const dubB = b.language === "English" ? 1 : 0;
       if (dubA !== dubB) return dubB - dubA;
-      const mkvA = /MKV/i.test(a.name) ? 1 : 0, mkvB = /MKV/i.test(b.name) ? 1 : 0;
+      const mkvA = /MKV/i.test(a.name) ? 1 : 0;
+      const mkvB = /MKV/i.test(b.name) ? 1 : 0;
       if (mkvA !== mkvB) return mkvB - mkvA;
       return qualityRank(b.quality) - qualityRank(a.quality);
     });
@@ -302,5 +391,22 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
   }
 }
 
-if (typeof module !== "undefined" && module.exports) module.exports = { getStreams };
-else globalThis.getStreams = getStreams;
+async function onSettings() {
+  return [
+    { type: "header", label: "FlixCloud Playback" },
+    {
+      type: "text",
+      key: "flixProxyBase",
+      label: "FlixCloud Proxy URL",
+      description: "Optional Limitless Nexus FlixCloud proxy origin. Enables playable Re:ANIME SUB HLS by rewriting and decoding FlixCloud media segments.",
+      placeholder: "https://limitless-nexus-flixcloud.example.workers.dev",
+      defaultValue: ""
+    }
+  ];
+}
+
+if (typeof module !== "undefined" && module.exports) module.exports = { getStreams, onSettings };
+else {
+  globalThis.getStreams = getStreams;
+  globalThis.onSettings = onSettings;
+}
