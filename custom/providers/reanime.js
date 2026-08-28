@@ -246,9 +246,10 @@ async function resolveXorMask(html) {
 }
 
 function proxyUrl(base, path, params) {
-  const url = new URL(path, `${base}/`);
-  for (const [key, value] of Object.entries(params)) url.searchParams.set(key, String(value));
-  return url.toString();
+  const cleanBase = String(base || "").replace(/\/+$/, "");
+  const cleanPath = `/${String(path || "").replace(/^\/+|\/+$/g, "")}`;
+  const payload = encodeURIComponent(JSON.stringify(params || {}));
+  return `${cleanBase}${cleanPath}/${payload}`;
 }
 
 function proxySoftSubs(subtitles, proxyBase, maskHex) {
