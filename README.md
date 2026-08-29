@@ -35,9 +35,9 @@ Direct manifest link: [Limitless Nexus manifest](https://raw.githubusercontent.c
 | Provider | Version | Status | Coverage |
 |---|---:|---|---|
 | Re:ANIME | 1.5.0 | Complete | Anime movies and series; direct MKV; Japanese, English dub, dual audio, and embedded subtitles |
-| WCO | 1.0.0 | Active testing | Anime and cartoons; English dub, Japanese sub, legacy MP4, and premium HLS |
+| WCO | 1.0.1 | Active testing | Anime and cartoons; English dub, Japanese sub, legacy MP4, and premium HLS |
 
-Repository version: **1.7.0**
+Repository version: **1.7.1**
 
 ## Coverage plan and candidate roadmap
 
@@ -92,6 +92,7 @@ It uses TMDB/IMDb metadata, MAL episode mapping, and AniList identity resolution
 
 Current behavior:
 
+- Uses the complete dubbed, subbed, cartoon, movie, and OVA catalog indexes when WCO's normal search endpoint is challenged or unavailable.
 - Preserves both real HD-2 mirrors when two distinct files exist.
 - Deduplicates SUB and DUB server entries that resolve to the same MKV.
 - Labels a shared SUB+DUB file as `Dual Audio + Subs`.
