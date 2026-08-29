@@ -302,22 +302,32 @@ function parseMasterVariants(master, parentUrl) {
   if (!source.startsWith("#EXTM3U")) return [];
   const lines = source.split(/\r?\n/);
   const variants = [];
+  let streamTags = 0;
+  let childCandidates = 0;
+  const childHosts = new Set();
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line.startsWith("#EXT-X-STREAM-INF:")) continue;
+    streamTags++;
+
     let childLine = "";
     for (let j = i + 1; j < lines.length; j++) {
       const candidate = lines[j].trim();
       if (!candidate) continue;
-      if (candidate.startsWith("#")) break;
-      childLine = candidate;
+      if (candidate.startsWith("#EXT-X-STREAM-INF:")) break;
+      if (candidate.startsWith("#")) continue;
+      childLine = candidate.replace(/^['"]|['"]$/g, "");
       break;
     }
     if (!childLine) continue;
+    childCandidates++;
+
     let absolute;
     try { absolute = inheritToken(new URL(childLine, parentUrl).toString(), parentUrl); } catch (_) { continue; }
     try {
       const host = new URL(absolute).hostname.toLowerCase();
+      childHosts.add(host);
       if (host !== "flixcloud.cc" && !host.endsWith(".flixcloud.cc")) continue;
     } catch (_) { continue; }
 
@@ -334,6 +344,7 @@ function parseMasterVariants(master, parentUrl) {
     variants.push({ url: parentUrl, quality: "HLS", detail: "HLS", bandwidth: 0, resolution: "" });
   }
 
+  console.log(`[Re:ANIME] HLS parse streamTags=${streamTags} childCandidates=${childCandidates} variants=${variants.length} childHosts=${[...childHosts].join(",") || "none"}`);
   return variants.sort((a, b) => (b.bandwidth || qualityRank(b.quality)) - (a.bandwidth || qualityRank(a.quality)));
 }
 
@@ -393,7 +404,10 @@ async function resolveHlsVariants(server) {
     headers: { "Accept": "application/vnd.apple.mpegurl,application/x-mpegURL,text/plain,*/*" }
   });
   const variants = parseMasterVariants(master, stream.result.stream);
-  if (!variants.length) return [];
+  if (!variants.length) {
+    console.log(`[Re:ANIME] HLS variant parse returned zero results for ${serverName} ${audio.tag}`);
+    return [];
+  }
 
   return variants.slice(0, 4).map(variant => ({
     name: `${PROVIDER_NAME} • ${serverName} • ${variant.detail} • ${audio.language} [${audio.tag}] • HLS Proxy`,
