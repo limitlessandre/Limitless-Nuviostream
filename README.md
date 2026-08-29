@@ -35,9 +35,9 @@ Direct manifest link: [Limitless Nexus manifest](https://raw.githubusercontent.c
 | Provider | Version | Status | Coverage |
 |---|---:|---|---|
 | Re:ANIME | 1.5.0 | Complete | Anime movies and series; direct MKV; Japanese, English dub, dual audio, and embedded subtitles |
-| WCO | 1.0.1 | Active testing | Anime and cartoons; English dub, Japanese sub, legacy MP4, and premium HLS |
+| WCoflix | 1.1.0 | Baseline retest | Working `main` branch implementation restored unchanged before incremental mirror work |
 
-Repository version: **1.7.1**
+Repository version: **1.8.0**
 
 ## Coverage plan and candidate roadmap
 
@@ -110,43 +110,40 @@ Important debugging lesson: when differently labelled sources appear to play the
 
 The experimental FlixCloud Worker and proxy code remain in `proxy/flixcloud/` for future providers that genuinely require protected HLS. Re:ANIME itself does not use it.
 
-## WCO
+## WCoflix / WCO
 
-WCO is the second Nexus provider and is currently in active playback testing.
+WCoflix is the second Nexus provider and is currently back at its known-good baseline for playback retesting.
 
-The implementation was rebuilt by comparing the earlier `main` branch provider with the current Yuzono/AniYomi WCO theme. It combines the WCO mirror family into one Nuvio provider instead of publishing several near-identical entries.
+The first Nexus attempt imported too much of the current Yuzono/AniYomi WCO theme at once. Although upstream has broader mirror and embed handling, its Android-specific Cloudflare behavior and large catalog fallbacks did not translate cleanly to Nuvio's JavaScript runtime and returned no streams.
 
-Supported site fallbacks:
+Nexus therefore restored the working `main` branch WCoflix provider byte-for-byte as `custom/providers/wco.js`. This gives us a verified behavioral baseline before additional mirror work.
 
-1. WCOFlix
-2. WCOStream
-3. WCOForever
-4. WCO.tv
-5. WCOAnimeSub
-6. WCOAnimeDub
+Current baseline endpoints:
 
-Current behavior:
+1. WCOFlix search
+2. WCOForever series and episode pages
+3. `embed.wcostream.com` legacy extraction
+
+Current baseline behavior:
 
 - Searches alternate TMDB titles and ranks results before selecting a series or movie.
-- Handles multiple current and legacy episode-list layouts.
-- Preserves season and episode matching, with a season-one fallback for older pages lacking season metadata.
-- Processes every recognized iframe instead of using only the first embed.
-- Supports WCO's modern ad-verification/player initialization flow.
-- Falls back to the legacy `getvidlink.php` extractor where appropriate.
-- Decodes older obfuscated iframe pages used by some WCO mirrors.
+- Parses WCOForever's current episode-list layouts.
+- Preserves season and episode matching, including a season-one fallback.
+- Uses the first WCostream iframe, matching the working `main` provider.
+- Uses the proven legacy `getvidlink.php` extraction route.
 - Supports standard WCO MP4 qualities up to 1080p when supplied.
-- Supports the premium `vhs.watchanimesub` HLS host and exposes its individual playlist qualities.
-- Labels streams as English Dub, Japanese + Subs, Original Audio, or premium multi-audio/soft-sub content according to the source path.
-- Deduplicates identical streams returned through mirrored pages.
+- Labels English DUB and Japanese SUB results separately.
+- Exposes external English subtitle tracks when supplied by WCO.
+- Deduplicates identical returned streams.
 
-WCO's modern embed verification includes an intentional anti-bot delay. Source discovery can therefore take roughly 12 seconds per modern embed before playable links appear.
+Once the baseline is reconfirmed inside Nexus, mirror coverage and newer embed paths will be introduced individually. Each addition must preserve working streams before the next change is attempted.
 
-Recommended WCO tests:
+Recommended WCoflix baseline tests:
 
 - An anime episode with both SUB and DUB releases.
 - An English-language Western cartoon.
 - An anime movie.
-- A `Premium` result to verify HLS quality selection and available internal tracks.
+- Both available qualities for the same episode when WCO exposes them.
 
 ## Provider workflow
 
