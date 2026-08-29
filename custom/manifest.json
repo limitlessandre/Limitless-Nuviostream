@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -20,10 +20,10 @@
     },
     {
       "id": "limitless-wco",
-      "name": "WCoflix",
-      "description": "Known-good WCoflix baseline restored from the working main branch, using WCOFlix search, WCOForever episode pages, and the proven legacy WCO embed extractor.",
-      "version": "1.1.0",
-      "author": "Limitless working main-branch port based on cs-Karma / CloudStream MegaRepo",
+      "name": "WCO",
+      "description": "Unified WCOStream-first provider for anime and Western animation. Searches the healthy WCO catalog mirrors, keeps WCOStream/WCOFlix/WCOForever/WCO TV plus language-specific dub/sub fallbacks, supports current and legacy episode layouts and embeds, uses the current video-js-new/getvid flow with fhd/hd/enc quality handling, deduplicates by the resolved media URL, and only marks Dual Audio when SUB and DUB resolve to the same file. Explicit premium-only pages fail fast instead of exhausting the provider timeout.",
+      "version": "2.0.0",
+      "author": "Limitless Nexus rebuild based on current WCO live behavior and maintained AniYomi/Yuzono WCOTheme references",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco.js",
       "enabled": true,
@@ -35,4 +35,3 @@
     }
   ]
 }
-
