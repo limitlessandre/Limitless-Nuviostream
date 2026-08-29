@@ -352,4 +352,3 @@ const getStreams = async (tmdbId, mediaType, season, episode) => {
 };
 
 module.exports = { getStreams };
-
