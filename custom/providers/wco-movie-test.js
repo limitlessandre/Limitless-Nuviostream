@@ -22,7 +22,9 @@ function uniq(values) {
 
 function htmlDecode(value) {
   return String(value || "")
-    .replace(/&amp;/g, "&").replace(/&#39;|&#x27;/gi, "'").replace(/&quot;/g, "\"");
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&#x27;/gi, "'")
+    .replace(/&quot;/g, "\"");
 }
 
 function stripTags(value) {
@@ -56,7 +58,8 @@ function normalize(value) {
     .replace(/\bseason\s*\d+\b/g, " ")
     .replace(/\bepisode\s*\d+(?:\.\d+)?(?:\s*[-–]\s*\d+(?:\.\d+)?)?\b/g, " ")
     .replace(/\(\d{4}\)/g, " ")
-    .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ").trim();
 }
 
 function scoreTitle(candidate, wanted) {
@@ -126,11 +129,18 @@ async function req(url, options) {
   try {
     const res = await fetch(url, {
       ...opts,
-      headers: { "User-Agent": UA, "Accept": "*/*", "Accept-Language": "en-US,en;q=0.9", ...(opts.headers || {}) },
+      headers: {
+        "User-Agent": UA,
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        ...(opts.headers || {})
+      },
       skipSizeCheck: true
     });
     return { ok: !!res.ok, status: res.status || 0, url: res.url || url, text: String(await res.text() || "") };
-  } catch (_) { return { ok: false, status: 0, url, text: "" }; }
+  } catch (_) {
+    return { ok: false, status: 0, url, text: "" };
+  }
 }
 
 async function jsonReq(url, options) {
@@ -159,7 +169,9 @@ async function tmdbTarget(inputId, mediaType, season, episode) {
     const alt = ((data.alternative_titles && data.alternative_titles.titles) || []).map(x => x && x.title);
     const title = data.title || data.original_title || `TMDB ${id}`;
     return {
-      type: "movie", id, title,
+      type: "movie",
+      id,
+      title,
       targetAliases: targetAliases(title, [data.original_title].concat(alt)),
       seriesAliases: franchiseRoots(title, [data.original_title].concat(alt)),
       originalLanguage: String(data.original_language || "en").toLowerCase(),
@@ -175,7 +187,8 @@ async function tmdbTarget(inputId, mediaType, season, episode) {
   const showTitle = show.name || show.original_name || `TMDB ${id}`;
   const specialTitle = special.name || `Special ${episode}`;
   return {
-    type: "special", id,
+    type: "special",
+    id,
     title: `${showTitle} • ${specialTitle}`,
     targetAliases: targetAliases(specialTitle, []),
     seriesAliases: uniq([showTitle, show.original_name].concat(alt)).filter(Boolean),
@@ -189,9 +202,12 @@ function anchorLinks(html, base, forcedVariant) {
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
   while ((m = re.exec(String(html || ""))) && out.length < 1200) {
-    const href = absolute(m[1], base), text = stripTags(m[2]);
+    const href = absolute(m[1], base);
+    const text = stripTags(m[2]);
     if (!href || !text || !allowedWco(href)) continue;
-    if (!out.some(x => x.href === href && x.text === text)) out.push({ href, text, variant: classifyVariant(`${text} ${href}`, forcedVariant) });
+    if (!out.some(x => x.href === href && x.text === text)) {
+      out.push({ href, text, variant: classifyVariant(`${text} ${href}`, forcedVariant) });
+    }
   }
   return out;
 }
@@ -201,7 +217,11 @@ async function postSearch(query) {
   for (const origin of ORIGINS) {
     const page = await req(`${origin}/search`, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded", "Origin": origin, "Referer": `${origin}/` },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Origin": origin,
+        "Referer": `${origin}/`
+      },
       body: `catara=${encodeURIComponent(query)}&konuara=series`
     });
     if (page.ok) out.push(...anchorLinks(page.text, origin));
@@ -230,7 +250,8 @@ async function findDirectEntries(target) {
     if (out.some(x => x.score >= 112)) break;
   }
   return out.sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index).slice(0, 8);
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index)
+    .slice(0, 8);
 }
 
 async function findSeriesCandidates(target) {
@@ -244,7 +265,8 @@ async function findSeriesCandidates(target) {
     if (out.some(x => x.score >= 94)) break;
   }
   return out.sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index).slice(0, 6);
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index)
+    .slice(0, 6);
 }
 
 async function specialEntriesFromSeries(seriesUrl, target) {
@@ -265,12 +287,93 @@ async function specialEntriesFromSeries(seriesUrl, target) {
     }
   }
   return out.sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href && x.variant === item.variant) === index).slice(0, 10);
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href && x.variant === item.variant) === index)
+    .slice(0, 10);
+}
+
+function base64Decode(input) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  const clean = String(input || "").replace(/[^A-Za-z0-9+/=]/g, "");
+  let out = "", i = 0;
+  while (i < clean.length) {
+    const e1 = chars.indexOf(clean.charAt(i++));
+    const e2 = chars.indexOf(clean.charAt(i++));
+    const e3 = chars.indexOf(clean.charAt(i++));
+    const e4 = chars.indexOf(clean.charAt(i++));
+    if (e1 < 0 || e2 < 0) break;
+    out += String.fromCharCode((e1 << 2) | (e2 >> 4));
+    if (e3 !== 64 && e3 >= 0) out += String.fromCharCode(((e2 & 15) << 4) | (e3 >> 2));
+    if (e4 !== 64 && e4 >= 0) out += String.fromCharCode(((e3 & 3) << 6) | e4);
+  }
+  return out;
+}
+
+function iframeFromMarkup(markup, pageUrl) {
+  const m = String(markup || "").match(/<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
+  return m && m[1] ? absolute(m[1], pageUrl) : "";
+}
+
+function legacyIframe(html, pageUrl) {
+  const source = String(html || "");
+
+  // Some older WCO pages write a URI-encoded iframe through JavaScript.
+  const uriPatterns = [
+    /decodeURIComponent\(\s*["']([^"']+)["']\s*\)/gi,
+    /unescape\(\s*["']([^"']+)["']\s*\)/gi
+  ];
+  for (const re of uriPatterns) {
+    let m;
+    while ((m = re.exec(source))) {
+      try {
+        const decoded = decodeURIComponent(m[1]);
+        const frame = iframeFromMarkup(decoded, pageUrl);
+        if (frame) return frame;
+      } catch (_) {}
+    }
+  }
+
+  // Another long-lived WCO layout stores character codes as base64 strings,
+  // then subtracts a fixed shift before document.write().
+  try {
+    const scriptMatches = source.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
+    for (const script of scriptMatches) {
+      if (!/decodeURIComponent|fromCharCode|document\.write|base64|atob/i.test(script)) continue;
+      const list = script.match(/\[((?:\s*["'][A-Za-z0-9+/=]+["']\s*,?\s*){4,})\]/);
+      if (!list) continue;
+      const shifts = script.match(/-\s*(\d+)\s*\)/g) || [];
+      const shiftMatch = shifts.length ? shifts[shifts.length - 1].match(/(\d+)/) : null;
+      const shift = shiftMatch ? parseInt(shiftMatch[1], 10) : 0;
+      const parts = [];
+      const partRe = /["']([A-Za-z0-9+/=]+)["']/g;
+      let part;
+      while ((part = partRe.exec(list[1]))) parts.push(part[1]);
+      const decoded = parts.map(value => {
+        const digits = base64Decode(value).replace(/\D/g, "");
+        if (!digits) return "";
+        return String.fromCharCode(parseInt(digits, 10) - shift);
+      }).join("");
+      const frame = iframeFromMarkup(decoded, pageUrl);
+      if (frame) return frame;
+    }
+  } catch (_) {}
+
+  // Simple atob/document.write variants.
+  const atobRe = /atob\(\s*["']([A-Za-z0-9+/=]+)["']\s*\)/gi;
+  let atobMatch;
+  while ((atobMatch = atobRe.exec(source))) {
+    try {
+      const decoded = base64Decode(atobMatch[1]);
+      const frame = iframeFromMarkup(decoded, pageUrl);
+      if (frame) return frame;
+    } catch (_) {}
+  }
+
+  return "";
 }
 
 function iframeLink(html, pageUrl) {
-  const m = String(html || "").match(/<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
-  return m && m[1] ? absolute(m[1], pageUrl) : "";
+  const direct = iframeFromMarkup(html, pageUrl);
+  return direct || legacyIframe(html, pageUrl);
 }
 
 function replaceEmbedPath(embedUrl, path) {
@@ -279,22 +382,51 @@ function replaceEmbedPath(embedUrl, path) {
 }
 
 function getJsonPath(html) {
-  for (const re of [/\$\.getJSON\(\s*["']([^"']+)["']/i, /getJSON\(\s*["']([^"']+)["']/i, /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i]) {
+  for (const re of [
+    /\$\.getJSON\(\s*["']([^"']+)["']/i,
+    /getJSON\(\s*["']([^"']+)["']/i,
+    /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i
+  ]) {
     const m = String(html || "").match(re);
     if (m && m[1]) return htmlDecode(m[1].replace(/\\\//g, "/"));
   }
   return "";
 }
 
+function legacyLookup(embedUrl) {
+  try {
+    const params = new URLSearchParams(String(embedUrl || "").split("?").slice(1).join("?"));
+    const raw = params.get("file");
+    if (!raw) return "";
+    const embed = params.get("embed") || "";
+    const file = raw.replace(/\.flv/gi, ".mp4").replace(/%2F/gi, "/");
+    const origin = originOf(embedUrl);
+    if (params.has("fullhd")) {
+      return `${origin}/inc/embed/getvidlink.php?v=${embed}/${file}&embed=${embed}&fullhd=${params.get("fullhd") || "1"}`;
+    }
+    return `${origin}/inc/embed/getvidlink.php?v=${file}&embed=${embed}&hd=${params.get("hd") || "1"}`;
+  } catch (_) {
+    return "";
+  }
+}
+
 async function playerLookup(embedUrl) {
   for (const path of ["/inc/embed/video-js-new.php", "/inc/embed/video-js-old.php", "/inc/embed/video-js.php"]) {
     const url = replaceEmbedPath(embedUrl, path);
-    const page = await req(url, { headers: { "Referer": embedUrl, "Origin": originOf(embedUrl), "Sec-Fetch-Dest": "iframe", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-Site": "same-origin" } });
+    const page = await req(url, {
+      headers: {
+        "Referer": embedUrl,
+        "Origin": originOf(embedUrl),
+        "Sec-Fetch-Dest": "iframe",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "same-origin"
+      }
+    });
     if (!page.ok) continue;
     const found = getJsonPath(page.text);
     if (found) return absolute(found, originOf(embedUrl));
   }
-  return "";
+  return legacyLookup(embedUrl);
 }
 
 function cleanHost(value) {
@@ -308,7 +440,9 @@ function resolvedValue(text, responseUrl) {
     if (typeof data === "string") raw = data;
     else if (data && typeof data.url === "string") raw = data.url;
     else if (data && typeof data.file === "string") raw = data.file;
-  } catch (_) { raw = raw.replace(/^["']|["']$/g, ""); }
+  } catch (_) {
+    raw = raw.replace(/^["']|["']$/g, "");
+  }
   raw = String(raw || "").replace(/\\\//g, "/").replace(/\\/g, "").trim();
   if (/^https?:\/\//i.test(raw)) return raw;
   if (/^https?:\/\//i.test(String(responseUrl || "")) && !/\/getvid\?evid=/i.test(String(responseUrl))) return String(responseUrl);
@@ -330,30 +464,63 @@ function debugStream(message, target) {
 async function extractEntry(entry, target) {
   const page = await req(entry.href, { headers: { "Referer": `${originOf(entry.href)}/` } });
   if (!page.ok) return { streams: [], reason: `MATCHED ${entry.text} • HTTP ${page.status}` };
+
   const frame = iframeLink(page.text, entry.href);
-  if (!frame) return { streams: [], reason: `MATCHED ${entry.text} • NO IFRAME` };
+  if (!frame) return { streams: [], reason: `MATCHED ${entry.text} • NO IFRAME/LEGACY` };
   if (/user\.wcostream\.tv\/check-login/i.test(frame)) return { streams: [], reason: `MATCHED ${entry.text} • PREMIUM` };
   if (!/embed\.wcostream/i.test(frame)) return { streams: [], reason: `MATCHED ${entry.text} • FRAME ${originOf(frame)}` };
+
   const lookup = await playerLookup(frame);
   if (!lookup) return { streams: [], reason: `MATCHED ${entry.text} • NO PLAYER` };
-  const lookupRes = await req(lookup, { headers: { "Accept": "application/json, text/javascript, */*; q=0.01", "Referer": frame, "Origin": originOf(frame), "X-Requested-With": "XMLHttpRequest" } });
+  const lookupRes = await req(lookup, {
+    headers: {
+      "Accept": "application/json, text/javascript, */*; q=0.01",
+      "Referer": frame,
+      "Origin": originOf(frame),
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  });
   if (!lookupRes.ok) return { streams: [], reason: `MATCHED ${entry.text} • LOOKUP ${lookupRes.status}` };
+
   let data;
-  try { data = JSON.parse(lookupRes.text); } catch (_) { return { streams: [], reason: `MATCHED ${entry.text} • BAD JSON` }; }
+  try { data = JSON.parse(lookupRes.text); }
+  catch (_) { return { streams: [], reason: `MATCHED ${entry.text} • BAD JSON` }; }
+
   const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]);
   const meta = variantMeta(entry.variant, target.originalLanguage);
-  const qualities = [data.fhd ? ["1080p", data.fhd] : null, data.fullhd ? ["1080p", data.fullhd] : null, data.hd ? ["720p", data.hd] : null, data.enc ? ["480p", data.enc] : null].filter(Boolean);
+  const qualities = [
+    data.fhd ? ["1080p", data.fhd] : null,
+    data.fullhd ? ["1080p", data.fullhd] : null,
+    data.hd ? ["720p", data.hd] : null,
+    data.enc ? ["480p", data.enc] : null
+  ].filter(Boolean);
+
   const out = [];
   for (const item of qualities) {
     let media = "";
     for (const host of hosts) {
-      const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(item[1]))}&json`, { headers: { "Referer": frame, "Origin": originOf(frame) } });
+      const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(item[1]))}&json`, {
+        headers: { "Referer": frame, "Origin": originOf(frame) }
+      });
       if (!mediaRes.ok) continue;
       media = resolvedValue(mediaRes.text, mediaRes.url);
       if (media) break;
     }
     if (!media) continue;
-    out.push({ name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label} • ${entry.text}`, title: `${target.title}${target.year ? ` (${target.year})` : ""}`, url: media, quality: item[0], language: meta.language, provider: PROVIDER_NAME, type: /\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4", headers: { "Referer": frame, "Origin": originOf(frame), "User-Agent": UA } });
+    out.push({
+      name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label} • ${entry.text}`,
+      title: `${target.title}${target.year ? ` (${target.year})` : ""}`,
+      url: media,
+      quality: item[0],
+      language: meta.language,
+      provider: PROVIDER_NAME,
+      type: /\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4",
+      headers: {
+        "Referer": frame,
+        "Origin": originOf(frame),
+        "User-Agent": UA
+      }
+    });
   }
   return { streams: out, reason: out.length ? "" : `MATCHED ${entry.text} • NO MEDIA` };
 }
@@ -383,7 +550,7 @@ async function getStreams(inputId, mediaType, season, episode) {
       }
     }
 
-    if (bestReason) return debugStream(bestReason.slice(0, 120), target);
+    if (bestReason) return debugStream(bestReason.slice(0, 130), target);
     if (series.length) return debugStream(`SERIES ${series[0].text || series[0].href} • NO SPECIAL MATCH`, target);
     if (direct.length) return debugStream(`DIRECT ${direct[0].text || direct[0].href} • NO PLAYABLE`, target);
     return debugStream(`NO MATCH • ${target.targetAliases[0] || target.title}`, target);
