@@ -246,6 +246,16 @@ function findSeriesLink(html, pageUrl) {
   return "";
 }
 
+function episodeRange(value) {
+  const text = htmlDecode(String(value || ""));
+  let m = text.match(/Episode\s*(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)/i);
+  if (!m) m = text.match(/episode[-_ ]?(\d+(?:\.\d+)?)[-_ ]+(\d+(?:\.\d+)?)/i);
+  if (!m) return null;
+  const a = Number(m[1]), b = Number(m[2]);
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
+  return { start: Math.min(a, b), end: Math.max(a, b) };
+}
+
 function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant) {
   const exact = [];
   const neutral = [];
@@ -257,11 +267,21 @@ function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, fo
     const text = stripTags(m[2]);
     const href = absolute(m[1], pageUrl);
     if (!href || !text) continue;
-    const ep = text.match(/Episode\s*(\d+(?:\.\d+)?)/i) || href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
-    if (!ep || Number(ep[1]) !== wantedE) continue;
-    const foundSeason = explicitSeason(`${text} ${href}`);
+
+    const combined = `${text} ${href}`;
+    const range = episodeRange(combined);
+    let episodeMatch = false;
+    if (range) {
+      episodeMatch = wantedE >= range.start && wantedE <= range.end;
+    } else {
+      const ep = text.match(/Episode\s*(\d+(?:\.\d+)?)/i) || href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
+      episodeMatch = !!ep && Number(ep[1]) === wantedE;
+    }
+    if (!episodeMatch) continue;
+
+    const foundSeason = explicitSeason(combined);
     if (foundSeason != null && foundSeason !== wantedS) continue;
-    const detected = classifyVariant(`${text} ${href}`);
+    const detected = classifyVariant(combined);
     const variant = forcedVariant || detected;
     if (forcedVariant && detected !== "Original" && detected !== forcedVariant) continue;
     const item = { href, text, variant, season: foundSeason };
