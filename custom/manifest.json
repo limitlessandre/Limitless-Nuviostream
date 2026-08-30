@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,15 +21,15 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Nuvio-runtime-safe unified WCO provider for anime and Western animation. Uses raw HTML parsing instead of unsupported Cheerio methods, searches WCOStream/WCOFlix/WCOForever/WCO TV with deterministic slug fallbacks, keeps language-specific dub/sub mirrors, supports current episode layouts, uses the video-js-new/getvidlink flow, and hands Nuvio the WCO getvid media URLs directly for 1080p/720p/480p. Deduplication is based on the actual getvid URL and only labels Dual Audio when SUB and DUB converge on the same media endpoint. Premium-only pages fail fast.",
-      "version": "2.1.0",
+      "description": "Lean Nuvio-runtime-safe WCO baseline built from the exact diagnostic flow proven on-device: TMDB title lookup, WCOStream/WCOFlix/WCOForever search fallback, episode discovery, current video-js/getvidlink extraction, and small JSON media-token resolution for 1080p/720p/480p without downloading video bodies. Raw HTML parsing avoids unsupported Cheerio methods and the provider stops after the first working Dub/Sub paths instead of exhausting the plugin timeout.",
+      "version": "2.2.0",
       "author": "Limitless Nexus rebuild based on live Nuvio diagnostics and maintained AniYomi/Yuzono WCO behavior",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4"],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
     },
