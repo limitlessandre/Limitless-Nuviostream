@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Lean Nuvio-runtime-safe WCO baseline built from the exact diagnostic flow proven on-device: TMDB title lookup, WCOStream/WCOFlix/WCOForever search fallback, episode discovery, current video-js/getvidlink extraction, and small JSON media-token resolution for 1080p/720p/480p without downloading video bodies. Raw HTML parsing avoids unsupported Cheerio methods and the provider stops after the first working Dub/Sub paths instead of exhausting the plugin timeout.",
-      "version": "2.2.0",
+      "description": "Lean Nuvio-runtime-safe WCO provider using the on-device-proven WCO video-js/getvid flow. Season-aware candidate ranking and episode filtering prevent Episode 1 from a later season being selected for Season 1, while still allowing seasonless episode links on pages explicitly identified as the requested season. Supports WCOStream/WCOFlix/WCOForever search fallback and 1080p/720p/480p playback without downloading video bodies during extraction.",
+      "version": "2.2.1",
       "author": "Limitless Nexus rebuild based on live Nuvio diagnostics and maintained AniYomi/Yuzono WCO behavior",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco.js",
