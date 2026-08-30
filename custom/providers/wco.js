@@ -191,6 +191,29 @@ function searchLinks(html, origin) {
   return out;
 }
 
+async function addSearchResults(all, info, wanted, origin, query) {
+  const page = await req(`${origin}/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Origin": origin,
+      "Referer": `${origin}/`
+    },
+    body: `catara=${encodeURIComponent(query)}&konuara=series`
+  });
+  if (!page.ok) return;
+  const links = searchLinks(page.text, origin);
+  for (const item of links) {
+    const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
+    const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
+    if (seasonScore <= -1000 || baseScore < 45) continue;
+    const score = baseScore + seasonScore;
+    const existing = all.find(x => x.href === item.href);
+    if (!existing) all.push({ ...item, score });
+    else if (score > existing.score) existing.score = score;
+  }
+}
+
 async function searchWco(info, wantedSeason) {
   const all = [];
   const wanted = Number(wantedSeason || 1);
@@ -198,31 +221,35 @@ async function searchWco(info, wantedSeason) {
     const queries = wanted > 1 ? [`${title} Season ${wanted}`, title] : [title];
     for (const query of uniq(queries)) {
       for (const origin of ORIGINS) {
-        const page = await req(`${origin}/search`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Origin": origin,
-            "Referer": `${origin}/`
-          },
-          body: `catara=${encodeURIComponent(query)}&konuara=series`
-        });
-        if (!page.ok) continue;
-        const links = searchLinks(page.text, origin);
-        for (const item of links) {
-          const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
-          const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
-          if (seasonScore <= -1000) continue;
-          const score = baseScore + seasonScore;
-          if (baseScore >= 45 && !all.some(x => x.href === item.href)) all.push({ ...item, score });
-        }
+        await addSearchResults(all, info, wanted, origin, query);
         if (all.some(x => x.score >= 115)) break;
       }
       if (all.some(x => x.score >= 115)) break;
     }
     if (all.some(x => x.score >= 120)) break;
   }
-  return all.sort((a, b) => b.score - a.score).slice(0, 8);
+
+  const variants = new Set(all.map(x => x.variant));
+  const baseTitle = info.titles[0] || info.title;
+  const seasonSuffix = wanted > 1 ? ` Season ${wanted}` : "";
+
+  if (!variants.has("Sub")) {
+    const query = `${baseTitle}${seasonSuffix} English Subbed`;
+    for (const origin of ORIGINS.slice(0, 2)) {
+      await addSearchResults(all, info, wanted, origin, query);
+      if (all.some(x => x.variant === "Sub" && x.score >= 90)) break;
+    }
+  }
+
+  if (!variants.has("Dub")) {
+    const query = `${baseTitle}${seasonSuffix} English Dubbed`;
+    for (const origin of ORIGINS.slice(0, 2)) {
+      await addSearchResults(all, info, wanted, origin, query);
+      if (all.some(x => x.variant === "Dub" && x.score >= 90)) break;
+    }
+  }
+
+  return all.sort((a, b) => b.score - a.score).slice(0, 12);
 }
 
 function findSeriesLink(html, pageUrl) {
@@ -434,7 +461,19 @@ async function tvStreams(info, season, episode) {
   const collected = [];
   const gotVariants = new Set();
 
-  for (const candidate of candidates.slice(0, 5)) {
+  const orderedCandidates = candidates.slice(0, 12).sort((a, b) => {
+    const ar = a.variant === "Dub" ? 0 : a.variant === "Sub" ? 1 : 2;
+    const br = b.variant === "Dub" ? 0 : b.variant === "Sub" ? 1 : 2;
+    if (gotVariants.has("Dub") && !gotVariants.has("Sub")) {
+      const aa = a.variant === "Sub" ? 0 : 1;
+      const bb = b.variant === "Sub" ? 0 : 1;
+      if (aa !== bb) return aa - bb;
+    }
+    return ar - br || b.score - a.score;
+  });
+
+  for (const candidate of orderedCandidates) {
+    if (candidate.variant !== "Original" && gotVariants.has(candidate.variant)) continue;
     const series = await candidatePage(candidate);
     if (!series) continue;
     if (series.season != null && series.season !== wantedSeason) continue;
@@ -442,7 +481,7 @@ async function tvStreams(info, season, episode) {
     const episodes = episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season);
     if (!episodes.length) continue;
 
-    for (const entry of episodes.slice(0, 3)) {
+    for (const entry of episodes.slice(0, 4)) {
       const epPage = await req(entry.href, { headers: { "Referer": series.pageUrl } });
       if (!epPage.ok) continue;
       const frame = iframeLink(epPage.text, entry.href);
@@ -461,7 +500,7 @@ async function tvStreams(info, season, episode) {
       }
     }
 
-    if ((gotVariants.has("Dub") && gotVariants.has("Sub")) || collected.length >= 6) break;
+    if (gotVariants.has("Dub") && gotVariants.has("Sub")) break;
   }
 
   return finalize(collected, info);
