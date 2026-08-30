@@ -55,6 +55,42 @@ function normalize(value) {
     .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function explicitSeason(value) {
+  const text = htmlDecode(String(value || ""))
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  let m = text.match(/\bseason\s*(\d{1,2})\b/i);
+  if (m) return parseInt(m[1], 10) || null;
+  m = text.match(/\b(\d{1,2})(?:st|nd|rd|th)\s+season\b/i);
+  if (m) return parseInt(m[1], 10) || null;
+  m = text.match(/\bS(\d{1,2})E\d+(?:\.\d+)?\b/i);
+  if (m) return parseInt(m[1], 10) || null;
+  if (/\bsecond\s+season\b/i.test(text)) return 2;
+  if (/\bthird\s+season\b/i.test(text)) return 3;
+  if (/\bfourth\s+season\b/i.test(text)) return 4;
+  if (/\bfifth\s+season\b/i.test(text)) return 5;
+  return null;
+}
+
+function pageIdentityText(html) {
+  const text = String(html || "");
+  const parts = [];
+  for (const re of [/<title[^>]*>([\s\S]*?)<\/title>/i, /<h1[^>]*>([\s\S]*?)<\/h1>/i, /<h2[^>]*>([\s\S]*?)<\/h2>/i]) {
+    const m = text.match(re);
+    if (m && m[1]) parts.push(stripTags(m[1]));
+  }
+  return parts.join(" ");
+}
+
+function seasonPreference(value, wantedSeason) {
+  const wanted = Number(wantedSeason || 1);
+  const found = explicitSeason(value);
+  if (found != null && found !== wanted) return -1000;
+  if (found === wanted) return 25;
+  return wanted === 1 ? 10 : 0;
+}
+
 function scoreTitle(candidate, wanted) {
   const a = normalize(candidate), b = normalize(wanted);
   if (!a || !b) return 0;
@@ -155,28 +191,36 @@ function searchLinks(html, origin) {
   return out;
 }
 
-async function searchWco(info) {
+async function searchWco(info, wantedSeason) {
   const all = [];
+  const wanted = Number(wantedSeason || 1);
   for (const title of info.titles.slice(0, 3)) {
-    for (const origin of ORIGINS) {
-      const page = await req(`${origin}/search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Origin": origin,
-          "Referer": `${origin}/`
-        },
-        body: `catara=${encodeURIComponent(title)}&konuara=series`
-      });
-      if (!page.ok) continue;
-      const links = searchLinks(page.text, origin);
-      for (const item of links) {
-        const score = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
-        if (score >= 45 && !all.some(x => x.href === item.href)) all.push({ ...item, score });
+    const queries = wanted > 1 ? [`${title} Season ${wanted}`, title] : [title];
+    for (const query of uniq(queries)) {
+      for (const origin of ORIGINS) {
+        const page = await req(`${origin}/search`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Origin": origin,
+            "Referer": `${origin}/`
+          },
+          body: `catara=${encodeURIComponent(query)}&konuara=series`
+        });
+        if (!page.ok) continue;
+        const links = searchLinks(page.text, origin);
+        for (const item of links) {
+          const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
+          const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
+          if (seasonScore <= -1000) continue;
+          const score = baseScore + seasonScore;
+          if (baseScore >= 45 && !all.some(x => x.href === item.href)) all.push({ ...item, score });
+        }
+        if (all.some(x => x.score >= 115)) break;
       }
-      if (all.some(x => x.score >= 90)) break;
+      if (all.some(x => x.score >= 115)) break;
     }
-    if (all.some(x => x.score >= 95)) break;
+    if (all.some(x => x.score >= 120)) break;
   }
   return all.sort((a, b) => b.score - a.score).slice(0, 8);
 }
@@ -194,19 +238,32 @@ function findSeriesLink(html, pageUrl) {
   return "";
 }
 
-function episodeLinks(html, pageUrl, wantedEpisode) {
-  const out = [];
+function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason) {
+  const exact = [];
+  const neutral = [];
+  const wantedS = Number(wantedSeason || 1);
+  const wantedE = Number(wantedEpisode || 1);
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
-  while ((m = re.exec(String(html || ""))) && out.length < 700) {
+  while ((m = re.exec(String(html || ""))) && (exact.length + neutral.length) < 700) {
     const text = stripTags(m[2]);
     const href = absolute(m[1], pageUrl);
     if (!href || !text) continue;
     const ep = text.match(/Episode\s*(\d+(?:\.\d+)?)/i) || href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
-    if (!ep || Number(ep[1]) !== Number(wantedEpisode || 1)) continue;
-    out.push({ href, text, variant: classifyVariant(`${text} ${href}`) });
+    if (!ep || Number(ep[1]) !== wantedE) continue;
+
+    const season = explicitSeason(`${text} ${href}`);
+    if (season != null && season !== wantedS) continue;
+    const item = { href, text, variant: classifyVariant(`${text} ${href}`), season };
+    if (season === wantedS) exact.push(item);
+    else neutral.push(item);
   }
-  return out.filter((item, index) => out.findIndex(x => x.href === item.href) === index);
+
+  const dedupe = list => list.filter((item, index) => list.findIndex(x => x.href === item.href) === index);
+  if (exact.length) return dedupe(exact);
+  if (wantedS === 1) return dedupe(neutral);
+  if (Number(pageSeason || 0) === wantedS) return dedupe(neutral);
+  return [];
 }
 
 function iframeLink(html, pageUrl) {
@@ -366,18 +423,23 @@ async function candidatePage(candidate) {
       if (!page.ok) return null;
     }
   }
-  return { pageUrl, page };
+  const season = explicitSeason(`${candidate.title} ${pageUrl} ${pageIdentityText(page.text)}`);
+  return { pageUrl, page, season };
 }
 
 async function tvStreams(info, season, episode) {
-  const candidates = await searchWco(info);
+  const wantedSeason = Number(season || 1);
+  const wantedEpisode = Number(episode || 1);
+  const candidates = await searchWco(info, wantedSeason);
   const collected = [];
   const gotVariants = new Set();
 
   for (const candidate of candidates.slice(0, 5)) {
     const series = await candidatePage(candidate);
     if (!series) continue;
-    const episodes = episodeLinks(series.page.text, series.pageUrl, episode || 1);
+    if (series.season != null && series.season !== wantedSeason) continue;
+
+    const episodes = episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season);
     if (!episodes.length) continue;
 
     for (const entry of episodes.slice(0, 3)) {
@@ -389,7 +451,7 @@ async function tvStreams(info, season, episode) {
       const streams = await extractEmbed(
         frame,
         variant,
-        `${info.title} S${String(Number(season || 1)).padStart(2, "0")}E${String(Number(episode || 1)).padStart(2, "0")}`,
+        `${info.title} S${String(wantedSeason).padStart(2, "0")}E${String(wantedEpisode).padStart(2, "0")}`,
         info
       );
       if (streams.length) {
@@ -406,7 +468,7 @@ async function tvStreams(info, season, episode) {
 }
 
 async function movieStreams(info) {
-  const candidates = await searchWco(info);
+  const candidates = await searchWco(info, 1);
   for (const candidate of candidates.slice(0, 6)) {
     const page = await candidatePage(candidate);
     if (!page) continue;
@@ -415,7 +477,7 @@ async function movieStreams(info) {
       const streams = await extractEmbed(frame, candidate.variant, `${info.title}${info.year ? ` (${info.year})` : ""}`, info);
       if (streams.length) return finalize(streams, info);
     }
-    const entries = episodeLinks(page.page.text, page.pageUrl, 1);
+    const entries = episodeLinks(page.page.text, page.pageUrl, 1, 1, page.season);
     for (const entry of entries.slice(0, 2)) {
       const epPage = await req(entry.href, { headers: { "Referer": page.pageUrl } });
       if (!epPage.ok) continue;
