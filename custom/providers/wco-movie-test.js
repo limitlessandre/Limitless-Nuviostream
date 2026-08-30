@@ -1,6 +1,6 @@
 "use strict";
 
-const PROVIDER_NAME = "WCO Movie Test";
+const PROVIDER_NAME = "WCO Special Test";
 const TMDB_API_KEY = "1c29a5198ee1854bd5eb45dbe8d17d92";
 const ORIGINS = [
   "https://www.wcostream.tv",
@@ -49,7 +49,7 @@ function normalize(value) {
   return String(value || "").toLowerCase()
     .replace(/&amp;|&/g, " and ")
     .replace(/english\s+(dubbed|subbed)/g, " ")
-    .replace(/\b(dubbed|subbed|dub|sub)\b/g, " ")
+    .replace(/\b(dubbed|subbed|dub|sub|fullhd|hd)\b/g, " ")
     .replace(/\bseason\s*\d+\b/g, " ")
     .replace(/\bepisode\s*\d+(?:\.\d+)?(?:\s*[-–]\s*\d+(?:\.\d+)?)?\b/g, " ")
     .replace(/\bmovie\b/g, " ")
@@ -63,43 +63,62 @@ function scoreTitle(candidate, wanted) {
   if (!a || !b) return 0;
   if (a === b) return 100;
   if (a.startsWith(`${b} `) || b.startsWith(`${a} `)) return 94;
-  if (a.includes(b) || b.includes(a)) return 86;
+  if (a.includes(b) || b.includes(a)) return 88;
   const aw = a.split(" "), bw = b.split(" ");
   let overlap = 0;
   for (const word of bw) if (word.length > 1 && aw.includes(word)) overlap += 1;
-  return Math.round((overlap / Math.max(1, Math.max(aw.length, bw.length))) * 80);
+  const coverage = overlap / Math.max(1, bw.length);
+  return Math.round(coverage * 80);
 }
 
-function movieAliases(info) {
-  const out = [];
-  for (const title of info.titles || []) {
-    if (!title) continue;
-    out.push(title);
-    const colon = String(title).split(":");
-    if (colon.length > 1) out.push(colon.slice(1).join(":").trim());
-    const dash = String(title).split(/\s[-–—]\s/);
-    if (dash.length > 1) out.push(dash.slice(1).join(" ").trim());
-  }
-  return uniq(out);
-}
-
-function bestMovieScore(value, info) {
+function bestScore(value, aliases) {
   let score = 0;
-  for (const title of movieAliases(info)) score = Math.max(score, scoreTitle(value, title));
+  for (const alias of aliases || []) score = Math.max(score, scoreTitle(value, alias));
   return score;
 }
 
-function classifyVariant(value) {
+function targetAliases(title, alternatives) {
+  const out = [title].concat(alternatives || []);
+  for (const value of out.slice()) {
+    const raw = String(value || "").trim();
+    const colon = raw.split(":");
+    if (colon.length > 1) out.push(colon.slice(1).join(":").trim());
+    const dash = raw.split(/\s[-–—]\s/);
+    if (dash.length > 1) out.push(dash.slice(1).join(" ").trim());
+    const inMatch = raw.match(/^(.{1,40}?)\s+in\s+["'“”]?(.+?)["'“”]?$/i);
+    if (inMatch) out.push(inMatch[2].trim());
+    const quote = raw.match(/["'“”]([^"'“”]{4,})["'“”]/);
+    if (quote) out.push(quote[1].trim());
+  }
+  return uniq(out).filter(x => normalize(x).length >= 3);
+}
+
+function franchiseRoots(title, alternatives) {
+  const out = [];
+  for (const value of [title].concat(alternatives || [])) {
+    const raw = String(value || "").trim();
+    if (!raw) continue;
+    const colon = raw.split(":")[0].trim();
+    if (colon && colon.split(/\s+/).length <= 7) out.push(colon);
+    const inMatch = raw.match(/^(.{1,40}?)\s+in\s+["'“”]?.+$/i);
+    if (inMatch && inMatch[1].trim().split(/\s+/).length <= 7) out.push(inMatch[1].trim());
+  }
+  return uniq(out).filter(x => normalize(x).length >= 3);
+}
+
+function classifyVariant(value, forced) {
+  if (forced) return forced;
   const text = String(value || "").toLowerCase();
   if (/english[\s_-]*subbed|\bsubbed\b|\bsub\b/.test(text)) return "Sub";
   if (/english[\s_-]*dubbed|\bdubbed\b|\bdub\b/.test(text)) return "Dub";
-  return "Dub";
+  return "Original";
 }
 
-function variantMeta(variant) {
-  return variant === "Sub"
-    ? { label: "Japanese + English Hard Subs", language: "Japanese" }
-    : { label: "English Dub", language: "English" };
+function variantMeta(variant, originalLanguage) {
+  if (variant === "Sub") return { label: "Japanese + English Hard Subs", language: "Japanese" };
+  if (variant === "Dub") return { label: "English Dub", language: "English" };
+  if (String(originalLanguage || "").toLowerCase() === "ja") return { label: "Japanese (Original)", language: "Japanese" };
+  return { label: "English (Original)", language: "English" };
 }
 
 async function req(url, options) {
@@ -128,92 +147,135 @@ async function jsonReq(url, options) {
   try { return JSON.parse(res.text); } catch (_) { return null; }
 }
 
-async function tmdbInfo(inputId) {
+async function resolveTmdbId(inputId, type) {
   const raw = String(inputId || "").trim();
-  let id = /^\d+$/.test(raw) ? parseInt(raw, 10) : null;
-  if (!id && /^tt\d+$/i.test(raw)) {
-    const found = await jsonReq(`https://api.themoviedb.org/3/find/${encodeURIComponent(raw)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`);
-    id = found && found.movie_results && found.movie_results[0] ? found.movie_results[0].id : null;
-  }
+  if (/^\d+$/.test(raw)) return parseInt(raw, 10);
+  if (!/^tt\d+$/i.test(raw)) return null;
+  const found = await jsonReq(`https://api.themoviedb.org/3/find/${encodeURIComponent(raw)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`);
+  const list = type === "movie" ? found && found.movie_results : found && found.tv_results;
+  return Array.isArray(list) && list[0] && list[0].id ? parseInt(list[0].id, 10) : null;
+}
+
+async function tmdbTarget(inputId, mediaType, season, episode) {
+  const type = String(mediaType || "").toLowerCase() === "movie" ? "movie" : "tv";
+  const id = await resolveTmdbId(inputId, type);
   if (!id) return null;
-  const data = await jsonReq(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);
-  if (!data) return null;
-  const alt = ((data.alternative_titles && data.alternative_titles.titles) || []).map(x => x && x.title);
-  const title = data.title || data.original_title || `TMDB ${id}`;
+
+  if (type === "movie") {
+    const data = await jsonReq(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);
+    if (!data) return null;
+    const alt = ((data.alternative_titles && data.alternative_titles.titles) || []).map(x => x && x.title);
+    const title = data.title || data.original_title || `TMDB ${id}`;
+    return {
+      type: "movie", id, title,
+      targetAliases: targetAliases(title, [data.original_title].concat(alt)),
+      seriesAliases: franchiseRoots(title, [data.original_title].concat(alt)),
+      originalLanguage: String(data.original_language || "en").toLowerCase(),
+      year: String(data.release_date || "").slice(0, 4)
+    };
+  }
+
+  if (Number(season) !== 0) return null;
+  const show = await jsonReq(`https://api.themoviedb.org/3/tv/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);
+  const special = await jsonReq(`https://api.themoviedb.org/3/tv/${id}/season/0/episode/${Number(episode || 1)}?api_key=${TMDB_API_KEY}`);
+  if (!show || !special) return null;
+  const alt = ((show.alternative_titles && show.alternative_titles.results) || []).map(x => x && x.title);
+  const showTitle = show.name || show.original_name || `TMDB ${id}`;
+  const specialTitle = special.name || `Special ${episode}`;
   return {
-    id,
-    title,
-    titles: uniq([title, data.original_title].concat(alt)).slice(0, 10),
-    year: String(data.release_date || "").slice(0, 4)
+    type: "special", id,
+    title: `${showTitle} • ${specialTitle}`,
+    targetAliases: targetAliases(specialTitle, []),
+    seriesAliases: uniq([showTitle, show.original_name].concat(alt)).filter(Boolean),
+    originalLanguage: String(show.original_language || "").toLowerCase(),
+    year: String(special.air_date || show.first_air_date || "").slice(0, 4)
   };
 }
 
-function anchorLinks(html, base) {
+function anchorLinks(html, base, forcedVariant) {
   const out = [];
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
-  while ((m = re.exec(String(html || ""))) && out.length < 800) {
+  while ((m = re.exec(String(html || ""))) && out.length < 1000) {
     const href = absolute(m[1], base);
     const text = stripTags(m[2]);
-    if (!href || !text) continue;
-    if (!/^https?:\/\//i.test(href)) continue;
+    if (!href || !text || !/^https?:\/\//i.test(href)) continue;
     if (!/wco(?:stream|flix|forever)\./i.test(href)) continue;
-    if (!out.some(x => x.href === href)) out.push({ href, text, variant: classifyVariant(`${text} ${href}`) });
+    if (!out.some(x => x.href === href)) out.push({ href, text, variant: classifyVariant(`${text} ${href}`, forcedVariant) });
   }
   return out;
 }
 
-async function searchCandidates(info) {
+async function postSearch(query) {
   const out = [];
-  for (const query of movieAliases(info).slice(0, 4)) {
-    for (const origin of ORIGINS) {
-      const page = await req(`${origin}/search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Origin": origin,
-          "Referer": `${origin}/`
-        },
-        body: `catara=${encodeURIComponent(query)}&konuara=series`
-      });
-      if (!page.ok) continue;
-      for (const item of anchorLinks(page.text, origin)) {
-        const score = bestMovieScore(`${item.text} ${item.href}`, info);
-        if (score < 55) continue;
-        if (!out.some(x => x.href === item.href)) out.push({ ...item, score });
-      }
-      if (out.some(x => x.score >= 94)) break;
+  for (const origin of ORIGINS) {
+    const page = await req(`${origin}/search`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "Origin": origin, "Referer": `${origin}/` },
+      body: `catara=${encodeURIComponent(query)}&konuara=series`
+    });
+    if (!page.ok) continue;
+    out.push(...anchorLinks(page.text, origin));
+  }
+  return out.filter((item, index, list) => list.findIndex(x => x.href === item.href) === index);
+}
+
+async function findDirectEntries(target) {
+  const out = [];
+  for (const query of target.targetAliases.slice(0, 4)) {
+    const links = await postSearch(query);
+    for (const item of links) {
+      if (/\/anime\//i.test(item.href)) continue;
+      const score = bestScore(`${item.text} ${item.href}`, target.targetAliases);
+      if (score >= 82) out.push({ ...item, score });
     }
     if (out.some(x => x.score >= 94)) break;
   }
-  return out.sort((a, b) => b.score - a.score).slice(0, 12);
+  return out.sort((a, b) => b.score - a.score).slice(0, 6);
+}
+
+async function findSeriesCandidates(target) {
+  const out = [];
+  for (const seed of target.seriesAliases.slice(0, 5)) {
+    const links = await postSearch(seed);
+    for (const item of links) {
+      if (!/\/anime\//i.test(item.href)) continue;
+      const score = bestScore(`${item.text} ${item.href}`, target.seriesAliases);
+      if (score < 72) continue;
+      out.push({ ...item, score });
+    }
+    if (out.some(x => x.score >= 94)) break;
+  }
+  return out.sort((a, b) => b.score - a.score)
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index)
+    .slice(0, 6);
+}
+
+async function specialEntriesFromSeries(seriesUrl, target) {
+  const pages = [
+    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all`, variant: null },
+    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all&lang=dub`, variant: "Dub" },
+    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all&lang=sub`, variant: "Sub" }
+  ];
+  const out = [];
+  for (const source of pages) {
+    const page = await req(source.url, { headers: { "Referer": seriesUrl } });
+    if (!page.ok) continue;
+    for (const item of anchorLinks(page.text, source.url, source.variant)) {
+      if (/\/anime\//i.test(item.href)) continue;
+      const score = bestScore(`${item.text} ${item.href}`, target.targetAliases);
+      if (score < 78) continue;
+      out.push({ ...item, score });
+    }
+  }
+  return out.sort((a, b) => b.score - a.score)
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href && x.variant === item.variant) === index)
+    .slice(0, 8);
 }
 
 function iframeLink(html, pageUrl) {
   const m = String(html || "").match(/<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
   return m && m[1] ? absolute(m[1], pageUrl) : "";
-}
-
-function findSeriesLink(html, pageUrl) {
-  const patterns = [
-    /<div[^>]+class=["'][^"']*header-tag[^"']*["'][\s\S]*?<h2[^>]*>[\s\S]*?<a[^>]+href=["']([^"']+)["']/i,
-    /<div[^>]+class=["'][^"']*video-title[^"']*["'][\s\S]*?<a[^>]+href=["']([^"']+)["']/i,
-    /<a[^>]+href=["']([^"']*\/anime\/[^"']+)["']/i
-  ];
-  for (const re of patterns) {
-    const m = String(html || "").match(re);
-    if (m && m[1]) return absolute(m[1], pageUrl);
-  }
-  return "";
-}
-
-function bestSpecialEntries(html, pageUrl, info) {
-  return anchorLinks(html, pageUrl)
-    .map(x => ({ ...x, score: bestMovieScore(`${x.text} ${x.href}`, info) }))
-    .filter(x => x.score >= 65 && !/\/anime\//i.test(x.href))
-    .sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index)
-    .slice(0, 6);
 }
 
 function replaceEmbedPath(embedUrl, path) {
@@ -273,7 +335,7 @@ function resolvedValue(text, responseUrl) {
   return "";
 }
 
-async function extractEpisode(entry, info) {
+async function extractEntry(entry, target) {
   const page = await req(entry.href, { headers: { "Referer": `${originOf(entry.href)}/` } });
   if (!page.ok) return [];
   const frame = iframeLink(page.text, entry.href);
@@ -292,7 +354,7 @@ async function extractEpisode(entry, info) {
   let data;
   try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }
   const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]);
-  const meta = variantMeta(entry.variant);
+  const meta = variantMeta(entry.variant, target.originalLanguage);
   const qualities = [
     data.fhd ? ["1080p", data.fhd] : null,
     data.fullhd ? ["1080p", data.fullhd] : null,
@@ -313,7 +375,7 @@ async function extractEpisode(entry, info) {
     if (!media) continue;
     out.push({
       name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label} • ${entry.text}`,
-      title: `${info.title}${info.year ? ` (${info.year})` : ""}`,
+      title: `${target.title}${target.year ? ` (${target.year})` : ""}`,
       url: media,
       quality: item[0],
       language: meta.language,
@@ -325,31 +387,32 @@ async function extractEpisode(entry, info) {
   return out;
 }
 
-async function getStreams(inputId, mediaType) {
-  if (String(mediaType || "").toLowerCase() !== "movie") return [];
+function dedupeStreams(streams) {
+  const seen = new Set();
+  return (streams || []).filter(stream => {
+    const key = `${stream.quality}|${stream.url}`;
+    if (!stream.url || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+async function getStreams(inputId, mediaType, season, episode) {
+  const type = String(mediaType || "").toLowerCase() === "movie" ? "movie" : "tv";
+  if (type === "tv" && Number(season) !== 0) return [];
   try {
-    const info = await tmdbInfo(inputId);
-    if (!info) return [];
-    const candidates = await searchCandidates(info);
+    const target = await tmdbTarget(inputId, type, season, episode);
+    if (!target) return [];
 
-    for (const candidate of candidates) {
-      const first = await req(candidate.href, { headers: { "Referer": `${originOf(candidate.href)}/` } });
-      if (!first.ok) continue;
+    for (const entry of await findDirectEntries(target)) {
+      const streams = await extractEntry(entry, target);
+      if (streams.length) return dedupeStreams(streams);
+    }
 
-      const directScore = bestMovieScore(`${candidate.text || candidate.title || ""} ${candidate.href}`, info);
-      if (!/\/anime\//i.test(candidate.href) && directScore >= 70) {
-        const direct = await extractEpisode(candidate, info);
-        if (direct.length) return direct;
-      }
-
-      let seriesUrl = /\/anime\//i.test(candidate.href) ? candidate.href : findSeriesLink(first.text, candidate.href);
-      if (!seriesUrl) continue;
-      const series = seriesUrl === candidate.href ? first : await req(seriesUrl, { headers: { "Referer": candidate.href } });
-      if (!series.ok) continue;
-
-      for (const entry of bestSpecialEntries(series.text, seriesUrl, info)) {
-        const streams = await extractEpisode(entry, info);
-        if (streams.length) return streams;
+    for (const series of await findSeriesCandidates(target)) {
+      for (const entry of await specialEntriesFromSeries(series.href, target)) {
+        const streams = await extractEntry(entry, target);
+        if (streams.length) return dedupeStreams(streams);
       }
     }
     return [];
