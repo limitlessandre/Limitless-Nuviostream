@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.10",
+  "version": "1.9.11",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,10 +21,10 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Nuvio-runtime-safe WCO provider using the on-device-proven video-js/getvid flow. Uses the canonical WCO series page and WCO's own audio filters to collect English Dub and Japanese + English Subbed episode entries separately, preserves season-aware matching, and recognizes combined WCO episode ranges such as Episode 1-2 so the same source can appear under each covered Nuvio episode. Supports WCOStream/WCOFlix/WCOForever fallback and 1080p/720p/480p playback without downloading video bodies during extraction.",
+      "description": "Nuvio-runtime-safe WCO provider using the on-device-proven video-js/getvid flow. Uses the canonical WCO series page and WCO's own audio filters to collect English Dub and Japanese + English Subbed episode entries separately, preserves season-aware matching, and recognizes combined WCO episode ranges such as Episode 1-2 so the same source can appear under each covered Nuvio episode. Movie handling is temporarily withheld while title-based movie/special mapping is validated separately.",
       "version": "2.3.1",
       "author": "Limitless Nexus rebuild based on live Nuvio diagnostics and current WCO series-page behavior",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": ["tv", "anime"],
       "filename": "providers/wco.js",
       "enabled": true,
       "hasSettings": false,
@@ -36,8 +36,8 @@
     {
       "id": "limitless-wco-movie-test",
       "name": "WCO Special Test",
-      "description": "Temporary strict title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials that WCO stores inside a parent series episode list. Requires a strong parent-series match and a strong special-title match, and refuses weak random fallbacks instead of defaulting to Episode 1.",
-      "version": "0.2.0",
+      "description": "Temporary strict title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials stored inside a parent series. Searches WCOStream, WCO.tv, WCOFlix and WCOForever, combines parent-series and special-title queries, requires strong identity matches, and exposes a visible diagnostic card when the correct mapping is found but playback is premium-gated or otherwise unavailable.",
+      "version": "0.3.0",
       "author": "Limitless Nexus movie and special mapping diagnostic",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-movie-test.js",
