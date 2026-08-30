@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -30,6 +30,21 @@
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco-diagnostic",
+      "name": "WCO Diagnostic",
+      "description": "Temporary visible diagnostic provider. It does not extract playback yet; it reports the first successful/failed WCO pipeline stage directly in Nuvio's source list so debugging does not depend on plugin logs.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus diagnostic",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "providers/wco-diagnostic.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
     }
