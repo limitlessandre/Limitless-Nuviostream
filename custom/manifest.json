@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,15 +21,15 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Unified WCOStream-first provider for anime and Western animation. Searches the healthy WCO catalog mirrors, keeps WCOStream/WCOFlix/WCOForever/WCO TV plus language-specific dub/sub fallbacks, supports current and legacy episode layouts and embeds, uses the current video-js-new/getvid flow with fhd/hd/enc quality handling, deduplicates by the resolved media URL, and only marks Dual Audio when SUB and DUB resolve to the same file. Explicit premium-only pages fail fast instead of exhausting the provider timeout.",
-      "version": "2.0.0",
-      "author": "Limitless Nexus rebuild based on current WCO live behavior and maintained AniYomi/Yuzono WCOTheme references",
+      "description": "Nuvio-runtime-safe unified WCO provider for anime and Western animation. Uses raw HTML parsing instead of unsupported Cheerio methods, searches WCOStream/WCOFlix/WCOForever/WCO TV with deterministic slug fallbacks, keeps language-specific dub/sub mirrors, supports current episode layouts, uses the video-js-new/getvidlink flow, and hands Nuvio the WCO getvid media URLs directly for 1080p/720p/480p. Deduplication is based on the actual getvid URL and only labels Dual Audio when SUB and DUB converge on the same media endpoint. Premium-only pages fail fast.",
+      "version": "2.1.0",
+      "author": "Limitless Nexus rebuild based on live Nuvio diagnostics and maintained AniYomi/Yuzono WCO behavior",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": ["mp4"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
     },
