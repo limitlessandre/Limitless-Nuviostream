@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -35,11 +35,11 @@
     },
     {
       "id": "limitless-wco-movie-test",
-      "name": "WCO Movie Test",
-      "description": "Temporary movie-mapping test for WCO titles that are stored as series specials or numbered episodes on WCO but are separate movies in TMDB/Nuvio. Matches the requested movie title against WCO episode/special titles instead of assuming S1E1.",
-      "version": "0.1.0",
-      "author": "Limitless Nexus movie mapping diagnostic",
-      "supportedTypes": ["movie"],
+      "name": "WCO Special Test",
+      "description": "Temporary strict title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials that WCO stores inside a parent series episode list. Requires a strong parent-series match and a strong special-title match, and refuses weak random fallbacks instead of defaulting to Episode 1.",
+      "version": "0.2.0",
+      "author": "Limitless Nexus movie and special mapping diagnostic",
+      "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-movie-test.js",
       "enabled": true,
       "hasSettings": false,
