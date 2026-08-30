@@ -45,6 +45,14 @@ function absolute(value, base) {
   return `${origin}${raw.startsWith("/") ? raw : `/${raw}`}`;
 }
 
+function basePageUrl(url) {
+  return String(url || "").replace(/[?#].*$/, "").replace(/\/$/, "");
+}
+
+function audioFilterUrl(url, lang) {
+  return `${basePageUrl(url)}/?season=all&lang=${lang}`;
+}
+
 function normalize(value) {
   return String(value || "").toLowerCase()
     .replace(/&amp;|&/g, " and ")
@@ -52,7 +60,8 @@ function normalize(value) {
     .replace(/\b(dubbed|subbed|dub|sub)\b/g, " ")
     .replace(/\bseason\s*\d+\b/g, " ")
     .replace(/\bepisode\s*\d+(?:\.\d+)?\b/g, " ")
-    .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ").trim();
 }
 
 function explicitSeason(value) {
@@ -191,29 +200,6 @@ function searchLinks(html, origin) {
   return out;
 }
 
-async function addSearchResults(all, info, wanted, origin, query) {
-  const page = await req(`${origin}/search`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Origin": origin,
-      "Referer": `${origin}/`
-    },
-    body: `catara=${encodeURIComponent(query)}&konuara=series`
-  });
-  if (!page.ok) return;
-  const links = searchLinks(page.text, origin);
-  for (const item of links) {
-    const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
-    const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
-    if (seasonScore <= -1000 || baseScore < 45) continue;
-    const score = baseScore + seasonScore;
-    const existing = all.find(x => x.href === item.href);
-    if (!existing) all.push({ ...item, score });
-    else if (score > existing.score) existing.score = score;
-  }
-}
-
 async function searchWco(info, wantedSeason) {
   const all = [];
   const wanted = Number(wantedSeason || 1);
@@ -221,35 +207,30 @@ async function searchWco(info, wantedSeason) {
     const queries = wanted > 1 ? [`${title} Season ${wanted}`, title] : [title];
     for (const query of uniq(queries)) {
       for (const origin of ORIGINS) {
-        await addSearchResults(all, info, wanted, origin, query);
+        const page = await req(`${origin}/search`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Origin": origin,
+            "Referer": `${origin}/`
+          },
+          body: `catara=${encodeURIComponent(query)}&konuara=series`
+        });
+        if (!page.ok) continue;
+        for (const item of searchLinks(page.text, origin)) {
+          const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
+          const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
+          if (seasonScore <= -1000 || baseScore < 45) continue;
+          const score = baseScore + seasonScore;
+          if (!all.some(x => x.href === item.href)) all.push({ ...item, score });
+        }
         if (all.some(x => x.score >= 115)) break;
       }
       if (all.some(x => x.score >= 115)) break;
     }
     if (all.some(x => x.score >= 120)) break;
   }
-
-  const variants = new Set(all.map(x => x.variant));
-  const baseTitle = info.titles[0] || info.title;
-  const seasonSuffix = wanted > 1 ? ` Season ${wanted}` : "";
-
-  if (!variants.has("Sub")) {
-    const query = `${baseTitle}${seasonSuffix} English Subbed`;
-    for (const origin of ORIGINS.slice(0, 2)) {
-      await addSearchResults(all, info, wanted, origin, query);
-      if (all.some(x => x.variant === "Sub" && x.score >= 90)) break;
-    }
-  }
-
-  if (!variants.has("Dub")) {
-    const query = `${baseTitle}${seasonSuffix} English Dubbed`;
-    for (const origin of ORIGINS.slice(0, 2)) {
-      await addSearchResults(all, info, wanted, origin, query);
-      if (all.some(x => x.variant === "Dub" && x.score >= 90)) break;
-    }
-  }
-
-  return all.sort((a, b) => b.score - a.score).slice(0, 12);
+  return all.sort((a, b) => b.score - a.score).slice(0, 8);
 }
 
 function findSeriesLink(html, pageUrl) {
@@ -265,7 +246,7 @@ function findSeriesLink(html, pageUrl) {
   return "";
 }
 
-function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason) {
+function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant) {
   const exact = [];
   const neutral = [];
   const wantedS = Number(wantedSeason || 1);
@@ -278,14 +259,15 @@ function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason) {
     if (!href || !text) continue;
     const ep = text.match(/Episode\s*(\d+(?:\.\d+)?)/i) || href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
     if (!ep || Number(ep[1]) !== wantedE) continue;
-
-    const season = explicitSeason(`${text} ${href}`);
-    if (season != null && season !== wantedS) continue;
-    const item = { href, text, variant: classifyVariant(`${text} ${href}`), season };
-    if (season === wantedS) exact.push(item);
+    const foundSeason = explicitSeason(`${text} ${href}`);
+    if (foundSeason != null && foundSeason !== wantedS) continue;
+    const detected = classifyVariant(`${text} ${href}`);
+    const variant = forcedVariant || detected;
+    if (forcedVariant && detected !== "Original" && detected !== forcedVariant) continue;
+    const item = { href, text, variant, season: foundSeason };
+    if (foundSeason === wantedS) exact.push(item);
     else neutral.push(item);
   }
-
   const dedupe = list => list.filter((item, index) => list.findIndex(x => x.href === item.href) === index);
   if (exact.length) return dedupe(exact);
   if (wantedS === 1) return dedupe(neutral);
@@ -305,12 +287,11 @@ function replaceEmbedPath(embedUrl, path) {
 
 function getJsonPath(html) {
   const text = String(html || "");
-  const patterns = [
+  for (const re of [
     /\$\.getJSON\(\s*["']([^"']+)["']/i,
     /getJSON\(\s*["']([^"']+)["']/i,
     /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i
-  ];
-  for (const re of patterns) {
+  ]) {
     const m = text.match(re);
     if (m && m[1]) return htmlDecode(m[1].replace(/\\\//g, "/"));
   }
@@ -373,7 +354,6 @@ function resolvedValue(text, responseUrl) {
 async function extractEmbed(embedUrl, variant, displayTitle, info) {
   if (!embedUrl || /user\.wcostream\.tv\/check-login/i.test(embedUrl)) return [];
   if (!/embed\.wcostream/i.test(embedUrl)) return [];
-
   const lookup = await playerLookup(embedUrl);
   if (!lookup) return [];
   const lookupRes = await req(lookup, {
@@ -385,14 +365,11 @@ async function extractEmbed(embedUrl, variant, displayTitle, info) {
     }
   });
   if (!lookupRes.ok) return [];
-
   let data;
   try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }
   const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]);
   if (!hosts.length) return [];
-
-  const detected = classifyVariant(`${variant} ${embedUrl}`);
-  const finalVariant = detected === "Original" ? variant : detected;
+  const finalVariant = variant || "Original";
   const meta = variantMeta(finalVariant, info.originalLanguage);
   const qualities = [
     data.fhd ? ["1080p", data.fhd] : null,
@@ -400,14 +377,11 @@ async function extractEmbed(embedUrl, variant, displayTitle, info) {
     data.hd ? ["720p", data.hd] : null,
     data.enc ? ["480p", data.enc] : null
   ].filter(Boolean);
-
-  const out = [];
-  const seen = new Set();
+  const out = [], seen = new Set();
   for (const item of qualities) {
     const key = `${item[0]}|${item[1]}`;
     if (seen.has(key)) continue;
     seen.add(key);
-
     let media = "";
     for (const host of hosts) {
       const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(item[1]))}&json`, {
@@ -418,7 +392,6 @@ async function extractEmbed(embedUrl, variant, displayTitle, info) {
       if (media) break;
     }
     if (!media) continue;
-
     out.push({
       name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label}`,
       title: displayTitle,
@@ -454,76 +427,56 @@ async function candidatePage(candidate) {
   return { pageUrl, page, season };
 }
 
+async function extractVariantFromSeries(series, variant, wantedSeason, wantedEpisode, displayTitle, info) {
+  const lang = variant === "Sub" ? "sub" : "dub";
+  const filteredUrl = audioFilterUrl(series.pageUrl, lang);
+  let filtered = await req(filteredUrl, { headers: { "Referer": series.pageUrl } });
+  let episodes = filtered.ok
+    ? episodeLinks(filtered.text, filteredUrl, wantedSeason, wantedEpisode, series.season, variant)
+    : [];
+
+  if (!episodes.length) {
+    episodes = episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season, variant);
+  }
+
+  for (const entry of episodes.slice(0, 3)) {
+    const epPage = await req(entry.href, { headers: { "Referer": filtered.ok ? filteredUrl : series.pageUrl } });
+    if (!epPage.ok) continue;
+    const frame = iframeLink(epPage.text, entry.href);
+    if (!frame || /user\.wcostream\.tv\/check-login/i.test(frame)) continue;
+    const streams = await extractEmbed(frame, variant, displayTitle, info);
+    if (streams.length) return streams;
+  }
+  return [];
+}
+
 async function tvStreams(info, season, episode) {
   const wantedSeason = Number(season || 1);
   const wantedEpisode = Number(episode || 1);
   const candidates = await searchWco(info, wantedSeason);
-  const collected = [];
-  const gotVariants = new Set();
+  const displayTitle = `${info.title} S${String(wantedSeason).padStart(2, "0")}E${String(wantedEpisode).padStart(2, "0")}`;
 
-  const orderedCandidates = candidates.slice(0, 12).sort((a, b) => {
-    const ar = a.variant === "Dub" ? 0 : a.variant === "Sub" ? 1 : 2;
-    const br = b.variant === "Dub" ? 0 : b.variant === "Sub" ? 1 : 2;
-    if (gotVariants.has("Dub") && !gotVariants.has("Sub")) {
-      const aa = a.variant === "Sub" ? 0 : 1;
-      const bb = b.variant === "Sub" ? 0 : 1;
-      if (aa !== bb) return aa - bb;
-    }
-    return ar - br || b.score - a.score;
-  });
-
-  for (const candidate of orderedCandidates) {
-    if (candidate.variant !== "Original" && gotVariants.has(candidate.variant)) continue;
+  for (const candidate of candidates.slice(0, 6)) {
     const series = await candidatePage(candidate);
     if (!series) continue;
     if (series.season != null && series.season !== wantedSeason) continue;
 
-    const episodes = episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season);
-    if (!episodes.length) continue;
-
-    for (const entry of episodes.slice(0, 4)) {
-      const epPage = await req(entry.href, { headers: { "Referer": series.pageUrl } });
-      if (!epPage.ok) continue;
-      const frame = iframeLink(epPage.text, entry.href);
-      if (!frame || /user\.wcostream\.tv\/check-login/i.test(frame)) continue;
-      const variant = entry.variant !== "Original" ? entry.variant : candidate.variant;
-      const streams = await extractEmbed(
-        frame,
-        variant,
-        `${info.title} S${String(wantedSeason).padStart(2, "0")}E${String(wantedEpisode).padStart(2, "0")}`,
-        info
-      );
-      if (streams.length) {
-        collected.push(...streams);
-        gotVariants.add(streams[0]._variant || variant || "Original");
-        break;
-      }
-    }
-
-    if (gotVariants.has("Dub") && gotVariants.has("Sub")) break;
+    const dub = await extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info);
+    const sub = await extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info);
+    const combined = dub.concat(sub);
+    if (combined.length) return finalize(combined, info);
   }
-
-  return finalize(collected, info);
+  return [];
 }
 
 async function movieStreams(info) {
   const candidates = await searchWco(info, 1);
   for (const candidate of candidates.slice(0, 6)) {
-    const page = await candidatePage(candidate);
-    if (!page) continue;
-    let frame = iframeLink(page.page.text, page.pageUrl);
-    if (frame) {
-      const streams = await extractEmbed(frame, candidate.variant, `${info.title}${info.year ? ` (${info.year})` : ""}`, info);
-      if (streams.length) return finalize(streams, info);
-    }
-    const entries = episodeLinks(page.page.text, page.pageUrl, 1, 1, page.season);
-    for (const entry of entries.slice(0, 2)) {
-      const epPage = await req(entry.href, { headers: { "Referer": page.pageUrl } });
-      if (!epPage.ok) continue;
-      frame = iframeLink(epPage.text, entry.href);
-      if (!frame) continue;
-      const variant = entry.variant !== "Original" ? entry.variant : candidate.variant;
-      const streams = await extractEmbed(frame, variant, `${info.title}${info.year ? ` (${info.year})` : ""}`, info);
+    const series = await candidatePage(candidate);
+    if (!series) continue;
+    const title = `${info.title}${info.year ? ` (${info.year})` : ""}`;
+    for (const variant of ["Dub", "Sub"]) {
+      const streams = await extractVariantFromSeries(series, variant, 1, 1, title, info);
       if (streams.length) return finalize(streams, info);
     }
   }
@@ -550,7 +503,6 @@ function finalize(streams, info) {
     else if (stream._variants.has("Dub")) meta = variantMeta("Dub", info.originalLanguage);
     else if (stream._variants.has("Sub")) meta = variantMeta("Sub", info.originalLanguage);
     else meta = variantMeta("Original", info.originalLanguage);
-
     const clean = { ...stream };
     delete clean._variant;
     delete clean._variants;
@@ -578,9 +530,7 @@ async function getStreams(inputId, mediaType, season, episode) {
   try {
     const info = await tmdbInfo(inputId, type);
     if (!info) return [];
-    return type === "movie"
-      ? await movieStreams(info)
-      : await tvStreams(info, season, episode);
+    return type === "movie" ? await movieStreams(info) : await tvStreams(info, season, episode);
   } catch (e) {
     console.error(`[${PROVIDER_NAME}] ${String(e && e.message || e)}`);
     return [];
