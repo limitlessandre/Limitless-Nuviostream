@@ -4,6 +4,7 @@ const PROVIDER_NAME = "WCO Special Test";
 const TMDB_API_KEY = "1c29a5198ee1854bd5eb45dbe8d17d92";
 const ORIGINS = [
   "https://www.wcostream.tv",
+  "https://www.wco.tv",
   "https://www.wcoflix.tv",
   "https://www.wcoforever.net"
 ];
@@ -21,10 +22,7 @@ function uniq(values) {
 
 function htmlDecode(value) {
   return String(value || "")
-    .replace(/&amp;/g, "&")
-    .replace(/&#39;/g, "'")
-    .replace(/&#x27;/gi, "'")
-    .replace(/&quot;/g, "\"");
+    .replace(/&amp;/g, "&").replace(/&#39;|&#x27;/gi, "'").replace(/&quot;/g, "\"");
 }
 
 function stripTags(value) {
@@ -45,17 +43,20 @@ function absolute(value, base) {
   return `${origin}${raw.startsWith("/") ? raw : `/${raw}`}`;
 }
 
+function allowedWco(url) {
+  const host = (String(url || "").match(/^https?:\/\/([^/]+)/i) || [])[1] || "";
+  return /(^|\.)(wcostream\.tv|wco\.tv|wcoflix\.tv|wcoforever\.net)$/i.test(host);
+}
+
 function normalize(value) {
   return String(value || "").toLowerCase()
     .replace(/&amp;|&/g, " and ")
     .replace(/english\s+(dubbed|subbed)/g, " ")
-    .replace(/\b(dubbed|subbed|dub|sub|fullhd|hd)\b/g, " ")
+    .replace(/\b(dubbed|subbed|dub|sub|fullhd|hd|movie)\b/g, " ")
     .replace(/\bseason\s*\d+\b/g, " ")
     .replace(/\bepisode\s*\d+(?:\.\d+)?(?:\s*[-–]\s*\d+(?:\.\d+)?)?\b/g, " ")
-    .replace(/\bmovie\b/g, " ")
     .replace(/\(\d{4}\)/g, " ")
-    .replace(/[^a-z0-9]+/g, " ")
-    .replace(/\s+/g, " ").trim();
+    .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function scoreTitle(candidate, wanted) {
@@ -67,8 +68,7 @@ function scoreTitle(candidate, wanted) {
   const aw = a.split(" "), bw = b.split(" ");
   let overlap = 0;
   for (const word of bw) if (word.length > 1 && aw.includes(word)) overlap += 1;
-  const coverage = overlap / Math.max(1, bw.length);
-  return Math.round(coverage * 80);
+  return Math.round((overlap / Math.max(1, bw.length)) * 80);
 }
 
 function bestScore(value, aliases) {
@@ -85,7 +85,7 @@ function targetAliases(title, alternatives) {
     if (colon.length > 1) out.push(colon.slice(1).join(":").trim());
     const dash = raw.split(/\s[-–—]\s/);
     if (dash.length > 1) out.push(dash.slice(1).join(" ").trim());
-    const inMatch = raw.match(/^(.{1,40}?)\s+in\s+["'“”]?(.+?)["'“”]?$/i);
+    const inMatch = raw.match(/^(.{1,60}?)\s+in\s+["'“”]?(.+?)["'“”]?$/i);
     if (inMatch) out.push(inMatch[2].trim());
     const quote = raw.match(/["'“”]([^"'“”]{4,})["'“”]/);
     if (quote) out.push(quote[1].trim());
@@ -98,10 +98,10 @@ function franchiseRoots(title, alternatives) {
   for (const value of [title].concat(alternatives || [])) {
     const raw = String(value || "").trim();
     if (!raw) continue;
+    const inMatch = raw.match(/^(.{1,60}?)\s+in\s+["'“”]?.+$/i);
+    if (inMatch) out.push(inMatch[1].trim());
     const colon = raw.split(":")[0].trim();
-    if (colon && colon.split(/\s+/).length <= 7) out.push(colon);
-    const inMatch = raw.match(/^(.{1,40}?)\s+in\s+["'“”]?.+$/i);
-    if (inMatch && inMatch[1].trim().split(/\s+/).length <= 7) out.push(inMatch[1].trim());
+    if (colon && colon.split(/\s+/).length <= 8) out.push(colon);
   }
   return uniq(out).filter(x => normalize(x).length >= 3);
 }
@@ -126,19 +126,11 @@ async function req(url, options) {
   try {
     const res = await fetch(url, {
       ...opts,
-      headers: {
-        "User-Agent": UA,
-        "Accept": "*/*",
-        "Accept-Language": "en-US,en;q=0.9",
-        ...(opts.headers || {})
-      },
+      headers: { "User-Agent": UA, "Accept": "*/*", "Accept-Language": "en-US,en;q=0.9", ...(opts.headers || {}) },
       skipSizeCheck: true
     });
-    const text = String(await res.text() || "");
-    return { ok: !!res.ok, status: res.status || 0, url: res.url || url, text };
-  } catch (_) {
-    return { ok: false, status: 0, url, text: "" };
-  }
+    return { ok: !!res.ok, status: res.status || 0, url: res.url || url, text: String(await res.text() || "") };
+  } catch (_) { return { ok: false, status: 0, url, text: "" }; }
 }
 
 async function jsonReq(url, options) {
@@ -196,12 +188,10 @@ function anchorLinks(html, base, forcedVariant) {
   const out = [];
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
-  while ((m = re.exec(String(html || ""))) && out.length < 1000) {
-    const href = absolute(m[1], base);
-    const text = stripTags(m[2]);
-    if (!href || !text || !/^https?:\/\//i.test(href)) continue;
-    if (!/wco(?:stream|flix|forever)\./i.test(href)) continue;
-    if (!out.some(x => x.href === href)) out.push({ href, text, variant: classifyVariant(`${text} ${href}`, forcedVariant) });
+  while ((m = re.exec(String(html || ""))) && out.length < 1200) {
+    const href = absolute(m[1], base), text = stripTags(m[2]);
+    if (!href || !text || !allowedWco(href)) continue;
+    if (!out.some(x => x.href === href && x.text === text)) out.push({ href, text, variant: classifyVariant(`${text} ${href}`, forcedVariant) });
   }
   return out;
 }
@@ -214,48 +204,55 @@ async function postSearch(query) {
       headers: { "Content-Type": "application/x-www-form-urlencoded", "Origin": origin, "Referer": `${origin}/` },
       body: `catara=${encodeURIComponent(query)}&konuara=series`
     });
-    if (!page.ok) continue;
-    out.push(...anchorLinks(page.text, origin));
+    if (page.ok) out.push(...anchorLinks(page.text, origin));
   }
   return out.filter((item, index, list) => list.findIndex(x => x.href === item.href) === index);
 }
 
+function comboQueries(target) {
+  const out = [];
+  for (const root of target.seriesAliases.slice(0, 3)) {
+    for (const title of target.targetAliases.slice(0, 3)) out.push(`${root} ${title}`);
+  }
+  return uniq(out.concat(target.targetAliases.slice(0, 4), target.seriesAliases.slice(0, 4)));
+}
+
 async function findDirectEntries(target) {
   const out = [];
-  for (const query of target.targetAliases.slice(0, 4)) {
-    const links = await postSearch(query);
-    for (const item of links) {
+  for (const query of comboQueries(target).slice(0, 8)) {
+    for (const item of await postSearch(query)) {
       if (/\/anime\//i.test(item.href)) continue;
-      const score = bestScore(`${item.text} ${item.href}`, target.targetAliases);
-      if (score >= 82) out.push({ ...item, score });
+      const targetScore = bestScore(`${item.text} ${item.href}`, target.targetAliases);
+      const seriesScore = target.seriesAliases.length ? bestScore(`${item.text} ${item.href}`, target.seriesAliases) : 100;
+      if (targetScore < 82 || seriesScore < 55) continue;
+      out.push({ ...item, score: targetScore + Math.min(20, Math.round(seriesScore / 5)) });
     }
-    if (out.some(x => x.score >= 94)) break;
+    if (out.some(x => x.score >= 112)) break;
   }
-  return out.sort((a, b) => b.score - a.score).slice(0, 6);
+  return out.sort((a, b) => b.score - a.score)
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index).slice(0, 8);
 }
 
 async function findSeriesCandidates(target) {
   const out = [];
   for (const seed of target.seriesAliases.slice(0, 5)) {
-    const links = await postSearch(seed);
-    for (const item of links) {
+    for (const item of await postSearch(seed)) {
       if (!/\/anime\//i.test(item.href)) continue;
       const score = bestScore(`${item.text} ${item.href}`, target.seriesAliases);
-      if (score < 72) continue;
-      out.push({ ...item, score });
+      if (score >= 76) out.push({ ...item, score });
     }
     if (out.some(x => x.score >= 94)) break;
   }
   return out.sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index)
-    .slice(0, 6);
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href) === index).slice(0, 6);
 }
 
 async function specialEntriesFromSeries(seriesUrl, target) {
+  const base = String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "");
   const pages = [
-    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all`, variant: null },
-    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all&lang=dub`, variant: "Dub" },
-    { url: `${String(seriesUrl).replace(/[?#].*$/, "").replace(/\/$/, "")}/?season=all&lang=sub`, variant: "Sub" }
+    { url: `${base}/?season=all`, variant: null },
+    { url: `${base}/?season=all&lang=dub`, variant: "Dub" },
+    { url: `${base}/?season=all&lang=sub`, variant: "Sub" }
   ];
   const out = [];
   for (const source of pages) {
@@ -264,13 +261,11 @@ async function specialEntriesFromSeries(seriesUrl, target) {
     for (const item of anchorLinks(page.text, source.url, source.variant)) {
       if (/\/anime\//i.test(item.href)) continue;
       const score = bestScore(`${item.text} ${item.href}`, target.targetAliases);
-      if (score < 78) continue;
-      out.push({ ...item, score });
+      if (score >= 78) out.push({ ...item, score });
     }
   }
   return out.sort((a, b) => b.score - a.score)
-    .filter((item, index, list) => list.findIndex(x => x.href === item.href && x.variant === item.variant) === index)
-    .slice(0, 8);
+    .filter((item, index, list) => list.findIndex(x => x.href === item.href && x.variant === item.variant) === index).slice(0, 10);
 }
 
 function iframeLink(html, pageUrl) {
@@ -284,13 +279,8 @@ function replaceEmbedPath(embedUrl, path) {
 }
 
 function getJsonPath(html) {
-  const text = String(html || "");
-  for (const re of [
-    /\$\.getJSON\(\s*["']([^"']+)["']/i,
-    /getJSON\(\s*["']([^"']+)["']/i,
-    /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i
-  ]) {
-    const m = text.match(re);
+  for (const re of [/\$\.getJSON\(\s*["']([^"']+)["']/i, /getJSON\(\s*["']([^"']+)["']/i, /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i]) {
+    const m = String(html || "").match(re);
     if (m && m[1]) return htmlDecode(m[1].replace(/\\\//g, "/"));
   }
   return "";
@@ -299,15 +289,7 @@ function getJsonPath(html) {
 async function playerLookup(embedUrl) {
   for (const path of ["/inc/embed/video-js-new.php", "/inc/embed/video-js-old.php", "/inc/embed/video-js.php"]) {
     const url = replaceEmbedPath(embedUrl, path);
-    const page = await req(url, {
-      headers: {
-        "Referer": embedUrl,
-        "Origin": originOf(embedUrl),
-        "Sec-Fetch-Dest": "iframe",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin"
-      }
-    });
+    const page = await req(url, { headers: { "Referer": embedUrl, "Origin": originOf(embedUrl), "Sec-Fetch-Dest": "iframe", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-Site": "same-origin" } });
     if (!page.ok) continue;
     const found = getJsonPath(page.text);
     if (found) return absolute(found, originOf(embedUrl));
@@ -326,75 +308,54 @@ function resolvedValue(text, responseUrl) {
     if (typeof data === "string") raw = data;
     else if (data && typeof data.url === "string") raw = data.url;
     else if (data && typeof data.file === "string") raw = data.file;
-  } catch (_) {
-    raw = raw.replace(/^["']|["']$/g, "");
-  }
+  } catch (_) { raw = raw.replace(/^["']|["']$/g, ""); }
   raw = String(raw || "").replace(/\\\//g, "/").replace(/\\/g, "").trim();
   if (/^https?:\/\//i.test(raw)) return raw;
   if (/^https?:\/\//i.test(String(responseUrl || "")) && !/\/getvid\?evid=/i.test(String(responseUrl))) return String(responseUrl);
   return "";
 }
 
+function debugStream(message, target) {
+  return [{
+    name: `${PROVIDER_NAME} • DIAG • ${message}`,
+    title: target ? target.title : "WCO Special Diagnostic",
+    url: "https://www.wcostream.tv/favicon.ico",
+    quality: "Debug",
+    language: "Debug",
+    provider: PROVIDER_NAME,
+    type: "mp4"
+  }];
+}
+
 async function extractEntry(entry, target) {
   const page = await req(entry.href, { headers: { "Referer": `${originOf(entry.href)}/` } });
-  if (!page.ok) return [];
+  if (!page.ok) return { streams: [], reason: `MATCHED ${entry.text} • HTTP ${page.status}` };
   const frame = iframeLink(page.text, entry.href);
-  if (!frame || /user\.wcostream\.tv\/check-login/i.test(frame) || !/embed\.wcostream/i.test(frame)) return [];
+  if (!frame) return { streams: [], reason: `MATCHED ${entry.text} • NO IFRAME` };
+  if (/user\.wcostream\.tv\/check-login/i.test(frame)) return { streams: [], reason: `MATCHED ${entry.text} • PREMIUM` };
+  if (!/embed\.wcostream/i.test(frame)) return { streams: [], reason: `MATCHED ${entry.text} • FRAME ${originOf(frame)}` };
   const lookup = await playerLookup(frame);
-  if (!lookup) return [];
-  const lookupRes = await req(lookup, {
-    headers: {
-      "Accept": "application/json, text/javascript, */*; q=0.01",
-      "Referer": frame,
-      "Origin": originOf(frame),
-      "X-Requested-With": "XMLHttpRequest"
-    }
-  });
-  if (!lookupRes.ok) return [];
+  if (!lookup) return { streams: [], reason: `MATCHED ${entry.text} • NO PLAYER` };
+  const lookupRes = await req(lookup, { headers: { "Accept": "application/json, text/javascript, */*; q=0.01", "Referer": frame, "Origin": originOf(frame), "X-Requested-With": "XMLHttpRequest" } });
+  if (!lookupRes.ok) return { streams: [], reason: `MATCHED ${entry.text} • LOOKUP ${lookupRes.status}` };
   let data;
-  try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }
+  try { data = JSON.parse(lookupRes.text); } catch (_) { return { streams: [], reason: `MATCHED ${entry.text} • BAD JSON` }; }
   const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]);
   const meta = variantMeta(entry.variant, target.originalLanguage);
-  const qualities = [
-    data.fhd ? ["1080p", data.fhd] : null,
-    data.fullhd ? ["1080p", data.fullhd] : null,
-    data.hd ? ["720p", data.hd] : null,
-    data.enc ? ["480p", data.enc] : null
-  ].filter(Boolean);
+  const qualities = [data.fhd ? ["1080p", data.fhd] : null, data.fullhd ? ["1080p", data.fullhd] : null, data.hd ? ["720p", data.hd] : null, data.enc ? ["480p", data.enc] : null].filter(Boolean);
   const out = [];
   for (const item of qualities) {
     let media = "";
     for (const host of hosts) {
-      const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(item[1]))}&json`, {
-        headers: { "Referer": frame, "Origin": originOf(frame) }
-      });
+      const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(item[1]))}&json`, { headers: { "Referer": frame, "Origin": originOf(frame) } });
       if (!mediaRes.ok) continue;
       media = resolvedValue(mediaRes.text, mediaRes.url);
       if (media) break;
     }
     if (!media) continue;
-    out.push({
-      name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label} • ${entry.text}`,
-      title: `${target.title}${target.year ? ` (${target.year})` : ""}`,
-      url: media,
-      quality: item[0],
-      language: meta.language,
-      provider: PROVIDER_NAME,
-      type: /\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4",
-      headers: { "Referer": frame, "Origin": originOf(frame), "User-Agent": UA }
-    });
+    out.push({ name: `${PROVIDER_NAME} • ${item[0]} • ${meta.label} • ${entry.text}`, title: `${target.title}${target.year ? ` (${target.year})` : ""}`, url: media, quality: item[0], language: meta.language, provider: PROVIDER_NAME, type: /\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4", headers: { "Referer": frame, "Origin": originOf(frame), "User-Agent": UA } });
   }
-  return out;
-}
-
-function dedupeStreams(streams) {
-  const seen = new Set();
-  return (streams || []).filter(stream => {
-    const key = `${stream.quality}|${stream.url}`;
-    if (!stream.url || seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  return { streams: out, reason: out.length ? "" : `MATCHED ${entry.text} • NO MEDIA` };
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
@@ -402,22 +363,32 @@ async function getStreams(inputId, mediaType, season, episode) {
   if (type === "tv" && Number(season) !== 0) return [];
   try {
     const target = await tmdbTarget(inputId, type, season, episode);
-    if (!target) return [];
+    if (!target) return debugStream("NO TMDB TARGET", null);
+    let bestReason = "";
 
-    for (const entry of await findDirectEntries(target)) {
-      const streams = await extractEntry(entry, target);
-      if (streams.length) return dedupeStreams(streams);
+    const direct = await findDirectEntries(target);
+    for (const entry of direct) {
+      const result = await extractEntry(entry, target);
+      if (result.streams.length) return result.streams;
+      if (!bestReason) bestReason = result.reason;
     }
 
-    for (const series of await findSeriesCandidates(target)) {
-      for (const entry of await specialEntriesFromSeries(series.href, target)) {
-        const streams = await extractEntry(entry, target);
-        if (streams.length) return dedupeStreams(streams);
+    const series = await findSeriesCandidates(target);
+    for (const parent of series) {
+      const entries = await specialEntriesFromSeries(parent.href, target);
+      for (const entry of entries) {
+        const result = await extractEntry(entry, target);
+        if (result.streams.length) return result.streams;
+        if (!bestReason) bestReason = result.reason;
       }
     }
-    return [];
+
+    if (bestReason) return debugStream(bestReason.slice(0, 120), target);
+    if (series.length) return debugStream(`SERIES ${series[0].text || series[0].href} • NO SPECIAL MATCH`, target);
+    if (direct.length) return debugStream(`DIRECT ${direct[0].text || direct[0].href} • NO PLAYABLE`, target);
+    return debugStream(`NO MATCH • ${target.targetAliases[0] || target.title}`, target);
   } catch (_) {
-    return [];
+    return debugStream("RUNTIME ERROR", null);
   }
 }
 
