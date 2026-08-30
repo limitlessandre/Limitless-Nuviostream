@@ -33,7 +33,7 @@ async function req(url, options) {
       skipSizeCheck: true
     });
     const text = String(await res.text() || "");
-    return { ok: !!res.ok, status: res.status || 0, url: res.url || url, text };
+    return { ok: !!res.ok, status: res.status || 0, url: res.url || url, text, headers: res.headers };
   } catch (e) {
     return { ok: false, status: 0, url, text: "", error: String(e && e.message || e) };
   }
@@ -48,6 +48,11 @@ function htmlDecode(value) {
 
 function stripTags(value) {
   return htmlDecode(String(value || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+}
+
+function originOf(url) {
+  const m = String(url || "").match(/^(https?:\/\/[^/]+)/i);
+  return m ? m[1] : "";
 }
 
 function absolute(value, origin) {
@@ -72,7 +77,7 @@ function searchLinks(html, origin) {
 }
 
 function findSeriesLink(html, pageUrl) {
-  const origin = (String(pageUrl).match(/^https?:\/\/[^/]+/) || [ORIGINS[0]])[0];
+  const origin = originOf(pageUrl) || ORIGINS[0];
   const patterns = [
     /<div[^>]+class=["'][^"']*header-tag[^"']*["'][\s\S]*?<h2[^>]*>[\s\S]*?<a[^>]+href=["']([^"']+)["']/i,
     /<div[^>]+class=["'][^"']*video-title[^"']*["'][\s\S]*?<a[^>]+href=["']([^"']+)["']/i,
@@ -86,7 +91,7 @@ function findSeriesLink(html, pageUrl) {
 }
 
 function episodeLinks(html, pageUrl, wantedEpisode) {
-  const origin = (String(pageUrl).match(/^https?:\/\/[^/]+/) || [ORIGINS[0]])[0];
+  const origin = originOf(pageUrl) || ORIGINS[0];
   const out = [];
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
@@ -102,9 +107,137 @@ function episodeLinks(html, pageUrl, wantedEpisode) {
 }
 
 function iframeLink(html, pageUrl) {
-  const origin = (String(pageUrl).match(/^https?:\/\/[^/]+/) || [ORIGINS[0]])[0];
+  const origin = originOf(pageUrl) || ORIGINS[0];
   const m = String(html || "").match(/<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
   return m && m[1] ? absolute(m[1], origin) : "";
+}
+
+function replaceEmbedPath(embedUrl, path) {
+  const raw = String(embedUrl || "");
+  const q = raw.indexOf("?");
+  return `${originOf(raw)}${path}${q >= 0 ? raw.slice(q) : ""}`;
+}
+
+function getJsonPath(html) {
+  const text = String(html || "");
+  const patterns = [
+    /\$\.getJSON\(\s*["']([^"']+)["']/i,
+    /getJSON\(\s*["']([^"']+)["']/i,
+    /["'](\/inc\/embed\/getvidlink\.php\?[^"']+)["']/i
+  ];
+  for (const re of patterns) {
+    const m = text.match(re);
+    if (m && m[1]) return htmlDecode(m[1].replace(/\\\//g, "/"));
+  }
+  return "";
+}
+
+function legacyLookup(embedUrl) {
+  try {
+    const params = new URLSearchParams(String(embedUrl || "").split("?").slice(1).join("?"));
+    const raw = params.get("file");
+    if (!raw) return "";
+    const embed = params.get("embed") || "";
+    const file = raw.replace(/\.flv/gi, ".mp4").replace(/%2F/gi, "/");
+    const origin = originOf(embedUrl);
+    if (params.has("fullhd")) return `${origin}/inc/embed/getvidlink.php?v=${embed}/${file}&embed=${embed}&fullhd=${params.get("fullhd") || "1"}`;
+    return `${origin}/inc/embed/getvidlink.php?v=${file}&embed=${embed}&hd=${params.get("hd") || "1"}`;
+  } catch (_) { return ""; }
+}
+
+function parseLookup(text) {
+  try { return JSON.parse(String(text || "")); } catch (_) { return null; }
+}
+
+function cleanHost(value) {
+  return String(value || "").replace(/\\\//g, "/").replace(/\\/g, "").trim().replace(/\/$/, "");
+}
+
+function resolvedValue(text, responseUrl) {
+  let raw = String(text || "").trim().replace(/\\\//g, "/");
+  try {
+    const data = JSON.parse(raw);
+    if (typeof data === "string") raw = data;
+    else if (data && typeof data.url === "string") raw = data.url;
+    else if (data && typeof data.file === "string") raw = data.file;
+  } catch (_) { raw = raw.replace(/^["']|["']$/g, ""); }
+  raw = String(raw || "").replace(/\\\//g, "/").replace(/\\/g, "").trim();
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (/^https?:\/\//i.test(String(responseUrl || "")) && !/\/getvid\?evid=/i.test(String(responseUrl))) return String(responseUrl);
+  return "";
+}
+
+async function continueFromIframe(frame) {
+  if (/user\.wcostream\.tv\/check-login/i.test(frame)) {
+    return diag("10", "LOGIN / PREMIUM IFRAME");
+  }
+  if (!/embed\.wcostream/i.test(frame)) {
+    return diag("10", `NONSTANDARD IFRAME • ${frame.replace(/^https?:\/\//, "").slice(0, 70)}`);
+  }
+
+  const playerPaths = ["/inc/embed/video-js-new.php", "/inc/embed/video-js-old.php", "/inc/embed/video-js.php"];
+  let lookup = "";
+  const statusBits = [];
+  for (const path of playerPaths) {
+    const playerUrl = replaceEmbedPath(frame, path);
+    const page = await req(playerUrl, {
+      headers: {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": frame,
+        "Origin": originOf(frame),
+        "Sec-Fetch-Dest": "iframe",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "same-origin"
+      }
+    });
+    statusBits.push(`${path.includes("new") ? "new" : path.includes("old") ? "old" : "std"}:${page.status}:${page.text.length}`);
+    if (!page.ok) continue;
+    const found = getJsonPath(page.text);
+    if (found) {
+      lookup = absolute(found, originOf(frame));
+      break;
+    }
+  }
+
+  if (!lookup) {
+    lookup = legacyLookup(frame);
+    if (!lookup) return diag("10", `PLAYER NO GETJSON • ${statusBits.join(" ")}`);
+  }
+
+  const lookupRes = await req(lookup, {
+    headers: {
+      "Accept": "application/json, text/javascript, */*; q=0.01",
+      "Referer": frame,
+      "Origin": originOf(frame),
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  });
+  if (!lookupRes.ok) return diag("11", `GETVIDLINK HTTP ${lookupRes.status} • ${statusBits.join(" ")}`);
+
+  const data = parseLookup(lookupRes.text);
+  if (!data) return diag("11", `GETVIDLINK JSON FAILED • HTTP ${lookupRes.status} • bytes ${lookupRes.text.length}`);
+
+  const hosts = [cleanHost(data.server), cleanHost(data.cdn)].filter(Boolean);
+  const token = data.fhd || data.fullhd || data.hd || data.enc || "";
+  const keys = [data.fhd || data.fullhd ? "1080" : "", data.hd ? "720" : "", data.enc ? "480" : "", data.sub ? "sub" : ""].filter(Boolean).join(",");
+  if (!hosts.length) return diag("12", `LOOKUP OK • NO SERVER/CDN • keys ${keys || "none"}`);
+  if (!token) return diag("12", `LOOKUP OK • host ${hosts[0].replace(/^https?:\/\//, "")} • NO VIDEO TOKEN • keys ${keys || "none"}`);
+
+  let lastStatus = 0;
+  for (const host of hosts) {
+    const mediaRes = await req(`${host}/getvid?evid=${encodeURIComponent(String(token))}&json`, {
+      headers: { "Referer": frame, "Origin": originOf(frame) }
+    });
+    lastStatus = mediaRes.status;
+    if (!mediaRes.ok) continue;
+    const media = resolvedValue(mediaRes.text, mediaRes.url);
+    if (media) {
+      const safe = media.replace(/^https?:\/\//, "").split("?")[0].slice(0, 75);
+      return diag("13", `MEDIA RESOLVED • ${keys || "video"} • ${safe}`);
+    }
+  }
+
+  return diag("13", `MEDIA TOKEN FAILED • last HTTP ${lastStatus} • host ${hosts[0].replace(/^https?:\/\//, "").slice(0, 45)} • keys ${keys || "video"}`);
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
@@ -148,7 +281,7 @@ async function getStreams(inputId, mediaType, season, episode) {
     if (!links.length) return diag("4", "SEARCH PARSE RETURNED 0");
 
     const wanted = String(title).toLowerCase();
-    let candidate = links.find(x => String(x.title || "").toLowerCase().includes(wanted)) || links[0];
+    const candidate = links.find(x => String(x.title || "").toLowerCase().includes(wanted)) || links[0];
     if (!candidate || !candidate.href) return diag("4", "NO CANDIDATE URL");
 
     let seriesUrl = candidate.href;
@@ -167,7 +300,7 @@ async function getStreams(inputId, mediaType, season, episode) {
     if (type === "movie") {
       const frame = iframeLink(series.text, seriesUrl);
       if (!frame) return diag("6", `MOVIE PAGE OK • NO IFRAME • ${seriesUrl.replace(/^https?:\/\//, "")}`);
-      return diag("8", `MOVIE IFRAME FOUND • ${frame.replace(/^https?:\/\//, "").slice(0, 70)}`);
+      return await continueFromIframe(frame);
     }
 
     const eps = episodeLinks(series.text, seriesUrl, episode || 1);
@@ -180,7 +313,7 @@ async function getStreams(inputId, mediaType, season, episode) {
     const frame = iframeLink(epPage.text, ep.href);
     if (!frame) return diag("8", `EP PAGE OK • NO IFRAME • ${ep.text.slice(0, 55)}`);
 
-    return diag("9", `IFRAME FOUND • ${frame.replace(/^https?:\/\//, "").slice(0, 75)}`);
+    return await continueFromIframe(frame);
   } catch (e) {
     return diag("X", `RUNTIME ERROR • ${String(e && e.message || e).slice(0, 80)}`);
   }
