@@ -109,6 +109,42 @@ async function productionSource() {
   return rawProduction;
 }
 
+function domainSpecialAddon() {
+  return `
+function __domainSpecialSlug(value){
+  return String(value||"").toLowerCase()
+    .replace(/&amp;|&/g," and ")
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-+|-+$/g,"");
+}
+async function __domainDirectSeriesCandidates(t){
+  const out=[];
+  for(const seed of (t.series||[]).slice(0,6)){
+    const slug=__domainSpecialSlug(seed);
+    if(!slug)continue;
+    const u=ORIGINS[0]+"/anime/"+slug;
+    const r=await req(u,{headers:{"Referer":ORIGINS[0]+"/"}});
+    if(!r.ok)continue;
+    const hm=String(r.body||"").match(/<h1\\b[^>]*>([\\s\\S]*?)<\\/h1>/i);
+    const tm=String(r.body||"").match(/<title\\b[^>]*>([\\s\\S]*?)<\\/title>/i);
+    const label=text((hm&&hm[1])||(tm&&tm[1])||seed);
+    const href=r.url||u;
+    const s=best(label+" "+href,t.series);
+    if(s<70)continue;
+    out.push({href:href,text:label||seed,score:s});
+    if(s>=95)break;
+  }
+  return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i).slice(0,6);
+}
+const __domainOriginalSeriesCandidates=seriesCandidates;
+seriesCandidates=async function(t){
+  const normal=await __domainOriginalSeriesCandidates(t);
+  if(normal&&normal.length)return normal;
+  return await __domainDirectSeriesCandidates(t);
+};
+`;
+}
+
 function patchProductionForOrigin(source, origin) {
   let patched = String(source || "");
   patched = patched.replace(
@@ -122,6 +158,20 @@ function patchProductionForOrigin(source, origin) {
 
   if (!patched.includes(needle)) return "";
   patched = patched.replace(needle, inject);
+
+  // Add a direct /anime/<series-slug> fallback after the production special
+  // augmentation has run. This only affects the isolated domain tester.
+  const specialNeedle = '    if (key === "special") source = augmentSpecialSource(source);';
+  if (patched.includes(specialNeedle)) {
+    const addon = domainSpecialAddon();
+    const specialReplacement = [
+      '    if (key === "special") {',
+      '      source = augmentSpecialSource(source);',
+      `      source = source.replace("module.exports={getStreams};", ${JSON.stringify(addon + '\nmodule.exports={getStreams};')});`,
+      '    }'
+    ].join("\n");
+    patched = patched.replace(specialNeedle, specialReplacement);
+  }
 
   // The production wrapper normally strips Debug streams. During this isolated
   // domain test, keep one underlying debug result when cleaning produced nothing
