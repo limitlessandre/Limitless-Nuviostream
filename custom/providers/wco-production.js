@@ -10,6 +10,23 @@ const MODULE_URLS = {
 
 const cache = Object.create(null);
 
+function augmentSpecialSource(source) {
+  const marker = "async function getStreams(inputId,mediaType,season,episode)";
+  const exportMarker = "module.exports={getStreams};";
+  const start = source.indexOf(marker);
+  const end = source.indexOf(exportMarker, start);
+  if (start < 0 || end < 0) return source;
+
+  const replacement = [
+    'function fractionalNo(v){const s=String(v||"");let m=s.match(/\\bEpisode\\s*(\\d+\\.\\d+)\\b/i);if(!m)m=s.match(/episode[-_ ]?(\\d+\\.\\d+)(?:\\D|$)/i);return m?m[1]:"";}',
+    'async function fractionalEntries(seriesUrl,wantedVariant){const base=String(seriesUrl||"").replace(/[?#].*$/,"").replace(/\\/$/,"");const lang=wantedVariant==="Sub"?"sub":"dub",u=base+"/?season=all&lang="+lang,r=await req(u,{headers:{"Referer":seriesUrl}});if(!r.ok)return[];const out=[];for(const x of links(r.body,u,wantedVariant)){if(/\\/anime\\//i.test(x.href))continue;const id=x.text+" "+x.href;if(!fractionalNo(id))continue;if(!out.some(y=>y.href===x.href))out.push({...x,variant:wantedVariant});}return out;}',
+    'async function getStreams(inputId,mediaType,season,episode){const type=String(mediaType||"").toLowerCase()==="movie"?"movie":"tv";if(type==="tv"&&+season!==0)return[];try{const t=await target(inputId,type,season,episode);if(!t)return debug("NO TMDB TARGET",null);const parents=await seriesCandidates(t);let reason="";for(const p of parents){const matched=await entries(p.href,t),collected=[],variants=new Set();for(const e of matched){const r=await extract(e,t);if(r.streams.length){collected.push(...r.streams);variants.add(e.variant);}else if(!reason)reason=r.reason;}if(type==="tv"&&collected.length){for(const wanted of ["Dub","Sub"]){if(variants.has(wanted))continue;const frac=await fractionalEntries(p.href,wanted);if(frac.length!==1)continue;const r=await extract(frac[0],t);if(r.streams.length){collected.push(...r.streams);variants.add(wanted);}}}if(collected.length)return collected;}if(reason)return debug(reason.slice(0,140),t);return debug(parents.length?"SERIES "+parents[0].text+" • NO SPECIAL MATCH":"NO SERIES MATCH • "+t.title,t);}catch(_){return debug("RUNTIME ERROR",null);}}',
+    ''
+  ].join("\n");
+
+  return source.slice(0, start) + replacement + source.slice(end);
+}
+
 async function loadModule(key) {
   if (cache[key] && typeof cache[key].getStreams === "function") return cache[key];
   const url = MODULE_URLS[key];
@@ -17,8 +34,9 @@ async function loadModule(key) {
   try {
     const res = await fetch(url, { skipSizeCheck: true });
     if (!res || !res.ok) return null;
-    const source = String(await res.text() || "");
+    let source = String(await res.text() || "");
     if (!source || !source.includes("module.exports")) return null;
+    if (key === "special") source = augmentSpecialSource(source);
     const mod = { exports: {} };
     const localRequire = function(name) {
       throw new Error(`Unsupported nested require: ${name}`);
