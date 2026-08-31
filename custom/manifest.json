@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider combining the proven lightweight TV resolver with title-aware movies and Season 0 specials, legacy WCO player extraction, explicit WCO Episode 0 fallback, conservative fractional-special audio pairing, separate English Dub and Japanese + English Hard-Sub sources, season-aware matching, and combined episode-range support.",
-      "version": "2.4.1",
+      "description": "Production WCO provider combining lightweight TV resolution with title-aware movies and Season 0 specials, legacy player extraction, Episode 0 and fractional-special fallbacks, separate Dub/Sub sources, season and range matching, plus output pruning to the highest two qualities per detected mirror with a maximum of four sources per audio branch.",
+      "version": "2.4.2",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-production.js",
