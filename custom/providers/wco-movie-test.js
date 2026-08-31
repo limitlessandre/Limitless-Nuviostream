@@ -80,6 +80,22 @@ function bestScore(value, aliases) {
   return score;
 }
 
+const TITLE_STOP_WORDS = new Set(["a", "an", "and", "at", "in", "is", "it", "of", "on", "the", "to", "yet", "part", "special"]);
+
+function distinctiveWords(value) {
+  return normalize(value).split(" ").filter(word => word.length >= 3 && !TITLE_STOP_WORDS.has(word) && !/^\d+$/.test(word));
+}
+
+function hasDistinctiveMatch(candidate, aliases) {
+  const words = new Set(normalize(candidate).split(" "));
+  for (const alias of aliases || []) {
+    const needed = distinctiveWords(alias);
+    if (!needed.length) continue;
+    if (needed.every(word => words.has(word))) return true;
+  }
+  return false;
+}
+
 function targetAliases(title, alternatives) {
   const out = [title].concat(alternatives || []);
   for (const value of out.slice()) {
@@ -173,6 +189,7 @@ async function tmdbTarget(inputId, mediaType, season, episode) {
       id,
       title,
       targetAliases: targetAliases(title, [data.original_title].concat(alt)),
+      strictAliases: targetAliases(title, [data.original_title]),
       seriesAliases: franchiseRoots(title, [data.original_title].concat(alt)),
       originalLanguage: String(data.original_language || "en").toLowerCase(),
       year: String(data.release_date || "").slice(0, 4)
@@ -191,6 +208,7 @@ async function tmdbTarget(inputId, mediaType, season, episode) {
     id,
     title: `${showTitle} • ${specialTitle}`,
     targetAliases: targetAliases(specialTitle, []),
+    strictAliases: targetAliases(specialTitle, []),
     seriesAliases: uniq([showTitle, show.original_name].concat(alt)).filter(Boolean),
     originalLanguage: String(show.original_language || "").toLowerCase(),
     year: String(special.air_date || show.first_air_date || "").slice(0, 4)
@@ -242,9 +260,10 @@ async function findDirectEntries(target) {
   for (const query of comboQueries(target).slice(0, 8)) {
     for (const item of await postSearch(query)) {
       if (/\/anime\//i.test(item.href)) continue;
-      const targetScore = bestScore(`${item.text} ${item.href}`, target.targetAliases);
-      const seriesScore = target.seriesAliases.length ? bestScore(`${item.text} ${item.href}`, target.seriesAliases) : 100;
-      if (targetScore < 82 || seriesScore < 55) continue;
+      const identity = `${item.text} ${item.href}`;
+      const targetScore = bestScore(identity, target.targetAliases);
+      const seriesScore = target.seriesAliases.length ? bestScore(identity, target.seriesAliases) : 100;
+      if (targetScore < 82 || seriesScore < 55 || !hasDistinctiveMatch(identity, target.strictAliases || target.targetAliases)) continue;
       out.push({ ...item, score: targetScore + Math.min(20, Math.round(seriesScore / 5)) });
     }
     if (out.some(x => x.score >= 112)) break;
@@ -282,8 +301,9 @@ async function specialEntriesFromSeries(seriesUrl, target) {
     if (!page.ok) continue;
     for (const item of anchorLinks(page.text, source.url, source.variant)) {
       if (/\/anime\//i.test(item.href)) continue;
-      const score = bestScore(`${item.text} ${item.href}`, target.targetAliases);
-      if (score >= 78) out.push({ ...item, score });
+      const identity = `${item.text} ${item.href}`;
+      const score = bestScore(identity, target.targetAliases);
+      if (score >= 78 && hasDistinctiveMatch(identity, target.strictAliases || target.targetAliases)) out.push({ ...item, score });
     }
   }
   return out.sort((a, b) => b.score - a.score)
@@ -315,8 +335,6 @@ function iframeFromMarkup(markup, pageUrl) {
 
 function legacyIframe(html, pageUrl) {
   const source = String(html || "");
-
-  // Some older WCO pages write a URI-encoded iframe through JavaScript.
   const uriPatterns = [
     /decodeURIComponent\(\s*["']([^"']+)["']\s*\)/gi,
     /unescape\(\s*["']([^"']+)["']\s*\)/gi
@@ -332,8 +350,6 @@ function legacyIframe(html, pageUrl) {
     }
   }
 
-  // Another long-lived WCO layout stores character codes as base64 strings,
-  // then subtracts a fixed shift before document.write().
   try {
     const scriptMatches = source.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
     for (const script of scriptMatches) {
@@ -357,7 +373,6 @@ function legacyIframe(html, pageUrl) {
     }
   } catch (_) {}
 
-  // Simple atob/document.write variants.
   const atobRe = /atob\(\s*["']([A-Za-z0-9+/=]+)["']\s*\)/gi;
   let atobMatch;
   while ((atobMatch = atobRe.exec(source))) {
@@ -367,7 +382,6 @@ function legacyIframe(html, pageUrl) {
       if (frame) return frame;
     } catch (_) {}
   }
-
   return "";
 }
 
