@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.9.13",
+  "version": "1.9.14",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "limitless-wco-movie-test",
       "name": "WCO Special Test",
-      "description": "Temporary strict title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials stored inside a parent series. Uses strong parent-series and special-title matching, distinctive-word identity checks, plus both current and legacy/obfuscated WCO iframe extraction so older movie/special pages can be tested without changing the lean main TV provider.",
-      "version": "0.5.0",
+      "description": "Temporary streamlined title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials stored inside a parent series. Once the parent series is strongly identified, special matching is driven by distinctive title words rather than a high fuzzy-score threshold, allowing WCO abbreviations such as 'Is It Fall' to match TMDB's 'Is It Fall Yet?' while still rejecting unrelated episodes. Includes current and legacy WCO iframe extraction.",
+      "version": "0.6.0",
       "author": "Limitless Nexus movie and special mapping diagnostic",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/wco-movie-test.js",
+      "filename": "providers/wco-special-test-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
