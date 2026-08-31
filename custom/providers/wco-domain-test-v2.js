@@ -121,7 +121,22 @@ function patchProductionForOrigin(source, origin) {
     `    source = source.replace(/const ORIGINS\\s*=\\s*\\[[\\s\\S]*?\\];/, 'const ORIGINS = [${JSON.stringify(origin)}];');`;
 
   if (!patched.includes(needle)) return "";
-  return patched.replace(needle, inject);
+  patched = patched.replace(needle, inject);
+
+  // The production wrapper normally strips Debug streams. During this isolated
+  // domain test, keep one underlying debug result when cleaning produced nothing
+  // so the UI can show the actual movie/special failure stage.
+  const runNeedle = '    return cleanStreams(await mod.getStreams(inputId, mediaType, season, episode));';
+  const runReplacement = [
+    '    const __rawDomainStreams = await mod.getStreams(inputId, mediaType, season, episode);',
+    '    const __cleanDomainStreams = cleanStreams(__rawDomainStreams);',
+    '    if (__cleanDomainStreams.length) return __cleanDomainStreams;',
+    '    const __debugDomainStream = (__rawDomainStreams || []).find(isDebug);',
+    '    return __debugDomainStream ? [__debugDomainStream] : [];'
+  ].join("\n");
+  if (patched.includes(runNeedle)) patched = patched.replace(runNeedle, runReplacement);
+
+  return patched;
 }
 
 async function productionFor(origin) {
@@ -176,6 +191,17 @@ function pickBest(streams, origin, route) {
   return out;
 }
 
+function underlyingDebug(streams) {
+  for (const stream of streams || []) {
+    const quality = String(stream && stream.quality || "");
+    const name = String(stream && stream.name || "");
+    if (/^Debug$/i.test(quality) || /\bDIAG\b/i.test(name)) {
+      return name || String(stream && stream.title || "underlying WCO diagnostic");
+    }
+  }
+  return "";
+}
+
 function diagnosticStream(origin, route, detail) {
   const frontendHost = hostOf(origin);
   const safeDetail = cleanDetail(detail || "no playable stream returned");
@@ -206,8 +232,12 @@ async function runMediaRoute(inputId, mediaType, season, episode) {
     try {
       const streams = await mod.getStreams(inputId, mediaType, season, episode);
       const picked = pickBest(streams, origin, route);
-      if (picked.length) out.push(...picked);
-      else out.push(diagnosticStream(origin, route, "production WCO returned no playable stream for this item"));
+      if (picked.length) {
+        out.push(...picked);
+      } else {
+        const reason = underlyingDebug(streams) || "production WCO returned no playable stream for this item";
+        out.push(diagnosticStream(origin, route, reason));
+      }
     } catch (e) {
       out.push(diagnosticStream(origin, route, "runtime error: " + String(e && e.message || e)));
     }
