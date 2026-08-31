@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "limitless-wco-domain-test",
       "name": "WCO Domain Test",
-      "description": "Temporary isolated WCO frontend fallback and premium-session diagnostic test. Premium episodes now follow the authenticated canonical page into embed.wcopremium.tv and report that player page's structure before any normal WCO inner embed resolution.",
-      "version": "0.6.4",
+      "description": "Temporary isolated WCO frontend fallback and premium-session diagnostic test. Premium episodes now inspect the authenticated embed.wcopremium.tv VideoJS player for media sources already exposed to the signed-in account.",
+      "version": "0.6.5",
       "author": "Limitless Nexus WCO domain test",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-domain-test-v5.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-domain-test-v6.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
