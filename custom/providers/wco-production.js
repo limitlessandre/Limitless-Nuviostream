@@ -10,6 +10,134 @@ const MODULE_URLS = {
 
 const cache = Object.create(null);
 
+function replaceFunction(source, startMarker, endMarker, replacement) {
+  const start = source.indexOf(startMarker);
+  const end = source.indexOf(endMarker, start);
+  if (start < 0 || end < 0) return source;
+  return source.slice(0, start) + replacement + "\n\n" + source.slice(end);
+}
+
+function augmentMirrorExtraction(source, key) {
+  if (key === "core") {
+    const replacement = `async function extractEmbed(embedUrl, variant, displayTitle, info) {
+  if (!embedUrl || /user\\.wcostream\\.tv\\/check-login/i.test(embedUrl)) return [];
+  if (!/embed\\.wcostream/i.test(embedUrl)) return [];
+  const lookup = await playerLookup(embedUrl);
+  if (!lookup) return [];
+  const lookupRes = await req(lookup, {
+    headers: {
+      "Accept": "application/json, text/javascript, */*; q=0.01",
+      "Referer": embedUrl,
+      "Origin": originOf(embedUrl),
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  });
+  if (!lookupRes.ok) return [];
+  let data;
+  try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }
+  const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]).slice(0, 2);
+  if (!hosts.length) return [];
+  const finalVariant = variant || "Original";
+  const meta = variantMeta(finalVariant, info.originalLanguage);
+  const qualities = [
+    data.fhd ? ["1080p", data.fhd] : null,
+    data.fullhd ? ["1080p", data.fullhd] : null,
+    data.hd ? ["720p", data.hd] : null,
+    data.enc ? ["480p", data.enc] : null
+  ].filter(Boolean);
+  const out = [];
+  for (let mirrorIndex = 0; mirrorIndex < hosts.length; mirrorIndex++) {
+    const host = hosts[mirrorIndex];
+    const resolvedQualities = new Set();
+    for (const item of qualities) {
+      const quality = item[0];
+      if (resolvedQualities.has(quality)) continue;
+      const mediaRes = await req(\`${host}/getvid?evid=\${encodeURIComponent(String(item[1]))}&json\`, {
+        headers: { "Referer": embedUrl, "Origin": originOf(embedUrl) }
+      });
+      if (!mediaRes.ok) continue;
+      const media = resolvedValue(mediaRes.text, mediaRes.url);
+      if (!media) continue;
+      resolvedQualities.add(quality);
+      out.push({
+        name: \`${PROVIDER_NAME} • \${quality} • \${meta.label}\`,
+        title: displayTitle,
+        url: media,
+        quality,
+        language: meta.language,
+        provider: PROVIDER_NAME,
+        type: /\\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4",
+        headers: {
+          "Referer": embedUrl,
+          "Origin": originOf(embedUrl),
+          "User-Agent": UA
+        },
+        _variant: finalVariant,
+        _mirrorKey: host,
+        _mirrorIndex: mirrorIndex + 1
+      });
+    }
+  }
+  return out;
+}`;
+    return replaceFunction(source, "async function extractEmbed(embedUrl, variant, displayTitle, info)", "async function candidatePage(candidate)", replacement);
+  }
+
+  if (key === "special") {
+    const replacement = `async function extract(e,t){const page=await req(e.href,{headers:{"Referer":\`${origin(e.href)}/\`}});if(!page.ok)return{streams:[],reason:\`MATCHED \${e.text} • HTTP \${page.status}\`};const frame=iframe(page.body,e.href);if(!frame)return{streams:[],reason:\`MATCHED \${e.text} • NO IFRAME\`};if(/check-login/i.test(frame))return{streams:[],reason:\`MATCHED \${e.text} • PREMIUM\`};const l=await lookup(frame);if(!l)return{streams:[],reason:\`MATCHED \${e.text} • NO PLAYER\`};const jr=await req(l,{headers:{"Referer":frame,"Origin":origin(frame),"X-Requested-With":"XMLHttpRequest"}});if(!jr.ok)return{streams:[],reason:\`MATCHED \${e.text} • LOOKUP \${jr.status}\`};let d;try{d=JSON.parse(jr.body);}catch(_){return{streams:[],reason:\`MATCHED \${e.text} • BAD JSON\`};}const hs=uniq([host(d.server),host(d.cdn)]).slice(0,2),m=meta(e.variant,t.lang),qs=[d.fhd?["1080p",d.fhd]:null,d.fullhd?["1080p",d.fullhd]:null,d.hd?["720p",d.hd]:null,d.enc?["480p",d.enc]:null].filter(Boolean),out=[];for(let mi=0;mi<hs.length;mi++){const h=hs[mi],done=new Set();for(const q of qs){if(done.has(q[0]))continue;const r=await req(\`${h}/getvid?evid=\${encodeURIComponent(String(q[1]))}&json\`,{headers:{"Referer":frame,"Origin":origin(frame)}});if(!r.ok)continue;const u=mediaValue(r.body,r.url);if(!u)continue;done.add(q[0]);out.push({name:\`${PROVIDER_NAME} • \${q[0]} • \${m.label} • \${e.text}\`,title:t.title,url:u,quality:q[0],language:m.language,provider:PROVIDER_NAME,type:/\\.m3u8(?:[?#]|$)/i.test(u)?"m3u8":"mp4",headers:{"Referer":frame,"Origin":origin(frame),"User-Agent":UA},_mirrorKey:h,_mirrorIndex:mi+1});}}return{streams:out,reason:out.length?"":\`MATCHED \${e.text} • NO MEDIA\`};}`;
+    return replaceFunction(source, "async function extract(e,t)", "async function getStreams(inputId,mediaType,season,episode)", replacement);
+  }
+
+  if (key === "episode0") {
+    const replacement = `async function extract(entry, info, fallbackSeason) {
+  const p = await req(entry.href, { headers: { "Referer": \`${origin(entry.href)}/\` } });
+  if (!p.ok) return [];
+  const frame = iframe(p.body, entry.href);
+  if (!frame || /check-login/i.test(frame)) return [];
+  const l = await lookup(frame);
+  if (!l) return [];
+  const jr = await req(l, { headers: { "Referer": frame, "Origin": origin(frame), "X-Requested-With": "XMLHttpRequest" } });
+  if (!jr.ok) return [];
+  let d;
+  try { d = JSON.parse(jr.body); } catch (_) { return []; }
+  const hs = uniq([host(d.server), host(d.cdn)]).slice(0, 2);
+  const qs = [d.fhd ? ["1080p", d.fhd] : null, d.fullhd ? ["1080p", d.fullhd] : null, d.hd ? ["720p", d.hd] : null, d.enc ? ["480p", d.enc] : null].filter(Boolean);
+  const isSub = entry.variant === "Sub";
+  const label = isSub ? "Japanese + English Hard Subs" : "English Dub";
+  const language = isSub ? "Japanese" : "English";
+  const out = [];
+  for (let mirrorIndex = 0; mirrorIndex < hs.length; mirrorIndex++) {
+    const h = hs[mirrorIndex];
+    const resolvedQualities = new Set();
+    for (const [quality, token] of qs) {
+      if (resolvedQualities.has(quality)) continue;
+      const mr = await req(\`${h}/getvid?evid=\${encodeURIComponent(String(token))}&json\`, { headers: { "Referer": frame, "Origin": origin(frame) } });
+      if (!mr.ok) continue;
+      const media = mediaValue(mr.body, mr.url);
+      if (!media) continue;
+      resolvedQualities.add(quality);
+      out.push({
+        name: \`${PROVIDER_NAME} • \${quality} • \${label} • S0E\${fallbackSeason}→S\${fallbackSeason}E0\`,
+        title: \`${info.title} • WCO Season \${fallbackSeason} Episode 0\`,
+        url: media,
+        quality,
+        language,
+        provider: PROVIDER_NAME,
+        type: /\\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4",
+        headers: { "Referer": frame, "Origin": origin(frame), "User-Agent": UA },
+        _mirrorKey: h,
+        _mirrorIndex: mirrorIndex + 1
+      });
+    }
+  }
+  return out;
+}`;
+    return replaceFunction(source, "async function extract(entry, info, fallbackSeason)", "async function getStreams(inputId, mediaType, season, episode)", replacement);
+  }
+
+  return source;
+}
+
 function augmentSpecialSource(source) {
   const marker = "async function getStreams(inputId,mediaType,season,episode)";
   const exportMarker = "module.exports={getStreams};";
@@ -36,6 +164,7 @@ async function loadModule(key) {
     if (!res || !res.ok) return null;
     let source = String(await res.text() || "");
     if (!source || !source.includes("module.exports")) return null;
+    source = augmentMirrorExtraction(source, key);
     if (key === "special") source = augmentSpecialSource(source);
     const mod = { exports: {} };
     const localRequire = function(name) {
@@ -90,11 +219,12 @@ function cleanStreams(streams) {
     if (isDebug(stream)) continue;
     const quality = String(stream.quality || "Auto");
     const label = productionLabel(stream);
-    const host = mediaHost(stream.url);
-    const key = `${quality}|${label}|${host}|${stream.url}`;
+    const mirrorKey = String(stream._mirrorKey || mediaHost(stream.url) || "unknown").toLowerCase();
+    const mirrorIndex = Number(stream._mirrorIndex || 0);
+    const key = `${quality}|${label}|${mirrorKey}|${stream.url}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    normalized.push({ ...stream, quality, _label: label, _host: host });
+    normalized.push({ ...stream, quality, _label: label, _mirrorKey: mirrorKey, _mirrorIndex: mirrorIndex });
   }
 
   const byLabel = new Map();
@@ -105,14 +235,19 @@ function cleanStreams(streams) {
 
   const out = [];
   for (const [label, branch] of byLabel) {
-    const hosts = [];
-    for (const stream of branch) if (!hosts.includes(stream._host)) hosts.push(stream._host);
+    const mirrors = [];
+    const ordered = branch.slice().sort((a, b) => {
+      const ai = a._mirrorIndex || 999;
+      const bi = b._mirrorIndex || 999;
+      return ai - bi;
+    });
+    for (const stream of ordered) if (!mirrors.includes(stream._mirrorKey)) mirrors.push(stream._mirrorKey);
 
-    const selectedHosts = hosts.slice(0, 2);
-    for (let h = 0; h < selectedHosts.length; h++) {
-      const host = selectedHosts[h];
+    const selectedMirrors = mirrors.slice(0, 2);
+    for (let m = 0; m < selectedMirrors.length; m++) {
+      const mirrorKey = selectedMirrors[m];
       const candidates = branch
-        .filter(x => x._host === host)
+        .filter(x => x._mirrorKey === mirrorKey)
         .sort((a, b) => qualityRank(b.quality) - qualityRank(a.quality));
 
       const picked = [];
@@ -126,11 +261,10 @@ function cleanStreams(streams) {
       }
 
       for (const stream of picked) {
-        const mirror = selectedHosts.length > 1 ? ` • Mirror ${h + 1}` : "";
-        const { _label, _host, ...clean } = stream;
+        const { _label, _mirrorKey, _mirrorIndex, ...clean } = stream;
         out.push({
           ...clean,
-          name: `${PROVIDER_NAME}${mirror} • ${stream.quality} • ${label}`,
+          name: `${PROVIDER_NAME} • Mirror ${m + 1} • ${stream.quality} • ${label}`,
           provider: PROVIDER_NAME
         });
       }
