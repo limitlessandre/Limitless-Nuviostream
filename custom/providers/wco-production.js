@@ -10,6 +10,44 @@ const MODULE_URLS = {
 
 const cache = Object.create(null);
 
+function premiumEnabled() {
+  const s = (typeof globalThis !== "undefined" && globalThis.SCRAPER_SETTINGS) || {};
+  return s.premiumEnabled === true || String(s.premiumEnabled || "").toLowerCase() === "true";
+}
+
+function premiumCookie() {
+  if (!premiumEnabled()) return "";
+  const s = (typeof globalThis !== "undefined" && globalThis.SCRAPER_SETTINGS) || {};
+  return String(s.premiumCookie || "").trim();
+}
+
+function premiumSourceAddon() {
+  return `
+function __wcoPremiumCookie(){
+  try{
+    const s=(typeof globalThis!=="undefined"&&globalThis.SCRAPER_SETTINGS)||{};
+    const enabled=s.premiumEnabled===true||String(s.premiumEnabled||"").toLowerCase()==="true";
+    return enabled?String(s.premiumCookie||"").trim():"";
+  }catch(_){return"";}
+}
+function __wcoPremiumFrame(url){
+  return /(^https?:\\/\\/)?user\\.|wcopremium\\.tv/i.test(String(url||""));
+}
+function __wcoAbsPremium(v,base){
+  v=String(v||"").trim();if(!v)return"";
+  if(/^https?:\\/\\//i.test(v))return v;
+  if(v.startsWith("//"))return"https:"+v;
+  const m=String(base||"").match(/^(https?:\\/\\/[^/]+)/i),o=m?m[1]:"";
+  if(v.startsWith("/"))return o+v;
+  return o+"/"+v.replace(/^\\/+/,"");
+}
+function __wcoPremiumInner(html,page){
+  const m=String(html||"").match(/<iframe\\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
+  return m?__wcoAbsPremium(m[1],page):"";
+}
+`;
+}
+
 function augmentCoreMirrors(source) {
   const startMarker = "async function extractEmbed(embedUrl, variant, displayTitle, info)";
   const endMarker = "async function candidatePage(candidate)";
@@ -19,7 +57,16 @@ function augmentCoreMirrors(source) {
 
   const replacement = [
     'async function extractEmbed(embedUrl, variant, displayTitle, info) {',
-    '  if (!embedUrl || /user\\.wcostream\\.tv\\/check-login/i.test(embedUrl)) return [];',
+    '  if (!embedUrl) return [];',
+    '  if (__wcoPremiumFrame(embedUrl)) {',
+    '    const cookie = __wcoPremiumCookie();',
+    '    if (!cookie) return [];',
+    '    const auth = await req(embedUrl, { headers: { "Cookie": cookie, "Referer": originOf(embedUrl) + "/" } });',
+    '    if (!auth.ok) return [];',
+    '    const inner = __wcoPremiumInner(auth.text, auth.url || embedUrl);',
+    '    if (!inner || __wcoPremiumFrame(inner)) return [];',
+    '    return await extractEmbed(inner, variant, displayTitle, info);',
+    '  }',
     '  if (!/embed\\.wcostream/i.test(embedUrl)) return [];',
     '  const lookup = await playerLookup(embedUrl);',
     '  if (!lookup) return [];',
@@ -52,10 +99,38 @@ function augmentCoreMirrors(source) {
     ''
   ].join("\n");
 
-  return source.slice(0, start) + replacement + source.slice(end);
+  source = source.slice(0, start) + replacement + source.slice(end);
+  return source.replace('"use strict";', '"use strict";\n' + premiumSourceAddon());
+}
+
+function directSeriesAddon() {
+  return `
+function __wcoDirectSlug(value){return String(value||"").toLowerCase().replace(/&amp;|&/g," and ").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+async function __wcoDirectSeriesCandidates(t){
+  const out=[];
+  for(const seed of (t.series||[]).slice(0,6)){
+    const slug=__wcoDirectSlug(seed);if(!slug)continue;
+    for(const o of ORIGINS){
+      const u=o+"/anime/"+slug,r=await req(u,{headers:{"Referer":o+"/"}});if(!r.ok)continue;
+      const hm=String(r.body||"").match(/<h1\\b[^>]*>([\\s\\S]*?)<\\/h1>/i),tm=String(r.body||"").match(/<title\\b[^>]*>([\\s\\S]*?)<\\/title>/i);
+      const label=text((hm&&hm[1])||(tm&&tm[1])||seed),href=r.url||u,s=best(label+" "+href,t.series);
+      if(s>=70)out.push({href:href,text:label||seed,score:s});
+    }
+    if(out.some(x=>x.score>=95))break;
+  }
+  return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i).slice(0,6);
+}
+const __wcoOriginalSeriesCandidates=seriesCandidates;
+seriesCandidates=async function(t){const normal=await __wcoOriginalSeriesCandidates(t);return normal&&normal.length?normal:await __wcoDirectSeriesCandidates(t);};
+`;
 }
 
 function augmentSpecialSource(source) {
+  source = source.replace(
+    /const ORIGINS\s*=\s*\[[\s\S]*?\];/,
+    'const ORIGINS = ["https://www.wcostream.tv","https://www.wcoflix.tv","https://www.wcoforever.net"];'
+  );
+
   source = source.replace(
     /function variant\(v,forced\)\{[\s\S]*?\}function meta\(v,lang\)\{[\s\S]*?\}/,
     [
@@ -73,6 +148,12 @@ function augmentSpecialSource(source) {
     ].join("\n")
   );
 
+  source = source.replace('const frame=iframe(page.body,e.href);', 'let frame=iframe(page.body,e.href);');
+  source = source.replace(
+    'if(/check-login/i.test(frame))return{streams:[],reason:`MATCHED ${e.text} • PREMIUM`};',
+    'if(__wcoPremiumFrame(frame)){const cookie=__wcoPremiumCookie();if(!cookie)return{streams:[],reason:`MATCHED ${e.text} • PREMIUM LOGIN REQUIRED`};const auth=await req(frame,{headers:{"Referer":e.href,"Cookie":cookie}});if(!auth.ok)return{streams:[],reason:`MATCHED ${e.text} • PREMIUM HTTP ${auth.status}`};const inner=__wcoPremiumInner(auth.body,auth.url||frame);if(!inner||__wcoPremiumFrame(inner))return{streams:[],reason:`MATCHED ${e.text} • PREMIUM PLAYER`};frame=inner;}'
+  );
+
   const marker = "async function getStreams(inputId,mediaType,season,episode)";
   const exportMarker = "module.exports={getStreams};";
   const start = source.indexOf(marker);
@@ -86,7 +167,10 @@ function augmentSpecialSource(source) {
     ''
   ].join("\n");
 
-  return source.slice(0, start) + replacement + source.slice(end);
+  source = source.slice(0, start) + replacement + source.slice(end);
+  source = source.replace('"use strict";', '"use strict";\n' + premiumSourceAddon());
+  source = source.replace("module.exports={getStreams};", directSeriesAddon() + "\nmodule.exports={getStreams};");
+  return source;
 }
 
 async function loadModule(key) {
@@ -101,17 +185,13 @@ async function loadModule(key) {
     if (key === "core") source = augmentCoreMirrors(source);
     if (key === "special") source = augmentSpecialSource(source);
     const mod = { exports: {} };
-    const localRequire = function(name) {
-      throw new Error(`Unsupported nested require: ${name}`);
-    };
+    const localRequire = function(name) { throw new Error(`Unsupported nested require: ${name}`); };
     const factory = new Function("module", "exports", "require", `${source}\n;return module.exports;`);
     const exported = factory(mod, mod.exports, localRequire) || mod.exports;
     if (!exported || typeof exported.getStreams !== "function") return null;
     cache[key] = exported;
     return exported;
-  } catch (_) {
-    return null;
-  }
+  } catch (_) { return null; }
 }
 
 function isDebug(stream) {
@@ -152,7 +232,6 @@ function mediaHost(url) {
 function cleanStreams(streams) {
   const normalized = [];
   const seen = new Set();
-
   for (const stream of streams || []) {
     if (isDebug(stream)) continue;
     const quality = String(stream.quality || "Auto");
@@ -165,25 +244,19 @@ function cleanStreams(streams) {
     seen.add(key);
     normalized.push({ ...stream, quality, _label: label, _host: host, _mirrorKey: mirrorKey, _explicitMirror: explicitMirror });
   }
-
   const byLabel = new Map();
   for (const stream of normalized) {
     if (!byLabel.has(stream._label)) byLabel.set(stream._label, []);
     byLabel.get(stream._label).push(stream);
   }
-
   const out = [];
   for (const [label, branch] of byLabel) {
     const mirrorKeys = [];
     for (const stream of branch) if (!mirrorKeys.includes(stream._mirrorKey)) mirrorKeys.push(stream._mirrorKey);
     const selectedMirrors = mirrorKeys.slice(0, 2);
-
     for (let m = 0; m < selectedMirrors.length; m++) {
       const mirrorKey = selectedMirrors[m];
-      const candidates = branch
-        .filter(x => x._mirrorKey === mirrorKey)
-        .sort((a, b) => qualityRank(b.quality) - qualityRank(a.quality));
-
+      const candidates = branch.filter(x => x._mirrorKey === mirrorKey).sort((a, b) => qualityRank(b.quality) - qualityRank(a.quality));
       const picked = [];
       const usedQualities = new Set();
       for (const stream of candidates) {
@@ -193,46 +266,41 @@ function cleanStreams(streams) {
         picked.push(stream);
         if (picked.length >= 2) break;
       }
-
       for (const stream of picked) {
         const mirror = selectedMirrors.length > 1 ? ` • Mirror ${m + 1}` : "";
         const { _label, _host, _mirrorKey, _explicitMirror, _mirrorIndex, ...clean } = stream;
-        out.push({
-          ...clean,
-          name: `${PROVIDER_NAME}${mirror} • ${stream.quality} • ${label}`,
-          provider: PROVIDER_NAME
-        });
+        out.push({ ...clean, name: `${PROVIDER_NAME}${mirror} • ${stream.quality} • ${label}`, provider: PROVIDER_NAME });
       }
     }
   }
-
   return out;
 }
 
 async function run(key, inputId, mediaType, season, episode) {
   const mod = await loadModule(key);
   if (!mod) return [];
-  try {
-    return cleanStreams(await mod.getStreams(inputId, mediaType, season, episode));
-  } catch (_) {
-    return [];
-  }
+  try { return cleanStreams(await mod.getStreams(inputId, mediaType, season, episode)); }
+  catch (_) { return []; }
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
   const type = String(mediaType || "tv").toLowerCase();
-
-  if (type === "movie") {
-    return await run("special", inputId, "movie", season, episode);
-  }
-
+  if (type === "movie") return await run("special", inputId, "movie", season, episode);
   if (Number(season) === 0) {
     const titleMatched = await run("special", inputId, type, season, episode);
     if (titleMatched.length) return titleMatched;
     return await run("episode0", inputId, type, season, episode);
   }
-
   return await run("core", inputId, type, season, episode);
 }
 
-module.exports = { getStreams };
+function onSettings() {
+  return [
+    { type: "header", label: "WCO Premium" },
+    { type: "info", label: "Optional authenticated-session test for content that WCO sends to its user/premium player. This does not bypass premium access and only uses a session from your own WCO account." },
+    { type: "toggle", key: "premiumEnabled", label: "Enable premium session", description: "When enabled, WCO will try your saved session only when a normal player redirects to a WCO user/premium page.", defaultValue: false },
+    { type: "text", key: "premiumCookie", label: "Premium session cookie", placeholder: "cookie_name=value; other_cookie=value", description: "Paste the Cookie header value from your own authenticated WCO browser session. Stored locally by Nuvio for this scraper and never committed to the provider repository.", isPassword: true }
+  ];
+}
+
+module.exports = { getStreams, onSettings };
