@@ -6,7 +6,7 @@ const EPISODE_TEST_URL = `${BRANCH_RAW}/wco-domain-test.js`;
 const PRODUCTION_URL = `${BRANCH_RAW}/wco-production.js`;
 
 // Normal episodes keep using the existing five-domain diagnostic tester.
-// Movies and Season 0 use only the proven production candidates plus the primary control.
+// Movies, Season 0, and premium-auth tests use the proven production candidates plus the primary control.
 const MEDIA_DOMAINS = [
   "https://www.wcostream.tv",
   "https://www.wcoflix.tv",
@@ -17,6 +17,11 @@ let episodeTest = null;
 let rawProduction = null;
 const productionCache = new Map();
 const productionErrors = new Map();
+
+function premiumEnabled() {
+  const s = (typeof globalThis !== "undefined" && globalThis.SCRAPER_SETTINGS) || {};
+  return s.premiumEnabled === true || String(s.premiumEnabled || "").toLowerCase() === "true";
+}
 
 function hostOf(url) {
   const m = String(url || "").match(/^https?:\/\/([^/]+)/i);
@@ -159,8 +164,6 @@ function patchProductionForOrigin(source, origin) {
   if (!patched.includes(needle)) return "";
   patched = patched.replace(needle, inject);
 
-  // Add a direct /anime/<series-slug> fallback after the production special
-  // augmentation has run. This only affects the isolated domain tester.
   const specialNeedle = '    if (key === "special") source = augmentSpecialSource(source);';
   if (patched.includes(specialNeedle)) {
     const addon = domainSpecialAddon();
@@ -173,9 +176,6 @@ function patchProductionForOrigin(source, origin) {
     patched = patched.replace(specialNeedle, specialReplacement);
   }
 
-  // The production wrapper normally strips Debug streams. During this isolated
-  // domain test, keep one underlying debug result when cleaning produced nothing
-  // so the UI can show the actual movie/special failure stage.
   const runNeedle = '    return cleanStreams(await mod.getStreams(inputId, mediaType, season, episode));';
   const runReplacement = [
     '    const __rawDomainStreams = await mod.getStreams(inputId, mediaType, season, episode);',
@@ -267,9 +267,7 @@ function diagnosticStream(origin, route, detail) {
   };
 }
 
-async function runMediaRoute(inputId, mediaType, season, episode) {
-  const type = String(mediaType || "tv").toLowerCase();
-  const route = type === "movie" ? "MOVIE" : "SEASON 0";
+async function runProductionRoute(inputId, mediaType, season, episode, route) {
   const out = [];
 
   for (const origin of MEDIA_DOMAINS) {
@@ -285,7 +283,9 @@ async function runMediaRoute(inputId, mediaType, season, episode) {
       if (picked.length) {
         out.push(...picked);
       } else {
-        const reason = underlyingDebug(streams) || "production WCO returned no playable stream for this item";
+        const reason = underlyingDebug(streams) || (premiumEnabled()
+          ? "premium session produced no playable stream; cookie may be invalid/expired or this title may use a different premium player"
+          : "production WCO returned no playable stream for this item");
         out.push(diagnosticStream(origin, route, reason));
       }
     } catch (e) {
@@ -299,8 +299,14 @@ async function runMediaRoute(inputId, mediaType, season, episode) {
 async function getStreams(inputId, mediaType, season, episode) {
   const type = String(mediaType || "tv").toLowerCase();
 
+  if (premiumEnabled()) {
+    const route = type === "movie" ? "PREMIUM MOVIE" : Number(season) === 0 ? "PREMIUM SEASON 0" : "PREMIUM EPISODE";
+    return await runProductionRoute(inputId, mediaType, season, episode, route);
+  }
+
   if (type === "movie" || Number(season) === 0) {
-    return await runMediaRoute(inputId, mediaType, season, episode);
+    const route = type === "movie" ? "MOVIE" : "SEASON 0";
+    return await runProductionRoute(inputId, mediaType, season, episode, route);
   }
 
   const mod = await episodeModule();
@@ -312,4 +318,13 @@ async function getStreams(inputId, mediaType, season, episode) {
   }
 }
 
-module.exports = { getStreams };
+function onSettings() {
+  return [
+    { type: "header", label: "WCO Premium Diagnostic" },
+    { type: "info", label: "Use an authenticated session from your own WCO premium account. When enabled, this test runs wcostream.tv, wcoflix.tv, and wcoforever.net independently through the premium-aware production resolver." },
+    { type: "toggle", key: "premiumEnabled", label: "Enable premium session test", description: "Only use this after pasting a current authenticated WCO Cookie header value below.", defaultValue: false },
+    { type: "text", key: "premiumCookie", label: "Premium session cookie", placeholder: "cookie_name=value; other_cookie=value", description: "Paste only the Cookie request-header value from your own logged-in WCO browser session. Do not paste your username or password here. Stored locally by Nuvio for this test provider.", isPassword: true }
+  ];
+}
+
+module.exports = { getStreams, onSettings };
