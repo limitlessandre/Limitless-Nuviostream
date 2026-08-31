@@ -55,6 +55,76 @@ async function sourceText() {
 function diagnosticAddon() {
   return `
 
+function __wcoDomainSlug(value) {
+  return normalize(value).replace(/\\s+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+async function __wcoDomainDirectSearch(info, wantedSeason) {
+  const wanted = Number(wantedSeason || 1);
+  const out = [];
+  for (const title of info.titles.slice(0, 4)) {
+    const slug = __wcoDomainSlug(title);
+    if (!slug) continue;
+    const paths = ["/anime/" + slug];
+    if (wanted > 1) {
+      paths.unshift("/anime/" + slug + "-season-" + wanted);
+      paths.unshift("/anime/" + slug + "-" + wanted);
+    }
+    paths.push("/anime/" + slug + "-english-dubbed");
+    paths.push("/anime/" + slug + "-english-subbed");
+
+    for (const path of uniq(paths)) {
+      const url = ORIGINS[0] + path;
+      const page = await req(url, { headers: { "Referer": ORIGINS[0] + "/" } });
+      if (!page.ok) continue;
+      const identity = pageIdentityText(page.text);
+      if (!identity) continue;
+      const baseScore = Math.max(...info.titles.map(t => scoreTitle(identity, t)));
+      const seasonScore = seasonPreference(identity + " " + url, wanted);
+      if (baseScore < 45 || seasonScore <= -1000) continue;
+      out.push({ href: url, title: identity, variant: classifyVariant(identity + " " + url), score: baseScore + seasonScore });
+      if (baseScore + seasonScore >= 100) return out;
+    }
+  }
+  return out.sort((a, b) => b.score - a.score).slice(0, 8);
+}
+
+const __wcoDomainOriginalSearchWco = searchWco;
+searchWco = async function(info, wantedSeason) {
+  const normal = await __wcoDomainOriginalSearchWco(info, wantedSeason);
+  if (normal && normal.length) return normal;
+  return __wcoDomainDirectSearch(info, wantedSeason);
+};
+
+const __wcoDomainOriginalIframeLink = iframeLink;
+iframeLink = function(html, pageUrl) {
+  const normal = __wcoDomainOriginalIframeLink(html, pageUrl);
+  if (normal) return normal;
+  const text = String(html || "");
+  const patterns = [
+    /<embed\\b[^>]*(?:src|data-src)=["']([^"']+)["']/i,
+    /\\b(?:data-embed|data-video|data-player|data-src)=["']([^"']*embed\\.wcostream[^"']*)["']/i,
+    /["']((?:https?:)?\\/\\/embed\\.wcostream[^"'\\\\\\s<]+)["']/i
+  ];
+  for (const re of patterns) {
+    const m = text.match(re);
+    if (m && m[1]) return absolute(m[1].replace(/\\\\\\//g, "/"), pageUrl);
+  }
+  return "";
+};
+
+function __wcoDomainMarkupHints(html) {
+  const text = String(html || "");
+  const hints = [];
+  if (/embed\\.wcostream/i.test(text)) hints.push("embed.wcostream marker");
+  if (/user\\.wcostream|check-login/i.test(text)) hints.push("login marker");
+  if (/premium/i.test(text)) hints.push("premium marker");
+  if (/<video\\b/i.test(text)) hints.push("video tag");
+  if (/<embed\\b/i.test(text)) hints.push("embed tag");
+  if (/video-js|getvidlink|getJSON\\s*\\(/i.test(text)) hints.push("player script marker");
+  return hints.length ? hints.join(", ") : "no known WCO player markers";
+}
+
 async function __wcoDomainDiagnoseVariant(series, variant, wantedSeason, wantedEpisode) {
   const lang = variant === "Sub" ? "sub" : "dub";
   const filteredUrl = audioFilterUrl(series.pageUrl, lang);
@@ -85,7 +155,7 @@ async function __wcoDomainDiagnoseVariant(series, variant, wantedSeason, wantedE
 
     const frame = iframeLink(epPage.text, entry.href);
     if (!frame) {
-      best = { score: 6, stage: "EMBED", detail: variant + ": episode loaded but no iframe was found" };
+      best = { score: 6, stage: "EMBED", detail: variant + ": no usable iframe; " + __wcoDomainMarkupHints(epPage.text) };
       continue;
     }
     if (/user\\.wcostream\\.tv\\/check-login/i.test(frame)) {
@@ -174,9 +244,9 @@ async function __wcoDomainDiagnose(inputId, mediaType, season, episode) {
   let candidates;
   try { candidates = await searchWco(info, wantedSeason); }
   catch (e) { return { score: 2, stage: "SEARCH", detail: "search error: " + String(e && e.message || e) }; }
-  if (!candidates.length) return { score: 2, stage: "SEARCH", detail: "no acceptable title match for " + info.title };
+  if (!candidates.length) return { score: 2, stage: "SEARCH", detail: "POST search + direct /anime slug probes found no acceptable title match for " + info.title };
 
-  let best = { score: 3, stage: "SERIES", detail: "search matched " + candidates.length + " candidate(s), but no usable series page" };
+  let best = { score: 3, stage: "SERIES", detail: "search/direct probe matched " + candidates.length + " candidate(s), but no usable series page" };
   for (const candidate of candidates.slice(0, 6)) {
     let series;
     try { series = await candidatePage(candidate); }
