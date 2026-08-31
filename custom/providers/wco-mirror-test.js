@@ -21,15 +21,19 @@ function patchCore(source) {
     '  if (!lookupRes.ok) return [];',
     '  let data;',
     '  try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }',
-    '  const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]).slice(0, 2);',
+    '  const serverHost = cleanHost(data.server);',
+    '  const cdnHost = cleanHost(data.cdn);',
+    '  const hosts = uniq([serverHost, cdnHost]).slice(0, 2);',
     '  if (!hosts.length) return [];',
     '  const finalVariant = variant || "Original";',
     '  const meta = variantMeta(finalVariant, info.originalLanguage);',
     '  const qualities = [data.fhd ? ["1080p", data.fhd] : null, data.fullhd ? ["1080p", data.fullhd] : null, data.hd ? ["720p", data.hd] : null, data.enc ? ["480p", data.enc] : null].filter(Boolean);',
     '  const out = [];',
+    '  const success = [];',
     '  for (let mirrorIndex = 0; mirrorIndex < hosts.length; mirrorIndex++) {',
     '    const mirrorHost = hosts[mirrorIndex];',
     '    const usedQuality = new Set();',
+    '    let mirrorWorked = false;',
     '    for (const item of qualities) {',
     '      const quality = item[0];',
     '      if (usedQuality.has(quality)) continue;',
@@ -37,9 +41,17 @@ function patchCore(source) {
     '      if (!mediaRes.ok) continue;',
     '      const media = resolvedValue(mediaRes.text, mediaRes.url);',
     '      if (!media) continue;',
+    '      mirrorWorked = true;',
     '      usedQuality.add(quality);',
     '      out.push({ name: PROVIDER_NAME + " • " + quality + " • " + meta.label, title: displayTitle, url: media, quality: quality, language: meta.language, provider: PROVIDER_NAME, type: /\\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4", headers: { "Referer": embedUrl, "Origin": originOf(embedUrl), "User-Agent": UA }, _variant: finalVariant, _mirrorIndex: mirrorIndex + 1, _mirrorKey: mirrorHost });',
     '    }',
+    '    success.push(mirrorWorked);',
+    '  }',
+    '  for (const item of out) {',
+    '    item._serverHost = serverHost;',
+    '    item._cdnHost = cdnHost;',
+    '    item._hostCount = hosts.length;',
+    '    item._mirrorSuccess = success.join(",");',
     '  }',
     '  return out;',
     '}',
@@ -82,8 +94,14 @@ function rank(q) {
   return m ? Number(m[1]) : 0;
 }
 
+function hostName(value) {
+  const m = String(value || "").match(/^https?:\/\/([^/]+)/i);
+  return m ? m[1] : "none";
+}
+
 function prune(streams) {
   const branches = new Map();
+  const first = (streams || []).find(s => s && s.url) || null;
   for (const s of streams || []) {
     if (!s || !s.url) continue;
     const label = labelOf(s);
@@ -105,12 +123,41 @@ function prune(streams) {
       const clean = { ...s };
       delete clean._mirrorIndex;
       delete clean._mirrorKey;
+      delete clean._serverHost;
+      delete clean._cdnHost;
+      delete clean._hostCount;
+      delete clean._mirrorSuccess;
       clean.provider = PROVIDER_NAME;
       clean.name = PROVIDER_NAME + " • Mirror " + branch.mirror + " • " + q + " • " + branch.label;
       out.push(clean);
       count += 1;
       if (count >= 2) break;
     }
+  }
+
+  if (first) {
+    const server = String(first._serverHost || "");
+    const cdn = String(first._cdnHost || "");
+    const count = Number(first._hostCount || 0);
+    const success = String(first._mirrorSuccess || "").split(",");
+    let state = "SERVER " + (server ? "present" : "missing") + " • CDN ";
+    if (!cdn) state += "missing";
+    else if (server && cdn === server) state += "same as server";
+    else state += "present";
+    if (count > 0) {
+      state += " • M1 " + (success[0] === "true" ? "OK" : "FAIL");
+      if (count > 1) state += " • M2 " + (success[1] === "true" ? "OK" : "FAIL");
+    }
+    state += " • " + hostName(server) + (cdn ? " / " + hostName(cdn) : "");
+    out.push({
+      name: PROVIDER_NAME + " • DIAG • " + state,
+      title: "WCO mirror diagnostic",
+      url: "https://example.com/wco-mirror-diagnostic.mp4",
+      quality: "Debug",
+      language: "Debug",
+      provider: PROVIDER_NAME,
+      type: "mp4"
+    });
   }
   return out;
 }
