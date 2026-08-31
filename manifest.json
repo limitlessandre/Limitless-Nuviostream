@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -26,6 +26,21 @@
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco-domain-test",
+      "name": "WCO Domain Test",
+      "description": "Temporary isolated WCO frontend fallback test. Runs the same normal TV/anime episode independently through wcoflix, wcoforever, wco.tv, wcoanimedub, and wcoanimesub, returning only the best Dub and best Sub result per domain so useful fallback frontends can be identified without changing production WCO.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus WCO domain test",
+      "supportedTypes": ["tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-domain-test.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
