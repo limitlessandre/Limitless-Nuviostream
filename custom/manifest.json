@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.17",
+  "version": "2.0.18",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,13 +21,13 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; and optional authenticated WCO premium-session testing through local scraper settings.",
+      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; and explicit-only mirror labels.",
       "version": "2.4.8",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-production.js",
       "enabled": true,
-      "hasSettings": true,
+      "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
@@ -36,13 +36,13 @@
     {
       "id": "limitless-wco-domain-test",
       "name": "WCO Domain Test",
-      "description": "Temporary isolated WCO frontend fallback test retained while WCO premium-session behavior is being validated.",
-      "version": "0.5.3",
+      "description": "Temporary isolated WCO frontend fallback and premium-session diagnostic test. Premium mode runs wcostream.tv, wcoflix.tv, and wcoforever.net independently using a locally stored authenticated session cookie from the user's own WCO account.",
+      "version": "0.6.0",
       "author": "Limitless Nexus WCO domain test",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-domain-test-v2.js",
       "enabled": true,
-      "hasSettings": false,
+      "hasSettings": true,
       "limited": true,
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
