@@ -11,11 +11,15 @@ async function loadWco() {
   let source = String(await res.text() || "");
   if (!source || !source.includes("module.exports")) return null;
 
-  // Preserve a legitimate Episode 0 request inside the current WCO resolver.
-  // The main provider intentionally remains untouched while this fallback is tested.
+  // Preserve a legitimate Episode 0 request at BOTH zero-coercion points
+  // inside the current WCO TV resolver. Main WCO remains untouched.
   source = source.replace(
     "const wantedE = Number(wantedEpisode || 1);",
     "const wantedE = Number(wantedEpisode == null ? 1 : wantedEpisode);"
+  );
+  source = source.replace(
+    "const wantedEpisode = Number(episode || 1);",
+    "const wantedEpisode = Number(episode == null ? 1 : episode);"
   );
 
   try {
