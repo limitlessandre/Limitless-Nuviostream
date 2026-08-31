@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "1.6.0",
+  "version": "1.9.15",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -16,6 +16,66 @@
       "limited": true,
       "formats": ["mp4"],
       "logo": "https://reanime.to/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco",
+      "name": "WCO",
+      "description": "Nuvio-runtime-safe WCO provider using the on-device-proven video-js/getvid flow. Uses the canonical WCO series page and WCO's own audio filters to collect English Dub and Japanese + English Subbed episode entries separately, preserves season-aware matching, and recognizes combined WCO episode ranges such as Episode 1-2 so the same source can appear under each covered Nuvio episode. Movie handling is temporarily withheld while title-based movie/special mapping is validated separately.",
+      "version": "2.3.1",
+      "author": "Limitless Nexus rebuild based on live Nuvio diagnostics and current WCO series-page behavior",
+      "supportedTypes": ["tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco-movie-test",
+      "name": "WCO Special Test",
+      "description": "Temporary streamlined title-mapping test for WCO movies and TMDB/Nuvio Season 0 specials stored inside a parent series. Once the parent series is strongly identified, special matching is driven by distinctive title words rather than a high fuzzy-score threshold, allowing WCO abbreviations such as 'Is It Fall' to match TMDB's 'Is It Fall Yet?' while still rejecting unrelated episodes. Includes current and legacy WCO iframe extraction.",
+      "version": "0.6.0",
+      "author": "Limitless Nexus movie and special mapping diagnostic",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-special-test-v2.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco-episode0-test",
+      "name": "WCO Episode 0 Test",
+      "description": "Temporary narrow Season 0 fallback test. For a Nuvio S0E<N> request, it tries the already-working WCO TV resolver at Season <N> Episode 0 and only returns results when that explicit WCO Episode 0 path actually resolves playable media. This isolates cases such as Guardian Fitz without changing movie/special title matching.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus episode-zero fallback diagnostic",
+      "supportedTypes": ["tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-episode0-test.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-wco-diagnostic",
+      "name": "WCO Diagnostic",
+      "description": "Temporary visible diagnostic provider. It reports WCO pipeline progress directly in Nuvio's source list, including player-page, getvidlink, and final media-token resolution, so debugging does not depend on plugin logs.",
+      "version": "0.2.0",
+      "author": "Limitless Nexus diagnostic",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-diagnostic.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
     }
   ]
