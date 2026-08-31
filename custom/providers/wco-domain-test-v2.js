@@ -23,6 +23,11 @@ function premiumEnabled() {
   return s.premiumEnabled === true || String(s.premiumEnabled || "").toLowerCase() === "true";
 }
 
+function premiumCookiePresent() {
+  const s = (typeof globalThis !== "undefined" && globalThis.SCRAPER_SETTINGS) || {};
+  return !!String(s.premiumCookie || "").trim();
+}
+
 function hostOf(url) {
   const m = String(url || "").match(/^https?:\/\/([^/]+)/i);
   return m ? m[1].replace(/^www\./i, "") : String(url || "");
@@ -66,7 +71,7 @@ function cleanDetail(value) {
     .replace(/https?:\/\//gi, "")
     .replace(/\s+/g, " ")
     .trim()
-    .slice(0, 120);
+    .slice(0, 170);
 }
 
 async function fetchSource(url) {
@@ -163,6 +168,36 @@ function patchProductionForOrigin(source, origin) {
 
   if (!patched.includes(needle)) return "";
   patched = patched.replace(needle, inject);
+
+  // Instrument only the dynamically loaded normal-episode premium resolver.
+  // The diagnostic is written to globalThis so this outer test wrapper can report it.
+  patched = patched.replace(
+    "'    if (!cookie) return [];',",
+    "'    if (!cookie) { globalThis.__WCO_PREMIUM_DIAG = \"COOKIE MISSING\"; return []; }',"
+  );
+  patched = patched.replace(
+    "'    if (!auth.ok) return [];',",
+    "'    if (!auth.ok) { globalThis.__WCO_PREMIUM_DIAG = \"AUTH HTTP \" + (auth.status || 0) + \" final=\" + originOf(auth.url || embedUrl); return []; }',"
+  );
+  patched = patched.replace(
+    "'    const inner = __wcoPremiumInner(auth.text, auth.url || embedUrl);',",
+    [
+      "'    const inner = __wcoPremiumInner(auth.text, auth.url || embedUrl);',",
+      "'    const __premiumHtml = String(auth.text || \"\");',",
+      "'    const __premiumMarks = [];',",
+      "'    if (/free\\.wcopremium\\.tv/i.test(__premiumHtml) || /free\\.wcopremium\\.tv/i.test(String(auth.url||\"\"))) __premiumMarks.push(\"free.wcopremium\");',",
+      "'    if (/videojs|video-js/i.test(__premiumHtml)) __premiumMarks.push(\"VideoJS\");',",
+      "'    if (/jwplayer/i.test(__premiumHtml)) __premiumMarks.push(\"JWPlayer\");',",
+      "'    if (/<iframe\\b/i.test(__premiumHtml)) __premiumMarks.push(\"iframe\");',",
+      "'    if (/embed\\.wcostream/i.test(__premiumHtml)) __premiumMarks.push(\"embed.wcostream\");',",
+      "'    if (/<video\\b/i.test(__premiumHtml)) __premiumMarks.push(\"video\");',",
+      "'    if (/<source\\b/i.test(__premiumHtml)) __premiumMarks.push(\"source\");',",
+      "'    if (/getvid|video-js-new|video-js-old|getvidlink/i.test(__premiumHtml)) __premiumMarks.push(\"WCO player script\");',",
+      "'    if (/log[ -]?in|sign[ -]?in/i.test(__premiumHtml)) __premiumMarks.push(\"login text\");',",
+      "'    if (/expired|renew|upgrade to a premium|active subscription/i.test(__premiumHtml)) __premiumMarks.push(\"entitlement text\");',",
+      "'    globalThis.__WCO_PREMIUM_DIAG = \"AUTH OK HTTP \" + (auth.status || 200) + \" final=\" + originOf(auth.url || embedUrl) + \" inner=\" + (inner ? originOf(inner) : \"none\") + \" markers=\" + (__premiumMarks.length ? __premiumMarks.join(\",\") : \"none\");',"
+    ].join("\n    ")
+  );
 
   const specialNeedle = '    if (key === "special") source = augmentSpecialSource(source);';
   if (patched.includes(specialNeedle)) {
@@ -278,13 +313,19 @@ async function runProductionRoute(inputId, mediaType, season, episode, route) {
     }
 
     try {
+      if (typeof globalThis !== "undefined") globalThis.__WCO_PREMIUM_DIAG = "";
       const streams = await mod.getStreams(inputId, mediaType, season, episode);
       const picked = pickBest(streams, origin, route);
       if (picked.length) {
         out.push(...picked);
       } else {
-        const reason = underlyingDebug(streams) || (premiumEnabled()
-          ? "premium session produced no playable stream; cookie may be invalid/expired or this title may use a different premium player"
+        const premiumDiag = premiumEnabled() && typeof globalThis !== "undefined"
+          ? String(globalThis.__WCO_PREMIUM_DIAG || "").trim()
+          : "";
+        const reason = premiumDiag || underlyingDebug(streams) || (premiumEnabled()
+          ? (premiumCookiePresent()
+              ? "premium cookie present but authenticated player produced no recognized stream"
+              : "premium mode enabled but no cookie is saved")
           : "production WCO returned no playable stream for this item");
         out.push(diagnosticStream(origin, route, reason));
       }
@@ -321,7 +362,7 @@ async function getStreams(inputId, mediaType, season, episode) {
 function onSettings() {
   return [
     { type: "header", label: "WCO Premium Diagnostic" },
-    { type: "info", label: "Use an authenticated session from your own WCO premium account. When enabled, this test runs wcostream.tv, wcoflix.tv, and wcoforever.net independently through the premium-aware production resolver." },
+    { type: "info", label: "Use an authenticated session from your own WCO premium account. When enabled, this test runs wcostream.tv, wcoflix.tv, and wcoforever.net independently and reports the authenticated player structure if playback cannot be resolved." },
     { type: "toggle", key: "premiumEnabled", label: "Enable premium session test", description: "Only use this after pasting a current authenticated WCO Cookie header value below.", defaultValue: false },
     { type: "text", key: "premiumCookie", label: "Premium session cookie", placeholder: "cookie_name=value; other_cookie=value", description: "Paste only the Cookie request-header value from your own logged-in WCO browser session. Do not paste your username or password here. Stored locally by Nuvio for this test provider.", isPassword: true }
   ];
