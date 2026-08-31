@@ -111,6 +111,28 @@
     "fileHash": "sha256-6032aeba37c8e4b02f74d0d400daab2c4bf2a587b738ebdc8db24b77a7a2f39f"
   },
   {
+    "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anilight.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "Anilight",
+    "internalName": "Anilight",
+    "authors": [
+      "Phisher98"
+    ],
+    "description": "Anilight Anime Provider",
+    "fileSize": 31962,
+    "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+    "language": "en",
+    "tvTypes": [
+      "AnimeMovie",
+      "Anime",
+      "OVA"
+    ],
+    "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/anilight.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-1bd5a7bd3445a1857ccdfe279a17541578c4d31f53b2f522b8132dba6aced45d"
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
     "status": 1,
     "version": 11,
@@ -342,7 +364,7 @@
       "megix"
     ],
     "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-    "fileSize": 731446,
+    "fileSize": 716815,
     "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
     "language": "en",
     "tvTypes": [
@@ -354,7 +376,7 @@
     ],
     "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-0bae959eca25630f9c738c4286c8bd82d010def0d9b2af8a88180184fcb56893"
+    "fileHash": "sha256-94685cb5238277b0086701f9c7fe0512ee742a0127c161e3fe73e15470a8a232"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/CloudPlay.cs3",
@@ -610,26 +632,6 @@
     "fileHash": "sha256-eb09436a3bccec88f459c0d8601001c4e4e4bac69a92f42cd34caf2fb60f8ef2"
   },
   {
-    "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/GDIndex.cs3",
-    "status": 1,
-    "version": 6,
-    "name": "GDIndex",
-    "internalName": "GDIndex",
-    "authors": [
-      "Horis"
-    ],
-    "fileSize": 18257,
-    "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
-    "language": "en",
-    "tvTypes": [
-      "Movie",
-      "TvSeries"
-    ],
-    "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/GDIndex/icon.ico",
-    "apiVersion": 1,
-    "fileHash": "sha256-d6c6b8e49b1f98552fa81615c0a57218e2602eb52c261871e3290bb3d73e1c29"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Goojara.cs3",
     "status": 1,
     "version": 3,
@@ -701,22 +703,22 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
     "status": 1,
-    "version": 7,
+    "version": 8,
     "name": "JPFilms",
     "internalName": "JPFilms",
     "authors": [
       "ByAyzen"
     ],
     "description": "Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.",
-    "fileSize": 17281,
+    "fileSize": 17285,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
       "AsianDrama"
     ],
-    "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jp-films.com&size=128",
+    "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kodasusaka.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-cd3ab14cc4ab717595b09e11cbc93dc3ae1683e04fb136a7a0615c5fad06f574"
+    "fileHash": "sha256-10c81032a8b8f4f2da52772f207a9ad46203024db2f6682b1a852e42096a7a79"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
@@ -1080,14 +1082,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Streamed.cs3",
     "status": 1,
-    "version": 27,
+    "version": 28,
     "name": "Streamed",
     "internalName": "Streamed",
     "authors": [
       "kraptor"
     ],
     "description": "Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.",
-    "fileSize": 32077,
+    "fileSize": 33098,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -1095,7 +1097,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://streamed.pk/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-d18942e5cf2402660d89ed9636d6e483fe057ed4eb86a4c005d69fb176acec84"
+    "fileHash": "sha256-8c4b286dd43e077d8d820779c0dd100d32e768e1637c3ee5e13d860f9a84dcab"
   },
   {
     "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/StreamedProvider.cs3",
@@ -1128,7 +1130,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1020168,
+    "fileSize": 1020707,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1141,7 +1143,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-98f5bfae9c689d425b1e59f88cc841d30bb9ee3d2a2a9cb65c564bdb2c7008fd"
+    "fileHash": "sha256-2862fae1c1ad59284965b8b975d1e488c7d52f52cb1762344de5d66d25583fce"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 285,
+  "excluded_count": 281,
   "excluded": [
     {
       "internalName": "3isk",
@@ -1338,20 +1338,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Dramaizle",
-      "name": "Dramaizle",
-      "source": "cs-karma",
-      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Dramaizle.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "DramaSerial",
       "name": "DramaSerial",
       "source": "Indostream Repo",
@@ -1590,20 +1576,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Filmmirasım",
-      "name": "Filmmirasım",
-      "source": "cs-karma",
-      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Filmmirasım.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "Filmo",
       "name": "Filmo",
       "source": "German providers repository",
@@ -1707,20 +1679,6 @@
         "fr"
       ],
       "url": "https://git.disroot.org/ayza/FStream/raw/branch/main/FStream.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "Full4kizle",
-      "name": "Full4kizle",
-      "source": "cs-karma",
-      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Full4kizle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2773,20 +2731,6 @@
         "ru"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OK.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "OnlineMoviesHinditProvider",
-      "name": "OnlineMoviesHinditProvider",
-      "source": "Megix Repo(Hindi & English)",
-      "sourceRepo": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CS.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/OnlineMoviesHinditProvider.cs3",
       "reason": "no-allowed-language"
     },
     {

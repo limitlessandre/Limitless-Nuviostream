@@ -1,15 +1,15 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "repository_database_entries": 26,
-  "repositories_loaded": 23,
-  "repositories_using_cache": 1,
+  "repositories_loaded": 22,
+  "repositories_using_cache": 2,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 372,
+  "raw_plugin_entries": 368,
   "eligible_plugin_entries_before_dedupe": 68,
   "unique_plugins": 65,
   "duplicate_groups": 3,
-  "language_filtered_entries": 285,
+  "language_filtered_entries": 281,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 19,
   "meta_plugin_entries_filtered": 0,
@@ -63,21 +63,22 @@
       "name": "Megix Repo(Hindi & English)",
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CS.json",
       "status": "ok",
-      "plugins": 7,
+      "plugins": 5,
       "verified": false
     },
     {
       "name": "FStream",
       "url": "https://git.disroot.org/ayza/FStream/raw/branch/main/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 1,
-      "verified": false
+      "verified": false,
+      "error": "HTTP Error 502: Bad Gateway"
     },
     {
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 79,
+      "plugins": 80,
       "verified": false
     },
     {
@@ -169,7 +170,7 @@
       "name": "cs-karma",
       "url": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
       "status": "ok",
-      "plugins": 36,
+      "plugins": 33,
       "verified": false
     },
     {

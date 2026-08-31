@@ -1,63 +1,15 @@
 {
   "source_status": [
     {
-      "name": "Limitless Native Ports",
+      "name": "Limitless Nexus",
       "status": "ok",
-      "providers": 6,
+      "providers": 3,
       "origin": "local"
-    },
-    {
-      "name": "All-in-One-Nuvio",
-      "status": "ok",
-      "providers": 61,
-      "origin": "remote"
-    },
-    {
-      "name": "Asura Synthesis",
-      "status": "ok",
-      "providers": 17,
-      "origin": "remote"
-    },
-    {
-      "name": "CENSORED's Repo",
-      "status": "ok",
-      "providers": 17,
-      "origin": "remote"
-    },
-    {
-      "name": "Eclipsia",
-      "status": "ok",
-      "providers": 32,
-      "origin": "remote"
-    },
-    {
-      "name": "Michat88 Repo",
-      "status": "ok",
-      "providers": 30,
-      "origin": "remote"
-    },
-    {
-      "name": "Phisher's Repo",
-      "status": "ok",
-      "providers": 2,
-      "origin": "remote"
-    },
-    {
-      "name": "Ray's Plugins",
-      "status": "ok",
-      "providers": 18,
-      "origin": "remote"
-    },
-    {
-      "name": "Yoru's Repo",
-      "status": "ok",
-      "providers": 29,
-      "origin": "remote"
     }
   ],
-  "unique_providers": 125,
-  "duplicate_groups": 40,
-  "language_filtered_entries": 9,
+  "unique_providers": 3,
+  "duplicate_groups": 0,
+  "language_filtered_entries": 0,
   "unknown_language_metadata_entries": 0,
   "allowed_languages": [
     "en",
