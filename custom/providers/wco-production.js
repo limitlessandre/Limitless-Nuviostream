@@ -56,6 +56,23 @@ function augmentCoreMirrors(source) {
 }
 
 function augmentSpecialSource(source) {
+  source = source.replace(
+    /function variant\(v,forced\)\{[\s\S]*?\}function meta\(v,lang\)\{[\s\S]*?\}/,
+    [
+      'function variant(v,forced){v=String(v||"").toLowerCase();if(/subbed|\\bsub\\b/.test(v))return"Sub";if(/dubbed|\\bdub\\b/.test(v))return"Dub";return forced||"Original";}',
+      'function specialLanguageName(code){const c=String(code||"en").toLowerCase();return({en:"English",ja:"Japanese",ko:"Korean",zh:"Chinese",es:"Spanish",fr:"French",de:"German",it:"Italian",pt:"Portuguese"})[c]||c.toUpperCase()||"Original";}',
+      'function meta(v,lang){const base=specialLanguageName(lang);if(v==="Sub")return{label:base==="Japanese"?"Japanese + English Hard Subs":base+" + Hard Subs",language:base};if(v==="Dub")return base==="English"?{label:"English Audio",language:"English"}:{label:"English Dub",language:"English"};return{label:base+" (Original)",language:base};}'
+    ].join("\n")
+  );
+
+  source = source.replace(
+    /async function entries\(seriesUrl,t\)\{[\s\S]*?\}\nfunction b64/,
+    [
+      'async function entries(seriesUrl,t){const base=String(seriesUrl).replace(/[?#].*$/,"").replace(/\\/$/,""),byHref=new Map();for(const p of [{u:`${base}/?season=all`,v:null},{u:`${base}/?season=all&lang=dub`,v:"Dub"},{u:`${base}/?season=all&lang=sub`,v:"Sub"}]){const r=await req(p.u,{headers:{"Referer":seriesUrl}});if(!r.ok)continue;for(const x of links(r.body,p.u,null)){if(/\\/anime\\//i.test(x.href))continue;const id=`${x.text} ${x.href}`;if(!distinct(id,t.aliases))continue;let rec=byHref.get(x.href);if(!rec){rec={href:x.href,text:x.text,score:best(id,t.aliases),contexts:new Set(),explicit:new Set()};byHref.set(x.href,rec);}rec.score=Math.max(rec.score,best(id,t.aliases));rec.contexts.add(p.v||"All");const detected=variant(id,null);if(detected!=="Original")rec.explicit.add(detected);}}const out=[];for(const rec of byHref.values()){let resolved="Original";if(rec.explicit.size===1)resolved=Array.from(rec.explicit)[0];else if(rec.explicit.size===0){const hasDub=rec.contexts.has("Dub"),hasSub=rec.contexts.has("Sub");if(hasDub&&!hasSub)resolved="Dub";else if(hasSub&&!hasDub)resolved="Sub";}out.push({href:rec.href,text:rec.text,variant:resolved,score:rec.score});}return out.sort((a,b)=>b.score-a.score).slice(0,8);}',
+      'function b64'
+    ].join("\n")
+  );
+
   const marker = "async function getStreams(inputId,mediaType,season,episode)";
   const exportMarker = "module.exports={getStreams};";
   const start = source.indexOf(marker);
@@ -64,8 +81,8 @@ function augmentSpecialSource(source) {
 
   const replacement = [
     'function fractionalNo(v){const s=String(v||"");let m=s.match(/\\bEpisode\\s*(\\d+\\.\\d+)\\b/i);if(!m)m=s.match(/episode[-_ ]?(\\d+\\.\\d+)(?:\\D|$)/i);return m?m[1]:"";}',
-    'async function fractionalEntries(seriesUrl,wantedVariant){const base=String(seriesUrl||"").replace(/[?#].*$/,"").replace(/\\/$/,"");const lang=wantedVariant==="Sub"?"sub":"dub",u=base+"/?season=all&lang="+lang,r=await req(u,{headers:{"Referer":seriesUrl}});if(!r.ok)return[];const out=[];for(const x of links(r.body,u,wantedVariant)){if(/\\/anime\\//i.test(x.href))continue;const id=x.text+" "+x.href;if(!fractionalNo(id))continue;if(!out.some(y=>y.href===x.href))out.push({...x,variant:wantedVariant});}return out;}',
-    'async function getStreams(inputId,mediaType,season,episode){const type=String(mediaType||"").toLowerCase()==="movie"?"movie":"tv";if(type==="tv"&&+season!==0)return[];try{const t=await target(inputId,type,season,episode);if(!t)return debug("NO TMDB TARGET",null);const parents=await seriesCandidates(t);let reason="";for(const p of parents){const matched=await entries(p.href,t),collected=[],variants=new Set();for(const e of matched){const r=await extract(e,t);if(r.streams.length){collected.push(...r.streams);variants.add(e.variant);}else if(!reason)reason=r.reason;}if(type==="tv"&&collected.length){for(const wanted of ["Dub","Sub"]){if(variants.has(wanted))continue;const frac=await fractionalEntries(p.href,wanted);if(frac.length!==1)continue;const r=await extract(frac[0],t);if(r.streams.length){collected.push(...r.streams);variants.add(wanted);}}}if(collected.length)return collected;}if(reason)return debug(reason.slice(0,140),t);return debug(parents.length?"SERIES "+parents[0].text+" • NO SPECIAL MATCH":"NO SERIES MATCH • "+t.title,t);}catch(_){return debug("RUNTIME ERROR",null);}}',
+    'async function fractionalEntries(seriesUrl,wantedVariant){const base=String(seriesUrl||"").replace(/[?#].*$/,"").replace(/\\/$/,"");const lang=wantedVariant==="Sub"?"sub":"dub",u=base+"/?season=all&lang="+lang,r=await req(u,{headers:{"Referer":seriesUrl}});if(!r.ok)return[];const out=[];for(const x of links(r.body,u,null)){if(/\\/anime\\//i.test(x.href))continue;const id=x.text+" "+x.href;if(!fractionalNo(id))continue;const detected=variant(id,null),resolved=detected==="Original"?wantedVariant:detected;if(!out.some(y=>y.href===x.href))out.push({...x,variant:resolved});}return out;}',
+    'async function getStreams(inputId,mediaType,season,episode){const type=String(mediaType||"").toLowerCase()==="movie"?"movie":"tv";if(type==="tv"&&+season!==0)return[];try{const t=await target(inputId,type,season,episode);if(!t)return debug("NO TMDB TARGET",null);const parents=await seriesCandidates(t);let reason="";for(const p of parents){const matched=await entries(p.href,t),collected=[],variants=new Set();for(const e of matched){const r=await extract(e,t);if(r.streams.length){collected.push(...r.streams);variants.add(e.variant);}else if(!reason)reason=r.reason;}if(type==="tv"&&collected.length){for(const wanted of ["Dub","Sub"]){if(variants.has(wanted))continue;const frac=await fractionalEntries(p.href,wanted);if(frac.length!==1)continue;const r=await extract(frac[0],t);if(r.streams.length){collected.push(...r.streams);variants.add(frac[0].variant);}}}if(collected.length)return collected;}if(reason)return debug(reason.slice(0,140),t);return debug(parents.length?"SERIES "+parents[0].text+" • NO SPECIAL MATCH":"NO SERIES MATCH • "+t.title,t);}catch(_){return debug("RUNTIME ERROR",null);}}',
     ''
   ].join("\n");
 
@@ -105,13 +122,17 @@ function isDebug(stream) {
 
 function productionLabel(stream) {
   const name = String(stream && stream.name || "").toLowerCase();
+  const lang = String(stream && stream.language || "").trim();
   if (name.includes("dual audio")) return "Dual Audio + Subs";
   if (name.includes("multi audio")) return "Multi Audio + Subs";
-  if (name.includes("japanese + english hard subs")) return "Japanese + English Hard Subs";
+  if (name.includes("english audio")) return "English Audio";
   if (name.includes("english dub")) return "English Dub";
+  if (name.includes("hard subs")) {
+    if (/^japanese$/i.test(lang)) return "Japanese + English Hard Subs";
+    return `${lang || "Original"} + Hard Subs`;
+  }
   if (name.includes("english (original)")) return "English (Original)";
   if (name.includes("japanese (original)")) return "Japanese (Original)";
-  const lang = String(stream && stream.language || "").trim();
   return lang || "Original";
 }
 
