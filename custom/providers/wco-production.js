@@ -10,6 +10,51 @@ const MODULE_URLS = {
 
 const cache = Object.create(null);
 
+function augmentCoreMirrors(source) {
+  const startMarker = "async function extractEmbed(embedUrl, variant, displayTitle, info)";
+  const endMarker = "async function candidatePage(candidate)";
+  const start = source.indexOf(startMarker);
+  const end = source.indexOf(endMarker, start);
+  if (start < 0 || end < 0) return source;
+
+  const replacement = [
+    'async function extractEmbed(embedUrl, variant, displayTitle, info) {',
+    '  if (!embedUrl || /user\\.wcostream\\.tv\\/check-login/i.test(embedUrl)) return [];',
+    '  if (!/embed\\.wcostream/i.test(embedUrl)) return [];',
+    '  const lookup = await playerLookup(embedUrl);',
+    '  if (!lookup) return [];',
+    '  const lookupRes = await req(lookup, { headers: { "Accept": "application/json, text/javascript, */*; q=0.01", "Referer": embedUrl, "Origin": originOf(embedUrl), "X-Requested-With": "XMLHttpRequest" } });',
+    '  if (!lookupRes.ok) return [];',
+    '  let data;',
+    '  try { data = JSON.parse(lookupRes.text); } catch (_) { return []; }',
+    '  const hosts = uniq([cleanHost(data.server), cleanHost(data.cdn)]).slice(0, 2);',
+    '  if (!hosts.length) return [];',
+    '  const finalVariant = variant || "Original";',
+    '  const meta = variantMeta(finalVariant, info.originalLanguage);',
+    '  const qualities = [data.fhd ? ["1080p", data.fhd] : null, data.fullhd ? ["1080p", data.fullhd] : null, data.hd ? ["720p", data.hd] : null, data.enc ? ["480p", data.enc] : null].filter(Boolean);',
+    '  const out = [];',
+    '  for (let mirrorIndex = 0; mirrorIndex < hosts.length; mirrorIndex++) {',
+    '    const mirrorHost = hosts[mirrorIndex];',
+    '    const usedQuality = new Set();',
+    '    for (const item of qualities) {',
+    '      const quality = item[0];',
+    '      if (usedQuality.has(quality)) continue;',
+    '      const mediaRes = await req(mirrorHost + "/getvid?evid=" + encodeURIComponent(String(item[1])) + "&json", { headers: { "Referer": embedUrl, "Origin": originOf(embedUrl) } });',
+    '      if (!mediaRes.ok) continue;',
+    '      const media = resolvedValue(mediaRes.text, mediaRes.url);',
+    '      if (!media) continue;',
+    '      usedQuality.add(quality);',
+    '      out.push({ name: PROVIDER_NAME + " • " + quality + " • " + meta.label, title: displayTitle, url: media, quality: quality, language: meta.language, provider: PROVIDER_NAME, type: /\\.m3u8(?:[?#]|$)/i.test(media) ? "m3u8" : "mp4", headers: { "Referer": embedUrl, "Origin": originOf(embedUrl), "User-Agent": UA }, _variant: finalVariant, _mirrorIndex: mirrorIndex + 1, _mirrorKey: mirrorHost });',
+    '    }',
+    '  }',
+    '  return out;',
+    '}',
+    ''
+  ].join("\n");
+
+  return source.slice(0, start) + replacement + source.slice(end);
+}
+
 function augmentSpecialSource(source) {
   const marker = "async function getStreams(inputId,mediaType,season,episode)";
   const exportMarker = "module.exports={getStreams};";
@@ -36,6 +81,7 @@ async function loadModule(key) {
     if (!res || !res.ok) return null;
     let source = String(await res.text() || "");
     if (!source || !source.includes("module.exports")) return null;
+    if (key === "core") source = augmentCoreMirrors(source);
     if (key === "special") source = augmentSpecialSource(source);
     const mod = { exports: {} };
     const localRequire = function(name) {
@@ -90,11 +136,13 @@ function cleanStreams(streams) {
     if (isDebug(stream)) continue;
     const quality = String(stream.quality || "Auto");
     const label = productionLabel(stream);
+    const explicitMirror = Number(stream._mirrorIndex || 0);
     const host = mediaHost(stream.url);
-    const key = `${quality}|${label}|${host}|${stream.url}`;
+    const mirrorKey = explicitMirror > 0 ? `explicit-${explicitMirror}` : host;
+    const key = `${quality}|${label}|${mirrorKey}|${stream.url}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    normalized.push({ ...stream, quality, _label: label, _host: host });
+    normalized.push({ ...stream, quality, _label: label, _host: host, _mirrorKey: mirrorKey, _explicitMirror: explicitMirror });
   }
 
   const byLabel = new Map();
@@ -105,14 +153,14 @@ function cleanStreams(streams) {
 
   const out = [];
   for (const [label, branch] of byLabel) {
-    const hosts = [];
-    for (const stream of branch) if (!hosts.includes(stream._host)) hosts.push(stream._host);
+    const mirrorKeys = [];
+    for (const stream of branch) if (!mirrorKeys.includes(stream._mirrorKey)) mirrorKeys.push(stream._mirrorKey);
+    const selectedMirrors = mirrorKeys.slice(0, 2);
 
-    const selectedHosts = hosts.slice(0, 2);
-    for (let h = 0; h < selectedHosts.length; h++) {
-      const host = selectedHosts[h];
+    for (let m = 0; m < selectedMirrors.length; m++) {
+      const mirrorKey = selectedMirrors[m];
       const candidates = branch
-        .filter(x => x._host === host)
+        .filter(x => x._mirrorKey === mirrorKey)
         .sort((a, b) => qualityRank(b.quality) - qualityRank(a.quality));
 
       const picked = [];
@@ -126,8 +174,8 @@ function cleanStreams(streams) {
       }
 
       for (const stream of picked) {
-        const mirror = selectedHosts.length > 1 ? ` • Mirror ${h + 1}` : "";
-        const { _label, _host, ...clean } = stream;
+        const mirror = selectedMirrors.length > 1 ? ` • Mirror ${m + 1}` : "";
+        const { _label, _host, _mirrorKey, _explicitMirror, _mirrorIndex, ...clean } = stream;
         out.push({
           ...clean,
           name: `${PROVIDER_NAME}${mirror} • ${stream.quality} • ${label}`,
