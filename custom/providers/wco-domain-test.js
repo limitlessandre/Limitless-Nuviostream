@@ -79,8 +79,10 @@ function pickBest(streams, origin) {
   const out = [];
   for (const [branch, stream] of best.entries()) {
     const clean = { ...stream };
+    const frontendHost = hostOf(origin);
+    const mediaHost = hostOf(clean.url);
     clean.provider = PROVIDER_NAME;
-    clean.name = `${PROVIDER_NAME} • ${hostOf(origin)} • ${clean.quality || "Auto"} • ${branch === "Dub" ? "English Dub" : "Japanese + English Hard Subs"}`;
+    clean.name = `${PROVIDER_NAME} • ${frontendHost} → ${mediaHost} • ${clean.quality || "Auto"} • ${branch === "Dub" ? "English Dub" : "Japanese + English Hard Subs"}`;
     out.push(clean);
   }
   return out;
