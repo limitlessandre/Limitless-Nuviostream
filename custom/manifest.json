@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with title-aware movies and Season 0 specials, Episode 0 and fractional-special fallbacks, separate Dub/Sub sources, season and range matching, and real mirror handling: WCO server/CDN are deduplicated when identical and exposed separately only when distinct, with the top two qualities kept per real mirror and a maximum of four sources per audio branch.",
-      "version": "2.4.5",
+      "description": "Production WCO provider with title-aware movies and Season 0 specials, Episode 0 and fractional-special fallbacks, separate Dub/Sub sources, season and range matching, real mirror handling, and safer movie/special audio classification that no longer trusts ignored lang=dub/lang=sub filters as proof of audio type.",
+      "version": "2.4.6",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-production.js",
@@ -36,8 +36,8 @@
     {
       "id": "limitless-wco-domain-test",
       "name": "WCO Domain Test",
-      "description": "Temporary isolated WCO frontend fallback test. v0.5 keeps the proven five-domain diagnostics for normal episodes and adds movie/Season 0 testing through the actual production WCO pipeline, isolated independently to wcostream.tv, wcoflix.tv, and wcoforever.net.",
-      "version": "0.5.0",
+      "description": "Temporary isolated WCO frontend fallback test. v0.5.1 keeps the proven normal-episode diagnostics and movie/Season 0 domain checks while inheriting the corrected production movie/special audio classification.",
+      "version": "0.5.1",
       "author": "Limitless Nexus WCO domain test",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-domain-test-v2.js",
