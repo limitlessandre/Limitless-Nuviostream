@@ -47,7 +47,7 @@ async function patchedModule() {
     '              seen.add(u);media.push(u);',
     '            };',
     '            const html=String(eRes.text||"");',
-    '            for(const re of [/<(?:video|source)\\b[^>]*\\bsrc=["\']([^"\']+)["\']/ig,/\\b(?:src|file)\\s*[:=]\\s*["\']([^"\']+\\.(?:m3u8|mp4)(?:[^"\']*)?)["\']/ig,/["\'](https?:\\/\\/[^"\']+\\.(?:m3u8|mp4)(?:[^"\']*)?)["\']/ig]){',
+    '            for(const re of [/<(?:video|source)\\b[^>]*\\bsrc=["\\x27]([^"\\x27]+)["\\x27]/ig,/\\b(?:src|file)\\s*[:=]\\s*["\\x27]([^"\\x27]+\\.(?:m3u8|mp4)(?:[^"\\x27]*)?)["\\x27]/ig,/(https?:\\/\\/[^\\s<>"\\x27]+\\.(?:m3u8|mp4)(?:[^\\s<>"\\x27]*)?)/ig]){',
     '              let m;while((m=re.exec(html)))addMedia(m[1]);',
     '            }',
     '            if(media.length){',
