@@ -159,7 +159,7 @@ function cleanStreams(streams) {
     const label = productionLabel(stream);
     const explicitMirror = Number(stream._mirrorIndex || 0);
     const host = mediaHost(stream.url);
-    const mirrorKey = explicitMirror > 0 ? `explicit-${explicitMirror}` : host;
+    const mirrorKey = explicitMirror > 0 ? `explicit-${explicitMirror}` : "single";
     const key = `${quality}|${label}|${mirrorKey}|${stream.url}`;
     if (seen.has(key)) continue;
     seen.add(key);
