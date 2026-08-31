@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.27",
+  "version": "2.0.28",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -31,6 +31,20 @@
       "limited": true,
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "anikototv",
+      "name": "AnikotoTV",
+      "description": "AnikotoTV with standardized DUB/SOFTSUB/DUB+SUBS output labels based on the provider's existing selectable caption tracks.",
+      "version": "1.0.6",
+      "author": "piratezoro9",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "providers/anikototv.js",
+      "enabled": true,
+      "hasSettings": false,
+      "formats": ["mp4"],
+      "logo": "https://anikototv.to/favicon.ico",
       "contentLanguage": ["en", "ja"]
     }
   ]
