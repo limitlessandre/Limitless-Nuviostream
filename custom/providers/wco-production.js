@@ -69,22 +69,74 @@ function productionLabel(stream) {
   return lang || "Original";
 }
 
+function qualityRank(value) {
+  const q = String(value || "").toLowerCase();
+  const m = q.match(/(\d{3,4})p/);
+  if (m) return Number(m[1]);
+  if (q.includes("4k") || q.includes("2160")) return 2160;
+  return 0;
+}
+
+function mediaHost(url) {
+  const m = String(url || "").match(/^https?:\/\/([^/:?#]+)/i);
+  return m ? m[1].toLowerCase() : "unknown";
+}
+
 function cleanStreams(streams) {
-  const out = [];
+  const normalized = [];
   const seen = new Set();
+
   for (const stream of streams || []) {
     if (isDebug(stream)) continue;
     const quality = String(stream.quality || "Auto");
     const label = productionLabel(stream);
-    const key = `${quality}|${label}|${stream.url}`;
+    const host = mediaHost(stream.url);
+    const key = `${quality}|${label}|${host}|${stream.url}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    out.push({
-      ...stream,
-      name: `${PROVIDER_NAME} • ${quality} • ${label}`,
-      provider: PROVIDER_NAME
-    });
+    normalized.push({ ...stream, quality, _label: label, _host: host });
   }
+
+  const byLabel = new Map();
+  for (const stream of normalized) {
+    if (!byLabel.has(stream._label)) byLabel.set(stream._label, []);
+    byLabel.get(stream._label).push(stream);
+  }
+
+  const out = [];
+  for (const [label, branch] of byLabel) {
+    const hosts = [];
+    for (const stream of branch) if (!hosts.includes(stream._host)) hosts.push(stream._host);
+
+    const selectedHosts = hosts.slice(0, 2);
+    for (let h = 0; h < selectedHosts.length; h++) {
+      const host = selectedHosts[h];
+      const candidates = branch
+        .filter(x => x._host === host)
+        .sort((a, b) => qualityRank(b.quality) - qualityRank(a.quality));
+
+      const picked = [];
+      const usedQualities = new Set();
+      for (const stream of candidates) {
+        const qKey = String(stream.quality || "Auto").toLowerCase();
+        if (usedQualities.has(qKey)) continue;
+        usedQualities.add(qKey);
+        picked.push(stream);
+        if (picked.length >= 2) break;
+      }
+
+      for (const stream of picked) {
+        const mirror = selectedHosts.length > 1 ? ` • Mirror ${h + 1}` : "";
+        const { _label, _host, ...clean } = stream;
+        out.push({
+          ...clean,
+          name: `${PROVIDER_NAME}${mirror} • ${stream.quality} • ${label}`,
+          provider: PROVIDER_NAME
+        });
+      }
+    }
+  }
+
   return out;
 }
 
