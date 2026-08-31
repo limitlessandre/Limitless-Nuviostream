@@ -8,8 +8,15 @@ async function loadWco() {
   if (cachedWco && typeof cachedWco.getStreams === "function") return cachedWco;
   const res = await fetch(WCO_SOURCE_URL, { skipSizeCheck: true });
   if (!res || !res.ok) return null;
-  const source = String(await res.text() || "");
+  let source = String(await res.text() || "");
   if (!source || !source.includes("module.exports")) return null;
+
+  // Preserve a legitimate Episode 0 request inside the current WCO resolver.
+  // The main provider intentionally remains untouched while this fallback is tested.
+  source = source.replace(
+    "const wantedE = Number(wantedEpisode || 1);",
+    "const wantedE = Number(wantedEpisode == null ? 1 : wantedEpisode);"
+  );
 
   try {
     const mod = { exports: {} };
