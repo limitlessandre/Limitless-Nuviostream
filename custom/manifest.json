@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.21",
+  "version": "2.0.22",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "limitless-wco-domain-test",
       "name": "WCO Domain Test",
-      "description": "Temporary isolated WCO frontend fallback and premium-session diagnostic test. Premium episodes retry the canonical free.wcopremium.tv episode path when user.* hosts return login pages, then report authenticated player markers or playable inner embeds.",
-      "version": "0.6.3",
+      "description": "Temporary isolated WCO frontend fallback and premium-session diagnostic test. Premium episodes now follow the authenticated canonical page into embed.wcopremium.tv and report that player page's structure before any normal WCO inner embed resolution.",
+      "version": "0.6.4",
       "author": "Limitless Nexus WCO domain test",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/wco-domain-test-v4.js",
+      "filename": "providers/wco-domain-test-v5.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
