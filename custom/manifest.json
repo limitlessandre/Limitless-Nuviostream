@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.30",
+  "version": "2.0.31",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -11,6 +11,21 @@
       "author": "Limitless Nexus port based on maintained Re:ANIME direct-download behavior",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/reanime-production.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4"],
+      "logo": "https://reanime.to/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-reanime-diagnostic",
+      "name": "Re:ANIME Diagnostic",
+      "description": "Temporary Season 0 diagnostic provider that reports TMDB special identity, Re:ANIME search hits, candidate scoring, watch-page resolution, and episode-link availability.",
+      "version": "0.0.1",
+      "author": "Limitless Nexus diagnostic",
+      "supportedTypes": ["tv", "anime"],
+      "filename": "providers/reanime-diagnostic.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
