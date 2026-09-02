@@ -422,7 +422,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 11,
+      "version": 13,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animexin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -658,7 +658,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -704,7 +704,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 24,
+      "version": 25,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {

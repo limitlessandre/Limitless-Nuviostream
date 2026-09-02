@@ -3,7 +3,7 @@
     "chosen": {
       "internalName": "Anizone",
       "name": "Anizone",
-      "version": 4,
+      "version": 5,
       "language": "en",
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
@@ -14,7 +14,7 @@
       {
         "internalName": "Anizone",
         "name": "Anizone",
-        "version": 4,
+        "version": 5,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
