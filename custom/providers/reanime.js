@@ -40,6 +40,11 @@ function normalizedMediaType(mediaType) {
   return String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
 }
 
+function numberOrDefault(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 async function resolveTmdbId(inputId, mediaType) {
   const raw = String(inputId || "").trim();
   if (/^\d+$/.test(raw)) return parseInt(raw, 10);
@@ -61,7 +66,9 @@ async function getTmdbInfo(tmdbId, mediaType) {
 
 async function resolveMalEpisode(imdbId, season, episode) {
   if (!imdbId) return null;
-  return await fetchJson(`https://id-mapping-api-malid.hf.space/api/resolve?id=${encodeURIComponent(imdbId)}&s=${season || 1}&e=${episode || 1}`);
+  const resolvedSeason = numberOrDefault(season, 1);
+  const resolvedEpisode = numberOrDefault(episode, 1);
+  return await fetchJson(`https://id-mapping-api-malid.hf.space/api/resolve?id=${encodeURIComponent(imdbId)}&s=${resolvedSeason}&e=${resolvedEpisode}`);
 }
 
 async function malToAniList(malId) {
@@ -292,8 +299,8 @@ async function fetchReAnimeServers(anilistId, episodeNumber) {
 async function resolveTarget(tmdbId, type, tmdb, season, episode) {
   const mapping = await resolveMalEpisode(
     tmdb.imdbId,
-    type === "movie" ? 1 : (parseInt(season, 10) || 1),
-    type === "movie" ? 1 : (parseFloat(episode) || 1)
+    type === "movie" ? 1 : numberOrDefault(season, 1),
+    type === "movie" ? 1 : numberOrDefault(episode, 1)
   );
 
   if (mapping && mapping.mal_id) {
@@ -301,7 +308,7 @@ async function resolveTarget(tmdbId, type, tmdb, season, episode) {
     if (anilist && anilist.id) {
       return {
         anilist,
-        episode: type === "movie" ? 1 : (parseFloat(mapping.mal_episode) || parseFloat(episode) || 1)
+        episode: type === "movie" ? 1 : numberOrDefault(mapping.mal_episode, numberOrDefault(episode, 1))
       };
     }
   }
