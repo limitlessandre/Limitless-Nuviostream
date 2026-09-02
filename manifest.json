@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.32",
+  "version": "2.0.33",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,11 +21,11 @@
     {
       "id": "limitless-reanime-diagnostic",
       "name": "Re:ANIME Diagnostic",
-      "description": "Temporary deep Season 0 diagnostic that inspects Re:ANIME candidate IDs, anime detail routes, episode 0/1 watch routes, episode listings, and direct Flix server availability.",
-      "version": "0.0.2",
+      "description": "Temporary Season 0 diagnostic that recovers AniList candidates from Re:ANIME special metadata and directly probes Re:ANIME Flix episode 0/1 server routes.",
+      "version": "0.0.3",
       "author": "Limitless Nexus diagnostic",
       "supportedTypes": ["tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-diagnostic.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-diagnostic-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
