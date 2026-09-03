@@ -5,13 +5,13 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 368,
-  "eligible_plugin_entries_before_dedupe": 68,
-  "unique_plugins": 65,
+  "raw_plugin_entries": 370,
+  "eligible_plugin_entries_before_dedupe": 65,
+  "unique_plugins": 62,
   "duplicate_groups": 3,
-  "language_filtered_entries": 281,
+  "language_filtered_entries": 277,
   "unknown_language_metadata_entries": 25,
-  "inactive_filtered_entries": 19,
+  "inactive_filtered_entries": 28,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -98,7 +98,7 @@
       "name": "3rabi عربي",
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "status": "ok",
-      "plugins": 39,
+      "plugins": 41,
       "verified": false
     },
     {

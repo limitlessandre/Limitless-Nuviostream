@@ -1,7 +1,7 @@
 {
   "native_provider_count": 3,
-  "cloudstream_provider_count": 65,
-  "no_obvious_native_overlap_count": 64,
+  "cloudstream_provider_count": 62,
+  "no_obvious_native_overlap_count": 61,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 1,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 661,
+      "version": 662,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -138,7 +138,7 @@
         "Anime",
         "Torrent"
       ],
-      "version": 483,
+      "version": 484,
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
       "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
       "overlap": {
@@ -284,33 +284,6 @@
       "reasons": [
         "Asian drama / K-drama coverage",
         "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "FullyMaza",
-      "name": "FullyMaza",
-      "description": null,
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries",
-        "AnimeMovie",
-        "Cartoon"
-      ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullyMaza.cs3",
-      "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.24,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 7,
-      "reasons": [
-        "Anime coverage",
-        "Movies / Western TV coverage",
-        "Cartoon coverage"
       ]
     },
     {
@@ -924,29 +897,6 @@
       ]
     },
     {
-      "internalName": "MoviPK",
-      "name": "MoviPK",
-      "description": null,
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/MoviPK.cs3",
-      "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.267,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "OnShort",
       "name": "OnShort",
       "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
@@ -1297,7 +1247,7 @@
       "tvTypes": [
         "Movie"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -1475,35 +1425,12 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3",
       "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.333,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -7,
-      "reasons": [
-        "Only declares Others",
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
-      "internalName": "FullReplays",
-      "name": "FullReplays",
-      "description": "Watch Football Full Match Replay and Shows",
-      "language": "en",
-      "tvTypes": [
-        "Others"
-      ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullReplays.cs3",
-      "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.37,
         "native_matches": []
       },
       "priority": "utility-or-review",

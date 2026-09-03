@@ -354,14 +354,14 @@
   {
     "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
     "status": 1,
-    "version": 483,
+    "version": 484,
     "name": "CineStream",
     "internalName": "CineStream",
     "authors": [
       "megix"
     ],
     "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-    "fileSize": 730242,
+    "fileSize": 684467,
     "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
     "language": "en",
     "tvTypes": [
@@ -373,7 +373,7 @@
     ],
     "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-cc95a8f184fce6fe3904742a703cbcb72ecd7b4a44ca957117c4097d0811f44d"
+    "fileHash": "sha256-fac628c4d8f6c25a928638264fd7347cbabf8e28e8e0f4b84b194eb3c06b951a"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/CloudPlay.cs3",
@@ -504,14 +504,14 @@
   {
     "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3",
     "status": 1,
-    "version": 4,
+    "version": 5,
     "name": "FootReplays",
     "internalName": "FootReplays",
     "authors": [
       "Redowan"
     ],
     "description": "FootBall Matches Replays and Highlights",
-    "fileSize": 11084,
+    "fileSize": 11082,
     "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
     "language": "en",
     "tvTypes": [
@@ -519,7 +519,7 @@
     ],
     "iconUrl": "https://www.footreplays.com/wp-content/uploads/2024/11/cropped-footreplays-favicon-192x192.webp",
     "apiVersion": 1,
-    "fileHash": "sha256-282f01958bf53495e76d1a6784c2d78664663208c89c5c14097873f731f163ae"
+    "fileHash": "sha256-c970ef031c8f9fa9c47256dae08a4618c4a62a249dfa5e4e8723033b2376bfb8"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
@@ -568,7 +568,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
     "status": 1,
-    "version": 6,
+    "version": 7,
     "name": "FullRaces",
     "internalName": "FullRaces",
     "authors": [
@@ -576,7 +576,7 @@
       "kerimmkirac"
     ],
     "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-    "fileSize": 33798,
+    "fileSize": 34037,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -584,49 +584,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
     "apiVersion": 1,
-    "fileHash": "sha256-b139cb370328df95ff860c30d18503dd4d3f4728226413e50d51030d5b0a5c39"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullReplays.cs3",
-    "status": 1,
-    "version": 4,
-    "name": "FullReplays",
-    "internalName": "FullReplays",
-    "authors": [
-      "Redowan"
-    ],
-    "description": "Watch Football Full Match Replay and Shows",
-    "fileSize": 11071,
-    "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-    "language": "en",
-    "tvTypes": [
-      "Others"
-    ],
-    "iconUrl": "https://www.fullreplays.com/wp-content/uploads/2023/05/logo-ball-150x150.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-414b9d276767b1ec0906ccee9c990eed425950f443bb8a78ef439488acd46779"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullyMaza.cs3",
-    "status": 1,
-    "version": 5,
-    "name": "FullyMaza",
-    "internalName": "FullyMaza",
-    "authors": [
-      "Redowan"
-    ],
-    "fileSize": 11825,
-    "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-    "language": "en",
-    "tvTypes": [
-      "Movie",
-      "TvSeries",
-      "AnimeMovie",
-      "Cartoon"
-    ],
-    "iconUrl": "https://fibwatch.online/themes/default/img/fibwatch-logo-new.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-eb09436a3bccec88f459c0d8601001c4e4e4bac69a92f42cd34caf2fb60f8ef2"
+    "fileHash": "sha256-2f4adffc73587d42e5c65c5575948b5c3a4b28ef93b8624d432f448f0c7386df"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Goojara.cs3",
@@ -810,26 +768,6 @@
     "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/builds/LibraryOfLadev.cs3",
     "name": "LibraryOfLadev",
     "jarHash": "sha256-8fc13e3ff4ebe4e69fcd6fcfeb48b5d3757b95b2b6dc1d3bb138055b1afc87fc"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/MoviPK.cs3",
-    "status": 1,
-    "version": 2,
-    "name": "MoviPK",
-    "internalName": "MoviPK",
-    "authors": [
-      "MoviPK"
-    ],
-    "fileSize": 10564,
-    "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
-    "language": "en",
-    "tvTypes": [
-      "Movie",
-      "TvSeries"
-    ],
-    "iconUrl": "https://www.movi.pk/wp-content/uploads/2023/06/apple-touch-icon.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-aaec28ce0894abd829acb288f95c96275bb04cf93af90c071f1dba5b9e449040"
   },
   {
     "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Nebula.cs3",
@@ -1119,7 +1057,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 661,
+    "version": 662,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -1127,7 +1065,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1020707,
+    "fileSize": 1021429,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1140,7 +1078,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-2862fae1c1ad59284965b8b975d1e488c7d52f52cb1762344de5d66d25583fce"
+    "fileHash": "sha256-8d730150de33e906799ae04fc4127914de0b0ee7dac7b8d783e6cd775588500f"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

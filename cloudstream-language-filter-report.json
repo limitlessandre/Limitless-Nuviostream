@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 281,
+  "excluded_count": 277,
   "excluded": [
     {
       "internalName": "3isk",
@@ -726,48 +726,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "BdixICCFtp",
-      "name": "BdixICCFtp",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "language": [
-        "bn"
-      ],
-      "normalizedLanguages": [
-        "bn"
-      ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixICCFtp.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "BdixMyMovieBazarTV",
-      "name": "BdixMyMovieBazarTV",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "language": [
-        "bn"
-      ],
-      "normalizedLanguages": [
-        "bn"
-      ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixMyMovieBazarTV.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "BdixRoarZoneTV",
-      "name": "BdixRoarZoneTV",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "language": [
-        "bn"
-      ],
-      "normalizedLanguages": [
-        "bn"
-      ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixRoarZoneTV.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "BingedReview",
       "name": "BingedReview",
       "source": "Cinephile",
@@ -1464,17 +1422,17 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "EmwBD",
-      "name": "EmwBD",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
+      "internalName": "Elif",
+      "name": "Elif",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "language": [
-        "bn"
+        "ar"
       ],
       "normalizedLanguages": [
-        "bn"
+        "ar"
       ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/EmwBD.cs3",
+      "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Elif.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3316,20 +3274,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "TheMoviesFlix",
-      "name": "TheMoviesFlix",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/TheMoviesFlix.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "TioAnimeProvider",
       "name": "TioAnimeProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -3467,6 +3411,20 @@
         "ar"
       ],
       "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TukTukcima.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TuniflexBlog",
+      "name": "TuniflexBlog",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TuniflexBlog.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3647,20 +3605,6 @@
         "ar"
       ],
       "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Viu.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "WatchMoviesPk",
-      "name": "WatchMoviesPk",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/WatchMoviesPk.cs3",
       "reason": "no-allowed-language"
     },
     {

@@ -71,7 +71,7 @@
     "chosen": {
       "internalName": "FootReplays",
       "name": "FootReplays",
-      "version": 4,
+      "version": 5,
       "language": "en",
       "source": "Redowan's BDIX repository",
       "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
@@ -82,7 +82,7 @@
       {
         "internalName": "FootReplays",
         "name": "FootReplays",
-        "version": 4,
+        "version": 5,
         "language": "en",
         "source": "Redowan's BDIX repository",
         "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",

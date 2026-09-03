@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **3**  
-Filtered CloudStream providers: **65**  
-No obvious native overlap: **64**  
+Filtered CloudStream providers: **62**  
+No obvious native overlap: **61**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **1**
 
@@ -20,7 +20,6 @@ Exact/alias overlap: **1**
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
-- **FullyMaza** (`FullyMaza`) — en; Movie, TvSeries, AnimeMovie, Cartoon
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!
@@ -53,7 +52,6 @@ Exact/alias overlap: **1**
 - **FullMatchShows** (`FullMatchShows`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **MoviPK** (`MoviPK`) — en; Movie, TvSeries
 - **OnShort** (`OnShort`) — en; TvSeries — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
@@ -82,7 +80,6 @@ Exact/alias overlap: **1**
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!
 - **FootReplays** (`FootReplays`) — en; Others — FootBall Matches Replays and Highlights
-- **FullReplays** (`FullReplays`) — en; Others — Watch Football Full Match Replay and Shows
 
 ## Likely native overlaps to review
 
