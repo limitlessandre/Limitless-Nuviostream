@@ -66,39 +66,5 @@
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Arte.cs3"
       }
     ]
-  },
-  "internal:footreplays": {
-    "chosen": {
-      "internalName": "FootReplays",
-      "name": "FootReplays",
-      "version": 5,
-      "language": "en",
-      "source": "Redowan's BDIX repository",
-      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-      "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3"
-    },
-    "candidates": [
-      {
-        "internalName": "FootReplays",
-        "name": "FootReplays",
-        "version": 5,
-        "language": "en",
-        "source": "Redowan's BDIX repository",
-        "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
-        "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3"
-      },
-      {
-        "internalName": "FootReplays",
-        "name": "FootReplays",
-        "version": 1,
-        "language": "en",
-        "source": "cs-karma",
-        "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
-        "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FootReplays.cs3"
-      }
-    ]
   }
 }

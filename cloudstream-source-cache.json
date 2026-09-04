@@ -1567,13 +1567,13 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HDhub4u.cs3",
         "status": 1,
-        "version": 51,
+        "version": 52,
         "name": "HDhub4u",
         "internalName": "HDhub4u",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 79824,
+        "fileSize": 79859,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1583,7 +1583,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/HDHUB.png",
         "apiVersion": 1,
-        "fileHash": "sha256-0af4ef03c2b6cf25f4d803987b08becaca18cdc1118fad2948306cdee033d546"
+        "fileHash": "sha256-50d0828d50fb33aece00ce9224ca81a29b21bbbeefc0202c8f8fba2020ac9824"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
@@ -2733,15 +2733,14 @@
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/9kMovies.cs3",
         "status": 1,
-        "version": 8,
+        "version": 10,
         "name": "9kMovies",
         "internalName": "9kMovies",
         "authors": [
-          "salman731",
-          "Dilip"
+          "Redowan"
         ],
-        "description": "Included:10HitMovies",
-        "fileSize": 14525,
+        "description": "Bangla & Hindi Movies",
+        "fileSize": 14651,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "hi",
         "tvTypes": [
@@ -2749,21 +2748,21 @@
           "TvSeries",
           "NSFW"
         ],
-        "iconUrl": "https://9kmovies.claims/m/wp-content/uploads/2019/08/9kmovies.ico",
+        "iconUrl": "https://9kmovies.llc/wp-content/uploads/2026/06/9kmovies-logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-332e27a1b74980e31fe28cb7d09c1cc9e3364978775319762ba48cf6ba2eadd0"
+        "fileHash": "sha256-9c4d8a427bea0e34aa4403f7860c3877659bf81a3b679353e11d18f681af12ff"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixBdipTV.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "BdixBdipTV",
         "internalName": "BdixBdipTV",
         "authors": [
           "Redowan"
         ],
         "description": "BDIX Live Tv in Bangladesh",
-        "fileSize": 14729,
+        "fileSize": 16861,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2771,7 +2770,7 @@
         ],
         "iconUrl": "http://tv.bdiptv.net/assets/images/Live1.jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-7c70640a5d82def38e8d4cafed9a7362955044b801b77b23a322188244ca0ff9"
+        "fileHash": "sha256-d6b3d6f3c3783827ced72f8d149763efc56f65aa7fb56470bff0fc28dd01a0c3"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixCircleftp.cs3",
@@ -2971,8 +2970,8 @@
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3",
-        "status": 1,
-        "version": 5,
+        "status": 0,
+        "version": 6,
         "name": "FootReplays",
         "internalName": "FootReplays",
         "authors": [
@@ -2987,7 +2986,7 @@
         ],
         "iconUrl": "https://www.footreplays.com/wp-content/uploads/2024/11/cropped-footreplays-favicon-192x192.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-c970ef031c8f9fa9c47256dae08a4618c4a62a249dfa5e4e8723033b2376bfb8"
+        "fileHash": "sha256-a8e888528ec4f0e76b7a1419e57e271981d01197f16c8c5a20ac6dd3035bdf08"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullReplays.cs3",
@@ -3139,7 +3138,7 @@
         ],
         "version": 1,
         "internalName": "TuniflexBlog",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TuniflexBlog.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/TuniflexBlog.cs3",
         "name": "TuniflexBlog"
       },
       {
@@ -3159,7 +3158,7 @@
         ],
         "version": 1,
         "internalName": "Elif",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Elif.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Elif.cs3",
         "name": "Elif"
       },
       {
@@ -3179,7 +3178,7 @@
         ],
         "version": 1,
         "internalName": "Anime-Phoenix",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anime-Phoenix.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Anime-Phoenix.cs3",
         "name": "Anime-Phoenix"
       },
       {
@@ -3199,7 +3198,7 @@
         ],
         "version": 1,
         "internalName": "Yacintv",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Yacintv.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Yacintv.cs3",
         "name": "Yacintv"
       },
       {
@@ -3218,7 +3217,7 @@
         ],
         "version": 1,
         "internalName": "Aflaam",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Aflaam.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Aflaam.cs3",
         "name": "Aflaam"
       },
       {
@@ -3237,7 +3236,7 @@
         ],
         "version": 1,
         "internalName": "Alooytv",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Alooytv.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Alooytv.cs3",
         "name": "Alooytv"
       },
       {
@@ -3256,7 +3255,7 @@
         ],
         "version": 1,
         "internalName": "Shahidwbas",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Shahidwbas.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Shahidwbas.cs3",
         "name": "Shahidwbas"
       },
       {
@@ -3276,7 +3275,7 @@
         ],
         "version": 1,
         "internalName": "TVgarden(Famelack)",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TVgarden.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/TVgarden.cs3",
         "name": "TVgarden(Famelack)"
       },
       {
@@ -3296,7 +3295,7 @@
         ],
         "version": 1,
         "internalName": "Cimalight",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Cimalight.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Cimalight.cs3",
         "name": "Cimalight"
       },
       {
@@ -3316,7 +3315,7 @@
         ],
         "version": 1,
         "internalName": "Anime4up",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anime4up.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Anime4up.cs3",
         "name": "Anime4up"
       },
       {
@@ -3335,7 +3334,7 @@
         ],
         "version": 1,
         "internalName": "Dima toon",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/dima-toon.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/dima-toon.cs3",
         "name": "Dima toon"
       },
       {
@@ -3354,7 +3353,7 @@
         ],
         "version": 1,
         "internalName": "Tuktukcima",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/TukTukcima.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/TukTukcima.cs3",
         "name": "Tuktukcima"
       },
       {
@@ -3373,7 +3372,7 @@
         ],
         "version": 1,
         "internalName": "Syrialive",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Syria-live.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Syria-live.cs3",
         "name": "Syrialive"
       },
       {
@@ -3393,7 +3392,7 @@
         ],
         "version": 1,
         "internalName": "Viu",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Viu.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Viu.cs3",
         "name": "VIU"
       },
       {
@@ -3413,7 +3412,7 @@
         ],
         "version": 1,
         "internalName": "Tuniflix",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Tuniflix.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Tuniflix.cs3",
         "name": "Tuniflix"
       },
       {
@@ -3433,7 +3432,7 @@
         ],
         "version": 1,
         "internalName": "Cimatn",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Cimatn.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Cimatn.cs3",
         "name": "Cimatn"
       },
       {
@@ -3453,7 +3452,7 @@
         ],
         "version": 1,
         "internalName": "Anime3rbtest",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/Anim3rb.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/Anim3rb.cs3",
         "name": "Anime3rbtest"
       },
       {
@@ -3473,7 +3472,7 @@
         "version": 1,
         "internalName": "Cee (🇮🇶)",
         "description": "لا يعمل خارج العراق",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Cee.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Cee.cs3",
         "name": "Cee (🇮🇶)"
       },
       {
@@ -3491,7 +3490,7 @@
         ],
         "version": 1,
         "internalName": "Anime3rb",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Anim3rb.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Anim3rb.cs3",
         "name": "Anime3rb"
       },
       {
@@ -3513,7 +3512,7 @@
         ],
         "version": 2,
         "internalName": "YouTube",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Youtube.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Youtube.cs3",
         "name": "YouTube"
       },
       {
@@ -3532,7 +3531,7 @@
         ],
         "version": 2,
         "internalName": "LodyNet",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Lodynet.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Lodynet.cs3",
         "name": "LodyNet"
       },
       {
@@ -3551,7 +3550,7 @@
         ],
         "version": 1,
         "internalName": "WeCima",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Wecima.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Wecima.cs3",
         "name": "WeCima"
       },
       {
@@ -3570,7 +3569,7 @@
         ],
         "version": 1,
         "internalName": "TopCinema",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Topcinema.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Topcinema.cs3",
         "name": "TopCinema"
       },
       {
@@ -3590,7 +3589,7 @@
         ],
         "version": 2,
         "internalName": "FullMatchShows",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Replaymatch.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Replaymatch.cs3",
         "name": "FullMatchShows"
       },
       {
@@ -3608,7 +3607,7 @@
         ],
         "version": 1,
         "internalName": "Brstej",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Bristege.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Bristege.cs3",
         "name": "Brstej"
       },
       {
@@ -3626,7 +3625,7 @@
         ],
         "version": 3,
         "internalName": "AnimeWitcher",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Animewitcher.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Animewitcher.cs3",
         "name": "AnimeWitcher"
       },
       {
@@ -3647,7 +3646,7 @@
         ],
         "version": 1,
         "internalName": "Egydead",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Egydead.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Egydead.cs3",
         "name": "Egydead"
       },
       {
@@ -3668,7 +3667,7 @@
         ],
         "version": 1,
         "internalName": "Mycima",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/MyCimaProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/MyCimaProvider.cs3",
         "name": "Mycima"
       },
       {
@@ -3688,7 +3687,7 @@
         ],
         "version": 3,
         "internalName": "Asia2tv 2",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Aia2tv%202.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Aia2tv%202.cs3",
         "name": "Asia2tv 2"
       },
       {
@@ -3707,7 +3706,7 @@
         ],
         "version": 3,
         "internalName": "Akwam",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Akwam.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Akwam.cs3",
         "name": "Akwam"
       },
       {
@@ -3726,7 +3725,7 @@
         ],
         "version": 1,
         "internalName": "3isk",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/3isk.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/3isk.cs3",
         "name": "3isk"
       },
       {
@@ -3745,7 +3744,7 @@
         ],
         "version": 3,
         "internalName": "Eshek",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/eseek.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/eseek.cs3",
         "name": "Eshek"
       },
       {
@@ -3765,7 +3764,7 @@
         "version": 1,
         "internalName": "Krmzy",
         "description": "البحث لا يعمل حاليا مشكلة من الموقع",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Krmzy.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Krmzy.cs3",
         "name": "Krmzy"
       },
       {
@@ -3784,7 +3783,7 @@
         ],
         "version": 3,
         "internalName": "Animerco",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Animerco.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Animerco.cs3",
         "name": "Animerco"
       },
       {
@@ -3803,7 +3802,7 @@
         ],
         "version": 1,
         "internalName": "Witanime",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Witanime.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Witanime.cs3",
         "name": "Witanime"
       },
       {
@@ -3822,7 +3821,7 @@
         ],
         "version": 2,
         "internalName": "Shahid4u",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Shahid4u.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Shahid4u.cs3",
         "name": "Shahid4u"
       },
       {
@@ -3842,7 +3841,7 @@
         "version": 1,
         "internalName": "CimaClub",
         "description": "سيرفرات الموقع بها ضعف احيانا اذا لم يفتح  غالبا المشكلة من الموقع",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/CimaClub.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/CimaClub.cs3",
         "name": "CimaClub"
       },
       {
@@ -3861,7 +3860,7 @@
         ],
         "version": 3,
         "internalName": "Faselhd",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Faselhd.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Faselhd.cs3",
         "name": "Faselhd"
       },
       {
@@ -3881,7 +3880,7 @@
         "version": 4,
         "internalName": "Cimanaw",
         "description": "يستغرق تحميل الروابط بعض الوقت كن صبورا",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/CimaNowProvider.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/CimaNowProvider.cs3",
         "name": "Cimanaw"
       },
       {
@@ -3900,7 +3899,7 @@
         ],
         "version": 1,
         "internalName": "Arabseed",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Arabseed.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Arabseed.cs3",
         "name": "Arabseed"
       },
       {
@@ -3920,7 +3919,7 @@
         "version": 4,
         "internalName": "Shabakaty_Cinemana",
         "description": "لا يعمل خارج العراق او اي شبكة غير ايرثلنك",
-        "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/cinemana.cs3",
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/cinemana.cs3",
         "name": "Shabakaty Cinemana (🇮🇶)"
       }
     ]
@@ -6508,7 +6507,7 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "FullRaces",
         "internalName": "FullRaces",
         "authors": [
@@ -6516,7 +6515,7 @@
           "kerimmkirac"
         ],
         "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-        "fileSize": 34037,
+        "fileSize": 34030,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -6524,7 +6523,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-2f4adffc73587d42e5c65c5575948b5c3a4b28ef93b8624d432f448f0c7386df"
+        "fileHash": "sha256-d1282bc383a08689af87b75b569f74071ea2bc68662d19fc4dccb74bdb808d1b"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Gnulahd.cs3",
@@ -6718,14 +6717,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OK.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "OK",
         "internalName": "OK",
         "authors": [
           "ByAyzen"
         ],
         "description": "OKRU Videos.",
-        "fileSize": 25762,
+        "fileSize": 33919,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "ru",
         "tvTypes": [
@@ -6734,7 +6733,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ok.ru/video/c12842395&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-2e2296ca953ef1529c7042483f1e142e006f8be2a0a0d978b58c657a3c68ca22"
+        "fileHash": "sha256-7a30fdc4e39e484a21c192e8019ac9045503d047548bf5a4e1ed7bf3728cd8de"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",

@@ -502,24 +502,23 @@
     "fileHash": "sha256-969c148e334ea7dab8c9b48727afcf96cde665b3381eaf5b1863d240004b9adc"
   },
   {
-    "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3",
+    "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FootReplays.cs3",
     "status": 1,
-    "version": 5,
+    "version": 1,
     "name": "FootReplays",
     "internalName": "FootReplays",
     "authors": [
-      "Redowan"
+      "ByAyzen"
     ],
-    "description": "FootBall Matches Replays and Highlights",
-    "fileSize": 11082,
-    "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
+    "fileSize": 25559,
+    "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
       "Others"
     ],
-    "iconUrl": "https://www.footreplays.com/wp-content/uploads/2024/11/cropped-footreplays-favicon-192x192.webp",
+    "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.footreplays.com/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-c970ef031c8f9fa9c47256dae08a4618c4a62a249dfa5e4e8723033b2376bfb8"
+    "fileHash": "sha256-28a1667f1b6e3c76e789fda650485b927c3e67ae649a134a456207d208907ab8"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
@@ -562,13 +561,13 @@
     ],
     "version": 2,
     "internalName": "FullMatchShows",
-    "url": "https://github.com/Abodabodd/re-3arabi/raw/refs/heads/main/build/Replaymatch.cs3",
+    "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Replaymatch.cs3",
     "name": "FullMatchShows"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
     "status": 1,
-    "version": 7,
+    "version": 8,
     "name": "FullRaces",
     "internalName": "FullRaces",
     "authors": [
@@ -576,7 +575,7 @@
       "kerimmkirac"
     ],
     "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-    "fileSize": 34037,
+    "fileSize": 34030,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -584,7 +583,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
     "apiVersion": 1,
-    "fileHash": "sha256-2f4adffc73587d42e5c65c5575948b5c3a4b28ef93b8624d432f448f0c7386df"
+    "fileHash": "sha256-d1282bc383a08689af87b75b569f74071ea2bc68662d19fc4dccb74bdb808d1b"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Goojara.cs3",

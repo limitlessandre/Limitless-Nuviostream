@@ -77,9 +77,9 @@ Exact/alias overlap: **1**
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
+- **FootReplays** (`FootReplays`) — en; Others
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!
-- **FootReplays** (`FootReplays`) — en; Others — FootBall Matches Replays and Highlights
 
 ## Likely native overlaps to review
 
