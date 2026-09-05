@@ -1,8 +1,8 @@
 "use strict";
 
 // Nexus-only wrapper around the validated generic season-title resolver.
-// Adds one lightweight fallback: when WCO search returns no result for a derived
-// title, try the matching /anime/<slug>/ page directly. Production WCO is untouched.
+// Adds lightweight fallbacks for WCO search gaps and numbered TMDB season titles.
+// Production WCO is untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus.js";
@@ -23,6 +23,113 @@ function diag(message, season, episode) {
 }
 
 function patchResolver(source) {
+  let out = String(source || "");
+  if (!out) return "";
+
+  // TMDB sometimes names continuation seasons like "Mighty Morphin (2)" or
+  // "Beast Morphers (2)". The parenthetical number is a source-season hint,
+  // not part of the WCO series title. Strip it from search text but preserve it
+  // so episode matching can stay inside the correct WCO season.
+  const oldSearchTitles = String.raw`function __wcoResolverSearchTitles(showTitle,seasonName){
+  const show=String(showTitle||"").trim(),season=String(seasonName||"").trim(),out=[];
+  const generic=!season||/^season\s*\d+$/i.test(season);
+  if(!generic){
+    const ns=normalize(season),nh=normalize(show);
+    if(ns&&nh&&(ns.includes(nh)||nh.includes(ns)))out.push({title:season,kind:"season"});
+    else{
+      const words=season.split(/\s+/).filter(Boolean);
+      const compactTitle=words.length>=2&&words.length<=4?(show+" "+words.join("")).trim():"";
+      out.push({title:(show+" "+season).trim(),kind:"combined",compactTitle});
+      out.push({title:season,kind:"season"});
+    }
+  }
+  out.push({title:show,kind:"show"});
+  return out.filter((x,i,a)=>x.title&&a.findIndex(y=>normalize(y.title)===normalize(x.title))===i);
+}`;
+
+  const newSearchTitles = String.raw`function __wcoResolverSearchTitles(showTitle,seasonName){
+  const show=String(showTitle||"").trim(),rawSeason=String(seasonName||"").trim(),out=[];
+  const suffix=rawSeason.match(/\s*\((\d+)\)\s*$/);
+  const sourceSeason=suffix?Number(suffix[1]):null;
+  const season=rawSeason.replace(/\s*\(\d+\)\s*$/,"").trim();
+  const generic=!season||/^season\s*\d+$/i.test(season);
+  if(!generic){
+    const ns=normalize(season),nh=normalize(show);
+    if(ns&&nh&&(ns.includes(nh)||nh.includes(ns)))out.push({title:season,kind:"season",sourceSeason});
+    else{
+      const words=season.split(/\s+/).filter(Boolean);
+      const compactTitle=words.length>=2&&words.length<=4?(show+" "+words.join("")).trim():"";
+      out.push({title:(show+" "+season).trim(),kind:"combined",compactTitle,sourceSeason});
+      out.push({title:season,kind:"season",sourceSeason});
+    }
+  }
+  out.push({title:show,kind:"show",sourceSeason});
+  return out.filter((x,i,a)=>x.title&&a.findIndex(y=>normalize(y.title)===normalize(x.title))===i);
+}`;
+
+  if (!out.includes(oldSearchTitles)) return "";
+  out = out.replace(oldSearchTitles, newSearchTitles);
+
+  out = out.replace(
+    'function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant){',
+    'function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant,wantedSourceSeason){'
+  );
+  out = out.replace(
+    '    const ep=text.match(/Episode\\s*(\\d+(?:\\.\\d+)?)/i)||href.match(/episode[-_ ]?(\\d+(?:\\.\\d+)?)/i);\n    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined),episode:ep?Number(ep[1]):null,score});',
+    '    const foundSeason=explicitSeason(combined);\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    const ep=text.match(/Episode\\s*(\\d+(?:\\.\\d+)?)/i)||href.match(/episode[-_ ]?(\\d+(?:\\.\\d+)?)/i);\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason,episode:ep?Number(ep[1]):null,score});'
+  );
+  out = out.replace(
+    'async function __wcoResolverExtractByName(series,variant,wantedName,displayTitle,info){',
+    'async function __wcoResolverExtractByName(series,variant,wantedName,displayTitle,info,wantedSourceSeason){'
+  );
+  out = out.replace(
+    '__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant)',
+    '__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant,wantedSourceSeason)'
+  );
+  out = out.replace(
+    '__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant)',
+    '__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant,wantedSourceSeason)'
+  );
+
+  out = out.replace(
+    'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){',
+    'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant,wantedSourceSeason){'
+  );
+  out = out.replace(
+    '    const detected=classifyVariant(combined);\n    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;\n    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined)});',
+    '    const foundSeason=explicitSeason(combined);\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    const detected=classifyVariant(combined);\n    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason});'
+  );
+  out = out.replace(
+    'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info){',
+    'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info,wantedSourceSeason){'
+  );
+  out = out.replace(
+    '__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant)',
+    '__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant,wantedSourceSeason)'
+  );
+  out = out.replace(
+    '__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant)',
+    '__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant,wantedSourceSeason)'
+  );
+
+  out = out.replace(
+    '__wcoResolverExtractByName(series,"Dub",__episodeName,__displayTitle,info)',
+    '__wcoResolverExtractByName(series,"Dub",__episodeName,__displayTitle,info,__r.attempt.sourceSeason)'
+  );
+  out = out.replace(
+    '__wcoResolverExtractByName(series,"Sub",__episodeName,__displayTitle,info)',
+    '__wcoResolverExtractByName(series,"Sub",__episodeName,__displayTitle,info,__r.attempt.sourceSeason)'
+  );
+  out = out.replace(
+    '__wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info)',
+    '__wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason)'
+  );
+  out = out.replace(
+    '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info)',
+    '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason)'
+  );
+
+  // Existing direct-slug fallback for titles that WCO's search endpoint fails to return.
   const marker = '  return all.sort((a,b)=>b.score-a.score).slice(0,8);';
   const replacement = [
     '  if(!all.length){',
@@ -31,8 +138,10 @@ function patchResolver(source) {
     '  }',
     marker
   ].join("\n");
-  if (!String(source || "").includes(marker)) return "";
-  return String(source).replace(marker, replacement);
+  if (!out.includes(marker)) return "";
+  out = out.replace(marker, replacement);
+
+  return out;
 }
 
 async function loadProvider() {
