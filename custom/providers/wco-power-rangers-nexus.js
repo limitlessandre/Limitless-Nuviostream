@@ -1,9 +1,8 @@
 "use strict";
 
 // Nexus-only Power Rangers compatibility provider.
-// This follows the same pattern as the earlier WCO test providers: load the
-// proven core directly, patch only the behavior under test, then execute it.
-// The production WCO provider remains untouched.
+// Loads the proven WCO core directly and patches only Power Rangers mapping.
+// Production WCO remains untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco.js";
@@ -28,13 +27,13 @@ const POWER_RANGERS_MAP = {
   16: { title: "Power Rangers Jungle Fury", season: 1 },
   17: { title: "Power Rangers RPM", season: 1 },
   18: { title: "Power Rangers Samurai", season: 1 },
-  19: { title: "Power Rangers Super Samurai", season: 1 },
+  19: { title: "Power Rangers Super Samurai", season: 1, fallbacks: [{ title: "Power Rangers Samurai", season: 2 }] },
   20: { title: "Power Rangers Megaforce", season: 1 },
-  21: { title: "Power Rangers Super Megaforce", season: 1 },
+  21: { title: "Power Rangers Super Megaforce", season: 1, fallbacks: [{ title: "Power Rangers Megaforce", season: 2 }] },
   22: { title: "Power Rangers Dino Charge", season: 1 },
-  23: { title: "Power Rangers Dino Super Charge", season: 1 },
+  23: { title: "Power Rangers Dino Super Charge", season: 1, fallbacks: [{ title: "Power Rangers Dino Charge", season: 2 }] },
   24: { title: "Power Rangers Ninja Steel", season: 1 },
-  25: { title: "Power Rangers Super Ninja Steel", season: 1 },
+  25: { title: "Power Rangers Super Ninja Steel", season: 1, fallbacks: [{ title: "Power Rangers Ninja Steel", season: 2 }] },
   26: { title: "Power Rangers Beast Morphers", season: 1 },
   27: { title: "Power Rangers Beast Morphers", season: 2 },
   28: { title: "Power Rangers Dino Fury", season: 1 },
@@ -44,7 +43,7 @@ const POWER_RANGERS_MAP = {
 
 function mapSourceCode() {
   return "const __WCO_POWER_RANGERS_MAP = " + JSON.stringify(POWER_RANGERS_MAP) + ";\n" +
-    "function __wcoPowerRangersTarget(season){return __WCO_POWER_RANGERS_MAP[Number(season||1)]||null;}\n";
+    "function __wcoPowerRangersAttempts(season){const x=__WCO_POWER_RANGERS_MAP[Number(season||1)];if(!x)return[];return [{title:x.title,season:x.season}].concat(Array.isArray(x.fallbacks)?x.fallbacks:[]);}\n";
 }
 
 function patchCore(source) {
@@ -54,18 +53,106 @@ function patchCore(source) {
   source = source.replace('const PROVIDER_NAME = "WCO";', 'const PROVIDER_NAME = "WCO Power Rangers Nexus";');
   source = source.replace('"use strict";', '"use strict";\n' + mapSourceCode());
 
-  const tvMarker = 'async function tvStreams(info, season, episode) {\n  const wantedSeason = Number(season || 1);';
+  const helperMarker = "async function tvStreams(info, season, episode) {";
+  const helperCode = `
+function __wcoPrNameEpisodes(html,pageUrl,wantedSeason,wantedName,pageSeason,forcedVariant){
+  const out=[];
+  const wantedS=Number(wantedSeason||1);
+  const re=/<a\\b[^>]*href=["']([^"']+)["'][^>]*>([\\s\\S]*?)<\\/a>/gi;
+  let m;
+  while((m=re.exec(String(html||"")))&&out.length<700){
+    const text=stripTags(m[2]);
+    const href=absolute(m[1],pageUrl);
+    if(!href||!text||/\\/anime\\//i.test(href))continue;
+    const combined=text+" "+href;
+    if(!/episode/i.test(combined))continue;
+    const score=scoreTitle(text,wantedName);
+    if(score<80)continue;
+    const foundSeason=explicitSeason(combined);
+    if(foundSeason!=null&&foundSeason!==wantedS)continue;
+    if(foundSeason==null&&wantedS!==1&&Number(pageSeason||0)!==wantedS)continue;
+    const detected=classifyVariant(combined);
+    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;
+    out.push({href,text,variant:forcedVariant||detected,season:foundSeason,score});
+  }
+  return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);
+}
+
+async function __wcoPrExtractByName(series,variant,wantedSeason,wantedName,displayTitle,info){
+  if(!wantedName)return[];
+  const lang=variant==="Sub"?"sub":"dub";
+  const filteredUrl=audioFilterUrl(series.pageUrl,lang);
+  let filtered=await req(filteredUrl,{headers:{"Referer":series.pageUrl}});
+  let episodes=filtered.ok?__wcoPrNameEpisodes(filtered.text,filteredUrl,wantedSeason,wantedName,series.season,variant):[];
+  if(!episodes.length)episodes=__wcoPrNameEpisodes(series.page.text,series.pageUrl,wantedSeason,wantedName,series.season,variant);
+  for(const entry of episodes.slice(0,3)){
+    const epPage=await req(entry.href,{headers:{"Referer":filtered.ok?filteredUrl:series.pageUrl}});
+    if(!epPage.ok)continue;
+    const frame=iframeLink(epPage.text,entry.href);
+    if(!frame||/user\\.wcostream\\.tv\\/check-login/i.test(frame))continue;
+    const streams=await extractEmbed(frame,variant,displayTitle,info);
+    if(streams.length)return streams;
+  }
+  return[];
+}
+`;
+  if (!source.includes(helperMarker)) return "";
+  source = source.replace(helperMarker, helperCode + "\n" + helperMarker);
+
+  const tvStart = source.indexOf("async function tvStreams(info, season, episode) {");
+  const tvEnd = source.indexOf("async function movieStreams(info)", tvStart);
+  if (tvStart < 0 || tvEnd < 0) return "";
   const tvReplacement = [
     'async function tvStreams(info, season, episode) {',
     '  const __inputSeason = Number(season || 1);',
-    '  const __prTarget = __wcoPowerRangersTarget(__inputSeason);',
-    '  if (!__prTarget) return [];',
-    '  info = { ...info, title: __prTarget.title, titles: uniq([__prTarget.title]) };',
-    '  season = __prTarget.season;',
-    '  const wantedSeason = Number(season || 1);'
+    '  const wantedEpisode = Number(episode || 1);',
+    '  const __attempts = __wcoPowerRangersAttempts(__inputSeason);',
+    '  if (!__attempts.length) return [];',
+    '  let __episodeName = "";',
+    '  try {',
+    '    const __ep = await jsonReq(`https://api.themoviedb.org/3/tv/${info.id}/season/${__inputSeason}/episode/${wantedEpisode}?api_key=${TMDB_API_KEY}`);',
+    '    __episodeName = String(__ep && __ep.name || "").trim();',
+    '  } catch (_) {}',
+    '  const __displayTitle = `${info.title} S${String(__inputSeason).padStart(2, "0")}E${String(wantedEpisode).padStart(2, "0")}`;',
+    '',
+    '  const __resolvedAttempts = [];',
+    '  for (const __attempt of __attempts) {',
+    '    const wantedSeason = Number(__attempt.season || 1);',
+    '    const __mappedInfo = { ...info, title: __attempt.title, titles: uniq([__attempt.title]) };',
+    '    const candidates = await searchWco(__mappedInfo, wantedSeason);',
+    '    __resolvedAttempts.push({ attempt: __attempt, wantedSeason, info: __mappedInfo, candidates });',
+    '  }',
+    '',
+    '  if (__episodeName) {',
+    '    for (const __resolved of __resolvedAttempts) {',
+    '      for (const candidate of __resolved.candidates.slice(0, 6)) {',
+    '        const series = await candidatePage(candidate);',
+    '        if (!series) continue;',
+    '        if (series.season != null && series.season !== __resolved.wantedSeason) continue;',
+    '        const dub = await __wcoPrExtractByName(series, "Dub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
+    '        const sub = await __wcoPrExtractByName(series, "Sub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
+    '        const combined = dub.concat(sub);',
+    '        if (combined.length) return finalize(combined, __resolved.info);',
+    '      }',
+    '    }',
+    '  }',
+    '',
+    '  for (const __resolved of __resolvedAttempts) {',
+    '    for (const candidate of __resolved.candidates.slice(0, 6)) {',
+    '      const series = await candidatePage(candidate);',
+    '      if (!series) continue;',
+    '      if (series.season != null && series.season !== __resolved.wantedSeason) continue;',
+    '      const dub = await extractVariantFromSeries(series, "Dub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
+    '      const sub = await extractVariantFromSeries(series, "Sub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
+    '      const combined = dub.concat(sub);',
+    '      if (combined.length) return finalize(combined, __resolved.info);',
+    '    }',
+    '  }',
+    '  return [];',
+    '}',
+    ''
   ].join('\n');
-  if (!source.includes(tvMarker)) return "";
-  source = source.replace(tvMarker, tvReplacement);
+  source = source.slice(0, tvStart) + tvReplacement + source.slice(tvEnd);
 
   const idMarker = '    const info = await tmdbInfo(inputId, type);\n    if (!info) return [];\n    return type === "movie" ? await movieStreams(info) : await tvStreams(info, season, episode);';
   const idReplacement = [
