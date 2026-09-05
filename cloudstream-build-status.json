@@ -5,11 +5,11 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 370,
+  "raw_plugin_entries": 371,
   "eligible_plugin_entries_before_dedupe": 64,
   "unique_plugins": 62,
   "duplicate_groups": 2,
-  "language_filtered_entries": 277,
+  "language_filtered_entries": 278,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 29,
   "meta_plugin_entries_filtered": 0,
@@ -169,7 +169,7 @@
       "name": "cs-karma",
       "url": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
       "status": "ok",
-      "plugins": 33,
+      "plugins": 34,
       "verified": false
     },
     {

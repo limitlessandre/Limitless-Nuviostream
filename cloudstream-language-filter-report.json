@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 277,
+  "excluded_count": 278,
   "excluded": [
     {
       "internalName": "3isk",
@@ -2549,6 +2549,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/MyCimaProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Nekokun",
+      "name": "Nekokun",
+      "source": "cs-karma",
+      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Nekokun.cs3",
       "reason": "no-allowed-language"
     },
     {
