@@ -1,46 +1,13 @@
 "use strict";
 
-// Nexus-only Power Rangers compatibility provider.
-// Loads the proven WCO core directly and patches only Power Rangers mapping.
-// Production WCO remains untouched.
+// Nexus-only testbed for a lightweight generic WCO season-title resolver.
+// The resolver itself is generic, but this provider remains scoped to TMDB 2328
+// while we validate it against Power Rangers. Production WCO remains untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco.js";
 const DIAG_URL = "https://www.wcostream.tv/favicon.ico";
 let cachedCore = null;
-
-const POWER_RANGERS_MAP = {
-  1:  { title: "Mighty Morphin Power Rangers", season: 1 },
-  2:  { title: "Mighty Morphin Power Rangers", season: 2 },
-  3:  { title: "Mighty Morphin Power Rangers", season: 3 },
-  4:  { title: "Power Rangers Zeo", season: 1 },
-  5:  { title: "Power Rangers Turbo", season: 1 },
-  6:  { title: "Power Rangers in Space", season: 1 },
-  7:  { title: "Power Rangers Lost Galaxy", season: 1 },
-  8:  { title: "Power Rangers Lightspeed Rescue", season: 1 },
-  9:  { title: "Power Rangers Time Force", season: 1 },
-  10: { title: "Power Rangers Wild Force", season: 1 },
-  11: { title: "Power Rangers Ninja Storm", season: 1 },
-  12: { title: "Power Rangers Dino Thunder", season: 1 },
-  13: { title: "Power Rangers S.P.D.", season: 1 },
-  14: { title: "Power Rangers Mystic Force", season: 1 },
-  15: { title: "Power Rangers Operation Overdrive", season: 1 },
-  16: { title: "Power Rangers Jungle Fury", season: 1 },
-  17: { title: "Power Rangers RPM", season: 1 },
-  18: { title: "Power Rangers Samurai", season: 1 },
-  19: { title: "Power Rangers Super Samurai", season: 1, fallbacks: [{ title: "Power Rangers Samurai", season: 2 }] },
-  20: { title: "Power Rangers Megaforce", season: 1 },
-  21: { title: "Power Rangers Super Megaforce", season: 1, fallbacks: [{ title: "Power Rangers Megaforce", season: 2 }] },
-  22: { title: "Power Rangers Dino Charge", season: 1 },
-  23: { title: "Power Rangers Dino Super Charge", season: 1, fallbacks: [{ title: "Power Rangers Dino Charge", season: 2 }] },
-  24: { title: "Power Rangers Ninja Steel", season: 1 },
-  25: { title: "Power Rangers Super Ninja Steel", season: 1, fallbacks: [{ title: "Power Rangers Ninja Steel", season: 2 }] },
-  26: { title: "Power Rangers Beast Morphers", season: 1 },
-  27: { title: "Power Rangers Beast Morphers", season: 2 },
-  28: { title: "Power Rangers Dino Fury", season: 1 },
-  29: { title: "Power Rangers Dino Fury", season: 2 },
-  30: { title: "Power Rangers Cosmic Fury", season: 1 }
-};
 
 function outerDiag(stage, message, season, episode) {
   const clean = String(message || "").replace(/\s+/g, " ").trim().slice(0, 190);
@@ -56,77 +23,127 @@ function outerDiag(stage, message, season, episode) {
   }];
 }
 
-function mapSourceCode() {
-  return "const __WCO_POWER_RANGERS_MAP = " + JSON.stringify(POWER_RANGERS_MAP) + ";\n" +
-    "function __wcoPowerRangersAttempts(season){const x=__WCO_POWER_RANGERS_MAP[Number(season||1)];if(!x)return[];return [{title:x.title,season:x.season,kind:'primary'}].concat((Array.isArray(x.fallbacks)?x.fallbacks:[]).map(y=>({title:y.title,season:y.season,kind:'fallback'})));}\n";
-}
-
 function patchCore(source) {
   source = String(source || "");
   if (!source) return "";
 
   source = source.replace('const PROVIDER_NAME = "WCO";', 'const PROVIDER_NAME = "WCO Power Rangers Nexus";');
-  source = source.replace('"use strict";', '"use strict";\n' + mapSourceCode());
 
   const helperMarker = "async function tvStreams(info, season, episode) {";
-  const helperCode = `
-const __WCO_PR_DIAG_URL="https://www.wcostream.tv/favicon.ico";
-function __wcoPrDiagRow(stage,message,displayTitle){
-  const clean=String(message||"").replace(/\\s+/g," ").trim().slice(0,190);
+  const helperCode = String.raw`
+const __WCO_RESOLVER_DIAG_URL="https://www.wcostream.tv/favicon.ico";
+function __wcoResolverDiagRow(stage,message,displayTitle){
+  const clean=String(message||"").replace(/\s+/g," ").trim().slice(0,190);
   const label="DIAG "+stage+" • "+clean;
-  return{name:PROVIDER_NAME+" • "+label,title:displayTitle||label,url:__WCO_PR_DIAG_URL,quality:"DIAG",language:"Debug",provider:PROVIDER_NAME,type:"mp4"};
+  return{name:PROVIDER_NAME+" • "+label,title:displayTitle||label,url:__WCO_RESOLVER_DIAG_URL,quality:"DIAG",language:"Debug",provider:PROVIDER_NAME,type:"mp4"};
 }
-function __wcoPrDiagPush(rows,stage,message,displayTitle){
+function __wcoResolverDiagPush(rows,stage,message,displayTitle){
   if(!rows||rows.length>=12)return;
-  const row=__wcoPrDiagRow(stage,message,displayTitle);
+  const row=__wcoResolverDiagRow(stage,message,displayTitle);
   if(!rows.some(x=>x&&x.name===row.name))rows.push(row);
 }
-function __wcoPrSeriesInfo(series,wantedTitle){
+function __wcoResolverSearchTitles(showTitle,seasonName){
+  const show=String(showTitle||"").trim(),season=String(seasonName||"").trim(),out=[];
+  const generic=!season||/^season\s*\d+$/i.test(season);
+  if(!generic){
+    const ns=normalize(season),nh=normalize(show);
+    if(ns&&nh&&(ns.includes(nh)||nh.includes(ns)))out.push({title:season,kind:"season"});
+    else{
+      out.push({title:(show+" "+season).trim(),kind:"combined"});
+      out.push({title:season,kind:"season"});
+    }
+  }
+  out.push({title:show,kind:"show"});
+  return out.filter((x,i,a)=>x.title&&a.findIndex(y=>normalize(y.title)===normalize(x.title))===i);
+}
+async function __wcoResolverSearch(title){
+  const all=[];
+  for(const origin of ORIGINS){
+    const page=await req(origin+"/search",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded","Origin":origin,"Referer":origin+"/"},body:"catara="+encodeURIComponent(title)+"&konuara=series"});
+    if(!page.ok)continue;
+    for(const item of searchLinks(page.text,origin)){
+      const score=scoreTitle(item.title,title);
+      if(score<45)continue;
+      const found=all.find(x=>x.href===item.href);
+      if(found){if(score>found.score)found.score=score;continue;}
+      all.push({...item,score});
+    }
+    if(all.some(x=>x.score>=95))break;
+  }
+  return all.sort((a,b)=>b.score-a.score).slice(0,8);
+}
+function __wcoResolverPageInfo(series,wantedTitle){
   if(!series||!series.page)return{identity:"NO PAGE",score:0};
-  const identity=(pageIdentityText(series.page.text)+" "+String(series.pageUrl||"")).replace(/\\s+/g," ").trim();
+  const identity=(pageIdentityText(series.page.text)+" "+String(series.pageUrl||"")).replace(/\s+/g," ").trim();
   return{identity,score:scoreTitle(identity,wantedTitle)};
 }
-function __wcoPrSeriesMatches(series,wantedTitle){return __wcoPrSeriesInfo(series,wantedTitle).score>=80;}
-
-function __wcoPrNameEpisodes(html,pageUrl,wantedSeason,wantedName,pageSeason,forcedVariant){
+function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant){
   const out=[];
-  const wantedS=Number(wantedSeason||1);
-  const re=/<a\\b[^>]*href=["']([^"']+)["'][^>]*>([\\s\\S]*?)<\\/a>/gi;
+  const re=/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
   while((m=re.exec(String(html||"")))&&out.length<700){
     const text=stripTags(m[2]);
     const href=absolute(m[1],pageUrl);
-    if(!href||!text||/\\/anime\\//i.test(href))continue;
+    if(!href||!text||/\/anime\//i.test(href))continue;
     const combined=text+" "+href;
     if(!/episode/i.test(combined))continue;
     const score=scoreTitle(text,wantedName);
     if(score<80)continue;
-    const foundSeason=explicitSeason(combined);
-    if(foundSeason!=null&&foundSeason!==wantedS)continue;
-    if(foundSeason==null&&wantedS!==1&&Number(pageSeason||0)!==wantedS)continue;
     const detected=classifyVariant(combined);
     if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;
-    out.push({href,text,variant:forcedVariant||detected,season:foundSeason,score});
+    const ep=text.match(/Episode\s*(\d+(?:\.\d+)?)/i)||href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
+    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined),episode:ep?Number(ep[1]):null,score});
   }
   return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);
 }
-
-async function __wcoPrExtractByName(series,variant,wantedSeason,wantedName,displayTitle,info){
+async function __wcoResolverExtractByName(series,variant,wantedName,displayTitle,info){
   if(!wantedName)return[];
   const lang=variant==="Sub"?"sub":"dub";
   const filteredUrl=audioFilterUrl(series.pageUrl,lang);
-  let filtered=await req(filteredUrl,{headers:{"Referer":series.pageUrl}});
-  let episodes=filtered.ok?__wcoPrNameEpisodes(filtered.text,filteredUrl,wantedSeason,wantedName,series.season,variant):[];
-  if(!episodes.length)episodes=__wcoPrNameEpisodes(series.page.text,series.pageUrl,wantedSeason,wantedName,series.season,variant);
+  const filtered=await req(filteredUrl,{headers:{"Referer":series.pageUrl}});
+  let episodes=filtered.ok?__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant):[];
+  if(!episodes.length)episodes=__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant);
   for(const entry of episodes.slice(0,3)){
     const epPage=await req(entry.href,{headers:{"Referer":filtered.ok?filteredUrl:series.pageUrl}});
     if(!epPage.ok)continue;
     const frame=iframeLink(epPage.text,entry.href);
-    if(!frame||/user\\.wcostream\\.tv\\/check-login/i.test(frame))continue;
+    if(!frame||/user\.wcostream\.tv\/check-login/i.test(frame))continue;
     const streams=await extractEmbed(frame,variant,displayTitle,info);
     if(streams.length)return streams;
   }
   return[];
+}
+function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){
+  const out=[];
+  const re=/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  let m;
+  while((m=re.exec(String(html||"")))&&out.length<700){
+    const text=stripTags(m[2]);
+    const href=absolute(m[1],pageUrl);
+    if(!href||!text||/\/anime\//i.test(href))continue;
+    const combined=text+" "+href;
+    const ep=text.match(/Episode\s*(\d+(?:\.\d+)?)/i)||href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
+    if(!ep||Number(ep[1])!==Number(wantedEpisode||1))continue;
+    const detected=classifyVariant(combined);
+    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;
+    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined)});
+  }
+  return out.filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);
+}
+async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info){
+  const lang=variant==="Sub"?"sub":"dub";
+  const filteredUrl=audioFilterUrl(series.pageUrl,lang);
+  const filtered=await req(filteredUrl,{headers:{"Referer":series.pageUrl}});
+  let episodes=filtered.ok?__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant):[];
+  if(!episodes.length)episodes=__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant);
+  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);
+  if(episodes.length!==1)return{streams:[],count:episodes.length};
+  const entry=episodes[0];
+  const epPage=await req(entry.href,{headers:{"Referer":filtered.ok?filteredUrl:series.pageUrl}});
+  if(!epPage.ok)return{streams:[],count:1};
+  const frame=iframeLink(epPage.text,entry.href);
+  if(!frame||/user\.wcostream\.tv\/check-login/i.test(frame))return{streams:[],count:1};
+  return{streams:await extractEmbed(frame,variant,displayTitle,info),count:1};
 }
 `;
   if (!source.includes(helperMarker)) return "";
@@ -135,81 +152,84 @@ async function __wcoPrExtractByName(series,variant,wantedSeason,wantedName,displ
   const tvStart = source.indexOf("async function tvStreams(info, season, episode) {");
   const tvEnd = source.indexOf("async function movieStreams(info)", tvStart);
   if (tvStart < 0 || tvEnd < 0) return "";
+
   const tvReplacement = [
     'async function tvStreams(info, season, episode) {',
     '  const __inputSeason = Number(season || 1);',
     '  const wantedEpisode = Number(episode || 1);',
-    '  const __attempts = __wcoPowerRangersAttempts(__inputSeason);',
     '  const __displayTitle = `${info.title} S${String(__inputSeason).padStart(2, "0")}E${String(wantedEpisode).padStart(2, "0")}`;',
     '  const __diag = [];',
-    '  if (!__attempts.length) return [__wcoPrDiagRow("MAP", `no mapping for source season ${__inputSeason}`, __displayTitle)];',
+    '  let __seasonData = null;',
+    '  try { __seasonData = await jsonReq(`https://api.themoviedb.org/3/tv/${info.id}/season/${__inputSeason}?api_key=${TMDB_API_KEY}`); } catch (_) {}',
+    '  const __seasonName = String(__seasonData && __seasonData.name || "").trim();',
     '  let __episodeName = "";',
-    '  try {',
-    '    const __ep = await jsonReq(`https://api.themoviedb.org/3/tv/${info.id}/season/${__inputSeason}/episode/${wantedEpisode}?api_key=${TMDB_API_KEY}`);',
+    '  if (__seasonData && Array.isArray(__seasonData.episodes)) {',
+    '    const __ep = __seasonData.episodes.find(x => Number(x && x.episode_number) === wantedEpisode);',
     '    __episodeName = String(__ep && __ep.name || "").trim();',
-    '  } catch (_) {}',
-    '  __wcoPrDiagPush(__diag, "TMDB", `S${__inputSeason}E${wantedEpisode} name=${__episodeName || "EMPTY"}`, __displayTitle);',
+    '  }',
+    '  if (!__episodeName) {',
+    '    try {',
+    '      const __ep = await jsonReq(`https://api.themoviedb.org/3/tv/${info.id}/season/${__inputSeason}/episode/${wantedEpisode}?api_key=${TMDB_API_KEY}`);',
+    '      __episodeName = String(__ep && __ep.name || "").trim();',
+    '    } catch (_) {}',
+    '  }',
+    '  const __attempts = __wcoResolverSearchTitles(info.title, __seasonName);',
+    '  __wcoResolverDiagPush(__diag, "TMDB", `season=${__seasonName || "EMPTY"} • episode=${__episodeName || "EMPTY"} • searches=${__attempts.map(x=>x.title).join(" | ")}`, __displayTitle);',
     '',
-    '  const __resolvedAttempts = [];',
+    '  const __resolved = [];',
     '  for (const __attempt of __attempts) {',
-    '    const wantedSeason = Number(__attempt.season || 1);',
-    '    const __mappedInfo = { ...info, title: __attempt.title, titles: uniq([__attempt.title]) };',
-    '    const candidates = await searchWco(__mappedInfo, wantedSeason);',
-    '    const __first = candidates[0] ? `${candidates[0].title || "untitled"} @ ${String(candidates[0].href || "").replace(/^https?:\\/\\//, "").slice(0,70)}` : "none";',
-    '    __wcoPrDiagPush(__diag, `SEARCH ${String(__attempt.kind || "try").toUpperCase()}`, `${__attempt.title} S${wantedSeason} • candidates=${candidates.length} • first=${__first}`, __displayTitle);',
-    '    __resolvedAttempts.push({ attempt: __attempt, wantedSeason, info: __mappedInfo, candidates });',
+    '    const candidates = await __wcoResolverSearch(__attempt.title);',
+    '    const __first = candidates[0] ? `${candidates[0].title || "untitled"} @ ${String(candidates[0].href || "").replace(/^https?:\\/\\//, "").slice(0,65)}` : "none";',
+    '    __wcoResolverDiagPush(__diag, `SEARCH ${__attempt.kind.toUpperCase()}`, `${__attempt.title} • candidates=${candidates.length} • first=${__first}`, __displayTitle);',
+    '    __resolved.push({attempt:__attempt,candidates});',
     '  }',
     '',
-    '  let __nameAcceptedPages = 0;',
-    '  let __nameRejectedPages = 0;',
+    '  let __accepted = 0, __rejected = 0;',
     '  if (__episodeName) {',
-    '    for (const __resolved of __resolvedAttempts) {',
-    '      for (const candidate of __resolved.candidates.slice(0, 6)) {',
+    '    for (const __r of __resolved) {',
+    '      const __threshold = __r.attempt.kind === "show" ? 80 : 70;',
+    '      for (const candidate of __r.candidates.slice(0,6)) {',
     '        const series = await candidatePage(candidate);',
-    '        if (!series) { __wcoPrDiagPush(__diag, "PAGE", `${__resolved.attempt.kind} candidate page failed: ${candidate.title || candidate.href}`, __displayTitle); continue; }',
-    '        const __seriesInfo = __wcoPrSeriesInfo(series, __resolved.attempt.title);',
-    '        if (__seriesInfo.score < 80) {',
-    '          __nameRejectedPages += 1;',
-    '          __wcoPrDiagPush(__diag, "PAGE REJECT", `${__resolved.attempt.kind} want=${__resolved.attempt.title} score=${__seriesInfo.score} sourceSeason=${series.season == null ? "nil" : series.season} id=${__seriesInfo.identity.slice(0,95)}`, __displayTitle);',
+    '        if (!series) continue;',
+    '        const __page = __wcoResolverPageInfo(series,__r.attempt.title);',
+    '        if (__page.score < __threshold) {',
+    '          __rejected += 1;',
+    '          __wcoResolverDiagPush(__diag, "PAGE REJECT", `${__r.attempt.kind} want=${__r.attempt.title} score=${__page.score} id=${__page.identity.slice(0,90)}`, __displayTitle);',
     '          continue;',
     '        }',
-    '        if (series.season != null && series.season !== __resolved.wantedSeason) {',
-    '          __nameRejectedPages += 1;',
-    '          __wcoPrDiagPush(__diag, "SEASON REJECT", `${__resolved.attempt.kind} want S${__resolved.wantedSeason} page S${series.season} • ${__resolved.attempt.title}`, __displayTitle);',
-    '          continue;',
-    '        }',
-    '        __nameAcceptedPages += 1;',
-    '        __wcoPrDiagPush(__diag, "PAGE ACCEPT", `${__resolved.attempt.kind} ${__resolved.attempt.title} S${__resolved.wantedSeason} score=${__seriesInfo.score} sourceSeason=${series.season == null ? "nil" : series.season}`, __displayTitle);',
-    '        const dub = await __wcoPrExtractByName(series, "Dub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
-    '        const sub = await __wcoPrExtractByName(series, "Sub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
+    '        __accepted += 1;',
+    '        const dub = await __wcoResolverExtractByName(series,"Dub",__episodeName,__displayTitle,info);',
+    '        const sub = await __wcoResolverExtractByName(series,"Sub",__episodeName,__displayTitle,info);',
     '        const combined = dub.concat(sub);',
-    '        if (combined.length) return finalize(combined, __resolved.info);',
+    '        if (combined.length) return finalize(combined,info);',
     '      }',
     '    }',
     '  }',
-    '  __wcoPrDiagPush(__diag, "NAME RESULT", `episode=${__episodeName || "EMPTY"} acceptedPages=${__nameAcceptedPages} rejectedPages=${__nameRejectedPages} playable=0`, __displayTitle);',
+    '  __wcoResolverDiagPush(__diag, "NAME RESULT", `episode=${__episodeName || "EMPTY"} • acceptedPages=${__accepted} • rejectedPages=${__rejected} • playable=0`, __displayTitle);',
     '',
-    '  let __numberAcceptedPages = 0;',
-    '  for (const __resolved of __resolvedAttempts) {',
-    '    for (const candidate of __resolved.candidates.slice(0, 6)) {',
+    '  let __numericPages = 0;',
+    '  for (const __r of __resolved) {',
+    '    if (__r.attempt.kind === "show") continue;',
+    '    for (const candidate of __r.candidates.slice(0,6)) {',
     '      const series = await candidatePage(candidate);',
     '      if (!series) continue;',
-    '      const __seriesInfo = __wcoPrSeriesInfo(series, __resolved.attempt.title);',
-    '      if (__seriesInfo.score < 80) continue;',
-    '      if (series.season != null && series.season !== __resolved.wantedSeason) continue;',
-    '      __numberAcceptedPages += 1;',
-    '      const dub = await extractVariantFromSeries(series, "Dub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
-    '      const sub = await extractVariantFromSeries(series, "Sub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
-    '      const combined = dub.concat(sub);',
-    '      if (combined.length) return finalize(combined, __resolved.info);',
+    '      const __page = __wcoResolverPageInfo(series,__r.attempt.title);',
+    '      if (__page.score < 70) continue;',
+    '      const dub = await __wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info);',
+    '      const sub = await __wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info);',
+    '      __numericPages += 1;',
+    '      __wcoResolverDiagPush(__diag, "NUMBER CHECK", `${__r.attempt.kind} ${__r.attempt.title} • dubMatches=${dub.count} subMatches=${sub.count}`, __displayTitle);',
+    '      const combined = dub.streams.concat(sub.streams);',
+    '      if (combined.length) return finalize(combined,info);',
     '    }',
     '  }',
-    '  __wcoPrDiagPush(__diag, "NUMBER RESULT", `wanted episode=${wantedEpisode} acceptedPages=${__numberAcceptedPages} playable=0`, __displayTitle);',
-    '  __wcoPrDiagPush(__diag, "STOP", "all Power Rangers mapping attempts exhausted with no playable stream", __displayTitle);',
-    '  return __diag.length ? __diag : [__wcoPrDiagRow("STOP", "no diagnostic state captured", __displayTitle)];',
+    '  __wcoResolverDiagPush(__diag, "NUMBER RESULT", `episode=${wantedEpisode} • checkedPages=${__numericPages} • only unique numeric matches are allowed`, __displayTitle);',
+    '  __wcoResolverDiagPush(__diag, "STOP", "season-title resolver exhausted all safe attempts", __displayTitle);',
+    '  return __diag.length ? __diag : [__wcoResolverDiagRow("STOP","no diagnostic state captured",__displayTitle)];',
     '}',
     ''
   ].join('\n');
+
   source = source.slice(0, tvStart) + tvReplacement + source.slice(tvEnd);
 
   const idMarker = '    const info = await tmdbInfo(inputId, type);\n    if (!info) return [];\n    return type === "movie" ? await movieStreams(info) : await tvStreams(info, season, episode);';
@@ -251,17 +271,15 @@ async function loadCore() {
 async function getStreams(inputId, mediaType, season, episode) {
   const type = String(mediaType || "tv").toLowerCase();
   if (type === "movie") return [];
-
-  const s = Number(season || 1);
-  if (!POWER_RANGERS_MAP[s]) return [];
+  const s = Number(season || 1), e = Number(episode || 1);
+  if (!Number.isFinite(s) || s < 1 || !Number.isFinite(e) || e < 1) return [];
 
   try {
     const core = await loadCore();
-    if (!core) return outerDiag("CORE", "patched WCO core failed to load", season, episode);
-    const streams = await core.getStreams(inputId, mediaType, season, episode);
-    return Array.isArray(streams) && streams.length ? streams : outerDiag("EMPTY", "core returned no streams and no inline diagnostic rows", season, episode);
-  } catch (e) {
-    return outerDiag("RUNTIME", String(e && e.message || e), season, episode);
+    if (!core) return outerDiag("CORE", "patched WCO core failed to load", s, e);
+    return await core.getStreams(inputId, mediaType, season, episode);
+  } catch (err) {
+    return outerDiag("RUNTIME", String(err && err.message || err || "unknown error"), s, e);
   }
 }
 
