@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.40",
+  "version": "2.0.41",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,9 +36,9 @@
     {
       "id": "limitless-wco-power-rangers-nexus",
       "name": "WCO Power Rangers Nexus",
-      "description": "Nexus-only Power Rangers compatibility test using the direct WCO core. Requires the resolved WCO series page to match the intended era title, prefers TMDB episode-name matching, falls back to verified combined multi-season pages and season/episode numbering, and returns inline diagnostic rows only when all playable attempts fail. Production WCO remains untouched.",
-      "version": "1.1.2",
-      "author": "Limitless Nexus Power Rangers compatibility test",
+      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, confirms candidates by episode name before trusting numbering, uses only unique numeric matches as a safe fallback, and returns inline diagnostics when all playable attempts fail. The resolver is generic but this test provider remains scoped to Power Rangers while production WCO stays untouched.",
+      "version": "1.2.0",
+      "author": "Limitless Nexus generic season-title resolver test",
       "supportedTypes": ["tv"],
       "filename": "providers/wco-power-rangers-nexus.js",
       "enabled": true,
