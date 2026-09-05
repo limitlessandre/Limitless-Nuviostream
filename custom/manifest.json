@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.39",
+  "version": "2.0.40",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,8 +36,8 @@
     {
       "id": "limitless-wco-power-rangers-nexus",
       "name": "WCO Power Rangers Nexus",
-      "description": "Nexus-only Power Rangers compatibility test using the direct WCO core. Requires the resolved WCO series page to match the intended era title, then prefers TMDB episode-name matching before falling back to verified combined multi-season pages and season/episode numbering. Production WCO remains untouched.",
-      "version": "1.1.1",
+      "description": "Nexus-only Power Rangers compatibility test using the direct WCO core. Requires the resolved WCO series page to match the intended era title, prefers TMDB episode-name matching, falls back to verified combined multi-season pages and season/episode numbering, and returns inline diagnostic rows only when all playable attempts fail. Production WCO remains untouched.",
+      "version": "1.1.2",
       "author": "Limitless Nexus Power Rangers compatibility test",
       "supportedTypes": ["tv"],
       "filename": "providers/wco-power-rangers-nexus.js",
@@ -45,21 +45,6 @@
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
-      "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": ["en"]
-    },
-    {
-      "id": "limitless-wco-power-rangers-diag",
-      "name": "WCO Power Rangers DIAG",
-      "description": "Temporary Nexus diagnostic for Power Rangers season mapping. Reports TMDB episode names, direct WCO era-page resolution, search candidates, page identity scores, and numeric/name episode matches without attempting playback.",
-      "version": "1.0.0",
-      "author": "Limitless Nexus diagnostic",
-      "supportedTypes": ["tv"],
-      "filename": "providers/wco-power-rangers-diag.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en"]
     },
