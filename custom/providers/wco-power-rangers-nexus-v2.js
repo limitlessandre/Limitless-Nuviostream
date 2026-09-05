@@ -2,7 +2,8 @@
 
 // Nexus-only wrapper around the validated generic season-title resolver.
 // Adds lightweight fallbacks for WCO search gaps, numbered TMDB season titles,
-// season-aware title matching, and title-assisted numeric disambiguation.
+// season-aware title matching, title-assisted numeric disambiguation, and
+// candidate-level diagnostics for unresolved duplicate episode links.
 // Production WCO is untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
@@ -124,7 +125,7 @@ function patchResolver(source) {
   );
   out = out.replace(
     '  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);\n  if(episodes.length!==1)return{streams:[],count:episodes.length};',
-    '  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>String(y.href||"").replace(/[?#].*$/,"").replace(/\\/$/,"")===String(x.href||"").replace(/[?#].*$/,"").replace(/\\/$/,""))===i);\n  const rawCount=episodes.length;\n  if(episodes.length>1&&wantedName){\n    const scored=episodes.map(x=>({...x,_nameScore:scoreTitle(x.cleanTitle||x.text,wantedName)})).sort((a,b)=>b._nameScore-a._nameScore);\n    if(scored[0]&&scored[0]._nameScore>=80){\n      const top=scored[0]._nameScore;\n      const tied=scored.filter(x=>x._nameScore===top);\n      const firstNorm=normalize(tied[0].cleanTitle||tied[0].text);\n      if(tied.every(x=>normalize(x.cleanTitle||x.text)===firstNorm))episodes=[tied[0]];\n      else if(tied.length===1)episodes=[tied[0]];\n    }\n  }\n  if(episodes.length!==1)return{streams:[],count:rawCount};'
+    '  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>String(y.href||"").replace(/[?#].*$/,"").replace(/\\/$/,"")===String(x.href||"").replace(/[?#].*$/,"").replace(/\\/$/,""))===i);\n  const rawCount=episodes.length;\n  const debugEntries=episodes.slice(0,4).map((x,i)=>{const label=String(x.cleanTitle||x.text||"untitled").replace(/\\s+/g," ").trim().slice(0,48);const href=String(x.href||"").replace(/^https?:\\/\\//,"").slice(0,72);return `${i+1}:S${x.season==null?"nil":x.season} ${label} @ ${href}`;}).join(" || ");\n  if(episodes.length>1&&wantedName){\n    const scored=episodes.map(x=>({...x,_nameScore:scoreTitle(x.cleanTitle||x.text,wantedName)})).sort((a,b)=>b._nameScore-a._nameScore);\n    if(scored[0]&&scored[0]._nameScore>=80){\n      const top=scored[0]._nameScore;\n      const tied=scored.filter(x=>x._nameScore===top);\n      const firstNorm=normalize(tied[0].cleanTitle||tied[0].text);\n      if(tied.every(x=>normalize(x.cleanTitle||x.text)===firstNorm))episodes=[tied[0]];\n      else if(tied.length===1)episodes=[tied[0]];\n    }\n  }\n  if(episodes.length!==1)return{streams:[],count:rawCount,debug:debugEntries};'
   );
 
   out = out.replace(
@@ -142,6 +143,12 @@ function patchResolver(source) {
   out = out.replace(
     '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info)',
     '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason,__episodeName)'
+  );
+
+  // When duplicate numeric candidates remain unresolved, expose their labels and URLs.
+  out = out.replace(
+    '__wcoResolverDiagPush(__diag, "NUMBER CHECK", `${__r.attempt.kind} ${__r.attempt.title} • dubMatches=${dub.count} subMatches=${sub.count}`, __displayTitle);',
+    '__wcoResolverDiagPush(__diag, "NUMBER CHECK", `${__r.attempt.kind} ${__r.attempt.title} • dubMatches=${dub.count} subMatches=${sub.count}`, __displayTitle);\n      if(dub.debug)__wcoResolverDiagPush(__diag,"NUMBER DUB",dub.debug,__displayTitle);\n      if(sub.debug)__wcoResolverDiagPush(__diag,"NUMBER SUB",sub.debug,__displayTitle);'
   );
 
   // Show the source-season hint in diagnostics so future ambiguity is visible.
