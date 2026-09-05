@@ -1,19 +1,15 @@
 "use strict";
 
 // Nexus-only Power Rangers compatibility provider.
-// It dynamically loads the current production WCO provider and patches only
-// the core TV-series lookup so TMDB's single 30-season Power Rangers entry
-// maps to WCO's era-specific series pages.
+// This follows the same pattern as the earlier WCO test providers: load the
+// proven core directly, patch only the behavior under test, then execute it.
+// The production WCO provider remains untouched.
 
-const BASE_PROVIDER_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js";
-const POWER_RANGERS_IDS = new Set(["2328", "tt0106064"]);
-let cachedProvider = null;
+const PROVIDER_NAME = "WCO Power Rangers Nexus";
+const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco.js";
+let cachedCore = null;
 
-function powerRangersPatchSource() {
-  return String.raw`
-function augmentPowerRangersCore(source) {
-  const mapCode = String.raw\`
-const __WCO_POWER_RANGERS_MAP = {
+const POWER_RANGERS_MAP = {
   1:  { title: "Mighty Morphin Power Rangers", season: 1 },
   2:  { title: "Mighty Morphin Power Rangers", season: 2 },
   3:  { title: "Mighty Morphin Power Rangers", season: 3 },
@@ -45,71 +41,79 @@ const __WCO_POWER_RANGERS_MAP = {
   29: { title: "Power Rangers Dino Fury", season: 2 },
   30: { title: "Power Rangers Cosmic Fury", season: 1 }
 };
-function __wcoPowerRangersTarget(season) {
-  return __WCO_POWER_RANGERS_MAP[Number(season || 1)] || null;
+
+function mapSourceCode() {
+  return "const __WCO_POWER_RANGERS_MAP = " + JSON.stringify(POWER_RANGERS_MAP) + ";\n" +
+    "function __wcoPowerRangersTarget(season){return __WCO_POWER_RANGERS_MAP[Number(season||1)]||null;}\n";
 }
-\`;
+
+function patchCore(source) {
+  source = String(source || "");
+  if (!source) return "";
 
   source = source.replace('const PROVIDER_NAME = "WCO";', 'const PROVIDER_NAME = "WCO Power Rangers Nexus";');
-  source = source.replace('"use strict";', '"use strict";\\n' + mapCode);
+  source = source.replace('"use strict";', '"use strict";\n' + mapSourceCode());
 
-  const marker = 'async function tvStreams(info, season, episode) {\\n  const wantedSeason = Number(season || 1);';
-  const replacement = [
+  const tvMarker = 'async function tvStreams(info, season, episode) {\n  const wantedSeason = Number(season || 1);';
+  const tvReplacement = [
     'async function tvStreams(info, season, episode) {',
-    '  const __prTarget = __wcoPowerRangersTarget(season);',
-    '  if (__prTarget) {',
-    '    info = { ...info, title: __prTarget.title, titles: uniq([__prTarget.title]) };',
-    '    season = __prTarget.season;',
-    '  }',
+    '  const __inputSeason = Number(season || 1);',
+    '  const __prTarget = __wcoPowerRangersTarget(__inputSeason);',
+    '  if (!__prTarget) return [];',
+    '  info = { ...info, title: __prTarget.title, titles: uniq([__prTarget.title]) };',
+    '  season = __prTarget.season;',
     '  const wantedSeason = Number(season || 1);'
-  ].join('\\n');
+  ].join('\n');
+  if (!source.includes(tvMarker)) return "";
+  source = source.replace(tvMarker, tvReplacement);
 
-  if (!source.includes(marker)) throw new Error('WCO Power Rangers patch marker not found');
-  return source.replace(marker, replacement);
+  const idMarker = '    const info = await tmdbInfo(inputId, type);\n    if (!info) return [];\n    return type === "movie" ? await movieStreams(info) : await tvStreams(info, season, episode);';
+  const idReplacement = [
+    '    const info = await tmdbInfo(inputId, type);',
+    '    if (!info) return [];',
+    '    if (type === "movie" || Number(info.id) !== 2328) return [];',
+    '    return await tvStreams(info, season, episode);'
+  ].join('\n');
+  if (!source.includes(idMarker)) return "";
+  source = source.replace(idMarker, idReplacement);
+
+  return source;
 }
-`;
-}
 
-function augmentProductionSource(source) {
-  const addon = powerRangersPatchSource();
-  source = source.replace('"use strict";', '"use strict";\n' + addon);
+async function loadCore() {
+  if (cachedCore && typeof cachedCore.getStreams === "function") return cachedCore;
+  try {
+    const res = await fetch(CORE_URL, { skipSizeCheck: true });
+    if (!res || !res.ok) return null;
+    const raw = String(await res.text() || "");
+    const source = patchCore(raw);
+    if (!source || !source.includes("module.exports")) return null;
 
-  const marker = 'if (key === "core") source = augmentCoreMirrors(source);';
-  const replacement = 'if (key === "core") source = augmentPowerRangersCore(augmentCoreMirrors(source));';
-  if (!source.includes(marker)) throw new Error("WCO production core hook not found");
-  return source.replace(marker, replacement);
-}
+    const mod = { exports: {} };
+    const factory = new Function("module", "exports", "require", source + "\n;return module.exports;");
+    const exported = factory(mod, mod.exports, function(name) {
+      throw new Error("Unsupported nested require: " + name);
+    }) || mod.exports;
 
-async function loadProvider() {
-  if (cachedProvider && typeof cachedProvider.getStreams === "function") return cachedProvider;
-
-  const res = await fetch(BASE_PROVIDER_URL, { skipSizeCheck: true });
-  if (!res || !res.ok) return null;
-  let source = String(await res.text() || "");
-  if (!source || !source.includes("module.exports")) return null;
-
-  source = augmentProductionSource(source);
-  const mod = { exports: {} };
-  const localRequire = function(name) { throw new Error(`Unsupported require: ${name}`); };
-  const factory = new Function("module", "exports", "require", `${source}\n;return module.exports;`);
-  const exported = factory(mod, mod.exports, localRequire) || mod.exports;
-  if (!exported || typeof exported.getStreams !== "function") return null;
-  cachedProvider = exported;
-  return cachedProvider;
+    if (!exported || typeof exported.getStreams !== "function") return null;
+    cachedCore = exported;
+    return cachedCore;
+  } catch (_) {
+    return null;
+  }
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
-  const rawId = String(inputId || "").trim().toLowerCase();
   const type = String(mediaType || "tv").toLowerCase();
-  if (type === "movie" || !POWER_RANGERS_IDS.has(rawId)) return [];
+  if (type === "movie") return [];
 
-  const mappedSeason = Number(season || 1);
-  if (!Number.isFinite(mappedSeason) || mappedSeason < 1 || mappedSeason > 30) return [];
+  const s = Number(season || 1);
+  if (!POWER_RANGERS_MAP[s]) return [];
 
   try {
-    const provider = await loadProvider();
-    if (!provider) return [];
-    return await provider.getStreams(inputId, mediaType, season, episode);
+    const core = await loadCore();
+    if (!core) return [];
+    return await core.getStreams(inputId, mediaType, season, episode);
   } catch (_) {
     return [];
   }
