@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.45",
+  "version": "2.0.46",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,8 +36,8 @@
     {
       "id": "limitless-wco-power-rangers-nexus",
       "name": "WCO Power Rangers Nexus",
-      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, strips trailing numeric continuation markers such as (2)/(3) from search text while preserving them as source-season hints, conditionally retries compact spelling, and can fall back to direct /anime/<slug>/ pages when WCO search is empty. Episode-name confirmation and season-aware unique numeric fallback remain guarded, with inline diagnostics when playback resolution fails. Production WCO is untouched.",
-      "version": "1.2.4",
+      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, strips trailing continuation markers such as (2)/(3) into source-season hints, scores cleaned WCO episode titles without Season/Episode prefixes, keeps name and numeric matching inside the hinted source season when available, conditionally retries compact spelling, and can fall back to direct /anime/<slug>/ pages when WCO search is empty. Inline diagnostics remain available when playback resolution fails. Production WCO is untouched.",
+      "version": "1.2.5",
       "author": "Limitless Nexus generic season-title resolver test",
       "supportedTypes": ["tv"],
       "filename": "providers/wco-power-rangers-nexus-v2.js",
@@ -58,7 +58,6 @@
       "filename": "providers/anikototv.js",
       "enabled": true,
       "hasSettings": false,
-      "limited": true,
       "formats": ["mp4"],
       "logo": "https://anikototv.to/favicon.ico",
       "contentLanguage": ["en", "ja"]
