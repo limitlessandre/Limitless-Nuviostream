@@ -1,8 +1,8 @@
 "use strict";
 
 // Nexus-only wrapper around the validated generic season-title resolver.
-// Adds lightweight fallbacks for WCO search gaps and numbered TMDB season titles.
-// Production WCO is untouched.
+// Adds lightweight fallbacks for WCO search gaps, numbered TMDB season titles,
+// and season-aware episode-title matching. Production WCO is untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus.js";
@@ -28,8 +28,7 @@ function patchResolver(source) {
 
   // TMDB sometimes names continuation seasons like "Mighty Morphin (2)" or
   // "Beast Morphers (2)". The parenthetical number is a source-season hint,
-  // not part of the WCO series title. Strip it from search text but preserve it
-  // so episode matching can stay inside the correct WCO season.
+  // not part of the WCO series title. Season 1 also gets a safe source hint of 1.
   const oldSearchTitles = String.raw`function __wcoResolverSearchTitles(showTitle,seasonName){
   const show=String(showTitle||"").trim(),season=String(seasonName||"").trim(),out=[];
   const generic=!season||/^season\s*\d+$/i.test(season);
@@ -47,10 +46,10 @@ function patchResolver(source) {
   return out.filter((x,i,a)=>x.title&&a.findIndex(y=>normalize(y.title)===normalize(x.title))===i);
 }`;
 
-  const newSearchTitles = String.raw`function __wcoResolverSearchTitles(showTitle,seasonName){
+  const newSearchTitles = String.raw`function __wcoResolverSearchTitles(showTitle,seasonName,inputSeason){
   const show=String(showTitle||"").trim(),rawSeason=String(seasonName||"").trim(),out=[];
   const suffix=rawSeason.match(/\s*\((\d+)\)\s*$/);
-  const sourceSeason=suffix?Number(suffix[1]):null;
+  const sourceSeason=suffix?Number(suffix[1]):(Number(inputSeason)===1?1:null);
   const season=rawSeason.replace(/\s*\(\d+\)\s*$/,"").trim();
   const generic=!season||/^season\s*\d+$/i.test(season);
   if(!generic){
@@ -69,14 +68,23 @@ function patchResolver(source) {
 
   if (!out.includes(oldSearchTitles)) return "";
   out = out.replace(oldSearchTitles, newSearchTitles);
+  out = out.replace(
+    'const __attempts = __wcoResolverSearchTitles(info.title, __seasonName);',
+    'const __attempts = __wcoResolverSearchTitles(info.title, __seasonName, __inputSeason);'
+  );
 
+  // Score the actual episode title, not WCO's "Season X Episode Y" prefix.
   out = out.replace(
     'function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant){',
     'function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant,wantedSourceSeason){'
   );
   out = out.replace(
-    '    const ep=text.match(/Episode\\s*(\\d+(?:\\.\\d+)?)/i)||href.match(/episode[-_ ]?(\\d+(?:\\.\\d+)?)/i);\n    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined),episode:ep?Number(ep[1]):null,score});',
-    '    const foundSeason=explicitSeason(combined);\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    const ep=text.match(/Episode\\s*(\\d+(?:\\.\\d+)?)/i)||href.match(/episode[-_ ]?(\\d+(?:\\.\\d+)?)/i);\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason,episode:ep?Number(ep[1]):null,score});'
+    '    const score=scoreTitle(text,wantedName);',
+    '    const cleanTitle=text.replace(/^\\s*Season\\s*\\d+\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").replace(/^\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").trim();\n    const score=Math.max(scoreTitle(text,wantedName),scoreTitle(cleanTitle,wantedName));'
+  );
+  out = out.replace(
+    '    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined),episode:ep?Number(ep[1]):null,score});',
+    '    let foundSeason=explicitSeason(combined);\n    if(foundSeason==null){const sm=combined.match(/Season\\s*(\\d+)/i)||combined.match(/season[-_ ]?(\\d+)/i);if(sm)foundSeason=Number(sm[1]);}\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    out.push({href,text,cleanTitle,variant:forcedVariant||detected,season:foundSeason,episode:ep?Number(ep[1]):null,score});'
   );
   out = out.replace(
     'async function __wcoResolverExtractByName(series,variant,wantedName,displayTitle,info){',
@@ -91,13 +99,14 @@ function patchResolver(source) {
     '__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant,wantedSourceSeason)'
   );
 
+  // Keep numeric fallback inside a known WCO source season when TMDB supplies one.
   out = out.replace(
     'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){',
     'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant,wantedSourceSeason){'
   );
   out = out.replace(
-    '    const detected=classifyVariant(combined);\n    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;\n    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined)});',
-    '    const foundSeason=explicitSeason(combined);\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    const detected=classifyVariant(combined);\n    if(forcedVariant&&detected!=="Original"&&detected!==forcedVariant)continue;\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason});'
+    '    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined)});',
+    '    let foundSeason=explicitSeason(combined);\n    if(foundSeason==null){const sm=combined.match(/Season\\s*(\\d+)/i)||combined.match(/season[-_ ]?(\\d+)/i);if(sm)foundSeason=Number(sm[1]);}\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason});'
   );
   out = out.replace(
     'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info){',
@@ -127,6 +136,12 @@ function patchResolver(source) {
   out = out.replace(
     '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info)',
     '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason)'
+  );
+
+  // Show the source-season hint in diagnostics so future ambiguity is visible.
+  out = out.replace(
+    '`season=${__seasonName || "EMPTY"} • episode=${__episodeName || "EMPTY"} • searches=${__attempts.map(x=>x.title).join(" | ")}`',
+    '`season=${__seasonName || "EMPTY"} • episode=${__episodeName || "EMPTY"} • hint=${__attempts[0]&&__attempts[0].sourceSeason||"nil"} • searches=${__attempts.map(x=>x.title).join(" | ")}`'
   );
 
   // Existing direct-slug fallback for titles that WCO's search endpoint fails to return.
