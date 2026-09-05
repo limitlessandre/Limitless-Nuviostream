@@ -2,7 +2,8 @@
 
 // Nexus-only wrapper around the validated generic season-title resolver.
 // Adds lightweight fallbacks for WCO search gaps, numbered TMDB season titles,
-// and season-aware episode-title matching. Production WCO is untouched.
+// season-aware title matching, and title-assisted numeric disambiguation.
+// Production WCO is untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus.js";
@@ -99,18 +100,19 @@ function patchResolver(source) {
     '__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant,wantedSourceSeason)'
   );
 
-  // Keep numeric fallback inside a known WCO source season when TMDB supplies one.
+  // Numeric fallback also keeps the cleaned title. If WCO exposes multiple links
+  // for the same episode number, TMDB's episode name can safely pick the intended one.
   out = out.replace(
     'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){',
     'function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant,wantedSourceSeason){'
   );
   out = out.replace(
     '    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined)});',
-    '    let foundSeason=explicitSeason(combined);\n    if(foundSeason==null){const sm=combined.match(/Season\\s*(\\d+)/i)||combined.match(/season[-_ ]?(\\d+)/i);if(sm)foundSeason=Number(sm[1]);}\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    out.push({href,text,variant:forcedVariant||detected,season:foundSeason});'
+    '    const cleanTitle=text.replace(/^\\s*Season\\s*\\d+\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").replace(/^\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").trim();\n    let foundSeason=explicitSeason(combined);\n    if(foundSeason==null){const sm=combined.match(/Season\\s*(\\d+)/i)||combined.match(/season[-_ ]?(\\d+)/i);if(sm)foundSeason=Number(sm[1]);}\n    if(wantedSourceSeason&&foundSeason!=null&&Number(foundSeason)!==Number(wantedSourceSeason))continue;\n    out.push({href,text,cleanTitle,variant:forcedVariant||detected,season:foundSeason});'
   );
   out = out.replace(
     'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info){',
-    'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info,wantedSourceSeason){'
+    'async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,displayTitle,info,wantedSourceSeason,wantedName){'
   );
   out = out.replace(
     '__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant)',
@@ -119,6 +121,10 @@ function patchResolver(source) {
   out = out.replace(
     '__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant)',
     '__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant,wantedSourceSeason)'
+  );
+  out = out.replace(
+    '  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);\n  if(episodes.length!==1)return{streams:[],count:episodes.length};',
+    '  episodes=episodes.filter((x,i,a)=>a.findIndex(y=>String(y.href||"").replace(/[?#].*$/,"").replace(/\\/$/,"")===String(x.href||"").replace(/[?#].*$/,"").replace(/\\/$/,""))===i);\n  const rawCount=episodes.length;\n  if(episodes.length>1&&wantedName){\n    const scored=episodes.map(x=>({...x,_nameScore:scoreTitle(x.cleanTitle||x.text,wantedName)})).sort((a,b)=>b._nameScore-a._nameScore);\n    if(scored[0]&&scored[0]._nameScore>=80){\n      const top=scored[0]._nameScore;\n      const tied=scored.filter(x=>x._nameScore===top);\n      const firstNorm=normalize(tied[0].cleanTitle||tied[0].text);\n      if(tied.every(x=>normalize(x.cleanTitle||x.text)===firstNorm))episodes=[tied[0]];\n      else if(tied.length===1)episodes=[tied[0]];\n    }\n  }\n  if(episodes.length!==1)return{streams:[],count:rawCount};'
   );
 
   out = out.replace(
@@ -131,11 +137,11 @@ function patchResolver(source) {
   );
   out = out.replace(
     '__wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info)',
-    '__wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason)'
+    '__wcoResolverExtractUniqueNumber(series,"Dub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason,__episodeName)'
   );
   out = out.replace(
     '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info)',
-    '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason)'
+    '__wcoResolverExtractUniqueNumber(series,"Sub",wantedEpisode,__displayTitle,info,__r.attempt.sourceSeason,__episodeName)'
   );
 
   // Show the source-season hint in diagnostics so future ambiguity is visible.
