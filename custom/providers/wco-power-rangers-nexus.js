@@ -55,6 +55,12 @@ function patchCore(source) {
 
   const helperMarker = "async function tvStreams(info, season, episode) {";
   const helperCode = `
+function __wcoPrSeriesMatches(series,wantedTitle){
+  if(!series||!series.page)return false;
+  const identity=pageIdentityText(series.page.text)+" "+String(series.pageUrl||"");
+  return scoreTitle(identity,wantedTitle)>=80;
+}
+
 function __wcoPrNameEpisodes(html,pageUrl,wantedSeason,wantedName,pageSeason,forcedVariant){
   const out=[];
   const wantedS=Number(wantedSeason||1);
@@ -128,6 +134,7 @@ async function __wcoPrExtractByName(series,variant,wantedSeason,wantedName,displ
     '      for (const candidate of __resolved.candidates.slice(0, 6)) {',
     '        const series = await candidatePage(candidate);',
     '        if (!series) continue;',
+    '        if (!__wcoPrSeriesMatches(series, __resolved.attempt.title)) continue;',
     '        if (series.season != null && series.season !== __resolved.wantedSeason) continue;',
     '        const dub = await __wcoPrExtractByName(series, "Dub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
     '        const sub = await __wcoPrExtractByName(series, "Sub", __resolved.wantedSeason, __episodeName, __displayTitle, __resolved.info);',
@@ -141,6 +148,7 @@ async function __wcoPrExtractByName(series,variant,wantedSeason,wantedName,displ
     '    for (const candidate of __resolved.candidates.slice(0, 6)) {',
     '      const series = await candidatePage(candidate);',
     '      if (!series) continue;',
+    '      if (!__wcoPrSeriesMatches(series, __resolved.attempt.title)) continue;',
     '      if (series.season != null && series.season !== __resolved.wantedSeason) continue;',
     '      const dub = await extractVariantFromSeries(series, "Dub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
     '      const sub = await extractVariantFromSeries(series, "Sub", __resolved.wantedSeason, wantedEpisode, __displayTitle, __resolved.info);',
