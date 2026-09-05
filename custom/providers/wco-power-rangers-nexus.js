@@ -38,7 +38,7 @@ function __wcoResolverDiagRow(stage,message,displayTitle){
   return{name:PROVIDER_NAME+" • "+label,title:displayTitle||label,url:__WCO_RESOLVER_DIAG_URL,quality:"DIAG",language:"Debug",provider:PROVIDER_NAME,type:"mp4"};
 }
 function __wcoResolverDiagPush(rows,stage,message,displayTitle){
-  if(!rows||rows.length>=12)return;
+  if(!rows||rows.length>=14)return;
   const row=__wcoResolverDiagRow(stage,message,displayTitle);
   if(!rows.some(x=>x&&x.name===row.name))rows.push(row);
 }
@@ -97,21 +97,22 @@ function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant){
   return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i);
 }
 async function __wcoResolverExtractByName(series,variant,wantedName,displayTitle,info){
-  if(!wantedName)return[];
+  if(!wantedName)return{streams:[],count:0,best:null};
   const lang=variant==="Sub"?"sub":"dub";
   const filteredUrl=audioFilterUrl(series.pageUrl,lang);
   const filtered=await req(filteredUrl,{headers:{"Referer":series.pageUrl}});
   let episodes=filtered.ok?__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant):[];
   if(!episodes.length)episodes=__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant);
+  const best=episodes[0]||null;
   for(const entry of episodes.slice(0,3)){
     const epPage=await req(entry.href,{headers:{"Referer":filtered.ok?filteredUrl:series.pageUrl}});
     if(!epPage.ok)continue;
     const frame=iframeLink(epPage.text,entry.href);
     if(!frame||/user\.wcostream\.tv\/check-login/i.test(frame))continue;
     const streams=await extractEmbed(frame,variant,displayTitle,info);
-    if(streams.length)return streams;
+    if(streams.length)return{streams,count:episodes.length,best:entry};
   }
-  return[];
+  return{streams:[],count:episodes.length,best};
 }
 function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){
   const out=[];
@@ -184,7 +185,7 @@ async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,dis
     '    __resolved.push({attempt:__attempt,candidates});',
     '  }',
     '',
-    '  let __accepted = 0, __rejected = 0;',
+    '  let __accepted = 0, __parentAccepted = 0, __rejected = 0;',
     '  if (__episodeName) {',
     '    for (const __r of __resolved) {',
     '      const __threshold = __r.attempt.kind === "show" ? 80 : 70;',
@@ -192,20 +193,30 @@ async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,dis
     '        const series = await candidatePage(candidate);',
     '        if (!series) continue;',
     '        const __page = __wcoResolverPageInfo(series,__r.attempt.title);',
-    '        if (__page.score < __threshold) {',
+    '        const __showPage = __wcoResolverPageInfo(series,info.title);',
+    '        const __directPage = __page.score >= __threshold;',
+    '        const __parentPage = !__directPage && __r.attempt.kind !== "show" && __showPage.score >= 80;',
+    '        if (!__directPage && !__parentPage) {',
     '          __rejected += 1;',
-    '          __wcoResolverDiagPush(__diag, "PAGE REJECT", `${__r.attempt.kind} want=${__r.attempt.title} score=${__page.score} id=${__page.identity.slice(0,90)}`, __displayTitle);',
+    '          __wcoResolverDiagPush(__diag, "PAGE REJECT", `${__r.attempt.kind} want=${__r.attempt.title} score=${__page.score} showScore=${__showPage.score} id=${__page.identity.slice(0,78)}`, __displayTitle);',
     '          continue;',
     '        }',
-    '        __accepted += 1;',
+    '        if (__parentPage) {',
+    '          __parentAccepted += 1;',
+    '          __wcoResolverDiagPush(__diag, "PAGE PARENT", `${__r.attempt.kind} want=${__r.attempt.title} pageScore=${__page.score} showScore=${__showPage.score} • checking episode name`, __displayTitle);',
+    '        } else {',
+    '          __accepted += 1;',
+    '        }',
     '        const dub = await __wcoResolverExtractByName(series,"Dub",__episodeName,__displayTitle,info);',
     '        const sub = await __wcoResolverExtractByName(series,"Sub",__episodeName,__displayTitle,info);',
-    '        const combined = dub.concat(sub);',
+    '        const __best = dub.best || sub.best;',
+    '        if (__best) __wcoResolverDiagPush(__diag, "NAME MATCH", `${__r.attempt.kind} score=${__best.score} sourceSeason=${__best.season == null ? "nil" : __best.season} sourceEpisode=${__best.episode == null ? "nil" : __best.episode} • ${__best.text.slice(0,80)}`, __displayTitle);',
+    '        const combined = dub.streams.concat(sub.streams);',
     '        if (combined.length) return finalize(combined,info);',
     '      }',
     '    }',
     '  }',
-    '  __wcoResolverDiagPush(__diag, "NAME RESULT", `episode=${__episodeName || "EMPTY"} • acceptedPages=${__accepted} • rejectedPages=${__rejected} • playable=0`, __displayTitle);',
+    '  __wcoResolverDiagPush(__diag, "NAME RESULT", `episode=${__episodeName || "EMPTY"} • directPages=${__accepted} • parentPages=${__parentAccepted} • rejectedPages=${__rejected} • playable=0`, __displayTitle);',
     '',
     '  let __numericPages = 0;',
     '  for (const __r of __resolved) {',
@@ -223,7 +234,7 @@ async function __wcoResolverExtractUniqueNumber(series,variant,wantedEpisode,dis
     '      if (combined.length) return finalize(combined,info);',
     '    }',
     '  }',
-    '  __wcoResolverDiagPush(__diag, "NUMBER RESULT", `episode=${wantedEpisode} • checkedPages=${__numericPages} • only unique numeric matches are allowed`, __displayTitle);',
+    '  __wcoResolverDiagPush(__diag, "NUMBER RESULT", `episode=${wantedEpisode} • checkedPages=${__numericPages} • only unique numeric matches are allowed on strong season-title pages`, __displayTitle);',
     '  __wcoResolverDiagPush(__diag, "STOP", "season-title resolver exhausted all safe attempts", __displayTitle);',
     '  return __diag.length ? __diag : [__wcoResolverDiagRow("STOP","no diagnostic state captured",__displayTitle)];',
     '}',
