@@ -5,6 +5,7 @@
 // hint exists and at least one duplicate episode candidate explicitly matches that season,
 // prefer that explicit-season candidate over same-number candidates with no season metadata.
 // Candidate diagnostics are still appended only after a normal DIAG result.
+// Power Rangers is English-original, so false Japanese/Hard Subs rows are suppressed.
 // Production WCO remains untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
@@ -135,12 +136,21 @@ async function candidateDiagnostics(rows, season, episode) {
   }
 }
 
+function filterFalseJapaneseRows(rows) {
+  return (rows || []).filter(row => {
+    if (String(row && row.quality || "").toUpperCase() === "DIAG") return true;
+    const name = String(row && row.name || "").toLowerCase();
+    const language = String(row && row.language || "").toLowerCase();
+    return language !== "japanese" && !name.includes("japanese + english hard subs");
+  });
+}
+
 async function getStreams(inputId, mediaType, season, episode) {
   try {
     const provider = await loadProvider();
     if (!provider) return [diagRow("PASSTHROUGH", "v2 provider failed to load", season, episode)];
     const rows = await provider.getStreams(inputId, mediaType, season, episode);
-    const list = Array.isArray(rows) ? rows : [];
+    const list = filterFalseJapaneseRows(Array.isArray(rows) ? rows : []);
     if (list.some(row => String(row && row.quality || "").toUpperCase() !== "DIAG")) return list;
     const extra = await candidateDiagnostics(list, season, episode);
     return list.concat(extra).slice(0, 24);
