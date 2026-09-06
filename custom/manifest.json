@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.61",
+  "version": "2.0.62",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -32,6 +32,21 @@
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "asiaflix-nexus",
+      "name": "AsiaFlix",
+      "description": "Experimental Asian drama/show provider using AsiaFlix's current v1 JSON API for title search, detail/episode lookup, and server resolution. Matches Nuvio TMDB/IMDb metadata against primary and alternate titles, preserves original-audio language labels, probes HLS quality where available, and intentionally refuses TV seasons above Season 1 until a safe season-title mapping is validated.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus port based on current Yuzono/Keiyoushi AsiaFlix and CSX provider behavior",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "providers/asiaflix-nexus.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://asiaflix.net/favicon.ico",
+      "contentLanguage": ["en", "ko", "zh", "ja", "th", "tl"]
     },
     {
       "id": "tubi-nexus-probe",
