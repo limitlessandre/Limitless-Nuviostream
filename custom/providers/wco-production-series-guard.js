@@ -3,7 +3,9 @@
 // Production-only WCO safety layer.
 // Keeps the existing production provider behavior, but patches the loaded core so
 // episode discovery cannot consume unrelated Recent Releases/sidebar links from a
-// valid series page. The Power Rangers fallback resolver is not changed by this file.
+// valid series page. It deliberately does NOT add a second title/page-identity gate,
+// because WCO aliases can differ from TMDB titles (for example Monster Farm/Rancher).
+// The Power Rangers fallback resolver is not changed by this file.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js";
 let cached = null;
@@ -24,20 +26,23 @@ function __wcoInjectSeriesAffinity(coreSource) {
   if (start < 0 || end < 0) return "";
 
   const helperCode = [
+    'function __wcoAffinityTokens(value) {',
+    '  const stop = new Set(["the","and","of","a","an","anime","cartoon","series","season","watch","online","english","dubbed","subbed","dub","sub","episode"]);',
+    '  return String(value || "").toLowerCase().split(/[^a-z0-9]+/).filter(x => x.length >= 2 && !stop.has(x));',
+    '}',
     'function __wcoSeriesTokens(url) {',
     '  const m = String(url || "").match(/\\/anime\\/([^/?#]+)/i);',
-    '  if (!m || !m[1]) return [];',
-    '  const stop = new Set(["the","and","of","a","an","anime","cartoon","series","season","watch","online","english","dubbed","subbed","dub","sub"]);',
-    '  return String(m[1]).toLowerCase().split(/[^a-z0-9]+/).filter(x => x.length >= 2 && !stop.has(x));',
+    '  return m && m[1] ? __wcoAffinityTokens(m[1]) : [];',
     '}',
     'function __wcoEpisodeBelongsToSeries(href, pageUrl) {',
-    '  const tokens = __wcoSeriesTokens(pageUrl);',
-    '  if (!tokens.length) return true;',
-    '  const path = String(href || "").toLowerCase().replace(/^https?:\\/\\/[^/]+/i, "");',
+    '  const wanted = __wcoSeriesTokens(pageUrl);',
+    '  if (!wanted.length) return true;',
+    '  const path = String(href || "").replace(/^https?:\\/\\/[^/]+/i, "");',
+    '  const actual = new Set(__wcoAffinityTokens(path));',
     '  let hits = 0;',
-    '  for (const token of tokens) if (path.includes(token)) hits += 1;',
-    '  if (tokens.length === 1) return hits === 1;',
-    '  return hits >= Math.max(2, Math.ceil(tokens.length * 0.6));',
+    '  for (const token of wanted) if (actual.has(token)) hits += 1;',
+    '  if (wanted.length === 1) return hits === 1;',
+    '  return hits >= Math.max(2, Math.ceil(wanted.length * 0.6));',
     '}',
     ''
   ].join(NL);
@@ -49,26 +54,7 @@ function __wcoInjectSeriesAffinity(coreSource) {
     hrefNeedle,
     hrefNeedle + NL + '    if (!__wcoEpisodeBelongsToSeries(href, pageUrl)) continue;'
   );
-  src = src.slice(0, start) + helperCode + episodeBlock + src.slice(end);
-
-  const tvStart = src.indexOf("async function tvStreams(info, season, episode) {");
-  const tvEnd = src.indexOf("async function movieStreams(info)", tvStart);
-  if (tvStart < 0 || tvEnd < 0) return "";
-  let tvBlock = src.slice(tvStart, tvEnd);
-  const seriesNeedle = [
-    '    const series = await candidatePage(candidate);',
-    '    if (!series) continue;'
-  ].join(NL);
-  if (!tvBlock.includes(seriesNeedle)) return "";
-  const seriesReplacement = [
-    seriesNeedle,
-    '    const __identity = pageIdentityText(series.page.text) + " " + String(series.pageUrl || "");',
-    '    const __identityScore = Math.max(...info.titles.map(t => scoreTitle(__identity, t)));',
-    '    if (__identityScore < 70) continue;'
-  ].join(NL);
-  tvBlock = tvBlock.replace(seriesNeedle, seriesReplacement);
-  src = src.slice(0, tvStart) + tvBlock + src.slice(tvEnd);
-  return src;
+  return src.slice(0, start) + helperCode + episodeBlock + src.slice(end);
 }
 `;
 
