@@ -2,8 +2,8 @@
 
 // Nexus-only compatibility + diagnostic layer for the generic WCO season-title resolver.
 // It broadens testing beyond Power Rangers while keeping production WCO untouched.
-// The layer also adds a strict generic series-link affinity check so episode links from
-// unrelated sidebar/recent-release entries cannot win an otherwise valid title match.
+// The layer adds strict episode ownership validation and conservative audio-context checks
+// so unrelated sidebar episodes and ambiguous Dub/Sub labels cannot be returned as playable.
 
 const PROVIDER_NAME = "WCO Resolver Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus-v2.js";
@@ -41,11 +41,29 @@ function patchV2Source(source) {
   out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");
 
   // Remove only the original Power Rangers TMDB gate. Movies stay excluded.
+  // Also inject final episode-page ownership validation and conservative audio-context
+  // checks into the underlying resolver before v2 applies its normal matching patches.
   const patchHead = '  if (!out) return "";';
   const genericPatch = [
     '  if (!out) return "";',
     '  out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");',
-    '  out = out.replace(\'    if (type === "movie" || Number(info.id) !== 2328) return [];\', \'    if (type === "movie") return [];\');'
+    '  out = out.replace(\'    if (type === "movie" || Number(info.id) !== 2328) return [];\', \'    if (type === "movie") return [];\');',
+    '',
+    '  const __nameAudioOld = \'  let episodes=filtered.ok?__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant):[];\\n  if(!episodes.length)episodes=__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant);\';',
+    '  const __nameAudioNew = \'  let episodes=filtered.ok?__wcoResolverNameEntries(filtered.text,filteredUrl,wantedName,variant,wantedSourceSeason):[];\\n  if(!episodes.length)episodes=__wcoResolverNameEntries(series.page.text,series.pageUrl,wantedName,variant,wantedSourceSeason);\\n  if(episodes.length&&filtered.ok){const __oppositeVariant=variant===\"Sub\"?\"Dub\":\"Sub\";const __oppositeUrl=audioFilterUrl(series.pageUrl,__oppositeVariant===\"Sub\"?\"sub\":\"dub\");const __opposite=await req(__oppositeUrl,{headers:{\"Referer\":series.pageUrl}});if(__opposite.ok){const __other=__wcoResolverNameEntries(__opposite.text,__oppositeUrl,wantedName,null,wantedSourceSeason);const __otherSet=new Set(__other.map(x=>basePageUrl(x.href)));episodes=episodes.filter(x=>{const __explicit=classifyVariant(String(x.text||\"\")+\" \"+String(x.href||\"\"));if(__explicit===variant)return true;if(__explicit!==\"Original\")return false;return !__otherSet.has(basePageUrl(x.href));});}}\';',
+    '  if (out.includes(__nameAudioOld)) out = out.replace(__nameAudioOld,__nameAudioNew);',
+    '',
+    '  const __numAudioOld = \'  let episodes=filtered.ok?__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant):[];\\n  if(!episodes.length)episodes=__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant);\';',
+    '  const __numAudioNew = \'  let episodes=filtered.ok?__wcoResolverNumericEntries(filtered.text,filteredUrl,wantedEpisode,variant,wantedSourceSeason):[];\\n  if(!episodes.length)episodes=__wcoResolverNumericEntries(series.page.text,series.pageUrl,wantedEpisode,variant,wantedSourceSeason);\\n  if(episodes.length&&filtered.ok){const __oppositeVariant=variant===\"Sub\"?\"Dub\":\"Sub\";const __oppositeUrl=audioFilterUrl(series.pageUrl,__oppositeVariant===\"Sub\"?\"sub\":\"dub\");const __opposite=await req(__oppositeUrl,{headers:{\"Referer\":series.pageUrl}});if(__opposite.ok){const __other=__wcoResolverNumericEntries(__opposite.text,__oppositeUrl,wantedEpisode,null,wantedSourceSeason);const __otherSet=new Set(__other.map(x=>basePageUrl(x.href)));episodes=episodes.filter(x=>{const __explicit=classifyVariant(String(x.text||\"\")+\" \"+String(x.href||\"\"));if(__explicit===variant)return true;if(__explicit!==\"Original\")return false;return !__otherSet.has(basePageUrl(x.href));});}}\';',
+    '  if (out.includes(__numAudioOld)) out = out.replace(__numAudioOld,__numAudioNew);',
+    '',
+    '  const __namePageOld = \'    const epPage=await req(entry.href,{headers:{\"Referer\":filtered.ok?filteredUrl:series.pageUrl}});\\n    if(!epPage.ok)continue;\\n    const frame=iframeLink(epPage.text,entry.href);\';',
+    '  const __namePageNew = \'    const epPage=await req(entry.href,{headers:{\"Referer\":filtered.ok?filteredUrl:series.pageUrl}});\\n    if(!epPage.ok)continue;\\n    const __parent=findSeriesLink(epPage.text,entry.href);\\n    if(__parent){const __parentPath=basePageUrl(__parent).replace(/^https?:\\/\\/[^/]+/i,\"\");const __seriesPath=basePageUrl(series.pageUrl).replace(/^https?:\\/\\/[^/]+/i,\"\");if(__parentPath&&__seriesPath&&__parentPath!==__seriesPath)continue;}\\n    const frame=iframeLink(epPage.text,entry.href);\';',
+    '  if (out.includes(__namePageOld)) out = out.replace(__namePageOld,__namePageNew);',
+    '',
+    '  const __numPageOld = \'  const epPage=await req(entry.href,{headers:{\"Referer\":filtered.ok?filteredUrl:series.pageUrl}});\\n  if(!epPage.ok)return{streams:[],count:1};\\n  const frame=iframeLink(epPage.text,entry.href);\';',
+    '  const __numPageNew = \'  const epPage=await req(entry.href,{headers:{\"Referer\":filtered.ok?filteredUrl:series.pageUrl}});\\n  if(!epPage.ok)return{streams:[],count:1};\\n  const __parent=findSeriesLink(epPage.text,entry.href);\\n  if(__parent){const __parentPath=basePageUrl(__parent).replace(/^https?:\\/\\/[^/]+/i,\"\");const __seriesPath=basePageUrl(series.pageUrl).replace(/^https?:\\/\\/[^/]+/i,\"\");if(__parentPath&&__seriesPath&&__parentPath!==__seriesPath)return{streams:[],count:1};}\\n  const frame=iframeLink(epPage.text,entry.href);\';',
+    '  if (out.includes(__numPageOld)) out = out.replace(__numPageOld,__numPageNew);'
   ].join("\n");
   if (!out.includes(patchHead)) return "";
   out = out.replace(patchHead, genericPatch);
@@ -56,10 +74,7 @@ function patchV2Source(source) {
   const preference = '  if(wantedSourceSeason){const exactSeason=episodes.filter(x=>Number(x.season)===Number(wantedSourceSeason));if(exactSeason.length)episodes=exactSeason;}\\n';
   out = out.replace(marker, preference + marker);
 
-  // Generic cross-series safety guard. WCO series pages can contain sidebar/recent-release
-  // episode links from completely unrelated shows. Require the episode URL to retain a
-  // strong token relationship with the current /anime/<series-slug>/ page before either
-  // the name matcher or numeric matcher may consider it.
+  // Generic cross-series safety guard at the series-page link collection stage.
   const returnMarker = '  return out;\n}';
   if (!out.includes(returnMarker)) return "";
   const safetyPatch = [
