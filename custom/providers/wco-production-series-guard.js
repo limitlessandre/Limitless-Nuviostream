@@ -10,12 +10,13 @@ let cached = null;
 
 function patchProductionSource(raw) {
   let source = String(raw || "");
-  if (!source || !source.includes("function augmentCoreMirrors(source)")) return "";
-
   const augmentMarker = "function augmentCoreMirrors(source) {";
-  const helper = String.raw`
+  if (!source || !source.includes(augmentMarker)) return "";
+
+  const helper = `
 function __wcoInjectSeriesAffinity(coreSource) {
   let src = String(coreSource || "");
+  const NL = String.fromCharCode(10);
   const startMarker = "function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant) {";
   const endMarker = "function iframeLink(html, pageUrl)";
   const start = src.indexOf(startMarker);
@@ -39,42 +40,49 @@ function __wcoInjectSeriesAffinity(coreSource) {
     '  return hits >= Math.max(2, Math.ceil(tokens.length * 0.6));',
     '}',
     ''
-  ].join("\\n");
+  ].join(NL);
 
-  let block = src.slice(start, end);
-  const needle = '    if (!href || !text) continue;';
-  if (!block.includes(needle)) return "";
-  block = block.replace(needle, needle + '\\n    if (!__wcoEpisodeBelongsToSeries(href, pageUrl)) continue;');
+  let episodeBlock = src.slice(start, end);
+  const hrefNeedle = '    if (!href || !text) continue;';
+  if (!episodeBlock.includes(hrefNeedle)) return "";
+  episodeBlock = episodeBlock.replace(
+    hrefNeedle,
+    hrefNeedle + NL + '    if (!__wcoEpisodeBelongsToSeries(href, pageUrl)) continue;'
+  );
+  src = src.slice(0, start) + helperCode + episodeBlock + src.slice(end);
 
-  // Also validate that the candidate page itself still looks like the requested show.
-  // This is deliberately conservative: the existing search score remains primary,
-  // while a clearly unrelated page is rejected before episode scanning begins.
   const tvStart = src.indexOf("async function tvStreams(info, season, episode) {");
   const tvEnd = src.indexOf("async function movieStreams(info)", tvStart);
   if (tvStart < 0 || tvEnd < 0) return "";
   let tvBlock = src.slice(tvStart, tvEnd);
-  const seriesNeedle = '    const series = await candidatePage(candidate);\\n    if (!series) continue;';
+  const seriesNeedle = [
+    '    const series = await candidatePage(candidate);',
+    '    if (!series) continue;'
+  ].join(NL);
   if (!tvBlock.includes(seriesNeedle)) return "";
-  const seriesReplacement = seriesNeedle + '\\n    const __identity = pageIdentityText(series.page.text) + " " + String(series.pageUrl || "");\\n    const __identityScore = Math.max(...info.titles.map(t => scoreTitle(__identity, t)));\\n    if (__identityScore < 70) continue;';
+  const seriesReplacement = [
+    seriesNeedle,
+    '    const __identity = pageIdentityText(series.page.text) + " " + String(series.pageUrl || "");',
+    '    const __identityScore = Math.max(...info.titles.map(t => scoreTitle(__identity, t)));',
+    '    if (__identityScore < 70) continue;'
+  ].join(NL);
   tvBlock = tvBlock.replace(seriesNeedle, seriesReplacement);
-
-  // Apply the episode-link patch first, then splice the validated TV block from the
-  // same core source. Re-locate tvStreams after inserting helperCode because offsets move.
-  src = src.slice(0, start) + helperCode + block + src.slice(end);
-  const newTvStart = src.indexOf("async function tvStreams(info, season, episode) {");
-  const newTvEnd = src.indexOf("async function movieStreams(info)", newTvStart);
-  if (newTvStart < 0 || newTvEnd < 0) return "";
-  src = src.slice(0, newTvStart) + tvBlock + src.slice(newTvEnd);
+  src = src.slice(0, tvStart) + tvBlock + src.slice(tvEnd);
   return src;
 }
 `;
 
   source = source.replace(augmentMarker, helper + "\n" + augmentMarker);
 
-  const oldTail = '  source = source.slice(0, start) + replacement + source.slice(end);\n  return source.replace(\'"use strict";\', \'"use strict";\\n\' + premiumSourceAddon());';
-  const newTail = '  source = source.slice(0, start) + replacement + source.slice(end);\n  source = __wcoInjectSeriesAffinity(source);\n  if (!source) return "";\n  return source.replace(\'"use strict";\', \'"use strict";\\n\' + premiumSourceAddon());';
-  if (!source.includes(oldTail)) return "";
-  return source.replace(oldTail, newTail);
+  // augmentCoreMirrors is the first occurrence of this splice marker in the production
+  // wrapper. Apply the ownership guard immediately after its existing embed patch.
+  const spliceMarker = "  source = source.slice(0, start) + replacement + source.slice(end);";
+  if (!source.includes(spliceMarker)) return "";
+  source = source.replace(
+    spliceMarker,
+    spliceMarker + "\n  source = __wcoInjectSeriesAffinity(source);\n  if (!source) return \"\";"
+  );
+  return source;
 }
 
 async function loadBase() {
