@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.53",
+  "version": "2.0.54",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,32 +21,17 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; and explicit-only mirror labels.",
-      "version": "2.4.8",
+      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; and a validated Power Rangers season-title resolver used only when the normal production TV path returns no streams.",
+      "version": "2.4.9",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/wco-production.js",
+      "filename": "providers/wco-production-v2.js",
       "enabled": true,
-      "hasSettings": false,
+      "hasSettings": true,
       "limited": true,
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
-    },
-    {
-      "id": "limitless-wco-power-rangers-nexus",
-      "name": "WCO Power Rangers Nexus",
-      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, converts continuation markers such as (2)/(3) into source-season hints, scores cleaned WCO episode titles, and uses TMDB episode names to disambiguate duplicate episode numbers. When duplicate episode numbers include both an explicit source-season match and an unnumbered candidate, the hinted explicit season is preferred while nil-season fallback behavior is preserved. False Japanese + English Hard Subs rows are suppressed for the English-original Power Rangers catalog. Production WCO is untouched.",
-      "version": "1.2.12",
-      "author": "Limitless Nexus generic season-title resolver test",
-      "supportedTypes": ["tv"],
-      "filename": "providers/wco-power-rangers-nexus-v3.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": ["en"]
     },
     {
       "id": "anikototv",
