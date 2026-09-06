@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.51",
+  "version": "2.0.52",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,8 +36,8 @@
     {
       "id": "limitless-wco-power-rangers-nexus",
       "name": "WCO Power Rangers Nexus",
-      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, converts continuation markers such as (2)/(3) into source-season hints, scores cleaned WCO episode titles, and uses TMDB episode names to disambiguate duplicate episode numbers. The temporary diagnostic layer now runs the validated v2 resolver unchanged and only appends candidate labels and URLs after a normal DIAG result, avoiding source-patching regressions. Production WCO is untouched.",
-      "version": "1.2.10",
+      "description": "Nexus-only validation of a lightweight generic WCO season-title resolver. It derives search titles from TMDB show + season metadata, converts continuation markers such as (2)/(3) into source-season hints, scores cleaned WCO episode titles, and uses TMDB episode names to disambiguate duplicate episode numbers. When duplicate episode numbers include both an explicit source-season match and an unnumbered candidate, the hinted explicit season is now preferred while nil-season fallback behavior is preserved for sources that omit season metadata entirely. Candidate diagnostics remain available after unresolved DIAG results. Production WCO is untouched.",
+      "version": "1.2.11",
       "author": "Limitless Nexus generic season-title resolver test",
       "supportedTypes": ["tv"],
       "filename": "providers/wco-power-rangers-nexus-v3.js",
