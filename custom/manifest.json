@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.75",
+  "version": "2.0.76",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,8 +36,8 @@
     {
       "id": "nexus-network-api-diag",
       "name": "Nexus API DIAG",
-      "description": "Temporary diagnostics provider for isolating Nuvio runtime/network failures from upstream metadata/source outages. Probes generic fetch, TMDB, MAL ID mapping, AniList, Re:ANIME API, FlixCloud, and all three WCO frontends with per-request timeouts so a stalled endpoint cannot block the whole diagnostic result.",
-      "version": "0.1.1",
+      "description": "Temporary QuickJS-safe diagnostics provider. Select episodes 1-7 to test one dependency at a time: generic Nuvio fetch, TMDB, MAL mapping, AniList, Re:ANIME API, FlixCloud, and WCO. This avoids unsupported timer APIs and prevents one stalled endpoint from hiding all other results.",
+      "version": "0.1.2",
       "author": "Limitless Nexus diagnostics",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/nexus-network-api-diag.js",
