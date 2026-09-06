@@ -1,13 +1,12 @@
 "use strict";
 
 // Nexus-only compatibility + diagnostic layer for the validated generic season-title resolver.
-// It preserves v2 behavior and adds one narrow generic preference: if a source-season
-// hint exists and at least one duplicate episode candidate explicitly matches that season,
-// prefer that explicit-season candidate over same-number candidates with no season metadata.
+// It preserves v2 behavior, broadens the test scope beyond Power Rangers, and keeps the
+// explicit source-season preference used to disambiguate duplicate episode numbers.
 // Candidate diagnostics are still appended only after a normal DIAG result.
 // Production WCO remains untouched.
 
-const PROVIDER_NAME = "WCO Power Rangers Nexus";
+const PROVIDER_NAME = "WCO Resolver Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus-v2.js";
 const DIAG_URL = "https://www.wcostream.tv/favicon.ico";
 let cached = null;
@@ -27,7 +26,7 @@ function diagRow(stage, message, season, episode) {
   const clean = cleanText(message).slice(0, 190);
   return {
     name: `${PROVIDER_NAME} • DIAG ${stage} • ${clean}`,
-    title: `Power Rangers S${String(Number(season || 1)).padStart(2, "0")}E${String(Number(episode || 1)).padStart(2, "0")}`,
+    title: `S${String(Number(season || 1)).padStart(2, "0")}E${String(Number(episode || 1)).padStart(2, "0")}`,
     url: DIAG_URL,
     quality: "DIAG",
     language: "Debug",
@@ -39,6 +38,20 @@ function diagRow(stage, message, season, episode) {
 function patchV2Source(source) {
   let out = String(source || "");
   if (!out) return "";
+
+  // Rename the test provider everywhere the v2 wrapper exposes it.
+  out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");
+
+  // v2 patches the base Power Rangers test provider at runtime. Inject one generic
+  // adjustment into that patcher: remove the TMDB 2328-only guard while keeping movies out.
+  const patchHead = '  if (!out) return "";';
+  const genericPatch = [
+    '  if (!out) return "";',
+    '  out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");',
+    '  out = out.replace(\'    if (type === "movie" || Number(info.id) !== 2328) return [];\', \'    if (type === "movie") return [];\');'
+  ].join("\n");
+  if (!out.includes(patchHead)) return "";
+  out = out.replace(patchHead, genericPatch);
 
   // This marker is inside v2's injected numeric matcher string.
   // Keep nil-season candidates when WCO provides no explicit matching season at all.
