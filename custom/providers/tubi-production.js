@@ -1,9 +1,10 @@
 "use strict";
 
-// Tubi production provider v1.0.1
+// Tubi production provider v1.0.2
 // Builds on the validated anonymous-bearer probe flow. Successful matches return
 // only clear HLS resources. Results are reduced to the top two unique quality
-// levels, preferring HLSV6 and H.264 when multiple variants share a resolution.
+// levels with up to two distinct manifests per quality (four rows max), preferring
+// HLSV6 and H.264 when multiple variants share a resolution.
 // DRM-only titles remain non-playable and return a compact diagnostic row instead.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-nexus-probe-v5.js";
@@ -18,7 +19,7 @@ async function loadPatched() {
   const providerOld = 'const PROVIDER_NAME = "Tubi Nexus Probe";';
   const providerNew = 'const PROVIDER_NAME = "Tubi";';
   const helperMarker = 'function typeOkay(x,wanted){const t=itemType(x);if(!t)return true;if(wanted==="tv")return /series|show|^s$|tv/.test(t)&&!/^v$|movie|film/.test(t);return /movie|film|^v$/.test(t)&&!/series|show|^s$/.test(t);}';
-  const helperBlock = helperMarker + '\nfunction clearStreamsFrom(data,display){\n  const list=Array.isArray(data&&data.video_resources)?data.video_resources:[],seen=new Set(),out=[];\n  for(const r of list){\n    const kind=clean(r&&r.type).toLowerCase(),url=clean(r&&r.manifest&&r.manifest.url);\n    if(!url||(kind!=="hlsv6"&&kind!=="hlsv3")||seen.has(url))continue;\n    seen.add(url);\n    const rawRes=clean(r&&r.resolution),m=rawRes.match(/(\\d{3,4})/),quality=m?m[1]+"p":"Auto";\n    let codec=clean(r&&r.codec).replace(/^VIDEO_CODEC_/i,"");\n    if(/^h264$/i.test(codec))codec="H.264";else if(/^(h265|hevc)$/i.test(codec))codec="H.265";\n    out.push({name:`Tubi • ${quality} • ${kind.toUpperCase()}${codec?` • ${codec}`:""}`,title:display?`${display} • Tubi`:"Tubi",url,quality,language:"English",provider:"Tubi",type:"m3u8",headers:{"User-Agent":UA,"Referer":WEB+"/","Origin":WEB},subtitles:[]});\n  }\n  out.sort((a,b)=>{const aq=parseInt(a.quality)||0,bq=parseInt(b.quality)||0;if(aq!==bq)return bq-aq;const av=a.name.includes("HLSV6")?0:1,bv=b.name.includes("HLSV6")?0:1;if(av!==bv)return av-bv;const ac=a.name.includes("H.264")?0:1,bc=b.name.includes("H.264")?0:1;return ac-bc;});\n  const top=[],qualities=new Set();\n  for(const row of out){const q=String(row.quality||"Auto");if(qualities.has(q))continue;qualities.add(q);top.push(row);if(top.length>=2)break;}\n  return top;\n}';
+  const helperBlock = helperMarker + '\nfunction clearStreamsFrom(data,display){\n  const list=Array.isArray(data&&data.video_resources)?data.video_resources:[],seen=new Set(),out=[];\n  for(const r of list){\n    const kind=clean(r&&r.type).toLowerCase(),url=clean(r&&r.manifest&&r.manifest.url);\n    if(!url||(kind!=="hlsv6"&&kind!=="hlsv3")||seen.has(url))continue;\n    seen.add(url);\n    const rawRes=clean(r&&r.resolution),m=rawRes.match(/(\\d{3,4})/),quality=m?m[1]+"p":"Auto";\n    let codec=clean(r&&r.codec).replace(/^VIDEO_CODEC_/i,"");\n    if(/^h264$/i.test(codec))codec="H.264";else if(/^(h265|hevc)$/i.test(codec))codec="H.265";\n    out.push({name:`Tubi • ${quality} • ${kind.toUpperCase()}${codec?` • ${codec}`:""}`,title:display?`${display} • Tubi`:"Tubi",url,quality,language:"English",provider:"Tubi",type:"m3u8",headers:{"User-Agent":UA,"Referer":WEB+"/","Origin":WEB},subtitles:[]});\n  }\n  out.sort((a,b)=>{const aq=parseInt(a.quality)||0,bq=parseInt(b.quality)||0;if(aq!==bq)return bq-aq;const av=a.name.includes("HLSV6")?0:1,bv=b.name.includes("HLSV6")?0:1;if(av!==bv)return av-bv;const ac=a.name.includes("H.264")?0:1,bc=b.name.includes("H.264")?0:1;return ac-bc;});\n  const qualities=[];\n  for(const row of out){const q=String(row.quality||"Auto");if(!qualities.includes(q))qualities.push(q);if(qualities.length>=2)break;}\n  const picked=[],counts={};\n  for(const row of out){const q=String(row.quality||"Auto");if(!qualities.includes(q))continue;counts[q]=(counts[q]||0);if(counts[q]>=2)continue;picked.push(row);counts[q]++;if(picked.length>=4)break;}\n  return picked;\n}';
 
   const bestOld = 'const best=scored[0];let targetId=best.id;';
   const bestNew = 'const best=scored[0];let targetId=best.id,episodePayload=null;';
