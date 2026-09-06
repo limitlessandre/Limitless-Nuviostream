@@ -19,7 +19,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 4,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 662,
+      "version": 665,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -79,7 +79,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 34,
+      "version": 36,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 12,
+      "version": 14,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -138,7 +138,7 @@
         "Anime",
         "Torrent"
       ],
-      "version": 485,
+      "version": 486,
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
       "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
       "overlap": {
@@ -165,7 +165,7 @@
         "Anime",
         "Movie"
       ],
-      "version": 20,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/KisskhProvider.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -191,7 +191,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 5,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -218,7 +218,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 6,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -246,7 +246,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 92,
+      "version": 94,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -271,7 +271,7 @@
         "AsianDrama",
         "TvSeries"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OneTouchTV.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -370,7 +370,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 9,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animenosub.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -395,7 +395,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 13,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animexin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -442,7 +442,7 @@
       "tvTypes": [
         "All"
       ],
-      "version": 15,
+      "version": 17,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AllWish.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -466,7 +466,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 24,
+      "version": 26,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -490,7 +490,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 13,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniDb.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -514,7 +514,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 5,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -538,7 +538,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 1,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anilight.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -561,7 +561,7 @@
         "AnimeMovie",
         "Anime"
       ],
-      "version": 11,
+      "version": 13,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -585,7 +585,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 34,
+      "version": 38,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -609,7 +609,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anineko.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -631,7 +631,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 5,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -653,7 +653,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 19,
+      "version": 21,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Donghuastream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -677,7 +677,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 25,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -699,7 +699,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 21,
+      "version": 23,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OnePace.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -767,7 +767,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 24,
+      "version": 26,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -813,7 +813,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 36,
+      "version": 38,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -860,7 +860,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Goojara.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -952,7 +952,7 @@
         "Movie",
         "Torrent"
       ],
-      "version": 13,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -975,7 +975,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 24,
+      "version": 26,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioX.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -998,7 +998,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 38,
+      "version": 40,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1043,7 +1043,7 @@
         "Movie",
         "Torrent"
       ],
-      "version": 9,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1127,7 +1127,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 6,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/CloudPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1315,7 +1315,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/PublicSportsIPTV.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1337,7 +1337,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 6,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/QuickIPTV.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1448,7 +1448,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 1,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniKoto.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 278,
+  "excluded_count": 279,
   "excluded": [
     {
       "internalName": "3isk",
@@ -505,6 +505,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeYTX.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AniVortex",
+      "name": "AniVortex",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniVortex.cs3",
       "reason": "no-allowed-language"
     },
     {

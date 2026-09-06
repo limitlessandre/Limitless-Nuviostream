@@ -5,11 +5,11 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 371,
+  "raw_plugin_entries": 372,
   "eligible_plugin_entries_before_dedupe": 64,
   "unique_plugins": 62,
   "duplicate_groups": 2,
-  "language_filtered_entries": 278,
+  "language_filtered_entries": 279,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 29,
   "meta_plugin_entries_filtered": 0,
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 80,
+      "plugins": 81,
       "verified": false
     },
     {
