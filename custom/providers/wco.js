@@ -104,9 +104,20 @@ function scoreTitle(candidate, wanted) {
   const a = normalize(candidate), b = normalize(wanted);
   if (!a || !b) return 0;
   if (a === b) return 100;
-  if (a.startsWith(b) || b.startsWith(a)) return 90;
-  if (a.includes(b) || b.includes(a)) return 80;
-  const aw = a.split(" "), bw = b.split(" ");
+
+  const aw = a.split(" ").filter(Boolean), bw = b.split(" ").filter(Boolean);
+
+  // A WCO title extending the requested title is a strong match, e.g. a named
+  // season/edition. Do not give the inverse case the same score: a generic one-word
+  // result such as "Monster" must never outrank "Monster Farm" or "Monster Rancher".
+  if (a.startsWith(b) || a.includes(b)) {
+    const covered = bw.filter(word => word.length > 1 && aw.includes(word)).length;
+    if (covered === bw.filter(word => word.length > 1).length) return 90;
+  }
+  if ((b.startsWith(a) || b.includes(a)) && aw.length >= 2 && aw.length / Math.max(1, bw.length) >= 0.8) {
+    return 85;
+  }
+
   let overlap = 0;
   for (const word of bw) if (word.length > 1 && aw.includes(word)) overlap += 1;
   return Math.round((overlap / Math.max(1, bw.length)) * 70);
@@ -203,7 +214,7 @@ function searchLinks(html, origin) {
 async function searchWco(info, wantedSeason) {
   const all = [];
   const wanted = Number(wantedSeason || 1);
-  for (const title of info.titles.slice(0, 3)) {
+  for (const title of info.titles.slice(0, 6)) {
     const queries = wanted > 1 ? [`${title} Season ${wanted}`, title] : [title];
     for (const query of uniq(queries)) {
       for (const origin of ORIGINS) {
@@ -218,6 +229,7 @@ async function searchWco(info, wantedSeason) {
         });
         if (!page.ok) continue;
         for (const item of searchLinks(page.text, origin)) {
+          if (info.type === "tv" && !/\/anime\//i.test(item.href)) continue;
           const baseScore = Math.max(...info.titles.map(t => scoreTitle(item.title, t)));
           const seasonScore = seasonPreference(`${item.title} ${item.href}`, wanted);
           if (seasonScore <= -1000 || baseScore < 45) continue;
@@ -256,12 +268,6 @@ function episodeRange(value) {
   return { start: Math.min(a, b), end: Math.max(a, b) };
 }
 
-// WCO series pages include a live Recent Releases sidebar in the same HTML as the
-// real episode list. A whole-page anchor scan can therefore mistake an unrelated
-// sidebar "Episode N" for the requested show's episode. Compare each candidate URL
-// to the WCO series slug itself before considering its episode number. This is
-// deliberately WCO-to-WCO ownership validation, not TMDB title matching, so aliases
-// such as Monster Farm -> Monster Rancher remain valid.
 function seriesSlugParts(pageUrl) {
   const m = String(pageUrl || "").match(/\/anime\/([^/?#]+)/i);
   if (!m || !m[1]) return { slug: "", tokens: [] };
@@ -275,18 +281,12 @@ function episodeBelongsToSeries(href, pageUrl) {
   const series = seriesSlugParts(pageUrl);
   if (!series.slug) return true;
   const path = String(href || "").replace(/^https?:\/\/[^/]+/i, "").toLowerCase();
-
-  // Normal WCO episode URLs start with the exact series slug. Prefer this strongest
-  // signal because it cleanly excludes Recent Releases without parsing page layout.
   if (path.includes(`/${series.slug}-episode-`) || path.includes(`/${series.slug}-season-`)) return true;
-
-  // Some older WCO entries vary punctuation or add/remove a small qualifier. Keep a
-  // conservative token-overlap fallback so legitimate historical slugs still work.
   if (!series.tokens.length) return true;
   const actual = new Set(path.split(/[^a-z0-9]+/).filter(Boolean));
   let hits = 0;
   for (const token of series.tokens) if (actual.has(token)) hits += 1;
-  if (series.tokens.length === 1) return hits === 1;
+  if (series.tokens.length === 1) return false;
   return hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6));
 }
 
@@ -331,8 +331,15 @@ function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, fo
 }
 
 function iframeLink(html, pageUrl) {
-  const m = String(html || "").match(/<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/i);
-  return m && m[1] ? absolute(m[1], pageUrl) : "";
+  const re = /<iframe\b[^>]*(?:src|data-src)=["']([^"']+)["']/gi;
+  let m, fallback = "";
+  while ((m = re.exec(String(html || "")))) {
+    const url = m && m[1] ? absolute(m[1], pageUrl) : "";
+    if (!url) continue;
+    if (/embed\.wcostream/i.test(url)) return url;
+    if (!fallback && /(?:user\.wcostream\.tv|wcopremium\.tv)/i.test(url)) fallback = url;
+  }
+  return fallback;
 }
 
 function replaceEmbedPath(embedUrl, path) {
@@ -497,7 +504,8 @@ async function extractVariantFromSeries(series, variant, wantedSeason, wantedEpi
   for (const entry of episodes.slice(0, 3)) {
     const epPage = await req(entry.href, { headers: { "Referer": filtered.ok ? filteredUrl : series.pageUrl } });
     if (!epPage.ok) continue;
-    const frame = iframeLink(epPage.text, entry.href);
+    if (!episodeBelongsToSeries(epPage.url || entry.href, series.pageUrl)) continue;
+    const frame = iframeLink(epPage.text, epPage.url || entry.href);
     if (!frame || /user\.wcostream\.tv\/check-login/i.test(frame)) continue;
     const streams = await extractEmbed(frame, variant, displayTitle, info);
     if (streams.length) return streams;
