@@ -3,12 +3,13 @@
 // Production WCO wrapper with the validated Power Rangers season-title resolver
 // used only as a fallback after the existing production provider returns no streams.
 // The fallback remains scoped by its own TMDB gate, so normal WCO behavior for all
-// other titles is unchanged. The primary path is additionally protected by a
-// production-only series-affinity guard against unrelated sidebar/recent-release links.
+// other titles stays on the proven production path. The experimental page-link guard
+// is intentionally bypassed here because its runtime source patch can make WCO fail
+// closed before extraction begins.
 
 const PROVIDER_NAME = "WCO";
 const BRANCH_RAW = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers";
-const PRODUCTION_URL = `${BRANCH_RAW}/wco-production-series-guard.js`;
+const PRODUCTION_URL = `${BRANCH_RAW}/wco-production.js`;
 const RESOLVER_URL = `${BRANCH_RAW}/wco-power-rangers-nexus-v3.js`;
 
 let productionCache = null;
