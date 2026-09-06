@@ -41,11 +41,18 @@ function patchV2Source(source) {
   out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");
 
   // Remove only the original Power Rangers TMDB gate. Movies stay excluded.
+  // Also correct tiny TMDB season labels such as Sailor Moon "R" / "S": a one-letter
+  // season name must not be treated as already contained inside the show title.
+  // Search ranking also strongly favors exact WCO series-title matches so an umbrella
+  // title like "Sailor Moon" does not lose to "Sailor Moon Sailor Stars".
   const patchHead = '  if (!out) return "";';
   const genericPatch = [
     '  if (!out) return "";',
     '  out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");',
-    '  out = out.replace(\'    if (type === "movie" || Number(info.id) !== 2328) return [];\', \'    if (type === "movie") return [];\');'
+    '  out = out.replace(\'    if (type === "movie" || Number(info.id) !== 2328) return [];\', \'    if (type === "movie") return [];\');',
+    '  out = out.replace(\'if(ns&&nh&&(ns.includes(nh)||nh.includes(ns)))out.push({title:season,kind:"season",sourceSeason});\', \'if(ns&&nh&&ns.length>=3&&(ns.includes(nh)||nh.includes(ns)))out.push({title:season,kind:"season",sourceSeason});\');',
+    '  out = out.replace(\'      out.push({title:season,kind:"season",sourceSeason});\', \'      if(normalize(season).length>=3)out.push({title:season,kind:"season",sourceSeason});\');',
+    '  out = out.replace(\'      const score=scoreTitle(item.title,title);\', \'      let score=scoreTitle(item.title,title);\\n      const __queryNorm=normalize(title),__itemNorm=normalize(item.title);\\n      if(__queryNorm&&__itemNorm===__queryNorm)score=Math.max(score,120);\\n      else if(__queryNorm&&__itemNorm.startsWith(__queryNorm+" "))score=Math.max(0,score-25);\');'
   ].join("\n");
   if (!out.includes(patchHead)) return "";
   out = out.replace(patchHead, genericPatch);
@@ -108,7 +115,7 @@ function parseHint(rows) {
 }
 
 function parseSeriesUrl(rows) {
-  const preferred = findDiag(rows, "DIAG SEARCH COMBINED") || findDiag(rows, "DIAG SEARCH SEASON");
+  const preferred = findDiag(rows, "DIAG SEARCH COMBINED") || findDiag(rows, "DIAG SEARCH SEASON") || findDiag(rows, "DIAG SEARCH SHOW");
   const text = String(preferred && preferred.name || "");
   let m = text.match(/@\s*(https?:\/\/[^\s•]+)/i);
   if (m) return m[1];
@@ -120,12 +127,21 @@ function parseSeriesUrl(rows) {
 function episodeCandidates(html, pageUrl, wantedEpisode, sourceSeason) {
   const out = [];
   const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  const seriesSlug = (String(pageUrl || "").match(/\/anime\/([^/?#]+)/i) || [])[1] || "";
+  const stop = { watch:1, online:1, anime:1, cartoon:1, english:1, dub:1, sub:1 };
+  const seriesTokens = cleanText(seriesSlug.replace(/[-_]+/g, " ")).toLowerCase().split(/\s+/).filter(w => w.length > 2 && !stop[w]);
   let m;
   while ((m = re.exec(String(html || ""))) && out.length < 20) {
     const text = cleanText(m[2]);
     let href = String(m[1] || "").trim();
     if (!href || !text) continue;
     try { href = new URL(href, pageUrl).href; } catch (_) { continue; }
+    if (seriesTokens.length) {
+      const hrefWords = cleanText(href.replace(/[-_/:.?=&]+/g, " ")).toLowerCase().split(/\s+/);
+      const hits = seriesTokens.filter(w => hrefWords.includes(w)).length;
+      const need = Math.max(1, Math.ceil(seriesTokens.length * 0.6));
+      if (hits < need) continue;
+    }
     const combined = text + " " + href;
     const em = combined.match(/Episode\s*(\d+(?:\.\d+)?)/i) || combined.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
     if (!em || Number(em[1]) !== Number(wantedEpisode)) continue;
