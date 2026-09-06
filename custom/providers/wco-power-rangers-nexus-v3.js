@@ -1,10 +1,9 @@
 "use strict";
 
-// Nexus-only compatibility + diagnostic layer for the validated generic season-title resolver.
-// It preserves v2 behavior, broadens the test scope beyond Power Rangers, and keeps the
-// explicit source-season preference used to disambiguate duplicate episode numbers.
-// Candidate diagnostics are still appended only after a normal DIAG result.
-// Production WCO remains untouched.
+// Nexus-only compatibility + diagnostic layer for the generic WCO season-title resolver.
+// It broadens testing beyond Power Rangers while keeping production WCO untouched.
+// The layer also adds a strict generic series-link affinity check so episode links from
+// unrelated sidebar/recent-release entries cannot win an otherwise valid title match.
 
 const PROVIDER_NAME = "WCO Resolver Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus-v2.js";
@@ -39,11 +38,9 @@ function patchV2Source(source) {
   let out = String(source || "");
   if (!out) return "";
 
-  // Rename the test provider everywhere the v2 wrapper exposes it.
   out = out.replace(/WCO Power Rangers Nexus/g, "WCO Resolver Nexus");
 
-  // v2 patches the base Power Rangers test provider at runtime. Inject one generic
-  // adjustment into that patcher: remove the TMDB 2328-only guard while keeping movies out.
+  // Remove only the original Power Rangers TMDB gate. Movies stay excluded.
   const patchHead = '  if (!out) return "";';
   const genericPatch = [
     '  if (!out) return "";',
@@ -53,12 +50,29 @@ function patchV2Source(source) {
   if (!out.includes(patchHead)) return "";
   out = out.replace(patchHead, genericPatch);
 
-  // This marker is inside v2's injected numeric matcher string.
-  // Keep nil-season candidates when WCO provides no explicit matching season at all.
+  // Prefer explicit hinted-season candidates over same-number nil-season candidates.
   const marker = '  const rawCount=episodes.length;\\n  const debugEntries=';
   if (!out.includes(marker)) return "";
   const preference = '  if(wantedSourceSeason){const exactSeason=episodes.filter(x=>Number(x.season)===Number(wantedSourceSeason));if(exactSeason.length)episodes=exactSeason;}\\n';
-  return out.replace(marker, preference + marker);
+  out = out.replace(marker, preference + marker);
+
+  // Generic cross-series safety guard. WCO series pages can contain sidebar/recent-release
+  // episode links from completely unrelated shows. Require the episode URL to retain a
+  // strong token relationship with the current /anime/<series-slug>/ page before either
+  // the name matcher or numeric matcher may consider it.
+  const returnMarker = '  return out;\n}';
+  if (!out.includes(returnMarker)) return "";
+  const safetyPatch = [
+    '  const __linkMarker = \'    const href=absolute(m[1],pageUrl);\\n    if(!href||!text||/\\/anime\\//i.test(href))continue;\';',
+    '  const __linkReplacement = \'    const href=absolute(m[1],pageUrl);\\n    if(!href||!text||/\\/anime\\//i.test(href))continue;\\n    const __seriesSlug=(String(pageUrl||\"\").match(/\\/anime\\/([^/?#]+)/i)||[])[1]||\"\";\\n    if(__seriesSlug){const __stop={watch:1,online:1,anime:1,cartoon:1,english:1,dub:1,sub:1};const __tokens=normalize(__seriesSlug).split(\" \" ).filter(w=>w.length>2&&!__stop[w]);const __hrefWords=normalize(href).split(\" \" );const __hits=__tokens.filter(w=>__hrefWords.includes(w)).length;const __need=Math.max(1,Math.ceil(__tokens.length*0.6));if(__tokens.length&&__hits<__need)continue;}\';',
+    '  if (out.includes(__linkMarker)) out = out.split(__linkMarker).join(__linkReplacement);',
+    '',
+    '  return out;',
+    '}'
+  ].join("\n");
+  out = out.replace(returnMarker, safetyPatch);
+
+  return out;
 }
 
 async function loadProvider() {
@@ -151,7 +165,7 @@ async function candidateDiagnostics(rows, season, episode) {
 async function getStreams(inputId, mediaType, season, episode) {
   try {
     const provider = await loadProvider();
-    if (!provider) return [diagRow("PASSTHROUGH", "v2 provider failed to load", season, episode)];
+    if (!provider) return [diagRow("PASSTHROUGH", "resolver provider failed to load", season, episode)];
     const rows = await provider.getStreams(inputId, mediaType, season, episode);
     const list = Array.isArray(rows) ? rows : [];
     if (list.some(row => String(row && row.quality || "").toUpperCase() !== "DIAG")) return list;
