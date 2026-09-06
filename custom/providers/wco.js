@@ -256,6 +256,40 @@ function episodeRange(value) {
   return { start: Math.min(a, b), end: Math.max(a, b) };
 }
 
+// WCO series pages include a live Recent Releases sidebar in the same HTML as the
+// real episode list. A whole-page anchor scan can therefore mistake an unrelated
+// sidebar "Episode N" for the requested show's episode. Compare each candidate URL
+// to the WCO series slug itself before considering its episode number. This is
+// deliberately WCO-to-WCO ownership validation, not TMDB title matching, so aliases
+// such as Monster Farm -> Monster Rancher remain valid.
+function seriesSlugParts(pageUrl) {
+  const m = String(pageUrl || "").match(/\/anime\/([^/?#]+)/i);
+  if (!m || !m[1]) return { slug: "", tokens: [] };
+  const slug = String(m[1]).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  const stop = new Set(["the", "and", "of", "a", "an", "anime", "cartoon", "series", "season", "watch", "online", "english", "dubbed", "subbed", "dub", "sub", "episodes", "episode"]);
+  const tokens = slug.split("-").filter(x => x.length >= 2 && !/^\d+$/.test(x) && !stop.has(x));
+  return { slug, tokens };
+}
+
+function episodeBelongsToSeries(href, pageUrl) {
+  const series = seriesSlugParts(pageUrl);
+  if (!series.slug) return true;
+  const path = String(href || "").replace(/^https?:\/\/[^/]+/i, "").toLowerCase();
+
+  // Normal WCO episode URLs start with the exact series slug. Prefer this strongest
+  // signal because it cleanly excludes Recent Releases without parsing page layout.
+  if (path.includes(`/${series.slug}-episode-`) || path.includes(`/${series.slug}-season-`)) return true;
+
+  // Some older WCO entries vary punctuation or add/remove a small qualifier. Keep a
+  // conservative token-overlap fallback so legitimate historical slugs still work.
+  if (!series.tokens.length) return true;
+  const actual = new Set(path.split(/[^a-z0-9]+/).filter(Boolean));
+  let hits = 0;
+  for (const token of series.tokens) if (actual.has(token)) hits += 1;
+  if (series.tokens.length === 1) return hits === 1;
+  return hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6));
+}
+
 function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant) {
   const exact = [];
   const neutral = [];
@@ -267,6 +301,7 @@ function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, fo
     const text = stripTags(m[2]);
     const href = absolute(m[1], pageUrl);
     if (!href || !text) continue;
+    if (!episodeBelongsToSeries(href, pageUrl)) continue;
 
     const combined = `${text} ${href}`;
     const range = episodeRange(combined);
