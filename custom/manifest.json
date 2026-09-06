@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.55",
+  "version": "2.0.56",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,11 +21,11 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; and a validated Power Rangers season-title resolver used only when the normal production TV path returns no streams.",
-      "version": "2.4.9",
+      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; a validated Power Rangers season-title resolver used only when the normal production TV path returns no streams; and an English-original safety guard that suppresses unrelated Japanese/Hard-Subs rows from WCO sub-filter/sidebar matches.",
+      "version": "2.5.0",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "providers/wco-production-v2.js",
+      "filename": "providers/wco-production-v3.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
@@ -36,15 +36,15 @@
     {
       "id": "tubi-nexus-probe",
       "name": "Tubi Nexus Probe",
-      "description": "Diagnostic-only Tubi feasibility probe. It maps TMDB/IMDb metadata to Tubi search results, checks series/episode structure, inspects the legacy public content endpoint, and reports whether a playback-shaped field is still exposed. It does not return media streams.",
-      "version": "0.1.0",
+      "description": "Diagnostic-only Tubi feasibility probe. It now tests the current public website flow instead of the retired /oz API: Tubi web search, public series/movie pages, episode URL mapping, and embedded HLS/DASH resource detection. It does not return media streams.",
+      "version": "0.2.0",
       "author": "Limitless Nexus Tubi feasibility probe",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/tubi-nexus-probe.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4"],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://tubitv.com/favicon.ico",
       "contentLanguage": ["en"]
     },
