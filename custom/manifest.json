@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.58",
+  "version": "2.0.59",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "tubi-nexus-probe",
       "name": "Tubi Nexus Probe",
-      "description": "Diagnostic-only Tubi feasibility probe. v0.4 keeps current page-state checks and also bootstraps a public Tubi web session before retesting the /oz search/content API with the current request parameters. It does not return media streams.",
-      "version": "0.4.0",
+      "description": "Diagnostic-only Tubi feasibility probe using Tubi's current anonymous-device bearer-token flow, production search API, series/episode mapping, and content resource inspection. It reports clear HLS versus DRM resources and does not return media streams.",
+      "version": "0.5.0",
       "author": "Limitless Nexus Tubi feasibility probe",
       "supportedTypes": ["movie", "tv"],
-      "filename": "providers/tubi-nexus-probe-v4.js",
+      "filename": "providers/tubi-nexus-probe-v5.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
