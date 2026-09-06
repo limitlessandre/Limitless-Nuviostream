@@ -1,8 +1,11 @@
 "use strict";
 
-// Nexus-only diagnostic passthrough for the validated generic season-title resolver.
-// This file does not patch the resolver source. It runs v2 unchanged, then appends
-// candidate-level diagnostics only when v2 returns DIAG results. Production WCO is untouched.
+// Nexus-only compatibility + diagnostic layer for the validated generic season-title resolver.
+// It preserves v2 behavior and adds one narrow generic preference: if a source-season
+// hint exists and at least one duplicate episode candidate explicitly matches that season,
+// prefer that explicit-season candidate over same-number candidates with no season metadata.
+// Candidate diagnostics are still appended only after a normal DIAG result.
+// Production WCO remains untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-power-rangers-nexus-v2.js";
@@ -13,7 +16,7 @@ function cleanText(value) {
   return String(value || "")
     .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/gi, "&")
-    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&#0*39;|&apos;/gi, "'")
     .replace(/&quot;/gi, '"')
     .replace(/&nbsp;/gi, " ")
     .replace(/\s+/g, " ")
@@ -33,12 +36,25 @@ function diagRow(stage, message, season, episode) {
   };
 }
 
+function patchV2Source(source) {
+  let out = String(source || "");
+  if (!out) return "";
+
+  // This marker is inside v2's injected numeric matcher string.
+  // Keep nil-season candidates when WCO provides no explicit matching season at all.
+  const marker = '  const rawCount=episodes.length;\\n  const debugEntries=';
+  if (!out.includes(marker)) return "";
+  const preference = '  if(wantedSourceSeason){const exactSeason=episodes.filter(x=>Number(x.season)===Number(wantedSourceSeason));if(exactSeason.length)episodes=exactSeason;}\\n';
+  return out.replace(marker, preference + marker);
+}
+
 async function loadProvider() {
   if (cached && typeof cached.getStreams === "function") return cached;
   try {
     const res = await fetch(BASE_URL, { skipSizeCheck: true });
     if (!res || !res.ok) return null;
-    const source = String(await res.text() || "");
+    const raw = String(await res.text() || "");
+    const source = patchV2Source(raw);
     if (!source || !source.includes("module.exports")) return null;
     const mod = { exports: {} };
     const factory = new Function("module", "exports", "require", source + "\n;return module.exports;");
