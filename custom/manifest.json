@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.0.67",
+  "version": "2.0.68",
   "description": "Clean Limitless provider branch built one source at a time for maintainable anime, animation, drama, movie, and TV coverage.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; a validated Power Rangers season-title resolver used only when the normal production TV path returns no streams; and an alias-safe episode-link ownership guard that rejects unrelated Recent Releases/sidebar links without rejecting legitimate WCO/TMDB title aliases.",
-      "version": "2.5.2",
+      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; explicit-only mirror labels; a validated Power Rangers season-title resolver used only when the normal production TV path returns no streams; and episode parsing scoped to WCO's own cat-eps/episodeList containers so Recent Releases/sidebar links cannot contaminate results while legitimate WCO/TMDB title aliases remain valid.",
+      "version": "2.5.3",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "providers/wco-production-v3.js",
