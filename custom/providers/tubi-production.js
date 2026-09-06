@@ -1,0 +1,64 @@
+"use strict";
+
+// Tubi production provider v1.0.0
+// Builds on the validated anonymous-bearer probe flow. Successful matches return
+// only clear HLS resources (hlsv6 preferred, hlsv3 fallback). DRM-only titles
+// remain non-playable and return a compact diagnostic row instead.
+
+const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-nexus-probe-v5.js";
+let cached = null;
+
+async function loadPatched() {
+  if (cached && typeof cached.getStreams === "function") return cached;
+  const r = await fetch(BASE_URL, { skipSizeCheck: true });
+  if (!r || !r.ok) return null;
+  let src = String(await r.text() || "");
+
+  const providerOld = 'const PROVIDER_NAME = "Tubi Nexus Probe";';
+  const providerNew = 'const PROVIDER_NAME = "Tubi";';
+  const helperMarker = 'function typeOkay(x,wanted){const t=itemType(x);if(!t)return true;if(wanted==="tv")return /series|show|^s$|tv/.test(t)&&!/^v$|movie|film/.test(t);return /movie|film|^v$/.test(t)&&!/series|show|^s$/.test(t);}';
+  const helperBlock = helperMarker + '\nfunction clearStreamsFrom(data,display){\n  const list=Array.isArray(data&&data.video_resources)?data.video_resources:[],seen=new Set(),out=[];\n  for(const r of list){\n    const kind=clean(r&&r.type).toLowerCase(),url=clean(r&&r.manifest&&r.manifest.url);\n    if(!url||(kind!=="hlsv6"&&kind!=="hlsv3")||seen.has(url))continue;\n    seen.add(url);\n    const rawRes=clean(r&&r.resolution),m=rawRes.match(/(\\d{3,4})/),quality=m?m[1]+"p":"Auto";\n    let codec=clean(r&&r.codec).replace(/^VIDEO_CODEC_/i,"");\n    if(/^h264$/i.test(codec))codec="H.264";else if(/^(h265|hevc)$/i.test(codec))codec="H.265";\n    out.push({name:`Tubi • ${quality} • ${kind.toUpperCase()}${codec?` • ${codec}`:""}`,title:display?`${display} • Tubi`:"Tubi",url,quality,language:"English",provider:"Tubi",type:"m3u8",headers:{"User-Agent":UA,"Referer":WEB+"/","Origin":WEB},subtitles:[]});\n  }\n  out.sort((a,b)=>{const av=a.name.includes("HLSV6")?0:1,bv=b.name.includes("HLSV6")?0:1;if(av!==bv)return av-bv;return (parseInt(b.quality)||0)-(parseInt(a.quality)||0);});\n  return out;\n}';
+
+  const bestOld = 'const best=scored[0];let targetId=best.id;';
+  const bestNew = 'const best=scored[0];let targetId=best.id,episodePayload=null;';
+  const oldEpisodeBlock = 'const page=await request(cu,{headers:sh}),kids=page.data&&Array.isArray(page.data.children)?page.data.children:[];\n    const ep=kids.find((x,i)=>Number(x&&x.episode_number||x&&x.episode||x&&x.num||(i+1))===wantedE);';
+  const newEpisodeBlock = 'const page=await request(cu,{headers:sh}),groups=page.data&&Array.isArray(page.data.children)?page.data.children:[],kids=[];\n    for(const group of groups){const inner=group&&Array.isArray(group.children)?group.children:[];if(inner.length)kids.push(...inner);else if(group&&typeof group==="object"&&itemId(group))kids.push(group);}\n    const ep=kids.find(x=>Number(x&&x.episode_number||x&&x.episode||x&&x.num||0)===wantedE)||(wantedE>0&&kids.length>=wantedE?kids[wantedE-1]:null);';
+  const epAssignOld = 'if(!ep||!itemId(ep)){rows.push(diag("VERDICT","bearer auth and title search work, but episode mapping needs adjustment",display));return rows.slice(0,18);}targetId=itemId(ep);';
+  const epAssignNew = 'if(!ep||!itemId(ep)){return [diag("NO EPISODE",`Tubi title matched, but S${wantedS}E${wantedE} could not be mapped`,display)];}targetId=itemId(ep);episodePayload=ep;';
+  const resourceOld = 'const cr=await request(contentUrl,{headers:sh}),rs=resourceSummary(cr.data);\n  rows.push(diag("API CONTENT",`${cr.status||"ERR"} • json=${cr.data?"yes":"no"} • id=${targetId} • resources=${rs.total}`,display));\n  rows.push(diag("RESOURCES",`clear=${rs.clear} • drm=${rs.drm} • types=${rs.types.join(",")||"none"}${rs.host?` • clearHost=${rs.host}`:""}`,display));\n  rows.push(diag("VERDICT",rs.clear>0?"current Tubi anonymous API exposes at least one clear HLS/DASH resource; controlled playback provider is feasible":(rs.drm>0?"title mapped successfully but only DRM resources were returned for this item":"auth/search/content work, but no playback resource was returned for this item"),display));\n  return rows.slice(0,18);';
+  const resourceNew = 'const cr=await request(contentUrl,{headers:sh}),directRs=resourceSummary(cr.data),seasonRs=episodePayload?resourceSummary(episodePayload):{total:0,clear:0,drm:0,types:[],host:""};\n  const seasonStreams=episodePayload?clearStreamsFrom(episodePayload,display):[],directStreams=clearStreamsFrom(cr.data,display),streams=seasonStreams.length?seasonStreams:directStreams;\n  if(streams.length)return streams;\n  const drm=Math.max(seasonRs.drm||0,directRs.drm||0);\n  return [diag(drm>0?"DRM ONLY":"NO STREAM",drm>0?`Tubi matched this title, but only Widevine resources are available (${drm})`:`Tubi matched this title, but returned no clear HLS resource`,display)];';
+
+  if (!src.includes(providerOld) || !src.includes(helperMarker) || !src.includes(bestOld) || !src.includes(oldEpisodeBlock) || !src.includes(epAssignOld) || !src.includes(resourceOld)) return null;
+
+  src = src
+    .replace(providerOld, providerNew)
+    .replace(/Tubi feasibility probe/g, "Tubi diagnostic")
+    .replace(helperMarker, helperBlock)
+    .replace(bestOld, bestNew)
+    .replace(oldEpisodeBlock, newEpisodeBlock)
+    .replace(epAssignOld, epAssignNew)
+    .replace(resourceOld, resourceNew);
+
+  const mod = { exports: {} };
+  const fn = new Function("module", "exports", "require", src + "\n;return module.exports;");
+  const out = fn(mod, mod.exports, function(name){ throw new Error("Unsupported nested require: " + name); }) || mod.exports;
+  if (!out || typeof out.getStreams !== "function") return null;
+  cached = out;
+  return out;
+}
+
+async function getStreams(inputId, mediaType, season, episode) {
+  try {
+    const base = await loadPatched();
+    if (!base) return [{name:"Tubi • DIAG LOAD • playback patch failed to load",title:"Tubi diagnostic",url:"https://tubitv.com/favicon.ico",quality:"DIAG",language:"Debug",provider:"Tubi",type:"mp4"}];
+    const rows = await base.getStreams(inputId, mediaType, season, episode);
+    if (!Array.isArray(rows)) return [];
+    // Successful playback rows are clean HLS streams. Diagnostic rows are retained
+    // only when auth, matching, episode resolution, or clear-resource selection fails.
+    return rows;
+  } catch (e) {
+    return [{name:`Tubi • DIAG ERROR • ${String(e&&e.message||e).slice(0,160)}`,title:"Tubi diagnostic",url:"https://tubitv.com/favicon.ico",quality:"DIAG",language:"Debug",provider:"Tubi",type:"mp4"}];
+  }
+}
+
+module.exports = { getStreams };
