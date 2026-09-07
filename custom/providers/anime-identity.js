@@ -1,8 +1,8 @@
 "use strict";
 
 // Shared Nexus anime identity resolver.
-// Anime: MAL/Jikan first, AniList second, TMDB/IMDb aliases as fallback.
-// Non-anime: TMDB/IMDb only, with no anime-database requests.
+// Anime: MAL/Jikan first, AniList supplements sparse/failed MAL title sets, then
+// TMDB/IMDb aliases remain the safety fallback. Non-anime never calls anime DBs.
 
 const DEFAULT_TMDB_KEY = "1c29a5198ee1854bd5eb45dbe8d17d92";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36";
@@ -172,11 +172,13 @@ async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApi
     return { ...meta, aliases:meta.fallbackAliases.slice(), animeAliases:[], malId:null, anilistId:null, mappedEpisode:null, identitySource:"tmdb" };
   }
 
-  // Prefer MAL/Jikan. Only ask AniList when MAL/Jikan cannot resolve a strong match.
-  // This keeps anime-native metadata first without making either external service mandatory.
+  // MAL/Jikan stays first. If it fails OR returns a suspiciously sparse title set,
+  // ask AniList to supplement aliases instead of treating a single MAL label as a
+  // complete identity. This keeps anime-native matching preferred while avoiding
+  // cases such as Monster Farm, where the useful English alias is Monster Rancher.
   const mal = await malPath(meta, season, episode);
   let ani = { anilistId:null, malId:null, aliases:[] };
-  if (!mal.malId) ani = await anilistPath(meta);
+  if (!mal.malId || uniq(mal.aliases || []).length < 3) ani = await anilistPath(meta);
 
   const animeAliases = uniq([].concat(mal.aliases || []).concat(ani.aliases || []));
   const aliases = uniq(animeAliases.concat(meta.fallbackAliases || [])).slice(0, 24);
@@ -187,7 +189,7 @@ async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApi
     malId: mal.malId || ani.malId || null,
     anilistId: ani.anilistId || null,
     mappedEpisode: mal.mappedEpisode || null,
-    identitySource: mal.malId ? "mal" : ani.anilistId ? "anilist" : "tmdb-fallback"
+    identitySource: mal.malId ? (ani.anilistId ? "mal+anilist" : "mal") : ani.anilistId ? "anilist" : "tmdb-fallback"
   };
 }
 
