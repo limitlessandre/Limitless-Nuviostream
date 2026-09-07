@@ -1,9 +1,9 @@
 "use strict";
 
-// Nexus Season 0 safety wrapper for Re:ANIME resilient production.
-// Some Re:ANIME special records expose can_watch=false even though /api/flix
-// already has playable servers. For specials, real server availability is the
-// authority. The catalog flag becomes a fallback hint only when no servers exist.
+// Nexus Re:ANIME resilient safety wrapper.
+// Season 0 specials trust live /api/flix servers over stale can_watch flags.
+// Normal matched catalog entries also return an INFO row when no episode servers
+// exist, instead of disappearing from Nuvio entirely.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient.js";
 let cached = null;
@@ -46,8 +46,20 @@ function patchSource(source) {
       if (streams.length) return streams;
       return special.unavailableInfo ? [special.unavailableInfo] : [];`;
 
-  if (!out.includes(oldTarget) || !out.includes(oldRun)) return "";
-  out = out.replace(oldTarget, newTarget).replace(oldRun, newRun);
+  const oldNormal = `    const servers = selectServers(await fetchServers(target.anilistId, resolvedEpisode));
+    if (!servers.length) return [];
+    const assets = await Promise.all(servers.map(server => resolveDirectAsset(server).catch(() => null)));
+    return buildStreams(assets, target.title || identity.title || "Anime", resolvedEpisode);`;
+
+  const newNormal = `    const displayTitle = target.title || identity.title || "Anime";
+    const servers = selectServers(await fetchServers(target.anilistId, resolvedEpisode));
+    if (!servers.length) return [specialInfoRow(displayTitle, null, null)];
+    const assets = await Promise.all(servers.map(server => resolveDirectAsset(server).catch(() => null)));
+    const streams = buildStreams(assets, displayTitle, resolvedEpisode);
+    return streams.length ? streams : [specialInfoRow(displayTitle, null, null)];`;
+
+  if (!out.includes(oldTarget) || !out.includes(oldRun) || !out.includes(oldNormal)) return "";
+  out = out.replace(oldTarget, newTarget).replace(oldRun, newRun).replace(oldNormal, newNormal);
   return out;
 }
 
