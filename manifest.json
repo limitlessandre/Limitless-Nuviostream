@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.21",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first.",
+  "version": "2.1.22",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. 123MoviesIN and 123MoviesFree are isolated experimental movie/TV providers; 123MoviesIN is the active probe and 123MoviesFree is reserved as a separate placeholder.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -9,14 +9,23 @@
       "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList supplements sparse/failed MAL title sets, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, confirmed catalog matches with no playable episode servers return the No Episode on Source information row, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable.",
       "version": "1.6.6",
       "author": "Limitless Nexus",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://reanime.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-wco",
@@ -24,14 +33,24 @@
       "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable. [DUB] is only shown when Nuvio classifies the title as anime, so native-English non-anime WCO content stays untagged. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
       "version": "2.6.12",
       "author": "Limitless Nexus WCO production merge",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v4.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "asiaflix-nexus",
@@ -39,14 +58,27 @@
       "description": "Experimental Asian drama/show provider using AsiaFlix's current v1 JSON API for title search, detail/episode lookup, and server resolution. Matches Nuvio TMDB/IMDb metadata against primary and alternate titles, preserves original-audio language labels, probes HLS quality where available, intentionally refuses TV seasons above Season 1 until a safe season-title mapping is validated, and presents playback rows with Nuvio-friendly quality tiers.",
       "version": "0.1.1",
       "author": "Limitless Nexus port based on current Yuzono/Keiyoushi AsiaFlix and CSX provider behavior",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-production-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://asiaflix.net/favicon.ico",
-      "contentLanguage": ["en", "ko", "zh", "ja", "th", "tl"]
+      "contentLanguage": [
+        "en",
+        "ko",
+        "zh",
+        "ja",
+        "th",
+        "tl"
+      ]
     },
     {
       "id": "limitless-tubi",
@@ -54,14 +86,22 @@
       "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan/AniList identity first, then an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or sparse, with base TMDB/IMDb aliases as the final fallback; non-anime titles remain on the original TMDB/IMDb matching path. Power Rangers is separately gated to TMDB TV id 2328 and maps the unified TMDB season number to Tubi's franchise-specific series title before the existing episode resolver runs, restoring the correct Tubi franchise card without affecting other titles. Strict anime candidate scoring prevents generic partial-title false positives. Production rows retain clean numbered mirror labels, collapse safe title misses to one No Source Found diagnostic, retain compact DRM-only diagnostics, and use Nuvio-friendly quality tiers so alphabetical sorting stays quality-first.",
       "version": "1.2.4",
       "author": "Limitless Nexus Tubi provider",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://tubitv.com/favicon.ico",
-      "contentLanguage": ["en"]
+      "contentLanguage": [
+        "en"
+      ]
     },
     {
       "id": "anikototv",
@@ -69,13 +109,68 @@
       "description": "AnikotoTV with compact standardized [DUB], [SUB], [DUB+SUB], and [DUAL] labels based on the provider's existing audio/caption variants, plus Nuvio-friendly quality tiers so higher-resolution playback rows remain above lower-resolution rows under alphabetical sorting.",
       "version": "1.0.8",
       "author": "piratezoro9",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-production-v2.js",
       "enabled": true,
       "hasSettings": false,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://anikototv.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "id": "limitless-123moviesin",
+      "name": "123MoviesIN",
+      "description": "Experimental TMDB-native 123MoviesIN family probe. Movies map directly to /film/<TMDB id>/<slug>/ and TV maps to /show/<TMDB id>/<slug>/ across the current 123moviesin.com / 123movies2.org / 123movies-fun.com family. Stage 1 verifies Nuvio page reachability and scans the live title page for player candidates before playback extraction is enabled.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/123moviesin-nexus.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://123moviesin.com/favicon.ico",
+      "contentLanguage": [
+        "en"
+      ]
+    },
+    {
+      "id": "limitless-123moviesfree",
+      "name": "123MoviesFree",
+      "description": "Placeholder for the separate 123moviesfree.net architecture, which uses site-specific movie/season IDs and its own multi-server player flow. Kept isolated from 123MoviesIN so the two unrelated 123Movies-style backends can be developed and maintained independently.",
+      "version": "0.0.1",
+      "author": "Limitless Nexus",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/123moviesfree-placeholder.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://123moviesfree.net/favicon.ico",
+      "contentLanguage": [
+        "en"
+      ]
     }
   ]
 }
