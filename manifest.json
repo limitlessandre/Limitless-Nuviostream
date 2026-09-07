@@ -1,12 +1,12 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.27",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. Parked experiments stay on Limitless-Provider-Lab; KissKH Test is an isolated active Nexus probe based on the current 2026 KissKH API flow.",
+  "version": "2.1.28",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. KissKH Test is an active drama-provider probe using current 2026 KissKH API behavior with strict title identity and staged diagnostics.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList supplements sparse/failed MAL title sets, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, confirmed catalog matches with no playable episode servers return the No Episode on Source information row, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable.",
+      "description": "Anime provider using the shared Nexus anime identity layer with MAL/Jikan, AniList, TMDB/IMDb-backed fallbacks, specials handling, and clean quality/audio labels.",
       "version": "1.6.6",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -21,7 +21,7 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable. [DUB] is only shown when Nuvio classifies the title as anime, so native-English non-anime WCO content stays untagged. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "description": "WCO production provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and clean quality/audio labels.",
       "version": "2.6.12",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -36,7 +36,7 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix",
-      "description": "Experimental Asian drama/show provider using AsiaFlix's current v1 JSON API for title search, detail/episode lookup, and server resolution. Matches Nuvio TMDB/IMDb metadata against primary and alternate titles, preserves original-audio language labels, probes HLS quality where available, intentionally refuses TV seasons above Season 1 until a safe season-title mapping is validated, and presents playback rows with Nuvio-friendly quality tiers.",
+      "description": "Experimental Asian drama/show provider using AsiaFlix's current API with strict metadata matching and safe season handling.",
       "version": "0.1.1",
       "author": "Limitless Nexus port based on current Yuzono/Keiyoushi AsiaFlix and CSX provider behavior",
       "supportedTypes": ["movie", "tv"],
@@ -51,7 +51,7 @@
     {
       "id": "limitless-tubi",
       "name": "Tubi",
-      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan/AniList identity first, then an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or sparse, with base TMDB/IMDb aliases as the final fallback; non-anime titles remain on the original TMDB/IMDb matching path. Power Rangers is separately gated to TMDB TV id 2328 and maps the unified TMDB season number to Tubi's franchise-specific series title before the existing episode resolver runs, restoring the correct Tubi franchise card without affecting other titles. Strict anime candidate scoring prevents generic partial-title false positives. Production rows retain clean numbered mirror labels, collapse safe title misses to one No Source Found diagnostic, retain compact DRM-only diagnostics, and use Nuvio-friendly quality tiers so alphabetical sorting stays quality-first.",
+      "description": "Tubi playback provider with current anonymous auth, nested episode mapping, anime identity support, Power Rangers franchise-title mapping, compact diagnostics, and quality-first labels.",
       "version": "1.2.4",
       "author": "Limitless Nexus Tubi provider",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -66,7 +66,7 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV with compact standardized [DUB], [SUB], [DUB+SUB], and [DUAL] labels based on the provider's existing audio/caption variants, plus Nuvio-friendly quality tiers so higher-resolution playback rows remain above lower-resolution rows under alphabetical sorting.",
+      "description": "AnikotoTV with compact standardized audio/subtitle labels and Nuvio-friendly quality tiers.",
       "version": "1.0.8",
       "author": "piratezoro9",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -80,16 +80,16 @@
     {
       "id": "limitless-kisskh-test",
       "name": "KissKH Test",
-      "description": "Experimental KissKH provider based primarily on debakarr/kisskh-dl 0.2.4 (Sep 4 2026): current kisskh.is API routes, exact TMDB title identity, episode-id mapping, current kkey-protected stream endpoint, and browserless Yuzono key bridge as the first Nuvio-compatible authentication attempt. Domain fallbacks include the current/legacy KissKH hosts. Season 1 is intentionally the only TV season mapped during the first test pass. Diagnostics expose match, episode, key, and video-stage failures without silently choosing the first search result.",
-      "version": "0.1.0",
+      "description": "Experimental KissKH provider based on the current Sep 2026 API/kkey flow. v0.1.1 adds the currently indexed kisskh.at catalog origin plus punctuation-tolerant query discovery while keeping strict normalized title acceptance. Diagnostics now include sample catalog titles when a reachable domain still cannot produce an exact match.",
+      "version": "0.1.1",
       "author": "Limitless Nexus; current API references from debakarr/kisskh-dl and Yuzono anime-extensions",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
-      "logo": "https://kisskh.is/favicon.ico",
+      "logo": "https://kisskh.at/favicon.ico",
       "contentLanguage": ["ja", "ko", "zh", "th", "en"]
     }
   ]
