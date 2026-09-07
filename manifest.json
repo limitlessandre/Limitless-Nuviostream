@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.26",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. Parked experimental providers are kept on Limitless-Provider-Lab instead of the active Nexus manifest.",
+  "version": "2.1.27",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. Parked experiments stay on Limitless-Provider-Lab; KissKH Test is an isolated active Nexus probe based on the current 2026 KissKH API flow.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -76,6 +76,21 @@
       "formats": ["mp4"],
       "logo": "https://anikototv.to/favicon.ico",
       "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-kisskh-test",
+      "name": "KissKH Test",
+      "description": "Experimental KissKH provider based primarily on debakarr/kisskh-dl 0.2.4 (Sep 4 2026): current kisskh.is API routes, exact TMDB title identity, episode-id mapping, current kkey-protected stream endpoint, and browserless Yuzono key bridge as the first Nuvio-compatible authentication attempt. Domain fallbacks include the current/legacy KissKH hosts. Season 1 is intentionally the only TV season mapped during the first test pass. Diagnostics expose match, episode, key, and video-stage failures without silently choosing the first search result.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus; current API references from debakarr/kisskh-dl and Yuzono anime-extensions",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://kisskh.is/favicon.ico",
+      "contentLanguage": ["ja", "ko", "zh", "th", "en"]
     }
   ]
 }
