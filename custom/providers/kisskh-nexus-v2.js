@@ -1,10 +1,11 @@
 "use strict";
 
-// KissKH Nexus test wrapper v0.1.1
-// Keeps the current Sep 2026 KissKH API/kkey implementation from kisskh-nexus.js,
-// but adds the currently indexed kisskh.at catalog origin and safer query expansion.
-// Candidate acceptance remains strict: punctuation-normalized searches may discover
-// a title, but only an exact normalized title identity can be selected.
+// KissKH Nexus test wrapper v0.1.2
+// Uses the current Sep 2026 KissKH API/kkey implementation from kisskh-nexus.js.
+// Search now mirrors Yuzono's maintained request shape by including type=0,
+// while retaining strict exact title acceptance and punctuation-tolerant discovery.
+// kisskh.at is intentionally excluded from API probing because it is not part of
+// either current maintained streaming implementation and returned non-array data.
 
 const PROVIDER_NAME = "KissKH Test";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus.js";
@@ -12,10 +13,6 @@ let cached = null;
 
 function patchSource(source) {
   let src = String(source || "");
-
-  const oldDomains = `const DOMAINS = [\n  "https://kisskh.is",\n  "https://kisskh.ovh",\n  "https://kisskh.do",\n  "https://kisskh.co",\n  "https://kisskh.id",\n  "https://kisskh.la",\n  "https://kisskh.nl"\n];`;
-  const newDomains = `const DOMAINS = [\n  "https://kisskh.at",\n  "https://kisskh.is",\n  "https://kisskh.ovh",\n  "https://kisskh.do",\n  "https://kisskh.co",\n  "https://kisskh.id",\n  "https://kisskh.la",\n  "https://kisskh.nl"\n];`;
-  if (src.includes(oldDomains)) src = src.replace(oldDomains, newDomains);
 
   const start = src.indexOf("async function findMatch(meta) {");
   const end = src.indexOf("\nasync function getDetail(base, dramaId) {", start);
@@ -34,50 +31,67 @@ function patchSource(source) {
     if (queryTerms.length >= 5) break;
   }
 
-  // Search APIs can be punctuation-sensitive even when catalog identity is not.
-  // Broaden discovery only; exactCandidateScore still gates final selection.
   const seedTerms = queryTerms.slice();
   for (const term of seedTerms) {
     pushTerm(term.replace(/[-‐‑‒–—]+/g, " ").replace(/\\s+/g, " ").trim());
     pushTerm(term.replace(/[-‐‑‒–—]+/g, "").replace(/\\s+/g, " ").trim());
   }
   if (/kamen\\s+rider\\s+den[-\\s]?o/i.test(meta.title || "")) {
+    pushTerm("Kamen Rider");
     pushTerm("Kamen Rider Den O");
     pushTerm("Kamen Rider DenO");
     pushTerm("Den-O");
   }
 
-  for (const base of DOMAINS) {
+  const liveDomains = [
+    "https://kisskh.is",
+    "https://kisskh.ovh",
+    "https://kisskh.do",
+    "https://kisskh.co",
+    "https://kisskh.id",
+    "https://kisskh.la",
+    "https://kisskh.nl"
+  ];
+
+  for (const base of liveDomains) {
     let reachable = false;
     let best = null;
     let bestScore = -1;
     let candidateCount = 0;
     const samples = [];
+    const queryNotes = [];
 
     for (const term of queryTerms.slice(0, 10)) {
-      const url = base + "/api/DramaList/Search?q=" + encodeURIComponent(term);
+      // Yuzono's maintained Sep 2026 implementation uses &type=0 on search.
+      const url = base + "/api/DramaList/Search?q=" + encodeURIComponent(term) + "&type=0";
       const r = await requestJson(url, base + "/", base);
       if (!r.ok || !Array.isArray(r.data)) {
-        failures.push(base.replace(/^https?:\\/\\//, "") + "=" + (r.error || ("HTTP " + (r.status || "ERR"))));
-        break;
+        queryNotes.push(term + "=" + (r.error || ("HTTP " + (r.status || "ERR"))));
+        continue;
       }
+
       reachable = true;
       candidateCount += r.data.length;
+      const localSamples = [];
       for (const item of r.data) {
         const title = clean(item && item.title);
-        if (title && !samples.includes(title) && samples.length < 4) samples.push(title);
+        if (title && !samples.includes(title) && samples.length < 6) samples.push(title);
+        if (title && localSamples.length < 2) localSamples.push(title);
         const score = exactCandidateScore(item, meta);
         if (score > bestScore) { bestScore = score; best = item; }
       }
+      queryNotes.push(term + "→" + r.data.length + (localSamples.length ? "[" + localSamples.join(" | ") + "]" : ""));
       if (bestScore >= 100) break;
     }
 
     if (reachable && best && bestScore >= 100) {
       return { base, item: best, score: bestScore, candidateCount, failures };
     }
+
     if (reachable) {
-      const sampleText = samples.length ? (" • samples=" + samples.join(" | ")) : "";
-      failures.push(base.replace(/^https?:\\/\\//, "") + "=reachable-no-exact-match" + sampleText);
+      failures.push(base.replace(/^https?:\\/\\//, "") + "=no-exact • " + queryNotes.slice(0, 4).join(" • ") + (samples.length ? " • samples=" + samples.join(" | ") : ""));
+    } else {
+      failures.push(base.replace(/^https?:\\/\\//, "") + "=" + (queryNotes.slice(0, 3).join(" • ") || "unreachable"));
     }
   }
   return { base: "", item: null, score: -1, candidateCount: 0, failures };
