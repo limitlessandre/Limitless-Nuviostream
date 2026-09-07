@@ -1,16 +1,16 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, then AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries are resolved as separate Re:ANIME special/OVA catalog records by TMDB special-episode title instead of falling through to the parent show's Episode 1; known source entries with no playable episode return the existing informational diagnostic row.",
-      "version": "1.6.2",
+      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. For specials, live /api/flix server availability now overrides stale can_watch=false catalog flags; the No Episode on Source info row is only returned when no playable special servers exist.",
+      "version": "1.6.3",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
