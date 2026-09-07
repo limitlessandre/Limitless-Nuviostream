@@ -1,13 +1,13 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.16",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers also use Nuvio-friendly quality tier labels so Nuvio's alphabetical stream sorting preserves quality-first display order.",
+  "version": "2.1.17",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList supplements sparse/failed MAL title sets, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, confirmed catalog matches with no playable episode servers return the No Episode on Source information row, and playback rows use Nuvio-friendly quality tiers such as 4K, FHD, HD, and SD.",
-      "version": "1.6.5",
+      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList supplements sparse/failed MAL title sets, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, confirmed catalog matches with no playable episode servers return the No Episode on Source information row, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable.",
+      "version": "1.6.6",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v3.js",
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use Nuvio-friendly quality tiers such as 4K, FHD, HD, and SD. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
-      "version": "2.6.10",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "version": "2.6.11",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v4.js",
@@ -66,8 +66,8 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV with standardized DUB/SOFTSUB/DUB+SUBS output labels based on the provider's existing selectable caption tracks, plus Nuvio-friendly quality tiers so higher-resolution playback rows remain above lower-resolution rows under alphabetical sorting.",
-      "version": "1.0.7",
+      "description": "AnikotoTV with compact standardized [DUB], [SUB], [DUB+SUB], and [DUAL] labels based on the provider's existing audio/caption variants, plus Nuvio-friendly quality tiers so higher-resolution playback rows remain above lower-resolution rows under alphabetical sorting.",
+      "version": "1.0.8",
       "author": "piratezoro9",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-production-v2.js",
