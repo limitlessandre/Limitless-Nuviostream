@@ -7,7 +7,7 @@ const snapshot = () => {
   const fallback = path.join(root, 'data', 'seed.json');
   return JSON.parse(fs.readFileSync(fs.existsSync(live) ? live : fallback, 'utf8'));
 };
-const manifest = { id: 'org.limitlessnexus.scarletpeach.catalog', version: '0.1.0-test', name: 'Limitless Nexus: Scarlet Peach (Test)', resources: ['catalog', 'meta'], types: ['series'], catalogs: [
+const manifest = { id: 'org.limitlessnexus.scarletpeach.catalog', version: '0.1.0', name: 'Limitless Nexus: Scarlet Peach', resources: ['catalog', 'meta'], types: ['series'], catalogs: [
   { type: 'series', id: 'scarlet-peach-search', name: 'Scarlet Peach Search', extra: [{ name: 'search', isRequired: true }] },
   { type: 'series', id: 'scarlet-peach-latest', name: 'Scarlet Peach Latest' },
   { type: 'series', id: 'scarlet-peach-all', name: 'Scarlet Peach All' }
