@@ -61,6 +61,37 @@ async function fetchJson(url, options) {
   }
 }
 
+async function tmdbLocalizedAliases(id, type, title, original, year, apiKey) {
+  const key = apiKey || DEFAULT_TMDB_KEY;
+  const out = [];
+
+  // First ask TMDB for the same exact id in common English locales. This cannot
+  // drift to another title because the TMDB id is already fixed.
+  for (const language of ["en-US", "en-GB"]) {
+    const data = await fetchJson(`https://api.themoviedb.org/3/${type}/${id}?api_key=${key}&language=${language}`);
+    if (!data) continue;
+    if (type === "movie") out.push(data.title, data.original_title);
+    else out.push(data.name, data.original_name);
+  }
+
+  // TMDB text search also indexes translated and AKA names. Use it only as an alias
+  // recovery step and only accept a result whose id is exactly the already-resolved
+  // TMDB id, so no fuzzy cross-title match can enter the identity set.
+  for (const term of uniq([title, original]).slice(0, 2)) {
+    const yearPart = year
+      ? (type === "movie" ? `&primary_release_year=${encodeURIComponent(year)}` : `&first_air_date_year=${encodeURIComponent(year)}`)
+      : "";
+    const data = await fetchJson(`https://api.themoviedb.org/3/search/${type}?api_key=${key}&language=en-US&query=${encodeURIComponent(term)}${yearPart}`);
+    const results = data && Array.isArray(data.results) ? data.results : [];
+    const match = results.find(x => Number(x && x.id || 0) === Number(id));
+    if (!match) continue;
+    if (type === "movie") out.push(match.title, match.original_title);
+    else out.push(match.name, match.original_name);
+  }
+
+  return uniq(out);
+}
+
 async function resolveTmdb(inputId, mediaType, apiKey) {
   const key = apiKey || DEFAULT_TMDB_KEY;
   const type = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
@@ -86,6 +117,13 @@ async function resolveTmdb(inputId, mediaType, apiKey) {
   const originalLanguage = String(data.original_language || "").toLowerCase();
   const explicitAnimeType = String(mediaType || "").toLowerCase() === "anime";
   const isAnime = explicitAnimeType || (genres.includes(16) && (originalLanguage === "ja" || countries.includes("JP")));
+  const year = String(data.release_date || data.first_air_date || "").slice(0, 4);
+
+  let fallbackAliases = uniq([title, original].concat(alternatives));
+  if (isAnime) {
+    const localized = await tmdbLocalizedAliases(id, type, title, original, year, key);
+    fallbackAliases = uniq(fallbackAliases.concat(localized));
+  }
 
   return {
     tmdbId: id,
@@ -93,10 +131,10 @@ async function resolveTmdb(inputId, mediaType, apiKey) {
     type,
     title,
     originalTitle: original,
-    year: String(data.release_date || data.first_air_date || "").slice(0, 4),
+    year,
     originalLanguage,
     isAnime,
-    fallbackAliases: uniq([title, original].concat(alternatives)).slice(0, 16)
+    fallbackAliases: fallbackAliases.slice(0, 20)
   };
 }
 
