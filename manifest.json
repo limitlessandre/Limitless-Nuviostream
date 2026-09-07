@@ -1,13 +1,13 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.0",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/AniList identity data and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
+  "version": "2.1.1",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, then AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan and AniList aliases are preferred for anime naming, with strict TMDB/IMDb-backed Re:ANIME catalog fallback when anime metadata services fail. Re:ANIME's structured Flix API is then used for episode/server lookup and direct FlixCloud assets when available.",
-      "version": "1.6.0",
+      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Re:ANIME's structured Flix API is then used for episode/server lookup and direct FlixCloud assets when available.",
+      "version": "1.6.1",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient.js",
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime uses MAL/Jikan + AniList aliases first and automatically falls back to TMDB aliases; non-anime bypasses anime databases entirely.",
-      "version": "2.6.0",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then automatically falls back to TMDB aliases; non-anime bypasses anime databases entirely.",
+      "version": "2.6.1",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v3.js",
