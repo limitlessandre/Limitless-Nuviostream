@@ -1,6 +1,6 @@
 "use strict";
 
-// AsiaFlix Nexus probe v0.2.2
+// AsiaFlix Nexus probe v0.2.3
 // Purpose: never let a slow AsiaFlix host resolver consume the whole Nuvio provider window.
 // Flow: TMDB -> direct slug -> one search fallback -> episode -> host list -> bounded API resolver.
 
@@ -46,7 +46,7 @@ function normalizeTitle(value) {
   return text.replace(/&/g, " and ").replace(/\b(the|a|an)\b/g, " ").replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
 }
 function hostOf(url) {
-  try { return new URL(url).hostname; } catch (_) { return "unknown-host"; }
+  try { return new URL(clean(url).replace(/^\/\//, "https://")).hostname; } catch (_) { return "unknown-host"; }
 }
 function languageName(code) {
   const key = clean(code).toLowerCase();
@@ -66,7 +66,17 @@ function diag(label, detail) {
   };
 }
 
-async function boundedFetch(url, options, timeoutMs) {
+function networkCapabilityError() {
+  // Nuvio's QuickJS bridge blocks in __native_fetch and ignores AbortSignal.
+  // A Promise race cannot interrupt native synchronous I/O. Do not start it.
+  if (typeof __native_fetch === "function") return "Synchronous native fetch cannot enforce provider deadlines";
+  if (typeof setTimeout !== "function" || typeof clearTimeout !== "function") return "Runtime timers unavailable; bounded networking disabled";
+  return "";
+}
+
+async function boundedJson(url, options, timeoutMs) {
+  const unsupported = networkCapabilityError();
+  if (unsupported) throw new Error(unsupported);
   const ms = Number(timeoutMs) || REQUEST_TIMEOUT_MS;
   let timer = null;
   let controller = null;
@@ -74,31 +84,43 @@ async function boundedFetch(url, options, timeoutMs) {
     if (typeof AbortController !== "undefined") controller = new AbortController();
     const opts = { ...(options || {}), redirect: "follow", skipSizeCheck: true };
     if (controller) opts.signal = controller.signal;
-    const request = fetch(url, opts);
-    if (typeof setTimeout !== "function") return await request;
     const timeout = new Promise((_, reject) => {
       timer = setTimeout(() => {
-        try { if (controller) controller.abort(); } catch (_) {}
+        // Settle the deadline first so abort rejection cannot mask TIMEOUT.
         reject(new Error("TIMEOUT"));
+        try { if (controller) controller.abort(); } catch (_) {}
       }, ms);
     });
+    // Include body download/JSON decoding in the same deadline as headers.
+    const request = (async () => {
+      const response = await fetch(url, opts);
+      if (!response) return { ok: false, status: 0, data: null, error: "no response" };
+      const status = Number(response.status || 0);
+      if (!response.ok) return { ok: false, status, data: null, error: `HTTP ${status || "ERR"}` };
+      return { ok: true, status, data: await response.json(), error: "" };
+    })();
     return await Promise.race([request, timeout]);
   } finally {
-    try { if (timer && typeof clearTimeout === "function") clearTimeout(timer); } catch (_) {}
+    try { if (timer !== null) clearTimeout(timer); } catch (_) {}
   }
 }
 
 async function fetchJson(url, headers, timeoutMs) {
+  const started = Date.now();
+  // Do not log API keys or encoded host URLs.
+  const stage = url.includes("get-stream-url") ? `resolver:${decodeURIComponent((url.match(/[?&]server=([^&]*)/) || [])[1] || "unknown")}`
+    : url.includes("/drama/detail") ? "detail" : url.includes("/drama/search") ? "search"
+    : url.includes("/find/") ? "tmdb-id" : "tmdb-info";
+  let result;
+  console.log(`[${PROVIDER_NAME}] ${stage} start`);
   try {
-    const response = await boundedFetch(url, { headers: { ...API_HEADERS, ...(headers || {}) } }, timeoutMs);
-    if (!response) return { ok: false, status: 0, data: null, error: "no response" };
-    const status = Number(response.status || 0);
-    if (!response.ok) return { ok: false, status, data: null, error: `HTTP ${status || "ERR"}` };
-    return { ok: true, status, data: await response.json(), error: "" };
+    result = await boundedJson(url, { headers: { ...API_HEADERS, ...(headers || {}) } }, timeoutMs);
   } catch (error) {
     const message = clean(error && error.message ? error.message : error) || "request error";
-    return { ok: false, status: 0, data: null, error: message === "TIMEOUT" ? `TIMEOUT>${timeoutMs || REQUEST_TIMEOUT_MS}ms` : message };
+    result = { ok: false, status: 0, data: null, error: message === "TIMEOUT" ? `TIMEOUT>${timeoutMs || REQUEST_TIMEOUT_MS}ms` : message };
   }
+  console.log(`[${PROVIDER_NAME}] ${stage} ${result.error || `HTTP ${result.status}`} ${Date.now() - started}ms`);
+  return result;
 }
 
 async function resolveTmdbId(inputId, type) {
@@ -253,6 +275,8 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
   const rows = [];
 
   if (type === "tv" && s !== 1) return [diag("SEASON UNSUPPORTED", `S${s} • AsiaFlix exposes a flat episode list` )];
+  const unsupported = networkCapabilityError();
+  if (unsupported) return [diag("RUNTIME UNSUPPORTED", unsupported)];
 
   const tmdbId = await resolveTmdbId(inputId, type);
   if (!tmdbId) return [diag("TMDB FAILED", `input=${inputId} • type=${type}`)];
@@ -284,8 +308,7 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
 
   // Probe only the first two resolvers. Upstream AsiaFlix falls back to host-specific extractors
   // (VidMoly/StreamWish/Dood/etc.); this probe intentionally stops before those so Nuvio cannot hang.
-  const probes = [];
-  for (const host of hosts.slice(0, 2)) probes.push(await resolveServer(host));
+  const probes = await Promise.all(hosts.slice(0, 2).map(resolveServer));
 
   const playable = [];
   const resolverNotes = [];

@@ -36,8 +36,8 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "Experimental AsiaFlix tokusatsu/drama probe v0.2.2. Uses bounded requests, direct-slug matching, episode host diagnostics, and only two time-limited API resolver probes so slow host extractors cannot consume the Nuvio provider window.",
-      "version": "0.2.2",
+      "description": "Experimental AsiaFlix probe v0.2.3. Bounds headers and JSON bodies, probes two resolvers concurrently, logs network stages, and returns promptly with a diagnostic when runtime deadlines cannot be enforced.",
+      "version": "0.2.3",
       "author": "Limitless Nexus port based on current AsiaFlix API behavior and current Yuzono AsiaFlix implementation",
       "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe-v3.js",
