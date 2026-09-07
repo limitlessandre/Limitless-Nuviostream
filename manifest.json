@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.25",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. 123MoviesIN remains as a catalog/guide placeholder after live probing found no distinct embedded player; active 123Movies development has moved to the separate 123MoviesFree architecture.",
+  "version": "2.1.26",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. Parked experimental providers are kept on Limitless-Provider-Lab instead of the active Nexus manifest.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -76,36 +76,6 @@
       "formats": ["mp4"],
       "logo": "https://anikototv.to/favicon.ico",
       "contentLanguage": ["en", "ja"]
-    },
-    {
-      "id": "limitless-123moviesin",
-      "name": "123MoviesIN",
-      "description": "Placeholder for the TMDB-native 123MoviesIN catalog/guide family. Nuvio can reach its /film/<TMDB id>/ and /show/<TMDB id>/ pages, but the apparent player candidates were lazy-loaded image URLs and no distinct embedded playback source was confirmed, so active extraction work is paused.",
-      "version": "0.1.2",
-      "author": "Limitless Nexus",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/123moviesin-nexus.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://123moviesin.com/favicon.ico",
-      "contentLanguage": ["en"]
-    },
-    {
-      "id": "limitless-123moviesfree",
-      "name": "123MoviesFree",
-      "description": "Active experimental provider for the separate 123moviesfree.net architecture. Stage 1.1 probes the current ww8 frontend directly before the apex redirect, then falls back through known 123moviesfree hosts. It resolves Nuvio metadata through TMDB, searches by title with a TMDB release-year fallback, ranks /movie/ or /season/ candidates, and scans matched pages for real iframe, server-data, AJAX, and direct-media player surfaces while excluding lazy-loaded images.",
-      "version": "0.1.1",
-      "author": "Limitless Nexus",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/123moviesfree-placeholder.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://123moviesfree.net/favicon.ico",
-      "contentLanguage": ["en"]
     }
   ]
 }
