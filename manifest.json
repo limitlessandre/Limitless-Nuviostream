@@ -1,12 +1,12 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, then AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. For specials, live /api/flix server availability now overrides stale can_watch=false catalog flags; the No Episode on Source info row is only returned when no playable special servers exist.",
+      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. For specials, live /api/flix server availability overrides stale can_watch=false catalog flags; the No Episode on Source info row is only returned when no playable special servers exist.",
       "version": "1.6.3",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -21,7 +21,7 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, and WCO now continues across strong anime series candidates until both available Dub and Sub branches are collected instead of returning after the first playable branch. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, and WCO continues across strong anime series candidates until both available Dub and Sub branches are collected instead of returning after the first playable branch. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
       "version": "2.6.3",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -32,21 +32,6 @@
       "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
       "contentLanguage": ["en", "ja"]
-    },
-    {
-      "id": "nexus-network-api-diag",
-      "name": "Nexus API DIAG",
-      "description": "Temporary Nexus-only diagnostics provider for isolating Nuvio/runtime connectivity from TMDB, MAL mapping, AniList, Re:ANIME, FlixCloud, and WCO upstream failures. Remove after current upstream validation is complete.",
-      "version": "0.1.2",
-      "author": "Limitless Nexus diagnostics",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/nexus-network-api-diag.js",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4"],
-      "logo": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/icon.png",
-      "contentLanguage": ["en"]
     },
     {
       "id": "asiaflix-nexus",
