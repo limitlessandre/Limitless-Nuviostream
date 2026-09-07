@@ -1,11 +1,20 @@
 "use strict";
 
-// 123MoviesFree Nexus probe v0.1.0
-// Stage 1: resolve Nuvio metadata to TMDB, locate the site's movie/season page,
-// and inspect the real player surface without treating lazy-loaded images as players.
+// 123MoviesFree Nexus probe v0.1.1
+// Stage 1.1: resolve Nuvio metadata to TMDB, probe the current ww# frontend directly
+// before the apex redirect, locate the site's movie/season page, and inspect the real
+// player surface without treating lazy-loaded images as players.
 
 const PROVIDER_NAME = "123MoviesFree";
-const ROOT = "https://123moviesfree.net";
+const ROOTS = [
+  "https://ww8.123moviesfree.net",
+  "https://123moviesfree.net",
+  "https://www.123moviesfree.net",
+  "https://ww7.123moviesfree.net",
+  "https://ww6.123moviesfree.net",
+  "https://ww5.123moviesfree.net"
+];
+const ROOT = ROOTS[0];
 const TMDB_API_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36";
 
@@ -38,12 +47,6 @@ function normalizeTitle(value) {
   let text = stripTags(value).toLowerCase();
   try { text = text.normalize("NFKD").replace(/[\u0300-\u036f]/g, ""); } catch (_) {}
   return text.replace(/&/g, " and ").replace(/\b(hd|sd|cam|eps?|episode)\b/g, " ").replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function slugify(value) {
-  let text = stripTags(value).toLowerCase();
-  try { text = text.normalize("NFKD").replace(/[\u0300-\u036f]/g, ""); } catch (_) {}
-  return text.replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").replace(/-+/g, "-");
 }
 
 function absoluteUrl(baseUrl, candidate) {
@@ -79,6 +82,18 @@ async function fetchPage(url, referer) {
   } catch (error) {
     return { ok: false, status: 0, text: "", finalUrl: url, error: clean(error && error.message ? error.message : error) };
   }
+}
+
+async function findReachableRoot() {
+  const failures = [];
+  for (const root of ROOTS) {
+    const page = await fetchPage(root);
+    if (page.ok && page.text) {
+      return { root: originOf(page.finalUrl) || root, page, failures };
+    }
+    failures.push(`${hostOf(root)}=${page.error ? short(page.error, 55) : `HTTP ${page.status || "ERR"}`}`);
+  }
+  return { root: "", page: null, failures };
 }
 
 async function resolveTmdbId(inputId, mediaType) {
@@ -139,7 +154,8 @@ function scoreCandidate(candidate, meta, mediaType, season) {
   const wantedWords = wanted.split(" ").filter(Boolean);
   if (score < 80 && wantedWords.length) {
     let hits = 0;
-    for (const word of wantedWords) if (word.length > 1 && text.split(" ").includes(word)) hits++;
+    const textWords = text.split(" ");
+    for (const word of wantedWords) if (word.length > 1 && textWords.includes(word)) hits++;
     score = Math.max(score, Math.round((hits / wantedWords.length) * 70));
   }
   if (mediaType === "tv") {
@@ -226,15 +242,15 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
   const meta = await tmdbInfo(tmdbId, type, season);
   if (!meta || !meta.title) return [diag("TMDB", `TMDB ${type} ${tmdbId} returned no title`)];
 
-  const home = await fetchPage(ROOT);
-  if (!home.ok || !home.text) {
-    const detail = home.error ? home.error : `HTTP ${home.status || "ERR"}`;
-    return [diag("FETCH BLOCKED", `root=${detail}`, ROOT)];
+  const rootProbe = await findReachableRoot();
+  if (!rootProbe.page) {
+    return [diag("FETCH BLOCKED", rootProbe.failures.join(" • ") || "all roots failed", ROOT)];
   }
-  const baseOrigin = originOf(home.finalUrl) || ROOT;
+  const home = rootProbe.page;
+  const baseOrigin = rootProbe.root;
   const found = await findTitlePage(baseOrigin, meta, type, season);
   const wanted = type === "movie" ? "movie" : `S${parseInt(season, 10) || 1}E${parseInt(episode, 10) || 1}`;
-  const rows = [diag("ROOT OK", `${hostOf(home.finalUrl)} • HTTP ${home.status}`, baseOrigin)];
+  const rows = [diag("ROOT OK", `${hostOf(home.finalUrl)} • HTTP ${home.status}${rootProbe.failures.length ? ` • priorFailures=${rootProbe.failures.length}` : ""}`, baseOrigin)];
 
   if (!found.best) {
     rows.push(diag("NO MATCH", `${meta.title} • TMDB ${tmdbId} • ${wanted} • source=${found.source} • candidates=${found.candidates.length}`, baseOrigin));
