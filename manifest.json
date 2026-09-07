@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.14",
+  "version": "2.1.15",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
@@ -51,8 +51,8 @@
     {
       "id": "limitless-tubi",
       "name": "Tubi",
-      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan/AniList identity first, then an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or sparse, with base TMDB/IMDb aliases as the final fallback; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives.",
-      "version": "1.1.7",
+      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan/AniList identity first, then an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or sparse, with base TMDB/IMDb aliases as the final fallback; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives. Production rows use clean numbered mirror labels, return higher qualities first, and collapse safe title misses to one No Source Found diagnostic while retaining compact DRM-only diagnostics.",
+      "version": "1.2.0",
       "author": "Limitless Nexus Tubi provider",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production.js",
