@@ -1,0 +1,6 @@
+{
+  "name": "nexus-scarlet-peach-providers",
+  "private": true,
+  "version": "0.1.0-test",
+  "scripts": { "test": "node --test" }
+}
