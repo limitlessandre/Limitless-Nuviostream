@@ -31,6 +31,18 @@ function normalize(value) {
     .trim();
 }
 
+function usableLatinAliases(values) {
+  const seen = new Set();
+  const out = [];
+  for (const value of values || []) {
+    const n = normalize(value);
+    if (!n || seen.has(n)) continue;
+    seen.add(n);
+    out.push(n);
+  }
+  return out;
+}
+
 async function fetchJson(url, options) {
   try {
     const response = await fetch(url, {
@@ -172,13 +184,14 @@ async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApi
     return { ...meta, aliases:meta.fallbackAliases.slice(), animeAliases:[], malId:null, anilistId:null, mappedEpisode:null, identitySource:"tmdb" };
   }
 
-  // MAL/Jikan stays first. If it fails OR returns a suspiciously sparse title set,
-  // ask AniList to supplement aliases instead of treating a single MAL label as a
-  // complete identity. This keeps anime-native matching preferred while avoiding
-  // cases such as Monster Farm, where the useful English alias is Monster Rancher.
+  // MAL/Jikan stays first. Count only aliases that survive the same ASCII/slug
+  // normalization used by WCO/Tubi. Native/Japanese-only variants are valuable
+  // metadata, but they cannot form provider search slugs by themselves. If MAL
+  // leaves fewer than two usable search aliases, ask AniList to supplement them.
   const mal = await malPath(meta, season, episode);
   let ani = { anilistId:null, malId:null, aliases:[] };
-  if (!mal.malId || uniq(mal.aliases || []).length < 3) ani = await anilistPath(meta);
+  const usableMalAliases = usableLatinAliases(mal.aliases || []);
+  if (!mal.malId || usableMalAliases.length < 2) ani = await anilistPath(meta);
 
   const animeAliases = uniq([].concat(mal.aliases || []).concat(ani.aliases || []));
   const aliases = uniq(animeAliases.concat(meta.fallbackAliases || [])).slice(0, 24);
