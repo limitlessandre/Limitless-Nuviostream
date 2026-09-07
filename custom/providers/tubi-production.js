@@ -1,14 +1,64 @@
 "use strict";
 
-// Tubi production provider v1.0.2
+// Tubi production provider v1.1.0
 // Builds on the validated anonymous-bearer probe flow. Successful matches return
 // only clear HLS resources. Results are reduced to the top two unique quality
 // levels with up to two distinct manifests per quality (four rows max), preferring
 // HLSV6 and H.264 when multiple variants share a resolution.
+// Anime titles use the shared MAL/Jikan -> AniList -> TMDB fallback identity layer;
+// non-anime titles keep the existing TMDB/IMDb-only matching path.
 // DRM-only titles remain non-playable and return a compact diagnostic row instead.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-nexus-probe-v5.js";
 let cached = null;
+
+function animeHelperSource() {
+  return `
+const __TUBI_IDENTITY_URL="https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anime-identity.js";
+let __tubiIdentityCache=null;
+async function __tubiLoadIdentity(){
+  if(__tubiIdentityCache&&typeof __tubiIdentityCache.resolveAnimeIdentity==="function")return __tubiIdentityCache;
+  try{
+    const r=await fetch(__TUBI_IDENTITY_URL,{skipSizeCheck:true});
+    if(!r||!r.ok)return null;
+    const s=String(await r.text()||"");
+    const m={exports:{}};
+    const f=new Function("module","exports","require",s+"\\n;return module.exports;");
+    const x=f(m,m.exports,function(name){throw new Error("Unsupported nested require: "+name);})||m.exports;
+    if(!x||typeof x.resolveAnimeIdentity!=="function")return null;
+    __tubiIdentityCache=x;return x;
+  }catch(_){return null;}
+}
+async function __tubiEnrichAnimeIdentity(info,inputId,type,season,episode){
+  if(!info)return info;
+  try{
+    const helper=await __tubiLoadIdentity();
+    if(!helper)return {...info,aliases:[info.title],isAnime:false};
+    const identity=await helper.resolveAnimeIdentity(inputId,type,season,episode,TMDB_API_KEY);
+    if(!identity||!identity.isAnime)return {...info,aliases:[info.title],isAnime:false};
+    const seen=new Set(),aliases=[];
+    for(const value of [].concat(identity.aliases||[]).concat([info.title])){
+      const text=clean(value),key=norm(text);if(!text||!key||seen.has(key))continue;seen.add(key);aliases.push(text);
+    }
+    return {...info,aliases:aliases.slice(0,16),isAnime:true,identitySource:identity.identitySource||"anime"};
+  }catch(_){return {...info,aliases:[info.title],isAnime:false};}
+}
+function __tubiAnimeScore(candidate,aliases){
+  const a=norm(candidate);if(!a)return 0;let best=0;
+  const aw=a.split(" ").filter(Boolean);
+  for(const alias of aliases||[]){
+    const b=norm(alias);if(!b)continue;
+    if(a===b){best=Math.max(best,100);continue;}
+    const bw=b.split(" ").filter(Boolean);
+    if(bw.length<2)continue;
+    const meaningful=bw.filter(w=>w.length>1);
+    const hits=meaningful.filter(w=>aw.includes(w)).length;
+    if(meaningful.length&&hits===meaningful.length&&aw.length<=bw.length+2)best=Math.max(best,85);
+  }
+  return best;
+}
+`;
+}
 
 async function loadPatched() {
   if (cached && typeof cached.getStreams === "function") return cached;
@@ -30,11 +80,20 @@ async function loadPatched() {
   const resourceOld = 'const cr=await request(contentUrl,{headers:sh}),rs=resourceSummary(cr.data);\n  rows.push(diag("API CONTENT",`${cr.status||"ERR"} • json=${cr.data?"yes":"no"} • id=${targetId} • resources=${rs.total}`,display));\n  rows.push(diag("RESOURCES",`clear=${rs.clear} • drm=${rs.drm} • types=${rs.types.join(",")||"none"}${rs.host?` • clearHost=${rs.host}`:""}`,display));\n  rows.push(diag("VERDICT",rs.clear>0?"current Tubi anonymous API exposes at least one clear HLS/DASH resource; controlled playback provider is feasible":(rs.drm>0?"title mapped successfully but only DRM resources were returned for this item":"auth/search/content work, but no playback resource was returned for this item"),display));\n  return rows.slice(0,18);';
   const resourceNew = 'const cr=await request(contentUrl,{headers:sh}),directRs=resourceSummary(cr.data),seasonRs=episodePayload?resourceSummary(episodePayload):{total:0,clear:0,drm:0,types:[],host:""};\n  const seasonStreams=episodePayload?clearStreamsFrom(episodePayload,display):[],directStreams=clearStreamsFrom(cr.data,display),streams=seasonStreams.length?seasonStreams:directStreams;\n  if(streams.length)return streams;\n  const drm=Math.max(seasonRs.drm||0,directRs.drm||0);\n  return [diag(drm>0?"DRM ONLY":"NO STREAM",drm>0?`Tubi matched this title, but only Widevine resources are available (${drm})`:`Tubi matched this title, but returned no clear HLS resource`,display)];';
 
-  if (!src.includes(providerOld) || !src.includes(helperMarker) || !src.includes(bestOld) || !src.includes(oldEpisodeBlock) || !src.includes(epAssignOld) || !src.includes(resourceOld)) return null;
+  const tmdbMarker = 'async function tmdbInfo(inputId,mediaType){';
+  const infoOld = 'const rows=[],type=String(mediaType||"tv").toLowerCase()==="movie"?"movie":"tv",info=await tmdbInfo(inputId,type);if(!info)return[diag("TMDB",`unable to resolve ${inputId}`)];';
+  const infoNew = 'const rows=[],type=String(mediaType||"tv").toLowerCase()==="movie"?"movie":"tv";let info=await tmdbInfo(inputId,type);if(!info)return[diag("TMDB",`unable to resolve ${inputId}`)];info=await __tubiEnrichAnimeIdentity(info,inputId,type,season,episode);';
+  const searchOld = 'const sh=apiHeaders(auth),searchUrl=`${SEARCH}/api/v3/search?${qs({search:info.title,include_channels:"true",include_linear:"true",is_kids_mode:"false"})}`;\n  const sr=await request(searchUrl,{headers:sh}),items=orderedSearch(sr.data).filter(x=>itemId(x)&&itemTitle(x)&&typeOkay(x,type));\n  const scored=items.map(x=>({raw:x,id:itemId(x),title:itemTitle(x),kind:itemType(x),year:itemYear(x),score:score(itemTitle(x),info.title)+(itemYear(x)&&info.year&&itemYear(x)===info.year?15:0)})).sort((a,b)=>b.score-a.score);\n  rows.push(diag("API SEARCH",`${sr.status||"ERR"} • json=${sr.data?"yes":"no"} • items=${items.length} • matched=${scored.length}`,display));';
+  const searchNew = 'const sh=apiHeaders(auth),searchTerms=info.isAnime?(info.aliases||[info.title]).slice(0,8):[info.title],items=[],seenItems=new Set();let lastStatus="ERR",hadJson=false;\n  for(const term of searchTerms){const searchUrl=`${SEARCH}/api/v3/search?${qs({search:term,include_channels:"true",include_linear:"true",is_kids_mode:"false"})}`;const sr=await request(searchUrl,{headers:sh});lastStatus=sr.status||lastStatus;hadJson=hadJson||!!sr.data;for(const x of orderedSearch(sr.data)){const id=itemId(x);if(!id||!itemTitle(x)||!typeOkay(x,type)||seenItems.has(id))continue;seenItems.add(id);items.push(x);}}\n  const scored=items.map(x=>({raw:x,id:itemId(x),title:itemTitle(x),kind:itemType(x),year:itemYear(x),score:(info.isAnime?__tubiAnimeScore(itemTitle(x),info.aliases||[info.title]):score(itemTitle(x),info.title))+(itemYear(x)&&info.year&&itemYear(x)===info.year?15:0)})).sort((a,b)=>b.score-a.score);\n  rows.push(diag("API SEARCH",`${lastStatus} • json=${hadJson?"yes":"no"} • items=${items.length} • matched=${scored.length}${info.isAnime?` • animeAliases=${searchTerms.length}`:""}`,display));';
+
+  if (!src.includes(providerOld) || !src.includes(helperMarker) || !src.includes(bestOld) || !src.includes(oldEpisodeBlock) || !src.includes(epAssignOld) || !src.includes(resourceOld) || !src.includes(tmdbMarker) || !src.includes(infoOld) || !src.includes(searchOld)) return null;
 
   src = src
     .replace(providerOld, providerNew)
     .replace(/Tubi feasibility probe/g, "Tubi diagnostic")
+    .replace(tmdbMarker, animeHelperSource() + "\n" + tmdbMarker)
+    .replace(infoOld, infoNew)
+    .replace(searchOld, searchNew)
     .replace(helperMarker, helperBlock)
     .replace(bestOld, bestNew)
     .replace(oldEpisodeBlock, newEpisodeBlock)
