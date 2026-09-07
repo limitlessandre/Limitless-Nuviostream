@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, enrich sparse results through AniList, then recover translated/AKA names from the already-confirmed TMDB id before falling back to the base TMDB/IMDb title set; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
@@ -51,11 +51,11 @@
     {
       "id": "limitless-tubi",
       "name": "Tubi",
-      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan-first identity aliases, enrich sparse results through AniList, then recover translated/AKA names from the already-confirmed TMDB id before base TMDB/IMDb fallback; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives. Keeps the top two video quality levels with up to two distinct manifests per quality and skips DRM-only titles.",
-      "version": "1.1.4",
+      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan-first identity aliases, enrich sparse results through AniList, then recover translated/AKA names from the already-confirmed TMDB id before base TMDB/IMDb fallback; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives. Temporary Nexus failure-only identity diagnostics expose the actual resolved MAL/AniList IDs and aliases when no real stream is returned.",
+      "version": "1.1.5",
       "author": "Limitless Nexus Tubi provider",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production-debug.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
