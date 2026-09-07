@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, then AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then TMDB aliases. Anime episode ownership also accepts strong multi-token MAL/AniList alias matches so WCO dub and sub pages may use different legitimate slugs without reopening Recent Releases/sidebar false positives; non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
-      "version": "2.6.2",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, and WCO now continues across strong anime series candidates until both available Dub and Sub branches are collected instead of returning after the first playable branch. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "version": "2.6.3",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v3.js",
