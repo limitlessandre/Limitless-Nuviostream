@@ -107,12 +107,28 @@ function titleScore(candidate, aliases) {
   for (const alias of aliases || []) {
     const b = normalize(alias);
     if (!b) continue;
-    if (a === b) best = Math.max(best, 100);
-    else {
-      const aw = a.split(" ").filter(Boolean), bw = b.split(" ").filter(Boolean);
-      const overlap = bw.filter(x => x.length > 1 && aw.includes(x)).length;
-      const needed = bw.filter(x => x.length > 1).length;
-      if (needed && overlap === needed && Math.min(aw.length, bw.length) / Math.max(aw.length, bw.length) >= 0.7) best = Math.max(best, 85);
+    if (a === b) {
+      best = Math.max(best, 100);
+      continue;
+    }
+
+    const aw = a.split(" ").filter(Boolean);
+    const bw = b.split(" ").filter(Boolean);
+    const meaningful = bw.filter(x => x.length > 1);
+    const overlap = meaningful.filter(x => aw.includes(x)).length;
+
+    // Anime databases often store a longer canonical/romaji title while TMDB has
+    // the shorter franchise title. Treat a full multi-word prefix/phrase match as
+    // strong rather than rejecting it solely because the canonical title is longer.
+    // Example: "Monster Farm" -> "Monster Farm: Enbanseki no Himitsu".
+    if (meaningful.length >= 2 && overlap === meaningful.length && (a.startsWith(b) || a.includes(b))) {
+      best = Math.max(best, 90);
+      continue;
+    }
+
+    const needed = meaningful.length;
+    if (needed && overlap === needed && Math.min(aw.length, bw.length) / Math.max(aw.length, bw.length) >= 0.7) {
+      best = Math.max(best, 85);
     }
   }
   return best;
@@ -140,7 +156,7 @@ async function malPath(meta, season, episode) {
       const total = score + yearBonus;
       if (!best || total > best.score) best = { item, aliases, score:total };
     }
-    if (best && best.score >= 110) break;
+    if (best && best.score >= 100) break;
   }
   if (!best || best.score < 85) return { malId:null, mappedEpisode:null, aliases:[] };
   return {
@@ -150,8 +166,34 @@ async function malPath(meta, season, episode) {
   };
 }
 
-async function anilistPath(meta) {
+function anilistAliases(media) {
+  const t = media && media.title || {};
+  return uniq([t.english, t.romaji, t.userPreferred, t.native].concat(media && media.synonyms || []));
+}
+
+async function anilistPath(meta, knownMalId) {
   if (!meta || !meta.fallbackAliases || !meta.fallbackAliases.length) return { anilistId:null, malId:null, aliases:[] };
+
+  // When MAL/Jikan already resolved an exact MAL id, use that id to enrich from
+  // AniList instead of re-searching by title. This is both safer and much better at
+  // recovering English aliases such as Monster Rancher from Monster Farm.
+  if (knownMalId) {
+    const byIdQuery = "query($idMal:Int){Media(idMal:$idMal,type:ANIME){id idMal seasonYear title{english romaji native userPreferred} synonyms}}";
+    const byId = await fetchJson("https://graphql.anilist.co", {
+      method: "POST",
+      headers: { "Content-Type":"application/json", "Accept":"application/json" },
+      body: JSON.stringify({ query:byIdQuery, variables:{ idMal:Number(knownMalId) } })
+    });
+    const media = byId && byId.data && byId.data.Media;
+    if (media) {
+      return {
+        anilistId: Number(media.id || 0) || null,
+        malId: Number(media.idMal || knownMalId) || Number(knownMalId),
+        aliases: anilistAliases(media)
+      };
+    }
+  }
+
   const query = "query($search:String){Media(search:$search,type:ANIME){id idMal seasonYear title{english romaji native userPreferred} synonyms}}";
   let best = null;
   for (const term of meta.fallbackAliases.slice(0, 4)) {
@@ -162,12 +204,11 @@ async function anilistPath(meta) {
     });
     const media = data && data.data && data.data.Media;
     if (!media) continue;
-    const t = media.title || {};
-    const candidateAliases = uniq([t.english, t.romaji, t.userPreferred, t.native].concat(media.synonyms || []));
+    const candidateAliases = anilistAliases(media);
     const score = Math.max(0, ...candidateAliases.map(x => titleScore(x, meta.fallbackAliases)));
     const yearBonus = meta.year && Number(media.seasonYear || 0) === Number(meta.year) ? 10 : 0;
     if (!best || score + yearBonus > best.score) best = { media, aliases:candidateAliases, score:score + yearBonus };
-    if (best && best.score >= 110) break;
+    if (best && best.score >= 100) break;
   }
   if (!best || best.score < 85) return { anilistId:null, malId:null, aliases:[] };
   return {
@@ -184,14 +225,12 @@ async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApi
     return { ...meta, aliases:meta.fallbackAliases.slice(), animeAliases:[], malId:null, anilistId:null, mappedEpisode:null, identitySource:"tmdb" };
   }
 
-  // MAL/Jikan stays first. Count only aliases that survive the same ASCII/slug
-  // normalization used by WCO/Tubi. Native/Japanese-only variants are valuable
-  // metadata, but they cannot form provider search slugs by themselves. If MAL
-  // leaves fewer than two usable search aliases, ask AniList to supplement them.
   const mal = await malPath(meta, season, episode);
   let ani = { anilistId:null, malId:null, aliases:[] };
   const usableMalAliases = usableLatinAliases(mal.aliases || []);
-  if (!mal.malId || usableMalAliases.length < 2) ani = await anilistPath(meta);
+  if (!mal.malId || usableMalAliases.length < 2) {
+    ani = await anilistPath(meta, mal.malId || null);
+  }
 
   const animeAliases = uniq([].concat(mal.aliases || []).concat(ani.aliases || []));
   const aliases = uniq(animeAliases.concat(meta.fallbackAliases || [])).slice(0, 24);
