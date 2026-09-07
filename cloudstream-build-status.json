@@ -5,12 +5,12 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 1,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 372,
-  "eligible_plugin_entries_before_dedupe": 64,
-  "unique_plugins": 62,
+  "raw_plugin_entries": 371,
+  "eligible_plugin_entries_before_dedupe": 65,
+  "unique_plugins": 63,
   "duplicate_groups": 2,
-  "language_filtered_entries": 279,
-  "unknown_language_metadata_entries": 25,
+  "language_filtered_entries": 277,
+  "unknown_language_metadata_entries": 23,
   "inactive_filtered_entries": 29,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 81,
+      "plugins": 82,
       "verified": false
     },
     {
@@ -98,7 +98,7 @@
       "name": "3rabi عربي",
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "status": "ok",
-      "plugins": 41,
+      "plugins": 39,
       "verified": false
     },
     {

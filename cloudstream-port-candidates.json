@@ -1,7 +1,7 @@
 {
   "native_provider_count": 3,
-  "cloudstream_provider_count": 62,
-  "no_obvious_native_overlap_count": 61,
+  "cloudstream_provider_count": 63,
+  "no_obvious_native_overlap_count": 62,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 1,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -646,6 +646,29 @@
       ]
     },
     {
+      "internalName": "Chikianimation",
+      "name": "Chikianimation",
+      "description": "English anime and donghua from chikianimation.com",
+      "language": "zh",
+      "tvTypes": [
+        "AnimeMovie",
+        "Anime"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Chikianimation.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.476,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Donghuastream",
       "name": "Donghuastream",
       "description": "Contains SeaTV (Chinese)",
@@ -828,9 +851,9 @@
       ]
     },
     {
-      "internalName": "FullMatchShows",
+      "internalName": "Replaymatch",
       "name": "FullMatchShows",
-      "description": null,
+      "description": "",
       "language": "en",
       "tvTypes": [
         "Movie",
@@ -838,11 +861,11 @@
         "live"
       ],
       "version": 2,
-      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/build/Replaymatch.cs3",
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Replaymatch.cs3",
       "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.308,
+        "score": 0.444,
         "native_matches": []
       },
       "priority": "low-priority",

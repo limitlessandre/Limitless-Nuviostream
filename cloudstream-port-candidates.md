@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **3**  
-Filtered CloudStream providers: **62**  
-No obvious native overlap: **61**  
+Filtered CloudStream providers: **63**  
+No obvious native overlap: **62**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **1**
 
@@ -38,6 +38,7 @@ Exact/alias overlap: **1**
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
+- **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
 - **OnePace** (`OnePace`) — en; Anime — One Pace
@@ -49,7 +50,7 @@ Exact/alias overlap: **1**
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
 - **DiviCast** (`DiviCast`) — en; Movie, TvSeries — Watch movies and TV series from DiviCast
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
-- **FullMatchShows** (`FullMatchShows`) — en; Movie, Others, live
+- **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **OnShort** (`OnShort`) — en; TvSeries — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
