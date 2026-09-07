@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.24",
+  "version": "2.1.25",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. 123MoviesIN remains as a catalog/guide placeholder after live probing found no distinct embedded player; active 123Movies development has moved to the separate 123MoviesFree architecture.",
   "scrapers": [
     {
@@ -95,8 +95,8 @@
     {
       "id": "limitless-123moviesfree",
       "name": "123MoviesFree",
-      "description": "Active experimental provider for the separate 123moviesfree.net architecture. Stage 1 resolves Nuvio metadata through TMDB, follows the apex redirect to the current ww# frontend, tries the site's search path with a TMDB release-year fallback, ranks /movie/ or /season/ candidates, and scans the matched title page for real iframe, server-data, AJAX, and direct-media player surfaces while excluding lazy-loaded images.",
-      "version": "0.1.0",
+      "description": "Active experimental provider for the separate 123moviesfree.net architecture. Stage 1.1 probes the current ww8 frontend directly before the apex redirect, then falls back through known 123moviesfree hosts. It resolves Nuvio metadata through TMDB, searches by title with a TMDB release-year fallback, ranks /movie/ or /season/ candidates, and scans matched pages for real iframe, server-data, AJAX, and direct-media player surfaces while excluding lazy-loaded images.",
+      "version": "0.1.1",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/123moviesfree-placeholder.js",
