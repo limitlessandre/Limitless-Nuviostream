@@ -3,6 +3,11 @@
 // WCO production adapter. Anime titles use the shared MAL/AniList-first identity
 // resolver, then fall back to WCO core's existing TMDB aliases when anime metadata
 // is unavailable. Non-anime titles never call the anime databases.
+//
+// Anime episode ownership is alias-aware: WCO sometimes uses a dubbed/English slug
+// for the series page and a romaji/native-derived slug for the subbed episode URL.
+// We only allow that alternate ownership path for anime and only when a strong
+// multi-token alias match is present, preserving sidebar/recent-release protection.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js";
 let cached = null;
@@ -52,12 +57,76 @@ function augmentAnimeIdentity(source) {
   return out;
 }
 
+function augmentAnimeEpisodeOwnership(source) {
+  let out = String(source || "");
+  const oldOwnership = `function episodeBelongsToSeries(href, pageUrl) {
+  const series = seriesSlugParts(pageUrl);
+  if (!series.slug) return true;
+  const path = String(href || "").replace(/^https?:\\/\\/[^/]+/i, "").toLowerCase();
+  if (path.includes(\`/\${series.slug}-episode-\`) || path.includes(\`/\${series.slug}-season-\`)) return true;
+  if (!series.tokens.length) return true;
+  const actual = new Set(path.split(/[^a-z0-9]+/).filter(Boolean));
+  let hits = 0;
+  for (const token of series.tokens) if (actual.has(token)) hits += 1;
+  if (series.tokens.length === 1) return false;
+  return hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6));
+}`;
+  const newOwnership = `function episodeBelongsToSeries(href, pageUrl, allowedTitles) {
+  const series = seriesSlugParts(pageUrl);
+  if (!series.slug) return true;
+  const path = String(href || "").replace(/^https?:\\/\\/[^/]+/i, "").toLowerCase();
+  if (path.includes(\`/\${series.slug}-episode-\`) || path.includes(\`/\${series.slug}-season-\`)) return true;
+  if (!series.tokens.length) return true;
+  const actual = new Set(path.split(/[^a-z0-9]+/).filter(Boolean));
+  let hits = 0;
+  for (const token of series.tokens) if (actual.has(token)) hits += 1;
+  if (series.tokens.length > 1 && hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6))) return true;
+
+  // Anime-only alternate slug allowance. WCO can use a dubbed/English slug for
+  // the series page while subbed episode URLs use a romaji-derived slug. Require
+  // at least two meaningful alias tokens and strong coverage, so unrelated Recent
+  // Releases/sidebar links cannot qualify from a single generic word.
+  for (const title of Array.isArray(allowedTitles) ? allowedTitles : []) {
+    const tokens = normalize(title).split(" ").filter(token => token.length >= 3 && !/^\\d+$/.test(token));
+    if (tokens.length < 2) continue;
+    const unique = [...new Set(tokens)];
+    let aliasHits = 0;
+    for (const token of unique) if (actual.has(token)) aliasHits += 1;
+    if (aliasHits >= Math.max(2, Math.ceil(unique.length * 0.7))) return true;
+  }
+  return false;
+}`;
+  if (!out.includes(oldOwnership)) return out;
+  out = out.replace(oldOwnership, newOwnership);
+  out = out.replace(
+    "function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant) {",
+    "function episodeLinks(html, pageUrl, wantedSeason, wantedEpisode, pageSeason, forcedVariant, allowedTitles) {"
+  );
+  out = out.replace(
+    "if (!episodeBelongsToSeries(href, pageUrl)) continue;",
+    "if (!episodeBelongsToSeries(href, pageUrl, allowedTitles)) continue;"
+  );
+  out = out.replace(
+    "episodeLinks(filtered.text, filteredUrl, wantedSeason, wantedEpisode, series.season, variant)",
+    "episodeLinks(filtered.text, filteredUrl, wantedSeason, wantedEpisode, series.season, variant, info.isAnime ? info.titles : [])"
+  );
+  out = out.replace(
+    "episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season, variant)",
+    "episodeLinks(series.page.text, series.pageUrl, wantedSeason, wantedEpisode, series.season, variant, info.isAnime ? info.titles : [])"
+  );
+  out = out.replace(
+    "if (!episodeBelongsToSeries(epPage.url || entry.href, series.pageUrl)) continue;",
+    "if (!episodeBelongsToSeries(epPage.url || entry.href, series.pageUrl, info.isAnime ? info.titles : [])) continue;"
+  );
+  return out;
+}
+
 function patchProduction(source) {
   let out = String(source || "");
   const marker = 'if (key === "core") source = augmentCoreMirrors(source);';
   if (!out.includes(marker)) return "";
-  out = out.replace('"use strict";', '"use strict";\n\n' + augmentAnimeIdentity.toString() + '\n' + coreAnimeAddonSource.toString() + '\n');
-  out = out.replace(marker, 'if (key === "core") source = augmentCoreMirrors(augmentAnimeIdentity(source));');
+  out = out.replace('"use strict";', '"use strict";\n\n' + augmentAnimeIdentity.toString() + '\n' + coreAnimeAddonSource.toString() + '\n' + augmentAnimeEpisodeOwnership.toString() + '\n');
+  out = out.replace(marker, 'if (key === "core") source = augmentCoreMirrors(augmentAnimeEpisodeOwnership(augmentAnimeIdentity(source)));');
   return out;
 }
 
