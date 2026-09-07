@@ -1,9 +1,10 @@
 "use strict";
 
-// 123MoviesIN Nexus probe v0.1.0
-// Stage 1: exploit the site's TMDB-native /film/<tmdb>/ and /show/<tmdb>/ routes,
-// verify Nuvio can reach the current domain family, and expose compact diagnostics
-// for the title page/player surface before we add playback extraction.
+// 123MoviesIN Nexus probe v0.1.1
+// Stage 1.1: exploit the site's TMDB-native /film/<tmdb>/ and /show/<tmdb>/ routes,
+// verify Nuvio can reach the current domain family, expose diagnostic details directly
+// in the visible row label, and follow the first discovered player candidate one level
+// deeper before playback extraction is enabled.
 
 const PROVIDER_NAME = "123MoviesIN";
 const TMDB_API_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
@@ -24,6 +25,12 @@ function clean(value) {
   return String(value || "").trim();
 }
 
+function short(value, limit) {
+  const text = clean(value).replace(/\s+/g, " ");
+  const max = parseInt(limit, 10) || 180;
+  return text.length > max ? text.slice(0, max - 1) + "…" : text;
+}
+
 function mediaTypeOf(mediaType) {
   return String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
 }
@@ -38,9 +45,11 @@ async function fetchJson(url) {
   }
 }
 
-async function fetchPage(url) {
+async function fetchPage(url, referer) {
   try {
-    const response = await fetch(url, { headers: HEADERS, redirect: "follow", skipSizeCheck: true });
+    const headers = { ...HEADERS };
+    if (referer) headers.Referer = referer;
+    const response = await fetch(url, { headers, redirect: "follow", skipSizeCheck: true });
     const status = response ? response.status : 0;
     const ok = Boolean(response && response.ok);
     const text = response ? clean(await response.text()) : "";
@@ -101,6 +110,28 @@ function hostOf(url) {
   return match ? match[1] : "unknown-host";
 }
 
+function originOf(url) {
+  const match = clean(url).match(/^(https?:\/\/[^/]+)/i);
+  return match ? match[1] : "";
+}
+
+function absoluteUrl(baseUrl, candidate) {
+  const raw = clean(candidate).replace(/&amp;/g, "&");
+  if (!raw) return "";
+  if (/^https?:\/\//i.test(raw)) return raw;
+  const base = clean(baseUrl);
+  const origin = originOf(base);
+  if (/^\/\//.test(raw)) {
+    const scheme = /^https:/i.test(base) ? "https:" : "http:";
+    return scheme + raw;
+  }
+  if (raw.charAt(0) === "/") return origin ? origin + raw : raw;
+  const withoutHash = base.split("#")[0].split("?")[0];
+  const slash = withoutHash.lastIndexOf("/");
+  const directory = slash >= 0 ? withoutHash.slice(0, slash + 1) : withoutHash + "/";
+  return directory + raw;
+}
+
 function pathFor(meta, mediaType) {
   const slug = slugify(meta && meta.title) || String(meta && meta.id || "title");
   return mediaType === "movie"
@@ -115,7 +146,7 @@ function collectMatches(html, regex, groupIndex) {
   while ((match = regex.exec(html)) !== null) {
     const value = clean(match[groupIndex || 1]);
     if (value && !out.includes(value)) out.push(value);
-    if (out.length >= 12) break;
+    if (out.length >= 16) break;
   }
   return out;
 }
@@ -129,10 +160,16 @@ function analyzePage(html, expectedTitle, mediaType, season, episode) {
   const seasonLinks = collectMatches(text, /href=["']([^"']*(?:season|s\d+)[^"']*)["']/gi, 1);
   const iframeUrls = collectMatches(text, /<iframe[^>]+src=["']([^"']+)["']/gi, 1);
   const dataSrcUrls = collectMatches(text, /(?:data-src|data-url|data-link)=["']([^"']+)["']/gi, 1);
+  const sourceUrls = collectMatches(text, /<source[^>]+src=["']([^"']+)["']/gi, 1);
   const mediaUrls = collectMatches(text, /["'](https?:\/\/[^"']+\.(?:m3u8|mp4)(?:\?[^"']*)?)["']/gi, 1);
+  const jsMediaUrls = collectMatches(text, /(?:file|src|url)\s*[:=]\s*["'](https?:\/\/[^"']+(?:m3u8|mp4)[^"']*)["']/gi, 1);
   const playerCandidates = [];
-  for (const value of iframeUrls.concat(dataSrcUrls)) {
+  for (const value of iframeUrls.concat(dataSrcUrls).concat(sourceUrls)) {
     if (!playerCandidates.includes(value)) playerCandidates.push(value);
+  }
+  const directMedia = [];
+  for (const value of mediaUrls.concat(jsMediaUrls)) {
+    if (!directMedia.includes(value)) directMedia.push(value);
   }
 
   return {
@@ -140,16 +177,17 @@ function analyzePage(html, expectedTitle, mediaType, season, episode) {
     streamMarker,
     seasonLinks,
     playerCandidates,
-    mediaUrls,
+    mediaUrls: directMedia,
     requested: mediaType === "movie" ? "movie" : `S${parseInt(season, 10) || 1}E${parseInt(episode, 10) || 1}`
   };
 }
 
 function diag(label, detail, displayTitle, origin) {
   const base = clean(origin) || ORIGINS[0];
+  const visible = short(detail, 190);
   return {
-    name: `${PROVIDER_NAME} • DIAG ${label}`,
-    title: clean(detail) || displayTitle || `${PROVIDER_NAME} diagnostic`,
+    name: `${PROVIDER_NAME} • DIAG ${label}${visible ? ` • ${visible}` : ""}`,
+    title: displayTitle || clean(detail) || `${PROVIDER_NAME} diagnostic`,
     url: `${base.replace(/\/$/, "")}/favicon.ico`,
     quality: "DIAG",
     language: "Unavailable",
@@ -179,11 +217,10 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     }
 
     const analysis = analyzePage(page.text, meta.title, type, season, episode);
-    const finalOriginMatch = clean(page.finalUrl).match(/^(https?:\/\/[^/]+)/i);
-    const finalOrigin = finalOriginMatch ? finalOriginMatch[1] : origin;
+    const finalOrigin = originOf(page.finalUrl) || origin;
 
     const routeDetail = `${meta.title} • TMDB ${tmdbId} • ${analysis.requested} • ${hostOf(page.finalUrl)} • HTTP ${page.status}`;
-    const playerDetail = `title=${analysis.titleMatch ? "yes" : "no"} • streamMarker=${analysis.streamMarker ? "yes" : "no"} • playerCandidates=${analysis.playerCandidates.length} • directMedia=${analysis.mediaUrls.length}${type === "tv" ? ` • seasonLinks=${analysis.seasonLinks.length}` : ""}`;
+    const playerDetail = `title=${analysis.titleMatch ? "yes" : "no"} • stream=${analysis.streamMarker ? "yes" : "no"} • players=${analysis.playerCandidates.length} • direct=${analysis.mediaUrls.length}${type === "tv" ? ` • seasons=${analysis.seasonLinks.length}` : ""}`;
 
     const rows = [
       diag("ROUTE OK", routeDetail, meta.title, finalOrigin),
@@ -191,7 +228,32 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     ];
 
     if (analysis.playerCandidates.length) {
-      rows.push(diag("PLAYER HOST", hostOf(analysis.playerCandidates[0]), meta.title, finalOrigin));
+      const playerUrl = absoluteUrl(page.finalUrl, analysis.playerCandidates[0]);
+      rows.push(diag("PLAYER HOST", `${hostOf(playerUrl)} • ${short(playerUrl, 120)}`, meta.title, finalOrigin));
+
+      if (playerUrl) {
+        const playerPage = await fetchPage(playerUrl, page.finalUrl);
+        if (playerPage.ok && playerPage.text) {
+          const playerAnalysis = analyzePage(playerPage.text, meta.title, type, season, episode);
+          rows.push(diag(
+            "PLAYER FETCH",
+            `${hostOf(playerPage.finalUrl)} • HTTP ${playerPage.status} • nested=${playerAnalysis.playerCandidates.length} • direct=${playerAnalysis.mediaUrls.length} • stream=${playerAnalysis.streamMarker ? "yes" : "no"}`,
+            meta.title,
+            originOf(playerPage.finalUrl) || finalOrigin
+          ));
+          if (playerAnalysis.mediaUrls.length) {
+            rows.push(diag("MEDIA HOST", hostOf(playerAnalysis.mediaUrls[0]), meta.title, originOf(playerPage.finalUrl) || finalOrigin));
+          } else if (playerAnalysis.playerCandidates.length) {
+            const nestedUrl = absoluteUrl(playerPage.finalUrl, playerAnalysis.playerCandidates[0]);
+            rows.push(diag("NESTED HOST", `${hostOf(nestedUrl)} • ${short(nestedUrl, 120)}`, meta.title, originOf(playerPage.finalUrl) || finalOrigin));
+          }
+        } else {
+          const playerFailure = playerPage.error
+            ? `${hostOf(playerUrl)} • ${playerPage.error}`
+            : `${hostOf(playerUrl)} • HTTP ${playerPage.status || "ERR"}`;
+          rows.push(diag("PLAYER BLOCKED", playerFailure, meta.title, finalOrigin));
+        }
+      }
     }
     return rows;
   }
