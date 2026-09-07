@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.29",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. KissKH Test is an active drama-provider probe using current 2026 KissKH API behavior with strict title identity and staged diagnostics.",
+  "version": "2.1.30",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is currently focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -35,12 +35,12 @@
     },
     {
       "id": "asiaflix-nexus",
-      "name": "AsiaFlix",
-      "description": "Experimental Asian drama/show provider using AsiaFlix's current API with strict metadata matching and safe season handling.",
-      "version": "0.1.1",
-      "author": "Limitless Nexus port based on current Yuzono/Keiyoushi AsiaFlix and CSX provider behavior",
+      "name": "AsiaFlix Test",
+      "description": "Experimental AsiaFlix tokusatsu/drama probe. Keeps the existing playback implementation intact while exposing TMDB identity, API search, title match, episode/host mapping, and final stream diagnostics for refinement.",
+      "version": "0.2.0",
+      "author": "Limitless Nexus port based on current AsiaFlix API behavior",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-production-v2.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
@@ -80,7 +80,7 @@
     {
       "id": "limitless-kisskh-test",
       "name": "KissKH Test",
-      "description": "Experimental KissKH provider based on the current Sep 2026 API/kkey flow. v0.1.2 removes the non-API kisskh.at catalog frontend from probing and mirrors Yuzono's maintained search request shape with type=0. Discovery remains punctuation-tolerant, final acceptance remains exact, and diagnostics show per-query result counts/samples.",
+      "description": "Experimental KissKH provider using the current Sep 2026 API/kkey flow, strict title identity, punctuation-tolerant discovery, and staged diagnostics. Ex-Aid and Build have confirmed the search, episode, kkey, and playback path.",
       "version": "0.1.2",
       "author": "Limitless Nexus; current API references from debakarr/kisskh-dl and Yuzono anime-extensions",
       "supportedTypes": ["movie", "tv"],
@@ -91,6 +91,21 @@
       "formats": ["mp4", "m3u8"],
       "logo": "https://kisskh.is/favicon.ico",
       "contentLanguage": ["ja", "ko", "zh", "th", "en"]
+    },
+    {
+      "id": "limitless-1shows-test",
+      "name": "1Shows Test",
+      "description": "Experimental 1Shows-family playback probe using the current Aug/Sep 2026 VidZee TMDB stream API. Probes named servers directly, preserves required player Referer/Origin headers, expands HLS qualities when possible, and exposes per-server diagnostics.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus; current VidZee API behavior referenced from neilbauman21-hub/free-moveis-api",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.1shows.org/favicon.ico",
+      "contentLanguage": ["en", "ja", "ko", "zh", "hi"]
     }
   ]
 }
