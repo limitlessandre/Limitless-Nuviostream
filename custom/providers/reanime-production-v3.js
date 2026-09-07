@@ -1,7 +1,7 @@
 "use strict";
 
 // Re:ANIME presentation wrapper for Nuvio's alphabetical stream-label sorting.
-// Keeps the validated provider untouched and only normalizes user-facing quality labels.
+// Keeps the validated provider untouched and only normalizes user-facing quality/audio labels.
 const PROVIDER_NAME = "Re:ANIME";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient-v2.js";
 let cached = null;
@@ -24,10 +24,6 @@ async function loadBase() {
   }
 }
 
-function escapeRegExp(value) {
-  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function qualityNumber(row) {
   const text = `${row && row.quality || ""} ${row && row.name || ""}`;
   if (/\b8k\b/i.test(text)) return 4320;
@@ -48,6 +44,15 @@ function qualityLabel(height) {
   return `SD-Very Low ${height}p`;
 }
 
+function audioLabel(row) {
+  const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
+  if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
+  if (/dub\s*\+\s*subs?|dub\+subs?|dubbed[^•]*subs?|english\s*dub[^•]*subs?/.test(text)) return "[DUB+SUB]";
+  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return "[DUB]";
+  if (/hard\s*subs?|soft\s*subs?|japanese[^•]*subs?|\bsubbed\b|\bsubs?\b/.test(text)) return "[SUB]";
+  return "";
+}
+
 function normalizeRow(row) {
   if (!row || typeof row !== "object") return row;
   const height = qualityNumber(row);
@@ -56,20 +61,10 @@ function normalizeRow(row) {
   if (!label && /^(auto|unknown)$/i.test(rawQuality) && row.url) label = "Unknown Auto";
   if (!label) return row;
 
-  let rest = String(row.name || "").trim();
-  rest = rest.replace(new RegExp(`^${escapeRegExp(PROVIDER_NAME)}(?:\\s*•)?\\s*`, "i"), "");
-  if (height) {
-    rest = rest.replace(new RegExp(`\\b${height}p\\b`, "i"), "");
-  }
-  rest = rest
-    .replace(/^(?:2x4K 8K|4K|Enhanced QHD|QHD|FHD|HD(?:-Low)?|SD(?:-Low|-Very Low)?|Unknown(?: Auto)?)\s*(?:•\s*)?/i, "")
-    .replace(/\s*•\s*•\s*/g, " • ")
-    .replace(/^\s*•\s*|\s*•\s*$/g, "")
-    .trim();
-
+  const audio = audioLabel(row);
   return {
     ...row,
-    name: `${PROVIDER_NAME} • ${label}${rest ? ` • ${rest}` : ""}`
+    name: `${PROVIDER_NAME} • ${label}${audio ? ` • ${audio}` : ""}`
   };
 }
 
