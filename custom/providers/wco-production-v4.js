@@ -44,11 +44,11 @@ function qualityLabel(height) {
   return `SD-Very Low ${height}p`;
 }
 
-function audioLabel(row) {
+function audioLabel(row, isAnime) {
   const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
   if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
   if (/dub\s*\+\s*subs?|dub\+subs?|dubbed[^•]*subs?|english\s*dub[^•]*subs?/.test(text)) return "[DUB+SUB]";
-  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return "[DUB]";
+  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return isAnime ? "[DUB]" : "";
   if (/hard\s*subs?|soft\s*subs?|japanese[^•]*subs?|\bsubbed\b|\bsubs?\b/.test(text)) return "[SUB]";
   return "";
 }
@@ -59,7 +59,7 @@ function mirrorLabel(row) {
   return match ? `Mirror ${match[1]}` : "";
 }
 
-function normalizeRow(row) {
+function normalizeRow(row, isAnime) {
   if (!row || typeof row !== "object") return row;
   const height = qualityNumber(row);
   const rawQuality = String(row.quality || "").trim();
@@ -67,7 +67,7 @@ function normalizeRow(row) {
   if (!label && /^(auto|unknown)$/i.test(rawQuality) && row.url) label = "Unknown Auto";
   if (!label) return row;
 
-  const audio = audioLabel(row);
+  const audio = audioLabel(row, isAnime);
   const mirror = mirrorLabel(row);
   return {
     ...row,
@@ -80,7 +80,8 @@ async function getStreams(inputId, mediaType, season, episode) {
   if (!base) return [];
   try {
     const rows = await base.getStreams(inputId, mediaType, season, episode);
-    return Array.isArray(rows) ? rows.map(normalizeRow) : [];
+    const isAnime = String(mediaType || "").toLowerCase() === "anime";
+    return Array.isArray(rows) ? rows.map(row => normalizeRow(row, isAnime)) : [];
   } catch (_) {
     return [];
   }
