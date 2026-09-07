@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.28",
+  "version": "2.1.29",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. KissKH Test is an active drama-provider probe using current 2026 KissKH API behavior with strict title identity and staged diagnostics.",
   "scrapers": [
     {
@@ -80,8 +80,8 @@
     {
       "id": "limitless-kisskh-test",
       "name": "KissKH Test",
-      "description": "Experimental KissKH provider based on the current Sep 2026 API/kkey flow. v0.1.1 adds the currently indexed kisskh.at catalog origin plus punctuation-tolerant query discovery while keeping strict normalized title acceptance. Diagnostics now include sample catalog titles when a reachable domain still cannot produce an exact match.",
-      "version": "0.1.1",
+      "description": "Experimental KissKH provider based on the current Sep 2026 API/kkey flow. v0.1.2 removes the non-API kisskh.at catalog frontend from probing and mirrors Yuzono's maintained search request shape with type=0. Discovery remains punctuation-tolerant, final acceptance remains exact, and diagnostics show per-query result counts/samples.",
+      "version": "0.1.2",
       "author": "Limitless Nexus; current API references from debakarr/kisskh-dl and Yuzono anime-extensions",
       "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus-v2.js",
@@ -89,7 +89,7 @@
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
-      "logo": "https://kisskh.at/favicon.ico",
+      "logo": "https://kisskh.is/favicon.ico",
       "contentLanguage": ["ja", "ko", "zh", "th", "en"]
     }
   ]
