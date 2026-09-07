@@ -1,6 +1,6 @@
 {
   "name": "nexus-scarlet-peach-catalog",
   "private": true,
-  "version": "0.1.0-test",
+  "version": "0.1.0",
   "scripts": { "start": "node src/server.js", "build:snapshot": "node scripts/build-snapshot.js", "test": "node --test" }
 }
