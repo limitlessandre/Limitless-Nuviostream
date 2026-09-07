@@ -1,14 +1,21 @@
 # Limitless Nexus: Scarlet Peach — Catalog
 
-**Branch: `test/scarlet-peach`. This is the only branch for Scarlet Peach testing. Keep future changes on this branch unless the user explicitly directs otherwise. Do not create custom, alternate, or per-user install links.**
+**Branch: `scarlet-peach-catalog`. Keep Scarlet Peach catalog changes on this branch unless the user explicitly directs otherwise. Do not create custom, alternate, or per-user install links.**
 
 ## Reinstall manifest
 
-Run `npm start`, then copy this single test manifest URL into Nuvio:
+Scarlet Peach is a live addon server, so GitHub alone is not the install endpoint. Start the catalog server with:
 
-`http://127.0.0.1:7001/manifest.json`
+`npm start`
 
-For a hosted test deployment, use its one canonical `/manifest.json` URL only; record the real URL here after deployment. No hosted target or repository remote was supplied, so none is invented in this repository.
+Then install the manifest that points to the running server:
+
+- Nuvio on the same PC: `http://127.0.0.1:7001/manifest.json`
+- Nuvio on another device on the same network: `http://<PC-LAN-IP>:7001/manifest.json`
+
+For TV, phone, or other-device testing, use the PC's current LAN IPv4 address in place of `<PC-LAN-IP>`. Keep port `7001` unless the server configuration is intentionally changed.
+
+A raw GitHub `manifest.json` URL is not a valid replacement because Nuvio also needs the live `/catalog/...` and `/meta/...` routes from this server. If Scarlet Peach is later deployed to an approved host, record exactly one canonical hosted `/manifest.json` URL here and use that for reinstalls.
 
 ## MVP scope
 
@@ -20,8 +27,8 @@ For a hosted test deployment, use its one canonical `/manifest.json` URL only; r
 
 ## Handoff / next session
 
-Repository: `nexus-scarlet-peach-catalog`  
-Branch: `test/scarlet-peach`  
+Repository: `limitlessandre/Limitless-Nuviostream`  
+Branch: `scarlet-peach-catalog`  
 Current status: catalog/meta/search MVP runnable locally.  
-Known limitation: source importers and hosted deployment are intentionally not configured; provide the approved sources and host before enabling real ingestion.  
+Known limitation: source importers and hosted deployment are intentionally not configured; provide approved sources and a host before enabling real ingestion or a permanent remote reinstall URL.  
 Provider roadmap: HentaiTV, HentaiMama, MuchoHentai, HStream, HentaiHaven.
