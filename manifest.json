@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.31",
+  "version": "2.1.32",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "Experimental AsiaFlix tokusatsu/drama probe v0.2.1. Uses direct title slugs before search fallback and resolves episode hosts inline to avoid duplicate provider work/timeouts while exposing match, episode, and stream diagnostics.",
-      "version": "0.2.1",
-      "author": "Limitless Nexus port based on current AsiaFlix API behavior",
+      "description": "Experimental AsiaFlix tokusatsu/drama probe v0.2.2. Uses bounded requests, direct-slug matching, episode host diagnostics, and only two time-limited API resolver probes so slow host extractors cannot consume the Nuvio provider window.",
+      "version": "0.2.2",
+      "author": "Limitless Nexus port based on current AsiaFlix API behavior and current Yuzono AsiaFlix implementation",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe-v2.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
