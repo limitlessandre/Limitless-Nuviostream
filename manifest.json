@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.30",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is currently focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
+  "version": "2.1.31",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -36,11 +36,11 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "Experimental AsiaFlix tokusatsu/drama probe. Keeps the existing playback implementation intact while exposing TMDB identity, API search, title match, episode/host mapping, and final stream diagnostics for refinement.",
-      "version": "0.2.0",
+      "description": "Experimental AsiaFlix tokusatsu/drama probe v0.2.1. Uses direct title slugs before search fallback and resolves episode hosts inline to avoid duplicate provider work/timeouts while exposing match, episode, and stream diagnostics.",
+      "version": "0.2.1",
       "author": "Limitless Nexus port based on current AsiaFlix API behavior",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
@@ -95,11 +95,11 @@
     {
       "id": "limitless-1shows-test",
       "name": "1Shows Test",
-      "description": "Experimental 1Shows-family playback probe using the current Aug/Sep 2026 VidZee TMDB stream API. Probes named servers directly, preserves required player Referer/Origin headers, expands HLS qualities when possible, and exposes per-server diagnostics.",
-      "version": "0.1.0",
-      "author": "Limitless Nexus; current VidZee API behavior referenced from neilbauman21-hub/free-moveis-api",
+      "description": "Experimental 1Shows probe v0.1.1 using the current encrypted VidZee e=1 payload flow with RC4-drop2048, plus the live 1Shows season API and dynamic hoster discovery diagnostics.",
+      "version": "0.1.1",
+      "author": "Limitless Nexus; current 1Shows behavior referenced from the maintained Aniyomi 1Shows extension",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
