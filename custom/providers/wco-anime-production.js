@@ -12,6 +12,10 @@
 // Anime variant collection also spans multiple strong WCO series candidates. Some
 // titles expose Dub on one WCO series page and Sub on another, so returning after the
 // first playable candidate can silently lose one audio branch.
+//
+// Trusted anime aliases are also tried directly as /anime/<slug>/ candidates on the
+// primary WCO origin. This covers titles such as Monster Farm -> Monster Rancher when
+// WCO's search endpoint does not surface the otherwise valid series page.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js";
 let cached = null;
@@ -44,6 +48,21 @@ async function __wcoEnrichAnimeIdentity(info,inputId,type,season,episode){
     if(!aliases.length)return info;
     return {...info,title:identity.title||info.title,titles:aliases,isAnime:true,malId:identity.malId||null,anilistId:identity.anilistId||null};
   }catch(_){return info;}
+}
+function __wcoDirectAnimeCandidates(info,existing){
+  const prior=Array.isArray(existing)?existing:[];
+  if(!info||!info.isAnime||!Array.isArray(info.titles))return prior;
+  const direct=[],seen=new Set(prior.map(x=>String(x&&x.href||"")));
+  const origin=ORIGINS&&ORIGINS.length?ORIGINS[0]:"https://www.wcostream.tv";
+  for(const title of info.titles.slice(0,8)){
+    const slug=String(normalize(title)||"").replace(/\\s+/g,"-").replace(/^-+|-+$/g,"");
+    if(!slug||slug.length<3)continue;
+    const href=origin+"/anime/"+slug+"/";
+    if(seen.has(href))continue;
+    seen.add(href);
+    direct.push({href,title:String(title||""),variant:"Original",score:130});
+  }
+  return direct.concat(prior).slice(0,12);
 }
 `;
 }
@@ -86,10 +105,6 @@ function augmentAnimeEpisodeOwnership(source) {
   for (const token of series.tokens) if (actual.has(token)) hits += 1;
   if (series.tokens.length > 1 && hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6))) return true;
 
-  // Anime-only alternate slug allowance. WCO can use a dubbed/English slug for
-  // the series page while subbed episode URLs use a romaji-derived slug. Require
-  // at least two meaningful alias tokens and strong coverage, so unrelated Recent
-  // Releases/sidebar links cannot qualify from a single generic word.
   for (const title of Array.isArray(allowedTitles) ? allowedTitles : []) {
     const tokens = normalize(title).split(" ").filter(token => token.length >= 3 && !/^\\d+$/.test(token));
     if (tokens.length < 2) continue;
@@ -148,10 +163,10 @@ function augmentAnimeVariantCollection(source) {
   const newTv = `async function tvStreams(info, season, episode) {
   const wantedSeason = Number(season || 1);
   const wantedEpisode = Number(episode || 1);
-  const candidates = await searchWco(info, wantedSeason);
+  let candidates = await searchWco(info, wantedSeason);
+  if (info.isAnime) candidates = __wcoDirectAnimeCandidates(info, candidates);
   const displayTitle = \`${'${info.title}'} S${'${String(wantedSeason).padStart(2, "0")}'}E${'${String(wantedEpisode).padStart(2, "0")}'}\`;
 
-  // Preserve the original first-playable-candidate behavior for non-anime.
   if (!info.isAnime) {
     for (const candidate of candidates.slice(0, 6)) {
       const series = await candidatePage(candidate);
@@ -165,13 +180,10 @@ function augmentAnimeVariantCollection(source) {
     return [];
   }
 
-  // Anime can legitimately split Dub and Sub across separate WCO series pages.
-  // Keep scanning strong candidates until both branches are found, rather than
-  // returning as soon as the first candidate yields one playable variant.
   const collected = [];
   let haveDub = false;
   let haveSub = false;
-  for (const candidate of candidates.slice(0, 6)) {
+  for (const candidate of candidates.slice(0, 8)) {
     const series = await candidatePage(candidate);
     if (!series) continue;
     if (series.season != null && series.season !== wantedSeason) continue;
