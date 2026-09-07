@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-07T23:01:36.047Z",
+  "titles": [
+    {
+      "id": "sp:demo-001",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "adult-site-confirmed",
+      "title": "Scarlet Peach Demo Title",
+      "titles": {
+        "english": "Scarlet Peach Demo Title",
+        "romaji": "Scarlet Peach Demo Title",
+        "japanese": null,
+        "aliases": [
+          "SP Demo"
+        ]
+      },
+      "description": "Non-production fixture used to verify catalog and provider integration.",
+      "poster": null,
+      "year": 2026,
+      "studio": null,
+      "genres": [],
+      "tags": [
+        "fixture"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    }
+  ]
+}
