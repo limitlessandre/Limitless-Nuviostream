@@ -135,6 +135,112 @@ async function resolveCatalogTarget(identity) {
   return null;
 }
 
+function significantTokens(value) {
+  const stop = new Set(["the", "and", "episode", "special", "season", "part", "cour", "ova", "tv"]);
+  return normalize(value).split(" ").filter(token => token.length >= 4 && !stop.has(token));
+}
+
+function explicitFalse(value) {
+  return value === false || value === 0 || String(value).toLowerCase() === "false" || String(value) === "0";
+}
+
+function specialInfoRow(label, detail, candidate) {
+  const status = String((detail && detail.status) || (candidate && candidate.status) || "").trim();
+  const suffix = status ? ` • Source status: ${status}` : "";
+  return {
+    name:`${PROVIDER_NAME} • INFO • No Episode on Source`,
+    title:`${label} • Re:ANIME catalog entry exists, but no playable episode is currently available${suffix}`,
+    url:"https://reanime.to/favicon.ico",
+    quality:"Info",
+    provider:PROVIDER_NAME,
+    type:"mp4",
+    language:"Unavailable",
+    subtitles:[]
+  };
+}
+
+async function resolveTmdbSpecial(inputId, episode) {
+  const raw = String(inputId || "").trim();
+  let tmdbId = /^\d+$/.test(raw) ? Number(raw) : null;
+  if (!tmdbId && /^tt\d+$/i.test(raw)) {
+    const found = await fetchJson(`https://api.themoviedb.org/3/find/${encodeURIComponent(raw)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`);
+    const list = found && found.tv_results;
+    tmdbId = Array.isArray(list) && list[0] && list[0].id ? Number(list[0].id) : null;
+  }
+  if (!tmdbId) return null;
+
+  const show = await fetchJson(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}`);
+  const special = await fetchJson(`https://api.themoviedb.org/3/tv/${tmdbId}/season/0/episode/${encodeURIComponent(String(episode || 1))}?api_key=${TMDB_API_KEY}`);
+  if (!show || !special || !special.name) return null;
+  return {
+    tmdbId,
+    showTitle:show.name || show.original_name || "",
+    originalShowTitle:show.original_name || show.name || "",
+    specialTitle:special.name,
+    label:special.name
+  };
+}
+
+function specialCandidateScore(candidate, special) {
+  const hay = normalize([
+    ...titleValues(candidate && candidate.title),
+    candidate && candidate.name,
+    candidate && candidate.english_title,
+    candidate && candidate.romaji_title,
+    candidate && candidate.alternative_title,
+    candidate && candidate.anime_id,
+    candidate && candidate.slug
+  ].filter(Boolean).join(" "));
+  if (!hay) return 0;
+
+  const specialTokens = significantTokens(special.specialTitle);
+  if (!specialTokens.length || !specialTokens.every(token => hay.includes(token))) return 0;
+  let score = 80 + specialTokens.length * 5;
+  const showTokens = significantTokens(special.showTitle);
+  let showHits = 0;
+  for (const token of showTokens.slice(0, 6)) if (hay.includes(token)) showHits += 1;
+  if (showTokens.length && !showHits) return 0;
+  score += showHits * 3;
+  if (/\bspecial\b|\bova\b|\bepisode\s*0\b/.test(hay)) score += 8;
+  return score;
+}
+
+async function resolveSpecialCatalogTarget(inputId, episode) {
+  const special = await resolveTmdbSpecial(inputId, episode);
+  if (!special) return null;
+
+  const terms = uniq([
+    `${special.showTitle} ${special.specialTitle}`,
+    `${special.originalShowTitle} ${special.specialTitle}`,
+    special.specialTitle
+  ]);
+  const ranked = [], seen = new Set();
+  for (const term of terms) {
+    const search = await reanimeApi(`/api/v1/search?q=${encodeURIComponent(term)}&limit=15&offset=0`);
+    for (const candidate of searchResults(search)) {
+      const slug = candidateSlug(candidate);
+      if (!slug || seen.has(slug)) continue;
+      seen.add(slug);
+      const score = specialCandidateScore(candidate, special);
+      if (score > 0) ranked.push({ candidate, slug, score });
+    }
+  }
+  ranked.sort((a,b) => b.score - a.score);
+
+  for (const match of ranked.slice(0, 5)) {
+    const detail = await reanimeApi(`/api/v1/anime/${encodeURIComponent(match.slug)}`);
+    if (!detail) continue;
+    if (explicitFalse(match.candidate && match.candidate.can_watch) || explicitFalse(detail.can_watch)) {
+      return { info:specialInfoRow(special.label, detail, match.candidate) };
+    }
+    const anilistId = Number(detail.anilist_id || detail.anilistId || match.candidate.anilist_id || 0) || 0;
+    if (!anilistId) continue;
+    const display = titleValues(detail.title || match.candidate.title || match.candidate.name)[0] || special.label;
+    return { target:{ anilistId, title:display, source:"season-0-special" }, resolvedEpisode:1 };
+  }
+  return null;
+}
+
 function audioTag(dataType) {
   const type = String(dataType || "").toLowerCase();
   if (type === "dub" || type === "s-dub") return "DUB";
@@ -242,6 +348,21 @@ async function fetchServers(anilistId, episode) {
 
 async function getStreams(inputId, mediaType, season, episode) {
   try {
+    const type = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
+
+    // Season 0 entries are separate anime/special records on Re:ANIME, not episode
+    // numbers on the parent TV AniList id. Resolve them by TMDB's special episode
+    // title first so S0E1/S0E2 cannot silently fall through to the main show's E1.
+    if (type !== "movie" && Number(season) === 0) {
+      const special = await resolveSpecialCatalogTarget(inputId, episode);
+      if (!special) return [];
+      if (special.info) return [special.info];
+      const servers = selectServers(await fetchServers(special.target.anilistId, special.resolvedEpisode));
+      if (!servers.length) return [];
+      const assets = await Promise.all(servers.map(server => resolveDirectAsset(server).catch(() => null)));
+      return buildStreams(assets, special.target.title, special.resolvedEpisode);
+    }
+
     const helper = await loadIdentity();
     if (!helper) return [];
     const identity = await helper.resolveAnimeIdentity(inputId, mediaType, season, episode, TMDB_API_KEY);
