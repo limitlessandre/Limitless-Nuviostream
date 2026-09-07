@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.17",
+  "version": "2.1.18",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first.",
   "scrapers": [
     {
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
-      "version": "2.6.11",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan and AniList; when those APIs are unavailable or sparse, the shared identity layer can recover exact TMDB/IMDb-verified aliases from Re:ANIME before falling back to base TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page, and playback rows use clean quality tiers with compact [DUB], [SUB], [DUB+SUB], or [DUAL] labels where applicable. [DUB] is only shown when Nuvio classifies the title as anime, so native-English non-anime WCO content stays untagged. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "version": "2.6.12",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v4.js",
