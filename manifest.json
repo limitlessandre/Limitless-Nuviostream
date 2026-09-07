@@ -1,12 +1,12 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.7",
-  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, then AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
+  "version": "2.1.8",
+  "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan, supplement sparse MAL title sets with AniList, and fall back to TMDB/IMDb when anime metadata services are unavailable; proven changes are promoted to the main branch after validation.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList is secondary, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, and confirmed Re:ANIME catalog matches with no playable episode servers now return the No Episode on Source information row instead of disappearing.",
+      "description": "Anime provider using the shared Nexus anime identity layer. MAL/Jikan is preferred first, AniList supplements sparse/failed MAL title sets, and strict TMDB/IMDb-backed Re:ANIME catalog matching remains available when anime metadata services fail. Season 0 entries resolve as separate Re:ANIME special/OVA records by TMDB special-episode title. Live /api/flix availability overrides stale special catalog flags, and confirmed Re:ANIME catalog matches with no playable episode servers return the No Episode on Source information row instead of disappearing.",
       "version": "1.6.4",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
@@ -21,8 +21,8 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, then AniList, then TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, and trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
-      "version": "2.6.4",
+      "description": "WCO production provider with wcostream.tv → wcoflix.tv → wcoforever.net fallback coverage, premium/mirror support, Season 0/special handling, strict series and episode ownership checks, and the separately gated Power Rangers resolver. Anime prefers MAL/Jikan, supplements sparse MAL title sets with AniList, then falls back to TMDB aliases. Anime episode ownership accepts strong multi-token anime aliases for legitimate dub/sub slug differences, WCO continues across strong anime series candidates until both available Dub and Sub branches are collected, and trusted anime aliases are also tried as direct /anime/<slug>/ candidates when WCO search omits an otherwise valid series page. Non-anime keeps strict page-slug ownership and bypasses anime databases entirely.",
+      "version": "2.6.5",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v3.js",
@@ -51,8 +51,8 @@
     {
       "id": "limitless-tubi",
       "name": "Tubi",
-      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use the shared MAL/Jikan-first, AniList-second identity aliases before falling back to TMDB/IMDb; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives. Keeps the top two video quality levels with up to two distinct manifests per quality and skips DRM-only titles.",
-      "version": "1.1.0",
+      "description": "Tubi playback provider using Tubi's current anonymous-device bearer-token flow, nested season/episode mapping, and clear HLS playback. Anime titles use shared MAL/Jikan-first identity aliases, with AniList supplementing sparse MAL title sets before TMDB/IMDb fallback; non-anime titles remain on the original TMDB/IMDb matching path. Strict anime candidate scoring prevents generic partial-title false positives. Keeps the top two video quality levels with up to two distinct manifests per quality and skips DRM-only titles.",
+      "version": "1.1.1",
       "author": "Limitless Nexus Tubi provider",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production.js",
