@@ -1,14 +1,15 @@
 # Limitless Nexus: Scarlet Peach — Providers
 
-**Branch: `test/scarlet-peach`. This is the only branch for Scarlet Peach testing. Keep future changes on this branch unless the user explicitly directs otherwise. Do not create custom, alternate, or per-user install links.**
+**Branch: `scarlet-peach-providers`. Keep Scarlet Peach provider changes on this branch unless the user explicitly directs otherwise. Do not create custom, alternate, or per-user install links.**
 
 ## Reinstall manifest
 
-This repository is a provider library, not an independently installable Nuvio addon. Reinstall the catalog using its one canonical test manifest:
+This branch is a provider library, not an independently installable Nuvio addon. Reinstall Scarlet Peach through the catalog addon while its server is running:
 
-`http://127.0.0.1:7001/manifest.json`
+- Nuvio on the same PC: `http://127.0.0.1:7001/manifest.json`
+- Nuvio on another device on the same network: `http://<PC-LAN-IP>:7001/manifest.json`
 
-Do not create a provider-only manifest or an alternate install URL. A provider addon manifest, if later needed, must be exposed through the same approved test deployment process and documented as its single canonical `/manifest.json` URL.
+Do not create a provider-only manifest or an alternate install URL. A raw GitHub manifest is not sufficient because the catalog addon requires live `/catalog/...` and `/meta/...` routes. If Scarlet Peach is later deployed to an approved host, use the catalog branch's single canonical hosted `/manifest.json` URL.
 
 ## MVP scope
 
@@ -19,8 +20,8 @@ Do not create a provider-only manifest or an alternate install URL. A provider a
 
 ## Handoff / next session
 
-Repository: `nexus-scarlet-peach-providers`  
-Branch: `test/scarlet-peach`  
+Repository: `limitlessandre/Limitless-Nuviostream`  
+Branch: `scarlet-peach-providers`  
 Current status: shared contract and HentaiTV resolver scaffold complete; unit tests run with `npm test`.  
 Known limitation: live HentaiTV transport and stream extraction are deliberately not included in the catalog and require an approved integration.  
 Next providers: HentaiMama, MuchoHentai, HStream, HentaiHaven.
