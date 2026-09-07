@@ -1,10 +1,13 @@
 "use strict";
 
-// Tubi production provider v1.1.0
+// Tubi production provider v1.2.0
 // Builds on the validated anonymous-bearer probe flow. Successful matches return
 // only clear HLS resources. Results are reduced to the top two unique quality
 // levels with up to two distinct manifests per quality (four rows max), preferring
-// HLSV6 and H.264 when multiple variants share a resolution.
+// HLSV6 and H.264 internally when multiple variants share a resolution.
+// User-facing rows are simplified to quality + numbered mirror labels and are
+// returned highest-quality first. Safe no-match failures collapse to one compact
+// No Source Found diagnostic instead of exposing the full probe trace.
 // Anime titles use the shared MAL/Jikan -> AniList -> TMDB fallback identity layer;
 // non-anime titles keep the existing TMDB/IMDb-only matching path.
 // DRM-only titles remain non-playable and return a compact diagnostic row instead.
@@ -108,13 +111,54 @@ async function loadPatched() {
   return out;
 }
 
+function qualityNumber(row) {
+  const match = String(row && row.quality || row && row.name || "").match(/(\d{3,4})/);
+  return match ? Number(match[1]) : 0;
+}
+
+function isRealStream(row) {
+  return !!(row && row.url && !/^DIAG$/i.test(String(row.quality || "")) && !/\bDIAG\b/i.test(String(row.name || "")));
+}
+
+function polishRealStreams(rows) {
+  const real = (rows || []).filter(isRealStream).slice();
+  real.sort((a, b) => qualityNumber(b) - qualityNumber(a));
+  const mirrors = {};
+  return real.map(row => {
+    const quality = String(row.quality || (qualityNumber(row) ? qualityNumber(row) + "p" : "Auto"));
+    mirrors[quality] = (mirrors[quality] || 0) + 1;
+    return {
+      ...row,
+      name: `Tubi • ${quality} • Mirror ${mirrors[quality]}`
+    };
+  });
+}
+
+function compactNoSource(rows) {
+  const list = Array.isArray(rows) ? rows : [];
+  const noSafeMatch = list.some(row => /no safe Tubi title match was found/i.test(String(row && row.name || "")));
+  if (!noSafeMatch) return list;
+  const sourceRow = list.find(row => row && row.title && !/feasibility probe|diagnostic/i.test(String(row.title))) || list[0] || {};
+  return [{
+    name: "Tubi • DIAG NO SOURCE FOUND",
+    title: sourceRow.title || "No matching Tubi source was found for this title",
+    url: "https://tubitv.com/favicon.ico",
+    quality: "DIAG",
+    language: "Unavailable",
+    provider: "Tubi",
+    type: "mp4",
+    subtitles: []
+  }];
+}
+
 async function getStreams(inputId, mediaType, season, episode) {
   try {
     const base = await loadPatched();
     if (!base) return [{name:"Tubi • DIAG LOAD • playback patch failed to load",title:"Tubi diagnostic",url:"https://tubitv.com/favicon.ico",quality:"DIAG",language:"Debug",provider:"Tubi",type:"mp4"}];
     const rows = await base.getStreams(inputId, mediaType, season, episode);
     if (!Array.isArray(rows)) return [];
-    return rows;
+    if (rows.some(isRealStream)) return polishRealStreams(rows);
+    return compactNoSource(rows);
   } catch (e) {
     return [{name:`Tubi • DIAG ERROR • ${String(e&&e.message||e).slice(0,160)}`,title:"Tubi diagnostic",url:"https://tubitv.com/favicon.ico",quality:"DIAG",language:"Debug",provider:"Tubi",type:"mp4"}];
   }
