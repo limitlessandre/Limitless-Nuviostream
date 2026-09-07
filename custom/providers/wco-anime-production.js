@@ -8,6 +8,10 @@
 // for the series page and a romaji/native-derived slug for the subbed episode URL.
 // We only allow that alternate ownership path for anime and only when a strong
 // multi-token alias match is present, preserving sidebar/recent-release protection.
+//
+// Anime variant collection also spans multiple strong WCO series candidates. Some
+// titles expose Dub on one WCO series page and Sub on another, so returning after the
+// first playable candidate can silently lose one audio branch.
 
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js";
 let cached = null;
@@ -121,12 +125,78 @@ function augmentAnimeEpisodeOwnership(source) {
   return out;
 }
 
+function augmentAnimeVariantCollection(source) {
+  let out = String(source || "");
+  const oldTv = `async function tvStreams(info, season, episode) {
+  const wantedSeason = Number(season || 1);
+  const wantedEpisode = Number(episode || 1);
+  const candidates = await searchWco(info, wantedSeason);
+  const displayTitle = \`${'${info.title}'} S${'${String(wantedSeason).padStart(2, "0")}'}E${'${String(wantedEpisode).padStart(2, "0")}'}\`;
+
+  for (const candidate of candidates.slice(0, 6)) {
+    const series = await candidatePage(candidate);
+    if (!series) continue;
+    if (series.season != null && series.season !== wantedSeason) continue;
+
+    const dub = await extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info);
+    const sub = await extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info);
+    const combined = dub.concat(sub);
+    if (combined.length) return finalize(combined, info);
+  }
+  return [];
+}`;
+  const newTv = `async function tvStreams(info, season, episode) {
+  const wantedSeason = Number(season || 1);
+  const wantedEpisode = Number(episode || 1);
+  const candidates = await searchWco(info, wantedSeason);
+  const displayTitle = \`${'${info.title}'} S${'${String(wantedSeason).padStart(2, "0")}'}E${'${String(wantedEpisode).padStart(2, "0")}'}\`;
+
+  // Preserve the original first-playable-candidate behavior for non-anime.
+  if (!info.isAnime) {
+    for (const candidate of candidates.slice(0, 6)) {
+      const series = await candidatePage(candidate);
+      if (!series) continue;
+      if (series.season != null && series.season !== wantedSeason) continue;
+      const dub = await extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info);
+      const sub = await extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info);
+      const combined = dub.concat(sub);
+      if (combined.length) return finalize(combined, info);
+    }
+    return [];
+  }
+
+  // Anime can legitimately split Dub and Sub across separate WCO series pages.
+  // Keep scanning strong candidates until both branches are found, rather than
+  // returning as soon as the first candidate yields one playable variant.
+  const collected = [];
+  let haveDub = false;
+  let haveSub = false;
+  for (const candidate of candidates.slice(0, 6)) {
+    const series = await candidatePage(candidate);
+    if (!series) continue;
+    if (series.season != null && series.season !== wantedSeason) continue;
+    if (!haveDub) {
+      const dub = await extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info);
+      if (dub.length) { collected.push(...dub); haveDub = true; }
+    }
+    if (!haveSub) {
+      const sub = await extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info);
+      if (sub.length) { collected.push(...sub); haveSub = true; }
+    }
+    if (haveDub && haveSub) break;
+  }
+  return collected.length ? finalize(collected, info) : [];
+}`;
+  if (!out.includes(oldTv)) return out;
+  return out.replace(oldTv, newTv);
+}
+
 function patchProduction(source) {
   let out = String(source || "");
   const marker = 'if (key === "core") source = augmentCoreMirrors(source);';
   if (!out.includes(marker)) return "";
-  out = out.replace('"use strict";', '"use strict";\n\n' + augmentAnimeIdentity.toString() + '\n' + coreAnimeAddonSource.toString() + '\n' + augmentAnimeEpisodeOwnership.toString() + '\n');
-  out = out.replace(marker, 'if (key === "core") source = augmentCoreMirrors(augmentAnimeEpisodeOwnership(augmentAnimeIdentity(source)));');
+  out = out.replace('"use strict";', '"use strict";\n\n' + augmentAnimeIdentity.toString() + '\n' + coreAnimeAddonSource.toString() + '\n' + augmentAnimeEpisodeOwnership.toString() + '\n' + augmentAnimeVariantCollection.toString() + '\n');
+  out = out.replace(marker, 'if (key === "core") source = augmentCoreMirrors(augmentAnimeVariantCollection(augmentAnimeEpisodeOwnership(augmentAnimeIdentity(source))));');
   return out;
 }
 
@@ -142,7 +212,7 @@ async function loadBase() {
     const exported = factory(mod, mod.exports, function(name){ throw new Error("Unsupported nested require: " + name); }) || mod.exports;
     if (!exported || typeof exported.getStreams !== "function") return null;
     cached = exported;
-    return cached;
+    return exported;
   } catch (_) { return null; }
 }
 
