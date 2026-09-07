@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.22",
+  "version": "2.1.23",
   "description": "Nexus build/test repository for Limitless providers. Anime providers prefer MAL/Jikan and AniList, then use an exact TMDB/IMDb-verified Re:ANIME catalog bridge when those anime APIs are unavailable or leave too few usable aliases, with base TMDB/IMDb aliases as the final safety fallback. Manifest-facing providers use Nuvio-friendly quality tiers plus compact [DUB], [SUB], [DUB+SUB], and [DUAL] audio labels so stream lists stay clean and sort quality-first. 123MoviesIN and 123MoviesFree are isolated experimental movie/TV providers; 123MoviesIN is the active probe and 123MoviesFree is reserved as a separate placeholder.",
   "scrapers": [
     {
@@ -129,8 +129,8 @@
     {
       "id": "limitless-123moviesin",
       "name": "123MoviesIN",
-      "description": "Experimental TMDB-native 123MoviesIN family probe. Movies map directly to /film/<TMDB id>/<slug>/ and TV maps to /show/<TMDB id>/<slug>/ across the current 123moviesin.com / 123movies2.org / 123movies-fun.com family. Stage 1 verifies Nuvio page reachability and scans the live title page for player candidates before playback extraction is enabled.",
-      "version": "0.1.0",
+      "description": "Experimental TMDB-native 123MoviesIN family probe. Movies map directly to /film/<TMDB id>/<slug>/ and TV maps to /show/<TMDB id>/<slug>/ across the current 123moviesin.com / 123movies2.org / 123movies-fun.com family. Stage 1.1 verifies Nuvio page reachability, shows route/player details directly in the visible diagnostic labels, and follows the first player candidate one level deeper before playback extraction is enabled.",
+      "version": "0.1.1",
       "author": "Limitless Nexus",
       "supportedTypes": [
         "movie",
