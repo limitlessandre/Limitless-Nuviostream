@@ -1,7 +1,7 @@
 "use strict";
 
 // Shared Nexus anime identity resolver.
-// Anime: MAL/Jikan + AniList aliases first, TMDB/IMDb aliases as fallback.
+// Anime: MAL/Jikan first, AniList second, TMDB/IMDb aliases as fallback.
 // Non-anime: TMDB/IMDb only, with no anime-database requests.
 
 const DEFAULT_TMDB_KEY = "1c29a5198ee1854bd5eb45dbe8d17d92";
@@ -88,25 +88,6 @@ async function resolveTmdb(inputId, mediaType, apiKey) {
   };
 }
 
-async function malPath(meta, season, episode) {
-  if (!meta || !meta.imdbId) return { malId:null, mappedEpisode:null, aliases:[] };
-  const s = meta.type === "movie" ? 1 : Number(season || 1);
-  const e = meta.type === "movie" ? 1 : Number(episode || 1);
-  const mapped = await fetchJson(`https://id-mapping-api-malid.hf.space/api/resolve?id=${encodeURIComponent(meta.imdbId)}&s=${encodeURIComponent(String(s))}&e=${encodeURIComponent(String(e))}`);
-  const malId = mapped && Number(mapped.mal_id || 0) || null;
-  const mappedEpisode = mapped && Number(mapped.mal_episode || 0) || null;
-  if (!malId) return { malId:null, mappedEpisode:null, aliases:[] };
-
-  const jikan = await fetchJson(`https://api.jikan.moe/v4/anime/${malId}`);
-  const data = jikan && jikan.data;
-  const aliases = data ? uniq([
-    data.title_english,
-    data.title,
-    data.title_japanese
-  ].concat((data.titles || []).map(x => x && x.title)).concat(data.title_synonyms || [])) : [];
-  return { malId, mappedEpisode, aliases };
-}
-
 function titleScore(candidate, aliases) {
   const a = normalize(candidate);
   if (!a) return 0;
@@ -115,21 +96,52 @@ function titleScore(candidate, aliases) {
     const b = normalize(alias);
     if (!b) continue;
     if (a === b) best = Math.max(best, 100);
-    else if (a.includes(b) || b.includes(a)) {
+    else {
       const aw = a.split(" ").filter(Boolean), bw = b.split(" ").filter(Boolean);
       const overlap = bw.filter(x => x.length > 1 && aw.includes(x)).length;
       const needed = bw.filter(x => x.length > 1).length;
-      if (needed && overlap === needed) best = Math.max(best, 85);
+      if (needed && overlap === needed && Math.min(aw.length, bw.length) / Math.max(aw.length, bw.length) >= 0.7) best = Math.max(best, 85);
     }
   }
   return best;
+}
+
+function jikanAliases(item) {
+  return uniq([
+    item && item.title_english,
+    item && item.title,
+    item && item.title_japanese
+  ].concat((item && item.titles || []).map(x => x && x.title)).concat((item && item.title_synonyms) || []));
+}
+
+async function malPath(meta, season, episode) {
+  if (!meta || !meta.fallbackAliases || !meta.fallbackAliases.length) return { malId:null, mappedEpisode:null, aliases:[] };
+  let best = null;
+  for (const term of meta.fallbackAliases.slice(0, 4)) {
+    const data = await fetchJson(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(term)}&limit=10&sfw=false`);
+    const results = data && Array.isArray(data.data) ? data.data : [];
+    for (const item of results) {
+      const aliases = jikanAliases(item);
+      const score = Math.max(0, ...aliases.map(x => titleScore(x, meta.fallbackAliases)));
+      const itemYear = Number(item && item.year || (item && item.aired && item.aired.from ? String(item.aired.from).slice(0,4) : 0));
+      const yearBonus = meta.year && itemYear === Number(meta.year) ? 10 : 0;
+      const total = score + yearBonus;
+      if (!best || total > best.score) best = { item, aliases, score:total };
+    }
+    if (best && best.score >= 110) break;
+  }
+  if (!best || best.score < 85) return { malId:null, mappedEpisode:null, aliases:[] };
+  return {
+    malId: Number(best.item.mal_id || 0) || null,
+    mappedEpisode: meta.type === "movie" ? 1 : Number(episode || 1),
+    aliases: best.aliases
+  };
 }
 
 async function anilistPath(meta) {
   if (!meta || !meta.fallbackAliases || !meta.fallbackAliases.length) return { anilistId:null, malId:null, aliases:[] };
   const query = "query($search:String){Media(search:$search,type:ANIME){id idMal seasonYear title{english romaji native userPreferred} synonyms}}";
   let best = null;
-
   for (const term of meta.fallbackAliases.slice(0, 4)) {
     const data = await fetchJson("https://graphql.anilist.co", {
       method: "POST",
@@ -140,12 +152,11 @@ async function anilistPath(meta) {
     if (!media) continue;
     const t = media.title || {};
     const candidateAliases = uniq([t.english, t.romaji, t.userPreferred, t.native].concat(media.synonyms || []));
-    const score = Math.max(...candidateAliases.map(x => titleScore(x, meta.fallbackAliases)));
+    const score = Math.max(0, ...candidateAliases.map(x => titleScore(x, meta.fallbackAliases)));
     const yearBonus = meta.year && Number(media.seasonYear || 0) === Number(meta.year) ? 10 : 0;
     if (!best || score + yearBonus > best.score) best = { media, aliases:candidateAliases, score:score + yearBonus };
     if (best && best.score >= 110) break;
   }
-
   if (!best || best.score < 85) return { anilistId:null, malId:null, aliases:[] };
   return {
     anilistId: Number(best.media.id || 0) || null,
@@ -157,23 +168,15 @@ async function anilistPath(meta) {
 async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApiKey) {
   const meta = await resolveTmdb(inputId, mediaType, tmdbApiKey);
   if (!meta) return null;
-
   if (!meta.isAnime) {
-    return {
-      ...meta,
-      aliases: meta.fallbackAliases.slice(),
-      animeAliases: [],
-      malId: null,
-      anilistId: null,
-      mappedEpisode: null,
-      identitySource: "tmdb"
-    };
+    return { ...meta, aliases:meta.fallbackAliases.slice(), animeAliases:[], malId:null, anilistId:null, mappedEpisode:null, identitySource:"tmdb" };
   }
 
-  // MAL and AniList are independent enrichment paths. Either may fail without
-  // blocking the TMDB/IMDb fallback.
+  // Prefer MAL/Jikan. Only ask AniList when MAL/Jikan cannot resolve a strong match.
+  // This keeps anime-native metadata first without making either external service mandatory.
   const mal = await malPath(meta, season, episode);
-  const ani = await anilistPath(meta);
+  let ani = { anilistId:null, malId:null, aliases:[] };
+  if (!mal.malId) ani = await anilistPath(meta);
 
   const animeAliases = uniq([].concat(mal.aliases || []).concat(ani.aliases || []));
   const aliases = uniq(animeAliases.concat(meta.fallbackAliases || [])).slice(0, 24);
@@ -184,7 +187,7 @@ async function resolveAnimeIdentity(inputId, mediaType, season, episode, tmdbApi
     malId: mal.malId || ani.malId || null,
     anilistId: ani.anilistId || null,
     mappedEpisode: mal.mappedEpisode || null,
-    identitySource: animeAliases.length ? "anime-db" : "tmdb-fallback"
+    identitySource: mal.malId ? "mal" : ani.anilistId ? "anilist" : "tmdb-fallback"
   };
 }
 
