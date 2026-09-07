@@ -1,7 +1,7 @@
 "use strict";
 
 // AnikotoTV presentation wrapper for Nuvio's alphabetical stream-label sorting.
-// Keeps the existing extractor and DUB/SOFTSUB/DUB+SUBS normalization untouched.
+// Keeps the existing extractor untouched and standardizes only user-facing labels.
 const PROVIDER_NAME = "AnikotoTV";
 const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv.js";
 let cached = null;
@@ -19,10 +19,6 @@ async function loadBase() {
     cached = exported;
     return cached;
   } catch (_) { return null; }
-}
-
-function esc(value) {
-  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function heightOf(row) {
@@ -45,6 +41,15 @@ function tier(height) {
   return `SD-Very Low ${height}p`;
 }
 
+function audioLabel(row) {
+  const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
+  if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
+  if (/dub\s*\+\s*subs?|dub\+subs?|dub\+sub|dubbed[^•]*subs?/.test(text)) return "[DUB+SUB]";
+  if (/softsub|soft\s*subs?|\bsubbed\b|\(sub\)|\bsub\b/.test(text)) return "[SUB]";
+  if (/\bdubbed\b|\(dub\)|\bdub\b/.test(text)) return "[DUB]";
+  return "";
+}
+
 function normalizeRow(row) {
   if (!row || typeof row !== "object") return row;
   const height = heightOf(row);
@@ -53,15 +58,11 @@ function normalizeRow(row) {
   if (!label && /^(auto|unknown)$/i.test(quality) && row.url) label = "Unknown Auto";
   if (!label) return row;
 
-  let rest = String(row.name || "").trim();
-  rest = rest.replace(new RegExp(`^${esc(PROVIDER_NAME)}(?:\\s*•)?\\s*`, "i"), "");
-  if (height) rest = rest.replace(new RegExp(`\\b${height}p\\b`, "i"), "");
-  rest = rest
-    .replace(/^(?:2x4K 8K|4K|Enhanced QHD|QHD|FHD|HD(?:-Low)?|SD(?:-Low|-Very Low)?|Unknown(?: Auto)?)\s*(?:•\s*)?/i, "")
-    .replace(/\s*•\s*•\s*/g, " • ")
-    .replace(/^\s*•\s*|\s*•\s*$/g, "")
-    .trim();
-  return { ...row, name: `${PROVIDER_NAME} • ${label}${rest ? ` • ${rest}` : ""}` };
+  const audio = audioLabel(row);
+  return {
+    ...row,
+    name: `${PROVIDER_NAME} • ${label}${audio ? ` • ${audio}` : ""}`
+  };
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
