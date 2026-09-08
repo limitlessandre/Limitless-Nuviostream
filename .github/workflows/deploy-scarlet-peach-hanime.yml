@@ -60,7 +60,22 @@ jobs:
             throw new Error(`Invalid Hanime catalog feed: provider=${data.provider} count=${data.records?.length || 0}`);
           }
           const first = data.records[0] || {};
-          console.log(JSON.stringify({ count: data.records.length, first: { title: first.title, slug: first.slug }, fields: Object.keys(first).sort() }));
+          const inspectSlugs = [
+            'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1',
+            'deco-x-deco-the-animation-1',
+            'bible-black-1'
+          ];
+          const inspected = inspectSlugs.map(slug => {
+            const record = data.records.find(item => item && item.slug === slug) || null;
+            return record ? {
+              slug,
+              audioLanguages: record.audioLanguages,
+              subtitleLanguages: record.subtitleLanguages,
+              metadata: record.metadata || {},
+              metadataKeys: Object.keys(record.metadata || {}).sort()
+            } : { slug, missing: true };
+          });
+          console.log(JSON.stringify({ count: data.records.length, first: { title: first.title, slug: first.slug }, fields: Object.keys(first).sort(), inspected }, null, 2));
           NODE
 
       - name: Probe live resolve paths
