@@ -1,17 +1,17 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 26,
-  "repositories_loaded": 23,
+  "repository_database_entries": 27,
+  "repositories_loaded": 25,
   "repositories_using_cache": 1,
-  "repositories_failed_without_cache": 1,
+  "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 371,
-  "eligible_plugin_entries_before_dedupe": 65,
-  "unique_plugins": 63,
+  "raw_plugin_entries": 403,
+  "eligible_plugin_entries_before_dedupe": 89,
+  "unique_plugins": 87,
   "duplicate_groups": 2,
-  "language_filtered_entries": 277,
-  "unknown_language_metadata_entries": 23,
-  "inactive_filtered_entries": 29,
+  "language_filtered_entries": 283,
+  "unknown_language_metadata_entries": 24,
+  "inactive_filtered_entries": 31,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -98,7 +98,7 @@
       "name": "3rabi عربي",
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "status": "ok",
-      "plugins": 39,
+      "plugins": 38,
       "verified": false
     },
     {
@@ -125,9 +125,10 @@
     {
       "name": "CuxPlug",
       "url": "https://raw.githubusercontent.com/ycngmn/CuxPlug/refs/heads/main/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 3,
-      "verified": false
+      "verified": false,
+      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "German providers repository",
@@ -135,14 +136,6 @@
       "status": "ok",
       "plugins": 25,
       "verified": false
-    },
-    {
-      "name": "DiziPal & NeonSpor | sarapcanagii",
-      "url": "https://raw.githubusercontent.com/sarapcanagii/Pitipitii/master/repo.json",
-      "status": "cached",
-      "plugins": 1,
-      "verified": false,
-      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "Indostream Repo",
@@ -157,13 +150,6 @@
       "status": "ok",
       "plugins": 10,
       "verified": false
-    },
-    {
-      "name": "repo",
-      "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/refs/heads/master/repo.json",
-      "status": "error",
-      "verified": false,
-      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "cs-karma",
@@ -196,6 +182,27 @@
     {
       "name": "Reflex Repo",
       "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/builds/repo.json",
+      "status": "ok",
+      "plugins": 2,
+      "verified": false
+    },
+    {
+      "name": "raghav repo",
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "status": "ok",
+      "plugins": 25,
+      "verified": false
+    },
+    {
+      "name": "AMSC French",
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "status": "ok",
+      "plugins": 7,
+      "verified": false
+    },
+    {
+      "name": "French providers repository",
+      "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/builds/repo.json",
       "status": "ok",
       "plugins": 2,
       "verified": false

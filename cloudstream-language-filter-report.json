@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 277,
+  "excluded_count": 283,
   "excluded": [
     {
       "internalName": "3isk",
@@ -500,6 +500,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AnimeWorldIndia",
+      "name": "AnimeWorldIndia",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeWorldIndia.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "AnimeYTX",
       "name": "AnimeYTX",
       "source": "cs-karma",
@@ -589,20 +603,6 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/ArabicToons.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "Arabseed",
-      "name": "Arabseed",
-      "source": "3rabi عربي",
-      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
-      "language": [
-        "ar"
-      ],
-      "normalizedLanguages": [
-        "ar"
-      ],
-      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Arabseed.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2586,20 +2586,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "NeonSpor",
-      "name": "NeonSpor",
-      "source": "DiziPal & NeonSpor | sarapcanagii",
-      "sourceRepo": "https://raw.githubusercontent.com/sarapcanagii/Pitipitii/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/sarapcanagii/Pitipitii/builds/NeonSpor.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "NetCine",
       "name": "NetCine",
       "source": "saimuel repo",
@@ -3748,9 +3734,101 @@
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Zinkmovies.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Coflix",
+      "name": "✔️ Coflix !!",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/Coflix.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Frembed",
+      "name": "✔️ Frembed FR",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/Frembed.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FrenchAnime",
+      "name": "✔️ French Anime",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/FrenchAnime.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FsMirrorLol",
+      "name": "✔️ FsMirrorLol - Frenchstream",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/FsMirrorLol.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "WiflixProvider",
+      "name": "✔️ Wiflix - Flemmix",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/WiflixProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Witv",
+      "name": "✔️ WITV IPTV",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/Witv.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "1Jour1Film",
+      "name": "❌ 1Jour1Film",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/JourFilm.cs3",
+      "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 23,
+  "unknown_language_metadata_count": 24,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -3912,6 +3990,13 @@
       "source": "Cloudstream providers repository",
       "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
       "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.cs3"
+    },
+    {
+      "internalName": "Witv",
+      "name": "✔️ WITV IPTV",
+      "source": "AMSC French",
+      "sourceRepo": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/repo.json",
+      "url": "https://raw.githubusercontent.com/mouradchaouche/cloudstream-frenchrepo/main/Build/Witv.cs3"
     }
   ]
 }

@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **3**  
-Filtered CloudStream providers: **63**  
-No obvious native overlap: **62**  
+Filtered CloudStream providers: **87**  
+No obvious native overlap: **86**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **1**
 
@@ -22,7 +22,11 @@ Exact/alias overlap: **1**
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
+- **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!
+- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime
+- **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
+- **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 
 ## Medium-priority unique candidates
 
@@ -30,19 +34,32 @@ Exact/alias overlap: **1**
 - **Animexin** (`Animexin`) — en; AnimeMovie, Anime, Cartoon — Anime and Movies
 - **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free.
 - **AllWish** (`AllWish`) — en; All — Anime from all-wish.me
+- **AniChan** (`AniChan`) — en; Anime, AnimeMovie — Watch Anime in HD with Sub, Dub and Hardsub
 - **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA
+- **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub & Hardsub from Anidap
 - **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
+- **Anikai** (`Anikai`) — en; Anime, AnimeMovie, OVA — ANIME- scrapper, clone , aggregator :( NOT ORIGINAL ANIKAI AND NOT ORIGINAL SERVER CLONE
+- **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
 - **Anilight** (`Anilight`) — en; AnimeMovie, Anime, OVA — Anilight Anime Provider
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
+- **Animo** (`Animo`) — en; Anime, AnimeMovie, OVA — Anime(sub,dub)
 - **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
+- **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
+- **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
 - **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
+- **Enma** (`Enma`) — en; Anime, AnimeMovie, OVA — Enma - Watch Anime Sub & Dub in HD
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
+- **KuroAnime** (`KuroAnime`) — en; Anime, AnimeMovie, OVA — KuroAnime - Anime with Sub & Dub
+- **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE
+- **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
 - **OnePace** (`OnePace`) — en; Anime — One Pace
+- **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
+- **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 
 ## Low-priority unique candidates
 
@@ -57,6 +74,7 @@ Exact/alias overlap: **1**
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
+- **TheMoviesFlix** (`TheMoviesFlix`) — en; Movie, TvSeries — stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider
 - **UHDmoviesProvider** (`UHDmoviesProvider`) — en; Movie, TvSeries — Indian Multi-language 4K Provider
 - **YoTurkish** (`YoTurkish`) — en; TvSeries — YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to
 - **YTS** (`YTS`) — en; Movie, Torrent — YTS Movies 4K Support (Torrent)
@@ -74,10 +92,16 @@ Exact/alias overlap: **1**
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
 - **FullRaces** (`FullRaces`) — en; Movie — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
+- **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
+- **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
+- **ReplayZone** (`ReplayZone`) — en; Live — Sports Replays — Football, Baseball, Rugby & Motorsport
+- **StreamEast** (`StreamEast`) — en; Live — StreamEast Sports(REQUIRES CLOUDFLARE DNS)
+- **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
+- **TimStreams** (`TimStreams`) — en; Live — Live Sports Events and some Live TV Channels from TimStreams
 - **FootReplays** (`FootReplays`) — en; Others
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!

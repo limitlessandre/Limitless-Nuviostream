@@ -1,7 +1,7 @@
 {
   "native_provider_count": 3,
-  "cloudstream_provider_count": 63,
-  "no_obvious_native_overlap_count": 62,
+  "cloudstream_provider_count": 87,
+  "no_obvious_native_overlap_count": 86,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 1,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 665,
+      "version": 666,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -138,7 +138,7 @@
         "Anime",
         "Torrent"
       ],
-      "version": 486,
+      "version": 487,
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
       "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
       "overlap": {
@@ -339,6 +339,31 @@
       ]
     },
     {
+      "internalName": "Kdesa",
+      "name": "Kdesa",
+      "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "KissKH",
       "name": "KissKH",
       "description": "Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!",
@@ -358,6 +383,86 @@
       "priority_score": 6,
       "reasons": [
         "Asian drama / K-drama coverage"
+      ]
+    },
+    {
+      "internalName": "Multimovies",
+      "name": "Multimovies",
+      "description": "Multimovies - Movies, TV Shows & Anime",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime"
+      ],
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.522,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "NetNaija",
+      "name": "NetNaija",
+      "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.267,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "TorrentsV1",
+      "name": "TorrentsV1",
+      "description": "Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA",
+        "Movie",
+        "TvSeries",
+        "Torrent"
+      ],
+      "version": 17,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.421,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
       ]
     },
     {
@@ -442,12 +547,35 @@
       "tvTypes": [
         "All"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AllWish.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.316,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AniChan",
+      "name": "AniChan",
+      "description": "Watch Anime in HD with Sub, Dub and Hardsub",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -469,6 +597,30 @@
       "version": 26,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.462,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Anidap",
+      "name": "Anidap",
+      "description": "Anime with Sub, Dub & Hardsub from Anidap",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 15,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.462,
@@ -520,6 +672,54 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Anikai",
+      "name": "Anikai",
+      "description": "ANIME- scrapper, clone , aggregator :( NOT ORIGINAL ANIKAI AND NOT ORIGINAL SERVER CLONE",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 6,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anikai.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.615,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AniKotoAnime",
+      "name": "AniKotoAnime",
+      "description": "AniKoto Anime - Watch Anime Sub & Dub in HD",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 13,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.737,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -600,6 +800,30 @@
       ]
     },
     {
+      "internalName": "Animo",
+      "name": "Animo",
+      "description": "Anime(sub,dub)",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Animo.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.667,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Anineko",
       "name": "Anineko",
       "description": "Anime from Anineko",
@@ -615,6 +839,54 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.714,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AniSuge",
+      "name": "AniSuge",
+      "description": "Anime from AniSuge with Sub and Dub support",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AniWaves",
+      "name": "AniWaves",
+      "description": "720p sub and dub anime",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.533,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -654,7 +926,7 @@
         "AnimeMovie",
         "Anime"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Chikianimation.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -691,6 +963,30 @@
       ]
     },
     {
+      "internalName": "Enma",
+      "name": "Enma",
+      "description": "Enma - Watch Anime Sub & Dub in HD",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Enma.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.545,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Kickassanime",
       "name": "Kickassanime",
       "description": null,
@@ -706,6 +1002,78 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "KuroAnime",
+      "name": "KuroAnime",
+      "description": "KuroAnime - Anime with Sub & Dub",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/KuroAnime.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.75,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Miruro",
+      "name": "Miruro",
+      "description": "ANIME(SUB,DUB)-MULTI SOURCE",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 6,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Miruro.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "NineAnime",
+      "name": "NineAnime",
+      "description": "anime from 9anime clone with sub and dub",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.75,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -737,6 +1105,30 @@
       ]
     },
     {
+      "internalName": "RaghavAnime",
+      "name": "RaghavAnime",
+      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 53,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.667,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Subsplease",
       "name": "Subsplease",
       "description": "One stop shop for new animes!",
@@ -747,6 +1139,30 @@
       "version": 4,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Subsplease.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.353,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "TwoDHive",
+      "name": "TwoDHive",
+      "description": "Anime and movies from 2Dhive with Sub and Dub support",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 12,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.353,
@@ -1004,6 +1420,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "TheMoviesFlix",
+      "name": "TheMoviesFlix",
+      "description": "stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 16,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.3,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1309,6 +1748,28 @@
       ]
     },
     {
+      "internalName": "DamiTVProvider",
+      "name": "DamiTVProvider",
+      "description": "Live sports HIGH QAULITY",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 24,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.533,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
       "internalName": "Footballia",
       "name": "Footballia",
       "description": "1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.",
@@ -1322,6 +1783,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.235,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "LIVETVProvider",
+      "name": "LIVETVProvider",
+      "description": "Watch LIVE TV channels & sports via LIVE TV",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 36,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1375,6 +1858,72 @@
       ]
     },
     {
+      "internalName": "ReplayZone",
+      "name": "ReplayZone",
+      "description": "Sports Replays — Football, Baseball, Rugby & Motorsport",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.588,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "StreamEast",
+      "name": "StreamEast",
+      "description": "StreamEast Sports(REQUIRES CLOUDFLARE DNS)",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamEast.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.588,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "StreamedPk",
+      "name": "StreamedPk",
+      "description": "ALL LIVE SPORTS WITH MULTIPLE SERVER",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamedPk.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.588,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
       "internalName": "StreamedProvider",
       "name": "StreamedProvider",
       "description": "Multilang live sports",
@@ -1388,6 +1937,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.667,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "TimStreams",
+      "name": "TimStreams",
+      "description": "Live Sports Events and some Live TV Channels from TimStreams",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TimStreams.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.538,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1471,7 +2042,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniKoto.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
