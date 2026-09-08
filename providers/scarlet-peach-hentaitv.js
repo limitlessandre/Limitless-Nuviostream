@@ -36,7 +36,7 @@ function scoreTitle(target, candidate) {
 }
 
 function decodeHtml(value) {
-  return String(value || "").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16))).replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#039;|&apos;/gi, "'").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">");
+  return String(value || "").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16))).replace(/&amp;/gi, "&").replace(/&quot;/gi, '\"').replace(/&#039;|&apos;/gi, "'").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">");
 }
 
 function parseEpisodeNumber(value) {
@@ -99,19 +99,61 @@ async function readJsonResponse(response) {
   } catch (_) { return null; }
 }
 
+function numericObjectToArray(payload) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
+  const keys = Object.keys(payload);
+  if (!keys.length) return null;
+  const numeric = keys.filter((key) => /^\d+$/.test(key)).sort((a, b) => Number(a) - Number(b));
+  if (numeric.length && numeric.length === keys.length) return numeric.map((key) => payload[key]);
+  if (numeric.length && ("length" in payload || "size" in payload)) return numeric.map((key) => payload[key]);
+  return null;
+}
+
 function unwrapRows(payload, depth = 0) {
-  if (depth > 4) return null;
+  if (depth > 7) return null;
   if (Array.isArray(payload)) return payload;
   if (typeof payload === "string") {
-    try { return unwrapRows(JSON.parse(payload), depth + 1); } catch (_) { return null; }
+    const text = payload.trim();
+    if (!text) return null;
+    try { return unwrapRows(JSON.parse(text), depth + 1); } catch (_) { return null; }
   }
   if (!payload || typeof payload !== "object") return null;
-  for (const key of ["object", "episodes", "results", "items", "data", "body", "value"]) {
+
+  const arrayLike = numericObjectToArray(payload);
+  if (arrayLike) return arrayLike;
+
+  for (const key of ["object", "episodes", "results", "items", "data", "body", "value", "content", "json"]) {
     if (!(key in payload)) continue;
     const found = unwrapRows(payload[key], depth + 1);
     if (found) return found;
   }
+
+  const keys = Object.keys(payload);
+  if (keys.length === 1) {
+    const found = unwrapRows(payload[keys[0]], depth + 1);
+    if (found) return found;
+  }
+
+  for (const value of Object.values(payload)) {
+    const found = unwrapRows(value, depth + 1);
+    if (found) return found;
+  }
   return null;
+}
+
+function describePayload(payload) {
+  if (payload == null) return "null";
+  if (Array.isArray(payload)) return `array(${payload.length})`;
+  if (typeof payload !== "object") return typeof payload;
+  const keys = Object.keys(payload).slice(0, 8);
+  let inner = "";
+  if (Object.prototype.hasOwnProperty.call(payload, "object")) {
+    const value = payload.object;
+    if (Array.isArray(value)) inner = ` object=array(${value.length})`;
+    else if (value && typeof value === "object") inner = ` objectKeys=${Object.keys(value).slice(0, 8).join(",") || "none"}`;
+    else inner = ` objectType=${typeof value}`;
+  }
+  return `keys=${keys.join(",") || "none"}${inner}`;
 }
 
 async function getScarletMeta(inputId) {
@@ -148,6 +190,12 @@ async function getTmdbMeta(inputId, mediaType) {
   return { meta: { name }, error: "", source: `tmdb:${tmdbId}` };
 }
 
+function directHentaiTvSlug(inputId) {
+  const raw = clean(inputId);
+  if (!/^htv-/i.test(raw)) return "";
+  return raw.replace(/^htv-/i, "");
+}
+
 async function getInputMeta(inputId, mediaType) {
   const raw = clean(inputId);
   if (/^(mal|anilist|sp):/i.test(raw)) return getScarletMeta(raw);
@@ -162,10 +210,7 @@ async function searchHentaiTv(title) {
   if (!response.ok) return { rows: [], error: `search HTTP ${response.status}` };
   const payload = await readJsonResponse(response);
   const episodes = unwrapRows(payload);
-  if (!episodes) {
-    const keys = payload && typeof payload === "object" ? Object.keys(payload).slice(0, 8).join(",") : typeof payload;
-    return { rows: [], error: `search payload unexpected keys=${keys || "none"}` };
-  }
+  if (!episodes) return { rows: [], error: `search payload unexpected ${describePayload(payload)}` };
 
   const grouped = new Map();
   for (const item of episodes) {
@@ -226,6 +271,13 @@ async function resolveStreamsFromSlug(slug) {
 
 async function getStreams(inputId, mediaType, season, episode) {
   try {
+    const directSlug = directHentaiTvSlug(inputId);
+    if (directSlug) {
+      const playback = await resolveStreamsFromSlug(directSlug);
+      if (!playback.streams.length) return [diag("PLAYBACK", `${playback.error} • directSlug=${directSlug}`)];
+      return playback.streams;
+    }
+
     const ep = Number.isInteger(Number(episode)) && Number(episode) > 0 ? Number(episode) : 1;
     const input = await getInputMeta(inputId, mediaType);
     if (!input.meta || !input.meta.name) return [diag("ID", `${input.error || "metadata unavailable"} • input=${inputId} type=${mediaType}`)];
