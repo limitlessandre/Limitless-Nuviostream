@@ -16,8 +16,13 @@ function explicitEpisodeSuffix(title) {
   return /(?:\s|[-–—])(?:episode|ep\.?|e)\s*\d+\s*$/i.test(clean(title));
 }
 
+function seasonNumber(title) {
+  const match = clean(title).match(/\sseason\s+(\d+)\s*$/i);
+  return match ? Number(match[1]) : null;
+}
+
 function explicitSeasonSuffix(title) {
-  return /\sseason\s+\d+\s*$/i.test(clean(title));
+  return seasonNumber(title) !== null;
 }
 
 function trailingBareNumber(title) {
@@ -57,6 +62,14 @@ function censorFor(records) {
   return records.reduce((status, record) => aggregateCensorStatus(status, record.censorStatus), 'unknown');
 }
 
+function runtimeSeconds(record) {
+  const seconds = Number(record?.metadata?.duration_in_seconds);
+  if (Number.isFinite(seconds) && seconds > 0) return Math.round(seconds);
+  const milliseconds = Number(record?.metadata?.duration_in_ms);
+  if (Number.isFinite(milliseconds) && milliseconds > 0) return Math.round(milliseconds / 1000);
+  return null;
+}
+
 function candidateStats(records) {
   const map = new Map();
   for (const record of records) {
@@ -64,11 +77,13 @@ function candidateStats(records) {
     if (!base || base === clean(record.title)) continue;
     const key = canonicalProviderTitle(base);
     if (!key) continue;
-    if (!map.has(key)) map.set(key, { records: [], episodes: new Set() });
+    if (!map.has(key)) map.set(key, { records: [], episodes: new Set(), seasons: new Set() });
     const stat = map.get(key);
     stat.records.push(record);
     const episode = Number(record.episode || 0);
     if (Number.isInteger(episode) && episode > 0) stat.episodes.add(episode);
+    const season = seasonNumber(record.title);
+    if (Number.isInteger(season) && season > 0) stat.seasons.add(season);
   }
   return map;
 }
@@ -76,27 +91,37 @@ function candidateStats(records) {
 function chooseBaseTitle(record, stats) {
   const title = clean(record.title);
   const base = clean(record.seriesTitle) || title;
-  if (!base || base === title) return { title, grouped: false };
-  if (explicitEpisodeSuffix(title) || explicitSeasonSuffix(title)) return { title: base, grouped: true };
+  if (!base || base === title) return { title, grouped: false, includeSeriesAlias: true };
+
+  if (explicitEpisodeSuffix(title)) return { title: base, grouped: true, includeSeriesAlias: true };
+
+  if (explicitSeasonSuffix(title)) {
+    const season = seasonNumber(title);
+    const stat = stats.get(canonicalProviderTitle(base));
+    if (season === 1 && stat && stat.seasons.size === 1) {
+      return { title: base, grouped: true, includeSeriesAlias: true };
+    }
+    return { title, grouped: false, includeSeriesAlias: false };
+  }
 
   if (trailingBareNumber(title)) {
     const stat = stats.get(canonicalProviderTitle(base));
-    if (stat && stat.records.length >= 2 && stat.episodes.size >= 2) return { title: base, grouped: true };
-    return { title, grouped: false };
+    if (stat && stat.records.length >= 2 && stat.episodes.size >= 2) return { title: base, grouped: true, includeSeriesAlias: true };
+    return { title, grouped: false, includeSeriesAlias: false };
   }
 
-  return { title: base, grouped: true };
+  return { title: base, grouped: true, includeSeriesAlias: true };
 }
 
 function normalizeEpisode(record, index, grouped) {
   let number = Number(record.episode || 0);
   if (!Number.isInteger(number) || number <= 0) number = index + 1;
-  if (!grouped && trailingBareNumber(record.title) && !explicitEpisodeSuffix(record.title)) number = 1;
+  if (!grouped && (trailingBareNumber(record.title) || explicitSeasonSuffix(record.title)) && !explicitEpisodeSuffix(record.title)) number = 1;
   return {
     number,
     title: clean(record.title) || `Episode ${number}`,
     releaseDate: isoOrNull(record.releaseDate),
-    runtimeSeconds: Number.isInteger(Number(record.metadata?.duration_in_seconds)) ? Number(record.metadata.duration_in_seconds) : null,
+    runtimeSeconds: runtimeSeconds(record),
     thumbnail: clean(record.poster || record.background) || null,
     overview: clean(record.description) || null,
     censorStatus: clean(record.censorStatus) || 'unknown',
@@ -128,9 +153,10 @@ export function buildHanimeProviderImport(feed, now = new Date().toISOString(), 
   for (const record of records) {
     const chosen = chooseBaseTitle(record, stats);
     const key = canonicalProviderTitle(chosen.title) || `slug:${clean(record.slug)}`;
-    if (!groups.has(key)) groups.set(key, { title: chosen.title, grouped: chosen.grouped, records: [] });
+    if (!groups.has(key)) groups.set(key, { title: chosen.title, grouped: chosen.grouped, includeSeriesAlias: chosen.includeSeriesAlias, records: [] });
     const group = groups.get(key);
     group.grouped = group.grouped || chosen.grouped;
+    group.includeSeriesAlias = group.includeSeriesAlias && chosen.includeSeriesAlias;
     group.records.push(record);
   }
 
@@ -150,7 +176,7 @@ export function buildHanimeProviderImport(feed, now = new Date().toISOString(), 
       ...list(record.aliases),
       clean(record.title),
       clean(record.providerTitle),
-      clean(record.seriesTitle)
+      ...(group.includeSeriesAlias ? [clean(record.seriesTitle)] : [])
     ])).filter((value) => canonicalProviderTitle(value) !== canonicalProviderTitle(group.title));
 
     const tags = unique(groupRecords.flatMap((record) => record.tags || []));
