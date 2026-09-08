@@ -32,7 +32,10 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Build normalized snapshot
+      - name: Harvest Hanime provider catalog
+        run: npm run import:hanime
+
+      - name: Build merged normalized snapshot
         run: npm run build:snapshot
 
       - name: Deploy Worker
@@ -47,10 +50,12 @@ jobs:
           for attempt in $(seq 1 12); do
             BODY="$(curl --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/health || true)"
             echo "health attempt ${attempt}: ${BODY}"
-            if echo "$BODY" | grep -q '"ok":true' && echo "$BODY" | grep -q '"schemaVersion":2'; then
+            if echo "$BODY" | grep -q '"ok":true' && \
+               echo "$BODY" | grep -q '"schemaVersion":2' && \
+               echo "$BODY" | grep -q '"hanime"'; then
               exit 0
             fi
             sleep 3
           done
-          echo "Scarlet Peach schema v2 health verification failed after propagation window" >&2
+          echo "Scarlet Peach merged catalog health verification failed after propagation window" >&2
           exit 1
