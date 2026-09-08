@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.46",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test and AsiaFlix Test; 1Shows has been parked in Provider Lab after the untouched upstream extension failed across multiple titles.",
+  "version": "2.1.47",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test and an AsiaFlix Test rebased from a verified-working untouched AniYomi v32 implementation; 1Shows is parked in Provider Lab.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -36,11 +36,11 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "Experimental AsiaFlix probe v0.2.3. Bounds headers and JSON bodies, probes two resolvers concurrently, logs network stages, and returns promptly with a diagnostic when runtime deadlines cannot be enforced.",
-      "version": "0.2.3",
-      "author": "Limitless Nexus port based on current AsiaFlix API behavior and current Yuzono AsiaFlix implementation",
+      "description": "Experimental AsiaFlix v0.3.0 rebased from verified-working Yuzono AniYomi AsiaFlix v32. Mirrors the current episode streamUrls flow, API resolver behavior, HLS expansion, and the explicit direct VidMoly fallback used when the API resolver 500s.",
+      "version": "0.3.0",
+      "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-probe-v3.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v4.js?rev=030",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
