@@ -6,7 +6,7 @@
 
 Copy this one canonical manifest URL into Nuvio:
 
-`https://scarlet-peach-catalog.denickjones.workers.dev/manifest.json`
+`https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`
 
 Do not use a GitHub raw-file URL or create custom/alternate install links.
 
