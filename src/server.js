@@ -6,9 +6,9 @@ const { pathToFileURL } = require('node:url');
 const root = path.resolve(__dirname, '..');
 const manifest = {
   id: 'org.limitlessnexus.scarletpeach.catalog',
-  version: '0.2.0',
+  version: '0.3.0',
   name: 'Limitless Nexus: Scarlet Peach',
-  description: 'Adult-only normalized metadata catalog with reusable schema v2 provider mappings, censorship, language, tags, and episode metadata.',
+  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, and Hanime catalog coverage.',
   resources: ['catalog', 'meta'],
   types: ['series'],
   catalogs: [
@@ -21,6 +21,24 @@ const respond = (res, body, status = 200) => {
   res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(body));
 };
+
+function catalogSummary(data) {
+  const providerCounts = {};
+  const censorStatusCounts = { censored: 0, uncensored: 0, mixed: 0, unknown: 0 };
+  let spTitleCount = 0;
+  let mappedTitleCount = 0;
+
+  for (const title of data.titles || []) {
+    if (String(title.id || '').startsWith('sp:')) spTitleCount += 1;
+    const status = censorStatusCounts[title.censorStatus] === undefined ? 'unknown' : title.censorStatus;
+    censorStatusCounts[status] += 1;
+    const providers = new Set((title.providerMappings || []).map((mapping) => mapping.provider).filter(Boolean));
+    if (providers.size) mappedTitleCount += 1;
+    for (const provider of providers) providerCounts[provider] = (providerCounts[provider] || 0) + 1;
+  }
+
+  return { providerCounts, censorStatusCounts, spTitleCount, mappedTitleCount };
+}
 
 async function main() {
   const [{ catalogMetas, parseCatalogRequest, toMeta }, { normalizeSnapshot, schemaDescriptor, validateSnapshot }] = await Promise.all([
@@ -41,7 +59,15 @@ async function main() {
     const url = new URL(req.url, 'http://localhost');
     if (url.pathname === '/manifest.json') return respond(res, manifest);
     const data = loadSnapshot();
-    if (url.pathname === '/health') return respond(res, { ok: true, service: 'Scarlet Peach Catalog', schemaVersion: data.schemaVersion, generatedAt: data.generatedAt, titleCount: data.titles.length });
+    if (url.pathname === '/health') return respond(res, {
+      ok: true,
+      service: 'Scarlet Peach Catalog',
+      version: manifest.version,
+      schemaVersion: data.schemaVersion,
+      generatedAt: data.generatedAt,
+      titleCount: data.titles.length,
+      ...catalogSummary(data)
+    });
     if (url.pathname === '/schema.json') return respond(res, schemaDescriptor());
     if (url.pathname === '/dataset.json' || url.pathname === '/data/current.json') return respond(res, data);
     const request = parseCatalogRequest(url);
