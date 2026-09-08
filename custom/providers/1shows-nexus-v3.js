@@ -1,6 +1,6 @@
 "use strict";
 
-// 1Shows Nexus probe v0.1.2
+// 1Shows Nexus probe v0.1.3
 // Keeps the proven 1Shows catalog check + current encrypted VidZee flow,
 // then probes the maintained extension's Vidrock fallback path.
 
@@ -42,18 +42,21 @@ async function resolveTmdbId(inputId,type){
 
 function hexToBytes(hex){ const out=[]; const t=clean(hex).replace(/[^0-9a-f]/gi,""); for(let i=0;i+1<t.length;i+=2) out.push(parseInt(t.slice(i,i+2),16)); return out; }
 function base64ToBytes(value){ const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; const text=clean(value).replace(/-/g,"+").replace(/_/g,"/").replace(/[^A-Za-z0-9+/=]/g,""); const out=[]; let buffer=0,bits=0; for(let i=0;i<text.length;i++){const ch=text[i]; if(ch==="=")break; const idx=chars.indexOf(ch); if(idx<0)continue; buffer=(buffer<<6)|idx; bits+=6; if(bits>=8){bits-=8; out.push((buffer>>bits)&255);}} return out; }
-function utf8Decode(bytes){ let escaped=""; for(const b of bytes) escaped+="%"+Number(b&255).toString(16).padStart(2,"0"); try{return decodeURIComponent(escaped);}catch(_){return String.fromCharCode(...bytes);} }
+function utf8Decode(bytes){ let escaped=""; for(const b of bytes) escaped+="%"+Number(b&255).toString(16).padStart(2,"0"); try{return decodeURIComponent(escaped);}catch(_){return String.fromCharCode.apply(null,bytes);} }
 function rc4Drop2048(keyBytes,dataBytes){ const s=Array.from({length:256},(_,i)=>i); let j=0; for(let i=0;i<256;i++){j=(j+s[i]+keyBytes[i%keyBytes.length])&255; const t=s[i];s[i]=s[j];s[j]=t;} let i=0;j=0; for(let d=0;d<2048;d++){i=(i+1)&255;j=(j+s[i])&255;const t=s[i];s[i]=s[j];s[j]=t;} const out=new Array(dataBytes.length); for(let k=0;k<dataBytes.length;k++){i=(i+1)&255;j=(j+s[i])&255;const t=s[i];s[i]=s[j];s[j]=t;const sb=s[(s[i]+s[j])&255];out[k]=(dataBytes[k]^sb)&255;} return out; }
 function decryptVidzee(blob){ try{const plain=utf8Decode(rc4Drop2048(hexToBytes(VIDZEE_RC4_KEY_HEX),base64ToBytes(blob))); const p=JSON.parse(plain); return p&&typeof p==="object"?p:null;}catch(_){return null;} }
 
 async function decryptVidrock(blob){
   try {
     if(typeof crypto==="undefined" || !crypto.subtle || typeof crypto.subtle.importKey!=="function") return {ok:false,error:"crypto.subtle unavailable"};
+    if(typeof Uint8Array==="undefined") return {ok:false,error:"Uint8Array unavailable"};
     const data=base64ToBytes(blob); if(data.length<29) return {ok:false,error:"ciphertext too short"};
     const iv=new Uint8Array(data.slice(0,12)); const ct=new Uint8Array(data.slice(12)); const keyBytes=new Uint8Array(hexToBytes(VIDROCK_AES_KEY_HEX));
     const key=await crypto.subtle.importKey("raw",keyBytes,{name:"AES-GCM"},false,["decrypt"]);
-    const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv,tagLength:128},key,ct);
-    return {ok:true,url:new TextDecoder().decode(new Uint8Array(plain))};
+    const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv:iv,tagLength:128},key,ct);
+    const bytes=new Uint8Array(plain);
+    const text=typeof TextDecoder!=="undefined" ? new TextDecoder().decode(bytes) : utf8Decode(Array.prototype.slice.call(bytes));
+    return {ok:true,url:text};
   } catch(e) { return {ok:false,error:clean(e&&e.message?e.message:e)||"decrypt failed"}; }
 }
 
@@ -65,14 +68,14 @@ async function catalogProbe(tmdbId,type,season,episode){
 function pathFor(tmdbId,type,s,e){ return type==="tv"?`tv/${tmdbId}/${s}/${e}`:`movie/${tmdbId}`; }
 
 async function vidzeeProbe(tmdbId,type,s,e,server){
-  const path=pathFor(tmdbId,type,s,e); const r=await fetchJson(`${VIDZEE_API}/streams/${path}?s=${encodeURIComponent(server)}&e=1`,{"Referer":`${VIDZEE_ORIGIN}/`,`Origin`:VIDZEE_ORIGIN});
+  const path=pathFor(tmdbId,type,s,e); const r=await fetchJson(`${VIDZEE_API}/streams/${path}?s=${encodeURIComponent(server)}&e=1`,{"Referer":`${VIDZEE_ORIGIN}/`,"Origin":VIDZEE_ORIGIN});
   if(!r.ok)return {server,ok:false,error:r.error||`HTTP ${r.status||"ERR"}`}; const blob=clean(r.data&&r.data.c); if(!blob)return {server,ok:false,error:"no-c"};
   const d=decryptVidzee(blob); const url=clean(d&&d.url); if(!/^https?:\/\//i.test(url))return {server,ok:false,error:d?"decoded-no-url":"decrypt-failed"};
   return {server,ok:true,url,language:clean(d&&d.language)||(server.toLowerCase().includes("hindi")?"Hindi":"Auto")};
 }
 
 async function vidrockProbe(tmdbId,type,s,e){
-  const path=pathFor(tmdbId,type,s,e); const r=await fetchJson(`${VIDROCK_BASE}/api/${path}`,{"Referer":`${VIDROCK_BASE}/`,`Origin`:VIDROCK_BASE});
+  const path=pathFor(tmdbId,type,s,e); const r=await fetchJson(`${VIDROCK_BASE}/api/${path}`,{"Referer":`${VIDROCK_BASE}/`,"Origin":VIDROCK_BASE});
   if(!r.ok)return {ok:false,error:r.error||`HTTP ${r.status||"ERR"}`,entries:[],streams:[]};
   const map=r.data&&typeof r.data==="object"&&!Array.isArray(r.data)?r.data:{}; const entries=Object.entries(map).filter(([,v])=>v&&clean(v.url));
   const streams=[]; const errors=[];
