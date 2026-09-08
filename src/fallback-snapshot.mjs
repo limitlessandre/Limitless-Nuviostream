@@ -1,7 +1,7 @@
 // Generated last-known-good snapshot.
 export const fallbackSnapshot = {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T23:01:36.047Z",
+  "generatedAt": "2026-09-08T00:10:30.618Z",
   "titles": [
     {
       "id": "sp:demo-001",

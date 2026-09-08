@@ -7,6 +7,8 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "check": "wrangler check",
+    "import:mal": "node scripts/import-mal-adult.js",
+    "refresh:mal": "node scripts/import-mal-adult.js && node scripts/build-snapshot.js",
     "build:snapshot": "node scripts/build-snapshot.js",
     "test": "node --test"
   }

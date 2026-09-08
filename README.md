@@ -18,12 +18,13 @@ Localhost is development-only: run `npm start`, then use `http://127.0.0.1:7001/
 - `catalog` and `meta` resources; no stream resource and no runtime MAL/AniList calls.
 - Stable `mal:`, `anilist:`, or `sp:` IDs; aliases, studio, year, tags, genres, language versions, censor status, episodes, and optional provider mappings are retained.
 - `npm run build:snapshot` validates a candidate and atomically promotes `data/snapshots/current.json`; if it fails, the previous current snapshot remains the last known good data. The Worker bundles the validated snapshot and its fallback, so it has no runtime MAL/AniList or external catalog dependency.
-- The included item is a non-production fixture. Add only verified adult records through the importer/builder path.
+- The MVP snapshot contains five verified MAL `Rx - Hentai` records: Bible Black, Discipline, Taimanin Asagi, Kuroinu II The Animation, and Kanojo x Kanojo x Kanojo. The former demo fixture is removed.
+- `npm run refresh:mal` imports the checked-in, source-audited MAL metadata, rejects every classification except `Rx - Hentai`, and then runs the validated snapshot build. AniList is not used by the runtime or this first seed because its public API was unavailable during this build.
 
 ## Handoff / next session
 
 Repository: `limitlessandre/Limitless-Nuviostream`  
 Branch: `scarlet-peach-catalog`  
 Current status: Worker deployment configuration and bundled snapshot are ready; local Node server is development-only.
-Known limitation: source importers are intentionally not configured; add only approved adult-source ingestion through the validated snapshot build.
+Known limitation: this first importer is an audited MAL seed pipeline rather than a live collector. It deliberately excludes all non-`Rx - Hentai` MAL entries, ambiguous titles, and records without a verified adult classification; AIOMetadata remains responsible for regular anime.
 Provider roadmap: HentaiTV, HentaiMama, MuchoHentai, HStream, HentaiHaven.
