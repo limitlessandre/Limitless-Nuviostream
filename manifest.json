@@ -1,12 +1,12 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.2.7",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the active provider using Scarlet Peach schema v2 exact episode mappings plus the dedicated current Hanime v11 resolver Worker. Optional local Hanime account login can unlock premium qualities such as 1080p while guest playback remains the default fallback. HentaiTV remains parked as reference code.",
+  "version": "0.3.0",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the stable schema-v2 provider. HentaiHaven is now included as an experimental second provider using a dedicated Cloudflare resolver based on the current secure player-token/HLS flow.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
       "name": "Hanime",
-      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Optional account settings authenticate directly from Nuvio to Hanime and pass only the temporary session token to the resolver for premium qualities. Stream labels follow the Nexus quality/audio standard, use a Hanime-specific SUB presentation fallback when the upstream catalog omits language flags, and include verified censorship metadata when available.",
+      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Optional account settings authenticate directly from Nuvio to Hanime and pass only the temporary session token to the resolver for premium qualities. Stream labels follow the Nexus quality/audio standard and include verified censorship metadata when available.",
       "version": "0.2.7",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from Yuzono AniYomi Hanime and anime-src/hanime-stremio",
       "supportedTypes": ["anime", "tv"],
@@ -16,6 +16,21 @@
       "limited": true,
       "formats": ["m3u8"],
       "logo": "https://raw.githubusercontent.com/anime-src/hanime-stremio/refs/heads/main/public/images/logo.png",
+      "contentLanguage": ["ja", "en"]
+    },
+    {
+      "id": "scarlet-peach-hentaihaven",
+      "name": "HentaiHaven",
+      "description": "Experimental HentaiHaven provider. Resolves Scarlet Peach canonical metadata against HentaiHaven, decodes the current x-secure-token player flow, calls the player API, and returns HLS variants using Nexus quality labels. Visible diagnostics remain enabled until Nuvio playback is verified.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus: Scarlet Peach; protocol reference from cynthia2006/hanime-plugin HentaiHaven extractor",
+      "supportedTypes": ["anime", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["m3u8"],
+      "logo": "https://hentaihaven.com/favicon.ico",
       "contentLanguage": ["ja", "en"]
     }
   ]
