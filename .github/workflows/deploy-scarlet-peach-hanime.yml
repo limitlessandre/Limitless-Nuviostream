@@ -40,9 +40,25 @@ jobs:
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hanime.limitlessandre.workers.dev/health || true)"
             if printf '%s' "$body" | grep -q 'Scarlet Peach Hanime Resolver'; then
               printf '%s\n' "$body"
-              exit 0
+              break
+            fi
+            if [ "$attempt" = 5 ]; then
+              echo 'Worker health check failed' >&2
+              exit 1
             fi
             sleep 3
           done
-          echo 'Worker health check failed' >&2
-          exit 1
+
+      - name: Verify normalized catalog feed
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --max-time 30 https://scarlet-peach-hanime.limitlessandre.workers.dev/catalog.json -o /tmp/hanime-catalog.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const data = JSON.parse(fs.readFileSync('/tmp/hanime-catalog.json', 'utf8'));
+          if (data.provider !== 'hanime' || !Array.isArray(data.records) || data.records.length < 100) {
+            throw new Error(`Invalid Hanime catalog feed: provider=${data.provider} count=${data.records?.length || 0}`);
+          }
+          const first = data.records[0] || {};
+          console.log(JSON.stringify({ count: data.records.length, first: { title: first.title, slug: first.slug }, fields: Object.keys(first).sort() }));
+          NODE
