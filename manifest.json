@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.49",
+  "version": "2.1.50",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test and an AsiaFlix Test rebased from a verified-working untouched AniYomi v32 implementation; 1Shows is parked in Provider Lab.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "AsiaFlix v0.3.2 targeted WatchAsian resolver stage based on verified-working Yuzono AniYomi AsiaFlix v32. Catalog and episode matching are verified; this build resolves only the WatchAsian/embasic path common to Ex-Aid and Den-O and returns resolver sources directly without probing the media body.",
-      "version": "0.3.2",
+      "description": "AsiaFlix v0.3.3 direct StreamWish reachability stage based on verified-working Yuzono AniYomi AsiaFlix v32. Catalog and episode matching remain verified; WatchAsian/API resolver calls are disabled, and Ex-Aid's known-good StreamWish host is tested directly so Nuvio can report whether that embed is reachable without entering the blocking resolver path.",
+      "version": "0.3.3",
       "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v6.js?rev=032",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v7.js?rev=033",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
