@@ -16,36 +16,116 @@ Provider repository:
 
 Use the catalog URL in Nuvio's addon installer. Use the provider repository URL in **Settings → General → Plugins → Add Repository**.
 
-## Current provider scope
+## Active provider: Hanime
 
-- Nuvio plugin repository manifest with one provider: `Scarlet Peach - HentaiTV`.
-- The provider is a standalone Nuvio-compatible `getStreams(inputId, mediaType, season, episode)` module.
-- Stable `mal:`, `anilist:`, and `sp:` IDs only. HentaiStream-private IDs are rejected.
-- The provider obtains Scarlet Peach metadata from the deployed catalog addon, then uses HentaiTV's WordPress `episodes` API for title/episode discovery.
-- HentaiTV playback resolution checks media URLs exposed on the episode page and then uses the known direct HentaiTV CDN slug fallback when necessary.
-- Stream labels include quality/container details only when verifiable from the returned URL. Language, dub/sub, and censor status are not guessed.
-- HentaiStream remains comparison/reference material only and is not a runtime dependency.
+Scarlet Peach Providers `0.2.0` switches the active provider from HentaiTV to `Scarlet Peach - Hanime`.
 
-## Development checks
+Why Hanime is now first:
 
-Library/regression tests:
+- Current AniYomi Hanime playback was independently verified working in September 2026.
+- Yuzono's current Hanime extension was updated in August 2026 for Hanime's new encrypted website/API flow.
+- The current protocol uses a signed v11 search API plus an AES-256-GCM `/api/v11/handshake` rather than brittle player-page scraping.
+- Hanime's guest handshake can return playable HLS streams without requiring debrid/P2P.
 
-`npm test`
+Protocol references:
 
-Live HentaiTV diagnostic (defaults to Bible Black episode 1 / `mal:368`):
+- `yuzono/anime-extensions` Hanime source, especially `Hanime.kt`, `NativeSignatureProvider.kt`, and `HandshakeCipher.kt`.
+- `anime-src/hanime-stremio`, especially `lib/services/htv_stream_resolver.js` and its Cloudflare handshake relay.
 
-`npm run diag:hentaitv`
+HentaiTV code remains in this branch as parked reference/debug work, but it is no longer listed in the active plugin manifest.
 
-Custom diagnostic:
+## Hanime architecture
 
-`node scripts/diagnose-hentaitv.js "Bible Black" 1 mal:368`
+```text
+Nuvio provider
+    -> Scarlet Peach catalog metadata (MAL/AniList/SP id -> title/aliases)
+    -> Scarlet Peach Hanime resolver Worker
+        -> signed Hanime v11 search dataset
+        -> strict title + episode matching
+        -> encrypted Hanime v11 handshake
+        -> decrypted guest HLS sources
+    -> Nuvio stream rows
+```
 
-## Handoff / next session
+The Nuvio provider intentionally stays small. Hanime signing and AES-GCM handshake logic live in the Worker so Nuvio's restricted plugin runtime is not responsible for crypto/browser-protocol behavior.
+
+## Hanime Worker deployment
+
+Worker source:
+
+`workers/scarlet-peach-hanime/src/index.js`
+
+Cloudflare config:
+
+`workers/scarlet-peach-hanime/wrangler.jsonc`
+
+Worker name:
+
+`scarlet-peach-hanime`
+
+With the existing Cloudflare workers.dev subdomain, the intended canonical resolver base after deployment is:
+
+`https://scarlet-peach-hanime.limitlessandre.workers.dev`
+
+Health check after deployment:
+
+`https://scarlet-peach-hanime.limitlessandre.workers.dev/health`
+
+Expected health response includes:
+
+`"service":"Scarlet Peach Hanime Resolver"`
+
+The Nuvio Hanime provider is already configured for that canonical resolver URL. Until the Worker is deployed, Nuvio will show a visible `DIAG RESOLVER` row rather than failing silently.
+
+### Cloudflare deployment notes
+
+Deploy only the `workers/scarlet-peach-hanime` Worker directory from the `scarlet-peach-providers` branch. No secrets are required for the current MVP because the Worker is a narrow resolver with fixed Hanime upstream endpoints, not a general-purpose proxy.
+
+The Worker exposes only:
+
+- `GET /health`
+- `POST /resolve`
+
+The resolver accepts title, aliases, year, and episode. It does not expose arbitrary upstream URLs.
+
+## Current matching contract
+
+The Nuvio provider currently resolves Scarlet Peach metadata IDs:
+
+- `mal:<id>`
+- `anilist:<id>`
+- `sp:<id>`
+
+Episode-suffixed Nuvio IDs such as `mal:368:1` are normalized to the base series ID before metadata lookup, while the suffix is preserved as the requested episode.
+
+The Worker scores Hanime entries using normalized titles/aliases and the requested episode number. It prefers an exact title/base-title match for the correct episode and rejects weak matches instead of guessing.
+
+## Stream behavior
+
+Returned Hanime streams use the current guest v11 handshake and are expected to be HLS. Nuvio rows include:
+
+- verified height/quality when Hanime returns it
+- `Referer: https://player.hanime.tv/`
+- `Origin: https://player.hanime.tv`
+
+Language, dub/sub, and censor status are not guessed from the catalog provider. Those fields should only be promoted into stream labels when the upstream response verifies them.
+
+## Current handoff
 
 Repository: `limitlessandre/Limitless-Nuviostream`  
 Branch: `scarlet-peach-providers`  
-Current status: first installable Scarlet Peach Nuvio plugin repository is present with the HentaiTV provider.  
+Provider manifest version: `0.2.0`  
+Active provider: `Scarlet Peach - Hanime`  
+Provider file: `providers/scarlet-peach-hanime-v1.js`  
+Resolver Worker: `workers/scarlet-peach-hanime/`  
 Provider manifest: `https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/manifest.json`  
-Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`  
-Known limitation: HentaiTV's player/CDN behavior can change, so live playback must be verified in Nuvio before treating extraction as production-stable.  
-Next recommended provider after HentaiTV is stable in Nuvio: HentaiMama, followed by MuchoHentai, HStream, and HentaiHaven.
+Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`
+
+Next validation sequence after Worker deployment:
+
+1. Verify `/health`.
+2. Refresh Scarlet Peach Providers in Nuvio and confirm version `0.2.0`.
+3. Test `Bible Black` episode 1 from Scarlet Peach (`mal:368:1`).
+4. Test one newer title such as Jimihen episode 1.
+5. Confirm at least one guest HLS source plays in Nuvio.
+6. Only after playback is confirmed, add quality/variant refinements and broader cross-catalog ID support.
