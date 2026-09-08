@@ -1,0 +1,50 @@
+name: Deploy Scarlet Peach Catalog
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-catalog
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'test/**'
+      - 'data/seed.json'
+      - 'package.json'
+      - 'wrangler.jsonc'
+      - '.github/workflows/deploy-scarlet-peach-catalog.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Test
+        run: npm test
+
+      - name: Build normalized snapshot
+        run: npm run build:snapshot
+
+      - name: Deploy Worker
+        run: npx wrangler@latest deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify catalog health
+        run: |
+          set -euo pipefail
+          BODY="$(curl --fail --silent --show-error --retry 5 --retry-delay 2 https://scarlet-peach-catalog.limitlessandre.workers.dev/health)"
+          echo "$BODY"
+          echo "$BODY" | grep -q '"ok":true'
+          echo "$BODY" | grep -q '"schemaVersion":2'
