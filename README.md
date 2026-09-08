@@ -4,7 +4,11 @@
 
 ## Reinstall manifest
 
-The canonical Cloudflare Workers manifest URL will be recorded here after the first successful deployment. Do not use a GitHub raw-file URL or create custom/alternate install links.
+Copy this one canonical manifest URL into Nuvio:
+
+`https://scarlet-peach-catalog.denickjones.workers.dev/manifest.json`
+
+Do not use a GitHub raw-file URL or create custom/alternate install links.
 
 Localhost is development-only: run `npm start`, then use `http://127.0.0.1:7001/manifest.json` for same-device testing.
 
