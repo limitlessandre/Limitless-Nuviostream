@@ -3,6 +3,7 @@
 const PROVIDER_NAME = "Scarlet Peach - HentaiTV";
 const CATALOG_BASE = "https://scarlet-peach-catalog.limitlessandre.workers.dev";
 const HENTAITV_BASE = "https://hentai.tv";
+const TMDB_API_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 function clean(value) { return String(value == null ? "" : value).trim(); }
@@ -89,27 +90,69 @@ async function safeFetch(url, options = {}) {
   } catch (_) { return null; }
 }
 
-async function getCatalogMeta(inputId) {
-  if (!/^(mal|anilist|sp):/i.test(String(inputId || ""))) return { meta: null, error: `unsupported id ${inputId}` };
+async function readJsonResponse(response) {
+  if (!response) return null;
+  try { return await response.json(); } catch (_) {}
+  try {
+    const text = await response.text();
+    return JSON.parse(text);
+  } catch (_) { return null; }
+}
+
+function unwrapRows(payload, depth = 0) {
+  if (depth > 4) return null;
+  if (Array.isArray(payload)) return payload;
+  if (typeof payload === "string") {
+    try { return unwrapRows(JSON.parse(payload), depth + 1); } catch (_) { return null; }
+  }
+  if (!payload || typeof payload !== "object") return null;
+  for (const key of ["object", "episodes", "results", "items", "data", "body", "value"]) {
+    if (!(key in payload)) continue;
+    const found = unwrapRows(payload[key], depth + 1);
+    if (found) return found;
+  }
+  return null;
+}
+
+async function getScarletMeta(inputId) {
   const url = `${CATALOG_BASE}/meta/series/${encodeURIComponent(inputId)}.json`;
   const response = await safeFetch(url, { headers: { Accept: "application/json" } });
   if (!response) return { meta: null, error: "catalog request failed" };
   if (!response.ok) return { meta: null, error: `catalog HTTP ${response.status}` };
-  try {
-    const payload = await response.json();
-    return payload && payload.meta ? { meta: payload.meta, error: "" } : { meta: null, error: "catalog meta missing" };
-  } catch (_) { return { meta: null, error: "catalog invalid JSON" }; }
+  const payload = await readJsonResponse(response);
+  return payload && payload.meta ? { meta: payload.meta, error: "" } : { meta: null, error: "catalog meta missing" };
 }
 
-function unwrapRows(payload) {
-  if (Array.isArray(payload)) return payload;
-  if (!payload || typeof payload !== "object") return null;
-  for (const key of ["episodes", "results", "items", "data"]) {
-    if (Array.isArray(payload[key])) return payload[key];
-    if (payload[key] && Array.isArray(payload[key].episodes)) return payload[key].episodes;
-    if (payload[key] && Array.isArray(payload[key].results)) return payload[key].results;
+async function getTmdbMeta(inputId, mediaType) {
+  const raw = clean(inputId).replace(/^tmdb:/i, "");
+  const kind = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
+  let tmdbId = null;
+
+  if (/^\d+$/.test(raw)) tmdbId = Number(raw);
+  else if (/^tt\d+$/i.test(raw)) {
+    const findUrl = `https://api.themoviedb.org/3/find/${encodeURIComponent(raw)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
+    const findResponse = await safeFetch(findUrl, { headers: { Accept: "application/json" } });
+    if (!findResponse || !findResponse.ok) return { meta: null, error: "TMDB IMDb lookup failed" };
+    const found = await readJsonResponse(findResponse);
+    const rows = kind === "movie" ? found && found.movie_results : found && found.tv_results;
+    if (Array.isArray(rows) && rows[0] && rows[0].id) tmdbId = Number(rows[0].id);
   }
-  return null;
+
+  if (!tmdbId) return { meta: null, error: `unsupported id ${inputId}` };
+  const detailsUrl = `https://api.themoviedb.org/3/${kind}/${tmdbId}?api_key=${TMDB_API_KEY}`;
+  const response = await safeFetch(detailsUrl, { headers: { Accept: "application/json" } });
+  if (!response || !response.ok) return { meta: null, error: `TMDB ${kind} lookup failed for ${tmdbId}` };
+  const data = await readJsonResponse(response);
+  const name = clean(data && (data.name || data.title || data.original_name || data.original_title));
+  if (!name) return { meta: null, error: `TMDB title missing for ${tmdbId}` };
+  return { meta: { name }, error: "", source: `tmdb:${tmdbId}` };
+}
+
+async function getInputMeta(inputId, mediaType) {
+  const raw = clean(inputId);
+  if (/^(mal|anilist|sp):/i.test(raw)) return getScarletMeta(raw);
+  if (/^(tmdb:)?\d+$/i.test(raw) || /^tt\d+$/i.test(raw)) return getTmdbMeta(raw, mediaType);
+  return { meta: null, error: `unsupported id ${inputId}` };
 }
 
 async function searchHentaiTv(title) {
@@ -117,11 +160,10 @@ async function searchHentaiTv(title) {
   const response = await safeFetch(endpoint, { headers: browserHeaders() });
   if (!response) return { rows: [], error: "search request failed" };
   if (!response.ok) return { rows: [], error: `search HTTP ${response.status}` };
-  let payload;
-  try { payload = await response.json(); } catch (_) { return { rows: [], error: "search invalid JSON" }; }
+  const payload = await readJsonResponse(response);
   const episodes = unwrapRows(payload);
   if (!episodes) {
-    const keys = payload && typeof payload === "object" ? Object.keys(payload).slice(0, 6).join(",") : typeof payload;
+    const keys = payload && typeof payload === "object" ? Object.keys(payload).slice(0, 8).join(",") : typeof payload;
     return { rows: [], error: `search payload unexpected keys=${keys || "none"}` };
   }
 
@@ -129,13 +171,16 @@ async function searchHentaiTv(title) {
   for (const item of episodes) {
     const slug = String(item && item.slug || "");
     const rendered = decodeHtml(item && item.title && item.title.rendered || "");
-    if (!slug || !rendered) continue;
-    const episodeNumber = parseEpisodeNumber(slug) || parseEpisodeNumber(rendered);
+    const link = String(item && item.link || "");
+    const linkSlug = (link.match(/\/hentai\/([^/?#]+)/i) || [])[1] || "";
+    const effectiveSlug = slug || linkSlug;
+    if (!effectiveSlug || !rendered) continue;
+    const episodeNumber = parseEpisodeNumber(effectiveSlug) || parseEpisodeNumber(rendered);
     const seriesTitle = cleanSeriesTitle(rendered);
     if (!seriesTitle) continue;
     const key = normalize(seriesTitle);
     if (!grouped.has(key)) grouped.set(key, { title: seriesTitle, episodes: {}, score: scoreTitle(title, seriesTitle) });
-    if (episodeNumber) grouped.get(key).episodes[episodeNumber] = slug;
+    if (episodeNumber) grouped.get(key).episodes[episodeNumber] = effectiveSlug;
   }
   return { rows: [...grouped.values()].filter((item) => item.score >= 0.45).sort((a, b) => b.score - a.score), error: "" };
 }
@@ -146,7 +191,7 @@ function titleQueries(name) {
   add(raw);
   add(raw.split(/[:–—]/)[0]);
   const words = raw.replace(/[^A-Za-z0-9\s]/g, " ").split(/\s+/).filter(Boolean);
-  if (words.length >= 2) add(words.slice(0, Math.min(4, words.length)).join(" "));
+  if (words.length >= 2) add(words.slice(0, Math.min(5, words.length)).join(" "));
   if (words.length) add(words[0]);
   return out;
 }
@@ -181,12 +226,11 @@ async function resolveStreamsFromSlug(slug) {
 
 async function getStreams(inputId, mediaType, season, episode) {
   try {
-    if (!/^(mal|anilist|sp):/i.test(String(inputId || ""))) return [diag("ID", `unsupported input=${inputId} type=${mediaType}`)];
     const ep = Number.isInteger(Number(episode)) && Number(episode) > 0 ? Number(episode) : 1;
-    const catalog = await getCatalogMeta(inputId);
-    if (!catalog.meta || !catalog.meta.name) return [diag("CATALOG", `${catalog.error || "metadata unavailable"} • id=${inputId}`)];
-    const resolved = await resolveEpisodeSlug(catalog.meta, ep);
-    if (!resolved.slug) return [diag("MATCH", `${resolved.error} • title=${catalog.meta.name} • ep=${ep} • queries=${resolved.query}`)];
+    const input = await getInputMeta(inputId, mediaType);
+    if (!input.meta || !input.meta.name) return [diag("ID", `${input.error || "metadata unavailable"} • input=${inputId} type=${mediaType}`)];
+    const resolved = await resolveEpisodeSlug(input.meta, ep);
+    if (!resolved.slug) return [diag("MATCH", `${resolved.error} • title=${input.meta.name} • ep=${ep} • queries=${resolved.query}`)];
     const playback = await resolveStreamsFromSlug(resolved.slug);
     if (!playback.streams.length) return [diag("PLAYBACK", `${playback.error} • slug=${resolved.slug} • match=${resolved.match}`)];
     return playback.streams;
