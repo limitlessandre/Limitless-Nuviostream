@@ -1,0 +1,72 @@
+name: Deploy Scarlet Peach HentaiHaven Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - 'workers/scarlet-peach-hentaihaven/**'
+      - '.github/workflows/deploy-scarlet-peach-hentaihaven.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workers/scarlet-peach-hentaihaven
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check Worker syntax
+        run: node --check src/index.js
+
+      - name: Deploy Worker
+        run: npx wrangler@latest deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify Worker health
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver'; then
+              printf '%s\n' "$body"
+              break
+            fi
+            if [ "$attempt" = 5 ]; then
+              echo 'Worker health check failed' >&2
+              exit 1
+            fi
+            sleep 3
+          done
+
+      - name: Probe known HentaiHaven episode
+        run: |
+          set -euo pipefail
+          status="$(curl --silent --show-error --max-time 40 \
+            -o /tmp/hh.json -w '%{http_code}' \
+            -X POST https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Soshite Watashi wa Sensei ni","episode":1}' || true)"
+          echo "status=${status}"
+          cat /tmp/hh.json 2>/dev/null || true
+          echo
+          test "$status" = "200"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const data = JSON.parse(fs.readFileSync('/tmp/hh.json', 'utf8'));
+          if (!Array.isArray(data.streams) || !data.streams.length) throw new Error('HentaiHaven probe returned no streams');
+          console.log(`HentaiHaven streams=${data.streams.length}`);
+          NODE
