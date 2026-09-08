@@ -21,6 +21,17 @@ function scoreTitle(a, b) {
   return Math.round(100 * overlap / Math.max(xs.size, ys.size));
 }
 function abs(url, base = BASE) { try { return new URL(url, base).toString(); } catch (_) { return ''; } }
+function normalizeEndpointBase(value) {
+  let s = clean(value).replace(/&amp;/g, '&');
+  if (!s) return '';
+  if (s.startsWith('//')) s = 'https:' + s;
+  else if (s.startsWith('/')) s = BASE + s;
+  else if (!/^https?:\/\//i.test(s)) {
+    if (/^[a-z0-9.-]+\.[a-z]{2,}(?:\/|$)/i.test(s)) s = 'https://' + s;
+    else s = abs(s, BASE);
+  }
+  return s;
+}
 async function getText(url, extra = {}) {
   const res = await fetch(url, { redirect: 'follow', headers: { 'user-agent': UA, accept: 'text/html,application/xhtml+xml,*/*', referer: BASE + '/', ...extra } });
   return { res, text: await res.text() };
@@ -100,8 +111,7 @@ async function discoverPage(title, aliases, episode) {
   }
   if (!best || best.score < 45) return { error: 'no HentaiHaven match', candidates: best ? [best] : [] };
   const episodeUrl = episodeUrlFromCandidate(best.url, episode);
-  const attempts = [episodeUrl, best.url];
-  for (const url of [...new Set(attempts)]) {
+  for (const url of [...new Set([episodeUrl, best.url])]) {
     try {
       const { res, text } = await getText(url);
       if (res.ok && findEmbed(text, url)) return { url, html: text, mode: 'search', match: best };
@@ -119,19 +129,24 @@ async function extractPlayer(pageUrl, pageHtml) {
   const interim = decodeSecureToken(token);
   if (!interim || !interim.uri || !interim.en || !interim.iv) throw new Error('decoded player token incomplete');
 
-  const apiUrl = abs('./api.php', interim.uri);
+  const endpointBase = normalizeEndpointBase(interim.uri);
+  const apiUrl = abs('./api.php', endpointBase);
+  if (!apiUrl) throw new Error(`player API URL invalid • uri=${clean(interim.uri).slice(0, 100)}`);
   const form = new FormData();
   form.set('action', 'zarat_get_data_player_ajax');
   form.set('a', String(interim.en));
   form.set('b', String(interim.iv));
   const apiRes = await fetch(apiUrl, { method: 'POST', headers: { 'user-agent': UA, referer: embedUrl, origin: new URL(apiUrl).origin, accept: 'application/json,*/*' }, body: form });
+  const raw = await apiRes.text();
   let payload = null;
-  try { payload = await apiRes.json(); } catch (_) { payload = JSON.parse(await apiRes.text()); }
+  try { payload = JSON.parse(raw); } catch (_) {}
   if (!apiRes.ok) throw new Error(`player API HTTP ${apiRes.status}`);
-  if (!payload || payload.status === false || !payload.data) throw new Error('player API returned no data');
+  if (!payload || payload.status === false || !payload.data) throw new Error(`player API returned no data • body=${raw.slice(0, 120)}`);
   const source = clean(payload.data.sources && payload.data.sources[0] && (payload.data.sources[0].src || payload.data.sources[0].file));
   if (!source) throw new Error('HLS source missing');
-  return { source: abs(source, apiUrl), embedUrl, apiUrl, isOctopus: payload.data.isOctopus === true };
+  const sourceUrl = abs(source, apiUrl);
+  if (!sourceUrl) throw new Error(`HLS source URL invalid • source=${source.slice(0, 100)}`);
+  return { source: sourceUrl, embedUrl, apiUrl, isOctopus: payload.data.isOctopus === true };
 }
 async function hlsVariants(source, referer) {
   try {
@@ -142,8 +157,7 @@ async function hlsVariants(source, referer) {
     const streams = [];
     for (let i = 0; i < lines.length; i++) {
       if (!lines[i].startsWith('#EXT-X-STREAM-INF:')) continue;
-      const info = lines[i];
-      const rm = info.match(/RESOLUTION=\d+x(\d+)/i);
+      const rm = lines[i].match(/RESOLUTION=\d+x(\d+)/i);
       let next = i + 1;
       while (next < lines.length && (!lines[next] || lines[next].startsWith('#'))) next++;
       if (next >= lines.length) continue;
@@ -165,7 +179,7 @@ async function resolve(body) {
   try {
     const player = await extractPlayer(discovered.url, discovered.html);
     const streams = await hlsVariants(player.source, player.embedUrl);
-    return json({ provider: 'hentaihaven', match: { name: title, url: discovered.url, mode: discovered.mode }, streams, debug: { source: player.source, isOctopus: player.isOctopus } });
+    return json({ provider: 'hentaihaven', match: { name: title, url: discovered.url, mode: discovered.mode }, streams, debug: { isOctopus: player.isOctopus } });
   } catch (error) {
     return json({ error: error && error.message ? error.message : String(error), match: { url: discovered.url, mode: discovered.mode } }, 502);
   }
@@ -175,7 +189,7 @@ export default {
   async fetch(request) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
     const url = new URL(request.url);
-    if (url.pathname === '/health') return json({ status: 'ok', name: 'Scarlet Peach HentaiHaven Resolver', version: '0.1.0' });
+    if (url.pathname === '/health') return json({ status: 'ok', name: 'Scarlet Peach HentaiHaven Resolver', version: '0.1.1' });
     if (url.pathname === '/resolve' && request.method === 'POST') {
       let body = {};
       try { body = await request.json(); } catch (_) { return json({ error: 'invalid json' }, 400); }
