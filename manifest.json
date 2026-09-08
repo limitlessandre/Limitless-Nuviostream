@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.47",
+  "version": "2.1.48",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test and an AsiaFlix Test rebased from a verified-working untouched AniYomi v32 implementation; 1Shows is parked in Provider Lab.",
   "scrapers": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "Experimental AsiaFlix v0.3.0 rebased from verified-working Yuzono AniYomi AsiaFlix v32. Mirrors the current episode streamUrls flow, API resolver behavior, HLS expansion, and the explicit direct VidMoly fallback used when the API resolver 500s.",
-      "version": "0.3.0",
+      "description": "AsiaFlix v0.3.1 host-inventory stage based on verified-working Yuzono AniYomi AsiaFlix v32. Confirms title, episode, and exact stream host list without entering host resolvers, isolating which resolver blocks Nuvio.",
+      "version": "0.3.1",
       "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v4.js?rev=030",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v5.js?rev=031",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
