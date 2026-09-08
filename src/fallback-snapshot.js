@@ -1,6 +1,7 @@
-{
+// Generated last-known-good snapshot.
+export const fallbackSnapshot = {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T00:10:30.618Z",
+  "generatedAt": "2026-09-07T23:01:36.047Z",
   "titles": [
     {
       "id": "sp:demo-001",
@@ -36,4 +37,4 @@
       "providerMappings": []
     }
   ]
-}
+};
