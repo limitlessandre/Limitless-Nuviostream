@@ -62,3 +62,24 @@ jobs:
           const first = data.records[0] || {};
           console.log(JSON.stringify({ count: data.records.length, first: { title: first.title, slug: first.slug }, fields: Object.keys(first).sort() }));
           NODE
+
+      - name: Probe live resolve path
+        run: |
+          set -euo pipefail
+          probe() {
+            name="$1"
+            payload="$2"
+            body_file="/tmp/${name}.json"
+            status="$(curl --silent --show-error --max-time 30 \
+              -o "$body_file" -w '%{http_code}' \
+              -X POST https://scarlet-peach-hanime.limitlessandre.workers.dev/resolve \
+              -H 'content-type: application/json' \
+              --data "$payload" || true)"
+            echo "${name} status=${status}"
+            cat "$body_file" 2>/dev/null || true
+            echo
+            test "$status" = "200"
+          }
+
+          probe bible-black '{"title":"Bible Black 1","aliases":["Bible Black"],"year":2001,"episode":1}'
+          probe jimihen '{"title":"Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu Season 1","aliases":["Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!"],"year":2021,"episode":1}'
