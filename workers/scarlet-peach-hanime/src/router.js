@@ -33,6 +33,12 @@ function validSlug(value) {
   return /^[a-z0-9][a-z0-9-]{0,199}$/i.test(slug) ? slug : "";
 }
 
+function validSessionToken(value) {
+  const token = clean(value);
+  if (!token || token.length > 4096 || /[\r\n]/.test(token)) return "";
+  return token;
+}
+
 function bytesToHex(bytes) {
   return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("");
 }
@@ -120,13 +126,17 @@ async function openMessage(token) {
   return JSON.parse(dec.decode(plain));
 }
 
-async function resolveHandshake(slug) {
+async function resolveHandshake(slug, sessionToken) {
   const timestamp = Math.floor(Date.now() / 1000);
   const token = await sealMessage({ timestamp_unix: timestamp, directive: "htv_player_handshake", slug });
   const sig = await signatureHeaders();
+  const headers = browserHeaders({ ...sig, "content-type": "application/json" });
+  const session = validSessionToken(sessionToken);
+  if (session) headers["x-session-token"] = session;
+
   const response = await fetch(HANDSHAKE_URL, {
     method: "POST",
-    headers: browserHeaders({ ...sig, "content-type": "application/json" }),
+    headers,
     body: JSON.stringify({ token })
   });
   const xToken = response.headers.get("x-token");
@@ -153,12 +163,14 @@ async function resolveHandshake(slug) {
 async function exactResolve(body) {
   const slug = validSlug(body && body.slug);
   if (!slug) return null;
-  const streams = await resolveHandshake(slug);
+  const sessionToken = validSessionToken(body && body.sessionToken);
+  const streams = await resolveHandshake(slug, sessionToken);
   if (!streams.length) {
-    return json(404, { error: "Hanime exact slug returned no playable guest streams", slug });
+    return json(404, { error: `Hanime exact slug returned no playable ${sessionToken ? "authenticated" : "guest"} streams`, slug });
   }
   return json(200, {
     mode: "exact-slug",
+    authenticated: Boolean(sessionToken),
     match: {
       name: clean(body && body.title) || slug,
       slug,
