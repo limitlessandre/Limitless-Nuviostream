@@ -3,7 +3,7 @@
 const PROVIDER_NAME = "Scarlet Peach - HentaiTV";
 const CATALOG_BASE = "https://scarlet-peach-catalog.limitlessandre.workers.dev";
 const HENTAITV_BASE = "https://hentai.tv";
-const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36";
+const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 function clean(value) { return String(value == null ? "" : value).trim(); }
 function short(value, max) { const text = clean(value).replace(/\s+/g, " "); const n = Number(max) || 180; return text.length > n ? text.slice(0, n - 1) + "…" : text; }
@@ -70,9 +70,22 @@ function toStream(url) {
   return { name: details ? `${PROVIDER_NAME} • ${details}` : PROVIDER_NAME, title: details ? `${PROVIDER_NAME} • ${details}` : PROVIDER_NAME, url, provider: PROVIDER_NAME };
 }
 
+function browserHeaders(referer) {
+  const headers = {
+    "User-Agent": USER_AGENT,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+    "Upgrade-Insecure-Requests": "1"
+  };
+  if (referer) headers.Referer = referer;
+  return headers;
+}
+
 async function safeFetch(url, options = {}) {
   try {
-    return await fetch(url, { ...options, skipSizeCheck: true, headers: { "User-Agent": USER_AGENT, "Accept-Language": "en-US,en;q=0.9", ...(options.headers || {}) } });
+    return await fetch(url, { ...options, skipSizeCheck: true, headers: { ...browserHeaders(), ...(options.headers || {}) } });
   } catch (_) { return null; }
 }
 
@@ -88,17 +101,32 @@ async function getCatalogMeta(inputId) {
   } catch (_) { return { meta: null, error: "catalog invalid JSON" }; }
 }
 
+function unwrapRows(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (!payload || typeof payload !== "object") return null;
+  for (const key of ["episodes", "results", "items", "data"]) {
+    if (Array.isArray(payload[key])) return payload[key];
+    if (payload[key] && Array.isArray(payload[key].episodes)) return payload[key].episodes;
+    if (payload[key] && Array.isArray(payload[key].results)) return payload[key].results;
+  }
+  return null;
+}
+
 async function searchHentaiTv(title) {
-  const endpoint = `${HENTAITV_BASE}/wp-json/wp/v2/episodes?search=${encodeURIComponent(title)}&per_page=50&_fields=id,slug,title,date`;
-  const response = await safeFetch(endpoint, { headers: { Accept: "application/json" } });
+  const endpoint = `${HENTAITV_BASE}/wp-json/wp/v2/episodes?search=${encodeURIComponent(title)}&per_page=10`;
+  const response = await safeFetch(endpoint, { headers: browserHeaders() });
   if (!response) return { rows: [], error: "search request failed" };
   if (!response.ok) return { rows: [], error: `search HTTP ${response.status}` };
   let payload;
   try { payload = await response.json(); } catch (_) { return { rows: [], error: "search invalid JSON" }; }
-  if (!Array.isArray(payload)) return { rows: [], error: "search payload unexpected" };
+  const episodes = unwrapRows(payload);
+  if (!episodes) {
+    const keys = payload && typeof payload === "object" ? Object.keys(payload).slice(0, 6).join(",") : typeof payload;
+    return { rows: [], error: `search payload unexpected keys=${keys || "none"}` };
+  }
 
   const grouped = new Map();
-  for (const item of payload) {
+  for (const item of episodes) {
     const slug = String(item && item.slug || "");
     const rendered = decodeHtml(item && item.title && item.title.rendered || "");
     if (!slug || !rendered) continue;
@@ -135,7 +163,7 @@ async function resolveEpisodeSlug(meta, episode) {
 
 async function resolveStreamsFromSlug(slug) {
   const pageUrl = `${HENTAITV_BASE}/hentai/${slug}/`;
-  const page = await safeFetch(pageUrl, { headers: { Accept: "text/html,*/*;q=0.8", Cookie: "inter=1" } });
+  const page = await safeFetch(pageUrl, { redirect: "manual", headers: { ...browserHeaders(), Cookie: "inter=1" } });
   if (page && page.ok) {
     try { const direct = mediaUrlsFromHtml(await page.text()).map(toStream); if (direct.length) return { streams: direct, error: "" }; } catch (_) {}
   }
