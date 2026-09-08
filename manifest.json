@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.45",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
+  "version": "2.1.46",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test and AsiaFlix Test; 1Shows has been parked in Provider Lab after the untouched upstream extension failed across multiple titles.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -92,21 +92,6 @@
       "formats": ["mp4", "m3u8"],
       "logo": "https://kisskh.is/favicon.ico",
       "contentLanguage": ["ja", "ko", "zh", "th", "en"]
-    },
-    {
-      "id": "limitless-1shows-test",
-      "name": "1Shows Test",
-      "description": "Experimental 1Shows probe v0.1.13. Transport-validates Vidrock quality URLs, probes streamrk wrappers and decoded CDN targets with Vidrock playback headers, and keeps catalog/mirror diagnostics plus VidZee fallback.",
-      "version": "0.1.13",
-      "author": "Limitless Nexus; current 1Shows behavior referenced from maintained 1Shows/Vidrock implementations",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus-v10.js?rev=0113",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://www.1shows.org/favicon.ico",
-      "contentLanguage": ["en", "ja", "ko", "zh", "hi"]
     }
   ]
 }
