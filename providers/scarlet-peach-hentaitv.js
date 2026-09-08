@@ -36,7 +36,7 @@ function scoreTitle(target, candidate) {
 }
 
 function decodeHtml(value) {
-  return String(value || "").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16))).replace(/&amp;/gi, "&").replace(/&quot;/gi, '\"').replace(/&#039;|&apos;/gi, "'").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">");
+  return String(value || "").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16))).replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#039;|&apos;/gi, "'").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">");
 }
 
 function parseEpisodeNumber(value) {
@@ -92,11 +92,18 @@ async function safeFetch(url, options = {}) {
 
 async function readJsonResponse(response) {
   if (!response) return null;
-  try { return await response.json(); } catch (_) {}
   try {
-    const text = await response.text();
-    return JSON.parse(text);
-  } catch (_) { return null; }
+    const raw = await response.text();
+    if (raw != null) {
+      if (typeof raw === "string") {
+        const text = raw.trim();
+        if (text) return JSON.parse(text);
+      } else if (typeof raw === "object") {
+        return raw;
+      }
+    }
+  } catch (_) {}
+  try { return await response.json(); } catch (_) { return null; }
 }
 
 function numericObjectToArray(payload) {
@@ -104,13 +111,12 @@ function numericObjectToArray(payload) {
   const keys = Object.keys(payload);
   if (!keys.length) return null;
   const numeric = keys.filter((key) => /^\d+$/.test(key)).sort((a, b) => Number(a) - Number(b));
-  if (numeric.length && numeric.length === keys.length) return numeric.map((key) => payload[key]);
-  if (numeric.length && ("length" in payload || "size" in payload)) return numeric.map((key) => payload[key]);
+  if (numeric.length && (numeric.length === keys.length || "length" in payload || "size" in payload)) return numeric.map((key) => payload[key]);
   return null;
 }
 
 function unwrapRows(payload, depth = 0) {
-  if (depth > 7) return null;
+  if (depth > 8) return null;
   if (Array.isArray(payload)) return payload;
   if (typeof payload === "string") {
     const text = payload.trim();
@@ -118,22 +124,13 @@ function unwrapRows(payload, depth = 0) {
     try { return unwrapRows(JSON.parse(text), depth + 1); } catch (_) { return null; }
   }
   if (!payload || typeof payload !== "object") return null;
-
   const arrayLike = numericObjectToArray(payload);
   if (arrayLike) return arrayLike;
-
   for (const key of ["object", "episodes", "results", "items", "data", "body", "value", "content", "json"]) {
     if (!(key in payload)) continue;
     const found = unwrapRows(payload[key], depth + 1);
     if (found) return found;
   }
-
-  const keys = Object.keys(payload);
-  if (keys.length === 1) {
-    const found = unwrapRows(payload[keys[0]], depth + 1);
-    if (found) return found;
-  }
-
   for (const value of Object.values(payload)) {
     const found = unwrapRows(value, depth + 1);
     if (found) return found;
@@ -145,15 +142,7 @@ function describePayload(payload) {
   if (payload == null) return "null";
   if (Array.isArray(payload)) return `array(${payload.length})`;
   if (typeof payload !== "object") return typeof payload;
-  const keys = Object.keys(payload).slice(0, 8);
-  let inner = "";
-  if (Object.prototype.hasOwnProperty.call(payload, "object")) {
-    const value = payload.object;
-    if (Array.isArray(value)) inner = ` object=array(${value.length})`;
-    else if (value && typeof value === "object") inner = ` objectKeys=${Object.keys(value).slice(0, 8).join(",") || "none"}`;
-    else inner = ` objectType=${typeof value}`;
-  }
-  return `keys=${keys.join(",") || "none"}${inner}`;
+  return `keys=${Object.keys(payload).slice(0, 8).join(",") || "none"}`;
 }
 
 async function getScarletMeta(inputId) {
@@ -169,7 +158,6 @@ async function getTmdbMeta(inputId, mediaType) {
   const raw = clean(inputId).replace(/^tmdb:/i, "");
   const kind = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
   let tmdbId = null;
-
   if (/^\d+$/.test(raw)) tmdbId = Number(raw);
   else if (/^tt\d+$/i.test(raw)) {
     const findUrl = `https://api.themoviedb.org/3/find/${encodeURIComponent(raw)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
@@ -179,7 +167,6 @@ async function getTmdbMeta(inputId, mediaType) {
     const rows = kind === "movie" ? found && found.movie_results : found && found.tv_results;
     if (Array.isArray(rows) && rows[0] && rows[0].id) tmdbId = Number(rows[0].id);
   }
-
   if (!tmdbId) return { meta: null, error: `unsupported id ${inputId}` };
   const detailsUrl = `https://api.themoviedb.org/3/${kind}/${tmdbId}?api_key=${TMDB_API_KEY}`;
   const response = await safeFetch(detailsUrl, { headers: { Accept: "application/json" } });
@@ -187,7 +174,7 @@ async function getTmdbMeta(inputId, mediaType) {
   const data = await readJsonResponse(response);
   const name = clean(data && (data.name || data.title || data.original_name || data.original_title));
   if (!name) return { meta: null, error: `TMDB title missing for ${tmdbId}` };
-  return { meta: { name }, error: "", source: `tmdb:${tmdbId}` };
+  return { meta: { name }, error: "" };
 }
 
 function directHentaiTvSlug(inputId) {
@@ -205,13 +192,12 @@ async function getInputMeta(inputId, mediaType) {
 
 async function searchHentaiTv(title) {
   const endpoint = `${HENTAITV_BASE}/wp-json/wp/v2/episodes?search=${encodeURIComponent(title)}&per_page=10`;
-  const response = await safeFetch(endpoint, { headers: browserHeaders() });
+  const response = await safeFetch(endpoint, { headers: { ...browserHeaders(), Accept: "application/json,text/plain,*/*" } });
   if (!response) return { rows: [], error: "search request failed" };
   if (!response.ok) return { rows: [], error: `search HTTP ${response.status}` };
   const payload = await readJsonResponse(response);
   const episodes = unwrapRows(payload);
   if (!episodes) return { rows: [], error: `search payload unexpected ${describePayload(payload)}` };
-
   const grouped = new Map();
   for (const item of episodes) {
     const slug = String(item && item.slug || "");
@@ -252,10 +238,20 @@ async function resolveEpisodeSlug(meta, episode) {
 }
 
 async function resolveStreamsFromSlug(slug) {
-  const pageUrl = `${HENTAITV_BASE}/hentai/${slug}/`;
-  const page = await safeFetch(pageUrl, { redirect: "manual", headers: { ...browserHeaders(), Cookie: "inter=1" } });
+  const pageUrl = `${HENTAITV_BASE}/hentai/${slug}`;
+  let page = await safeFetch(pageUrl, { redirect: "follow", headers: { ...browserHeaders(), Cookie: "inter=1" } });
+  if (page && [301,302,303,307,308].includes(Number(page.status))) {
+    try {
+      const location = page.headers && page.headers.get ? page.headers.get("location") : "";
+      if (location) page = await safeFetch(new URL(location, pageUrl).toString(), { redirect: "follow", headers: { ...browserHeaders(pageUrl), Cookie: "inter=1" } });
+    } catch (_) {}
+  }
   if (page && page.ok) {
-    try { const direct = mediaUrlsFromHtml(await page.text()).map(toStream); if (direct.length) return { streams: direct, error: "" }; } catch (_) {}
+    try {
+      const html = await page.text();
+      const direct = mediaUrlsFromHtml(html).map(toStream);
+      if (direct.length) return { streams: direct, error: "" };
+    } catch (_) {}
   }
   for (const videoSlug of videoSlugVariations(slug)) {
     const url = `https://r2.1hanime.com/${videoSlug}.mp4`;
@@ -271,14 +267,13 @@ async function resolveStreamsFromSlug(slug) {
 
 async function getStreams(inputId, mediaType, season, episode) {
   try {
+    const ep = Number.isInteger(Number(episode)) && Number(episode) > 0 ? Number(episode) : 1;
     const directSlug = directHentaiTvSlug(inputId);
     if (directSlug) {
       const playback = await resolveStreamsFromSlug(directSlug);
       if (!playback.streams.length) return [diag("PLAYBACK", `${playback.error} • directSlug=${directSlug}`)];
       return playback.streams;
     }
-
-    const ep = Number.isInteger(Number(episode)) && Number(episode) > 0 ? Number(episode) : 1;
     const input = await getInputMeta(inputId, mediaType);
     if (!input.meta || !input.meta.name) return [diag("ID", `${input.error || "metadata unavailable"} • input=${inputId} type=${mediaType}`)];
     const resolved = await resolveEpisodeSlug(input.meta, ep);
