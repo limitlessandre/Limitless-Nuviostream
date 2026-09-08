@@ -1,34 +1,156 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T00:49:18.847Z",
+  "generatedAt": "2026-09-08T01:26:46.632Z",
   "titles": [
     {
-      "id": "mal:368",
+      "id": "mal:1639",
       "type": "series",
       "adult": true,
       "sourceConfidence": "MAL",
       "sourceMetadata": {
-        "source": "MyAnimeList public title pages",
-        "sourceUrl": "https://myanimelist.net/anime/368/Bible_Black",
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/1639/Boku_no_Pico",
         "rating": "Rx - Hentai",
-        "retrievedAt": "2026-09-07T00:00:00.000Z"
+        "retrievedAt": "2026-09-08T01:26:04.147Z"
       },
-      "title": "Bible Black",
+      "title": "Boku no Pico",
       "titles": {
         "english": null,
-        "romaji": "Bible Black",
-        "japanese": "バイブルブラック",
+        "romaji": "Boku no Pico",
+        "japanese": "ぼくのぴこ",
         "aliases": [
-          "Bible Black: Night of the Walpulgiss"
+          "Boku no Piko",
+          "My Pico",
+          "Boku no Pico OVA 1 - My Pico"
         ]
       },
-      "description": "A student uncovers a forbidden book at his school.",
-      "poster": "https://cdn.myanimelist.net/images/anime/13/12768.jpg",
-      "year": 2001,
-      "releaseDate": "2001-07-21",
+      "description": "Upbeat and effeminate Pico is working at his grandfather's coffee shop, Café Bebe, for the summer. Tamotsu is a white-collar worker looking for an escape from the mundanity of his everyday life. When they meet at the café, sparks of love and lust quickly draw the two together. Conventional notions of age, gender, and sexuality are broken down as the pair seeks carnal gratification in one another's company. But do the pleasures of flesh equate to a connection between hearts? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/12/39497.jpg",
+      "year": 2006,
+      "releaseDate": "2006-09-07",
       "updatedAt": null,
-      "studio": "Studio Jam",
-      "genres": [],
+      "studio": "Sugar Boy",
+      "genres": [
+        "Boys Love",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:40746",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/40746/Overflow",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:04.146Z"
+      },
+      "title": "Overflow",
+      "titles": {
+        "english": null,
+        "romaji": "Overflow",
+        "japanese": "おーばーふろぉ",
+        "aliases": []
+      },
+      "description": "Kazushi Sudou is a university student who is visited by his two childhood friends, the sisters Ayane and Kotone Shirakawa. When Ayane discovers that Kazushi not only forgot to buy her pudding but is also using her special lotion in the bath, she decides to take revenge and join Kazushi in his bath along with Kotone. Will the perverted Kazushi be able to remain indifferent to them both? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1781/104461.jpg",
+      "year": 2020,
+      "releaseDate": "2020-01-06",
+      "updatedAt": null,
+      "studio": "Studio Hokiboshi",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:10851",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/10851/Euphoria",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:04.113Z"
+      },
+      "title": "Euphoria",
+      "titles": {
+        "english": null,
+        "romaji": "Euphoria",
+        "japanese": "euphoria",
+        "aliases": []
+      },
+      "description": "Keisuke Takatou wakes up in a featureless white room, unaware of how and when he arrived. While exploring his whereabouts, he notices six familiar girls huddled around a large monitor—his childhood friend Kanae Hokari, the class president Miyakou Ando, his English teacher Natsuki Aoi, his junior Rika Makiba, and his classmates Rinne Byakuya and Nemu Manaka. As they attempt to make sense of their current situation, a voice suddenly declares through the monitor, \"The game will now begin.\" The rules of the game are simple yet brutal; assigned as the \"unlocker,\" Keisuke must select one of the girls as his \"keyhole\" and violate her in a specific manner. Only after he does this for five rounds will the group be promised freedom to the outside world. Refusing to acknowledge the situation, Miyakou vehemently denies her participation. Suddenly, the entire room goes dark. When the lights come back on, Miyakou is strapped to an electric chair. \"Withdrawal from the game will result in death,\" announces the mysterious voice as the chair electrocutes her to death. Left with no other option, the terrified captives concede, and thus begins the sadistic game that will awaken their carnal desires through pain—and pleasure. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1120/137884.jpg",
+      "year": 2011,
+      "releaseDate": "2011-12-11",
+      "updatedAt": null,
+      "studio": "Majin",
+      "genres": [
+        "Hentai"
+      ],
       "tags": [
         "hentai"
       ],
@@ -69,15 +191,1782 @@
       "providerMappings": []
     },
     {
+      "id": "mal:320",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/320/A_Kite",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:04.111Z"
+      },
+      "title": "A Kite",
+      "titles": {
+        "english": null,
+        "romaji": "A Kite",
+        "japanese": "A KITE（カイト）",
+        "aliases": []
+      },
+      "description": "After her parents were brutally murdered, school girl Sawa was taken into custody by Akai and Kanie, a pair of detectives assigned to her case. Corrupt and immoral, they train the girl to become a weapon, dangling the promise of vengeance in front of the hapless orphan. From celebrities and politicians to influential businessmen, Sawa is tasked with assassinating targets selected arbitrarily by her crooked overseers. She executes every mission without fail, and her distinctive weapon has become infamous among the city's police officers. Physically abused by Akai, who is no more righteous than her victims, Sawa begins to dream of a life unhindered by the shadow of her \"guardians.\" One day, Sawa meets Oburi, a fellow orphan and vigilante. They quickly form a bond born of desperation and disgruntlement at the unjust world, envisioning a future free from the stain of murder. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1224/113092.jpg",
+      "year": 1998,
+      "releaseDate": "1998-02-25",
+      "updatedAt": null,
+      "studio": "Arms",
+      "genres": [
+        "Action",
+        "Drama",
+        "Hentai",
+        "Gore"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:5391",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/5391/Pico_to_Chico",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:05.478Z"
+      },
+      "title": "Pico to Chico",
+      "titles": {
+        "english": null,
+        "romaji": "Pico to Chico",
+        "japanese": "ぴことちこ",
+        "aliases": [
+          "Boku no Piko OVA 2",
+          "Boku no Pico",
+          "Pico & Chico"
+        ]
+      },
+      "description": "The crisp rays of summer sun find the effeminate Pico embroiled in yet another heated and lustful fling. While out biking, Pico meets and befriends Chico—a lively boy not much younger than him, but leagues behind in the affairs of the flesh. After the innocent Chico shows his sister in the midst of self-pleasure to Pico, Pico takes it upon himself to educate this confused youth. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1485/139873.jpg",
+      "year": 2007,
+      "releaseDate": "2007-04-19",
+      "updatedAt": null,
+      "studio": "Sugar Boy",
+      "genres": [
+        "Boys Love",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:22429",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/22429/Itadaki_Seieki♥",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:05.315Z"
+      },
+      "title": "Itadaki! Seieki♥",
+      "titles": {
+        "english": null,
+        "romaji": "Itadaki! Seieki♥",
+        "japanese": "いただきっ! セーエキ♥",
+        "aliases": []
+      },
+      "description": "When Kanzaki receives a letter from Mari Setogaya asking to meet in their school's PE storage room during the lunch break, he believes he will be receiving a love confession. He turns up eagerly, only to be attacked by his supposed admirer. The beautiful girl tries to knock him unconscious, but when she fails miserably, she explains that she is a vampire and had wanted to feed on him. Feeling pity for her hopeless state, Kanzaki reluctantly yields and allows her to drink his blood. As it turns out, Mari cannot stand the taste of raw blood but will perish without the nutrients it contains. Kanzaki is quick to find a solution, offering her a different bodily fluid to consume—and Setogaya instantly falls head over heels with this new flavor. The two soon start meeting regularly, and as time goes by, their relationship evolves into something more than just casual \"meals\" spent together. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1484/116651.jpg",
+      "year": 2014,
+      "releaseDate": "2014-03-28",
+      "updatedAt": null,
+      "studio": "Peak Hunt",
+      "genres": [
+        "Supernatural",
+        "Hentai",
+        "Vampire"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:368",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/368/Bible_Black",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:05.384Z"
+      },
+      "title": "Bible Black",
+      "titles": {
+        "english": null,
+        "romaji": "Bible Black",
+        "japanese": "バイブルブラック",
+        "aliases": [
+          "Bible Black: Night of the Walpulgiss"
+        ]
+      },
+      "description": "Every school has secrets, but few leave a stain that won't wash out. In a certain school, there was once a fun club centered around magic but had turned into murder and a lust for power. Sealed and willfully forgotten, the resulting evil of that day remained chained in the school's basement. Twelve years later, high school student Taki Minase, while inspecting the place where the incident took place, uncloaks the secret plastered in blood—a book of magic called \"Black Bible.\" Trying his luck with its love curses, he soon finds out the magic proves real and easily penetrates the hearts and bodies of his fellow classmates. The resulting intercourse leaves the student body very vocal, and Minase's acts do not go unnoticed. What was at first a simple stroke of curiosity becomes much larger and harder to control. Fully swallowed by the unshackled darkness, everyone he knows becomes a victim, including his childhood friend Kurumi Imari. Torn apart, Minase finally realizes his mistakes and that he must reverse them in time if he ever hopes for him and Imari to come together. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/13/12768.jpg",
+      "year": 2001,
+      "releaseDate": "2001-07-21",
+      "updatedAt": null,
+      "studio": "Studio Jam",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:4866",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/4866/Pico_x_CoCo_x_Chico",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:05.357Z"
+      },
+      "title": "Pico x CoCo x Chico",
+      "titles": {
+        "english": null,
+        "romaji": "Pico x CoCo x Chico",
+        "japanese": "ぴこ×CoCo×ちこ",
+        "aliases": [
+          "Boku no Pico OVA 3",
+          "Boku no Piko"
+        ]
+      },
+      "description": "The young couple Pico and Chico are out for a date in town when a chance encounter has them immediately seduced by the mysterious runaway named CoCo. Pico is instantly drawn in by CoCo's spiritual outlook and feminine charms, but little does he know that the swaying of his heart will fuel the sparks of jealousy, passion, and desperation between the trio, ready to engulf them in an inferno of arousal and anxiety at any moment. Two may be company, but is three really a crowd? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1870/137471.jpg",
+      "year": 2008,
+      "releaseDate": "2008-10-09",
+      "updatedAt": null,
+      "studio": "Sugar Boy",
+      "genres": [
+        "Boys Love",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:10779",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/10779/Eroge_H_mo_Game_mo_Kaihatsu_Zanmai",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:06.722Z"
+      },
+      "title": "Eroge! H mo Game mo Kaihatsu Zanmai",
+      "titles": {
+        "english": null,
+        "romaji": "Eroge! H mo Game mo Kaihatsu Zanmai",
+        "japanese": "えろげー! ～Hもゲームも開発三昧～",
+        "aliases": []
+      },
+      "description": "Flower, a local game design studio, finds itself on the verge of shutting down. After its first release turned out to be a complete letdown, the studio is now struggling to make ends meet. The employees of this all-female company desperately need additional hands to help them finish a new project on time. Tomoya Mochizuki's passion is erotic games, or \"erogames.\" He can neither write scenarios nor program, and his artistic skills are quite frankly terrible. However, owing to his massive experience in the field, Nene Sonono—Flower's director—decides to hire him as a consultant. The first thing Tomoya points out is that Flower's employees have no sexual experience; thus, their scenarios and sex scenes lack in-depth and firsthand expertise. Eager to learn and develop their professional skills, the girls embark on a crash course to grasp the essence of erogames. Under the attentive eye of Tomoya, they explore previously uncharted waters of sexual pleasure—all for the sake of the company's survival. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1988/103841.jpg",
+      "year": 2011,
+      "releaseDate": "2011-08-26",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:36198",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/36198/Omiai_Aite_wa_Oshiego_Tsuyoki_na_Mondaiji",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:06.745Z"
+      },
+      "title": "Omiai Aite wa Oshiego, Tsuyoki na, Mondaiji.",
+      "titles": {
+        "english": null,
+        "romaji": "Omiai Aite wa Oshiego, Tsuyoki na, Mondaiji.",
+        "japanese": "お見合い相手は教え子、強気な、問題児。",
+        "aliases": [
+          "My Marriage Partner is My Student",
+          "a Cocky Troublemaker",
+          "My Marriage Interview Partner is a Student",
+          "Strong",
+          "and a Problem Child"
+        ]
+      },
+      "description": "Teacher Nano Saikawa hasn't given much thought to marriage, but her father's friend wants her to have a marriage interview with his son, Souichirou Takamiya. After the interview, they spend the day together. As they gradually become more comfortable with one another, Souichirou asks for her hand in marriage. Things quickly heat up between them, and the two wind up in bed together. However, when she removes his glasses, she discovers he is not Souichirou; he is actually one of her problem students, Souji Kuga! Souji's explanation is watertight: when he realized his brother was to be Nano's intended, Souji posed as him in order to be with her. And what's more, he is even confident that his family will approve of their marriage. However, an illicit relationship with a student is the last thing Nano wants. But will she be able to resist his charms, especially when her body begins to ache for his? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/9/88326.jpg",
+      "year": 2017,
+      "releaseDate": "2017-10-02",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Hentai",
+        "School",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        },
+        {
+          "number": 10,
+          "title": "Episode 10",
+          "releaseDate": null
+        },
+        {
+          "number": 11,
+          "title": "Episode 11",
+          "releaseDate": null
+        },
+        {
+          "number": 12,
+          "title": "Episode 12",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:29575",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/29575/Mankitsu_Happening",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:06.705Z"
+      },
+      "title": "Mankitsu Happening",
+      "titles": {
+        "english": null,
+        "romaji": "Mankitsu Happening",
+        "japanese": "漫喫ハプニング",
+        "aliases": []
+      },
+      "description": "Keiichi Oyamada has a mysterious power that always makes him seem like a lucky pervert, as one way or another, he ends up having sexual intercourse with any female he meets. Due to this, he has never had a stable job as he continually gets fired from any place unfortunate enough to employ him. One job opportunity arises when his best friend calls him to work at a manga cafe, which Keiichi reluctantly accepts. However, as soon as he starts his new job, he meets Rei Suzukawa, a fellow employee, and Kururu Hiiragi, his childhood friend. Both of them are very beautiful, and Keiichi fears that even they might not be spared by his lucky perverted powers. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1478/116399.jpg",
+      "year": 2015,
+      "releaseDate": "2015-03-27",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:37281",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/37281/Joshiochi_2-kai_kara_Onnanoko_ga_Futtekita",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:06.741Z"
+      },
+      "title": "Joshiochi! 2-kai kara Onnanoko ga... Futtekita!?",
+      "titles": {
+        "english": null,
+        "romaji": "Joshiochi! 2-kai kara Onnanoko ga... Futtekita!?",
+        "japanese": "じょしおちっ！～2階から女の子が…降ってきた！？～",
+        "aliases": [
+          "Falling Girls! A Girl Comes... Falling from the Second Floor",
+          "Joshi Ochi! A Girl Fell from the 2nd Floor"
+        ]
+      },
+      "description": "The ceiling collapsed and a girl fell through from the second floor!? Sousuke lives in a rundown apartment building where his only consolation is that the landlord is a beautiful woman and the girl who lives above him is cute. One day though, the ceiling above him creaks and... Bang! In from the second floor, directly above him, the cute girl comes crashing down on him…!? In an erotic encounter that can only be classified as a miracle, hearts and bodies are connected by chance. Then for some reason, he starts to live with both of these beautiful women!? Under this one roof, just what exactly will become of this crowded love triangle...!? (Source: Honey's Anime)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1716/93151.jpg",
+      "year": 2018,
+      "releaseDate": "2018-07-02",
+      "updatedAt": null,
+      "studio": "Ark",
+      "genres": [
+        "Comedy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:6893",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/6893/Oni_Chichi",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:07.979Z"
+      },
+      "title": "Oni Chichi",
+      "titles": {
+        "english": null,
+        "romaji": "Oni Chichi",
+        "japanese": "鬼父",
+        "aliases": [
+          "Oni Chichi"
+        ]
+      },
+      "description": "Marina and Airi's mother has left her husband, only to marry a younger man, Kouzou Akizuki. While Marina has accepted their new stepfather, Airi hates him for breaking their family. Furthermore, she soon finds out he is a sexual deviant, sniffing his underaged stepdaughters' underwear and secretly desiring to take their virginity. Their mother is often absent from home, allowing Kouzou to pursue his carnal pleasures to his heart's content. Unable to resist the beauty of adolescent girls' bodies, Akizuki prepares a powerful aphrodisiac and uses it on Airi. Intoxicated with the drug, she can no longer control herself and gives in to her stepfather's perverted demands. She soon discovers the merits of this new relationship and plunges headlong into a whirlpool of sexual degeneracy. Satisfied with the drug's irresistible effect, Kouzou proceeds to utilize it further, coercing various girls to quench his thirst in the most embarrassing ways. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1793/103867.jpg",
+      "year": 2009,
+      "releaseDate": "2009-10-30",
+      "updatedAt": null,
+      "studio": "PoRO",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:7748",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/7748/Sono_Hanabira_ni_Kuchizuke_wo__Anata_to_Koibito_Tsunagi",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:07.922Z"
+      },
+      "title": "Sono Hanabira ni Kuchizuke wo: Anata to Koibito Tsunagi",
+      "titles": {
+        "english": null,
+        "romaji": "Sono Hanabira ni Kuchizuke wo: Anata to Koibito Tsunagi",
+        "japanese": "その花びらにくちづけを　あなたと恋人つなぎ",
+        "aliases": []
+      },
+      "description": "Mai Sawaguchi and Reo Kawamura seem far from friends. Despite Mai constantly trying to get along with Reo, they always end up fighting. However, when Mai questions Reo on whether or not she hates her, Reo ends up confessing instead. Confused and surprised, Mai begins to wonder if she feels the same. After school, she meets Reo again, prepared to give an answer. Agreeing that their feelings are mutual, the two girls begin to use each other to fulfill their sexual desires. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/5/24845.jpg",
+      "year": 2010,
+      "releaseDate": "2010-07-30",
+      "updatedAt": null,
+      "studio": "ChuChu",
+      "genres": [
+        "Girls Love",
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:35629",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/35629/Skirt_no_Naka_wa_Kedamono_deshita",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:07.962Z"
+      },
+      "title": "Skirt no Naka wa Kedamono deshita.",
+      "titles": {
+        "english": null,
+        "romaji": "Skirt no Naka wa Kedamono deshita.",
+        "japanese": "スカートの中はケダモノでした。",
+        "aliases": [
+          "A Wolf in Women's Clothing",
+          "There's a beast under the skirt",
+          "There Was a Beast Inside the Skirt"
+        ]
+      },
+      "description": "Shizuka Kominami is a shy college student who, despite her bashful demeanor, attends a college mixer. There, she meets Ryou Kirishima, a beautiful, confident woman whom she quickly befriends. After leaving the mixer together, the two spend the night talking and drinking. But when an inebriated Shizuka ends up at Ryou's apartment, one thing leads to another, and she finds herself being seduced by her new friend. And what's more, Ryou is actually a crossdressing man! After a passion-filled night, Shizuka awakens to a note left by Ryou, promising more erotic moments between them later. How will Shizuka's newfound relationship with Ryou unfold? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/4/86647.jpg",
+      "year": 2017,
+      "releaseDate": "2017-07-03",
+      "updatedAt": null,
+      "studio": "Magic Bus",
+      "genres": [
+        "Drama",
+        "Hentai",
+        "Crossdressing"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        },
+        {
+          "number": 10,
+          "title": "Episode 10",
+          "releaseDate": null
+        },
+        {
+          "number": 11,
+          "title": "Episode 11",
+          "releaseDate": null
+        },
+        {
+          "number": 12,
+          "title": "Episode 12",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:7411",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/7411/Kanojo_x_Kanojo_x_Kanojo__Sanshimai_to_no_Dokidoki_Kyoudou_Seikatsu",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:07.923Z"
+      },
+      "title": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
+      "titles": {
+        "english": null,
+        "romaji": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
+        "japanese": "彼女×彼女×彼女～三姉妹とのドキドキ共同生活～",
+        "aliases": [
+          "Girlfriend x Girlfriend x Girlfriend"
+        ]
+      },
+      "description": "Haruomi Shiki's peaceful life on a small island was shattered when a volcano erupted and destroyed his home. He goes to stay with a relative, where he meets the sexy sisters Natsumi, Akina, and Mafuyu Orifushi, who he immediately finds himself attracted to. While staying there, he finds out that the father of the Orifushi household has died, and that Natsumi inherited their ice cream business, MinMin. Their district holds an annual competition involving all ice cream stores, which MinMin always wins. But this year, a new ice cream shop called 101 opens a branch in the district, and they are a competitor that could beat MinMin. On top of that, the quality of the ice cream produced by MinMin has been significantly reduced since their father died. Will they be able to overcome such a handicap? Only time will tell, but with Haruomi helping the sisters with the ice cream shop, and also fulfilling his more salacious desires with them, he will have his hands full in more ways than one! [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1554/116159.jpg",
+      "year": 2009,
+      "releaseDate": "2009-12-25",
+      "updatedAt": null,
+      "studio": "Studio Eromatick",
+      "genres": [
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:39337",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/39337/Araiya-san__Ore_to_Aitsu_ga_Onnayu_de",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:09.238Z"
+      },
+      "title": "Araiya-san!: Ore to Aitsu ga Onnayu de!?",
+      "titles": {
+        "english": null,
+        "romaji": "Araiya-san!: Ore to Aitsu ga Onnayu de!?",
+        "japanese": "洗い屋さん! ~俺とアイツが女湯で!?~",
+        "aliases": [
+          "Miss Washer!: Her and I in Female Bath!?",
+          "Washer! She and I in the Women's Bath!?"
+        ]
+      },
+      "description": "\"Is This Really Massage...?\" Souta started to work part-time at Sentou, which is his hometown, as a back washer, he ends up washing Aoi, who is his classmate but trying to cover her identity... As he massages her with days of hate from her harassment continues, He realized that Aoi has in love with him one-sided...! When he touches her hot skin, She realizes that the one who washes her is Souta. A love comedy between a clumsy guy and girl behind the red curtain! (Source: MAL News)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1804/109216.jpg",
+      "year": 2019,
+      "releaseDate": "2019-04-08",
+      "updatedAt": null,
+      "studio": "Magic Bus",
+      "genres": [
+        "Comedy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:47591",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/47591/Kuro_Gal_ni_Natta_kara_Shinyuu_to_shitemita",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:09.237Z"
+      },
+      "title": "Kuro Gal ni Natta kara Shinyuu to shitemita.",
+      "titles": {
+        "english": null,
+        "romaji": "Kuro Gal ni Natta kara Shinyuu to shitemita.",
+        "japanese": "黒ギャルになったから親友としてみた。",
+        "aliases": [
+          "Fucked By My Best Friend",
+          "I Became a Black Gal So I Fucked My Best Friend",
+          "Kuro Gal ni Natta kara Shinyuu to Yattemita."
+        ]
+      },
+      "description": "College students Shion Chihara and Rui Chihaya are childhood friends who enjoy picking up girls together. When a strange drug transforms Shion into a woman, Rui cannot resist sharing an intimate moment with him, even after learning his true identity. As they investigate Shion's new body and the events that shift him between male and female forms periodically, their relationship deepens in ways that they never before thought possible. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1267/111801.jpg",
+      "year": 2021,
+      "releaseDate": "2021-04-05",
+      "updatedAt": null,
+      "studio": "Elias",
+      "genres": [
+        "Boys Love",
+        "Hentai",
+        "Magical Sex Shift"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:741",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/741/Sensitive_Pornograph",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:09.211Z"
+      },
+      "title": "Sensitive Pornograph",
+      "titles": {
+        "english": null,
+        "romaji": "Sensitive Pornograph",
+        "japanese": "センシティブ・ポルノグラフ",
+        "aliases": []
+      },
+      "description": "For four young men, love and intimacy are in the air, even though they may not be aware of it. Sensitive Pornograph holds within it two tales of sexual romance for two different couples of men. The first is a tale between two manga artists, Seiji Yamada and Sono Hanasaki. Both are familiar with each other's work, though upon meeting each other, Seiji is shocked to find out that Sono is actually a man, ten years his senior. Love quickly blossoms between the two, but will soon be tested when Seiji begins to hear rumors about Sono's past sexual exploits. In the second tale, Koji Ueno is a part-time pet sitter, hired to take care of a rabbit named Aki for a new client. To Koji's complete surprise though, not only is there no rabbit in the house, but the only thing in the apartment is a bound and gagged man in the closet who says that he is Aki. More troubling than this is that Aki informs Koji that they are both in danger of upsetting the client, and the only way for Koji to get out safely is for them to make love together. Two stories, four men, and the one emotion of love that unites them all in the new twists their lives have taken.",
+      "poster": "https://cdn.myanimelist.net/images/anime/12/27084.jpg",
+      "year": 2004,
+      "releaseDate": "2004-12-20",
+      "updatedAt": null,
+      "studio": "Phoenix Entertainment",
+      "genres": [
+        "Boys Love",
+        "Drama",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:34823",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/34823/Souryo_to_Majiwaru_Shikiyoku_no_Yoru_ni",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:09.185Z"
+      },
+      "title": "Souryo to Majiwaru Shikiyoku no Yoru ni...",
+      "titles": {
+        "english": null,
+        "romaji": "Souryo to Majiwaru Shikiyoku no Yoru ni...",
+        "japanese": "僧侶と交わる色欲の夜に…",
+        "aliases": [
+          "A Lustful Night with a Monk..."
+        ]
+      },
+      "description": "At a high school reunion, Mio Fukatani reunites with a classmate she has not seen in years—Takahide Kujou. She had always wanted to know more about the kind-hearted boy in high school, but once she realizes that Kujou has become a monk, she believes that any chance of getting to know him romantically is slim. Deciding to drink away her sorrows, she ends up walking home drunk, and surprisingly, running into Kujou who helps her get home. However, once inside, Kujou's lust for Mio becomes apparent and the two share an erotic night of passion. As this steamy romance blossoms between these two unlikely lovers, Mio and Kujou will undoubtedly spend many nights together in utter ecstasy. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/9/86606.jpg",
+      "year": 2017,
+      "releaseDate": "2017-04-03",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Drama",
+        "Hentai",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        },
+        {
+          "number": 10,
+          "title": "Episode 10",
+          "releaseDate": null
+        },
+        {
+          "number": 11,
+          "title": "Episode 11",
+          "releaseDate": null
+        },
+        {
+          "number": 12,
+          "title": "Episode 12",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:44044",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/44044/Jimihen__Jimiko_wo_Kaechau_Jun_Isei_Kouyuu",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:10.455Z"
+      },
+      "title": "Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!",
+      "titles": {
+        "english": null,
+        "romaji": "Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!",
+        "japanese": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+        "aliases": [
+          "Jimihen!! Pure Heterosexual Exchange That Changes a Reserved Girl"
+        ]
+      },
+      "description": "Coworkers often gossip during breaks or go drinking after work hours. Ryouhei Hachiya and his Department Head are no different. But this time, in exchange for keeping the fact that Ryouhei skipped a day of work a secret, his Department Head dares him to invite the shy and disheveled office clerk Rena Yukuhashi out for a drink. He has a difficult time completing this menial task, since the Department Head's only goal is to find out if Rena is a virgin, but he does so anyway. On their outing, Ryouhei is unexpectedly mesmerized by Rena's appearance. Not only does she look stunning, but the way she speaks unrestrictedly pleases him. Ryouhei finds himself captivated by the previously reserved girl, and after their first night, their encounters become more frequent. However, complications arise when Ryouhei later tries to act cool around his Department Head. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1139/110273.jpg",
+      "year": 2021,
+      "releaseDate": "2021-01-04",
+      "updatedAt": null,
+      "studio": "Studio Hokiboshi",
+      "genres": [
+        "Hentai",
+        "Workplace"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:24641",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/24641/Baku_Ane__Otouto_Shibocchau_zo_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:10.429Z"
+      },
+      "title": "Baku Ane: Otouto Shibocchau zo! The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Baku Ane: Otouto Shibocchau zo! The Animation",
+        "japanese": "ばくあね 弟しぼっちゃうぞ! THE ANIMATION",
+        "aliases": []
+      },
+      "description": "Having suffered an injury during a soccer game, Ryoushirou Hayasaki returns to his parents' house to undergo therapy. As both of them are currently abroad, the only ones to welcome him home are his four older sisters—Yurine, Noemi, Naru, and Mio. His laid-back recovery is soon interrupted when Noemi finds her brother's erotic comics and love letters from younger classmates. The sisters soon realize that Ryoushirou has a little sister complex and the family argument that follows leaves the siblings at odds. Depressed and fed-up, Ryoushirou considers leaving the house. However, he gets an unexpected visit by Yurine that night—a short-haired and well-endowed beauty who is willing to help him with his rehabilitation and make up for the other sisters' outburst. Unable to deny himself the guilty pleasure, Ryoushirou decides to make the most of his stay and take advantage of the wonders around him. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/4/63429.jpg",
+      "year": 2014,
+      "releaseDate": "2014-08-29",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:11827",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/11827/Kuroinu__Kedakaki_Seijo_wa_Hakudaku_ni_Somaru",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:10.670Z"
+      },
+      "title": "Kuroinu: Kedakaki Seijo wa Hakudaku ni Somaru",
+      "titles": {
+        "english": null,
+        "romaji": "Kuroinu: Kedakaki Seijo wa Hakudaku ni Somaru",
+        "japanese": "黒獣 [クロイヌ] ～気高き聖女は白濁に染まる～",
+        "aliases": []
+      },
+      "description": "In the land of Eostia, humans and dark elves have fought for supremacy for over a century. The dark elves rule over a race of monsters that has raided human lands for generations, capturing and defiling their women. Aided by powerful bands of mercenaries, the human kingdoms have gradually pushed back their old rivals. But the mercenaries would not settle for these victories. Led by the cruel general Volt, the sellswords declare independence. With the support of the savage orcs, their new nation attacks human and dark elf alike, carving out a kingdom where men reign supreme and women are little more than slaves. Even the dark elves' castle is conquered and their queen taken prisoner. The sole hope for peace in these lands rests with a fellowship of seven princess knights, handpicked by the goddess of the high elves. But is their power enough to cleanse the evil from their world?",
+      "poster": "https://cdn.myanimelist.net/images/anime/1933/103847.jpg",
+      "year": 2012,
+      "releaseDate": "2012-01-27",
+      "updatedAt": null,
+      "studio": "Majin",
+      "genres": [
+        "Action",
+        "Fantasy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:36840",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/36840/25-sai_no_Joshikousei",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:10.465Z"
+      },
+      "title": "25-sai no Joshikousei",
+      "titles": {
+        "english": null,
+        "romaji": "25-sai no Joshikousei",
+        "japanese": "25歳の女子高生",
+        "aliases": [
+          "25-Year-Old High School Girl"
+        ]
+      },
+      "description": "Once most students are done with high school, they leave and never come back. However, at 25 years old, Hana Natori finds herself in the role of a student once more at her aunt's request. Since Hana's cousin, Kaho Miyoshi, refuses to go to school, her aunt begs Hana to take Kaho's place, since the two of them are practically identical. But as luck would have it, she is recognized by Okito Kanie—an old classmate from her days in high school—who is now a teacher! With her cover blown, Hana assumes Kanie will expose her secret. But when he suddenly kisses her, she soon learns he has other ideas. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/12/89091.jpg",
+      "year": 2018,
+      "releaseDate": "2018-01-08",
+      "updatedAt": null,
+      "studio": "Lyrics",
+      "genres": [
+        "Hentai",
+        "School",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        },
+        {
+          "number": 10,
+          "title": "Episode 10",
+          "releaseDate": null
+        },
+        {
+          "number": 11,
+          "title": "Episode 11",
+          "releaseDate": null
+        },
+        {
+          "number": 12,
+          "title": "Episode 12",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:25345",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/25345/Rance_01__Hikari_wo_Motomete_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:11.883Z"
+      },
+      "title": "Rance 01: Hikari wo Motomete The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Rance 01: Hikari wo Motomete The Animation",
+        "japanese": "ランス01 光をもとめて THE ANIMATION",
+        "aliases": [
+          "Rance 01: The Quest for Hikari"
+        ]
+      },
+      "description": "The barbaric warrior Rance loves nothing more than the company of beautiful women. Traveling around the continent with his faithful slave Sill Plain, Rance takes on odd jobs for a chance to appease his insatiable libido. Although his perverted instincts often land him in hot water, people from far and wide nevertheless laud his heroic feats. While undertaking a request to locate a missing noble girl, Rance and Sill arrive in the majestic Kingdom of Leazas. As they split up to investigate several leads, Rance finds himself aiding the townsfolk with various problems, from rescuing a kidnapped barmaid to purging an undead outbreak. Amassing both fortune and females, the warrior eventually uncovers a dark secret within the kingdom that only he can stand against. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/10/67287.jpg",
+      "year": 2014,
+      "releaseDate": "2014-12-26",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Fantasy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:32587",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/32587/Shoujo_Ramune",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:11.884Z"
+      },
+      "title": "Shoujo Ramune",
+      "titles": {
+        "english": null,
+        "romaji": "Shoujo Ramune",
+        "japanese": "小女ラムネ",
+        "aliases": []
+      },
+      "description": "Kiyoshi Tachikawa runs a candy store located in a small town on the outskirts of Tokyo. He had quit his previous job to get away from the commotion of a major city and now enjoys his days surrounded by little girls. Kiyoshi's shop is regularly visited by three girls in particular: Chie Sayama, Tenka Adachi, and Komako Semenovich. Due to his friendly and easygoing demeanor, the not-so-innocent girls quickly take to Kiyoshi, seeking his attention and help with their problems. They soon develop romantic feelings toward him and gladly leave their bodies in his care, passing time in his house by indulging in sexual pleasures. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1258/149953.jpg",
+      "year": 2016,
+      "releaseDate": "2016-10-07",
+      "updatedAt": null,
+      "studio": "New Generation",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:221",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/221/Mezzo_Forte",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:11.850Z"
+      },
+      "title": "Mezzo Forte",
+      "titles": {
+        "english": null,
+        "romaji": "Mezzo Forte",
+        "japanese": "メゾフォルテ",
+        "aliases": []
+      },
+      "description": "For some individuals, baseball is more than just a game. Momokitchi Momoi, an underworld boss and the owner of a professional team known as the \"Peach Twisters,\" seems to be the perfect example. There is only one punishment for players who have let him down: death. Terrible as he may sound, there is someone even more wicked than him—his daughter, Momomi. The three members of the Danger Service Agency—Mikura Suzuki, Tomohisa Harada, and Kenichi Kurokawa—are tasked with kidnapping Momokitchi and taking down his criminal empire. Surrounded by armed bodyguards, he is bound to be a risky target. However, born with a gun in hand, Mikura is used to dancing with danger. The only unknown quantity is Momomi, reputed to be a cold-blooded killer with a twisted mind. Should she stand in the DSA's way, Suzuki might finally find herself a worthy opponent. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/6/37391.jpg",
+      "year": 2000,
+      "releaseDate": "2000-05-25",
+      "updatedAt": null,
+      "studio": "Arms",
+      "genres": [
+        "Action",
+        "Comedy",
+        "Sci-Fi",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:8918",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/8918/Princess_Lover_OVA",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:11.883Z"
+      },
+      "title": "Princess Lover! OVA",
+      "titles": {
+        "english": null,
+        "romaji": "Princess Lover! OVA",
+        "japanese": "プリンセスラバー! OVA",
+        "aliases": [
+          "Kimi to Isshou no Asa"
+        ]
+      },
+      "description": "After his parents are killed in an accident, Teppei Kobayashi is adopted by his grandfather, Isshin Arima. After taking his grandfather's name, Teppei is made the heir to the Arima Financial Combine, one of the leading forces in the Japanese industry. As befits the heir to an industrial empire, he is enrolled in one of Japan's most prestigious international schools. There, Teppei finds himself surrounded by women of noble bearing and status. He quickly falls for Sylvia van Hossen, a European princess and fencing master. But Sylvia is aloof and difficult to read, and his maid, Yuu Fujikura, seems to have her own agenda. Will Teppei become the Princess Lover, or is his romance with Sylvia destined for failure?",
+      "poster": "https://cdn.myanimelist.net/images/anime/1967/103842.jpg",
+      "year": 2010,
+      "releaseDate": "2010-09-17",
+      "updatedAt": null,
+      "studio": "Public Enemies",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:31886",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/31886/Dropout",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:13.074Z"
+      },
+      "title": "Dropout",
+      "titles": {
+        "english": null,
+        "romaji": "Dropout",
+        "japanese": "ドロップアウト",
+        "aliases": []
+      },
+      "description": "To address the alarming problem of unemployment, a special government program is introduced to conscript so-called \"dropouts\"—young people who are either unable to find a job or have failed high school—into compulsory labor. Although this initially entailed simple manual work, it soon turned into dropout girls having to perform mandatory sexual services for men. As one's own academic performance determines which dropout they receive, fierce competition for the finest sex partners has emerged between men all across the country. At the top of his school, Ryouta Niimi is awarded with the best dropout Japan has to offer. His new \"study partner\" is Reika Shichijou, his former crush. Having been assigned a girl so sweet and well-endowed, Niimi soon becomes the target of his classmates' envy. How did Reika, who used to be a model student herself, end up in this humiliating and subservient role—and why is she enjoying it so much? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1638/105305.jpg",
+      "year": 2016,
+      "releaseDate": "2016-02-26",
+      "updatedAt": null,
+      "studio": "Ryuu M&#039;s",
+      "genres": [
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:10380",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/10380/Oni_Chichi__Re-birth",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:13.067Z"
+      },
+      "title": "Oni Chichi: Re-birth",
+      "titles": {
+        "english": null,
+        "romaji": "Oni Chichi: Re-birth",
+        "japanese": "鬼父 Re-birth",
+        "aliases": [
+          "Oni Chichi 3"
+        ]
+      },
+      "description": "Airi Akizuki loves to start the morning with sexual fulfillment. When her stepfather Kouzou Akizuki sneaks up on her in her sleep, she feels truly alive. Loaded up to the brim, Airi wakes up fresh, energetic, and ready to face the world. It is a crisp summer day when Kouzou takes his stepdaughter and her friend, Sana Kuranaka, to the cinema. However, the blissfulness of the date is jeopardized when both Kouzou and Sana fall asleep, leaving Airi alone in the dark room. She gets assaulted by one of her school teachers but has to do her best to stay quiet and not express her pleasure to avoid waking her father up. The assailant leaves his victim drenched in sweat and moaning from satisfaction, promising to return soon. To Airi's horror, she finds herself looking forward to their next meeting. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1479/103843.jpg",
+      "year": 2011,
+      "releaseDate": "2011-04-28",
+      "updatedAt": null,
+      "studio": "PoRO",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:41466",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/41466/Kyojinzoku_no_Hanayome",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:13.080Z"
+      },
+      "title": "Kyojinzoku no Hanayome",
+      "titles": {
+        "english": null,
+        "romaji": "Kyojinzoku no Hanayome",
+        "japanese": "巨人族の花嫁",
+        "aliases": []
+      },
+      "description": "Kouichi Mizuki ends his high school basketball career on a high note, bringing his team to victory during their final match at nationals. Now free from club activities, he looks forward to spending more time socializing, maybe even finding room for romance. But fate has slightly different plans for him when a magical circle transports Kouichi to Tildant, the land of giants. Upon his arrival, Kouichi comes face-to-face with Caius Lao Bistail, the titan king and the culprit behind his summoning. Caius is overjoyed, claiming Kouichi to be his fated bride and asking him to bear his children! It soon becomes evident to Kouichi that his species, let alone gender, is not a problem as Caius pushes him down onto a lavish bed. Will Kouichi ever find romance in this relationship that is bound to end in tears? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1481/107629.jpg",
+      "year": 2020,
+      "releaseDate": "2020-07-06",
+      "updatedAt": null,
+      "studio": "Studio Hokiboshi",
+      "genres": [
+        "Boys Love",
+        "Fantasy",
+        "Hentai",
+        "Isekai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
       "id": "mal:2432",
       "type": "series",
       "adult": true,
       "sourceConfidence": "MAL",
       "sourceMetadata": {
-        "source": "MyAnimeList public title pages",
+        "source": "MyAnimeList public title page",
         "sourceUrl": "https://myanimelist.net/anime/2432/Discipline",
         "rating": "Rx - Hentai",
-        "retrievedAt": "2026-09-07T00:00:00.000Z"
+        "retrievedAt": "2026-09-08T01:26:13.141Z"
       },
       "title": "Discipline",
       "titles": {
@@ -88,13 +1977,2200 @@
           "Discipline: The Record of a Crusade"
         ]
       },
-      "description": "A transfer student encounters rival groups at Saint Arcadia School.",
+      "description": "The prestigious Saint Arcadia School has recently started admitting male students, and Takuro Hayami is among those joining. Elated at the prospect of sharing the dormitory with charming and well-endowed classmates, he fails to realize that the girls at the academy are sex-hungry deviants. A regular student at first glance, Takuro instantly becomes the target of aggressive courting. When Yuuki Miyagishi, one of his roommates, manages to seduce him, she discovers his special ability: outstanding sexual prowess! Hayami's \"Ultimate Sex Power\" soon becomes known across campus, and what started as playful kinkiness turns into a fierce competition as every student club strives to persuade Takuro into joining their ranks. Hidden beneath Saint Arcadia's sugar-coated reputation lurks a desperate sexual power struggle—and the arrival of the new transfer student might just be the tipping point. [Written by MAL Rewrite]",
       "poster": "https://cdn.myanimelist.net/images/anime/9/4536.jpg",
       "year": 2003,
       "releaseDate": "2003-04-11",
       "updatedAt": null,
       "studio": "Studio 9 Maiami",
-      "genres": [],
+      "genres": [
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:32355",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/32355/Toshi_Densetsu_Series",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:14.465Z"
+      },
+      "title": "Toshi Densetsu Series",
+      "titles": {
+        "english": null,
+        "romaji": "Toshi Densetsu Series",
+        "japanese": "都市伝説シリーズ",
+        "aliases": [
+          "Urban Legend Series"
+        ]
+      },
+      "description": "Urban legends told throughout Japan are meant to frighten the population, mainly those of school age, through stories involving abnormal entities or supernatural occurrences. But what happens when this folklore turns into pleasurable encounters with paranormal ladies? The stories of Hanako Hasegawa, a trapped girl with a tragic past; Sadako, a woman who can only appear virtually; Hachishaku-sama, a god who has been forgotten; and Mary, a thrown away doll, join together in a truly climactic narrative. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1481/143207.jpg",
+      "year": 2016,
+      "releaseDate": "2016-01-22",
+      "updatedAt": null,
+      "studio": "New Generation",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:9322",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/9322/HHH_Triple_Ecchi",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:14.396Z"
+      },
+      "title": "HHH Triple Ecchi",
+      "titles": {
+        "english": null,
+        "romaji": "HHH Triple Ecchi",
+        "japanese": "HHH トリプルエッチ",
+        "aliases": []
+      },
+      "description": "HHH Triple Ecchi is a collection of three short stories, depicting the unexpected lavish sexual lives of mundane individuals. Each revels in the truly mesmerizing physique of young women and their wild erotic adventures. Shigure Hen and Shigure Hen Okawari Shigure Takashima is the role model of a perfect high schooler. A charming student council president, she excels in sports and prides herself on countless academic achievements. Being born into a wealthy family, what else could she wish for? When Komatsu Kita catches her ferociously masturbating in an empty classroom after school hours, she instantly turns to him for sexual gratification. A relationship soon blooms between the two—one devoted purely to the seemingly insatiable desires of young adults. Konami Hen When Konami invites her neighbor over for dinner, little does she realize that the person she views as an older brother is actually haunted by sexual fantasies about her. He simply can not get his eyes off her well-endowed chest, and when Konami falls asleep, he decides to take advantage of her. Miyuki Hen Despite being an adult, Miyuki continues to bathe with her step-father. Oblivious as she may be, her parent's true intentions are crystal clear. After all, how can anyone resist such a scrumptious young body, displayed in its glorious entirety? The bath soon turns into something few families use it for. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1874/113220.jpg",
+      "year": 2010,
+      "releaseDate": "2010-11-26",
+      "updatedAt": null,
+      "studio": "Studio Eromatick",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:37320",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/37320/Amai_Choubatsu__Watashi_wa_Kanshu_Senyou_Pet",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:14.451Z"
+      },
+      "title": "Amai Choubatsu: Watashi wa Kanshu Senyou Pet",
+      "titles": {
+        "english": null,
+        "romaji": "Amai Choubatsu: Watashi wa Kanshu Senyou Pet",
+        "japanese": "甘い懲罰~私は看守専用ペット",
+        "aliases": [
+          "Amai Choubatsu: Watashi wa Kanshu Sen'you Pet"
+        ]
+      },
+      "description": "Framed and sent to Kokuyoku Prison for embezzlement, Hina Saotome desperately wants to prove her innocence. However, just when she thought her situation could not get any worse, she realizes that she is the only woman in a prison populated by men. But she may have even more to fear from Aki Myoujin, a handsome and stern warden who is intent on punishing her for an unknown reason. Although the warden's treatment is unconventional, Hina's body soon begins to long for Aki's particular brand of discipline. But has this hypnotizing man, who has captivated her body, captured her heart as well? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1464/108630.jpg",
+      "year": 2018,
+      "releaseDate": "2018-04-02",
+      "updatedAt": null,
+      "studio": "Magic Bus",
+      "genres": [
+        "Drama",
+        "Hentai",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        },
+        {
+          "number": 9,
+          "title": "Episode 9",
+          "releaseDate": null
+        },
+        {
+          "number": 10,
+          "title": "Episode 10",
+          "releaseDate": null
+        },
+        {
+          "number": 11,
+          "title": "Episode 11",
+          "releaseDate": null
+        },
+        {
+          "number": 12,
+          "title": "Episode 12",
+          "releaseDate": null
+        },
+        {
+          "number": 13,
+          "title": "Episode 13",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:40254",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/40254/XL_Joushi",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:14.396Z"
+      },
+      "title": "XL Joushi.",
+      "titles": {
+        "english": null,
+        "romaji": "XL Joushi.",
+        "japanese": "XL上司。",
+        "aliases": []
+      },
+      "description": "With the hopes of making a bit of extra cash, office worker Saki Watase registers for a product review program. But when the first product her new part-time job sends her is a huge box of XL condoms, Saki decides to put the task to the side. Later on, while at a drinking party with her coworkers—including her competent but infuriating \"demon boss\" Keisuke Sudou—Saki ends up drunk out of her mind, so Keisuke offers to escort her home. Upon their arrival at Saki's apartment, however, Keisuke immediately takes notice of his subordinate's substantial number of XL condoms. When she explains the circumstances of her part-time job, Keisuke offers to help out with the testing—revealing himself to be XL-sized! [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1306/111409.jpg",
+      "year": 2019,
+      "releaseDate": "2019-10-07",
+      "updatedAt": null,
+      "studio": "Magic Bus",
+      "genres": [
+        "Hentai",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:11879",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/11879/Oni_Chichi__Re-born",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:15.668Z"
+      },
+      "title": "Oni Chichi: Re-born",
+      "titles": {
+        "english": null,
+        "romaji": "Oni Chichi: Re-born",
+        "japanese": "鬼父 Re-born",
+        "aliases": [
+          "Oni Chichi 4"
+        ]
+      },
+      "description": "When Kouzou Akizuki, the stepfather of two adolescent girls, announces a family holiday, his daughter Airi is quick to express her disdain for the idea. Eventually, though, she is brought around by her sister, Marina, who is looking forward to this opportunity to spend some romantic moments with their father. However, Marina will only join them a couple of days later, leaving Airi and Kouzou to their own devices. Airi is aware of her father's sexual inclinations and tries to avoid being alone with him in the same room. Unfortunately, she falls victim to a potent aphrodisiac during the train journey to the hot springs that Kouzou disguises as candy. Airi finds herself unable to control her sexual urges—which is exactly what her father has been waiting for. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1917/103846.jpg",
+      "year": 2011,
+      "releaseDate": "2011-12-22",
+      "updatedAt": null,
+      "studio": "PoRO",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:21829",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/21829/Fella_Pure__Mitarashi-san_Chi_no_Jijou_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:15.660Z"
+      },
+      "title": "Fella Pure: Mitarashi-san Chi no Jijou The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Fella Pure: Mitarashi-san Chi no Jijou The Animation",
+        "japanese": "フェラピュア ~御手洗さん家の事情~ THE ANIMATION",
+        "aliases": [
+          "Fela Pure: Mitarashi-san Chi no Jijou - The Animation"
+        ]
+      },
+      "description": "On the outside, Keiko Mitarai is absolutely perfect; she has a beautiful figure, astounding leadership, and a good reputation among the students. Unbeknownst to many, however, behind the charisma she exudes lies a complete pervert who cannot stop thinking about the sexual art of fellatio. Because of this, whenever her parents are away, she uses her younger brother to discover new ways of giving pleasure, which is bound to one day go too far. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/2/74935.jpg",
+      "year": 2014,
+      "releaseDate": "2014-03-28",
+      "updatedAt": null,
+      "studio": "Office TakeOut",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:41261",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/41261/Ane_wa_Yanmama_Junyuu-chuu",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:15.720Z"
+      },
+      "title": "Ane wa Yanmama Junyuu-chuu",
+      "titles": {
+        "english": null,
+        "romaji": "Ane wa Yanmama Junyuu-chuu",
+        "japanese": "義姉はヤンママ授乳中",
+        "aliases": [
+          "My Former Delinquent Sister is a Nursing Mother",
+          "Gishi wa Yan Mama Junyuu Chuu"
+        ]
+      },
+      "description": "This story about a married woman, as is usual in such stories sexually unsatisfied in married life, and decided to make up for lost time with her brother, who came to stay with her husband and children. What started as a harmless joke on a drunken bench, will grow into a constant frenzied sex always and everywhere, at any convenient opportunity.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1810/105977.jpg",
+      "year": 2020,
+      "releaseDate": "2020-06-05",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:33322",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/33322/JK_Bitch_ni_Shiboraretai",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:15.664Z"
+      },
+      "title": "JK Bitch ni Shiboraretai",
+      "titles": {
+        "english": null,
+        "romaji": "JK Bitch ni Shiboraretai",
+        "japanese": "JKビッチに搾られたい",
+        "aliases": []
+      },
+      "description": "An ordinary high school student feels pressured to lose his virginity to Bitchko, a girl considered to be the school's prostitute. However, the boy's secret crush, Yariko—the most popular girl in school and a model—proposes the unexpected: she wishes to have sex with him, as she aspires to sleep with one hundred virgins. With such bizarre run-ins seeming endless, he starts fooling around with multiple female classmates, becoming the sexual icon for all the girls around him. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1646/112534.jpg",
+      "year": 2016,
+      "releaseDate": "2016-08-19",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:4473",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/4473/Shoujo_Sect",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:16.865Z"
+      },
+      "title": "Shoujo Sect",
+      "titles": {
+        "english": null,
+        "romaji": "Shoujo Sect",
+        "japanese": "少女セクト",
+        "aliases": [
+          "Shoujo Sect: Innocent Lovers",
+          "Shojo Sect"
+        ]
+      },
+      "description": "Ten years ago, Shinobu Handa and Momoko Naitou met on a playground and became friends. Before their separation, they shared a kiss and a promise that they would see each other again. Years later, Shinobu still remembers that vow, but Momoko has forgotten it. Now the two attend the same school. However, their personalities are complete opposites. Shinobu is a delinquent collecting a string of lovers, but Momoko is a serious student and a member of the disciplinary committee. Shinobu uses her flirtatious nature to try to make Momoko rediscover the bond and feelings they once shared. Various stories of love and lust envelop Momoko and Shinobu's lives. Can these two find their way back to one another? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1088/116195.jpg",
+      "year": 2008,
+      "releaseDate": "2008-07-25",
+      "updatedAt": null,
+      "studio": "Amarcord",
+      "genres": [
+        "Girls Love",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:21521",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/21521/Futa-bu",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:16.938Z"
+      },
+      "title": "Futa-bu!",
+      "titles": {
+        "english": null,
+        "romaji": "Futa-bu!",
+        "japanese": "ふた部!",
+        "aliases": [
+          "Futa Club!"
+        ]
+      },
+      "description": "Dissatisfied with an ordinary high school life, Akane Niimura decides to join the Futa Club. The organization consists solely of futanari—well-developed women with male genitals. The club's members spend their free time pursuing a single activity: indulging in as much sexual pleasure with each other as possible. However, there is a major problem with Akane—she is a regular girl! Therefore she can only be admitted to the club as a \"service specialist.\" Despite ending up with the subservient role of being a sex toy for the other members, Niimura is content with her position and resolves to fully enjoy the club's exciting activities. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1943/103851.jpg",
+      "year": 2014,
+      "releaseDate": "2014-02-21",
+      "updatedAt": null,
+      "studio": "Studio 9 Maiami",
+      "genres": [
+        "Girls Love",
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:39392",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/39392/Master_Piece_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:16.920Z"
+      },
+      "title": "Master Piece The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Master Piece The Animation",
+        "japanese": "マスターピース THE ANIMATION",
+        "aliases": []
+      },
+      "description": "After his parents passed away many years ago, Yuuji Enomoto was adopted into the family of his childhood friends Yuna and Nina Tsubakihara and their mother Mira. Now in high school and known as Yuuji Tsubakihara, he lives under the same roof as a pair of cute twins and a beautiful older woman. Although the shy, reserved Yuna and the outgoing, talented Nina are his family, Yuuji submits to his desires after witnessing Yuna turn down a confession. But as Yuuji and Yuna finally consummate their lifelong love, can Nina and Mira stand idly by? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1195/101107.jpg",
+      "year": 2019,
+      "releaseDate": "2019-05-31",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:11321",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/11321/Nee_Summer",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:16.919Z"
+      },
+      "title": "Nee Summer!",
+      "titles": {
+        "english": null,
+        "romaji": "Nee Summer!",
+        "japanese": "姉SUMMER!",
+        "aliases": []
+      },
+      "description": "Yuuta Yamauchi is an average high school student preparing for exams through his summer vacation. His older cousin Kei Higashide, who takes pity on him as her \"little brother,\" devotes her time and patience to tutor this relative in need. One day, Yuuta manages to take a photo of his classmate and crush, Youko Kaji, as a gust of wind lifts her skirt. When Kei finds out about it, she laughs at Yuuta's juvenile infatuation and starts teasing him about his sexual preferences. From words to deeds, she offers him her own grown-up body—and Yuuta quickly takes advantage of the opportunity. As summer passes on and the relatives start enjoying more time together, their initially bland tutoring sessions soon turn into a passionate and fiery relationship. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1910/112035.jpg",
+      "year": 2011,
+      "releaseDate": "2011-12-30",
+      "updatedAt": null,
+      "studio": "Rabbit Gate",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:36720",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/36720/Youkoso_Sukebe_Elf_no_Mori_e",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:18.166Z"
+      },
+      "title": "Youkoso! Sukebe Elf no Mori e",
+      "titles": {
+        "english": null,
+        "romaji": "Youkoso! Sukebe Elf no Mori e",
+        "japanese": "OVAようこそ！スケベエルフの森へ",
+        "aliases": [
+          "Welcome! To The Forest of Lewd Elves"
+        ]
+      },
+      "description": "Alfheim, a world of elves where women only exist. The world Shrine, the source of all the elves' magical power, has started to fade and the race was in danger of extinction. Then there is a prophecy that a man from another world is destined to be the savior of the elven race. And it was not too long the hero is now brought to the world of Elves... The elves ruled they must survive by child-making with the hero. But many of the other elves refused this vulgar decision and so the elves divided into groups: Those who disdain child-making with a man and those who choose to accept the fact. But those who accepted have discovered something: It turns out if they have sex with the hero and acquire semen into their bodies, their magic powers increases. So they proceed to milk him dry... (Source: DLsite)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1406/91062.jpg",
+      "year": 2018,
+      "releaseDate": "2018-02-02",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Fantasy",
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:13221",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/13221/Kyonyuu_Fantasy",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:18.142Z"
+      },
+      "title": "Kyonyuu Fantasy",
+      "titles": {
+        "english": null,
+        "romaji": "Kyonyuu Fantasy",
+        "japanese": "巨乳ファンタジー",
+        "aliases": [
+          "Funbag Fantasy"
+        ]
+      },
+      "description": "A small peripheral village is terrorized by an insatiable succubus named Shamsiel Shahar. Due to her nature, she has become the bane of all men in the vicinity, sucking out their life forces and leaving them undignified for everyone else to see. The kingdom is too busy with an ongoing revolt to dispatch an adequate unit for exorcising the daemon, so it decides to play a much less valuable card. Ryuuto Henge is the last graduate from the Royal Knight Academy. He is considered a failure as a soldier and a disgrace to the kingdom, making him the perfect man to throw at the succubus' mercy. Assuming it is a one-way journey, Ryuuto prepares to meet his inevitable end. However, after he arrives in the village, he is greeted by Shamsiel herself. Having heard the news of a knight sent to defeat her, Shamsiel decides to test Ryuuto's endurance first hand. To her utmost surprise and disbelief, she is incapable of draining Ryuuto's energy. His stamina keeps replenishing, and soon, he will be the one with the upper hand. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1319/103850.jpg",
+      "year": 2012,
+      "releaseDate": "2012-05-25",
+      "updatedAt": null,
+      "studio": "Majin",
+      "genres": [
+        "Fantasy",
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:41332",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/41332/Ore_no_Yubi_de_Midarero__Heitengo_Futarikiri_no_Salon_de",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:18.160Z"
+      },
+      "title": "Ore no Yubi de Midarero.: Heitengo Futarikiri no Salon de...",
+      "titles": {
+        "english": null,
+        "romaji": "Ore no Yubi de Midarero.: Heitengo Futarikiri no Salon de...",
+        "japanese": "俺の指で乱れろ。～閉店後二人きりのサロンで…～",
+        "aliases": [
+          "OreYubi",
+          "Go Wild from My Fingers. Alone Together at the Salon After Shop Hours..."
+        ]
+      },
+      "description": "Fumi Hoshiya works at a beauty salon, hoping to become a hairdresser someday. Her popular and charismatic manager, Sousuke Nanase, often chastises Fumi for her mistakes in the salon. Nonetheless, Fumi idolizes Nanase as a kind mentor and role model. One day, Nanase invites Fumi for an after-hours practice beauty session. Little does Fumi know, her \"beauty session\" will entail more than she expected, with Nanase touching every part of her body for some very erotic results! [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1222/106183.jpg",
+      "year": 2020,
+      "releaseDate": "2020-04-06",
+      "updatedAt": null,
+      "studio": "Magic Bus",
+      "genres": [
+        "Hentai",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        },
+        {
+          "number": 7,
+          "title": "Episode 7",
+          "releaseDate": null
+        },
+        {
+          "number": 8,
+          "title": "Episode 8",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:12375",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/12375/Maki-chan_to_Now",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:18.137Z"
+      },
+      "title": "Maki-chan to Now.",
+      "titles": {
+        "english": null,
+        "romaji": "Maki-chan to Now.",
+        "japanese": "真希ちゃんとなう。",
+        "aliases": [
+          "Maki-chan to Nau"
+        ]
+      },
+      "description": "Maki Sanjou, the daughter of a famous model, has not only inherited her mother's astonishing looks, but is also incredibly wealthy. She is immensely popular with young men and women alike, exuding the aura of a prim and proper princess. Despite Maki's perfect image, she has a tendency to masturbate in public, often imagining herself being caught, blackmailed, and forced to obey her captor's wild sexual desires. Coincidentally, her neighbor is Seiichi Sakonji, a young writer employed in the erogames sector. One summer night, when he decides to take a break from work, he overhears Maki moaning in the veranda. Seiichi approaches cautiously, but the wall separating their balconies accidentally comes down and he is caught eavesdropping. However, Maki quickly interrupts his apologies, confessing that she secretly hoped he would come. After Maki suggests that Seiichi coerces her into whatever he wishes, the two make love and become a couple. As they engage in various sexual activities, Seiichi cannot believe that he has found such a beautiful girlfriend, and Maki is ecstatic with a boyfriend willing to satisfy her perverted fantasies. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/7/85630.jpg",
+      "year": 2012,
+      "releaseDate": "2012-02-24",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:3918",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/3918/Resort_Boin",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:19.392Z"
+      },
+      "title": "Resort Boin",
+      "titles": {
+        "english": null,
+        "romaji": "Resort Boin",
+        "japanese": "リゾートBOIN",
+        "aliases": []
+      },
+      "description": "Daisuke Ichijou goes on vacation to his grandmother's beach resort. As he arrives, he admires the beautiful beach and even more beautiful ladies on it. Soon, he decides to start having fun \"his own way.\" He encounters many girls who will make this vacation unforgettable, including his old friends, the playful Nao Ihara and the wealthy Mitsugu Tsukushino, who proceed to compete over him. Daisuke also meets his cousin Maya Koromogae and her clumsy friend, Momona Amamiya. There are Kanae Shinjou and Mika as well, who also happen to \"get involved\" with Daisuke throughout his vacation. These six girls will be responsible for making Daisuke's vacation intense, fun, and unforgettable. As they put Daisuke in many complicated situations, he finds that they often lead to passionate erotic activities. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1927/113011.jpg",
+      "year": 2007,
+      "releaseDate": "2007-12-25",
+      "updatedAt": null,
+      "studio": "Studio Eromatick",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:972",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/972/Bible_Black_Gaiden",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:19.341Z"
+      },
+      "title": "Bible Black Gaiden",
+      "titles": {
+        "english": null,
+        "romaji": "Bible Black Gaiden",
+        "japanese": "バイブルブラック 外伝",
+        "aliases": []
+      },
+      "description": "After their rejected request to create a formal student magic club, Hiroko Takashiro, Saki Shidou, and Rie Morita are forced to continue practicing witchcraft in their free time only. One day, Rie comes across a dusty, hand-written book. Found on a sales pile in an antique shop, the manuscript seems to be nothing more than a foreign curiosity. Upon translating the book, the girls discover simple spells designed to bend an unsuspecting victim to the user's will and impose one's sexual desires on them. Realizing they have come into possession of a mighty weapon, the group begins fulfilling different requests of other students—be it for love, vengeance, or sexual desire. As the situation spirals out of control, the magic club gradually transforms into a cult of blood, lust, and human sacrifice. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/10/70481.jpg",
+      "year": 2002,
+      "releaseDate": "2002-05-25",
+      "updatedAt": null,
+      "studio": "Studio Jam",
+      "genres": [
+        "Supernatural",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:41848",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/41848/Isekai_Harem_Monogatari",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:19.348Z"
+      },
+      "title": "Isekai Harem Monogatari",
+      "titles": {
+        "english": null,
+        "romaji": "Isekai Harem Monogatari",
+        "japanese": "異世界ハーレム物語",
+        "aliases": [
+          "Tales of A Harem in Another World"
+        ]
+      },
+      "description": "A 16-year-old named Naoki Oikawa is addicted to masturbating. One day, while pleasuring himself as usual, his erotic magazine begins to glow and Naoki suddenly finds himself in a fantastic world. He appears among three female adventurers who later present themselves as the swordswoman Filia Shiora, the priestess Tiane Rutheim, and the elf Llusse. They explain to Naoki that the world is in danger of destruction due to the resurrection of the Demon King, and the only way to save it is for him to use his special power—feeding his semen to the three girls so as to increase their strength exponentially. Of course, the young hero agrees to join the party, and his erotic quest begins. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1798/112703.jpg",
+      "year": 2020,
+      "releaseDate": "2020-07-31",
+      "updatedAt": null,
+      "studio": "Majin",
+      "genres": [
+        "Fantasy",
+        "Hentai",
+        "Harem",
+        "Isekai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:1401",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/1401/Bible_Black__New_Testament",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:19.395Z"
+      },
+      "title": "Bible Black: New Testament",
+      "titles": {
+        "english": null,
+        "romaji": "Bible Black: New Testament",
+        "japanese": "新バイブルブラック",
+        "aliases": [
+          "Shin Bible Black",
+          "Bible Black: Revival",
+          "New Bible Black"
+        ]
+      },
+      "description": "Several years have passed since the Walpugis Night incident and several bizarre serial murder cases have occured in the metropolitan area. Dead bodies of couples are discovered murdered during sexual intercourse. The women didn't have any external injuries, but the men were completely burned and carbonized except one part... their genitals. To solve these bizarre incidents, a special detective team called \"Tokken\" is deployed. Included amongst the members of Tokken is Imari who had experienced the events of Walpugis Night. While investigating the incident, they found a mysterious phrase, \"Spear of Longinus,\" and a strange cult group that is related to the incidents. (Source: ANN)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1212/103884.jpg",
+      "year": 2004,
+      "releaseDate": "2004-04-25",
+      "updatedAt": null,
+      "studio": "Studio Jam",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:15097",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/15097/Tropical_Kiss",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:20.627Z"
+      },
+      "title": "Tropical Kiss",
+      "titles": {
+        "english": null,
+        "romaji": "Tropical Kiss",
+        "japanese": "トロピカルKISS",
+        "aliases": []
+      },
+      "description": "Kaito left his hometown with a dream to be a big man. But he doesn't have any clear ideas, so he just lazily lives every day. It's no good. Kaito decides to work at a newly opened resort facility called \"A LO HA\". But he meets various girls he had relationships with before there... (Source: ErogeShop)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1581/103852.jpg",
+      "year": 2012,
+      "releaseDate": "2012-10-26",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:21097",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/21097/Oni_Chichi__Rebuild",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:20.623Z"
+      },
+      "title": "Oni Chichi: Rebuild",
+      "titles": {
+        "english": null,
+        "romaji": "Oni Chichi: Rebuild",
+        "japanese": "鬼父 Rebuild",
+        "aliases": []
+      },
+      "description": "At long last, Kayoko Akizuki, the mother of Airi and Marina, has returned home to her husband, Kouzou. Having realized her daughters have spent too long with only one parent, she is determined to mend the family relations. However, little does she know that Kouzou has had a sexual affair with his two stepdaughters for quite some time now. As time goes by, Kayoko grows increasingly more inquisitive and seems to be finally becoming aware of the situation. Kouzou becomes desperate and aggressive in his courting, taking his stepdaughters in their sleep or in public spaces. Moreover, a new challenger for his attention arrives—further jeopardizing Airi's relationship with her stepfather. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1584/103849.jpg",
+      "year": 2013,
+      "releaseDate": "2013-12-27",
+      "updatedAt": null,
+      "studio": "PoRO",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:2798",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/2798/Hatsu_Inu_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:20.599Z"
+      },
+      "title": "Hatsu Inu The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Hatsu Inu The Animation",
+        "japanese": "初犬 The Animation",
+        "aliases": [
+          "Hatsuinu The Animation",
+          "Strange Kind of Woman"
+        ]
+      },
+      "description": "By chance, Fukaya became the lover of a very quiet and beautiful girl, Fujino, yet he worries about the vibrator she's always carrying. \"Perhaps, she considers me no more fondly than that vibrator?\" In fact, their relationship began when he found her using a vibrator aboard a crowded train. Although they have passionate sex, he can't be certain that she loves him, and feels threatened by her vibrator. Now, the two of them are going to a pool. As she will be unable to use the vibrator in the water, he expects they will be alone, but... (Source: AnimeNfo)",
+      "poster": "https://cdn.myanimelist.net/images/anime/13/37287.jpg",
+      "year": 2007,
+      "releaseDate": "2007-05-25",
+      "updatedAt": null,
+      "studio": "Cafe de Jeilhouse",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:9308",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/9308/Oni_Chichi_2",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:20.634Z"
+      },
+      "title": "Oni Chichi 2",
+      "titles": {
+        "english": null,
+        "romaji": "Oni Chichi 2",
+        "japanese": "鬼父2",
+        "aliases": []
+      },
+      "description": "The feisty Natsume, motherly Akira, soft-spoken Fuyu, and innocent Haruka make up the Makino sisters. One week after losing his wife in an accident, the father of the household, Kenichi, starts to view his four daughters in a way that goes beyond a regular parent-child relationship. He soon becomes unable to resist their beautiful figures, and giving in to his carnal incestuous desires, he starts to have his way with them one by one. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1891/132978.jpg",
+      "year": 2010,
+      "releaseDate": "2010-10-29",
+      "updatedAt": null,
+      "studio": "PoRO",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:35936",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/35936/Imouto_Bitch_ni_Shiboraretai",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:21.825Z"
+      },
+      "title": "Imouto Bitch ni Shiboraretai",
+      "titles": {
+        "english": null,
+        "romaji": "Imouto Bitch ni Shiboraretai",
+        "japanese": "妹ビッチに搾られたい",
+        "aliases": [
+          "I Want To Be Squeezed By My Bitch Sister"
+        ]
+      },
+      "description": "When Mina agrees to come as a last-minute invitee to a mixer, she is surprised to see her brother sitting across the table. However, she decides to bite her tongue and not reveal this to her peers—even when the king's game that they are playing starts to get increasingly sexual. Elsewhere, the nature of Sayaka and her brother's relationship changes when her brother discovers a hole at waist-level in the wall between their rooms. Will Sayaka notice her brother watching her most intimate moments? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1473/103737.jpg",
+      "year": 2017,
+      "releaseDate": "2017-10-06",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:5762",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/5762/15_Bishoujo_Hyouryuuki",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:21.828Z"
+      },
+      "title": "15 Bishoujo Hyouryuuki",
+      "titles": {
+        "english": null,
+        "romaji": "15 Bishoujo Hyouryuuki",
+        "japanese": "15美少女漂流記",
+        "aliases": [
+          "The Story of 15 Beautiful Girls Adrift"
+        ]
+      },
+      "description": "After a heavy storm, Kazuma Shiraishi finds himself stranded on an uninhabited island somewhere in the Pacific. However, his situation may not be so unlucky, as 15 beautiful women are also marooned alongside him. Kazuma seizes the chance to have sex with these ladies, all while recording his raunchy deeds with three cameras he miraculously found lying on the shore. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/13/31333.jpg",
+      "year": 2009,
+      "releaseDate": "2009-08-03",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Comedy",
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:7053",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/7053/Fault",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:21.895Z"
+      },
+      "title": "Fault!!",
+      "titles": {
+        "english": null,
+        "romaji": "Fault!!",
+        "japanese": "フォルト!!",
+        "aliases": []
+      },
+      "description": "Shuichi belongs to the tennis club. There are only five members in total, but he enjoys his school life with them. One day, the situation around him starts changing when Shuichi gets injured in an accident. While Ai, one of the members, takes a good care of him, Mio, his younger sister, stays grumpy. In such an ugly situation, a big accident happens which changes the whole situation...",
+      "poster": "https://cdn.myanimelist.net/images/anime/1887/115575.jpg",
+      "year": 2009,
+      "releaseDate": "2009-11-20",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:30243",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/30243/Gakuen_de_Jikan_yo_Tomare",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:21.811Z"
+      },
+      "title": "Gakuen de Jikan yo Tomare",
+      "titles": {
+        "english": null,
+        "romaji": "Gakuen de Jikan yo Tomare",
+        "japanese": "学園で時間よ止まれ",
+        "aliases": []
+      },
+      "description": "The bastard son of a rich aristocrat is hellbent on seeking revenge ever since his father abandoned him and his mother died from overworking. He decides to teach his father a lesson by destroying what he treasures the most, his two daughters. He infiltrates their prestigious school with a magical time-freezing device he received from a witch—and proceeds to repeatedly rape his half-sisters, leaving them confused, helpless and begging for mercy. (Source: The Visual Novel Database)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1400/103864.jpg",
+      "year": 2015,
+      "releaseDate": "2015-05-29",
+      "updatedAt": null,
+      "studio": "Suzuki Mirano",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:12059",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/12059/Otome_Dori",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:23.098Z"
+      },
+      "title": "Otome Dori",
+      "titles": {
+        "english": null,
+        "romaji": "Otome Dori",
+        "japanese": "オトメドリ",
+        "aliases": []
+      },
+      "description": "Kazuki Okino is an ordinary high schooler living a carefree life. He's always been close to his childhood friend, Otome Sakuragi—a beautiful girl every boy in his school dreams of being with. Because he and Otome often hang out together and get along very well, Kazuki believes that it is inevitable that they begin dating. However, Kazuki's little sister, Rinka, is dissatisfied with this possibility because she is secretly in love with him. This innocent relationship takes a dramatic turn when Kazuki receives an untitled DVD showing Otome engaging in sexual activities with elderly men. His despair grows even greater when similar DVDs start arriving on a regular basis. As Kazuki stares in horror at the love of his life being defiled by a group of strangers, he notices Otome's demeanor gradually changing. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1659/115186.jpg",
+      "year": 2012,
+      "releaseDate": "2012-05-25",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:15537",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/15537/Tsugou_no_Yoi_Sexfriend",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:23.108Z"
+      },
+      "title": "Tsugou no Yoi Sexfriend?",
+      "titles": {
+        "english": null,
+        "romaji": "Tsugou no Yoi Sexfriend?",
+        "japanese": "都合のよいセックスフレンド?",
+        "aliases": [
+          "Sex Friends Convenience?",
+          "Convenient Sex Friends"
+        ]
+      },
+      "description": "Yuu Arahama has a girlfriend named Misako Shimizu. She has a great body and loves him greatly. One night, after having sexual intercourse, Misako proposes to Yuu. However, he rejects her proposal, revealing that Misako isn't his only partner. He has four other partners: Ryouko Yanagi, Kotori Hoshino, Makiko Endou, and Aina Kamishima. Misako makes Yuu call all four of them at once, only to find out that each girl is not aware that Yuu has sexual relationships with the others. Another problem arises when the girls decide to compete with each other so as to determine whom Yuu is going to choose as his wife. However, Yuu is reluctant to marry anyone, fearful of the possibility that he will lose his freedom when he gets married. Now, Yuu has to go through various situations which forces him to go through sexual activities with the girls to sate their lustful desires and settle their feud. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1787/115744.jpg",
+      "year": 2012,
+      "releaseDate": "2012-11-30",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:651",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/651/Green_Green_Thirteen__Erolutions",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:23.120Z"
+      },
+      "title": "Green Green Thirteen: Erolutions",
+      "titles": {
+        "english": null,
+        "romaji": "Green Green Thirteen: Erolutions",
+        "japanese": "グリーングリーン THIRTEEN エロリューションズ",
+        "aliases": [
+          "Green Green 13",
+          "Green Green Illusions"
+        ]
+      },
+      "description": "Spring is coming and the all-male Kanenone Gakuen prepares to become coeducational with the new academic year. Naturally, the teenage boys are more than thrilled at the prospect of having adolescent girls around. With only a few months until the merger, the incoming female students decide to pay a visit to the academy. As luck would have it, Yusuke Takasaki gets a chance to confess his feelings to one of the arrivals, Futaba Kutsuki, who is also looking forward to the encounter. However, as the pair struggles to find a moment for themselves, a girl called Midori Chitose visits them in their dreams, urging them to do their best and encouraging them to seize the opportunity. From then on, the lovers decide to make the most of their short time together before they are separated again. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/7/3470.jpg",
+      "year": 2004,
+      "releaseDate": "2004-05-28",
+      "updatedAt": null,
+      "studio": "Studio Matrix",
+      "genres": [
+        "Comedy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:20801",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/20801/Koakuma_Kanojo_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:23.061Z"
+      },
+      "title": "Koakuma Kanojo The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Koakuma Kanojo The Animation",
+        "japanese": "小悪魔カノジョ THE ANIMATION",
+        "aliases": [
+          "Cute Devil Girlfriend",
+          "Little Devil Girlfriend"
+        ]
+      },
+      "description": "There's a rumor about a DVD that curses anyone who watches it. Though no one seems to believe in the curse few are brave enough to see what's on the DVD... Akuno Mika watches the DVD... and gets transformed into a succubus. She tries to keep the change a secret but loses control when her crush Kazuya approaches her... Later, Kana agrees to watch the DVD after two of her friends ask her. As a result of the curse she grows something regular women don't have. Her sister Mai tries to help her get back to normal, but the two get more than they bargained for.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1426/103854.jpg",
+      "year": 2013,
+      "releaseDate": "2013-12-20",
+      "updatedAt": null,
+      "studio": "Office TakeOut",
+      "genres": [
+        "Supernatural",
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:42517",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/42517/Ookami-san_wa_Taberaretai",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:24.341Z"
+      },
+      "title": "Ookami-san wa Taberaretai",
+      "titles": {
+        "english": null,
+        "romaji": "Ookami-san wa Taberaretai",
+        "japanese": "オオカミさんは食べられたい",
+        "aliases": [
+          "I Want to Be Eaten by a Wolf",
+          "Ookami-san Wants to Be Eaten"
+        ]
+      },
+      "description": "\"I want Akagashira-sensei to be my first!\" Having a run in with the \"skirt bandit,\" Ookami almost has her skirt stolen. Her teacher, Akagashira, passes by and becomes her hero after stopping the theft. As thanks, Ookami invites Akagashira to her home, but she has another reason for bringing him over. (Source: WWWave Corporation, edited)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1020/108606.jpg",
+      "year": 2020,
+      "releaseDate": "2020-09-07",
+      "updatedAt": null,
+      "studio": "Peak Hunt",
+      "genres": [
+        "Hentai",
+        "School",
+        "Josei"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:34795",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/34795/Tamashii_Insert",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:24.310Z"
+      },
+      "title": "Tamashii Insert",
+      "titles": {
+        "english": null,
+        "romaji": "Tamashii Insert",
+        "japanese": "魂インサート",
+        "aliases": [
+          "Soul Insert"
+        ]
+      },
+      "description": "Half a year after Naoto Takahashi's father got remarried, he hasn't gotten used to the new family members: his stepmother, Sachiko, and his new little sister, Yui. One night as he tries to figure out how to smooth things over with his sister, he gets an app to allows him to take over someone else's body.",
+      "poster": "https://cdn.myanimelist.net/images/anime/3/89399.jpg",
+      "year": 2017,
+      "releaseDate": "2017-07-07",
+      "updatedAt": null,
+      "studio": "New Generation",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:25667",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/25667/Boy_Meets_Harem_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:24.307Z"
+      },
+      "title": "Boy Meets Harem The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Boy Meets Harem The Animation",
+        "japanese": "ボーイ・ミーツ・ハーレム THE ANIMATION",
+        "aliases": []
+      },
+      "description": "An unfortunate accident befalls Naoki Shindou and his whole class when lightning strikes the airplane they were traveling in for their overseas trip. The only ones able to survive are himself, his classmates Momoka Kiriyama and Kana Miyamura, their teacher Sanae Nakazono, and the flight attendant Asami Kakinuma. Now stranded on an island and far from rescue, it might prove to be too challenging to keep their sexual instincts at bay. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1634/103891.jpg",
+      "year": 2014,
+      "releaseDate": "2014-10-31",
+      "updatedAt": null,
+      "studio": "Office TakeOut",
+      "genres": [
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:4358",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/4358/Aniyome_wa_Ijippari",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:24.288Z"
+      },
+      "title": "Aniyome wa Ijippari",
+      "titles": {
+        "english": null,
+        "romaji": "Aniyome wa Ijippari",
+        "japanese": "兄嫁はいじっぱり",
+        "aliases": [
+          "Elder Brother's Wife Ijippari"
+        ]
+      },
+      "description": "Based on the game by Tinker Bell. Tsutomu's parents passed away several years ago, before that they ran a flower shop. Now it's run by his older brother's wife, Mai and he is living with them. Tsutomu's brother now works somewhere else, so Mai is left alone and her only support is Tsutomu, who helps her running the flower shop. Because Tsutomu's brother is busy and haven't been home for a while, Mai feels very lonely which Tsutomu notices and decides to support and satisfy Mai while his brother is away. Now there's also Kozue, Mai's friend and senpai who recently got hired as part-time worker. Kozue has noticed Tsutomu and Mai's relationship and she envies them because she is also very lonely, because her husband is rarely home. Mai sympathizes with Kozue and allows her to date Tsutomu. Now what will happen as these three indulge themselves to their desires and feelings? (Source: AniDB)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1327/103813.jpg",
+      "year": 2008,
+      "releaseDate": "2008-04-18",
+      "updatedAt": null,
+      "studio": "Oz Inc.",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:32667",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/32667/Baka_na_Imouto_wo_Rikou_ni_Suru_no_wa_Ore_no_xx_dake_na_Ken_ni_Tsuite",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:25.541Z"
+      },
+      "title": "Baka na Imouto wo Rikou ni Suru no wa Ore no xx dake na Ken ni Tsuite",
+      "titles": {
+        "english": null,
+        "romaji": "Baka na Imouto wo Rikou ni Suru no wa Ore no xx dake na Ken ni Tsuite",
+        "japanese": "バカな妹を利口にするのは俺の××だけな件について",
+        "aliases": []
+      },
+      "description": "To overcome his attraction for his younger sister Hana, Yuuichi Mitsui made sure to enroll at a university far away from his home. Unfortunately, being separated from her only strengthened his feelings. He continues to feel guilty for harboring illicit thoughts when suddenly, Hana shows up at his doorstep on a summer morning, looking more beautiful than ever. However, despite her physical maturity, her intellect is that of a child. Consequently, Yuuichi tries to hold back from laying a hand on his innocent sister. But it is easier said than done, especially when Hana's ignorance—combined with her innocence—makes her a woman that Yuuichi can't help but desire. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1753/103863.jpg",
+      "year": 2016,
+      "releaseDate": "2016-04-28",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:14991",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/14991/Harem_Time_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:25.530Z"
+      },
+      "title": "Harem Time The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Harem Time The Animation",
+        "japanese": "ハーレムタイム THE ANIMATION",
+        "aliases": []
+      },
+      "description": "Satou Seiji's life changed when his real lineage was discovered. He is the son of a rich man who passed away recently, and now Reiji is the new master of the Kamiyama house. But there is a catch! In order for him to be accepted into the house legally, he needs to provide an heir, and in order to do that, he must choose a wife from his very own harem! (Source: AniDB)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1545/103853.jpg",
+      "year": 2012,
+      "releaseDate": "2012-10-26",
+      "updatedAt": null,
+      "studio": "Office TakeOut",
+      "genres": [
+        "Hentai",
+        "Harem"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:22069",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/22069/Swing_Out_Sisters_2014",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:25.547Z"
+      },
+      "title": "Swing Out Sisters (2014)",
+      "titles": {
+        "english": null,
+        "romaji": "Swing Out Sisters (2014)",
+        "japanese": "Swing Out Sisters",
+        "aliases": [
+          "Swing Out Sisters Complete Edition"
+        ]
+      },
+      "description": "Yuuta has always been close to his elder sisters, Chiyo and Chinatsu. The only man in the house, he falls in love with the caring and affectionate Chiyo; with her well-endowed body and love of cosplay, she gives her brother everything an adolescent boy could dream of. Envious of her siblings' intimate relationship, Chinatsu soon steps in, seeking Yuuta's attention. As a strong-willed and dominant tomboy, she is the exact opposite of Chiyo and starts picking on him and making aggressive sexual advances. With the situation at home changing dramatically, the siblings must find a way to sort out both their private and school lives and establish a compromise between conflicting interests. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1132/91740.jpg",
+      "year": 2014,
+      "releaseDate": "2014-01-30",
+      "updatedAt": null,
+      "studio": "Tryforce",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:2372",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/2372/Enbo",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:25.530Z"
+      },
+      "title": "Enbo",
+      "titles": {
+        "english": null,
+        "romaji": "Enbo",
+        "japanese": "艶母",
+        "aliases": [
+          "Erotic Heart Mother"
+        ]
+      },
+      "description": "It has been a year since Misako became Yosuke Amamiya's wife, but her new stepson Kazuhiko is still barely acknowledging her, let alone seeing her as a mother figure. However, there is a more pressing matter on her mind: when she is alone at home, she frequently receives menacing calls from a stranger possessing detailed knowledge of her day-to-day life. Unable to bring this issue up with Yosuke, she remains silent about these disturbing interactions. Just as Kazuhiko starts warming up to Misako, things take a darker turn when she gets a sex toy delivered to her door. Left unsatisfied by her workaholic husband, she begins to engage in a new pastime: masturbating while on the phone with the unknown speaker. One day, Misako realizes that she is not the only one with a dirty secret when she witnesses Kazuhiko pleasuring himself with her underwear! Now aware that her stepson thinks of her as a woman, where will all this sexual tension lead? [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/6/40117.jpg",
+      "year": 2003,
+      "releaseDate": "2003-11-25",
+      "updatedAt": null,
+      "studio": "Big Wing",
+      "genres": [
+        "Drama",
+        "Hentai"
+      ],
       "tags": [
         "hentai"
       ],
@@ -140,10 +4216,10 @@
       "adult": true,
       "sourceConfidence": "MAL",
       "sourceMetadata": {
-        "source": "MyAnimeList public title pages",
+        "source": "MyAnimeList public title page",
         "sourceUrl": "https://myanimelist.net/anime/3479/Taimanin_Asagi",
         "rating": "Rx - Hentai",
-        "retrievedAt": "2026-09-07T00:00:00.000Z"
+        "retrievedAt": "2026-09-08T01:26:26.781Z"
       },
       "title": "Taimanin Asagi",
       "titles": {
@@ -155,7 +4231,7 @@
           "Anti-Demon Ninja Asagi"
         ]
       },
-      "description": "A retired ninja confronts a returning enemy.",
+      "description": "The world is a dangerous place. Humans and demons coexist under delicate circumstances, dictated by an unspoken pledge not to influence one another. Unfortunately, there are always those willing to break the agreement for their own selfish gain. Seeking to combat these outliers, the Japanese government employs the Taimanin—an elite group of female human ninjas—to maintain the balance of power between the mundane and the otherworldly. After the defeat of her greatest nemesis Oboro, Asagi Igawa decides to retire from the Taimanin and devote herself to a peaceful, average life with her boyfriend Sawaki Kyousuke. However, little does she know that Oboro managed to survive thanks to a pact with a demon. Having sworn revenge on Asagi, she abducts her—along with Sawaki and her younger sister Sakura—and subjects them to sexual and psychological abuse without mercy. Though Asagi's resolution is absolute, there is little she can do when Oboro turns the ninja's closest ones against her by humiliating them in the most heinous ways imaginable. [Written by MAL Rewrite]",
       "poster": "https://cdn.myanimelist.net/images/anime/10/33413.jpg",
       "year": 2007,
       "releaseDate": "2007-02-24",
@@ -195,32 +4271,37 @@
       "providerMappings": []
     },
     {
-      "id": "mal:49095",
+      "id": "mal:724",
       "type": "series",
       "adult": true,
       "sourceConfidence": "MAL",
       "sourceMetadata": {
-        "source": "MyAnimeList public title pages",
-        "sourceUrl": "https://myanimelist.net/anime/49095/Kuroinu_II_The_Animation",
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/724/Enzai",
         "rating": "Rx - Hentai",
-        "retrievedAt": "2026-09-07T00:00:00.000Z"
+        "retrievedAt": "2026-09-08T01:26:26.780Z"
       },
-      "title": "Kuroinu II The Animation",
+      "title": "Enzai",
       "titles": {
         "english": null,
-        "romaji": "Kuroinu II The Animation",
-        "japanese": "黒獣[クロイヌ]II THE ANIMATION",
-        "aliases": []
+        "romaji": "Enzai",
+        "japanese": "冤罪",
+        "aliases": [
+          "eine falsche Beschuldi-gung"
+        ]
       },
-      "description": "A mercenary captain faces an alliance in the fantasy city of Negramstia.",
-      "poster": "https://cdn.myanimelist.net/images/anime/1929/115414.jpg",
-      "year": 2021,
-      "releaseDate": "2021-08-27",
+      "description": "The protagonist is Guys, a young boy from a poor family, who gets caught for stealing candy from a Paris store. However, after being railroaded by a city detective named Guildias, Guys finds himself accused, convicted, and sentenced to life imprisonment for the murder of a man he never met. From that point on, most Enzai takes place inside a dark, claustrophobic, dirty prison, in there, Guys experiences humiliation and torture of various kinds, much of it involving sexual acts such as rape and forcible sodomy.",
+      "poster": "https://cdn.myanimelist.net/images/anime/2/24031.jpg",
+      "year": 2004,
+      "releaseDate": "2004-04-23",
       "updatedAt": null,
-      "studio": "Seven",
+      "studio": "Anime Antenna Iinkai",
       "genres": [
-        "Fantasy",
-        "Hentai"
+        "Boys Love",
+        "Drama",
+        "Horror",
+        "Hentai",
+        "Historical"
       ],
       "tags": [
         "hentai"
@@ -232,37 +4313,92 @@
           "number": 1,
           "title": "Episode 1",
           "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
         }
       ],
       "providerMappings": []
     },
     {
-      "id": "mal:7411",
+      "id": "mal:28779",
       "type": "series",
       "adult": true,
       "sourceConfidence": "MAL",
       "sourceMetadata": {
-        "source": "MyAnimeList public title pages",
-        "sourceUrl": "https://myanimelist.net/anime/7411/Kanojo_x_Kanojo_x_Kanojo__Sanshimai_to_no_Dokidoki_Kyoudou_Seikatsu",
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/28779/Futa-bu",
         "rating": "Rx - Hentai",
-        "retrievedAt": "2026-09-07T00:00:00.000Z"
+        "retrievedAt": "2026-09-08T01:26:26.757Z"
       },
-      "title": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
+      "title": "Futa-bu!!",
       "titles": {
         "english": null,
-        "romaji": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
-        "japanese": "彼女×彼女×彼女～三姉妹とのドキドキ共同生活～",
+        "romaji": "Futa-bu!!",
+        "japanese": "ふた部!!",
         "aliases": [
-          "Girlfriend x Girlfriend x Girlfriend"
+          "Futa Club!!"
         ]
       },
-      "description": "A displaced student joins three sisters running an ice-cream shop.",
-      "poster": "https://cdn.myanimelist.net/images/anime/1554/116159.jpg",
-      "year": 2009,
-      "releaseDate": "2009-12-25",
+      "description": "A relaxing vacation at the Manra Valley onsen is just what the members of the Futabu, or Futanari Club, signed up for. Officially, their goal is to research the harvest festival native to the area for a high school project. Unofficially, they're there to have a little fun, and the springs are an aphrodisiac...",
+      "poster": "https://cdn.myanimelist.net/images/anime/7/77908.jpg",
+      "year": 2015,
+      "releaseDate": "2015-02-20",
       "updatedAt": null,
-      "studio": "Studio Eromatick",
-      "genres": [],
+      "studio": "Studio 9 Maiami",
+      "genres": [
+        "Girls Love",
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:50634",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/50634/Love_Me__Kaede_to_Suzu_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:26.770Z"
+      },
+      "title": "Love Me: Kaede to Suzu The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Love Me: Kaede to Suzu The Animation",
+        "japanese": "らぶみー『楓と鈴』 THE ANIMATION",
+        "aliases": []
+      },
+      "description": "Kaede is the student council president and is also twin sisters with Suzu. Both are childhood friends with Hayato, of which all three are part of the student council. Through their time together, Kaede and Suzu both both fell in love with Hayato. Both try to compete for Hayato's love and sexual favor.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1881/120300.jpg",
+      "year": 2022,
+      "releaseDate": "2022-03-25",
+      "updatedAt": null,
+      "studio": "Studio 1st",
+      "genres": [
+        "Hentai"
+      ],
       "tags": [
         "hentai"
       ],
@@ -282,6 +4418,530 @@
         {
           "number": 3,
           "title": "Episode 3",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:38866",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/38866/Seikatsu_Shuukan_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:27.978Z"
+      },
+      "title": "Seikatsu Shuukan The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Seikatsu Shuukan The Animation",
+        "japanese": "性活週間 THE ANIMATION",
+        "aliases": []
+      },
+      "description": "Shuntarou is an average high school porn addict. His sexual desires are directed toward his younger sisters, who he deeply adores in a way no older brother should. He even resorts to stealing their underwear and satisfying himself to it, for which they deeply despise him. His only wish is to have a caring and kind older sister who would be the complete opposite of his mean siblings. After one such session with young women's panties, Shuntarou spots a mysterious new video game on his computer. Although he has no recollection of ever downloading it, the title \"Older Sister Week-Long Experience\" sounds too alluring to pass on. While the game seemingly does not start, the next day he finds himself shrunken to the size of an 11-year-old. When his sisters discover him, he introduces himself as Shuntarou's internet friend Koharu—and the girls instantly fall head over heels for his adorable and innocent appearance. Koharu quickly takes advantage of the situation and subjects himself to the tender care of his oblivious, now-older sisters. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1541/103727.jpg",
+      "year": 2019,
+      "releaseDate": "2019-03-29",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:36225",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/36225/Baku_Ane_2__Otouto_Ippai_Shibocchau_zo_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:27.977Z"
+      },
+      "title": "Baku Ane 2: Otouto Ippai Shibocchau zo! The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Baku Ane 2: Otouto Ippai Shibocchau zo! The Animation",
+        "japanese": "ばくあね2 弟いっぱいしぼっちゃうぞ! THE ANIMATION",
+        "aliases": []
+      },
+      "description": "The protagonist and his lover want to have their first time together, but due to past trauma, he can't go any further. The elder sister of the Takesaka household notices his problem and wants to help him... with sexual lessons! Even his cousin and the one who caused his trauma join the party, and the battle of the best sexual lesson begins.",
+      "poster": "https://cdn.myanimelist.net/images/anime/10/87885.jpg",
+      "year": 2017,
+      "releaseDate": "2017-11-24",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:32872",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/32872/Energy_Kyouka",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:27.994Z"
+      },
+      "title": "Energy Kyouka!!",
+      "titles": {
+        "english": null,
+        "romaji": "Energy Kyouka!!",
+        "japanese": "えなじぃキョーカ!!",
+        "aliases": []
+      },
+      "description": "Kyouka Shiraishi is a beautiful and lively high school student. Thanks to a well-developed body and seductive nature, no man is able to resist her allure. One day, she finds herself in dire need of cash to pay off her cell phone bills. Without a quick way to find a substantial amount of money, she decides to make use of her natural gifts—and there is no better place to do so than her own school. Shiraishi is soon caught with her pants down by the student committee. However, Reona Houjou, the committee president, is ready to turn a blind eye to her misbehavior in exchange for a favor. Unaware of what that entails, Shiraishi eagerly agrees in order to get off the hook. As she finds herself blackmailed into working part-time in a gentlemen's club run by Reona's mother, she is left with no choice but to dive headlong into this new world of perverse pleasure. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1548/103932.jpg",
+      "year": 2016,
+      "releaseDate": "2016-04-08",
+      "updatedAt": null,
+      "studio": "Studio Eromatick",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:7110",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/7110/Shounen_Maid_Kuuro-kun__Tenshi_no_Uta",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:27.982Z"
+      },
+      "title": "Shounen Maid Kuuro-kun: Tenshi no Uta",
+      "titles": {
+        "english": null,
+        "romaji": "Shounen Maid Kuuro-kun: Tenshi no Uta",
+        "japanese": "少年メイドクーロ君 ~天使の歌~",
+        "aliases": [
+          "Boy Maid Curo-kun: Angel's Song",
+          "Shounen Maid Curo-kun: Tenshi no Uta",
+          "Shounen Maid Kuro-kun",
+          "Anime Syonen Meido Curo-kun: Tenshi no Uta"
+        ]
+      },
+      "description": "Having accumulated a massive debt, Curo Kazamiya's father has gone into hiding to evade prosecution. Since his mother passed away several years prior, Curo is forced to sell himself into the service of Miisu Hakuryuuin, a wealthy landowner and businessman. To the young boy's utmost surprise, his new owner turns out to be a benevolent master who seems to have no intention of punishing him for his father's sins. Instead, he offers Curo the opportunity to become his servant and gradually pay off the debt with his own labor. Curo is quick to agree, considering himself lucky to escape a far worse fate. However, little does he know that Miisu expects him to do tasks beyond the duties of a regular servant. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/2/26314.jpg",
+      "year": 2010,
+      "releaseDate": "2010-09-23",
+      "updatedAt": null,
+      "studio": "zyc DIGITAL",
+      "genres": [
+        "Boys Love",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:5959",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/5959/Mizugi_Kanojo_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:29.174Z"
+      },
+      "title": "Mizugi Kanojo The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Mizugi Kanojo The Animation",
+        "japanese": "水着彼女～THE ANIMATION～",
+        "aliases": [
+          "Mizuho! Ekusasaizu!"
+        ]
+      },
+      "description": "The story begins with a pair of young lovers, the busty Mizuho-chan, and the well endowed Hiro-kun. One night Hiro suggests that Mizuho should try swimming to get in shape. He even offers to coach her after hours at the pool where he works since she can't swim very well. Mizuho's new workout plan turns out to be much more exciting than expected... Meanwhile Takuya-kun finds himself in a compromising situation with his clumsy but beautiful neighbor Sayaka-chan... Each episode features couples enjoying various sexual escapades involving plenty of water, wet bodies, & extremely revealing mizugi (swimsuits).",
+      "poster": "https://cdn.myanimelist.net/images/anime/1349/104276.jpg",
+      "year": 2009,
+      "releaseDate": "2009-01-23",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:30614",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/30614/Ane_Yome_Quartet",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:29.193Z"
+      },
+      "title": "Ane Yome Quartet",
+      "titles": {
+        "english": null,
+        "romaji": "Ane Yome Quartet",
+        "japanese": "あねよめカルテット",
+        "aliases": []
+      },
+      "description": "Based of the game by Candy Soft. Summary of the game: The Hanabishi family and Hidaka family are next door neighbors. The fathers of both households could be called best friends, so they all get along like one big happy family. In particular, Hidaka family’s only son Kouki was raised lovingly by the four Hanabishi sisters like he was their own brother. One day, the Hanabishi and Hidaka parents were preparing for a long term overseas business trip together. Kantaro Hanabishi had only one problem holding him back from the trip; leaving his four daughters behind in Japan. “Leave it to me. You can rely on me to watch over them!” As a result of Kouki’s casual announcement, both parents happily departed on their trip. “Ooh, how reliable! That was what I was waiting to hear!” Between both of the parents, they had arranged for one of the four sisters to become Kouki's fiance. After Kouki's graduation they would continue discussion of it further, but this recent event gave a chance to accelerate their plan. Thus, all summer vacation Kouki will spend time alone under one roof with all four of the Hanabishi sisters. The eldest daughter Yurina: Despite being good at her job, While at home she lazes around and makes Kouki work hard. The second born daughter, Momone: Absolutely adores Kouki, and does nothing but spoil him. The third daughter, Saori: She does all the housework, and although she is like a maid she prefers it to going outside. The youngest daughter, Anzu: Has no reservation in calling Kouki her personal play toy. Each of them have their own motives doing anything they can; at times even tempting him into sexual situations, so they can draw closer to making the Kouki they love their husband. If Kouki ever chooses a bride, who will it be? The energetic life with the quartet of sisters is about to begin. (Source: VNDB)",
+      "poster": "https://cdn.myanimelist.net/images/anime/1341/115266.jpg",
+      "year": 2015,
+      "releaseDate": "2015-10-09",
+      "updatedAt": null,
+      "studio": "New Generation",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:38470",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/38470/Saimin_Seishidou",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:29.187Z"
+      },
+      "title": "Saimin Seishidou",
+      "titles": {
+        "english": null,
+        "romaji": "Saimin Seishidou",
+        "japanese": "催眠性指導",
+        "aliases": [
+          "Hypnosis Sex Guidance"
+        ]
+      },
+      "description": "Hajime Tanaka possesses powers quite unlike that of other students. Thanks to his hypnotic abilities, he can impose his will upon any individual he comes in contact with. He uses this skill to convince a government official to appoint him as a \"Sex Counsellor.\" Consequently, his word is absolute when it comes to sexual matters. Instituted by his new jurisdiction, every couple must undergo counseling under Hajime's watchful eye before engaging in any form of romantic activity. The first couple to visit Hajime are Yui Obata and Daiki Tachibana. With unwavering hypnosis-induced faith in their Sex Counsellor, Yui subjects herself to the careful inspection of Hajime. Meanwhile, her boyfriend watches them attentively and records their intercourse so as not to miss out on any precious snippet of wisdom. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1008/103757.jpg",
+      "year": 2019,
+      "releaseDate": "2019-02-01",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:10668",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/10668/Imouto_Paradise",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:29.192Z"
+      },
+      "title": "Imouto Paradise!",
+      "titles": {
+        "english": null,
+        "romaji": "Imouto Paradise!",
+        "japanese": "妹ぱらだいす!",
+        "aliases": []
+      },
+      "description": "While their parents are away on a business trip, the one entrusted with watching over his younger sisters is the big brother, Souichirou Nanase. Summer vacation has just started, and the siblings are bound to spend a lot of time together. However, Souichirou soon realizes that taking care of five adolescent girls—Michika, Koharu, Hiyori, Rio, and Aya—may be more troublesome than he expected. On top of having distinctive and quirky personalities, the girls are at that age when young women tend to experiment with their bodies and ask \"those\" questions. To make matters worse, Souichirou has a sister complex, and the five temptations walking around might be enough to finally break his moral barriers. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1918/103856.jpg",
+      "year": 2011,
+      "releaseDate": "2011-12-09",
+      "updatedAt": null,
+      "studio": "Anime Antenna Iinkai",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:37405",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/37405/Dokidoki_Little_Ooyasan",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:30.336Z"
+      },
+      "title": "Dokidoki Little Ooyasan",
+      "titles": {
+        "english": null,
+        "romaji": "Dokidoki Little Ooyasan",
+        "japanese": "dokidokiりとる大家さん",
+        "aliases": []
+      },
+      "description": "Tanaka Daisuke is an ordinary college student living alone since last year. He occupies a run-down and cramped apartment—just like many other young adults. However, there is one peculiar bonus about living in his accommodation. Whenever he settles his rent, he receives sexual services from the landlady, Asou Miyuri. Despite her childish looks, she is a grown woman who is more than eager to experience the charms of Tanaka's masculine body. At first shy and overwhelmed by her relaxed and outgoing approach, Daisuke soon starts looking forward to these monthly meetings, as Asou treats him to all kinds of naughty positions and kinky outfits no young man could ever resist. [Written by MAL Rewrite]",
+      "poster": "https://cdn.myanimelist.net/images/anime/1733/103916.jpg",
+      "year": 2018,
+      "releaseDate": "2018-05-25",
+      "updatedAt": null,
+      "studio": "Collaboration Works",
+      "genres": [
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:43465",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title page",
+        "sourceUrl": "https://myanimelist.net/anime/43465/Ijirare__Fukushuu_Saimin",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-08T01:26:30.407Z"
+      },
+      "title": "Ijirare: Fukushuu Saimin",
+      "titles": {
+        "english": null,
+        "romaji": "Ijirare: Fukushuu Saimin",
+        "japanese": "イジラレ ～復讐催○～",
+        "aliases": [
+          "Bullied: Revenge Hypnosis",
+          "Ijirare: Fukushuu Sai***"
+        ]
+      },
+      "description": "Looking for information on the anime Ijirare: Fukushuu Saimin? Find out more with MyAnimeList, the world's most active online anime and manga community and database.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1975/109799.jpg",
+      "year": 2021,
+      "releaseDate": "2021-02-05",
+      "updatedAt": null,
+      "studio": "T-Rex",
+      "genres": [
+        "Hentai",
+        "School"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
           "releaseDate": null
         }
       ],

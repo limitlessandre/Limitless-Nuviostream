@@ -1,29 +1,37 @@
 // Generated last-known-good snapshot.
 export const fallbackSnapshot = {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T00:10:30.618Z",
+  "generatedAt": "2026-09-08T00:49:18.847Z",
   "titles": [
     {
-      "id": "sp:demo-001",
+      "id": "mal:368",
       "type": "series",
       "adult": true,
-      "sourceConfidence": "adult-site-confirmed",
-      "title": "Scarlet Peach Demo Title",
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title pages",
+        "sourceUrl": "https://myanimelist.net/anime/368/Bible_Black",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-07T00:00:00.000Z"
+      },
+      "title": "Bible Black",
       "titles": {
-        "english": "Scarlet Peach Demo Title",
-        "romaji": "Scarlet Peach Demo Title",
-        "japanese": null,
+        "english": null,
+        "romaji": "Bible Black",
+        "japanese": "バイブルブラック",
         "aliases": [
-          "SP Demo"
+          "Bible Black: Night of the Walpulgiss"
         ]
       },
-      "description": "Non-production fixture used to verify catalog and provider integration.",
-      "poster": null,
-      "year": 2026,
-      "studio": null,
+      "description": "A student uncovers a forbidden book at his school.",
+      "poster": "https://cdn.myanimelist.net/images/anime/13/12768.jpg",
+      "year": 2001,
+      "releaseDate": "2001-07-21",
+      "updatedAt": null,
+      "studio": "Studio Jam",
       "genres": [],
       "tags": [
-        "fixture"
+        "hentai"
       ],
       "languageVersions": [],
       "censorStatus": "unknown",
@@ -31,6 +39,250 @@ export const fallbackSnapshot = {
         {
           "number": 1,
           "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:2432",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title pages",
+        "sourceUrl": "https://myanimelist.net/anime/2432/Discipline",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-07T00:00:00.000Z"
+      },
+      "title": "Discipline",
+      "titles": {
+        "english": null,
+        "romaji": "Discipline",
+        "japanese": "ディシプリン",
+        "aliases": [
+          "Discipline: The Record of a Crusade"
+        ]
+      },
+      "description": "A transfer student encounters rival groups at Saint Arcadia School.",
+      "poster": "https://cdn.myanimelist.net/images/anime/9/4536.jpg",
+      "year": 2003,
+      "releaseDate": "2003-04-11",
+      "updatedAt": null,
+      "studio": "Studio 9 Maiami",
+      "genres": [],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        },
+        {
+          "number": 5,
+          "title": "Episode 5",
+          "releaseDate": null
+        },
+        {
+          "number": 6,
+          "title": "Episode 6",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:3479",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title pages",
+        "sourceUrl": "https://myanimelist.net/anime/3479/Taimanin_Asagi",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-07T00:00:00.000Z"
+      },
+      "title": "Taimanin Asagi",
+      "titles": {
+        "english": null,
+        "romaji": "Taimanin Asagi",
+        "japanese": "対魔忍アサギ",
+        "aliases": [
+          "Anti-Demon Hunters",
+          "Anti-Demon Ninja Asagi"
+        ]
+      },
+      "description": "A retired ninja confronts a returning enemy.",
+      "poster": "https://cdn.myanimelist.net/images/anime/10/33413.jpg",
+      "year": 2007,
+      "releaseDate": "2007-02-24",
+      "updatedAt": null,
+      "studio": "Anime Antenna Iinkai",
+      "genres": [
+        "Supernatural",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
+          "releaseDate": null
+        },
+        {
+          "number": 4,
+          "title": "Episode 4",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:49095",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title pages",
+        "sourceUrl": "https://myanimelist.net/anime/49095/Kuroinu_II_The_Animation",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-07T00:00:00.000Z"
+      },
+      "title": "Kuroinu II The Animation",
+      "titles": {
+        "english": null,
+        "romaji": "Kuroinu II The Animation",
+        "japanese": "黒獣[クロイヌ]II THE ANIMATION",
+        "aliases": []
+      },
+      "description": "A mercenary captain faces an alliance in the fantasy city of Negramstia.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1929/115414.jpg",
+      "year": 2021,
+      "releaseDate": "2021-08-27",
+      "updatedAt": null,
+      "studio": "Seven",
+      "genres": [
+        "Fantasy",
+        "Hentai"
+      ],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        }
+      ],
+      "providerMappings": []
+    },
+    {
+      "id": "mal:7411",
+      "type": "series",
+      "adult": true,
+      "sourceConfidence": "MAL",
+      "sourceMetadata": {
+        "source": "MyAnimeList public title pages",
+        "sourceUrl": "https://myanimelist.net/anime/7411/Kanojo_x_Kanojo_x_Kanojo__Sanshimai_to_no_Dokidoki_Kyoudou_Seikatsu",
+        "rating": "Rx - Hentai",
+        "retrievedAt": "2026-09-07T00:00:00.000Z"
+      },
+      "title": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
+      "titles": {
+        "english": null,
+        "romaji": "Kanojo x Kanojo x Kanojo: Sanshimai to no Dokidoki Kyoudou Seikatsu",
+        "japanese": "彼女×彼女×彼女～三姉妹とのドキドキ共同生活～",
+        "aliases": [
+          "Girlfriend x Girlfriend x Girlfriend"
+        ]
+      },
+      "description": "A displaced student joins three sisters running an ice-cream shop.",
+      "poster": "https://cdn.myanimelist.net/images/anime/1554/116159.jpg",
+      "year": 2009,
+      "releaseDate": "2009-12-25",
+      "updatedAt": null,
+      "studio": "Studio Eromatick",
+      "genres": [],
+      "tags": [
+        "hentai"
+      ],
+      "languageVersions": [],
+      "censorStatus": "unknown",
+      "episodes": [
+        {
+          "number": 1,
+          "title": "Episode 1",
+          "releaseDate": null
+        },
+        {
+          "number": 2,
+          "title": "Episode 2",
+          "releaseDate": null
+        },
+        {
+          "number": 3,
+          "title": "Episode 3",
           "releaseDate": null
         }
       ],

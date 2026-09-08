@@ -1,18 +1,43 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const source = JSON.parse(fs.readFileSync(path.join(root, 'data', 'imports', 'mal-adult-verified.json'), 'utf8'));
-if (!Array.isArray(source.titles) || source.titles.length === 0) throw new Error('MAL import is empty');
-const ids = new Set();
-const titles = source.titles.map((record) => {
-  if (record.rating !== 'Rx - Hentai') throw new Error(`Rejected non-adult MAL record ${record.malId}`);
-  if (!Number.isInteger(record.malId) || ids.has(record.malId)) throw new Error(`Invalid or duplicate MAL ID ${record.malId}`);
-  ids.add(record.malId);
-  return { id: `mal:${record.malId}`, type: 'series', adult: true, sourceConfidence: 'MAL', sourceMetadata: { source: source.source, sourceUrl: record.sourceUrl, rating: record.rating, retrievedAt: source.retrievedAt }, title: record.title, titles: { english: null, romaji: record.romaji, japanese: record.japanese, aliases: record.aliases }, description: record.description, poster: record.poster, year: record.year, releaseDate: record.releaseDate, updatedAt: null, studio: record.studio, genres: record.genres, tags: ['hentai'], languageVersions: [], censorStatus: 'unknown', episodes: Array.from({ length: record.episodes }, (_, index) => ({ number: index + 1, title: `Episode ${index + 1}`, releaseDate: null })), providerMappings: [] };
-});
-const candidate = { schemaVersion: 1, generatedAt: new Date().toISOString(), titles };
-const staged = path.join(root, 'data', 'seed.candidate.json');
-const target = path.join(root, 'data', 'seed.json');
-fs.writeFileSync(staged, JSON.stringify(candidate, null, 2) + '\n');
-fs.renameSync(staged, target);
-console.log(`Imported ${titles.length} MAL adult-only records`);
+const source = JSON.parse(fs.readFileSync(path.join(root, 'data', 'imports', 'mal-adult-candidates.json'), 'utf8'));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const decode = (value) => String(value || '').replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/<[^>]*>/g, '').trim();
+const capture = (html, expression) => decode((html.match(expression) || [])[1]);
+const date = (aired) => { const match = aired.match(/[A-Z][a-z]{2} \d{1,2}, \d{4}/); return match ? new Date(match[0]).toISOString().slice(0, 10) : null; };
+async function loadRecord(malId) {
+  const response = await fetch(`https://myanimelist.net/anime/${malId}`, { headers: { 'user-agent': 'ScarletPeachCatalog/0.1 (offline metadata build)' }, signal: AbortSignal.timeout(15000) });
+  if (!response.ok) throw new Error(`MAL request failed for ${malId}: ${response.status}`);
+  const html = await response.text();
+  const rating = capture(html, /Rating:<\/span>\s*([^<]+)/);
+  if (rating !== 'Rx - Hentai') return null;
+  const canonical = capture(html, /<link rel="canonical" href="([^"]+)"/);
+  const title = capture(html, /<meta property="og:title" content="([^"]+)"/);
+  const japanese = capture(html, /Japanese:<\/span>\s*([^<]+)/) || null;
+  const synonyms = capture(html, /Synonyms:<\/span>\s*([^<]+)/).split(',').map((name) => name.trim()).filter(Boolean);
+  const studioBlock = (html.match(/Studios:<\/span>([\s\S]*?)<\/div>/) || [])[1] || '';
+  const studio = (studioBlock.match(/title="([^"]+)"/) || [])[1] || null;
+  const genres = [...html.matchAll(/itemprop="genre"[^>]*>([^<]+)/g)].map((match) => decode(match[1])).filter(Boolean);
+  const aired = capture(html, /Aired:<\/span>\s*([^<]+)/);
+  const episodes = Number(capture(html, /Episodes:<\/span>\s*(\d+)/));
+  if (!title) throw new Error(`MAL record ${malId} is missing a title`);
+  const episodeCount = Number.isInteger(episodes) && episodes > 0 ? episodes : 0;
+  return { id: `mal:${malId}`, type: 'series', adult: true, sourceConfidence: 'MAL', sourceMetadata: { source: 'MyAnimeList public title page', sourceUrl: canonical || `https://myanimelist.net/anime/${malId}`, rating, retrievedAt: new Date().toISOString() }, title, titles: { english: null, romaji: title, japanese, aliases: synonyms }, description: capture(html, /<meta property="og:description" content="([^"]*)"/) || null, poster: capture(html, /<meta property="og:image" content="([^"]+)"/) || null, year: date(aired) ? Number(date(aired).slice(0, 4)) : null, releaseDate: date(aired), updatedAt: null, studio, genres: [...new Set(genres)], tags: ['hentai'], languageVersions: [], censorStatus: 'unknown', episodes: Array.from({ length: episodeCount }, (_, index) => ({ number: index + 1, title: `Episode ${index + 1}`, releaseDate: null })), providerMappings: [] };
+}
+async function main() {
+  const titles = [];
+  for (let index = 0; index < source.candidateMalIds.length; index += 4) {
+    const batch = await Promise.all(source.candidateMalIds.slice(index, index + 4).map(loadRecord));
+    titles.push(...batch.filter(Boolean));
+    await delay(900);
+  }
+  if (titles.length < 50) throw new Error(`Only ${titles.length} verified Rx - Hentai records found; refusing to publish a partial expansion`);
+  const candidate = { schemaVersion: 1, generatedAt: new Date().toISOString(), titles };
+  const staged = path.join(root, 'data', 'seed.candidate.json');
+  const target = path.join(root, 'data', 'seed.json');
+  fs.writeFileSync(staged, JSON.stringify(candidate, null, 2) + '\n');
+  fs.renameSync(staged, target);
+  console.log(`Imported ${titles.length} MAL adult-only records`);
+}
+main().catch((error) => { console.error(error); process.exitCode = 1; });
