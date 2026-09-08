@@ -50,7 +50,7 @@ function base64ToBytes(input) {
 }
 
 function normalizeTitle(value) {
-  return String(value || "")
+  const text = String(value || "")
     .toLowerCase()
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -58,11 +58,21 @@ function normalizeTitle(value) {
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .replace(/\s+/g, " ");
+  return text
+    .split(" ")
+    .map(word => word === "wo" ? "o" : word)
+    .filter(Boolean)
+    .join(" ");
+}
+
+function compactTitle(value) {
+  return normalizeTitle(value).replace(/\s+/g, "");
 }
 
 function seriesBase(name) {
   let text = String(name || "").trim();
-  text = text.replace(/\s+Ep\s+\d+\s*$/i, "");
+  text = text.replace(/\s+(?:Ep|Episode)\s*\d+\s*$/i, "");
+  text = text.replace(/\s+Season\s+\d{1,3}\s*$/i, "");
   const trailing = text.match(/^(.*?)(?:\s+)(\d{1,3})$/);
   if (trailing && !/\bSeason\s*$/i.test(trailing[1])) text = trailing[1].trim();
   return text;
@@ -70,7 +80,7 @@ function seriesBase(name) {
 
 function episodeNumber(hit) {
   const name = String(hit && hit.name || "");
-  let m = name.match(/\bEp\s*(\d{1,3})\s*$/i);
+  let m = name.match(/\b(?:Ep|Episode)\s*(\d{1,3})\s*$/i);
   if (m) return Number(m[1]);
   m = name.match(/(?:^|\s)(\d{1,3})\s*$/);
   if (m && !/\bSeason\s+\d{1,3}\s*$/i.test(name)) return Number(m[1]);
@@ -88,14 +98,29 @@ function titleVariants(hit) {
   return values.filter(Boolean);
 }
 
+function expandedTitles(values) {
+  const out = [];
+  for (const value of values || []) {
+    const raw = String(value || "").trim();
+    if (!raw) continue;
+    out.push(raw);
+    const base = seriesBase(raw);
+    if (base && base !== raw) out.push(base);
+  }
+  return out;
+}
+
 function scoreHit(hit, requestedTitles, episode, year) {
-  const req = requestedTitles.map(normalizeTitle).filter(Boolean);
-  const vars = titleVariants(hit).map(normalizeTitle).filter(Boolean);
+  const req = expandedTitles(requestedTitles).map(normalizeTitle).filter(Boolean);
+  const vars = expandedTitles(titleVariants(hit)).map(normalizeTitle).filter(Boolean);
   let best = 0;
   for (const a of req) {
     for (const b of vars) {
       if (!a || !b) continue;
-      if (a === b) best = Math.max(best, 100);
+      const ac = compactTitle(a);
+      const bc = compactTitle(b);
+      if (a === b || (ac && ac === bc)) best = Math.max(best, 100);
+      else if ((ac && bc) && (ac.startsWith(bc) || bc.startsWith(ac))) best = Math.max(best, 90);
       else if (a.startsWith(b) || b.startsWith(a)) best = Math.max(best, 86);
       else {
         const aw = new Set(a.split(" "));
@@ -214,14 +239,22 @@ async function resolve(body) {
 
   const requestedTitles = [title, ...aliases].filter(Boolean);
   const hits = await getSearchHits();
-  const ranked = hits
+  const allRanked = hits
+    .filter(hit => hit && hit.slug)
     .map(hit => ({ hit, score: scoreHit(hit, requestedTitles, episode, year) }))
-    .filter(x => x.hit && x.hit.slug && x.score >= 80)
     .sort((a, b) => b.score - a.score);
+  const ranked = allRanked.filter(x => x.score >= 80);
 
-  if (!ranked.length) return json(404, { error: "no Hanime match", title, episode });
+  if (!ranked.length) {
+    return json(404, {
+      error: "no Hanime match",
+      title,
+      episode,
+      candidates: allRanked.slice(0, 3).map(x => ({ name: x.hit.name, slug: x.hit.slug, score: x.score, episode: episodeNumber(x.hit) }))
+    });
+  }
 
-  let chosen = ranked.find(x => episodeNumber(x.hit) === episode) || ranked[0];
+  const chosen = ranked.find(x => episodeNumber(x.hit) === episode) || ranked[0];
   const streams = await resolveHandshake(chosen.hit.slug);
   if (!streams.length) return json(404, { error: "Hanime matched but returned no playable guest streams", match: { name: chosen.hit.name, slug: chosen.hit.slug, score: chosen.score }, episode });
 
@@ -235,7 +268,7 @@ export default {
   async fetch(request) {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type", "access-control-allow-methods": "GET,POST,OPTIONS" } });
     const url = new URL(request.url);
-    if (url.pathname === "/health") return json(200, { ok: true, service: "Scarlet Peach Hanime Resolver", protocol: "hanime-v11-handshake" });
+    if (url.pathname === "/health") return json(200, { ok: true, service: "Scarlet Peach Hanime Resolver", protocol: "hanime-v11-handshake", matcher: "romanization-v2" });
     if (url.pathname !== "/resolve" || request.method !== "POST") return json(404, { error: "Not found" });
     try {
       const body = await request.json();
