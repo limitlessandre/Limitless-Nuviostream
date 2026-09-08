@@ -181,6 +181,37 @@ async function exactResolve(body) {
   });
 }
 
+async function authenticatedFuzzyResolve(request, body, env, ctx) {
+  const sessionToken = validSessionToken(body && body.sessionToken);
+  if (!sessionToken) return null;
+
+  const guestResponse = await base.fetch(request, env, ctx);
+  if (!guestResponse || !guestResponse.ok) return guestResponse;
+
+  let guestPayload = null;
+  try {
+    guestPayload = await guestResponse.clone().json();
+  } catch {
+    return guestResponse;
+  }
+
+  const slug = validSlug(guestPayload && guestPayload.match && guestPayload.match.slug);
+  if (!slug) return guestResponse;
+
+  try {
+    const streams = await resolveHandshake(slug, sessionToken);
+    if (!streams.length) return guestResponse;
+    return json(200, {
+      ...guestPayload,
+      mode: "authenticated-fuzzy",
+      authenticated: true,
+      streams
+    });
+  } catch {
+    return guestResponse;
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -188,8 +219,12 @@ export default {
       try {
         const body = await request.clone().json();
         if (validSlug(body && body.slug)) return await exactResolve(body);
+        if (validSessionToken(body && body.sessionToken)) {
+          const authenticated = await authenticatedFuzzyResolve(request, body, env, ctx);
+          if (authenticated) return authenticated;
+        }
       } catch (error) {
-        return json(502, { error: error && error.message ? error.message : String(error), mode: "exact-slug" });
+        return json(502, { error: error && error.message ? error.message : String(error), mode: "router" });
       }
     }
     return base.fetch(request, env, ctx);
