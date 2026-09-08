@@ -13,3 +13,7 @@ test('latest and all ignore encoded search extras', () => {
   assert.deepEqual(catalogMetas(snapshot, parseCatalogRequest(new URL('https://test/catalog/series/scarlet-peach-latest/search=naruto.json'))).map((meta) => meta.id), ['mal:49095', 'mal:368']);
   assert.deepEqual(catalogMetas(snapshot, parseCatalogRequest(new URL('https://test/catalog/series/scarlet-peach-all/search=naruto.json'))).map((meta) => meta.id), ['mal:368', 'mal:49095']);
 });
+test('latest and all accept their normal .json route form', () => {
+  assert.equal(parseCatalogRequest(new URL('https://test/catalog/series/scarlet-peach-latest.json')).id, 'scarlet-peach-latest');
+  assert.equal(parseCatalogRequest(new URL('https://test/catalog/series/scarlet-peach-all.json')).id, 'scarlet-peach-all');
+});

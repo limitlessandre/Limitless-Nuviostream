@@ -1,7 +1,7 @@
 export function parseCatalogRequest(url) {
   const parts = url.pathname.split('/').filter(Boolean);
   if (parts[0] !== 'catalog' || parts[1] !== 'series' || !parts[2]) return null;
-  const id = parts[2];
+  const id = parts[2].replace(/\.json$/, '');
   if (!['scarlet-peach-search', 'scarlet-peach-latest', 'scarlet-peach-all'].includes(id)) return null;
   if (id !== 'scarlet-peach-search') return { id, search: null };
   const querySearch = url.searchParams.get('search');
