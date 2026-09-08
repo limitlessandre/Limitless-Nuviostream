@@ -1,0 +1,47 @@
+name: Validate Scarlet Peach Providers
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - 'providers/**'
+      - 'manifest.json'
+      - '.github/workflows/validate-scarlet-peach-providers.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check provider JavaScript syntax
+        run: |
+          set -euo pipefail
+          for file in providers/*.js; do
+            node --check "$file"
+          done
+
+      - name: Validate provider manifest
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          if (!manifest.name || !manifest.version || !Array.isArray(manifest.scrapers) || !manifest.scrapers.length) {
+            throw new Error('Invalid provider manifest shape');
+          }
+          for (const scraper of manifest.scrapers) {
+            if (!scraper.id || !scraper.name || !scraper.filename || !scraper.version) throw new Error(`Invalid scraper entry ${scraper.id || '<missing id>'}`);
+          }
+          console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
+          NODE
