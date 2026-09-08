@@ -1,21 +1,21 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the active provider using Scarlet Peach schema v2 exact episode mappings plus the dedicated current Hanime v11 resolver Worker. HentaiTV remains parked as reference code.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
-      "name": "Scarlet Peach - Hanime",
-      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings now bypass catalog search and go directly to the signed AES-GCM handshake, nested sp:hanime IDs are supported, transient resolver failures retry once, and htv/hmm/hse/hs private IDs can fall back to title/episode hints.",
-      "version": "0.2.4",
+      "name": "Hanime",
+      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Stream labels follow the Nexus quality/audio standard and include verified censorship metadata when available.",
+      "version": "0.2.5",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from Yuzono AniYomi Hanime and anime-src/hanime-stremio",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v5.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v6.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
       "formats": ["m3u8"],
-      "logo": "https://hanime.tv/favicon.ico",
+      "logo": "https://raw.githubusercontent.com/anime-src/hanime-stremio/refs/heads/main/public/images/logo.png",
       "contentLanguage": ["ja", "en"]
     }
   ]
