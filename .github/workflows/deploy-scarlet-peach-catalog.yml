@@ -38,6 +38,9 @@ jobs:
       - name: Build merged normalized snapshot
         run: npm run build:snapshot
 
+      - name: Verify merged snapshot integrity
+        run: npm run verify:snapshot
+
       - name: Deploy Worker
         run: npx wrangler@latest deploy
         env:
