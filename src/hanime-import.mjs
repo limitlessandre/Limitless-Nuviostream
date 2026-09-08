@@ -116,9 +116,10 @@ function normalizeEpisode(record, index, grouped) {
   };
 }
 
-export function buildHanimeProviderImport(feed, now = new Date().toISOString()) {
+export function buildHanimeProviderImport(feed, now = new Date().toISOString(), options = {}) {
+  const minRecords = Number.isInteger(options.minRecords) ? options.minRecords : 100;
   if (!feed || feed.provider !== 'hanime') throw new Error('Hanime feed provider must be hanime');
-  if (!Array.isArray(feed.records) || feed.records.length < 100) throw new Error(`Hanime feed is unexpectedly small: ${feed.records?.length || 0}`);
+  if (!Array.isArray(feed.records) || feed.records.length < minRecords) throw new Error(`Hanime feed is unexpectedly small: ${feed.records?.length || 0}`);
 
   const records = feed.records.filter((record) => record && clean(record.title) && clean(record.slug));
   const stats = candidateStats(records);
@@ -160,7 +161,7 @@ export function buildHanimeProviderImport(feed, now = new Date().toISOString()) 
     const providerId = groupRecords.length === 1
       ? clean(groupRecords[0].providerId || groupRecords[0].slug)
       : seriesId;
-    const providerUrl = groupRecords.length === 1 ? clean(groupRecords[0].url) || null : clean(groupRecords[0].url) || null;
+    const providerUrl = clean(groupRecords[0].url) || null;
 
     outputRecords.push({
       providerId,
