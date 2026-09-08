@@ -1,6 +1,6 @@
 "use strict";
 
-// 1Shows Nexus probe v0.1.4
+// 1Shows Nexus probe v0.1.5
 // Keeps the proven 1Shows catalog check + current encrypted VidZee flow,
 // then probes the maintained extension's Vidrock fallback path.
 
@@ -45,19 +45,37 @@ function base64ToBytes(value){ const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij
 function utf8Decode(bytes){ let escaped=""; for(const b of bytes) escaped+="%"+Number(b&255).toString(16).padStart(2,"0"); try{return decodeURIComponent(escaped);}catch(_){return String.fromCharCode.apply(null,bytes);} }
 function rc4Drop2048(keyBytes,dataBytes){ const s=Array.from({length:256},(_,i)=>i); let j=0; for(let i=0;i<256;i++){j=(j+s[i]+keyBytes[i%keyBytes.length])&255; const t=s[i];s[i]=s[j];s[j]=t;} let i=0;j=0; for(let d=0;d<2048;d++){i=(i+1)&255;j=(j+s[i])&255;const t=s[i];s[i]=s[j];s[j]=t;} const out=new Array(dataBytes.length); for(let k=0;k<dataBytes.length;k++){i=(i+1)&255;j=(j+s[i])&255;const t=s[i];s[i]=s[j];s[j]=t;const sb=s[(s[i]+s[j])&255];out[k]=(dataBytes[k]^sb)&255;} return out; }
 function decryptVidzee(blob){ try{const plain=utf8Decode(rc4Drop2048(hexToBytes(VIDZEE_RC4_KEY_HEX),base64ToBytes(blob))); const p=JSON.parse(plain); return p&&typeof p==="object"?p:null;}catch(_){return null;} }
-function normalizeDecryptedUrl(text){
-  const raw=clean(text);
+function looksBase64(text){ const t=clean(text); return t.length>=16 && /^[A-Za-z0-9+/_=-]+$/.test(t); }
+function normalizeDecryptedUrl(text,depth){
+  const raw=clean(text); const level=Number(depth||0);
+  if(!raw || level>2) return "";
   if(/^https?:\/\//i.test(raw)) return raw;
+  if(/^\/\//.test(raw)) return `https:${raw}`;
+  const unescaped=raw.replace(/\\\//g,"/");
+  if(/^https?:\/\//i.test(unescaped)) return unescaped;
+  if(/^\/\//.test(unescaped)) return `https:${unescaped}`;
   try {
     const parsed=JSON.parse(raw);
-    if(typeof parsed==="string" && /^https?:\/\//i.test(clean(parsed))) return clean(parsed);
+    if(typeof parsed==="string") { const nested=normalizeDecryptedUrl(parsed,level+1); if(nested) return nested; }
     if(parsed && typeof parsed==="object") {
-      const candidates=[parsed.url,parsed.file,parsed.source,parsed.src,parsed.link];
-      for(const value of candidates){ const candidate=clean(value); if(/^https?:\/\//i.test(candidate)) return candidate; }
+      const candidates=[parsed.url,parsed.file,parsed.source,parsed.src,parsed.link,parsed.stream,parsed.playlist];
+      for(const value of candidates){ const nested=normalizeDecryptedUrl(value,level+1); if(nested) return nested; }
     }
   } catch(_) {}
-  const quoted=raw.match(/https?:\/\/[^\s"'\\]+/i);
-  return quoted ? clean(quoted[0]) : "";
+  if(/%[0-9a-f]{2}/i.test(raw)) {
+    try { const decoded=decodeURIComponent(raw); if(decoded!==raw){ const nested=normalizeDecryptedUrl(decoded,level+1); if(nested) return nested; } } catch(_) {}
+  }
+  if(looksBase64(raw)) {
+    try { const decoded=utf8Decode(base64ToBytes(raw)); if(decoded && decoded!==raw){ const nested=normalizeDecryptedUrl(decoded,level+1); if(nested) return nested; } } catch(_) {}
+  }
+  const quoted=unescaped.match(/https?:\/\/[^\s"'\\]+/i);
+  if(quoted) return clean(quoted[0]);
+  const protoRelative=unescaped.match(/\/\/[A-Za-z0-9._-]+[^\s"'\\]*/);
+  return protoRelative ? `https:${clean(protoRelative[0])}` : "";
+}
+function previewPlaintext(text){
+  const raw=clean(text).replace(/[\x00-\x1f\x7f]/g,"?").replace(/\s+/g," ");
+  return short(raw,72);
 }
 
 async function decryptVidrock(blob){
@@ -70,8 +88,9 @@ async function decryptVidrock(blob){
     const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv:iv,tagLength:128},key,ct);
     const bytes=new Uint8Array(plain);
     const text=typeof TextDecoder!=="undefined" ? new TextDecoder().decode(bytes) : utf8Decode(Array.prototype.slice.call(bytes));
-    const url=normalizeDecryptedUrl(text);
-    return {ok:true,url:url,shape:url?"url":(clean(text).charAt(0)==="{"?"json-object":clean(text).charAt(0)==='"'?"json-string":"text")};
+    const url=normalizeDecryptedUrl(text,0);
+    const shape=url?"url":(clean(text).charAt(0)==="{"?"json-object":clean(text).charAt(0)==='"'?"json-string":looksBase64(text)?"base64":"text");
+    return {ok:true,url:url,shape:shape,preview:previewPlaintext(text)};
   } catch(e) { return {ok:false,error:clean(e&&e.message?e.message:e)||"decrypt failed"}; }
 }
 
@@ -97,7 +116,7 @@ async function vidrockProbe(tmdbId,type,s,e){
   for(const [name,v] of entries.slice(0,6)){
     const dec=await decryptVidrock(clean(v.url));
     if(dec.ok && /^https?:\/\//i.test(clean(dec.url))) streams.push({server:name,url:clean(dec.url),language:clean(v.language)||"Auto"});
-    else errors.push(`${name}=${dec.error||(`no-url/${dec.shape||"unknown"}`)}`);
+    else errors.push(`${name}=${dec.error||(`no-url/${dec.shape||"unknown"}${dec.preview?`:${dec.preview}`:""}`)}`);
   }
   return {ok:true,error:"",entries,streams,errors};
 }
