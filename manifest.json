@@ -1,16 +1,16 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.2.1",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the active provider using a dedicated Scarlet Peach resolver Worker and the current Hanime v11 signed/encrypted handshake flow. HentaiTV remains parked as reference code.",
+  "version": "0.2.2",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the active provider using Scarlet Peach schema v2 catalog mappings plus the dedicated current Hanime v11 resolver Worker. HentaiTV remains parked as reference code.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
       "name": "Scarlet Peach - Hanime",
-      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata plus compatible HentaiTV-style title slugs. Uses corrected episode-ID parsing, romanization-aware title matching, Hanime's current signed v11 search API, and AES-GCM handshake to return guest-playable HLS streams.",
-      "version": "0.2.1",
+      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy title slugs. Prefers exact schema v2 Hanime episode mappings and provider titles, supports nested sp:hanime IDs, then falls back to romanization-aware matching through the current signed v11/AES-GCM resolver.",
+      "version": "0.2.2",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from Yuzono AniYomi Hanime and anime-src/hanime-stremio",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v2.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
