@@ -14,12 +14,12 @@ let cachedHitsAt = 0;
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 
-function json(status, body) {
+function json(status, body, cacheControl = "no-store") {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
       "content-type": "application/json; charset=utf-8",
-      "cache-control": "no-store",
+      "cache-control": cacheControl,
       "access-control-allow-origin": "*",
       "access-control-allow-headers": "content-type",
       "access-control-allow-methods": "GET,POST,OPTIONS"
@@ -47,6 +47,10 @@ function base64ToBytes(input) {
   const out = new Uint8Array(binary.length);
   for (let i = 0; i < binary.length; i++) out[i] = binary.charCodeAt(i);
   return out;
+}
+
+function clean(value) {
+  return String(value == null ? "" : value).trim();
 }
 
 function normalizeTitle(value) {
@@ -137,6 +141,122 @@ function scoreHit(hit, requestedTitles, episode, year) {
   return best;
 }
 
+function list(value) {
+  if (Array.isArray(value)) return value;
+  if (value == null) return [];
+  if (typeof value === "string") {
+    const text = value.trim();
+    if (!text) return [];
+    if ((text.startsWith("[") && text.endsWith("]")) || (text.startsWith("{") && text.endsWith("}"))) {
+      try {
+        const parsed = JSON.parse(text);
+        if (Array.isArray(parsed)) return parsed;
+      } catch {}
+    }
+    return text.split(/[,|]/).map(part => part.trim()).filter(Boolean);
+  }
+  return [value];
+}
+
+function uniqueStrings(values) {
+  return [...new Set((values || []).map(clean).filter(Boolean))];
+}
+
+function normalizeLanguage(value) {
+  const s = clean(value).toLowerCase();
+  const aliases = {
+    japanese: "ja", jp: "ja", ja: "ja",
+    english: "en", eng: "en", en: "en",
+    spanish: "es", spa: "es", es: "es",
+    portuguese: "pt", por: "pt", pt: "pt",
+    french: "fr", fra: "fr", fr: "fr",
+    german: "de", deu: "de", de: "de",
+    italian: "it", ita: "it", it: "it",
+    korean: "ko", kor: "ko", ko: "ko",
+    chinese: "zh", zho: "zh", zh: "zh"
+  };
+  return aliases[s] || (s.length <= 5 ? s : "");
+}
+
+function languageList(...values) {
+  return uniqueStrings(values.flatMap(list).map(normalizeLanguage).filter(Boolean));
+}
+
+function censorFromHit(hit, tags) {
+  const explicit = clean(hit && (hit.censor_status || hit.censorStatus || hit.censorship)).toLowerCase();
+  if (explicit === "censored" || explicit === "uncensored" || explicit === "mixed") return explicit;
+  if (hit && hit.is_uncensored === true) return "uncensored";
+  if (hit && hit.is_censored === true) return "censored";
+  const normalized = new Set((tags || []).map(tag => normalizeTitle(tag).replace(/\s+/g, "")));
+  if (normalized.has("uncensored")) return "uncensored";
+  if (normalized.has("censored")) return "censored";
+  return "unknown";
+}
+
+function dateFromHit(hit) {
+  const unix = Number(hit && (hit.released_at_unix || hit.release_at_unix || hit.created_at_unix));
+  if (Number.isFinite(unix) && unix > 0) {
+    const ms = unix > 1e12 ? unix : unix * 1000;
+    const d = new Date(ms);
+    if (!Number.isNaN(d.getTime())) return d.toISOString();
+  }
+  const raw = clean(hit && (hit.released_at || hit.release_date || hit.created_at));
+  if (!raw) return null;
+  const d = new Date(raw);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
+}
+
+function publicMetadata(hit) {
+  const blocked = new Set([
+    "name", "slug", "description", "tags", "search_titles", "searchTitles", "titles",
+    "cover_url", "poster_url", "brand", "studio", "audio_languages", "audio_language",
+    "subtitle_languages", "subtitle_language", "subtitles", "released_at", "released_at_unix"
+  ]);
+  const out = {};
+  for (const [key, value] of Object.entries(hit || {})) {
+    if (blocked.has(key) || value == null) continue;
+    if (["string", "number", "boolean"].includes(typeof value)) out[key] = value;
+    else if (Array.isArray(value) && value.length <= 100 && value.every(item => ["string", "number", "boolean"].includes(typeof item))) out[key] = value;
+  }
+  return out;
+}
+
+function toCatalogRecord(hit) {
+  const slug = clean(hit && hit.slug);
+  const name = clean(hit && hit.name);
+  if (!slug || !name) return null;
+  const tags = uniqueStrings(list(hit.tags));
+  const aliases = uniqueStrings([
+    ...list(hit.search_titles || hit.searchTitles || hit.titles),
+    seriesBase(name)
+  ].filter(value => clean(value) && clean(value) !== name));
+  const releasedAt = dateFromHit(hit);
+  const year = releasedAt ? Number(releasedAt.slice(0, 4)) : Number(hit && (hit.released_at_year || hit.year || 0)) || null;
+  const audioLanguages = languageList(hit.audio_languages, hit.audio_language, hit.audioLanguage);
+  const subtitleLanguages = languageList(hit.subtitle_languages, hit.subtitle_language, hit.subtitleLanguages, hit.subtitles);
+  return {
+    providerId: clean(hit.id || slug),
+    slug,
+    title: name,
+    providerTitle: name,
+    seriesTitle: seriesBase(name),
+    episode: episodeNumber(hit),
+    aliases,
+    description: clean(hit.description) || null,
+    poster: clean(hit.cover_url || hit.coverUrl || hit.poster_url || hit.posterUrl) || null,
+    background: clean(hit.poster_url || hit.posterUrl || hit.cover_url || hit.coverUrl) || null,
+    brand: clean(hit.brand || hit.studio) || null,
+    year,
+    releaseDate: releasedAt,
+    tags,
+    censorStatus: censorFromHit(hit, tags),
+    audioLanguages,
+    subtitleLanguages,
+    url: `${HANIME_ORIGIN}/videos/hentai/${encodeURIComponent(slug)}`,
+    metadata: publicMetadata(hit)
+  };
+}
+
 async function signatureHeaders() {
   const time = Math.floor(Date.now() / 1000);
   const input = `${time},${SIGNATURE_SALT_1},${HANIME_ORIGIN},${SIGNATURE_SALT_2},${time}`;
@@ -159,6 +279,21 @@ function browserHeaders(extra = {}) {
   };
 }
 
+function normalizeSearchPayload(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (Array.isArray(payload && payload.data)) return payload.data;
+  if (Array.isArray(payload && payload.hits)) return payload.hits;
+  if (typeof (payload && payload.hits) === "string") {
+    try {
+      const parsed = JSON.parse(payload.hits);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
 async function getSearchHits() {
   const now = Date.now();
   if (cachedHits && now - cachedHitsAt < SEARCH_CACHE_TTL_MS) return cachedHits;
@@ -166,11 +301,24 @@ async function getSearchHits() {
   const response = await fetch(SEARCH_URL, { headers: browserHeaders(sig) });
   if (!response.ok) throw new Error(`Hanime search HTTP ${response.status}`);
   const payload = await response.json();
-  const hits = Array.isArray(payload) ? payload : Array.isArray(payload && payload.data) ? payload.data : [];
+  const hits = normalizeSearchPayload(payload);
   if (!hits.length) throw new Error("Hanime search returned no data");
   cachedHits = hits;
   cachedHitsAt = now;
   return hits;
+}
+
+async function catalogFeed() {
+  const hits = await getSearchHits();
+  const records = hits.map(toCatalogRecord).filter(Boolean);
+  return json(200, {
+    provider: "hanime",
+    schemaVersion: 1,
+    generatedAt: new Date().toISOString(),
+    source: SEARCH_URL,
+    count: records.length,
+    records
+  }, "public, max-age=300, stale-while-revalidate=600");
 }
 
 async function importHandshakeKey() {
@@ -268,7 +416,14 @@ export default {
   async fetch(request) {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type", "access-control-allow-methods": "GET,POST,OPTIONS" } });
     const url = new URL(request.url);
-    if (url.pathname === "/health") return json(200, { ok: true, service: "Scarlet Peach Hanime Resolver", protocol: "hanime-v11-handshake", matcher: "romanization-v2" });
+    if (url.pathname === "/health") return json(200, { ok: true, service: "Scarlet Peach Hanime Resolver", protocol: "hanime-v11-handshake", matcher: "romanization-v2", catalogFeed: "/catalog.json" });
+    if (url.pathname === "/catalog.json" && request.method === "GET") {
+      try {
+        return await catalogFeed();
+      } catch (error) {
+        return json(502, { error: error && error.message ? error.message : String(error) });
+      }
+    }
     if (url.pathname !== "/resolve" || request.method !== "POST") return json(404, { error: "Not found" });
     try {
       const body = await request.json();
