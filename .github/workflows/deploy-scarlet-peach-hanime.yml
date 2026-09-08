@@ -63,7 +63,7 @@ jobs:
           console.log(JSON.stringify({ count: data.records.length, first: { title: first.title, slug: first.slug }, fields: Object.keys(first).sort() }));
           NODE
 
-      - name: Probe live resolve path
+      - name: Probe live resolve paths
         run: |
           set -euo pipefail
           probe() {
@@ -81,5 +81,7 @@ jobs:
             test "$status" = "200"
           }
 
-          probe bible-black '{"title":"Bible Black 1","aliases":["Bible Black"],"year":2001,"episode":1}'
-          probe jimihen '{"title":"Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu Season 1","aliases":["Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!"],"year":2021,"episode":1}'
+          probe bible-black-fuzzy '{"title":"Bible Black 1","aliases":["Bible Black"],"year":2001,"episode":1}'
+          probe jimihen-fuzzy '{"title":"Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu Season 1","aliases":["Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!"],"year":2021,"episode":1}'
+          probe bible-black-2-exact '{"title":"Bible Black 2","episode":2,"slug":"bible-black-2"}'
+          probe jimihen-exact '{"title":"Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu Season 1","episode":1,"slug":"jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1"}'
