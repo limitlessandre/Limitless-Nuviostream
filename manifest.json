@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.39",
+  "version": "2.1.40",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. Tokusatsu probing is focused on KissKH Test, AsiaFlix Test, and 1Shows Test with staged diagnostics before individual refinement.",
   "scrapers": [
     {
@@ -95,11 +95,11 @@
     {
       "id": "limitless-1shows-test",
       "name": "1Shows Test",
-      "description": "Experimental 1Shows probe v0.1.7. Inspects Vidrock JavaScript wrapper responses, extracts nested media URLs, follows one wrapper hop, and reports compact script previews when no media transport is recoverable.",
-      "version": "0.1.7",
+      "description": "Experimental 1Shows probe v0.1.8. Restores Vidrock entry discovery across map, array, string, and nested API response shapes, retains AES-GCM decryption, and validates wrapper/HLS transport before exposing streams.",
+      "version": "0.1.8",
       "author": "Limitless Nexus; current 1Shows behavior referenced from the maintained Aniyomi 1Shows extension",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus-v5.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/1shows-nexus-v6.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
