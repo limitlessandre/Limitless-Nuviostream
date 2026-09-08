@@ -10,7 +10,6 @@ export function canonicalProviderTitle(value) {
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/\bwo\b/g, 'o')
-    .replace(/\bseason\s+\d+\b/g, ' ')
     .replace(/[^a-z0-9]+/g, '')
     .trim();
 }
@@ -25,9 +24,14 @@ export function aggregateCensorStatus(current, incoming) {
 }
 
 function stableProviderId(provider, record) {
-  const slug = clean(record.seriesId || record.slug || record.providerId || record.id || record.title).toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  let raw = clean(record.seriesId || record.slug || record.providerId || record.id || record.title).toLowerCase();
+  for (const prefix of [`${provider}:series:`, `${provider}:`, 'series:']) {
+    if (raw.startsWith(prefix)) {
+      raw = raw.slice(prefix.length);
+      break;
+    }
+  }
+  const slug = raw.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return `sp:${provider}:${slug || 'untitled'}`;
 }
 
