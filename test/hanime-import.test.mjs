@@ -47,6 +47,20 @@ test('Jimihen Season 1 becomes a single series record and keeps exact Hanime slu
   assert.equal(payload.records[0].episodes[0].slug, 'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1');
 });
 
+test('multiple explicit Hanime seasons stay separate instead of becoming episodes of one title', () => {
+  const feed = {
+    provider: 'hanime',
+    generatedAt: now,
+    records: [
+      record({ title: 'Example Story Season 1', seriesTitle: 'Example Story', slug: 'example-story-season-1', episode: 1 }),
+      record({ title: 'Example Story Season 2', seriesTitle: 'Example Story', slug: 'example-story-season-2', episode: 2 })
+    ]
+  };
+  const payload = buildHanimeProviderImport(feed, now, { minRecords: 1 });
+  assert.deepEqual(payload.records.map((item) => item.title).sort(), ['Example Story Season 1', 'Example Story Season 2']);
+  assert.deepEqual(payload.records.map((item) => item.episodes[0].number), [1, 1]);
+});
+
 test('Bible Black numbered videos group into ordered episodes', () => {
   const feed = {
     provider: 'hanime',
