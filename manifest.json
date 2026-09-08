@@ -1,16 +1,16 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Adult-only Scarlet Peach stream providers for Nuvio. HentaiTV is the first provider; catalog metadata is supplied separately by the Scarlet Peach catalog addon.",
   "scrapers": [
     {
       "id": "scarlet-peach-hentaitv",
       "name": "Scarlet Peach - HentaiTV",
-      "description": "HentaiTV provider for Scarlet Peach and compatible Nuvio catalog entries using MAL/TMDB/IMDb-aware identity resolution, HTML fallback discovery, direct HentaiTV IDs, nhplayer extraction, R2 verification, and visible diagnostics.",
-      "version": "0.1.6",
+      "description": "HentaiTV provider for Scarlet Peach and compatible Nuvio catalog entries using MAL/TMDB/IMDb-aware identity resolution, direct HentaiTV IDs, deterministic slug probing, HTML fallback discovery, nhplayer extraction, R2 verification, and visible diagnostics.",
+      "version": "0.1.7",
       "author": "Limitless Nexus: Scarlet Peach",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaitv.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaitv-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
