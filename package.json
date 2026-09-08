@@ -1,7 +1,7 @@
 {
   "name": "nexus-scarlet-peach-catalog",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "start": "node src/server.js",
     "dev": "wrangler dev",
@@ -9,6 +9,10 @@
     "check": "wrangler check",
     "import:mal": "node scripts/import-mal-adult.js",
     "refresh:mal": "node scripts/import-mal-adult.js && node scripts/build-snapshot.js",
+    "import:hanime": "node scripts/import-hanime-catalog.js",
+    "refresh:hanime": "node scripts/import-hanime-catalog.js && node scripts/build-snapshot.js",
+    "refresh:providers": "node scripts/import-hanime-catalog.js",
+    "refresh:all": "node scripts/import-hanime-catalog.js && node scripts/build-snapshot.js",
     "migrate:v2": "node scripts/migrate-schema-v2.js && node scripts/build-snapshot.js",
     "merge:provider": "node scripts/merge-provider-import.js",
     "build:snapshot": "node scripts/build-snapshot.js",
