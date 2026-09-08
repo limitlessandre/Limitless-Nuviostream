@@ -36,17 +36,19 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Verify Worker health
+      - name: Verify Worker health and version
         run: |
           set -euo pipefail
-          for attempt in 1 2 3 4 5; do
+          for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.1.1"'; then
               printf '%s\n' "$body"
               break
             fi
-            if [ "$attempt" = 5 ]; then
-              echo 'Worker health check failed' >&2
+            echo "Waiting for v0.1.1 propagation (attempt ${attempt})"
+            if [ "$attempt" = 8 ]; then
+              echo 'Worker health/version check failed' >&2
+              printf '%s\n' "$body" >&2
               exit 1
             fi
             sleep 3
