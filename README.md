@@ -59,9 +59,9 @@ Worker:
 
 ## Experimental providers
 
-### HStream 0.1.0
+### HStream 0.1.1
 
-HStream is server-side proven and is awaiting first Nuvio client playback validation before promotion to production-stable.
+HStream has passed server-side extraction and first Nuvio client playback validation. It remains experimental until subtitle UI behavior and a broader title sample are confirmed.
 
 - Scarlet Peach MAL/AniList/SP metadata and shared TMDB/IMDb ingress bridge
 - direct Romanization-aware episode slug probing with `/search?search=` fallback
@@ -72,27 +72,29 @@ HStream is server-side proven and is awaiting first Nuvio client playback valida
 - 2160p/1080p are currently AV1 on the tested title; 720p provides AVC fallback
 - frame-rate metadata parsed from the MPD
 - provider-level censorship and studio metadata
-- English `.ass` subtitle track discovery, plus HStream's optional machine-translated subtitle languages when exposed by the API
+- English `.ass` subtitle discovery forwarded as Nuvio stream-provided selectable subtitles with playback headers
+- HStream's optional machine-translated subtitle languages are forwarded when exposed by the API
 - Cloudflare `global_fetch_strictly_public` compatibility enabled because HStream itself is fronted by a Worker
 
 Provider:
 
-`providers/scarlet-peach-hstream-v1.js`
+`providers/scarlet-peach-hstream-v2.js`
 
 Worker:
 
 `https://scarlet-peach-hstream.limitlessandre.workers.dev`
 
-Current live server-side regression fixture:
+Current live regression fixture:
 
 ```text
 sp:hanime:deco-x-deco-the-animation
   HStream • 4K 2160p • [SUB] • Censored
   HStream • FHD 1080p • [SUB] • Censored
   HStream • HD 720p • [SUB] • Censored
+  + English ASS subtitle track on every stream row
 ```
 
-HStream has **not** been added to Scarlet Peach catalog ingestion yet. Catalog harvesting/mappings come after Nuvio playback is confirmed so a broken player integration cannot become a production catalog dependency.
+HStream has **not** been added to Scarlet Peach catalog ingestion yet. Catalog harvesting/mappings come after the current client validation pass so an incomplete player integration cannot become a production catalog dependency.
 
 ## Identity architecture
 
@@ -135,7 +137,7 @@ HentaiHaven • FHD 1080p • [DUB+SUB] • Censored
 Hanime • HD 720p • [SUB] • Uncensored
 ```
 
-Resolvers preserve richer subtitle/audio metadata when the sites expose it. Provider labels use verified metadata immediately; full selectable-track integration remains a client/runtime compatibility task.
+Resolvers preserve richer subtitle/audio metadata when the sites expose it. HStream now forwards its discovered subtitle tracks directly in Nuvio's stream subtitle object contract instead of only using them for labels.
 
 ## Validation
 
@@ -146,7 +148,7 @@ Provider changes have separate CI gates:
    - manifest validation
    - TMDB compatibility regression using KITE / `80219` for stable providers
    - HentaiHaven Jimihen regression for 1080p, censorship, audio/sub label and duplicate-quality prevention
-   - HStream Deco x Deco regression for native MPD, 2160p/1080p/720p, `[SUB]`, and censorship
+   - HStream Deco x Deco regression for native MPD, 2160p/1080p/720p, `[SUB]`, censorship, English ASS subtitle objects, and subtitle playback headers
 
 2. **Deploy Scarlet Peach Hanime Worker**
    - deploy + health checks
@@ -172,10 +174,10 @@ Provider changes have separate CI gates:
 
 Repository: `limitlessandre/Limitless-Nuviostream`  
 Branch: `scarlet-peach-providers`  
-Provider manifest: `0.6.0`  
+Provider manifest: `0.6.1`  
 Hanime: `0.2.8`  
 HentaiHaven: `0.2.0`  
-HStream: `0.1.0` experimental  
+HStream: `0.1.1` experimental  
 Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`  
 Provider manifest: `https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/manifest.json`
 
