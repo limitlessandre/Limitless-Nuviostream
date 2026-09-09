@@ -30,6 +30,13 @@ function absoluteUrl(value, base = 'https://hentaihaven.vip/') {
   try { return new URL(raw, base).toString(); } catch (_) { return null; }
 }
 
+function humanizeSlug(value) {
+  return clean(value)
+    .replace(/[-_]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function termMap(terms) {
   const map = new Map();
   for (const term of terms || []) {
@@ -210,6 +217,7 @@ export function buildHentaiHavenProviderImport(input, now = new Date().toISOStri
     const description = stripHtml(post?.content?.rendered || post?.excerpt?.rendered || '');
     const genresNormalized = usefulTags(genreNames.filter((value) => !/^(?:censored|uncensored hentai)$/i.test(value)));
     if (!genresNormalized.some((value) => value.toLowerCase() === 'hentai')) genresNormalized.unshift('Hentai');
+    const slugAlias = humanizeSlug(slug);
 
     records.push({
       providerId: Number.isInteger(providerId) ? String(providerId) : slug,
@@ -218,7 +226,7 @@ export function buildHentaiHavenProviderImport(input, now = new Date().toISOStri
       title,
       providerTitle: title,
       seriesTitle: title,
-      aliases: [],
+      aliases: slugAlias && slugAlias.toLowerCase() !== title.toLowerCase() ? [slugAlias] : [],
       description: description || null,
       poster: providerPoster(post, sitemap, baseUrl),
       background: null,
@@ -262,4 +270,4 @@ export function buildHentaiHavenProviderImport(input, now = new Date().toISOStri
   };
 }
 
-export const _test = { sitemapEntries, titleSitemapMap, chapterSitemapMap, censorshipFrom, stripHtml };
+export const _test = { sitemapEntries, titleSitemapMap, chapterSitemapMap, censorshipFrom, stripHtml, humanizeSlug };
