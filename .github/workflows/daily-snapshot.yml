@@ -26,6 +26,9 @@ jobs:
       - name: Harvest Hanime provider catalog
         run: npm run import:hanime
 
+      - name: Harvest HentaiHaven provider catalog
+        run: npm run import:hentaihaven
+
       - name: Build merged normalized snapshot
         run: npm run build:snapshot
 
@@ -46,7 +49,8 @@ jobs:
             echo "health attempt ${attempt}: ${BODY}"
             if echo "$BODY" | grep -q '"ok":true' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
-               echo "$BODY" | grep -q '"hanime"'; then
+               echo "$BODY" | grep -q '"hanime"' && \
+               echo "$BODY" | grep -q '"hentaihaven"'; then
               exit 0
             fi
             sleep 3
