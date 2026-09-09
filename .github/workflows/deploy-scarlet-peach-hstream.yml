@@ -1,0 +1,80 @@
+name: Deploy Scarlet Peach HStream Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - 'workers/scarlet-peach-hstream/**'
+      - '.github/workflows/deploy-scarlet-peach-hstream.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workers/scarlet-peach-hstream
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check Worker syntax
+        run: node --check src/router.js
+
+      - name: Deploy Worker
+        run: npx wrangler@latest deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify Worker health and version
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5 6 7 8; do
+            body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hstream.limitlessandre.workers.dev/health || true)"
+            echo "health attempt ${attempt}: ${body}"
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HStream Resolver' && \
+               printf '%s' "$body" | grep -q '"version":"0.1.0"' && \
+               printf '%s' "$body" | grep -q '2160'; then
+              break
+            fi
+            if [ "$attempt" = 8 ]; then
+              echo 'HStream Worker health/version check failed' >&2
+              exit 1
+            fi
+            sleep 3
+          done
+
+      - name: Probe live Deco x Deco extraction
+        run: |
+          set -euo pipefail
+          body_file=/tmp/hstream-deco.json
+          status="$(curl --silent --show-error --max-time 90 \
+            -o "$body_file" -w '%{http_code}' \
+            -X POST https://scarlet-peach-hstream.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Deco x Deco The Animation","episode":1}' || true)"
+          echo "status=${status}"
+          cat "$body_file" 2>/dev/null || true
+          echo
+          test "$status" = "200"
+          BODY_FILE="$body_file" node - <<'NODE'
+          const fs = require('node:fs');
+          const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
+          if (!Array.isArray(data.streams) || !data.streams.length) throw new Error('HStream returned no streams');
+          const heights = data.streams.map(s => Number(s.height || 0)).filter(Boolean);
+          if (!heights.includes(2160)) throw new Error(`HStream missing proven 2160p manifest: ${heights.join(',')}`);
+          if (!heights.includes(1080) || !heights.includes(720)) throw new Error(`HStream missing baseline DASH qualities: ${heights.join(',')}`);
+          if (!data.match || !/deco-x-deco-the-animation-1/i.test(data.match.slug || '')) throw new Error(`Unexpected HStream match: ${JSON.stringify(data.match)}`);
+          if (!data.metadata || !Array.isArray(data.metadata.subtitleLanguages) || !data.metadata.subtitleLanguages.includes('en')) throw new Error('HStream English subtitle metadata missing');
+          console.log(`HStream live smoke passed: ${heights.join('/')}p censor=${data.metadata.censorStatus} audio=${(data.metadata.audioLanguages||[]).join(',')} subs=${(data.metadata.subtitleLanguages||[]).join(',')}`);
+          NODE
