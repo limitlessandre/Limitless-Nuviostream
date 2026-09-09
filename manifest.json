@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.3.0",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime is the stable schema-v2 provider. HentaiHaven is now included as an experimental second provider using a dedicated Cloudflare resolver based on the current secure player-token/HLS flow.",
+  "version": "0.3.1",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime remains the stable schema-v2 provider. HentaiHaven now uses a dual-backend resolver: the working hentaihaven.com secure-token/HLS path first, then hentaihaven.xxx search/watch/AJAX fallback for titles missing from the .com catalog.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
@@ -21,16 +21,16 @@
     {
       "id": "scarlet-peach-hentaihaven",
       "name": "HentaiHaven",
-      "description": "Experimental HentaiHaven provider. Resolves Scarlet Peach canonical metadata against HentaiHaven, decodes the current x-secure-token player flow, calls the player API, and returns HLS variants using Nexus quality labels. Visible diagnostics remain enabled until Nuvio playback is verified.",
-      "version": "0.1.0",
-      "author": "Limitless Nexus: Scarlet Peach; protocol reference from cynthia2006/hanime-plugin HentaiHaven extractor",
+      "description": "Experimental dual-backend HentaiHaven provider. Tries hentaihaven.com using the current x-secure-token player/HLS flow, including Octopus VP9 playlists, then falls back to hentaihaven.xxx using its WordPress search/watch/AJAX player path. Backend-specific playback headers and HLS/MP4 are preserved. Visible diagnostics remain enabled while matching coverage is being verified.",
+      "version": "0.1.1",
+      "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["m3u8"],
-      "logo": "https://hentaihaven.com/favicon.ico",
+      "formats": ["m3u8", "mp4"],
+      "logo": "https://hentaihaven.xxx/favicon.ico",
       "contentLanguage": ["ja", "en"]
     }
   ]
