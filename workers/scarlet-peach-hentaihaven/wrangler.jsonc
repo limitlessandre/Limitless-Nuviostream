@@ -1,6 +1,6 @@
 {
   "name": "scarlet-peach-hentaihaven",
-  "main": "src/router.js",
+  "main": "src/router-v2.js",
   "compatibility_date": "2026-09-01",
   "workers_dev": true
 }
