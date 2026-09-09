@@ -23,8 +23,6 @@ jobs:
             https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
             -H 'content-type: application/json' \
             --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/deco.json
-          cat /tmp/deco.json
-          echo
 
           node - <<'NODE' > /tmp/urls.env
           const fs=require('node:fs');
@@ -35,6 +33,7 @@ jobs:
             console.log(`PLAY_${h}=${JSON.stringify(s.url)}`);
             console.log(`RAW_${h}=${JSON.stringify(s.sourceUrl||'')}`);
             console.log(`MASTER_${h}=${JSON.stringify(s.masterUrl||'')}`);
+            console.log(`CODEC_${h}=${JSON.stringify(s.codec||'')}`);
           }
           NODE
           cat /tmp/urls.env
@@ -44,13 +43,17 @@ jobs:
             eval "play=\${PLAY_${h}:-}"
             eval "raw=\${RAW_${h}:-}"
             eval "master=\${MASTER_${h}:-}"
+            eval "codec=\${CODEC_${h}:-}"
             [ -n "$play" ] || continue
-            echo "===== ${h} ORIGINAL MASTER ====="
-            curl --fail --silent --show-error --max-time 30 "$master" | tee "/tmp/original-${h}.m3u8"
+            echo "===== ${h} codec=${codec} ORIGINAL MASTER ====="
+            curl --fail --silent --show-error --max-time 30 "$master" -o "/tmp/original-${h}.m3u8"
+            cat "/tmp/original-${h}.m3u8"
             echo "===== ${h} GENERATED MASTER ====="
-            curl --fail --silent --show-error --max-time 30 "$play" | tee "/tmp/generated-${h}.m3u8"
-            echo "===== ${h} RAW PLAYLIST ====="
-            curl --fail --silent --show-error --max-time 30 "$raw" | head -80
+            curl --fail --silent --show-error --max-time 30 "$play" -o "/tmp/generated-${h}.m3u8"
+            cat "/tmp/generated-${h}.m3u8"
+            echo "===== ${h} RAW PLAYLIST HEAD ====="
+            curl --fail --silent --show-error --max-time 30 "$raw" -o "/tmp/raw-${h}.m3u8"
+            head -40 "/tmp/raw-${h}.m3u8"
             echo "===== ${h} FFPROBE GENERATED ====="
             ffprobe -v error -rw_timeout 20000000 -show_entries stream=index,codec_name,codec_type,width,height,pix_fmt -of json "$play" || true
             echo "===== ${h} FFPROBE RAW ====="
