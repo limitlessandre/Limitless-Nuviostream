@@ -30,7 +30,7 @@ const bibleBlackTitle = requireTitle('mal:368');
 const jimihenHanime = requireProviderMapping(jimihenTitle, 'hanime', 'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1');
 const bibleBlackHanime = requireProviderMapping(bibleBlackTitle, 'hanime', 'bible-black');
 const jimihenHentaiHaven = requireProviderMapping(jimihenTitle, 'hentaihaven', 'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1');
-const bibleBlackHentaiHaven = requireProviderMapping(bibleBlackTitle, 'hentaihaven', 'bible-black/episode-1');
+const bibleBlackHentaiHaven = requireProviderMapping(bibleBlackTitle, 'hentaihaven', 'bible-black-1/episode-1');
 
 const hanimeMapped = snapshot.titles.filter((title) => (title.providerMappings || []).some((mapping) => mapping.provider === 'hanime')).length;
 const hentaiHavenMapped = snapshot.titles.filter((title) => (title.providerMappings || []).some((mapping) => mapping.provider === 'hentaihaven')).length;
