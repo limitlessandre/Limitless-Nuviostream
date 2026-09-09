@@ -52,7 +52,7 @@ jobs:
           node - <<'NODE'
           const checks = [
             ['Hanime', require('./providers/scarlet-peach-hanime-v9.js')],
-            ['HentaiHaven', require('./providers/scarlet-peach-hentaihaven-v3.js')]
+            ['HentaiHaven', require('./providers/scarlet-peach-hentaihaven-v4.js')]
           ];
           (async () => {
             for (const [name, provider] of checks) {
@@ -62,5 +62,23 @@ jobs:
               console.log(`${name}: ${first}`);
               if (/DIAG\s+(ID|MATCH)/i.test(first)) throw new Error(`${name} did not clear identity/title matching for TMDB 80219`);
             }
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Verify HentaiHaven metadata presentation
+        run: |
+          node - <<'NODE'
+          const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');
+          (async () => {
+            const rows = await provider.getStreams('mal:44044', 'tv', 1, 1);
+            if (!Array.isArray(rows) || !rows.length) throw new Error('HentaiHaven Jimihen returned no rows');
+            const names = rows.map(row => String(row.name || ''));
+            console.log(names.join('\n'));
+            if (names.some(name => /DIAG/i.test(name))) throw new Error('HentaiHaven Jimihen returned a diagnostic');
+            if (!names.some(name => /FHD\s*1080p/i.test(name))) throw new Error('HentaiHaven Jimihen is missing 1080p');
+            if (!names.every(name => /\[DUB\+SUB\]/i.test(name))) throw new Error('HentaiHaven live audio/sub metadata was not reflected in labels');
+            if (!names.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven live censorship metadata was not reflected in labels');
+            const qualities = rows.map(row => String(row.quality || ''));
+            if (new Set(qualities).size !== qualities.length) throw new Error(`Duplicate HentaiHaven quality rows: ${qualities.join(',')}`);
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
