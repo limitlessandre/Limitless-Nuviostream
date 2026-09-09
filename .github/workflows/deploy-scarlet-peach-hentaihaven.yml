@@ -44,13 +44,14 @@ jobs:
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
             if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && \
-               printf '%s' "$body" | grep -q '"version":"0.5.0"' && \
+               printf '%s' "$body" | grep -q '"version":"0.5.1"' && \
                printf '%s' "$body" | grep -q 'hentaihaven.vip' && \
-               printf '%s' "$body" | grep -q '"nativeTrackPreservation":true'; then
+               printf '%s' "$body" | grep -q '"nativeTrackPreservation":true' && \
+               printf '%s' "$body" | grep -q '"androidSubtitleTransport":"external-sidecar"'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.5.0 propagation (attempt ${attempt})"
+            echo "Waiting for v0.5.1 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -59,7 +60,7 @@ jobs:
             sleep 3
           done
 
-      - name: Probe HentaiHaven production paths and native HLS tracks
+      - name: Probe desktop and Android HentaiHaven HLS tracks
         run: |
           set -euo pipefail
           probe() {
@@ -93,6 +94,7 @@ jobs:
           if (new Set(heights).size !== heights.length) throw new Error(`${process.env.NAME} returned duplicate quality rows: ${heights.join(',')}`);
           if (!data.streams.every(s => /scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(s.url || ''))) throw new Error(`${process.env.NAME} did not route qualities through native-track master`);
           if (!data.metadata || typeof data.metadata !== 'object') throw new Error(`${process.env.NAME} missing metadata object`);
+          if (!Array.isArray(data.metadata.subtitleTracks) || !data.metadata.subtitleTracks.some(s => String(s.language || '').toLowerCase() === 'en')) throw new Error(`${process.env.NAME} English subtitle track missing`);
           if (process.env.EXPECTED_CENSOR && data.metadata.censorStatus !== process.env.EXPECTED_CENSOR) {
             throw new Error(`${process.env.NAME} expected censor=${process.env.EXPECTED_CENSOR}, got ${data.metadata.censorStatus}`);
           }
@@ -114,11 +116,25 @@ jobs:
           process.stdout.write(s.url);
           NODE
           )"
-          curl --fail --silent --show-error --max-time 30 "$PLAY_URL" > /tmp/deco-native.m3u8
-          cat /tmp/deco-native.m3u8
-          grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-native.m3u8
-          grep -q 'LANGUAGE="en"' /tmp/deco-native.m3u8
-          grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-native.m3u8
-          grep -q 'snd/a.m3u8' /tmp/deco-native.m3u8
-          grep -q 's/en.vtt' /tmp/deco-native.m3u8
-          test "$(grep -c '^#EXT-X-STREAM-INF:' /tmp/deco-native.m3u8)" = "1"
+
+          curl --fail --silent --show-error --max-time 30 "$PLAY_URL" > /tmp/deco-desktop.m3u8
+          cat /tmp/deco-desktop.m3u8
+          grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-desktop.m3u8
+          grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-desktop.m3u8
+          grep -q 'snd/a.m3u8' /tmp/deco-desktop.m3u8
+          grep -q 's/en.vtt' /tmp/deco-desktop.m3u8
+          test "$(grep -c '^#EXT-X-STREAM-INF:' /tmp/deco-desktop.m3u8)" = "1"
+
+          curl -A 'ExoPlayerLib/1.5 (Linux;Android 15)' --fail --silent --show-error --max-time 30 "$PLAY_URL" > /tmp/deco-android.m3u8
+          cat /tmp/deco-android.m3u8
+          grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-android.m3u8
+          grep -q 'snd/a.m3u8' /tmp/deco-android.m3u8
+          if grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-android.m3u8; then
+            echo 'Android HentaiHaven master still contains built-in subtitle group' >&2
+            exit 1
+          fi
+          if grep -q 'SUBTITLES=' /tmp/deco-android.m3u8; then
+            echo 'Android HentaiHaven variant still references subtitle group' >&2
+            exit 1
+          fi
+          test "$(grep -c '^#EXT-X-STREAM-INF:' /tmp/deco-android.m3u8)" = "1"
