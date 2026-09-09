@@ -33,15 +33,16 @@ Worker:
 
 `https://scarlet-peach-hanime.limitlessandre.workers.dev`
 
-### HentaiHaven 0.2.2
+### HentaiHaven 0.2.3
 
 - `hentaihaven.com` primary backend
 - `hentaihaven.vip` working mirror fallback
 - Romanization-aware title/slug matching
 - secure `x-secure-token` decode + player API extraction
 - normal H.264 HLS plus Octopus VP9 playlist support
-- 1080p where the VP9 playlist exposes it on compatible non-Windows clients
-- Windows Nuvio uses an H.264-only compatibility path (currently 720p/360p on Octopus titles) to avoid VP9 black-screen playback
+- 1080p where the VP9 playlist exposes it
+- direct per-quality source HLS playback on desktop and Android; the resolver no longer inserts a generated quality-scoped `/play.m3u8` master between Nuvio and HentaiHaven
+- selectable subtitles are forwarded separately through Nuvio's subtitle sidecar contract, so subtitle support does not rewrite the video/audio transport
 - one stream row per quality, preferring H.264 at equal resolutions and retaining VP9 when needed for higher quality
 - provider-specific censored/uncensored detection from the matched title post
 - live HLS/JWPlayer audio and subtitle metadata
@@ -62,7 +63,7 @@ Worker:
 
 ### HStream 0.1.1
 
-HStream has passed server-side extraction and first Nuvio client playback validation. It remains experimental until subtitle UI behavior and a broader title sample are confirmed.
+HStream has passed server-side extraction and desktop Nuvio playback/subtitle validation. It remains experimental until a broader title sample is confirmed.
 
 - Scarlet Peach MAL/AniList/SP metadata and shared TMDB/IMDb ingress bridge
 - direct Romanization-aware episode slug probing with `/search?search=` fallback
@@ -138,7 +139,7 @@ HentaiHaven • FHD 1080p • [SUB] • Censored
 Hanime • HD 720p • [SUB] • Uncensored
 ```
 
-Resolvers preserve richer subtitle/audio metadata when the sites expose it. HStream now forwards its discovered subtitle tracks directly in Nuvio's stream subtitle object contract instead of only using them for labels.
+Resolvers preserve richer subtitle/audio metadata when the sites expose it. HentaiHaven keeps video/audio on the direct source HLS and forwards discovered WebVTT subtitles as separate Nuvio subtitle objects. HStream forwards its discovered subtitle tracks directly in Nuvio's stream subtitle object contract instead of only using them for labels.
 
 ## Validation
 
@@ -148,7 +149,7 @@ Provider changes have separate CI gates:
    - JavaScript syntax validation for provider files
    - manifest validation
    - TMDB compatibility regression using KITE / `80219` for stable providers
-   - HentaiHaven Deco regression for `[SUB]` semantics plus non-Windows 1080p and Windows H.264-only quality filtering
+   - HentaiHaven Deco regression for 1080p/720p/360p, `[SUB]` semantics, direct source-media URLs, unique qualities, and English subtitle sidecars
    - HStream Deco x Deco regression for native MPD, 2160p/1080p/720p, `[SUB]`, censorship, English ASS subtitle objects, and subtitle playback headers
 
 2. **Deploy Scarlet Peach Hanime Worker**
@@ -159,7 +160,8 @@ Provider changes have separate CI gates:
    - deploy + version/health check
    - `.com` production extraction probe
    - `.vip` Jimihen fallback probe
-   - 1080p and metadata assertions
+   - direct-source HLS transport assertion (no generated `/play.m3u8` in new resolve rows)
+   - 1080p and subtitle-sidecar metadata assertions
 
 4. **Deploy Scarlet Peach HStream Worker**
    - deploy + version/health check
@@ -175,9 +177,9 @@ Provider changes have separate CI gates:
 
 Repository: `limitlessandre/Limitless-Nuviostream`  
 Branch: `scarlet-peach-providers`  
-Provider manifest: `0.6.3`  
+Provider manifest: `0.6.4`  
 Hanime: `0.2.8`  
-HentaiHaven: `0.2.2`  
+HentaiHaven: `0.2.3`  
 HStream: `0.1.1` experimental  
 Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`  
 Provider manifest: `https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/manifest.json`
