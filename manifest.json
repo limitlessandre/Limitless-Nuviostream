@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.58",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now includes a visible in-app diagnostic provider that traces identity, MegaPlay embed/source requests, and catalog fallback stages; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
+  "version": "2.1.59",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now includes Android-safe base64url decoding for encrypted MegaPlay source payloads plus visible AES-CBC decrypt diagnostics; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -66,11 +66,11 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV live resolver rebuild using shared MAL/AniList identity, current MegaPlay embed headers, rotating/opaque CDN source support, Anikoto catalog fallback, and compact stage diagnostics.",
-      "version": "2.0.2",
+      "description": "AnikotoTV live resolver with shared MAL/AniList identity, current MegaPlay embed/source resolution, Android-safe base64url decoding for encrypted enc payloads, rotating CDN support, and Anikoto catalog fallback.",
+      "version": "2.0.3",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v3.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v4.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
@@ -81,11 +81,11 @@
     {
       "id": "anikototv-diagnostic",
       "name": "Anikoto Diagnostic",
-      "description": "Visible Anikoto diagnostic rows for the Nuvio stream list. Traces shared anime identity loading/evaluation, MAL/AniList mapping, MegaPlay embed HTTP/body/source-id behavior, getSources payload shape, WebCrypto availability, and Anikoto catalog fallback without modifying the production Anikoto provider.",
-      "version": "0.1.0",
+      "description": "Visible Anikoto diagnostic rows for Nuvio. Traces identity, MegaPlay embed/source requests, encrypted payload shape, base64url decoding, crypto.subtle AES-CBC decrypt success/errors, and catalog fallback without modifying the production provider.",
+      "version": "0.1.1",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-diagnostic.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-diagnostic-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
