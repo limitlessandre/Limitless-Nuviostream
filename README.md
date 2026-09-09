@@ -18,11 +18,11 @@ The canonical seed and provider observations are intentionally separate:
 
 1. `data/seed.json` contains curated canonical metadata such as verified MAL `Rx - Hentai` records.
 2. Provider harvesters write replaceable observations under `data/imports/providers/*.json`.
-3. `scripts/build-snapshot.js` normalizes the seed, merges provider imports in memory, validates the result, and publishes the schema v2 snapshot.
-4. The canonical seed is never permanently contaminated by provider-specific catalog data.
+3. `scripts/build-snapshot.js` normalizes the seed, merges all provider imports in memory, validates the result, and publishes the schema v2 snapshot.
+4. Provider data can enrich a canonical title without becoming canonical truth itself.
 5. A failed harvest, merge, integrity check, or validation prevents deployment and leaves the previous Worker deployment as last known good.
 
-This lets Hanime, HentaiSea, MuchoHentai, and future providers enrich the same catalog without turning provider data into canonical truth.
+Current production provider catalog sources are **Hanime** and **HentaiHaven**. Future sources plug into the same provider-import contract.
 
 ## Schema v2
 
@@ -37,7 +37,7 @@ Published snapshots use **schema v2**.
 - Strong provider matches merge into canonical titles. Ambiguous matches remain separate `sp:` records rather than corrupting identity.
 - Provenance is retained so later enrichment/auditing can distinguish MAL claims from provider observations.
 
-See [`SCHEMA.md`](./SCHEMA.md) for the full contract and generic provider import format.
+See `SCHEMA.md` for the full contract and generic provider import format.
 
 ## Reusable data endpoints
 
@@ -49,100 +49,137 @@ The deployed Worker exposes:
 - `/data/current.json` — alias of `/dataset.json`
 - normal Nuvio/Stremio `catalog` and `meta` routes
 
-These endpoints are intended to support future Scarlet Peach-derived catalogs, providers, audit tools, and metadata enrichment jobs without scraping Nuvio responses.
+These endpoints are intended to support future Scarlet Peach-derived catalogs, providers, audit tools, and the planned unified Scarlet Peach addon without scraping Nuvio responses.
 
-## Current source coverage
+## Current production snapshot
 
-### Canonical seed
+Catalog version: **0.4.0**
+
+Latest validated build on 2026-09-09:
+
+- **1,838 published titles**
+- **1,811 titles with at least one provider mapping**
+- **1,524 titles with Hanime availability**
+- **1,036 titles with HentaiHaven availability**
+- **1,752 provider-only `sp:` titles** across the merged dataset
+- title-level censorship: 1,195 censored, 548 uncensored, 42 mixed, 53 unknown
+
+These are observed build statistics, not hard-coded expected catalog sizes. Upstream catalogs can change.
+
+## Canonical seed
 
 - 86 curated MyAnimeList records explicitly verified as `Rx - Hentai`.
 - MAL supplies stable identity, canonical title metadata, aliases where available, studio, broad genres, artwork, year/release date, and episode count.
 - MAL is not treated as authoritative for provider availability, detailed adult tags, censorship, dub/sub variants, or stream quality.
 
-### Hanime provider feed
+## Hanime provider feed
 
-The working Hanime resolver Worker now exposes a normalized read-only catalog feed:
+The Hanime resolver Worker exposes a normalized read-only feed:
 
 `https://scarlet-peach-hanime.limitlessandre.workers.dev/catalog.json`
 
-The first production harvest on 2026-09-08 reported:
+Current harvest characteristics:
 
 - 3,393 raw Hanime video records
-- 1,532 grouped Scarlet Peach provider records after conservative episode/season grouping
+- 1,532 conservatively grouped provider records
 - 1,054 multi-episode grouped records
-- provider-record censorship classification: 985 censored, 514 uncensored, 19 mixed, 14 unknown
+- provider-record censorship: 985 censored, 514 uncensored, 19 mixed, 14 unknown
+- 1,524 published titles currently carry a Hanime mapping
+- 1,470 `sp:hanime:*` provider-only titles remain after conservative canonical merging
 
-The merged production snapshot remained at 1,556 titles after the conservative season pass:
+Hanime grouping does not blindly convert trailing numbers into episodes. Explicit episode evidence, season safety, and conservative Romanization normalization are used to avoid false merges.
 
-- 62 Hanime records matched existing canonical records during that build
-- 1,470 provider-only `sp:hanime:*` titles were created
-- 1,524 published titles had a Hanime provider mapping
-- title-level censorship distribution: 978 censored, 511 uncensored, 21 mixed, 46 unknown
+## HentaiHaven provider feed
 
-These are observed build statistics, not hard-coded expected catalog sizes. Upstream data can change.
+HentaiHaven is harvested directly from its public read-only WordPress/Madara interfaces on `hentaihaven.vip`. Catalog ingestion is deliberately independent from the playback resolver.
 
-## Hanime grouping and identity rules
+Bulk sources:
 
-Hanime video names are not blindly converted into series.
+- `wp-json/wp/v2/wp-manga` for published title records
+- WordPress genre, tag, studio/author, and release taxonomies
+- Yoast title sitemaps for title URLs and artwork
+- four chapter sitemaps for exact episode URLs
 
-- Explicit episode suffixes can group into one title.
-- Bare trailing numbers group only when multiple distinct episodes provide evidence for the grouping.
-- A lone title that merely ends in a number stays standalone.
-- A lone `Season 1` can collapse to the base title when it is the only observed season, which allows cases such as Jimihen to merge into the canonical MAL record.
-- When multiple explicit seasons exist, Scarlet Peach keeps those season identities separate rather than assuming they are episodes of one title.
-- Romanization normalization handles conservative variants such as `wo` versus `o`, punctuation, and joined/split words without broad fuzzy merging.
+Current harvest characteristics:
+
+- **1,053 published HentaiHaven title records**
+- **2,594 numeric episode mappings** discovered from chapter sitemaps
+- **18 non-numeric special/bonus episode URLs** detected and intentionally skipped for now because schema v2 episode numbers are integers
+- 65 genre terms
+- 381 tag terms
+- 112 studio/author terms
+- 35 release/year terms
+- provider-record censorship: 820 censored, 186 uncensored, 6 mixed, 41 unknown
+
+During the validated merge:
+
+- 771 HentaiHaven records merged into existing canonical/Hanime-backed records
+- 282 HentaiHaven-only records were created
+- 1,036 published Scarlet Peach titles ended with a HentaiHaven provider mapping
+
+HentaiHaven title-level censorship is derived from the title's own taxonomy/classes, not from global navigation text. Provider slugs are retained as conservative aliases so display-title quirks can still merge safely when the stable slug clearly matches an existing canonical title.
 
 ## Metadata safety
 
 Provider information can enrich canonical records but does not silently overwrite stronger canonical metadata.
 
-For example, a title can retain a MAL canonical identity while Hanime supplies:
+For example, one canonical MAL title can simultaneously retain:
 
-- exact provider series/video IDs and slugs
-- provider title/aliases
-- tags and brand/studio observations
-- censorship status
-- artwork not otherwise available
-- release information
-- exact episode-to-provider mapping
-- language/subtitle/quality information when the provider feed actually verifies it
+- MAL identity and canonical title metadata
+- Hanime exact series/video IDs and episode slugs
+- HentaiHaven WordPress/series IDs and exact episode URLs
+- separate provider censorship claims
+- separate provider tags/studios/artwork
+- provider-specific language, subtitle, and quality observations when actually verified
 
-If different providers later disagree about censorship or other availability metadata, schema v2 can preserve the provider-specific claims and aggregate the canonical status as `mixed` rather than choosing one arbitrarily.
+If providers disagree about censorship or other availability metadata, schema v2 preserves the individual claims and can aggregate the title status as `mixed` rather than choosing one arbitrarily.
 
 ## Build pipeline
 
-- `npm test` — routing, schema v2, provider merger, Hanime grouping, Jimihen romanization, Bible Black episode grouping, and season-safety tests
-- `npm run import:hanime` — download the normalized Hanime Worker feed, reject suspiciously small responses, conservatively group videos, and stage `data/imports/providers/hanime.json`
+Useful commands:
+
+- `npm test` — routing, schema v2, provider merger, Hanime grouping, HentaiHaven normalization/slug aliases, and regression tests
+- `npm run import:hanime` — harvest and stage `data/imports/providers/hanime.json`
+- `npm run import:hentaihaven` — harvest WordPress/taxonomy/sitemap data and stage `data/imports/providers/hentaihaven.json`
+- `npm run refresh:providers` — harvest both current production provider catalogs
 - `npm run build:snapshot` — normalize the canonical seed, layer all staged provider imports, validate, and atomically publish the merged snapshot
-- `npm run verify:snapshot` — require healthy Hanime coverage and exact Hanime episode mappings for the canonical Jimihen and Bible Black regression fixtures
-- `npm run refresh:hanime` — harvest Hanime, build, then verify
-- `npm run refresh:all` — current full provider refresh/build/verification pipeline
+- `npm run verify:snapshot` — verify provider coverage plus canonical exact-mapping fixtures
+- `npm run refresh:all` — harvest Hanime + HentaiHaven, build, then verify
 - `npm run import:mal` / `npm run refresh:mal` — refresh the curated MAL seed
 - `npm run merge:provider -- <provider-import.json>` — stage a generic provider import; it does **not** modify `data/seed.json`
 
+## Regression fixtures
+
+Deployment is blocked unless the merged snapshot preserves healthy provider coverage and exact mappings for key canonical titles.
+
+Current cross-provider fixtures include:
+
+- `mal:44044` — Jimihen
+  - Hanime exact episode mapping
+  - HentaiHaven exact `jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1` mapping
+- `mal:368` — Bible Black
+  - Hanime episode mappings
+  - HentaiHaven exact `bible-black-1/episode-1` mapping
+
+Coverage gates currently require healthy Hanime and HentaiHaven mapped-title/provider-only counts so a numerically valid but partially harvested dataset cannot deploy silently.
+
 ## Deployment
 
-GitHub Actions runs:
+Both push deployment and the daily snapshot workflow run:
 
 1. tests
 2. Hanime harvest
-3. merged snapshot build
-4. merged snapshot integrity verification
-5. Cloudflare deploy
-6. live `/health` verification
+3. HentaiHaven harvest
+4. merged snapshot build
+5. integrity verification
+6. Cloudflare deployment
+7. live `/health` verification requiring both `hanime` and `hentaihaven`
 
-The daily workflow follows the same sequence. Cloudflare credentials are stored as GitHub Actions repository secrets.
-
-The integrity gate currently requires the merged snapshot to preserve canonical Hanime mappings for:
-
-- `mal:44044` — Jimihen
-- `mal:368` — Bible Black
-
-This catches regressions where the catalog still looks numerically healthy but important identity/episode mappings have silently broken.
+Cloudflare credentials are stored as GitHub Actions repository secrets. Failed harvests or validation never replace the last known good deployment.
 
 ## Catalog surface
 
-The Nuvio addon continues to expose a deliberately small surface:
+The Nuvio addon intentionally keeps the visible catalog surface small:
 
 - Scarlet Peach Search
 - Scarlet Peach Latest
@@ -150,18 +187,15 @@ The Nuvio addon continues to expose a deliberately small surface:
 
 Detailed meta responses carry Scarlet Peach extension fields such as aliases, tags, studio, censorship, languages, provider mappings, availability, content rating, provenance-ready data, and richer episode metadata. Clients that do not understand the extension fields can ignore them.
 
-## Provider roadmap
+## Roadmap
 
-Working provider and catalog enrichment source:
+Production catalog/provider sources:
 
 1. Hanime
+2. HentaiHaven
 
-Next candidates can feed the same schema/merger instead of creating isolated catalogs. Current likely order:
+Likely next provider:
 
-2. MuchoHentai
-3. HentaiSea
-4. HStream
-5. HentaiHaven
-6. HentaiMama
+3. HStream
 
-HentaiTV remains parked due to its brittle current player chain.
+Later, once the provider lineup is mature, Scarlet Peach is intended to become a **single user-facing addon** exposing catalog, metadata, and aggregated streams while keeping each provider/resolver modular internally. The standalone provider repository remains useful as the development and testing path until that unified addon is proven.
