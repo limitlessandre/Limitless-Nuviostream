@@ -6,9 +6,9 @@ import { normalizeSnapshot, schemaDescriptor, validateSnapshot } from './schema.
 const jsonHeaders = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=300' };
 const manifest = {
   id: 'org.limitlessnexus.scarletpeach.catalog',
-  version: '0.3.0',
+  version: '0.4.0',
   name: 'Limitless Nexus: Scarlet Peach',
-  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, and Hanime catalog coverage.',
+  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, and Hanime + HentaiHaven catalog coverage.',
   resources: ['catalog', 'meta'],
   types: ['series'],
   catalogs: [
