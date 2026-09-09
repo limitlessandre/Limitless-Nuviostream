@@ -225,6 +225,32 @@ function xxxTitlePage(url) {
     return u.toString();
   } catch (_) { return ''; }
 }
+function xxxSlugVariants(name) {
+  const normalized = normalizeTitle(name);
+  if (!normalized) return [];
+  const tokens = normalized.split(' ').filter(Boolean);
+  const variants = [tokens];
+
+  // Common Hepburn/site romanization differences seen in HentaiHaven slugs.
+  const oVariant = tokens.map(t => t === 'wo' ? 'o' : t);
+  variants.push(oVariant);
+
+  const splitChau = input => {
+    const out = [];
+    for (const token of input) {
+      if (token.length > 5 && token.endsWith('chau')) {
+        const stem = token.slice(0, -4);
+        if (stem.length >= 2) { out.push(stem, 'chau'); continue; }
+      }
+      out.push(token);
+    }
+    return out;
+  };
+  variants.push(splitChau(tokens));
+  variants.push(splitChau(oVariant));
+
+  return unique(variants.map(parts => parts.join('-')));
+}
 function parseXxxSearchLinks(html) {
   const out = [];
   const re = /<a\b[^>]*href=["']([^"']*\/watch\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
@@ -232,8 +258,14 @@ function parseXxxSearchLinks(html) {
   while ((m = re.exec(String(html)))) {
     const page = xxxTitlePage(m[1].replace(/&amp;/g, '&'));
     if (!page) continue;
-    const title = stripTags(m[2]) || page.split('/watch/')[1].replace(/\/$/, '').replace(/-/g, ' ');
-    if (!out.some(x => x.url === page)) out.push({ url: page, title });
+    const slugText = page.split('/watch/')[1].replace(/\/$/, '').replace(/-/g, ' ');
+    const title = stripTags(m[2]);
+    const existing = out.find(x => x.url === page);
+    if (existing) {
+      if (title.length > existing.title.length) existing.title = title;
+      continue;
+    }
+    out.push({ url: page, title, slugText });
   }
   return out;
 }
@@ -263,15 +295,18 @@ function findXxxIframe(html, pageUrl) {
 async function discoverXxx(title, aliases, episode) {
   const names = unique([title, ...(aliases || [])]);
 
-  // Cheap direct probes first for titles whose romanization already matches the live slug.
+  // Direct variants first. This handles common MAL/site romanization differences
+  // without depending on HentaiHaven's search-card markup.
   for (const name of names) {
-    const slug = slugify(name);
-    if (!slug) continue;
-    const episodeUrl = `${BASE_XXX}/watch/${slug}/episode-${episode}`;
-    try {
-      const { res, text } = await getText(episodeUrl, {}, BASE_XXX + '/hentai/');
-      if (res.ok && findXxxIframe(text, episodeUrl)) return { backend: 'xxx', url: episodeUrl, html: text, mode: 'direct' };
-    } catch (_) {}
+    for (const slug of xxxSlugVariants(name)) {
+      const episodeUrl = `${BASE_XXX}/watch/${slug}/episode-${episode}`;
+      try {
+        const { res, text } = await getText(episodeUrl, {}, BASE_XXX + '/hentai/');
+        if (res.ok && findXxxIframe(text, episodeUrl)) {
+          return { backend: 'xxx', url: episodeUrl, html: text, mode: slug === slugify(name) ? 'direct' : 'direct-romanization', slug };
+        }
+      } catch (_) {}
+    }
   }
 
   let best = null;
@@ -281,8 +316,7 @@ async function discoverXxx(title, aliases, episode) {
       const { res, text } = await getText(searchUrl, {}, BASE_XXX + '/hentai/');
       if (!res.ok) continue;
       for (const link of parseXxxSearchLinks(text)) {
-        const candidateText = `${link.title} ${link.url}`;
-        const s = Math.max(...names.map(n => scoreTitle(n, candidateText)));
+        const s = Math.max(...names.map(n => Math.max(scoreTitle(n, link.title), scoreTitle(n, link.slugText))));
         if (!best || s > best.score) best = { ...link, score: s, term };
       }
       if (best && best.score >= 88) break;
@@ -382,7 +416,7 @@ async function resolve(body) {
       const result = await extractXxx(xxx.url, xxx.html);
       return json({
         provider: 'hentaihaven', backend: 'xxx',
-        match: { name: title, url: xxx.url, mode: xxx.mode, backend: 'xxx', candidate: xxx.match || null },
+        match: { name: title, url: xxx.url, mode: xxx.mode, backend: 'xxx', slug: xxx.slug || null, candidate: xxx.match || null },
         streams: result.streams, headers: result.headers, debug: result.debug
       });
     } catch (error) {
@@ -401,12 +435,12 @@ export default {
   async fetch(request) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
     const url = new URL(request.url);
-    if (url.pathname === '/health') return json({ status: 'ok', name: 'Scarlet Peach HentaiHaven Resolver', version: '0.2.0', backends: ['hentaihaven.com', 'hentaihaven.xxx'] });
+    if (url.pathname === '/health') return json({ status: 'ok', name: 'Scarlet Peach HentaiHaven Resolver', version: '0.2.1', backends: ['hentaihaven.com', 'hentaihaven.xxx'] });
     if (url.pathname === '/resolve' && request.method === 'POST') {
       let body = {};
       try { body = await request.json(); } catch (_) { return json({ error: 'invalid json' }, 400); }
       return resolve(body);
     }
-    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: '0.2.0', endpoints: ['/health', '/resolve'] });
+    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: '0.2.1', endpoints: ['/health', '/resolve'] });
   }
 };
