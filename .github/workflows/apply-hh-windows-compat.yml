@@ -1,0 +1,105 @@
+name: Apply HentaiHaven Windows Compatibility
+
+on:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - '.github/workflows/apply-hh-windows-compat.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: scarlet-peach-providers
+          fetch-depth: 0
+
+      - name: Apply platform-specific HentaiHaven compatibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          provider_path = Path('providers/scarlet-peach-hentaihaven-v4.js')
+          text = provider_path.read_text()
+          clean_line = 'function clean(v) { return String(v == null ? "" : v).trim(); }\n'
+          compat = '''function windowsCompatMode() {\n  const id = clean(typeof globalThis !== "undefined" ? globalThis.SCRAPER_ID : "");\n  return /scarlet-peach-hentaihaven-windows$/i.test(id);\n}\n'''
+          if 'function windowsCompatMode()' not in text:
+              if clean_line not in text:
+                  raise SystemExit('provider clean() anchor missing')
+              text = text.replace(clean_line, clean_line + compat, 1)
+
+          old = '''    const streams = Array.isArray(payload.streams) ? payload.streams : [];\n    if (!streams.length) return diag("PLAYBACK", `no playable streams • title=${meta.title} • ep=${ep}`);\n'''
+          new = '''    let streams = Array.isArray(payload.streams) ? payload.streams : [];\n    const windowsCompat = windowsCompatMode();\n    if (windowsCompat) {\n      streams = streams.filter(stream => {\n        const codec = clean(stream && stream.codec).toLowerCase();\n        const url = clean(stream && stream.url);\n        return codec !== "vp9" && !/playlist_vp9/i.test(url);\n      });\n    }\n    if (!streams.length) {\n      const reason = windowsCompat ? "no Windows-compatible H.264 streams" : "no playable streams";\n      return diag("PLAYBACK", `${reason} • title=${meta.title} • ep=${ep}`);\n    }\n'''
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif 'const windowsCompat = windowsCompatMode();' not in text:
+              raise SystemExit('provider stream anchor missing')
+          provider_path.write_text(text)
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text())
+          manifest['version'] = '0.6.3'
+          scrapers = manifest['scrapers']
+          scrapers[:] = [s for s in scrapers if s.get('id') != 'scarlet-peach-hentaihaven-windows']
+          hh = next(s for s in scrapers if s.get('id') == 'scarlet-peach-hentaihaven')
+          hh['version'] = '0.2.2'
+          hh['description'] = ('Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching, secure player token decoding, HLS extraction, provider-specific censorship/audio semantics, and platform-aware subtitles. Non-Windows clients retain Octopus VP9 1080p when available; Windows uses H.264-only qualities to avoid black-screen VP9 playback in Nuvio Desktop.')
+          hh['disabledPlatforms'] = ['windows']
+          hh.pop('supportedPlatforms', None)
+
+          win = dict(hh)
+          win['id'] = 'scarlet-peach-hentaihaven-windows'
+          win['name'] = 'HentaiHaven'
+          win['description'] = ('Windows HentaiHaven compatibility variant. Uses the same Scarlet Peach resolver and metadata path but filters VP9 renditions, exposing only H.264 qualities that render reliably in Nuvio Desktop while preserving native HLS audio/subtitle tracks.')
+          win['supportedPlatforms'] = ['windows']
+          win.pop('disabledPlatforms', None)
+          idx = scrapers.index(hh)
+          scrapers.insert(idx + 1, win)
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
+
+          validation = Path('.github/workflows/validate-scarlet-peach-providers.yml')
+          vtext = validation.read_text()
+          start = vtext.index('      - name: Verify HentaiHaven metadata presentation\n')
+          end = vtext.index('      - name: Verify HStream Scarlet Peach identity, DASH qualities and subtitles\n', start)
+          replacement = '''      - name: Verify HentaiHaven metadata and Windows H.264 compatibility\n        run: |\n          node - <<'NODE'\n          const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');\n          (async () => {\n            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven';\n            const normalRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);\n            if (!Array.isArray(normalRows) || !normalRows.length) throw new Error('HentaiHaven normal Deco returned no rows');\n            const normalNames = normalRows.map(row => String(row.name || ''));\n            const normalQualities = normalRows.map(row => String(row.quality || ''));\n            console.log('normal:', normalNames.join(' | '));\n            for (const expected of ['1080p', '720p', '360p']) {\n              if (!normalQualities.includes(expected)) throw new Error(`HentaiHaven normal mode missing ${expected}: ${normalQualities.join(',')}`);\n            }\n            if (!normalNames.every(name => /\\[SUB\\]/i.test(name))) throw new Error('HentaiHaven Deco should be labeled [SUB]');\n            if (!normalNames.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');\n\n            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven-windows';\n            const windowsRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);\n            if (!Array.isArray(windowsRows) || !windowsRows.length) throw new Error('HentaiHaven Windows Deco returned no rows');\n            const windowsNames = windowsRows.map(row => String(row.name || ''));\n            const windowsQualities = windowsRows.map(row => String(row.quality || ''));\n            console.log('windows:', windowsNames.join(' | '));\n            if (windowsQualities.includes('1080p')) throw new Error(`Windows mode leaked VP9 1080p: ${windowsQualities.join(',')}`);\n            for (const expected of ['720p', '360p']) {\n              if (!windowsQualities.includes(expected)) throw new Error(`HentaiHaven Windows mode missing ${expected}: ${windowsQualities.join(',')}`);\n            }\n            if (windowsRows.some(row => /playlist_vp9/i.test(decodeURIComponent(String(row.url || ''))))) {\n              throw new Error('Windows mode leaked a VP9 playlist');\n            }\n            if (!windowsNames.every(name => /\\[SUB\\]/i.test(name))) throw new Error('HentaiHaven Windows Deco should be labeled [SUB]');\n          })().catch(error => { console.error(error); process.exit(1); });\n          NODE\n\n'''
+          vtext = vtext[:start] + replacement + vtext[end:]
+          validation.write_text(vtext)
+
+          readme = Path('README.md')
+          r = readme.read_text()
+          r = r.replace('### HentaiHaven 0.2.0', '### HentaiHaven 0.2.2')
+          marker = '- 1080p where the VP9 playlist exposes it\n'
+          addition = ('- 1080p where the VP9 playlist exposes it on compatible non-Windows clients\n'
+                      '- Windows Nuvio uses an H.264-only compatibility path (currently 720p/360p on Octopus titles) to avoid VP9 black-screen playback\n')
+          if marker in r:
+              r = r.replace(marker, addition, 1)
+          r = r.replace('HentaiHaven • FHD 1080p • [DUB+SUB] • Censored', 'HentaiHaven • FHD 1080p • [SUB] • Censored')
+          r = r.replace('HentaiHaven Jimihen regression for 1080p, censorship, audio/sub label and duplicate-quality prevention', 'HentaiHaven Deco regression for `[SUB]` semantics plus non-Windows 1080p and Windows H.264-only quality filtering')
+          r = r.replace('Provider manifest: `0.6.1`', 'Provider manifest: `0.6.3`')
+          r = r.replace('HentaiHaven: `0.2.0`', 'HentaiHaven: `0.2.2`')
+          readme.write_text(r)
+
+          probe = Path('.github/workflows/probe-hentaihaven-desktop-video.yml')
+          if probe.exists(): probe.unlink()
+          self_path = Path('.github/workflows/apply-hh-windows-compat.yml')
+          if self_path.exists(): self_path.unlink()
+          PY
+
+      - name: Commit compatibility release
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'limitlessandre'
+          git config user.email '67148745+limitlessandre@users.noreply.github.com'
+          git add -A
+          git commit -m 'fix: use H264 HentaiHaven streams on Windows'
+          git push origin HEAD:scarlet-peach-providers
