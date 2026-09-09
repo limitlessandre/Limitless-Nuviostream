@@ -1,0 +1,71 @@
+name: Probe Scarlet Peach Native Tracks
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - '.github/workflows/probe-scarlet-peach-tracks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe HentaiHaven Deco tracks
+        run: |
+          set -euo pipefail
+          curl -sS --max-time 90 -X POST \
+            https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/hh.json
+          cat /tmp/hh.json
+          echo
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/hh.json'))
+          print('METADATA', json.dumps(data.get('metadata'), indent=2))
+          for s in data.get('streams',[]):
+              print('STREAM', s.get('height'), s.get('codec'), s.get('url'))
+          PY
+          URL=$(python - <<'PY'
+          import json
+          d=json.load(open('/tmp/hh.json'))
+          ss=d.get('streams',[])
+          pick=next((x for x in ss if int(x.get('height') or 0)==1080), ss[0] if ss else {})
+          print(pick.get('url',''))
+          PY
+          )
+          if [ -n "$URL" ]; then
+            echo "FFPROBE $URL"
+            ffprobe -v error -show_entries stream=index,codec_type,codec_name:stream_tags=language,title -of json "$URL" || true
+            echo 'PLAYLIST HEAD:'
+            curl -sS --max-time 30 "$URL" | head -80 || true
+          fi
+
+      - name: Probe HStream Deco MPD tracks
+        run: |
+          set -euo pipefail
+          curl -sS --max-time 90 -X POST \
+            https://scarlet-peach-hstream.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/hs.json
+          cat /tmp/hs.json
+          echo
+          URL=$(python - <<'PY'
+          import json
+          d=json.load(open('/tmp/hs.json'))
+          ss=d.get('streams',[])
+          pick=next((x for x in ss if int(x.get('height') or 0)==1080), ss[0] if ss else {})
+          print(pick.get('url',''))
+          PY
+          )
+          if [ -n "$URL" ]; then
+            echo "FFPROBE $URL"
+            ffprobe -v error -show_entries stream=index,codec_type,codec_name:stream_tags=language,title -of json "$URL" || true
+            echo 'MPD HEAD:'
+            curl -sS --max-time 30 "$URL" | head -100 || true
+          fi
