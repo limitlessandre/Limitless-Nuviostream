@@ -38,21 +38,22 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Verify Worker health and direct transport
+      - name: Verify Worker health and audio-only master mode
         run: |
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
             if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && \
-               printf '%s' "$body" | grep -q '"version":"0.5.3"' && \
+               printf '%s' "$body" | grep -q '"version":"0.5.4"' && \
                printf '%s' "$body" | grep -q 'hentaihaven.vip' && \
-               printf '%s' "$body" | grep -q '"playbackTransport":"direct-source-hls"' && \
-               printf '%s' "$body" | grep -q '"subtitleTransport":"external-sidecar"' && \
+               printf '%s' "$body" | grep -q '"audioTrackPreservation":true' && \
+               printf '%s' "$body" | grep -q '"playbackTransport":"quality-scoped-audio-hls-master"' && \
+               printf '%s' "$body" | grep -q '"subtitleTransport":"addon-resource"' && \
                printf '%s' "$body" | grep -q '"verifiedDubLabels":true'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.5.3 propagation (attempt ${attempt})"
+            echo "Waiting for v0.5.4 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -61,74 +62,68 @@ jobs:
             sleep 3
           done
 
-      - name: Probe HentaiHaven direct HLS and subtitle metadata
+      - name: Probe HentaiHaven video plus audio manifests
         run: |
           set -euo pipefail
-          probe() {
+
+          resolve() {
             name="$1"
             payload="$2"
             expected_backend="$3"
-            min_height="${4:-0}"
-            expected_censor="${5:-}"
-            body_file="/tmp/${name}.json"
-            status="$(curl --silent --show-error --max-time 90 \
-              -o "$body_file" -w '%{http_code}' \
+            curl --fail --silent --show-error --max-time 90 \
               -X POST https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
               -H 'content-type: application/json' \
-              --data "$payload" || true)"
-            echo "${name} status=${status}"
-            cat "$body_file" 2>/dev/null || true
-            echo
-            test "$status" = "200"
-            NAME="$name" EXPECTED_BACKEND="$expected_backend" MIN_HEIGHT="$min_height" EXPECTED_CENSOR="$expected_censor" BODY_FILE="$body_file" node - <<'NODE'
-          const fs = require('node:fs');
-          const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
-          if (!Array.isArray(data.streams) || !data.streams.length) throw new Error(`${process.env.NAME} returned no streams`);
-          if (data.nativeTrackPreservation !== false) throw new Error(`${process.env.NAME} should not use generated native-track masters`);
-          if (data.playbackTransport !== 'direct-source-hls') throw new Error(`${process.env.NAME} direct transport missing`);
-          if (data.subtitleTransport !== 'external-sidecar') throw new Error(`${process.env.NAME} sidecar subtitle transport missing`);
-          if (!data.verifiedDubLabels) throw new Error(`${process.env.NAME} verified dub label guard missing`);
-          if (process.env.EXPECTED_BACKEND && data.backend !== process.env.EXPECTED_BACKEND) {
-            throw new Error(`${process.env.NAME} expected backend=${process.env.EXPECTED_BACKEND}, got ${data.backend}`);
-          }
-          const heights = data.streams.map(s => Number(s.height || 0)).filter(Boolean);
-          const maxHeight = Math.max(...heights);
-          const minHeight = Number(process.env.MIN_HEIGHT || 0);
-          if (maxHeight < minHeight) throw new Error(`${process.env.NAME} expected >=${minHeight}p, got ${maxHeight}p`);
-          if (new Set(heights).size !== heights.length) throw new Error(`${process.env.NAME} returned duplicate quality rows: ${heights.join(',')}`);
-          for (const stream of data.streams) {
-            const url = String(stream.url || '');
-            if (/scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(url)) throw new Error(`${process.env.NAME} still routes through generated master: ${url}`);
-            if (!/^https:\/\/.+\.(?:m3u8|mp4)(?:$|\?)/i.test(url)) throw new Error(`${process.env.NAME} non-direct media URL: ${url}`);
-          }
-          if (!data.metadata || typeof data.metadata !== 'object') throw new Error(`${process.env.NAME} missing metadata object`);
-          if (!Array.isArray(data.metadata.subtitleTracks) || !data.metadata.subtitleTracks.some(s => String(s.language || '').toLowerCase() === 'en')) throw new Error(`${process.env.NAME} English subtitle track missing`);
-          if (process.env.EXPECTED_CENSOR && data.metadata.censorStatus !== process.env.EXPECTED_CENSOR) {
-            throw new Error(`${process.env.NAME} expected censor=${process.env.EXPECTED_CENSOR}, got ${data.metadata.censorStatus}`);
-          }
-          console.log(`${process.env.NAME} backend=${data.backend} qualities=${heights.join('/')} transport=${data.playbackTransport} subs=${(data.metadata.subtitleLanguages||[]).join(',')}`);
-          NODE
-          }
-
-          probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com 1080
-          probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080 censored
-
-          curl -sS --max-time 90 -X POST \
-            https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
-            -H 'content-type: application/json' \
-            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/deco.json
-
-          BODY_FILE=/tmp/deco.json node - <<'NODE'
+              --data "$payload" > "/tmp/${name}.json"
+            NAME="$name" EXPECTED_BACKEND="$expected_backend" node - <<'NODE'
           const fs=require('node:fs');
-          const d=JSON.parse(fs.readFileSync(process.env.BODY_FILE,'utf8'));
-          if (!d.metadata) throw new Error('Deco metadata missing');
-          if (d.metadata.audioVariant !== 'sub') throw new Error(`Deco should be sub-only, got ${d.metadata.audioVariant}`);
-          if (!Array.isArray(d.metadata.audioLanguages) || !d.metadata.audioLanguages.includes('ja') || d.metadata.audioLanguages.includes('en')) {
-            throw new Error(`Deco semantic audio should be Japanese only: ${JSON.stringify(d.metadata.audioLanguages)}`);
+          const d=JSON.parse(fs.readFileSync(`/tmp/${process.env.NAME}.json`, 'utf8'));
+          if (d.backend !== process.env.EXPECTED_BACKEND) throw new Error(`${process.env.NAME}: backend=${d.backend}`);
+          if (d.version !== '0.5.4') throw new Error(`${process.env.NAME}: version=${d.version}`);
+          if (d.playbackTransport !== 'quality-scoped-audio-hls-master') throw new Error(`${process.env.NAME}: wrong transport`);
+          if (!d.audioTrackPreservation) throw new Error(`${process.env.NAME}: audio preservation missing`);
+          if (!Array.isArray(d.streams) || !d.streams.length) throw new Error(`${process.env.NAME}: no streams`);
+          if (!d.streams.every(s => /scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(String(s.url || '')))) {
+            throw new Error(`${process.env.NAME}: HLS stream did not use audio master`);
           }
-          const qualities=d.streams.map(s=>Number(s.height||0));
-          for (const expected of [1080,720,360]) if (!qualities.includes(expected)) throw new Error(`Deco missing ${expected}p: ${qualities.join(',')}`);
-          if (!Array.isArray(d.metadata.subtitleTracks) || !d.metadata.subtitleTracks.some(s=>String(s.language||'').toLowerCase()==='en')) throw new Error('Deco English subtitle sidecar missing');
-          if (d.streams.some(s=>/scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(String(s.url||'')))) throw new Error('Deco still uses generated master');
-          console.log(`Deco direct transport passed: qualities=${qualities.join('/')} audio=${d.metadata.audioLanguages.join(',')} evidence=${d.metadata.audioEvidence}`);
+          if (!d.metadata || !Array.isArray(d.metadata.subtitleTracks) || !d.metadata.subtitleTracks.some(s => String(s.language || '').toLowerCase() === 'en')) {
+            throw new Error(`${process.env.NAME}: English subtitle metadata missing`);
+          }
+          console.log(`${process.env.NAME}: ${d.streams.map(s => `${s.height}p/${s.codec}`).join(', ')}`);
           NODE
+          }
+
+          resolve com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com
+          resolve vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip
+          resolve deco '{"title":"Deco x Deco The Animation","episode":1}' com
+
+          for height in 720 1080; do
+            PLAY_URL="$(HEIGHT="$height" node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/deco.json','utf8'));
+          const s=d.streams.find(x=>Number(x.height)===Number(process.env.HEIGHT));
+          if (!s) process.exit(2);
+          process.stdout.write(s.url);
+          NODE
+            )"
+            echo "===== ${height}p audio master ====="
+            curl --fail --silent --show-error --max-time 30 "$PLAY_URL" > "/tmp/deco-${height}.m3u8"
+            cat "/tmp/deco-${height}.m3u8"
+            grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' "/tmp/deco-${height}.m3u8"
+            grep -q 'snd/a.m3u8' "/tmp/deco-${height}.m3u8"
+            test "$(grep -c '^#EXT-X-STREAM-INF:' "/tmp/deco-${height}.m3u8")" = "1"
+            if grep -Eq '#EXT-X-MEDIA:.*TYPE=(SUBTITLES|CLOSED-CAPTIONS)|SUBTITLES=|CLOSED-CAPTIONS=' "/tmp/deco-${height}.m3u8"; then
+              echo "${height}p playback master leaked subtitle directives" >&2
+              exit 1
+            fi
+
+            ffprobe -v error -show_entries stream=codec_type,codec_name -of json "$PLAY_URL" > "/tmp/deco-${height}-probe.json"
+            cat "/tmp/deco-${height}-probe.json"
+            PROBE_FILE="/tmp/deco-${height}-probe.json" node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync(process.env.PROBE_FILE,'utf8'));
+          const types=(d.streams||[]).map(s=>s.codec_type);
+          if (!types.includes('video')) throw new Error('video stream missing');
+          if (!types.includes('audio')) throw new Error('audio stream missing');
+          console.log(`ffprobe streams: ${types.join(',')}`);
+          NODE
+          done

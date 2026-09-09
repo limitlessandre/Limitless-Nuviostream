@@ -1,6 +1,6 @@
 import baseWorker from './router.js';
 
-const VERSION = '0.5.3';
+const VERSION = '0.5.4';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36';
 
 function clean(value) { return String(value == null ? '' : value).trim(); }
@@ -15,11 +15,78 @@ function json(data, status = 200) {
     }
   });
 }
+function isHttpsM3u8(value) {
+  try {
+    const url = new URL(clean(value));
+    return url.protocol === 'https:' && /\.m3u8(?:$|\?)/i.test(url.toString());
+  } catch (_) { return false; }
+}
 function isDirectMediaUrl(value) {
   try {
     const url = new URL(clean(value));
     return url.protocol === 'https:' && /\.(?:m3u8|mp4)(?:$|\?)/i.test(url.toString());
   } catch (_) { return false; }
+}
+function abs(value, base) {
+  try { return new URL(clean(value), base).toString(); } catch (_) { return ''; }
+}
+function deriveMasterUrl(stream) {
+  try {
+    const source = clean(stream && (stream.sourceUrl || stream.url));
+    const url = new URL(source);
+    const parts = url.pathname.split('/').filter(Boolean);
+    if (parts.length < 3) return '';
+    const codec = clean(stream && stream.codec).toLowerCase();
+    url.pathname = `/${parts[0]}/${codec === 'vp9' ? 'playlist_vp9.m3u8' : 'playlist.m3u8'}`;
+    url.search = '';
+    url.hash = '';
+    return url.toString();
+  } catch (_) { return ''; }
+}
+function absolutizeUriAttribute(line, masterUrl) {
+  return String(line).replace(/URI=("([^"]+)"|'([^']+)'|([^,\s]+))/gi, (all, quoted, dquoted, squoted, bare) => {
+    const raw = dquoted || squoted || bare || '';
+    const resolved = abs(raw, masterUrl);
+    return resolved ? `URI="${resolved}"` : all;
+  });
+}
+function isAudioMediaLine(line) {
+  return /^#EXT-X-MEDIA:/i.test(line) && /TYPE=(?:"?AUDIO"?)/i.test(line);
+}
+function removeSubtitleAttributes(line) {
+  return String(line)
+    .replace(/,?SUBTITLES=(?:"[^"]*"|'[^']*'|[^,\s]+)/gi, '')
+    .replace(/,?CLOSED-CAPTIONS=(?:"[^"]*"|'[^']*'|[^,\s]+)/gi, '')
+    .replace(/,,+/g, ',');
+}
+function selectedAudioMaster(source, masterUrl, videoUrl) {
+  const lines = String(source || '').split(/\r?\n/);
+  const out = ['#EXTM3U'];
+  const version = lines.find(line => /^#EXT-X-VERSION:/i.test(line));
+  if (version) out.push(version);
+
+  const audioLines = lines.filter(isAudioMediaLine).map(line => absolutizeUriAttribute(line, masterUrl));
+  if (!audioLines.length) throw new Error('source master has no audio group');
+  out.push(...audioLines);
+
+  let selectedInf = '';
+  let selectedUri = '';
+  for (let i = 0; i < lines.length; i++) {
+    if (!/^#EXT-X-STREAM-INF:/i.test(lines[i])) continue;
+    let next = i + 1;
+    while (next < lines.length && (!clean(lines[next]) || clean(lines[next]).startsWith('#'))) next++;
+    if (next >= lines.length) continue;
+    const candidate = abs(clean(lines[next]), masterUrl);
+    if (candidate === videoUrl) {
+      selectedInf = removeSubtitleAttributes(lines[i]);
+      selectedUri = candidate;
+      break;
+    }
+  }
+  if (!selectedInf || !selectedUri) throw new Error('selected quality not found in source master');
+  if (!/\bAUDIO=/i.test(selectedInf)) throw new Error('selected quality does not reference audio group');
+  out.push(selectedInf, selectedUri);
+  return out.join('\n') + '\n';
 }
 function stripTags(value) {
   return String(value || '')
@@ -104,7 +171,37 @@ async function normalizeSemanticAudio(data) {
   };
   return data;
 }
-async function wrappedResolve(request) {
+async function audioHls(url) {
+  const master = clean(url.searchParams.get('master'));
+  const video = clean(url.searchParams.get('video'));
+  const ref = clean(url.searchParams.get('ref')) || 'https://hentaihaven.com/';
+  if (!isHttpsM3u8(master) || !isHttpsM3u8(video)) return new Response('invalid source', { status: 400 });
+  try {
+    const response = await fetch(master, {
+      redirect: 'follow',
+      headers: {
+        'user-agent': UA,
+        accept: 'application/vnd.apple.mpegurl,application/x-mpegURL,*/*',
+        referer: ref
+      }
+    });
+    const text = await response.text();
+    if (!response.ok || !/^#EXTM3U/m.test(text)) throw new Error(`master HTTP ${response.status}`);
+    const body = selectedAudioMaster(text, master, video);
+    return new Response(body, {
+      status: 200,
+      headers: {
+        'content-type': 'application/vnd.apple.mpegurl; charset=utf-8',
+        'access-control-allow-origin': '*',
+        'cache-control': 'private, max-age=300',
+        'x-scarlet-peach-track-mode': 'video-plus-audio-no-subtitles'
+      }
+    });
+  } catch (error) {
+    return new Response(`HLS audio master error: ${error && error.message ? error.message : error}`, { status: 502 });
+  }
+}
+async function wrappedResolve(request, requestUrl) {
   const response = await baseWorker.fetch(request);
   if (!response.ok) return response;
   let data;
@@ -112,19 +209,39 @@ async function wrappedResolve(request) {
   if (!Array.isArray(data.streams)) return json({ ...data, version: VERSION });
 
   data = await normalizeSemanticAudio(data);
+  const ref = clean(data.match && data.match.url) || 'https://hentaihaven.com/';
   data.streams = data.streams.map(stream => {
     const directUrl = clean(stream && (stream.sourceUrl || stream.url));
-    const next = { ...stream, url: directUrl, sourceUrl: directUrl, nativeTracks: false };
-    delete next.masterUrl;
+    if (!isDirectMediaUrl(directUrl)) return null;
+    const next = { ...stream, sourceUrl: directUrl };
+    if (!isHttpsM3u8(directUrl)) {
+      next.url = directUrl;
+      next.nativeTracks = false;
+      return next;
+    }
+    const masterUrl = deriveMasterUrl({ ...stream, sourceUrl: directUrl });
+    if (!isHttpsM3u8(masterUrl)) {
+      next.url = directUrl;
+      next.nativeTracks = false;
+      return next;
+    }
+    const play = new URL('/play.m3u8', requestUrl.origin);
+    play.searchParams.set('master', masterUrl);
+    play.searchParams.set('video', directUrl);
+    play.searchParams.set('ref', ref);
+    next.url = play.toString();
+    next.masterUrl = masterUrl;
+    next.nativeTracks = true;
     return next;
-  }).filter(stream => isDirectMediaUrl(stream.url));
+  }).filter(Boolean);
 
   data.version = VERSION;
-  data.nativeTrackPreservation = false;
-  data.playbackTransport = 'direct-source-hls';
-  data.subtitleTransport = 'external-sidecar';
-  data.androidSubtitleTransport = 'external-sidecar';
-  data.desktopSubtitleTransport = 'external-sidecar';
+  data.nativeTrackPreservation = true;
+  data.audioTrackPreservation = true;
+  data.playbackTransport = 'quality-scoped-audio-hls-master';
+  data.subtitleTransport = 'addon-resource';
+  data.androidSubtitleTransport = 'addon-resource';
+  data.desktopSubtitleTransport = 'addon-resource';
   data.verifiedDubLabels = true;
   return json(data);
 }
@@ -151,20 +268,17 @@ export default {
         status: 'ok',
         name: 'Scarlet Peach HentaiHaven Resolver',
         version: VERSION,
-        nativeTrackPreservation: false,
-        playbackTransport: 'direct-source-hls',
-        subtitleTransport: 'external-sidecar',
-        androidSubtitleTransport: 'external-sidecar',
-        desktopSubtitleTransport: 'external-sidecar',
+        nativeTrackPreservation: true,
+        audioTrackPreservation: true,
+        playbackTransport: 'quality-scoped-audio-hls-master',
+        subtitleTransport: 'addon-resource',
+        androidSubtitleTransport: 'addon-resource',
+        desktopSubtitleTransport: 'addon-resource',
         verifiedDubLabels: true
       });
     }
-    if (url.pathname === '/play.m3u8' && request.method === 'GET') {
-      const video = clean(url.searchParams.get('video'));
-      if (!isDirectMediaUrl(video)) return new Response('invalid source', { status: 400 });
-      return Response.redirect(video, 302);
-    }
-    if (url.pathname === '/resolve' && request.method === 'POST') return wrappedResolve(request);
-    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: VERSION, endpoints: ['/health', '/resolve'] });
+    if (url.pathname === '/play.m3u8' && request.method === 'GET') return audioHls(url);
+    if (url.pathname === '/resolve' && request.method === 'POST') return wrappedResolve(request, url);
+    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: VERSION, endpoints: ['/health', '/resolve', '/play.m3u8'] });
   }
 };
