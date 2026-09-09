@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.61",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now prefers AniKoto's VidPlay/VidTube server-list path for desktop-friendly HLS while retaining the proven MegaPlay AES route as fallback; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
+  "version": "2.1.62",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now uses a local HLS relay test that ports Arc's proven playlist rewriting and disguised-segment unwrapping while retaining the existing AniKoto discovery/extraction path; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -66,11 +66,11 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV resolver preferring AniKoto's current VidPlay/VidTube server-list route for desktop-friendly akirax/norami HLS, with shared MAL/AniList identity and the proven MegaPlay AES/imGNex path retained as fallback.",
-      "version": "2.0.5",
+      "description": "AnikotoTV local-relay playback test. Keeps the working AniKoto identity/server extraction path, then routes HLS and subtitles through 127.0.0.1:8787 so playlists can be rewritten and PNG/JPEG-disguised MPEG-TS segments unwrapped using the transport behavior proven by Arc.",
+      "version": "2.0.6",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v6.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v7.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
