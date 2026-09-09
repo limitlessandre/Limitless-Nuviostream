@@ -9,58 +9,71 @@
       "description": "AnikotoTV with standardized DUB/SOFTSUB/DUB+SUBS output labels based on the provider's existing selectable caption tracks.",
       "version": "1.0.0",
       "author": "piratezoro9",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv.js",
       "enabled": true,
       "hasSettings": false,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://anikototv.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer with MAL/Jikan, AniList, TMDB/IMDb-backed fallbacks, specials handling, and clean quality/audio labels.",
-      "version": "1.6.6",
-      "author": "Limitless Nexus",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v3.js",
+      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. Uses direct FlixCloud MKV downloads, preserves both HD-2 mirrors, and identifies shared SUB+DUB files as Dual Audio + Subs while keeping SUB-only and DUB-only files correctly labeled.",
+      "version": "1.0.0",
+      "author": "Limitless Nexus port based on maintained Re:ANIME direct-download behavior",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://reanime.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and clean quality/audio labels.",
-      "version": "2.6.12",
+      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; and explicit-only mirror labels.",
+      "version": "1.0.0",
       "author": "Limitless Nexus WCO production merge",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v4.js",
-      "enabled": true,
-      "hasSettings": true,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": ["en", "ja"]
-    },
-    {
-      "id": "limitless-tubi",
-      "name": "Tubi",
-      "description": "Tubi playback provider with current anonymous auth, nested episode mapping, anime identity support, Power Rangers franchise-title mapping, compact diagnostics, and quality-first labels.",
-      "version": "1.2.4",
-      "author": "Limitless Nexus Tubi provider",
-      "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production-v3.js",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["m3u8"],
-      "logo": "https://tubitv.com/favicon.ico",
-      "contentLanguage": ["en"]
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     }
   ]
 }

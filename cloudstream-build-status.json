@@ -5,13 +5,13 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 403,
-  "eligible_plugin_entries_before_dedupe": 89,
-  "unique_plugins": 87,
+  "raw_plugin_entries": 407,
+  "eligible_plugin_entries_before_dedupe": 90,
+  "unique_plugins": 88,
   "duplicate_groups": 2,
-  "language_filtered_entries": 283,
+  "language_filtered_entries": 284,
   "unknown_language_metadata_entries": 24,
-  "inactive_filtered_entries": 31,
+  "inactive_filtered_entries": 33,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -190,7 +190,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 25,
+      "plugins": 27,
       "verified": false
     },
     {
@@ -204,7 +204,7 @@
       "name": "French providers repository",
       "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 2,
+      "plugins": 4,
       "verified": false
     }
   ]

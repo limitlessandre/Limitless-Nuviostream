@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 283,
+  "excluded_count": 284,
   "excluded": [
     {
       "internalName": "3isk",
@@ -273,6 +273,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeIndo.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimeInWeb",
+      "name": "AnimeInWeb",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeInWeb.cs3",
       "reason": "no-allowed-language"
     },
     {

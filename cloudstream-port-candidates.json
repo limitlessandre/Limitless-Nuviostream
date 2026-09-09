@@ -1,7 +1,7 @@
 {
   "native_provider_count": 3,
-  "cloudstream_provider_count": 87,
-  "no_obvious_native_overlap_count": 86,
+  "cloudstream_provider_count": 88,
+  "no_obvious_native_overlap_count": 87,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 1,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 666,
+      "version": 667,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -246,7 +246,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 94,
+      "version": 96,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -324,7 +324,7 @@
       "tvTypes": [
         "AsianDrama"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -435,6 +435,28 @@
       "reasons": [
         "Anime coverage",
         "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "OnShort",
+      "name": "OnShort",
+      "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
+      "language": "en",
+      "tvTypes": [
+        "AsianDrama"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Asian drama / K-drama coverage"
       ]
     },
     {
@@ -666,7 +688,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 7,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -785,7 +807,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 38,
+      "version": 39,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1129,6 +1151,30 @@
       ]
     },
     {
+      "internalName": "RaghavAnimeKitsu",
+      "name": "RaghavAnimeKitsu",
+      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.522,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Subsplease",
       "name": "Subsplease",
       "description": "One stop shop for new animes!",
@@ -1327,28 +1373,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.296,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "OnShort",
-      "name": "OnShort",
-      "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
-      "language": "en",
-      "tvTypes": [
-        "TvSeries"
-      ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.375,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1689,7 +1713,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {

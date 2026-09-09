@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **3**  
-Filtered CloudStream providers: **87**  
-No obvious native overlap: **86**  
+Filtered CloudStream providers: **88**  
+No obvious native overlap: **87**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **1**
 
@@ -26,6 +26,7 @@ Exact/alias overlap: **1**
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!
 - **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
+- **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 
 ## Medium-priority unique candidates
@@ -58,6 +59,7 @@ Exact/alias overlap: **1**
 - **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
 - **OnePace** (`OnePace`) — en; Anime — One Pace
 - **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
+- **RaghavAnimeKitsu** (`RaghavAnimeKitsu`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 
@@ -70,7 +72,6 @@ Exact/alias overlap: **1**
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **OnShort** (`OnShort`) — en; TvSeries — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
