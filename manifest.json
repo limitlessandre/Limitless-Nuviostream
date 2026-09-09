@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.54",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now uses the current catalog/episode identity flow, cookie-aware AJAX fallbacks, and modern MegaPlay source resolution; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
+  "version": "2.1.55",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now prioritizes the fast MAL/AniList-to-MegaPlay path, uses broader current source parsing, and falls back to Anikoto catalog embeds only when needed; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -66,11 +66,11 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "Rebuilt AnikotoTV provider using shared MAL/AniList identity, current Anikoto provider-series matching, anikotoapi.site episode embeds, cookie-aware AJAX server fallbacks, modern MegaPlay enc/source handling, and standardized DUB/SOFTSUB quality labels.",
-      "version": "2.0.0",
+      "description": "AnikotoTV fast-path rebuild using shared MAL/AniList identity, direct MegaPlay mapping first, current array/object/enc source parsing, Anikoto catalog fallback, and standardized DUB/SOFTSUB labels.",
+      "version": "2.0.1",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
