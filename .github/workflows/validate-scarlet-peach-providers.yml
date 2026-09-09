@@ -44,7 +44,13 @@ jobs:
           for (const scraper of manifest.scrapers) {
             if (!scraper.id || !scraper.name || !scraper.filename || !scraper.version) throw new Error(`Invalid scraper entry ${scraper.id || '<missing id>'}`);
           }
-          console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
+          const hh = manifest.scrapers.filter(s => s.name === 'HentaiHaven');
+          if (hh.length !== 2) throw new Error(`Expected two platform-filtered HentaiHaven entries, got ${hh.length}`);
+          const windows = hh.find(s => s.id === 'scarlet-peach-hentaihaven-windows');
+          const other = hh.find(s => s.id === 'scarlet-peach-hentaihaven');
+          if (!windows || !Array.isArray(windows.supportedPlatforms) || !windows.supportedPlatforms.includes('windows')) throw new Error('Windows HentaiHaven manifest filter missing');
+          if (!other || !Array.isArray(other.disabledPlatforms) || !other.disabledPlatforms.includes('windows')) throw new Error('Non-Windows HentaiHaven manifest filter missing');
+          console.log(`Validated ${manifest.scrapers.length} scraper definitions, manifest ${manifest.version}`);
           NODE
 
       - name: Verify TMDB numeric ID reaches stable provider matching
@@ -65,21 +71,37 @@ jobs:
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
-      - name: Verify HentaiHaven metadata presentation
+      - name: Verify HentaiHaven metadata and Windows H.264 compatibility
         run: |
           node - <<'NODE'
           const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');
           (async () => {
-            const rows = await provider.getStreams('mal:44044', 'tv', 1, 1);
-            if (!Array.isArray(rows) || !rows.length) throw new Error('HentaiHaven Jimihen returned no rows');
-            const names = rows.map(row => String(row.name || ''));
-            console.log(names.join('\n'));
-            if (names.some(name => /DIAG/i.test(name))) throw new Error('HentaiHaven Jimihen returned a diagnostic');
-            if (!names.some(name => /FHD\s*1080p/i.test(name))) throw new Error('HentaiHaven Jimihen is missing 1080p');
-            if (!names.every(name => /\[DUB\+SUB\]/i.test(name))) throw new Error('HentaiHaven live audio/sub metadata was not reflected in labels');
-            if (!names.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven live censorship metadata was not reflected in labels');
-            const qualities = rows.map(row => String(row.quality || ''));
-            if (new Set(qualities).size !== qualities.length) throw new Error(`Duplicate HentaiHaven quality rows: ${qualities.join(',')}`);
+            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven';
+            const normalRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
+            if (!Array.isArray(normalRows) || !normalRows.length) throw new Error('HentaiHaven normal Deco returned no rows');
+            const normalNames = normalRows.map(row => String(row.name || ''));
+            const normalQualities = normalRows.map(row => String(row.quality || ''));
+            console.log('normal:', normalNames.join(' | '));
+            for (const expected of ['1080p', '720p', '360p']) {
+              if (!normalQualities.includes(expected)) throw new Error(`HentaiHaven normal mode missing ${expected}: ${normalQualities.join(',')}`);
+            }
+            if (!normalNames.every(name => /\[SUB\]/i.test(name))) throw new Error('HentaiHaven Deco should be labeled [SUB]');
+            if (!normalNames.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');
+
+            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven-windows';
+            const windowsRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
+            if (!Array.isArray(windowsRows) || !windowsRows.length) throw new Error('HentaiHaven Windows Deco returned no rows');
+            const windowsNames = windowsRows.map(row => String(row.name || ''));
+            const windowsQualities = windowsRows.map(row => String(row.quality || ''));
+            console.log('windows:', windowsNames.join(' | '));
+            if (windowsQualities.includes('1080p')) throw new Error(`Windows mode leaked VP9 1080p: ${windowsQualities.join(',')}`);
+            for (const expected of ['720p', '360p']) {
+              if (!windowsQualities.includes(expected)) throw new Error(`HentaiHaven Windows mode missing ${expected}: ${windowsQualities.join(',')}`);
+            }
+            if (windowsRows.some(row => /playlist_vp9/i.test(decodeURIComponent(String(row.url || ''))))) {
+              throw new Error('Windows mode leaked a VP9 playlist');
+            }
+            if (!windowsNames.every(name => /\[SUB\]/i.test(name))) throw new Error('HentaiHaven Windows Deco should be labeled [SUB]');
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
