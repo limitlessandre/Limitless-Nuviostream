@@ -68,7 +68,7 @@ jobs:
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
-      - name: Verify HentaiHaven direct HLS with subtitle sidecars
+      - name: Verify HentaiHaven video plus audio master and subtitle metadata
         run: |
           node - <<'NODE'
           const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');
@@ -86,11 +86,22 @@ jobs:
             if (!names.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');
             for (const row of rows) {
               const url = String(row.url || '');
-              if (/scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(url)) throw new Error(`Generated HLS master leaked into provider row: ${url}`);
-              if (!/^https:\/\/.+\.(?:m3u8|mp4)(?:$|\?)/i.test(url)) throw new Error(`HentaiHaven row is not direct media: ${url}`);
+              if (!/scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(url)) throw new Error(`HentaiHaven ${row.quality} is not using the audio-preserving master: ${url}`);
               if (!Array.isArray(row.subtitles) || !row.subtitles.some(sub => String(sub.language || sub.lang || '').toLowerCase() === 'en')) {
-                throw new Error(`HentaiHaven ${row.quality} missing English subtitle sidecar`);
+                throw new Error(`HentaiHaven ${row.quality} missing English subtitle metadata`);
               }
+            }
+
+            const row720 = rows.find(row => String(row.quality) === '720p') || rows[0];
+            const masterResponse = await fetch(row720.url);
+            if (!masterResponse.ok) throw new Error(`HentaiHaven audio master HTTP ${masterResponse.status}`);
+            const master = await masterResponse.text();
+            console.log(master);
+            if (!/#EXT-X-MEDIA:.*TYPE=AUDIO/i.test(master)) throw new Error('HentaiHaven master is missing TYPE=AUDIO');
+            if (!/\bAUDIO=/i.test(master)) throw new Error('HentaiHaven selected rendition does not reference the audio group');
+            if (!/snd\/a\.m3u8/i.test(master)) throw new Error('HentaiHaven audio child playlist missing');
+            if (/#EXT-X-MEDIA:.*TYPE=(?:SUBTITLES|CLOSED-CAPTIONS)/i.test(master) || /\b(?:SUBTITLES|CLOSED-CAPTIONS)=/i.test(master)) {
+              throw new Error('HentaiHaven playback master leaked subtitle directives');
             }
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
