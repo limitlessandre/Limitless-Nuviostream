@@ -41,11 +41,11 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.2.0"'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.2.1"'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.2.0 propagation (attempt ${attempt})"
+            echo "Waiting for v0.2.1 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
