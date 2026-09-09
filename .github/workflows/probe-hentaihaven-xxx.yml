@@ -1,4 +1,4 @@
-name: Probe HentaiHaven XXX Markup
+name: Probe HentaiHaven Alternate Domains
 
 on:
   workflow_dispatch:
@@ -15,20 +15,38 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect Jimihen pages
+      - name: Inspect alternate domains and Jimihen routes
         shell: bash
         run: |
           set -euo pipefail
           UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36'
-          title='https://hentaihaven.xxx/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/'
-          episode='https://hentaihaven.xxx/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1/'
 
-          for pair in "title:$title" "episode:$episode"; do
-            name="${pair%%:*}"
-            url="${pair#*:}"
+          probe() {
+            name="$1"
+            url="$2"
+            referer="$3"
             file="/tmp/${name}.html"
-            status="$(curl -L --silent --show-error --max-time 30 -A "$UA" -e 'https://hentaihaven.xxx/hentai/' -o "$file" -w '%{http_code}' "$url" || true)"
-            echo "=== $name status=$status bytes=$(wc -c < "$file" 2>/dev/null || echo 0) ==="
-            grep -oiE '<iframe[^>]{0,500}|https?://[^"'"'"' <]+|/wp-admin/admin-ajax\.php|player[^"'"'"' <]{0,160}|action\s*:[^,]{0,100}|episode-[0-9]+' "$file" 2>/dev/null | head -n 120 || true
+            headers="/tmp/${name}.headers"
+            status="$(curl -L --silent --show-error --max-time 30 -A "$UA" -e "$referer" -D "$headers" -o "$file" -w '%{http_code}' "$url" || true)"
+            final="$(grep -i '^location:' "$headers" | tail -1 | sed 's/^[Ll]ocation:[[:space:]]*//' | tr -d '\r' || true)"
+            bytes="$(wc -c < "$file" 2>/dev/null || echo 0)"
+            echo "=== $name status=$status bytes=$bytes redirect=${final:-none} ==="
+            if grep -qi 'challenges.cloudflare.com' "$file" 2>/dev/null; then echo 'cloudflare_challenge=yes'; else echo 'cloudflare_challenge=no'; fi
+            grep -oiE '<title>[^<]{0,180}|<iframe[^>]{0,500}|/wp-admin/admin-ajax\.php|/video/[^"'"'"' <]+|/watch/[^"'"'"' <]+|player[^"'"'"' <]{0,160}|episode-[0-9]+' "$file" 2>/dev/null | head -n 80 || true
             echo
-          done
+          }
+
+          probe com-home https://hentaihaven.com/ https://hentaihaven.com/
+          probe com-jimihen https://hentaihaven.com/video/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1 https://hentaihaven.com/
+
+          probe xxx-home https://hentaihaven.xxx/ https://hentaihaven.xxx/
+          probe xxx-jimihen https://hentaihaven.xxx/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1/ https://hentaihaven.xxx/hentai/
+
+          probe vip-home https://hentaihaven.vip/ https://hentaihaven.vip/
+          probe vip-jimihen https://hentaihaven.vip/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1 https://hentaihaven.vip/
+
+          probe org-home https://hentaihaven.org/ https://hentaihaven.org/
+          probe org-jimihen https://hentaihaven.org/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1 https://hentaihaven.org/
+
+          probe app-home https://hentaihaven.app/ https://hentaihaven.app/
+          probe net-home https://hentaihaven.net/ https://hentaihaven.net/
