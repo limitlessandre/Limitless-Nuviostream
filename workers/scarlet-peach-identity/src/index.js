@@ -1,4 +1,4 @@
-const VERSION = '0.1.0';
+const VERSION = '0.1.1';
 const CORS = {
   'access-control-allow-origin': '*',
   'access-control-allow-headers': '*',
@@ -70,12 +70,28 @@ function claimValue(entity, property) {
   return '';
 }
 
+function claimTextValues(entity, property) {
+  const claims = entity && entity.claims && entity.claims[property];
+  if (!Array.isArray(claims)) return [];
+  const out = [];
+  for (const claim of claims) {
+    const value = claim && claim.mainsnak && claim.mainsnak.datavalue && claim.mainsnak.datavalue.value;
+    if (typeof value === 'string') out.push(value);
+    else if (value && typeof value === 'object' && value.text) out.push(value.text);
+  }
+  return unique(out);
+}
+
 function entityFallbackMeta(entity) {
   if (!entity) return null;
   const label = clean(entity.labels && entity.labels.en && entity.labels.en.value);
   const aliases = Array.isArray(entity.aliases && entity.aliases.en)
     ? entity.aliases.en.map(x => clean(x && x.value)).filter(Boolean)
     : [];
+  const workTitles = unique([
+    ...claimTextValues(entity, 'P1476'),
+    ...claimTextValues(entity, 'P1705')
+  ]);
   let year = null;
   const dates = entity.claims && entity.claims.P577;
   if (Array.isArray(dates)) {
@@ -86,7 +102,7 @@ function entityFallbackMeta(entity) {
       if (year) break;
     }
   }
-  return label ? { title: label, aliases: unique(aliases), year } : null;
+  return label ? { title: label, aliases: unique([...aliases, ...workTitles]), year } : null;
 }
 
 async function cinemeta(imdbId, preferredType) {
@@ -154,7 +170,16 @@ async function resolveIdentity(inputId, mediaType) {
   if (imdbId) {
     try { meta = await cinemeta(imdbId, preferredType); } catch (_) { meta = null; }
   }
-  if (!meta && entity) meta = entityFallbackMeta(entity);
+  const entityMeta = entityFallbackMeta(entity);
+  if (meta && entityMeta) {
+    meta = {
+      ...meta,
+      aliases: unique([...(meta.aliases || []), entityMeta.title, ...(entityMeta.aliases || [])]),
+      year: meta.year || entityMeta.year
+    };
+  } else if (!meta && entityMeta) {
+    meta = entityMeta;
+  }
   if (!meta || !meta.title) return { error: `metadata unavailable for ${raw}`, status: 404 };
 
   return {
@@ -176,7 +201,7 @@ async function resolveIdentity(inputId, mediaType) {
 
 async function cachedResolve(id, type) {
   const cache = caches.default;
-  const key = new Request(`https://scarlet-peach.identity/cache?id=${encodeURIComponent(clean(id))}&type=${encodeURIComponent(clean(type))}`);
+  const key = new Request(`https://scarlet-peach.identity/cache/${VERSION}?id=${encodeURIComponent(clean(id))}&type=${encodeURIComponent(clean(type))}`);
   const hit = await cache.match(key);
   if (hit) {
     const data = await hit.json();
