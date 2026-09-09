@@ -15,57 +15,32 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe HentaiHaven Deco tracks
+      - name: Probe HentaiHaven Octopus master candidates
         run: |
           set -euo pipefail
           curl -sS --max-time 90 -X POST \
             https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
             -H 'content-type: application/json' \
             --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/hh.json
-          cat /tmp/hh.json
-          echo
-          python - <<'PY'
-          import json
-          data=json.load(open('/tmp/hh.json'))
-          print('METADATA', json.dumps(data.get('metadata'), indent=2))
-          for s in data.get('streams',[]):
-              print('STREAM', s.get('height'), s.get('codec'), s.get('url'))
-          PY
-          URL=$(python - <<'PY'
-          import json
+          python - <<'PY' > /tmp/candidates.txt
+          import json, urllib.parse
           d=json.load(open('/tmp/hh.json'))
-          ss=d.get('streams',[])
-          pick=next((x for x in ss if int(x.get('height') or 0)==1080), ss[0] if ss else {})
-          print(pick.get('url',''))
+          streams=d.get('streams',[])
+          for s in streams:
+              u=urllib.parse.urlparse(s.get('url',''))
+              parts=[p for p in u.path.split('/') if p]
+              if len(parts) < 2: continue
+              root=f'{u.scheme}://{u.netloc}/{parts[0]}/'
+              for name in ['playlist_vp9.m3u8','playlist.m3u8','master.m3u8','index.m3u8','v.m3u8']:
+                  print(root+name)
           PY
-          )
-          if [ -n "$URL" ]; then
-            echo "FFPROBE $URL"
-            ffprobe -v error -show_entries stream=index,codec_type,codec_name:stream_tags=language,title -of json "$URL" || true
-            echo 'PLAYLIST HEAD:'
-            curl -sS --max-time 30 "$URL" | head -80 || true
-          fi
-
-      - name: Probe HStream Deco MPD tracks
-        run: |
-          set -euo pipefail
-          curl -sS --max-time 90 -X POST \
-            https://scarlet-peach-hstream.limitlessandre.workers.dev/resolve \
-            -H 'content-type: application/json' \
-            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/hs.json
-          cat /tmp/hs.json
-          echo
-          URL=$(python - <<'PY'
-          import json
-          d=json.load(open('/tmp/hs.json'))
-          ss=d.get('streams',[])
-          pick=next((x for x in ss if int(x.get('height') or 0)==1080), ss[0] if ss else {})
-          print(pick.get('url',''))
-          PY
-          )
-          if [ -n "$URL" ]; then
-            echo "FFPROBE $URL"
-            ffprobe -v error -show_entries stream=index,codec_type,codec_name:stream_tags=language,title -of json "$URL" || true
-            echo 'MPD HEAD:'
-            curl -sS --max-time 30 "$URL" | head -100 || true
-          fi
+          sort -u /tmp/candidates.txt | while read URL; do
+            echo "===== $URL ====="
+            code=$(curl -L -sS --max-time 20 -o /tmp/master.txt -w '%{http_code}' "$URL" || true)
+            echo "HTTP $code"
+            if [ "$code" = "200" ]; then
+              head -80 /tmp/master.txt
+              echo 'TRACK LINES:'
+              grep -E '#EXT-X-MEDIA|#EXT-X-STREAM-INF' /tmp/master.txt || true
+            fi
+          done
