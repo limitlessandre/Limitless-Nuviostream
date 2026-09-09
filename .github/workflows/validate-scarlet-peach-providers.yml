@@ -7,6 +7,7 @@ on:
       - scarlet-peach-providers
     paths:
       - 'providers/**'
+      - 'workers/scarlet-peach-identity/**'
       - 'manifest.json'
       - '.github/workflows/validate-scarlet-peach-providers.yml'
 
@@ -46,7 +47,7 @@ jobs:
           console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
           NODE
 
-      - name: Verify TMDB numeric ID clears metadata stage
+      - name: Verify TMDB numeric ID reaches provider matching
         run: |
           node - <<'NODE'
           const checks = [
@@ -59,7 +60,7 @@ jobs:
               if (!Array.isArray(rows) || !rows.length) throw new Error(`${name} returned no rows`);
               const first = String(rows[0].name || rows[0].title || '');
               console.log(`${name}: ${first}`);
-              if (/DIAG ID/i.test(first)) throw new Error(`${name} still fails TMDB identity resolution`);
+              if (/DIAG\s+(ID|MATCH)/i.test(first)) throw new Error(`${name} did not clear identity/title matching for TMDB 80219`);
             }
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
