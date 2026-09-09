@@ -1,10 +1,8 @@
 # Limitless Nexus: Scarlet Peach — Providers
 
-**Branch: `scarlet-peach-providers`. Keep Scarlet Peach provider changes on this branch unless explicitly directed otherwise. Do not create custom, alternate, or per-user install links.**
+**Branch: `scarlet-peach-providers`. Keep Scarlet Peach provider changes on this branch unless explicitly directed otherwise.**
 
 ## Install URLs
-
-Scarlet Peach uses separate catalog-addon and provider-repository URLs because Nuvio treats them as different systems.
 
 Catalog / metadata addon:
 
@@ -16,126 +14,137 @@ Provider repository:
 
 Use the catalog URL in Nuvio's addon installer. Use the provider repository URL in **Settings → General → Plugins → Add Repository**.
 
-## Active provider: Hanime 0.2.2
+## Production providers
 
-Hanime is the production Scarlet Peach provider. HentaiTV code remains parked in this branch as reference/debug work but is not exposed in the active manifest.
+### Hanime 0.2.8
 
-Why Hanime is first:
+- Scarlet Peach schema v2 MAL/AniList/SP identities and exact Hanime mappings
+- compatible TMDB numeric / IMDb ingress through the shared identity bridge
+- signed Hanime v11 search + AES-GCM handshake
+- guest HLS playback at available qualities
+- optional account settings for authenticated/premium qualities
+- Nexus quality/audio/censorship stream labels
 
-- Current AniYomi Hanime playback was independently verified working in September 2026.
-- Current Hanime implementations were updated for the encrypted v11 website/API flow.
-- Playback uses a signed v11 search dataset plus AES-256-GCM `/api/v11/handshake`, not brittle iframe scraping.
-- Guest playback returns direct HLS sources without debrid/P2P.
-- The Scarlet Peach catalog now ingests Hanime's current dataset and retains exact provider/episode mappings.
+Provider:
 
-Protocol references include current Yuzono AniYomi Hanime code and `anime-src/hanime-stremio`.
+`providers/scarlet-peach-hanime-v9.js`
 
-## Architecture
-
-```text
-Nuvio
-  -> Scarlet Peach schema v2 metadata
-      -> canonical MAL/AniList/SP identity
-      -> exact Hanime title + episode provider mapping when known
-  -> Scarlet Peach - Hanime provider
-      -> provider title / exact episode context preferred
-      -> romanization-aware fallback when mapping is absent
-  -> Scarlet Peach Hanime resolver Worker
-      -> signed Hanime v11 search dataset
-      -> encrypted Hanime v11 handshake
-      -> guest HLS sources
-  -> Nuvio stream rows
-```
-
-The Nuvio scraper intentionally stays small. Hanime signing and AES-GCM handshake logic live in the Worker so Nuvio's restricted plugin runtime is not responsible for crypto/browser-protocol behavior.
-
-## Catalog-aware provider behavior
-
-Provider file:
-
-`providers/scarlet-peach-hanime-v3.js`
-
-Version 0.2.2 understands:
-
-- `mal:<id>` and episode forms such as `mal:368:1`
-- `anilist:<id>` and episode forms
-- nested Scarlet Peach provider-only IDs such as `sp:hanime:<slug>:1`
-- compatible legacy `htv-...` title slugs as a fallback bridge
-
-For Scarlet Peach metadata entries, the provider reads the detailed schema v2 meta response and prefers the episode-level Hanime mapping. This gives the resolver the provider's own title spelling instead of forcing it to rediscover every title from the canonical MAL spelling.
-
-The catalog currently protects regression fixtures for:
-
-- Jimihen `mal:44044`, including exact Hanime episode slug `jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1`
-- Bible Black `mal:368`, currently mapped to six Hanime episodes
-
-If the catalog has no Hanime mapping, the provider retains the proven romanization-aware title matching path.
-
-## Hanime Worker
-
-Worker source:
-
-`workers/scarlet-peach-hanime/src/index.js`
-
-Canonical base:
+Worker:
 
 `https://scarlet-peach-hanime.limitlessandre.workers.dev`
 
-Endpoints:
+### HentaiHaven 0.2.0
 
-- `GET /health`
-- `GET /catalog.json` — normalized read-only Hanime catalog feed used by the Scarlet Peach catalog pipeline
-- `POST /resolve` — title/alias/year/episode playback resolver
+- `hentaihaven.com` primary backend
+- `hentaihaven.vip` working mirror fallback
+- Romanization-aware title/slug matching
+- secure `x-secure-token` decode + player API extraction
+- normal H.264 HLS plus Octopus VP9 playlist support
+- 1080p where the VP9 playlist exposes it
+- one stream row per quality, preferring H.264 at equal resolutions and retaining VP9 when needed for higher quality
+- provider-specific censored/uncensored detection from the matched title post
+- live HLS/JWPlayer audio and subtitle metadata
+- Nexus `[SUB]`, `[DUB]`, `[DUB+SUB]`, `[DUAL]` presentation
+- shared TMDB/IMDb compatibility bridge for titles opened from foreign Nuvio catalogs
 
-The Worker is automatically deployed by GitHub Actions and verified after deployment. `/catalog.json` is also checked for a non-empty normalized dataset.
+Provider:
 
-## Stream metadata
+`providers/scarlet-peach-hentaihaven-v4.js`
 
-Returned stream rows preserve actual handshake quality/height. They include the playback headers Hanime currently requires:
+Worker:
 
-- `Referer: https://player.hanime.tv/`
-- `Origin: https://player.hanime.tv`
+`https://scarlet-peach-hentaihaven.limitlessandre.workers.dev`
 
-Version 0.2.2 also uses censorship/audio metadata from Scarlet Peach's verified provider mapping when available. Unknown values are not promoted into labels. Subtitle metadata is retained in the catalog, but the Nuvio stream object only exposes subtitle tracks when actual playable subtitle URLs are available.
+`hentaihaven.xxx` is intentionally disabled in the normal resolver path because automated requests currently receive a Cloudflare challenge.
+
+## Identity architecture
+
+Scarlet Peach remains MAL/AniList/provider-centric. TMDB and IMDb are **compatibility inputs only**, used when Nuvio opens an adult title from a foreign/general catalog and hands the provider a numeric or IMDb ID.
+
+```text
+Scarlet Peach catalog
+  MAL / AniList / sp: identities
+          |
+          +-----------------------------+
+                                        |
+foreign Nuvio catalog                   |
+  TMDB / IMDb                           |
+      |                                 |
+      v                                 v
+Scarlet Peach Identity Worker --> normalized title + aliases
+                                        |
+                         +--------------+--------------+
+                         |                             |
+                      Hanime                      HentaiHaven
+```
+
+Identity Worker:
+
+`https://scarlet-peach-identity.limitlessandre.workers.dev`
+
+The identity Worker uses external IDs as a translation layer. It does not decide Scarlet Peach catalog membership, censorship, tags, episode structure, or provider availability.
+
+## Stream metadata rules
+
+Provider evidence wins for the individual stream. Scarlet Peach canonical metadata fills gaps.
+
+For example, a title may be canonically `mixed`, while one provider stream is explicitly `Censored` and another is `Uncensored`. The stream rows keep those provider-specific facts separate.
+
+Quality labels follow the Nexus convention, for example:
+
+```text
+HentaiHaven • FHD 1080p • [DUB+SUB] • Censored
+HentaiHaven • HD 720p • [DUB+SUB] • Censored
+HentaiHaven • SD-Low 360p • [DUB+SUB] • Censored
+```
+
+HentaiHaven's Worker also preserves the subtitle tracks/languages exposed by the live player. The provider label uses that metadata immediately; the full track list remains available for future catalog/player integration.
 
 ## Validation
 
-Provider branch changes now have two independent CI paths:
+Provider changes have separate CI gates:
 
 1. **Validate Scarlet Peach Providers**
-   - `node --check` on every provider JS file
-   - provider manifest JSON/shape validation
+   - JavaScript syntax validation for provider files
+   - manifest validation
+   - TMDB compatibility regression using KITE / `80219`
+   - HentaiHaven Jimihen regression for 1080p, censorship, audio/sub label and duplicate-quality prevention
 
 2. **Deploy Scarlet Peach Hanime Worker**
-   - deploy Worker
-   - verify `/health`
-   - verify `/catalog.json` has a healthy normalized catalog feed
+   - deploy + health checks
+   - live catalog/resolve smoke tests
 
-This is specifically intended to catch generated-JavaScript regressions before a manifest points Nuvio at a new provider file.
+3. **Deploy Scarlet Peach HentaiHaven Worker**
+   - deploy + version/health check
+   - `.com` production extraction probe
+   - `.vip` Jimihen fallback probe
+   - 1080p and metadata assertions
+
+4. **Deploy Scarlet Peach Identity Worker**
+   - deploy + health checks
+   - TMDB/IMDb cross-reference regression
 
 ## Current handoff
 
 Repository: `limitlessandre/Limitless-Nuviostream`  
 Branch: `scarlet-peach-providers`  
-Provider manifest version: `0.2.2`  
-Active provider: `Scarlet Peach - Hanime`  
-Provider file: `providers/scarlet-peach-hanime-v3.js`  
-Resolver Worker: `workers/scarlet-peach-hanime/`  
-Provider manifest: `https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/manifest.json`  
-Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`
+Provider manifest: `0.5.0`  
+Hanime: `0.2.8`  
+HentaiHaven: `0.2.0`  
+Catalog manifest: `https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json`  
+Provider manifest: `https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/manifest.json`
 
 ## Provider roadmap
 
-Current:
+Current production:
 
 1. Hanime
+2. HentaiHaven
 
-Likely next providers for the same schema/Worker pattern:
+Likely next:
 
-2. MuchoHentai
-3. HentaiSea
-4. HStream
-5. HentaiHaven
-6. HentaiMama
+3. HStream
+4. HentaiMama
+5. MuchoHentai
 
-HentaiTV remains parked until its player chain is worth revisiting.
+HentaiSea is deferred because its media authorization is IP-bound/anti-hotlink sensitive and would require a much heavier media-proxy design. HentaiTV remains parked as reference work until its player chain is worth revisiting.
