@@ -122,6 +122,8 @@ jobs:
             test -n "$VIDEO_URL"
             echo "audio child: $AUDIO_URL"
             echo "video child: $VIDEO_URL"
-            curl --fail --silent --show-error --max-time 30 "$AUDIO_URL" | head -30 | grep -q '#EXTM3U'
-            curl --fail --silent --show-error --max-time 30 "$VIDEO_URL" | head -30 | grep -q '#EXTM3U'
+            curl --fail --silent --show-error --max-time 30 "$AUDIO_URL" > "/tmp/deco-${height}-audio.m3u8"
+            curl --fail --silent --show-error --max-time 30 "$VIDEO_URL" > "/tmp/deco-${height}-video.m3u8"
+            grep -q '#EXTM3U' "/tmp/deco-${height}-audio.m3u8"
+            grep -q '#EXTM3U' "/tmp/deco-${height}-video.m3u8"
           done
