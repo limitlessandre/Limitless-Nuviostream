@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime, HentaiHaven, and experimental HStream share the Scarlet Peach schema v2 metadata core and external identity bridge. HentaiHaven provides HLS/VP9 playback up to 1080p with platform-aware native audio and subtitle transport; HStream provides DASH playback with proven 720p, 1080p, and 2160p/4K manifests and platform-aware subtitle handling for Android and desktop.",
   "scrapers": [
     {
@@ -9,29 +9,76 @@
       "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata, TMDB numeric IDs, IMDb IDs, and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Optional account settings authenticate directly from Nuvio to Hanime and pass only the temporary session token to the resolver for premium qualities. Stream labels follow the Nexus quality/audio standard and include verified censorship metadata when available.",
       "version": "0.2.8",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from Yuzono AniYomi Hanime and anime-src/hanime-stremio",
-      "supportedTypes": ["anime", "tv"],
+      "supportedTypes": [
+        "anime",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v9.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://raw.githubusercontent.com/anime-src/hanime-stremio/refs/heads/main/public/images/logo.png",
-      "contentLanguage": ["ja", "en"]
+      "contentLanguage": [
+        "ja",
+        "en"
+      ]
     },
     {
       "id": "scarlet-peach-hentaihaven",
       "name": "HentaiHaven",
-      "description": "Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching, secure player token decoding, HLS extraction, Octopus VP9 1080p, one stream row per quality, provider-specific censorship detection, native audio preservation, and external subtitle sidecars for Android while desktop keeps native HLS subtitle tracks.",
-      "version": "0.2.1",
+      "description": "Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching, secure player token decoding, HLS extraction, provider-specific censorship/audio semantics, and platform-aware subtitles. Non-Windows clients retain Octopus VP9 1080p when available; Windows uses H.264-only qualities to avoid black-screen VP9 playback in Nuvio Desktop.",
+      "version": "0.2.2",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
-      "supportedTypes": ["anime", "tv"],
+      "supportedTypes": [
+        "anime",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v4.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["m3u8", "mp4"],
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
       "logo": "https://hentaihaven.com/favicon.ico",
-      "contentLanguage": ["ja", "en"]
+      "contentLanguage": [
+        "ja",
+        "en"
+      ],
+      "disabledPlatforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "scarlet-peach-hentaihaven-windows",
+      "name": "HentaiHaven",
+      "description": "Windows HentaiHaven compatibility variant. Uses the same Scarlet Peach resolver and metadata path but filters VP9 renditions, exposing only H.264 qualities that render reliably in Nuvio Desktop while preserving native HLS audio/subtitle tracks.",
+      "version": "0.2.2",
+      "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
+      "supportedTypes": [
+        "anime",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v4.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
+      "logo": "https://hentaihaven.com/favicon.ico",
+      "contentLanguage": [
+        "ja",
+        "en"
+      ],
+      "supportedPlatforms": [
+        "windows"
+      ]
     },
     {
       "id": "scarlet-peach-hstream",
@@ -39,14 +86,22 @@
       "description": "Experimental HStream provider using Scarlet Peach MAL/AniList/SP metadata plus the shared TMDB/IMDb ingress bridge. Resolves HStream episode pages through direct slug and search fallback, performs the XSRF-protected player API handshake, follows multiple CDN domains, and returns DASH/MPD streams. Android receives the clean MPD plus external ASS subtitles; desktop receives the native WebVTT-injected DASH wrapper. Live tests currently prove 720p, 1080p, and 2160p/4K on supported titles.",
       "version": "0.1.1",
       "author": "Limitless Nexus: Scarlet Peach; protocol reference from cynthia2006/hanime-plugin HStream extractor",
-      "supportedTypes": ["anime", "tv"],
+      "supportedTypes": [
+        "anime",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hstream-v2.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mpd"],
+      "formats": [
+        "mpd"
+      ],
       "logo": "https://hstream.moe/favicon.ico",
-      "contentLanguage": ["ja", "en"]
+      "contentLanguage": [
+        "ja",
+        "en"
+      ]
     }
   ]
 }
