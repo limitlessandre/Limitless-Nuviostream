@@ -20,7 +20,7 @@ jobs:
           ref: scarlet-peach-providers
           fetch-depth: 0
 
-      - name: Apply platform-specific HentaiHaven compatibility
+      - name: Apply provider, manifest, and docs changes
         shell: bash
         run: |
           set -euo pipefail
@@ -66,14 +66,6 @@ jobs:
           scrapers.insert(idx + 1, win)
           manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
 
-          validation = Path('.github/workflows/validate-scarlet-peach-providers.yml')
-          vtext = validation.read_text()
-          start = vtext.index('      - name: Verify HentaiHaven metadata presentation\n')
-          end = vtext.index('      - name: Verify HStream Scarlet Peach identity, DASH qualities and subtitles\n', start)
-          replacement = '''      - name: Verify HentaiHaven metadata and Windows H.264 compatibility\n        run: |\n          node - <<'NODE'\n          const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');\n          (async () => {\n            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven';\n            const normalRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);\n            if (!Array.isArray(normalRows) || !normalRows.length) throw new Error('HentaiHaven normal Deco returned no rows');\n            const normalNames = normalRows.map(row => String(row.name || ''));\n            const normalQualities = normalRows.map(row => String(row.quality || ''));\n            console.log('normal:', normalNames.join(' | '));\n            for (const expected of ['1080p', '720p', '360p']) {\n              if (!normalQualities.includes(expected)) throw new Error(`HentaiHaven normal mode missing ${expected}: ${normalQualities.join(',')}`);\n            }\n            if (!normalNames.every(name => /\\[SUB\\]/i.test(name))) throw new Error('HentaiHaven Deco should be labeled [SUB]');\n            if (!normalNames.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');\n\n            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven-windows';\n            const windowsRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);\n            if (!Array.isArray(windowsRows) || !windowsRows.length) throw new Error('HentaiHaven Windows Deco returned no rows');\n            const windowsNames = windowsRows.map(row => String(row.name || ''));\n            const windowsQualities = windowsRows.map(row => String(row.quality || ''));\n            console.log('windows:', windowsNames.join(' | '));\n            if (windowsQualities.includes('1080p')) throw new Error(`Windows mode leaked VP9 1080p: ${windowsQualities.join(',')}`);\n            for (const expected of ['720p', '360p']) {\n              if (!windowsQualities.includes(expected)) throw new Error(`HentaiHaven Windows mode missing ${expected}: ${windowsQualities.join(',')}`);\n            }\n            if (windowsRows.some(row => /playlist_vp9/i.test(decodeURIComponent(String(row.url || ''))))) {\n              throw new Error('Windows mode leaked a VP9 playlist');\n            }\n            if (!windowsNames.every(name => /\\[SUB\\]/i.test(name))) throw new Error('HentaiHaven Windows Deco should be labeled [SUB]');\n          })().catch(error => { console.error(error); process.exit(1); });\n          NODE\n\n'''
-          vtext = vtext[:start] + replacement + vtext[end:]
-          validation.write_text(vtext)
-
           readme = Path('README.md')
           r = readme.read_text()
           r = r.replace('### HentaiHaven 0.2.0', '### HentaiHaven 0.2.2')
@@ -87,11 +79,6 @@ jobs:
           r = r.replace('Provider manifest: `0.6.1`', 'Provider manifest: `0.6.3`')
           r = r.replace('HentaiHaven: `0.2.0`', 'HentaiHaven: `0.2.2`')
           readme.write_text(r)
-
-          probe = Path('.github/workflows/probe-hentaihaven-desktop-video.yml')
-          if probe.exists(): probe.unlink()
-          self_path = Path('.github/workflows/apply-hh-windows-compat.yml')
-          if self_path.exists(): self_path.unlink()
           PY
 
       - name: Commit compatibility release
@@ -100,6 +87,6 @@ jobs:
           set -euo pipefail
           git config user.name 'limitlessandre'
           git config user.email '67148745+limitlessandre@users.noreply.github.com'
-          git add -A
+          git add providers/scarlet-peach-hentaihaven-v4.js manifest.json README.md
           git commit -m 'fix: use H264 HentaiHaven streams on Windows'
           git push origin HEAD:scarlet-peach-providers
