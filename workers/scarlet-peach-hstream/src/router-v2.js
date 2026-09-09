@@ -1,6 +1,6 @@
 import baseWorker from './router.js';
 
-const VERSION = '0.2.0';
+const VERSION = '0.2.1';
 const BASE = 'https://hstream.moe';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36 ScarletPeach/0.2';
 
@@ -45,6 +45,10 @@ function sourceDirectory(sourceUrl) {
   url.hash = '';
   url.pathname = url.pathname.replace(/[^/]*$/, '');
   return url.toString();
+}
+function isAndroidPlayback(request) {
+  const userAgent = clean(request && request.headers && request.headers.get('user-agent'));
+  return /(?:android|exoplayer|media3)/i.test(userAgent);
 }
 function assTime(value) {
   const match = clean(value).match(/^(\d+):(\d{2}):(\d{2})[.](\d{1,3})$/);
@@ -99,13 +103,17 @@ function assToVtt(input) {
   }
   return `WEBVTT\n\n${cues.join('\n\n')}\n`;
 }
-function injectNativeSubtitleMpd(xml, originalUrl, subtitleUrl) {
+function ensureSourceBaseMpd(xml, originalUrl) {
   let source = String(xml || '');
   if (!/<MPD\b/i.test(source) || !/<Period\b/i.test(source)) throw new Error('invalid MPD');
-  const baseUrl = sourceDirectory(originalUrl);
   if (!/<BaseURL\b/i.test(source)) {
+    const baseUrl = sourceDirectory(originalUrl);
     source = source.replace(/(<MPD\b[^>]*>)/i, `$1\n  <BaseURL>${xmlEscape(baseUrl)}</BaseURL>`);
   }
+  return source;
+}
+function injectNativeSubtitleMpd(xml, originalUrl, subtitleUrl) {
+  let source = ensureSourceBaseMpd(xml, originalUrl);
   const adaptation = [
     '    <AdaptationSet id="scarlet-peach-text-en" contentType="text" mimeType="text/vtt" lang="en" segmentAlignment="true">',
     '      <Role schemeIdUri="urn:mpeg:dash:role:2011" value="subtitle" />',
@@ -137,16 +145,26 @@ async function nativeMpd(request, url) {
   if (!isPublicHttpUrl(src, 'mpd') || !isPublicHttpUrl(sub, 'subtitle')) return new Response('invalid source', { status: 400 });
   try {
     const xml = await fetchText(src, ref, 'application/dash+xml,application/xml,text/xml,*/*');
-    const subtitleUrl = new URL('/subtitle.vtt', url.origin);
-    subtitleUrl.searchParams.set('src', sub);
-    subtitleUrl.searchParams.set('ref', ref);
-    const body = injectNativeSubtitleMpd(xml, src, subtitleUrl.toString());
+    const android = isAndroidPlayback(request);
+    let body;
+    let mode;
+    if (android) {
+      body = ensureSourceBaseMpd(xml, src);
+      mode = 'android-external-sidecar';
+    } else {
+      const subtitleUrl = new URL('/subtitle.vtt', url.origin);
+      subtitleUrl.searchParams.set('src', sub);
+      subtitleUrl.searchParams.set('ref', ref);
+      body = injectNativeSubtitleMpd(xml, src, subtitleUrl.toString());
+      mode = 'desktop-native-webvtt';
+    }
     return new Response(body, {
       status: 200,
       headers: {
         'content-type': 'application/dash+xml; charset=utf-8',
         'access-control-allow-origin': '*',
-        'cache-control': 'private, max-age=300'
+        'cache-control': 'private, max-age=300',
+        'x-scarlet-peach-track-mode': mode
       }
     });
   } catch (error) {
@@ -190,6 +208,7 @@ async function wrappedResolve(request, requestUrl) {
   });
   data.version = VERSION;
   data.nativeSubtitleInjection = true;
+  data.androidSubtitleTransport = 'external-sidecar';
   return json(data);
 }
 
@@ -200,7 +219,7 @@ export default {
       return new Response(null, { status: 204, headers: { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET,POST,OPTIONS', 'access-control-allow-headers': '*' } });
     }
     if (url.pathname === '/health') {
-      return json({ ok: true, name: 'Scarlet Peach HStream Resolver', version: VERSION, source: BASE, formats: ['dash/mpd'], qualities: [720, 1080, 2160], nativeSubtitleInjection: true, nativeSubtitleFormat: 'webvtt' });
+      return json({ ok: true, name: 'Scarlet Peach HStream Resolver', version: VERSION, source: BASE, formats: ['dash/mpd'], qualities: [720, 1080, 2160], nativeSubtitleInjection: true, nativeSubtitleFormat: 'webvtt', androidSubtitleTransport: 'external-sidecar', desktopSubtitleTransport: 'native-dash-webvtt' });
     }
     if (url.pathname === '/play.mpd' && request.method === 'GET') return nativeMpd(request, url);
     if (url.pathname === '/subtitle.vtt' && request.method === 'GET') return subtitleVtt(url);
