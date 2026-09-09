@@ -41,11 +41,11 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.3.0"' && printf '%s' "$body" | grep -q 'hentaihaven.vip'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.4.0"' && printf '%s' "$body" | grep -q 'hentaihaven.vip'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.3.0 propagation (attempt ${attempt})"
+            echo "Waiting for v0.4.0 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -54,7 +54,7 @@ jobs:
             sleep 3
           done
 
-      - name: Probe HentaiHaven mirrors
+      - name: Probe HentaiHaven production paths
         run: |
           set -euo pipefail
           probe() {
@@ -62,6 +62,7 @@ jobs:
             payload="$2"
             expected_backend="$3"
             min_height="${4:-0}"
+            expected_censor="${5:-}"
             body_file="/tmp/${name}.json"
             status="$(curl --silent --show-error --max-time 60 \
               -o "$body_file" -w '%{http_code}' \
@@ -72,47 +73,25 @@ jobs:
             cat "$body_file" 2>/dev/null || true
             echo
             test "$status" = "200"
-            NAME="$name" EXPECTED_BACKEND="$expected_backend" MIN_HEIGHT="$min_height" BODY_FILE="$body_file" node - <<'NODE'
+            NAME="$name" EXPECTED_BACKEND="$expected_backend" MIN_HEIGHT="$min_height" EXPECTED_CENSOR="$expected_censor" BODY_FILE="$body_file" node - <<'NODE'
           const fs = require('node:fs');
           const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
           if (!Array.isArray(data.streams) || !data.streams.length) throw new Error(`${process.env.NAME} returned no streams`);
           if (process.env.EXPECTED_BACKEND && data.backend !== process.env.EXPECTED_BACKEND) {
             throw new Error(`${process.env.NAME} expected backend=${process.env.EXPECTED_BACKEND}, got ${data.backend}`);
           }
-          const maxHeight = Math.max(...data.streams.map(s => Number(s.height || 0)));
+          const heights = data.streams.map(s => Number(s.height || 0)).filter(Boolean);
+          const maxHeight = Math.max(...heights);
           const minHeight = Number(process.env.MIN_HEIGHT || 0);
           if (maxHeight < minHeight) throw new Error(`${process.env.NAME} expected >=${minHeight}p, got ${maxHeight}p`);
-          console.log(`${process.env.NAME} backend=${data.backend} streams=${data.streams.length} max=${maxHeight}p slug=${data.match && data.match.slug}`);
+          if (new Set(heights).size !== heights.length) throw new Error(`${process.env.NAME} returned duplicate quality rows: ${heights.join(',')}`);
+          if (!data.metadata || typeof data.metadata !== 'object') throw new Error(`${process.env.NAME} missing metadata object`);
+          if (process.env.EXPECTED_CENSOR && data.metadata.censorStatus !== process.env.EXPECTED_CENSOR) {
+            throw new Error(`${process.env.NAME} expected censor=${process.env.EXPECTED_CENSOR}, got ${data.metadata.censorStatus}`);
+          }
+          console.log(`${process.env.NAME} backend=${data.backend} qualities=${heights.join('/')} censor=${data.metadata.censorStatus} audio=${(data.metadata.audioLanguages||[]).join(',')} subs=${(data.metadata.subtitleLanguages||[]).join(',')} variant=${data.metadata.audioVariant||'unknown'}`);
           NODE
           }
 
           probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com 1080
-          probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080
-
-      - name: Inspect title metadata markers
-        run: |
-          set -euo pipefail
-          inspect() {
-            name="$1"
-            url="$2"
-            file="/tmp/${name}.html"
-            status="$(curl --silent --show-error --location --max-time 30 -A 'Mozilla/5.0' -o "$file" -w '%{http_code}' "$url" || true)"
-            echo "=== ${name} status=${status} url=${url} ==="
-            node - "$file" <<'NODE'
-          const fs = require('node:fs');
-          const html = fs.readFileSync(process.argv[2], 'utf8');
-          const text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/gi, ' ').replace(/&amp;/gi, '&').replace(/\s+/g, ' ');
-          const terms = ['uncensored','censored','subtitle','subbed','dubbed','dub','japanese','english','language','audio'];
-          for (const term of terms) {
-            const re = new RegExp(`.{0,120}${term}.{0,160}`, 'ig');
-            const matches = text.match(re) || [];
-            if (matches.length) console.log(`${term}:`, matches.slice(0, 5));
-          }
-          const attrs = [...html.matchAll(/(?:class|rel|href|data-[\w-]+)=["'][^"']*(?:uncensored|censored|subtitle|subbed|dubbed|language|audio)[^"']*["']/ig)].map(m => m[0]);
-          if (attrs.length) console.log('attrs:', attrs.slice(0, 30));
-          NODE
-          }
-
-          inspect bible-black-com 'https://hentaihaven.com/video/bible-black/episode-1'
-          inspect bible-black-vip 'https://hentaihaven.vip/watch/bible-black/episode-1'
-          inspect jimihen 'https://hentaihaven.vip/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1'
+          probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080 censored
