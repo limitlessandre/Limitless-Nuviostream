@@ -2,5 +2,6 @@
   "name": "scarlet-peach-hstream",
   "main": "src/router.js",
   "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["global_fetch_strictly_public"],
   "workers_dev": true
 }
