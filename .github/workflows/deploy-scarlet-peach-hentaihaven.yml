@@ -28,7 +28,9 @@ jobs:
           node-version: '22'
 
       - name: Check Worker syntax
-        run: node --check src/router.js
+        run: |
+          node --check src/router.js
+          node --check src/router-v2.js
 
       - name: Deploy Worker
         run: npx wrangler@latest deploy
@@ -41,11 +43,14 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.4.0"' && printf '%s' "$body" | grep -q 'hentaihaven.vip'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && \
+               printf '%s' "$body" | grep -q '"version":"0.5.0"' && \
+               printf '%s' "$body" | grep -q 'hentaihaven.vip' && \
+               printf '%s' "$body" | grep -q '"nativeTrackPreservation":true'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.4.0 propagation (attempt ${attempt})"
+            echo "Waiting for v0.5.0 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -54,7 +59,7 @@ jobs:
             sleep 3
           done
 
-      - name: Probe HentaiHaven production paths
+      - name: Probe HentaiHaven production paths and native HLS tracks
         run: |
           set -euo pipefail
           probe() {
@@ -77,6 +82,7 @@ jobs:
           const fs = require('node:fs');
           const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
           if (!Array.isArray(data.streams) || !data.streams.length) throw new Error(`${process.env.NAME} returned no streams`);
+          if (!data.nativeTrackPreservation) throw new Error(`${process.env.NAME} native track preservation missing`);
           if (process.env.EXPECTED_BACKEND && data.backend !== process.env.EXPECTED_BACKEND) {
             throw new Error(`${process.env.NAME} expected backend=${process.env.EXPECTED_BACKEND}, got ${data.backend}`);
           }
@@ -85,6 +91,7 @@ jobs:
           const minHeight = Number(process.env.MIN_HEIGHT || 0);
           if (maxHeight < minHeight) throw new Error(`${process.env.NAME} expected >=${minHeight}p, got ${maxHeight}p`);
           if (new Set(heights).size !== heights.length) throw new Error(`${process.env.NAME} returned duplicate quality rows: ${heights.join(',')}`);
+          if (!data.streams.every(s => /scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(s.url || ''))) throw new Error(`${process.env.NAME} did not route qualities through native-track master`);
           if (!data.metadata || typeof data.metadata !== 'object') throw new Error(`${process.env.NAME} missing metadata object`);
           if (process.env.EXPECTED_CENSOR && data.metadata.censorStatus !== process.env.EXPECTED_CENSOR) {
             throw new Error(`${process.env.NAME} expected censor=${process.env.EXPECTED_CENSOR}, got ${data.metadata.censorStatus}`);
@@ -95,3 +102,23 @@ jobs:
 
           probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com 1080
           probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080 censored
+
+          curl -sS --max-time 90 -X POST \
+            https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/deco.json
+          PLAY_URL="$(BODY_FILE=/tmp/deco.json node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync(process.env.BODY_FILE,'utf8'));
+          const s=d.streams.find(x=>Number(x.height)===1080)||d.streams[0];
+          process.stdout.write(s.url);
+          NODE
+          )"
+          curl --fail --silent --show-error --max-time 30 "$PLAY_URL" > /tmp/deco-native.m3u8
+          cat /tmp/deco-native.m3u8
+          grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-native.m3u8
+          grep -q 'LANGUAGE="en"' /tmp/deco-native.m3u8
+          grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-native.m3u8
+          grep -q 'snd/a.m3u8' /tmp/deco-native.m3u8
+          grep -q 's/en.vtt' /tmp/deco-native.m3u8
+          test "$(grep -c '^#EXT-X-STREAM-INF:' /tmp/deco-native.m3u8)" = "1"
