@@ -29,15 +29,18 @@ jobs:
             echo "STATUS: ${status}"
             grep -Ei '^(content-type|x-wp-total|x-wp-totalpages|link|location):' "$headers" || true
             echo '--- body preview ---'
-            head -c 1400 "$body" 2>/dev/null || true
+            head -c 1800 "$body" 2>/dev/null || true
             echo
             echo
           }
 
-          probe wp_types 'https://hentaihaven.vip/wp-json/wp/v2/types'
           probe wp_manga 'https://hentaihaven.vip/wp-json/wp/v2/wp-manga?per_page=2&page=1'
-          probe wp_search 'https://hentaihaven.vip/wp-json/wp/v2/search?per_page=2&page=1&subtype=wp-manga'
-          probe sitemap_index 'https://hentaihaven.vip/wp-sitemap.xml'
-          probe sitemap_manga 'https://hentaihaven.vip/wp-sitemap-posts-wp-manga-1.xml'
-          probe search_archive 'https://hentaihaven.vip/?s=&post_type=wp-manga'
-          probe search_page2 'https://hentaihaven.vip/page/2/?s=&post_type=wp-manga'
+          probe genre_terms 'https://hentaihaven.vip/wp-json/wp/v2/wp-manga-genre?per_page=5&page=1'
+          probe tag_terms 'https://hentaihaven.vip/wp-json/wp/v2/wp-manga-tag?per_page=5&page=1'
+          probe author_terms 'https://hentaihaven.vip/wp-json/wp/v2/wp-manga-author?per_page=5&page=1'
+          probe release_terms 'https://hentaihaven.vip/wp-json/wp/v2/wp-manga-release?per_page=5&page=1'
+          probe sitemap_index 'https://hentaihaven.vip/sitemap_index.xml'
+          probe manga_sitemap 'https://hentaihaven.vip/wp-manga-sitemap.xml'
+          probe manga_sitemap2 'https://hentaihaven.vip/wp-manga-sitemap2.xml'
+          probe chapter_sitemap1 'https://hentaihaven.vip/wp-manga-chapters-sitemap1.xml'
+          probe chapter_sitemap2 'https://hentaihaven.vip/wp-manga-chapters-sitemap2.xml'
