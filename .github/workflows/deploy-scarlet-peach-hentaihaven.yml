@@ -88,3 +88,30 @@ jobs:
 
           probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com 1080
           probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080
+
+      - name: Inspect title metadata markers
+        run: |
+          set -euo pipefail
+          inspect() {
+            name="$1"
+            url="$2"
+            file="/tmp/${name}.html"
+            status="$(curl --silent --show-error --location --max-time 30 -A 'Mozilla/5.0' -o "$file" -w '%{http_code}' "$url" || true)"
+            echo "=== ${name} status=${status} url=${url} ==="
+            node - "$file" <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync(process.argv[2], 'utf8');
+          const text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/gi, ' ').replace(/&amp;/gi, '&').replace(/\s+/g, ' ');
+          const terms = ['uncensored','censored','subtitle','subbed','dubbed','dub','japanese','english','language','audio'];
+          for (const term of terms) {
+            const re = new RegExp(`.{0,120}${term}.{0,160}`, 'ig');
+            const matches = text.match(re) || [];
+            if (matches.length) console.log(`${term}:`, matches.slice(0, 5));
+          }
+          const attrs = [...html.matchAll(/(?:class|rel|href|data-[\w-]+)=["'][^"']*(?:uncensored|censored|subtitle|subbed|dubbed|language|audio)[^"']*["']/ig)].map(m => m[0]);
+          if (attrs.length) console.log('attrs:', attrs.slice(0, 30));
+          NODE
+          }
+
+          inspect bible-black 'https://hentaihaven.com/video/bible-black/episode-1'
+          inspect jimihen 'https://hentaihaven.vip/watch/jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1'
