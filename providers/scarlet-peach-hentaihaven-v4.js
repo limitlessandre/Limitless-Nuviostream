@@ -6,10 +6,6 @@ const IDENTITY_BASE = "https://scarlet-peach-identity.limitlessandre.workers.dev
 const RESOLVER_BASE = "https://scarlet-peach-hentaihaven.limitlessandre.workers.dev";
 
 function clean(v) { return String(v == null ? "" : v).trim(); }
-function windowsCompatMode() {
-  const id = clean(typeof globalThis !== "undefined" ? globalThis.SCRAPER_ID : "");
-  return /scarlet-peach-hentaihaven-windows$/i.test(id);
-}
 function unique(values) { return [...new Set((values || []).map(clean).filter(Boolean))]; }
 function diag(stage, detail) {
   const text = `${PROVIDER} • DIAG ${stage} • ${detail}`;
@@ -202,19 +198,8 @@ async function getStreams(inputId, mediaType, season, episode) {
       return diag("MATCH", `${reason} • title=${meta.title} • ep=${ep} • identity=${meta.identitySource || "unknown"}${best}`);
     }
 
-    let streams = Array.isArray(payload.streams) ? payload.streams : [];
-    const windowsCompat = windowsCompatMode();
-    if (windowsCompat) {
-      streams = streams.filter(stream => {
-        const codec = clean(stream && stream.codec).toLowerCase();
-        const url = clean(stream && stream.url);
-        return codec !== "vp9" && !/playlist_vp9/i.test(url);
-      });
-    }
-    if (!streams.length) {
-      const reason = windowsCompat ? "no Windows-compatible H.264 streams" : "no playable streams";
-      return diag("PLAYBACK", `${reason} • title=${meta.title} • ep=${ep}`);
-    }
+    const streams = Array.isArray(payload.streams) ? payload.streams : [];
+    if (!streams.length) return diag("PLAYBACK", `no playable streams • title=${meta.title} • ep=${ep}`);
     const providerMeta = payload.metadata && typeof payload.metadata === "object" ? payload.metadata : {};
     const providerCensor = knownCensor(providerMeta.censorStatus);
     const effectiveCensor = providerCensor || knownCensor(meta.censorStatus);

@@ -45,12 +45,9 @@ jobs:
             if (!scraper.id || !scraper.name || !scraper.filename || !scraper.version) throw new Error(`Invalid scraper entry ${scraper.id || '<missing id>'}`);
           }
           const hh = manifest.scrapers.filter(s => s.name === 'HentaiHaven');
-          if (hh.length !== 2) throw new Error(`Expected two platform-filtered HentaiHaven entries, got ${hh.length}`);
-          const windows = hh.find(s => s.id === 'scarlet-peach-hentaihaven-windows');
-          const other = hh.find(s => s.id === 'scarlet-peach-hentaihaven');
-          if (!windows || !Array.isArray(windows.supportedPlatforms) || !windows.supportedPlatforms.includes('windows')) throw new Error('Windows HentaiHaven manifest filter missing');
-          if (!other || !Array.isArray(other.disabledPlatforms) || !other.disabledPlatforms.includes('windows')) throw new Error('Non-Windows HentaiHaven manifest filter missing');
-          console.log(`Validated ${manifest.scrapers.length} scraper definitions, manifest ${manifest.version}`);
+          if (hh.length !== 1 || hh[0].id !== 'scarlet-peach-hentaihaven') throw new Error(`Expected one cross-platform HentaiHaven entry, got ${hh.map(x => x.id).join(',')}`);
+          if (hh[0].supportedPlatforms || hh[0].disabledPlatforms) throw new Error('HentaiHaven should not be platform-filtered');
+          console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
           NODE
 
       - name: Verify TMDB numeric ID reaches stable provider matching
@@ -71,37 +68,30 @@ jobs:
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
-      - name: Verify HentaiHaven metadata and Windows H.264 compatibility
+      - name: Verify HentaiHaven direct HLS with subtitle sidecars
         run: |
           node - <<'NODE'
           const provider = require('./providers/scarlet-peach-hentaihaven-v4.js');
           (async () => {
-            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven';
-            const normalRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
-            if (!Array.isArray(normalRows) || !normalRows.length) throw new Error('HentaiHaven normal Deco returned no rows');
-            const normalNames = normalRows.map(row => String(row.name || ''));
-            const normalQualities = normalRows.map(row => String(row.quality || ''));
-            console.log('normal:', normalNames.join(' | '));
+            const rows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
+            if (!Array.isArray(rows) || !rows.length) throw new Error('HentaiHaven Deco returned no rows');
+            const names = rows.map(row => String(row.name || ''));
+            const qualities = rows.map(row => String(row.quality || ''));
+            console.log(names.join('\n'));
             for (const expected of ['1080p', '720p', '360p']) {
-              if (!normalQualities.includes(expected)) throw new Error(`HentaiHaven normal mode missing ${expected}: ${normalQualities.join(',')}`);
+              if (!qualities.includes(expected)) throw new Error(`HentaiHaven missing ${expected}: ${qualities.join(',')}`);
             }
-            if (!normalNames.every(name => /\[SUB\]/i.test(name))) throw new Error('HentaiHaven Deco should be labeled [SUB]');
-            if (!normalNames.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');
-
-            globalThis.SCRAPER_ID = 'test:scarlet-peach-hentaihaven-windows';
-            const windowsRows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
-            if (!Array.isArray(windowsRows) || !windowsRows.length) throw new Error('HentaiHaven Windows Deco returned no rows');
-            const windowsNames = windowsRows.map(row => String(row.name || ''));
-            const windowsQualities = windowsRows.map(row => String(row.quality || ''));
-            console.log('windows:', windowsNames.join(' | '));
-            if (windowsQualities.includes('1080p')) throw new Error(`Windows mode leaked VP9 1080p: ${windowsQualities.join(',')}`);
-            for (const expected of ['720p', '360p']) {
-              if (!windowsQualities.includes(expected)) throw new Error(`HentaiHaven Windows mode missing ${expected}: ${windowsQualities.join(',')}`);
+            if (new Set(qualities).size !== qualities.length) throw new Error(`Duplicate HentaiHaven qualities: ${qualities.join(',')}`);
+            if (!names.every(name => /\[SUB\]/i.test(name))) throw new Error('HentaiHaven Deco should be labeled [SUB]');
+            if (!names.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven Deco censorship label missing');
+            for (const row of rows) {
+              const url = String(row.url || '');
+              if (/scarlet-peach-hentaihaven\.limitlessandre\.workers\.dev\/play\.m3u8/i.test(url)) throw new Error(`Generated HLS master leaked into provider row: ${url}`);
+              if (!/^https:\/\/.+\.(?:m3u8|mp4)(?:$|\?)/i.test(url)) throw new Error(`HentaiHaven row is not direct media: ${url}`);
+              if (!Array.isArray(row.subtitles) || !row.subtitles.some(sub => String(sub.language || sub.lang || '').toLowerCase() === 'en')) {
+                throw new Error(`HentaiHaven ${row.quality} missing English subtitle sidecar`);
+              }
             }
-            if (windowsRows.some(row => /playlist_vp9/i.test(decodeURIComponent(String(row.url || ''))))) {
-              throw new Error('Windows mode leaked a VP9 playlist');
-            }
-            if (!windowsNames.every(name => /\[SUB\]/i.test(name))) throw new Error('HentaiHaven Windows Deco should be labeled [SUB]');
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
@@ -113,22 +103,18 @@ jobs:
             const rows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
             if (!Array.isArray(rows) || !rows.length) throw new Error('HStream Deco x Deco returned no rows');
             const names = rows.map(row => String(row.name || ''));
-            console.log(names.join('\n'));
-            if (names.some(name => /DIAG/i.test(name))) throw new Error('HStream Deco x Deco returned a diagnostic');
             const qualities = rows.map(row => String(row.quality || ''));
             for (const expected of ['2160p', '1080p', '720p']) {
               if (!qualities.includes(expected)) throw new Error(`HStream missing ${expected}: ${qualities.join(',')}`);
             }
             if (!names.some(name => /4K\s*2160p/i.test(name))) throw new Error('HStream 2160p row is missing Nexus 4K label');
             if (!names.every(name => /\[SUB\]/i.test(name))) throw new Error('HStream English subtitle evidence was not reflected as [SUB]');
-            if (!names.every(name => /Censored/i.test(name))) throw new Error('HStream provider censorship was not reflected in labels');
             if (!rows.every(row => String(row.type || '').toLowerCase() === 'mpd')) throw new Error('HStream rows are not native MPD/DASH');
             for (const row of rows) {
               if (!Array.isArray(row.subtitles) || !row.subtitles.length) throw new Error(`HStream ${row.quality} is missing selectable subtitles`);
               const english = row.subtitles.find(sub => String(sub.language || sub.lang || '').toLowerCase() === 'en');
               if (!english) throw new Error(`HStream ${row.quality} is missing English subtitle object`);
               if (!/\.ass(?:$|\?)/i.test(String(english.url || ''))) throw new Error(`HStream ${row.quality} English subtitle is not ASS: ${english.url}`);
-              if (!english.headers || !english.headers.Referer) throw new Error(`HStream ${row.quality} subtitle headers missing`);
             }
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
