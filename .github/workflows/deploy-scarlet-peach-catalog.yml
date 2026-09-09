@@ -78,7 +78,25 @@ jobs:
       - name: Verify Nuvio Desktop subtitle endpoint
         run: |
           set -euo pipefail
-          URL='https://scarlet-peach-catalog.limitlessandre.workers.dev/subtitles/series/sp%3Ahanime%3Adeco-x-deco-the-animation%3A1.json'
+
+          curl --fail --silent --show-error --max-time 30 \
+            'https://scarlet-peach-catalog.limitlessandre.workers.dev/catalog/series/scarlet-peach-search/search=Deco%20x%20Deco.json' \
+            > /tmp/deco-search.json
+          cat /tmp/deco-search.json
+
+          VIDEO_ID_ENCODED="$(node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/deco-search.json','utf8'));
+          const metas=Array.isArray(d.metas)?d.metas:[];
+          const meta=metas.find(m=>/deco\s*x\s*deco/i.test(String(m.name||''))) || metas[0];
+          if (!meta || !meta.id) throw new Error('Deco not found in live Scarlet Peach catalog');
+          const videoId=`${meta.id}:1`;
+          console.error(`Testing live video ID: ${videoId}`);
+          process.stdout.write(encodeURIComponent(videoId));
+          NODE
+          )"
+
+          URL="https://scarlet-peach-catalog.limitlessandre.workers.dev/subtitles/series/${VIDEO_ID_ENCODED}.json"
           curl --fail --silent --show-error --max-time 90 "$URL" > /tmp/subtitles.json
           cat /tmp/subtitles.json
           SUB_URL="$(node - <<'NODE'
@@ -92,6 +110,6 @@ jobs:
           NODE
           )"
           echo "English subtitle: $SUB_URL"
-          curl --fail --silent --show-error --max-time 30 "$SUB_URL" | head -40 > /tmp/subtitle.vtt
-          cat /tmp/subtitle.vtt
+          curl --fail --silent --show-error --max-time 30 "$SUB_URL" > /tmp/subtitle.vtt
+          head -40 /tmp/subtitle.vtt
           grep -q 'WEBVTT' /tmp/subtitle.vtt
