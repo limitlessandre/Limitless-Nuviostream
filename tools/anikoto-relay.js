@@ -1,9 +1,12 @@
 "use strict";
 
-// Limitless Nexus AniKoto local relay test.
-// Ports the minimal transport behavior proven by mkelvers/arc:
-// required media headers, guarded redirects, HLS URI rewriting,
-// alternate imgnex mirrors, and PNG/JPEG disguised MPEG-TS unwrapping.
+// Limitless Nexus AniKoto local relay v2.
+// Based on the transport behavior verified in mkelvers/arc:
+// - allowlisted AniKoto CDN hosts and mirror normalization
+// - required Referer/User-Agent headers
+// - recursive HLS URI rewriting
+// - image-disguised MPEG-TS segment unwrapping only when required
+// - optional HLS subtitle injection for Nuvio Desktop
 
 const HOST = "127.0.0.1";
 const PORT = 8787;
@@ -15,31 +18,16 @@ const MAX_SUBTITLE = 512 * 1024;
 const MAX_SEGMENT = 64 * 1024 * 1024;
 
 const MEDIA_SUFFIXES = [
-  "akirax.buzz",
-  "anizara.store",
-  "imgnex.top",
-  "kryntal.top",
-  "lostproject.club",
-  "megaplay.buzz",
-  "mikora.top",
-  "norami.top",
-  "shiora.site",
-  "shiora.top",
-  "tiktokcdn.com",
-  "trycloud.pro",
-  "watching.onl",
-  "mewstream.buzz",
-  "voltara.click",
-  "kotocdn.site"
+  "akirax.buzz", "anizara.store", "imgnex.top", "kryntal.top",
+  "lostproject.club", "megaplay.buzz", "mikora.top", "norami.top",
+  "shiora.site", "shiora.top", "tiktokcdn.com", "trycloud.pro",
+  "watching.onl", "mewstream.buzz", "voltara.click", "kotocdn.site"
 ];
+const IMGNEX_MIRRORS = ["akirax.buzz", "mikora.top", "norami.top", "shiora.site", "shiora.top"];
 
-const IMGNEX_MIRRORS = [
-  "akirax.buzz",
-  "mikora.top",
-  "norami.top",
-  "shiora.site",
-  "shiora.top"
-];
+let playlistCount = 0;
+let unwrapCount = 0;
+let subtitleCount = 0;
 
 function hostAllowed(hostname) {
   const host = String(hostname || "").toLowerCase();
@@ -50,7 +38,10 @@ function normalizeTarget(value) {
   let url;
   try { url = value instanceof URL ? new URL(value.href) : new URL(String(value || "")); }
   catch (_) { return null; }
-  if (url.protocol !== "https:" || url.username || url.password || !hostAllowed(url.hostname)) return null;
+  if (url.protocol !== "https:" || url.username || url.password || url.port || !hostAllowed(url.hostname)) return null;
+
+  const shard = url.hostname.match(/^(s\d+)\.shiora\.(?:site|top)$/i);
+  if (shard) url.hostname = shard[1] + ".akirax.buzz";
   return url;
 }
 
@@ -58,6 +49,7 @@ function mediaCandidates(initial) {
   const source = normalizeTarget(initial);
   if (!source) return [];
   const out = [source];
+
   if (source.hostname.toLowerCase().endsWith(".imgnex.top") && source.pathname.startsWith("/anime/")) {
     for (const suffix of IMGNEX_MIRRORS) {
       const alt = new URL(source.href);
@@ -66,6 +58,26 @@ function mediaCandidates(initial) {
       out.push(alt);
     }
   }
+  if (source.hostname.toLowerCase().endsWith(".mikora.top")) {
+    for (const suffix of ["shiora.site", "akirax.buzz"]) {
+      const alt = new URL(source.href);
+      alt.hostname = alt.hostname.replace(/\.mikora\.top$/i, "." + suffix);
+      out.push(alt);
+    }
+  }
+  if (source.hostname.toLowerCase().endsWith(".shiora.top")) {
+    const alt = new URL(source.href);
+    alt.hostname = alt.hostname.replace(/\.shiora\.top$/i, ".shiora.site");
+    out.push(alt);
+  }
+  if (/^(?:cdn|ncdn)\.kryntal\.top$/i.test(source.hostname)) {
+    for (const prefix of ["cdn", "ncdn"]) {
+      const alt = new URL(source.href);
+      alt.hostname = prefix + ".watching.onl";
+      out.push(alt);
+    }
+  }
+
   const seen = new Set();
   return out.filter((url) => {
     const key = url.href;
@@ -73,6 +85,12 @@ function mediaCandidates(initial) {
     seen.add(key);
     return true;
   });
+}
+
+function isDisguisedHost(hostname) {
+  const host = String(hostname || "").toLowerCase();
+  return /^p\d+-ad-site-sign-sg\.tiktokcdn\.com$/.test(host) ||
+    /^s\d+\.(?:akirax\.buzz|norami\.top|shiora\.site|shiora\.top)$/.test(host);
 }
 
 function corsHeaders(extra) {
@@ -91,11 +109,7 @@ async function fetchOnce(initial, range) {
     if (range) headers.set("Range", range);
     let response;
     try {
-      response = await fetch(target, {
-        headers,
-        redirect: "manual",
-        signal: AbortSignal.timeout(TIMEOUT_MS)
-      });
+      response = await fetch(target, { headers, redirect: "manual", signal: AbortSignal.timeout(TIMEOUT_MS) });
     } catch (_) {
       const error = new Error("upstream-network");
       error.retryable = true;
@@ -137,16 +151,14 @@ async function fetchResource(initial, range) {
 async function limitedBytes(response, maximum) {
   const length = Number(response.headers.get("content-length"));
   if (Number.isFinite(length) && length > maximum) throw new Error("body-too-large");
-  const buffer = new Uint8Array(await response.arrayBuffer());
-  if (buffer.byteLength > maximum) throw new Error("body-too-large");
-  return buffer;
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  if (bytes.byteLength > maximum) throw new Error("body-too-large");
+  return bytes;
 }
 
-function findSequence(bytes, needle) {
-  outer: for (let i = 0; i <= bytes.length - needle.length; i += 1) {
-    for (let j = 0; j < needle.length; j += 1) {
-      if (bytes[i + j] !== needle[j]) continue outer;
-    }
+function findSequence(bytes, needle, start = 0) {
+  outer: for (let i = start; i <= bytes.length - needle.length; i += 1) {
+    for (let j = 0; j < needle.length; j += 1) if (bytes[i + j] !== needle[j]) continue outer;
     return i;
   }
   return -1;
@@ -155,23 +167,11 @@ function findSequence(bytes, needle) {
 function unwrapDisguisedSegment(bytes) {
   const pngEnd = new Uint8Array([0x49,0x45,0x4e,0x44,0xae,0x42,0x60,0x82]);
   const pngIndex = findSequence(bytes, pngEnd);
-  if (pngIndex >= 0) {
-    const body = bytes.subarray(pngIndex + pngEnd.length);
-    if (body.length && body[0] === 0x47) return body;
-  }
+  if (pngIndex >= 0) return bytes.subarray(pngIndex + 8);
 
-  const jpegEnd = new Uint8Array([0xff,0xd9]);
-  const jpegIndex = findSequence(bytes, jpegEnd);
-  if (jpegIndex >= 0) {
-    const body = bytes.subarray(jpegIndex + jpegEnd.length);
-    if (body.length && body[0] === 0x47) return body;
-  }
-
-  if (bytes.length && bytes[0] === 0x47) return bytes;
-
-  for (let i = 0; i < Math.min(bytes.length, 1024 * 1024); i += 1) {
-    if (bytes[i] !== 0x47) continue;
-    if (i + 188 >= bytes.length || bytes[i + 188] === 0x47) return bytes.subarray(i);
+  if (bytes[0] === 0xff && bytes[1] === 0xd8) {
+    const jpegEnd = findSequence(bytes, new Uint8Array([0xff,0xd9]), 1);
+    if (jpegEnd >= 0) return bytes.subarray(jpegEnd + 2);
   }
   return bytes;
 }
@@ -185,16 +185,44 @@ function relayReference(reference, playlistUrl, relayOrigin) {
 }
 
 function rewritePlaylist(text, playlistUrl, relayOrigin) {
-  return String(text || "")
-    .split(/\r?\n/)
-    .map((line) => {
-      if (!line) return line;
-      if (!line.startsWith("#")) return relayReference(line, playlistUrl, relayOrigin);
-      return line.replace(/URI=(["'])(.*?)\1/g, (_, quote, reference) =>
-        "URI=" + quote + relayReference(reference, playlistUrl, relayOrigin) + quote
-      );
-    })
-    .join("\n");
+  return String(text || "").split(/\r?\n/).map((line) => {
+    if (!line) return line;
+    if (!line.startsWith("#")) return relayReference(line.trim(), playlistUrl, relayOrigin);
+    return line.replace(/URI=(["'])(.*?)\1/g, (_, quote, reference) =>
+      "URI=" + quote + relayReference(reference, playlistUrl, relayOrigin) + quote
+    );
+  }).join("\n");
+}
+
+function subtitleTag(subtitleUrl, relayOrigin, language, name) {
+  const safeLang = String(language || "en").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 12) || "en";
+  const safeName = String(name || "English").replace(/["\r\n]/g, "").slice(0, 64) || "English";
+  const uri = relayOrigin + "/stream?url=" + encodeURIComponent(subtitleUrl.href);
+  return '#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="limitless-subs",NAME="' + safeName + '",DEFAULT=YES,AUTOSELECT=YES,FORCED=NO,LANGUAGE="' + safeLang + '",URI="' + uri + '"';
+}
+
+function injectSubtitleIntoMaster(rewritten, subtitleUrl, relayOrigin, language, name) {
+  const lines = String(rewritten || "").split(/\r?\n/);
+  const mediaTag = subtitleTag(subtitleUrl, relayOrigin, language, name);
+  const insertAt = lines[0] && lines[0].trim() === "#EXTM3U" ? 1 : 0;
+  lines.splice(insertAt, 0, mediaTag);
+  return lines.map((line) => {
+    if (!line.startsWith("#EXT-X-STREAM-INF:")) return line;
+    if (/\bSUBTITLES=/.test(line)) return line.replace(/\bSUBTITLES=(?:"[^"]*"|[^,]*)/, 'SUBTITLES="limitless-subs"');
+    return line + ',SUBTITLES="limitless-subs"';
+  }).join("\n");
+}
+
+function syntheticMaster(mediaUrl, subtitleUrl, relayOrigin, language, name) {
+  const media = relayOrigin + "/stream?url=" + encodeURIComponent(mediaUrl.href);
+  return [
+    "#EXTM3U",
+    "#EXT-X-VERSION:3",
+    subtitleTag(subtitleUrl, relayOrigin, language, name),
+    '#EXT-X-STREAM-INF:BANDWIDTH=8000000,SUBTITLES="limitless-subs"',
+    media,
+    ""
+  ].join("\n");
 }
 
 function copySafeHeaders(response) {
@@ -206,61 +234,103 @@ function copySafeHeaders(response) {
   return out;
 }
 
+async function playRequest(request) {
+  const requestUrl = new URL(request.url);
+  const media = normalizeTarget(requestUrl.searchParams.get("url"));
+  const subtitle = normalizeTarget(requestUrl.searchParams.get("sub"));
+  const language = requestUrl.searchParams.get("lang") || "en";
+  const name = requestUrl.searchParams.get("name") || "English";
+  if (!media) return new Response("Invalid AniKoto media URL", { status: 400, headers: corsHeaders() });
+  if (!subtitle) return Response.redirect(requestUrl.origin + "/stream?url=" + encodeURIComponent(media.href), 302);
+
+  try {
+    const { response, target } = await fetchResource(media, null);
+    const contentType = String(response.headers.get("content-type") || "").toLowerCase();
+    const isPlaylist = target.pathname.toLowerCase().endsWith(".m3u8") || contentType.includes("mpegurl");
+    if (!isPlaylist) return Response.redirect(requestUrl.origin + "/stream?url=" + encodeURIComponent(media.href), 302);
+
+    const body = new TextDecoder().decode(await limitedBytes(response, MAX_PLAYLIST));
+    if (!/^\s*#EXTM3U(?:\s|$)/.test(body)) throw new Error("invalid-playlist");
+    const rewritten = rewritePlaylist(body, target, requestUrl.origin);
+    const isMaster = /#EXT-X-STREAM-INF:/i.test(body);
+    const output = isMaster
+      ? injectSubtitleIntoMaster(rewritten, subtitle, requestUrl.origin, language, name)
+      : syntheticMaster(media, subtitle, requestUrl.origin, language, name);
+
+    const headers = corsHeaders({ "Cache-Control": "no-store", "Content-Type": "application/vnd.apple.mpegurl" });
+    console.log(`[play] ${target.hostname} ${isMaster ? "master" : "media"} + subtitle ${subtitle.hostname}`);
+    return new Response(request.method === "HEAD" ? null : output, { status: 200, headers });
+  } catch (error) {
+    console.error("[play:error]", String(error && error.message || error));
+    return new Response("AniKoto play relay failed: " + String(error && error.message || error), { status: 502, headers: corsHeaders() });
+  }
+}
+
 async function proxyRequest(request) {
   const requestUrl = new URL(request.url);
-  const raw = requestUrl.searchParams.get("url");
-  const target = normalizeTarget(raw);
+  const target = normalizeTarget(requestUrl.searchParams.get("url"));
   if (!target) return new Response("Invalid or unsupported AniKoto media URL", { status: 400, headers: corsHeaders() });
 
   let fetched;
   try { fetched = await fetchResource(target, request.headers.get("range")); }
   catch (error) {
+    console.error("[upstream:error]", target.hostname, String(error && error.message || error));
     return new Response("AniKoto upstream failed: " + String(error && error.message || error), { status: 502, headers: corsHeaders() });
   }
 
   const { response, target: resolvedTarget } = fetched;
   const headers = copySafeHeaders(response);
   const contentType = String(response.headers.get("content-type") || "").toLowerCase();
-  const isPlaylist = resolvedTarget.pathname.toLowerCase().endsWith(".m3u8") || contentType.includes("mpegurl");
+  const path = resolvedTarget.pathname.toLowerCase();
+  const isPlaylist = path.endsWith(".m3u8") || contentType.includes("mpegurl");
 
   if (isPlaylist) {
     try {
-      const bytes = await limitedBytes(response, MAX_PLAYLIST);
-      const body = new TextDecoder().decode(bytes);
+      const body = new TextDecoder().decode(await limitedBytes(response, MAX_PLAYLIST));
       if (!/^\s*#EXTM3U(?:\s|$)/.test(body)) throw new Error("invalid-playlist");
       headers.set("Cache-Control", "no-store");
       headers.set("Content-Type", "application/vnd.apple.mpegurl");
-      return new Response(rewritePlaylist(body, resolvedTarget, requestUrl.origin), {
-        status: response.status,
-        headers: corsHeaders(headers)
+      playlistCount += 1;
+      if (playlistCount <= 8) console.log(`[playlist] #${playlistCount} ${resolvedTarget.hostname}${resolvedTarget.pathname}`);
+      return new Response(request.method === "HEAD" ? null : rewritePlaylist(body, resolvedTarget, requestUrl.origin), {
+        status: response.status, headers: corsHeaders(headers)
       });
     } catch (error) {
+      console.error("[playlist:error]", String(error && error.message || error));
       return new Response("Playlist relay failed: " + String(error && error.message || error), { status: 502, headers: corsHeaders() });
     }
   }
 
-  if (resolvedTarget.pathname.toLowerCase().endsWith(".vtt") || contentType.includes("text/vtt")) {
+  if (path.endsWith(".vtt") || contentType.includes("text/vtt")) {
     try {
       const bytes = await limitedBytes(response, MAX_SUBTITLE);
       headers.set("Cache-Control", "no-store");
       headers.set("Content-Type", "text/vtt; charset=utf-8");
       headers.set("Content-Length", String(bytes.byteLength));
-      return new Response(bytes, { status: response.status, headers: corsHeaders(headers) });
+      subtitleCount += 1;
+      console.log(`[subtitle] #${subtitleCount} ${resolvedTarget.hostname}${resolvedTarget.pathname} ${bytes.byteLength} bytes`);
+      return new Response(request.method === "HEAD" ? null : bytes, { status: response.status, headers: corsHeaders(headers) });
     } catch (error) {
+      console.error("[subtitle:error]", String(error && error.message || error));
       return new Response("Subtitle relay failed: " + String(error && error.message || error), { status: 502, headers: corsHeaders() });
     }
   }
 
-  const disguised = /\.(?:png|jpe?g)$/i.test(resolvedTarget.pathname) || contentType.startsWith("image/") || /(?:imgnex\.top|akirax\.buzz|mikora\.top|norami\.top|shiora\.(?:site|top))$/i.test(resolvedTarget.hostname);
+  const disguised = isDisguisedHost(resolvedTarget.hostname) || /\.(?:png|jpe?g)$/i.test(path) || contentType.startsWith("image/");
   if (disguised) {
     try {
       const bytes = await limitedBytes(response, MAX_SEGMENT);
       const unwrapped = unwrapDisguisedSegment(bytes);
       if (!unwrapped.length || unwrapped[0] !== 0x47) throw new Error("invalid-segment");
+      headers.delete("content-range");
+      headers.delete("accept-ranges");
       headers.set("Content-Type", "video/mp2t");
       headers.set("Content-Length", String(unwrapped.byteLength));
-      return new Response(unwrapped, { status: response.status, headers: corsHeaders(headers) });
+      unwrapCount += 1;
+      if (unwrapCount <= 8 || unwrapCount % 25 === 0) console.log(`[unwrap] #${unwrapCount} ${resolvedTarget.hostname} ${bytes.byteLength}->${unwrapped.byteLength}`);
+      return new Response(request.method === "HEAD" ? null : unwrapped, { status: response.status === 206 ? 200 : response.status, headers: corsHeaders(headers) });
     } catch (error) {
+      console.error("[segment:error]", String(error && error.message || error));
       return new Response("Segment relay failed: " + String(error && error.message || error), { status: 502, headers: corsHeaders() });
     }
   }
@@ -268,10 +338,7 @@ async function proxyRequest(request) {
   const length = response.headers.get("content-length");
   if (length) headers.set("Content-Length", length);
   headers.set("Content-Type", response.headers.get("content-type") || "application/octet-stream");
-  return new Response(request.method === "HEAD" ? null : response.body, {
-    status: response.status,
-    headers: corsHeaders(headers)
-  });
+  return new Response(request.method === "HEAD" ? null : response.body, { status: response.status, headers: corsHeaders(headers) });
 }
 
 const server = Bun.serve({
@@ -281,14 +348,13 @@ const server = Bun.serve({
     const url = new URL(request.url);
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders() });
     if (url.pathname === "/health") {
-      return Response.json({ ok: true, service: "Limitless AniKoto Relay", host: HOST, port: PORT }, { headers: corsHeaders({ "Cache-Control": "no-store" }) });
+      return Response.json({ ok: true, service: "Limitless AniKoto Relay v2", host: HOST, port: PORT }, { headers: corsHeaders({ "Cache-Control": "no-store" }) });
     }
-    if (url.pathname === "/stream" && (request.method === "GET" || request.method === "HEAD")) {
-      return proxyRequest(request);
-    }
-    return new Response("Limitless AniKoto Relay\nGET /health\nGET /stream?url=<encoded https media url>", { status: 200, headers: corsHeaders({ "Content-Type": "text/plain; charset=utf-8" }) });
+    if (url.pathname === "/play" && (request.method === "GET" || request.method === "HEAD")) return playRequest(request);
+    if (url.pathname === "/stream" && (request.method === "GET" || request.method === "HEAD")) return proxyRequest(request);
+    return new Response("Limitless AniKoto Relay v2\nGET /health\nGET /play?url=<media>&sub=<vtt>\nGET /stream?url=<media>", { status: 200, headers: corsHeaders({ "Content-Type": "text/plain; charset=utf-8" }) });
   }
 });
 
-console.log(`[Limitless AniKoto Relay] listening on http://${server.hostname}:${server.port}`);
-console.log(`[Limitless AniKoto Relay] health: http://${server.hostname}:${server.port}/health`);
+console.log(`[Limitless AniKoto Relay v2] listening on http://${server.hostname}:${server.port}`);
+console.log(`[Limitless AniKoto Relay v2] health: http://${server.hostname}:${server.port}/health`);
