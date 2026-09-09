@@ -41,7 +41,7 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-identity.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach Identity Resolver' && printf '%s' "$body" | grep -q '"version":"0.1.0"'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach Identity Resolver' && printf '%s' "$body" | grep -q '"version":"0.1.1"'; then
               printf '%s\n' "$body"
               break
             fi
@@ -75,7 +75,13 @@ jobs:
           const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
           if (!data.title || !/kite/i.test(data.title)) throw new Error(`${process.env.NAME} did not resolve Kite`);
           if (data.imdbId !== 'tt0246734') throw new Error(`${process.env.NAME} expected tt0246734, got ${data.imdbId}`);
-          console.log(`${process.env.NAME} title=${data.title} imdb=${data.imdbId} tmdb=${data.tmdbId}`);
+          if (process.env.NAME === 'tmdb-kite') {
+            const aliases = Array.isArray(data.aliases) ? data.aliases : [];
+            if (!aliases.some(value => /^a\s*kite$/i.test(String(value).trim()))) {
+              throw new Error(`tmdb-kite expected A Kite alias, got ${JSON.stringify(aliases)}`);
+            }
+          }
+          console.log(`${process.env.NAME} title=${data.title} aliases=${JSON.stringify(data.aliases)} imdb=${data.imdbId} tmdb=${data.tmdbId}`);
           NODE
           }
 
