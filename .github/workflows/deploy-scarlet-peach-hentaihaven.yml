@@ -86,6 +86,5 @@ jobs:
           NODE
           }
 
-          probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com
-          probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip
-          probe vp9-vampire-vixen '{"title":"Vampire Vixen","episode":1}' '' 1080
+          probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com 1080
+          probe vip-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' vip 1080
