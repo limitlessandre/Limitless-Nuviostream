@@ -83,10 +83,10 @@ jobs:
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
-      - name: Verify HStream Scarlet Peach identity and native DASH qualities
+      - name: Verify HStream Scarlet Peach identity, DASH qualities and subtitles
         run: |
           node - <<'NODE'
-          const provider = require('./providers/scarlet-peach-hstream-v1.js');
+          const provider = require('./providers/scarlet-peach-hstream-v2.js');
           (async () => {
             const rows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
             if (!Array.isArray(rows) || !rows.length) throw new Error('HStream Deco x Deco returned no rows');
@@ -101,5 +101,12 @@ jobs:
             if (!names.every(name => /\[SUB\]/i.test(name))) throw new Error('HStream English subtitle evidence was not reflected as [SUB]');
             if (!names.every(name => /Censored/i.test(name))) throw new Error('HStream provider censorship was not reflected in labels');
             if (!rows.every(row => String(row.type || '').toLowerCase() === 'mpd')) throw new Error('HStream rows are not native MPD/DASH');
+            for (const row of rows) {
+              if (!Array.isArray(row.subtitles) || !row.subtitles.length) throw new Error(`HStream ${row.quality} is missing selectable subtitles`);
+              const english = row.subtitles.find(sub => String(sub.language || sub.lang || '').toLowerCase() === 'en');
+              if (!english) throw new Error(`HStream ${row.quality} is missing English subtitle object`);
+              if (!/\.ass(?:$|\?)/i.test(String(english.url || ''))) throw new Error(`HStream ${row.quality} English subtitle is not ASS: ${english.url}`);
+              if (!english.headers || !english.headers.Referer) throw new Error(`HStream ${row.quality} subtitle headers missing`);
+            }
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
