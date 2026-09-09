@@ -44,14 +44,15 @@ jobs:
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
             if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && \
-               printf '%s' "$body" | grep -q '"version":"0.5.1"' && \
+               printf '%s' "$body" | grep -q '"version":"0.5.2"' && \
                printf '%s' "$body" | grep -q 'hentaihaven.vip' && \
                printf '%s' "$body" | grep -q '"nativeTrackPreservation":true' && \
-               printf '%s' "$body" | grep -q '"androidSubtitleTransport":"external-sidecar"'; then
+               printf '%s' "$body" | grep -q '"androidSubtitleTransport":"external-sidecar"' && \
+               printf '%s' "$body" | grep -q '"verifiedDubLabels":true'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.5.1 propagation (attempt ${attempt})"
+            echo "Waiting for v0.5.2 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -84,6 +85,7 @@ jobs:
           const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
           if (!Array.isArray(data.streams) || !data.streams.length) throw new Error(`${process.env.NAME} returned no streams`);
           if (!data.nativeTrackPreservation) throw new Error(`${process.env.NAME} native track preservation missing`);
+          if (!data.verifiedDubLabels) throw new Error(`${process.env.NAME} verified dub label guard missing`);
           if (process.env.EXPECTED_BACKEND && data.backend !== process.env.EXPECTED_BACKEND) {
             throw new Error(`${process.env.NAME} expected backend=${process.env.EXPECTED_BACKEND}, got ${data.backend}`);
           }
@@ -98,7 +100,7 @@ jobs:
           if (process.env.EXPECTED_CENSOR && data.metadata.censorStatus !== process.env.EXPECTED_CENSOR) {
             throw new Error(`${process.env.NAME} expected censor=${process.env.EXPECTED_CENSOR}, got ${data.metadata.censorStatus}`);
           }
-          console.log(`${process.env.NAME} backend=${data.backend} qualities=${heights.join('/')} censor=${data.metadata.censorStatus} audio=${(data.metadata.audioLanguages||[]).join(',')} subs=${(data.metadata.subtitleLanguages||[]).join(',')} variant=${data.metadata.audioVariant||'unknown'}`);
+          console.log(`${process.env.NAME} backend=${data.backend} qualities=${heights.join('/')} censor=${data.metadata.censorStatus} audio=${(data.metadata.audioLanguages||[]).join(',')} transportAudio=${(data.metadata.transportAudioLanguages||[]).join(',')} subs=${(data.metadata.subtitleLanguages||[]).join(',')} variant=${data.metadata.audioVariant||'unknown'} evidence=${data.metadata.audioEvidence||'unknown'}`);
           NODE
           }
 
@@ -109,6 +111,22 @@ jobs:
             https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
             -H 'content-type: application/json' \
             --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/deco.json
+
+          BODY_FILE=/tmp/deco.json node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync(process.env.BODY_FILE,'utf8'));
+          if (!d.metadata) throw new Error('Deco metadata missing');
+          if (d.metadata.audioVariant !== 'sub') throw new Error(`Deco should be sub-only, got ${d.metadata.audioVariant}`);
+          if (!Array.isArray(d.metadata.audioLanguages) || !d.metadata.audioLanguages.includes('ja') || d.metadata.audioLanguages.includes('en')) {
+            throw new Error(`Deco semantic audio should be Japanese only: ${JSON.stringify(d.metadata.audioLanguages)}`);
+          }
+          if (!Array.isArray(d.metadata.transportAudioLanguages) || !d.metadata.transportAudioLanguages.includes('en')) {
+            throw new Error(`Expected upstream mislabeled English HLS transport tag for Deco: ${JSON.stringify(d.metadata.transportAudioLanguages)}`);
+          }
+          if (!d.streams.every(s => /[?&]audio=ja(?:&|$)/i.test(s.url || ''))) throw new Error('Deco playback URLs are not carrying semantic Japanese audio hint');
+          console.log(`Deco semantic audio correction passed: variant=${d.metadata.audioVariant} audio=${d.metadata.audioLanguages.join(',')} transport=${d.metadata.transportAudioLanguages.join(',')} evidence=${d.metadata.audioEvidence}`);
+          NODE
+
           PLAY_URL="$(BODY_FILE=/tmp/deco.json node - <<'NODE'
           const fs=require('node:fs');
           const d=JSON.parse(fs.readFileSync(process.env.BODY_FILE,'utf8'));
@@ -121,6 +139,8 @@ jobs:
           cat /tmp/deco-desktop.m3u8
           grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-desktop.m3u8
           grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-desktop.m3u8
+          grep -q 'LANGUAGE="ja"' /tmp/deco-desktop.m3u8
+          grep -q 'NAME="Japanese"' /tmp/deco-desktop.m3u8
           grep -q 'snd/a.m3u8' /tmp/deco-desktop.m3u8
           grep -q 's/en.vtt' /tmp/deco-desktop.m3u8
           test "$(grep -c '^#EXT-X-STREAM-INF:' /tmp/deco-desktop.m3u8)" = "1"
@@ -128,6 +148,8 @@ jobs:
           curl -A 'ExoPlayerLib/1.5 (Linux;Android 15)' --fail --silent --show-error --max-time 30 "$PLAY_URL" > /tmp/deco-android.m3u8
           cat /tmp/deco-android.m3u8
           grep -q '#EXT-X-MEDIA:.*TYPE=AUDIO' /tmp/deco-android.m3u8
+          grep -q 'LANGUAGE="ja"' /tmp/deco-android.m3u8
+          grep -q 'NAME="Japanese"' /tmp/deco-android.m3u8
           grep -q 'snd/a.m3u8' /tmp/deco-android.m3u8
           if grep -q '#EXT-X-MEDIA:.*TYPE=SUBTITLES' /tmp/deco-android.m3u8; then
             echo 'Android HentaiHaven master still contains built-in subtitle group' >&2
