@@ -116,14 +116,12 @@ jobs:
               exit 1
             fi
 
-            ffprobe -v error -show_entries stream=codec_type,codec_name -of json "$PLAY_URL" > "/tmp/deco-${height}-probe.json"
-            cat "/tmp/deco-${height}-probe.json"
-            PROBE_FILE="/tmp/deco-${height}-probe.json" node - <<'NODE'
-          const fs=require('node:fs');
-          const d=JSON.parse(fs.readFileSync(process.env.PROBE_FILE,'utf8'));
-          const types=(d.streams||[]).map(s=>s.codec_type);
-          if (!types.includes('video')) throw new Error('video stream missing');
-          if (!types.includes('audio')) throw new Error('audio stream missing');
-          console.log(`ffprobe streams: ${types.join(',')}`);
-          NODE
+            AUDIO_URL="$(sed -n 's/.*TYPE=AUDIO.*URI="\([^"]*\)".*/\1/p; s/.*URI="\([^"]*\)".*TYPE=AUDIO.*/\1/p' "/tmp/deco-${height}.m3u8" | head -1)"
+            VIDEO_URL="$(awk '!/^#/ && NF {line=$0} END {print line}' "/tmp/deco-${height}.m3u8")"
+            test -n "$AUDIO_URL"
+            test -n "$VIDEO_URL"
+            echo "audio child: $AUDIO_URL"
+            echo "video child: $VIDEO_URL"
+            curl --fail --silent --show-error --max-time 30 "$AUDIO_URL" | head -30 | grep -q '#EXTM3U'
+            curl --fail --silent --show-error --max-time 30 "$VIDEO_URL" | head -30 | grep -q '#EXTM3U'
           done
