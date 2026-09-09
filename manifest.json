@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.56",
+  "version": "2.1.57",
   "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now handles rotating MegaPlay delivery hosts, opaque media paths, and embed-style request headers while retaining MAL/AniList and catalog fallbacks; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
   "scrapers": [
     {
