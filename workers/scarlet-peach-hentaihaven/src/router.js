@@ -1,3 +1,4 @@
+const VERSION = '0.4.0';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36';
 const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': 'GET,POST,OPTIONS' };
 
@@ -41,13 +42,27 @@ async function getText(url, extra = {}, referer = null) {
   });
   return { res, text: await res.text() };
 }
+function chooseStream(existing, candidate) {
+  if (!existing) return candidate;
+  const a = clean(existing.codec).toLowerCase();
+  const b = clean(candidate.codec).toLowerCase();
+  if (a !== 'h264' && b === 'h264') return candidate;
+  return existing;
+}
 function dedupeStreams(streams) {
-  const out = [];
+  const urls = [];
   for (const stream of streams || []) {
-    if (!stream || !stream.url || out.some(item => item.url === stream.url)) continue;
-    out.push(stream);
+    if (!stream || !stream.url || urls.some(item => item.url === stream.url)) continue;
+    urls.push(stream);
   }
-  return out.sort((a, b) => Number(b.height || 0) - Number(a.height || 0));
+  const byQuality = new Map();
+  const auto = [];
+  for (const stream of urls) {
+    const height = Number(stream.height || 0);
+    if (!height) { auto.push(stream); continue; }
+    byQuality.set(height, chooseStream(byQuality.get(height), stream));
+  }
+  return [...byQuality.values(), ...auto].sort((a, b) => Number(b.height || 0) - Number(a.height || 0));
 }
 
 function slugVariants(name) {
@@ -200,15 +215,139 @@ async function discoverBackend(backend, title, aliases, episode) {
   return { backend: backend.id, error: `${backend.host} title matched but episode unavailable`, candidates: [best] };
 }
 
-async function hlsVariants(source, referer, codec = 'h264') {
+function pageDescription(html) {
+  const values = [];
+  const patterns = [
+    /<meta[^>]+(?:name=["']description["']|property=["']og:description["'])[^>]+content=["']([^"']+)/ig,
+    /<meta[^>]+content=["']([^"']+)["'][^>]+(?:name=["']description["']|property=["']og:description["'])/ig
+  ];
+  for (const re of patterns) {
+    let m;
+    while ((m = re.exec(String(html)))) values.push(stripTags(m[1]));
+  }
+  return unique(values).join(' ');
+}
+function titlePostClass(html) {
+  const m = String(html).match(/class=["']([^"']*\btype-wp-manga\b[^"']*)["']/i);
+  return m ? m[1].toLowerCase() : '';
+}
+function pageMetadata(html) {
+  const source = String(html || '');
+  const postClass = titlePostClass(source);
+  let hasUncensored = /(?:^|\s)wp-manga-(?:tag-uncensored|tag-uncensored-hentai|genre-uncensored-hentai)(?:\s|$)/i.test(postClass);
+  let hasCensored = /(?:^|\s)wp-manga-tag-censored(?:\s|$)/i.test(postClass);
+
+  if (!postClass) {
+    hasUncensored = /href=["'][^"']*\/tag\/(?:uncensored|uncensored-hentai)\/?["']/i.test(source);
+    hasCensored = /href=["'][^"']*\/tag\/censored\/?["']/i.test(source);
+  }
+
+  let censorStatus = 'unknown';
+  if (hasUncensored && hasCensored) censorStatus = 'mixed';
+  else if (hasUncensored) censorStatus = 'uncensored';
+  else if (hasCensored) censorStatus = 'censored';
+
+  const description = pageDescription(source).toLowerCase();
+  const audioLanguages = [];
+  const subtitleLanguages = [];
+  if (/\b(?:english\s+dub(?:bed)?|dubbed\s+english|english\s+audio)\b/i.test(description)) audioLanguages.push('en');
+  if (/\bjapanese\s+audio\b/i.test(description)) audioLanguages.push('ja');
+  if (/\b(?:subtitled\s+english|english\s+sub(?:title|titles|bed)?)\b/i.test(description)) subtitleLanguages.push('en');
+
+  return { censorStatus, audioLanguages: unique(audioLanguages), subtitleLanguages: unique(subtitleLanguages) };
+}
+function parseAttributeList(value) {
+  const out = {};
+  const re = /([A-Z0-9-]+)=("(?:[^"\\]|\\.)*"|[^,]*)/gi;
+  let m;
+  while ((m = re.exec(String(value || '')))) {
+    let v = clean(m[2]);
+    if (v.startsWith('"') && v.endsWith('"')) v = v.slice(1, -1).replace(/\\"/g, '"');
+    out[m[1].toUpperCase()] = v;
+  }
+  return out;
+}
+function normalizeLanguage(value) {
+  const v = clean(value).toLowerCase().replace(/_/g, '-');
+  if (!v) return '';
+  const base = v.split('-')[0];
+  const map = {
+    ja: 'ja', jpn: 'ja', japanese: 'ja',
+    en: 'en', eng: 'en', english: 'en',
+    es: 'es', spa: 'es', spanish: 'es',
+    fr: 'fr', fra: 'fr', fre: 'fr', french: 'fr',
+    de: 'de', deu: 'de', ger: 'de', german: 'de',
+    it: 'it', ita: 'it', italian: 'it',
+    pt: 'pt', por: 'pt', portuguese: 'pt',
+    ko: 'ko', kor: 'ko', korean: 'ko',
+    zh: 'zh', zho: 'zh', chi: 'zh', chinese: 'zh'
+  };
+  return map[v] || map[base] || (base.length === 2 ? base : '');
+}
+function mergeMediaMeta(...items) {
+  const audioLanguages = unique(items.flatMap(item => item && item.audioLanguages || []));
+  const subtitleLanguages = unique(items.flatMap(item => item && item.subtitleLanguages || []));
+  const subtitleTracks = [];
+  for (const item of items) {
+    for (const track of item && item.subtitleTracks || []) {
+      if (!track || !track.url || subtitleTracks.some(x => x.url === track.url)) continue;
+      subtitleTracks.push(track);
+    }
+  }
+  return { audioLanguages, subtitleLanguages, subtitleTracks };
+}
+function audioVariant(meta) {
+  const audio = unique(meta && meta.audioLanguages || []);
+  const subs = unique(meta && meta.subtitleLanguages || []);
+  const hasEnglish = audio.includes('en');
+  if (audio.length > 1) return 'dual';
+  if (hasEnglish && subs.length) return 'dub+sub';
+  if (hasEnglish) return 'dub';
+  if (subs.length) return 'sub';
+  return '';
+}
+function jwTrackMetadata(data, baseUrl) {
+  const subtitleLanguages = [];
+  const subtitleTracks = [];
+  const tracks = Array.isArray(data && data.tracks) ? data.tracks : [];
+  for (const track of tracks) {
+    const kind = clean(track && track.kind).toLowerCase();
+    if (!/caption|subtitle/.test(kind)) continue;
+    const url = abs(clean(track.file || track.src), baseUrl);
+    const language = normalizeLanguage(track.language || track.lang || track.label || track.name);
+    if (language) subtitleLanguages.push(language);
+    if (url) subtitleTracks.push({ url, language: language || 'und', title: clean(track.label || track.name) || language || 'Subtitles' });
+  }
+  return { audioLanguages: [], subtitleLanguages: unique(subtitleLanguages), subtitleTracks };
+}
+async function hlsMaster(source, referer, codec = 'h264') {
+  const emptyMeta = { audioLanguages: [], subtitleLanguages: [], subtitleTracks: [] };
   try {
     const res = await fetch(source, {
       headers: { 'user-agent': UA, referer, accept: 'application/vnd.apple.mpegurl,application/x-mpegURL,*/*' }
     });
     const text = await res.text();
-    if (!res.ok) return [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }];
+    if (!res.ok) return { streams: [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }], ...emptyMeta };
     const lines = text.split(/\r?\n/);
     const streams = [];
+    const audioLanguages = [];
+    const subtitleLanguages = [];
+    const subtitleTracks = [];
+
+    for (const line of lines) {
+      if (!line.startsWith('#EXT-X-MEDIA:')) continue;
+      const attrs = parseAttributeList(line.slice('#EXT-X-MEDIA:'.length));
+      const type = clean(attrs.TYPE).toUpperCase();
+      const language = normalizeLanguage(attrs.LANGUAGE || attrs.NAME);
+      if (type === 'AUDIO') {
+        if (language) audioLanguages.push(language);
+      } else if (type === 'SUBTITLES' || type === 'CLOSED-CAPTIONS') {
+        if (language) subtitleLanguages.push(language);
+        const url = attrs.URI ? abs(attrs.URI, source) : '';
+        if (url) subtitleTracks.push({ url, language: language || 'und', title: clean(attrs.NAME) || language || 'Subtitles' });
+      }
+    }
+
     for (let i = 0; i < lines.length; i++) {
       if (!lines[i].startsWith('#EXT-X-STREAM-INF:')) continue;
       const resolution = lines[i].match(/RESOLUTION=\d+x(\d+)/i);
@@ -218,9 +357,15 @@ async function hlsVariants(source, referer, codec = 'h264') {
       const url = abs(lines[next].trim(), source);
       if (url) streams.push({ url, height: resolution ? Number(resolution[1]) : 0, label: resolution ? `${resolution[1]}p` : 'Auto', codec, type: 'm3u8' });
     }
-    return streams.length ? streams : [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }];
+
+    return {
+      streams: streams.length ? streams : [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }],
+      audioLanguages: unique(audioLanguages),
+      subtitleLanguages: unique(subtitleLanguages),
+      subtitleTracks
+    };
   } catch (_) {
-    return [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }];
+    return { streams: [{ url: source, height: 0, label: 'Auto', codec, type: 'm3u8' }], ...emptyMeta };
   }
 }
 
@@ -264,16 +409,34 @@ async function extractBackend(backend, pageUrl, pageHtml) {
   const sourceUrl = abs(source, apiUrl);
   if (!sourceUrl) throw new Error(`${backend.host} HLS source URL invalid`);
 
-  let streams = await hlsVariants(sourceUrl, embedUrl, 'h264');
+  const pageMeta = pageMetadata(pageHtml);
+  const primary = await hlsMaster(sourceUrl, embedUrl, 'h264');
+  let streams = primary.streams;
+  let mediaMeta = mergeMediaMeta(primary, jwTrackMetadata(payload.data, apiUrl), pageMeta);
+
   if (payload.data.isOctopus === true) {
     const vp9Url = abs('./playlist_vp9.m3u8', sourceUrl);
-    if (vp9Url) streams = streams.concat(await hlsVariants(vp9Url, embedUrl, 'vp9'));
+    if (vp9Url) {
+      const vp9 = await hlsMaster(vp9Url, embedUrl, 'vp9');
+      streams = streams.concat(vp9.streams);
+      mediaMeta = mergeMediaMeta(mediaMeta, vp9);
+    }
   }
+
   streams = dedupeStreams(streams);
   if (!streams.length) throw new Error(`${backend.host} returned no playable streams`);
 
+  const metadata = {
+    censorStatus: pageMeta.censorStatus,
+    audioLanguages: mediaMeta.audioLanguages,
+    subtitleLanguages: mediaMeta.subtitleLanguages,
+    subtitleTracks: mediaMeta.subtitleTracks,
+    audioVariant: audioVariant(mediaMeta)
+  };
+
   return {
     streams,
+    metadata,
     headers: { Referer: backend.base + '/', Origin: backend.base },
     debug: { isOctopus: payload.data.isOctopus === true, backendHost: backend.host }
   };
@@ -307,6 +470,7 @@ async function resolve(body) {
           candidate: discovered.match || null
         },
         streams: result.streams,
+        metadata: result.metadata,
         headers: result.headers,
         debug: result.debug
       });
@@ -328,7 +492,7 @@ export default {
       return json({
         status: 'ok',
         name: 'Scarlet Peach HentaiHaven Resolver',
-        version: '0.3.0',
+        version: VERSION,
         backends: BACKENDS.map(item => item.host),
         disabledBackends: ['hentaihaven.xxx']
       });
@@ -338,6 +502,6 @@ export default {
       try { body = await request.json(); } catch (_) { return json({ error: 'invalid json' }, 400); }
       return resolve(body);
     }
-    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: '0.3.0', endpoints: ['/health', '/resolve'] });
+    return json({ name: 'Scarlet Peach HentaiHaven Resolver', version: VERSION, endpoints: ['/health', '/resolve'] });
   }
 };
