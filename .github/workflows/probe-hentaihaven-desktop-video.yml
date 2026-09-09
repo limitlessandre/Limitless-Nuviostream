@@ -1,0 +1,58 @@
+name: Probe HentaiHaven Desktop Video
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-providers
+    paths:
+      - '.github/workflows/probe-hentaihaven-desktop-video.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe generated and raw HLS video
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sS --max-time 90 -X POST \
+            https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
+            -H 'content-type: application/json' \
+            --data '{"title":"Deco x Deco The Animation","episode":1}' > /tmp/deco.json
+          cat /tmp/deco.json
+          echo
+
+          node - <<'NODE' > /tmp/urls.env
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/deco.json','utf8'));
+          for (const h of [1080,720]) {
+            const s=d.streams.find(x=>Number(x.height)===h);
+            if (!s) continue;
+            console.log(`PLAY_${h}=${JSON.stringify(s.url)}`);
+            console.log(`RAW_${h}=${JSON.stringify(s.sourceUrl||'')}`);
+            console.log(`MASTER_${h}=${JSON.stringify(s.masterUrl||'')}`);
+          }
+          NODE
+          cat /tmp/urls.env
+          source /tmp/urls.env
+
+          for h in 1080 720; do
+            eval "play=\${PLAY_${h}:-}"
+            eval "raw=\${RAW_${h}:-}"
+            eval "master=\${MASTER_${h}:-}"
+            [ -n "$play" ] || continue
+            echo "===== ${h} ORIGINAL MASTER ====="
+            curl --fail --silent --show-error --max-time 30 "$master" | tee "/tmp/original-${h}.m3u8"
+            echo "===== ${h} GENERATED MASTER ====="
+            curl --fail --silent --show-error --max-time 30 "$play" | tee "/tmp/generated-${h}.m3u8"
+            echo "===== ${h} RAW PLAYLIST ====="
+            curl --fail --silent --show-error --max-time 30 "$raw" | head -80
+            echo "===== ${h} FFPROBE GENERATED ====="
+            ffprobe -v error -rw_timeout 20000000 -show_entries stream=index,codec_name,codec_type,width,height,pix_fmt -of json "$play" || true
+            echo "===== ${h} FFPROBE RAW ====="
+            ffprobe -v error -rw_timeout 20000000 -show_entries stream=index,codec_name,codec_type,width,height,pix_fmt -of json "$raw" || true
+          done
