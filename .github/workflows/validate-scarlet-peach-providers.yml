@@ -45,3 +45,21 @@ jobs:
           }
           console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
           NODE
+
+      - name: Verify TMDB numeric ID clears metadata stage
+        run: |
+          node - <<'NODE'
+          const checks = [
+            ['Hanime', require('./providers/scarlet-peach-hanime-v9.js')],
+            ['HentaiHaven', require('./providers/scarlet-peach-hentaihaven-v3.js')]
+          ];
+          (async () => {
+            for (const [name, provider] of checks) {
+              const rows = await provider.getStreams('80219', 'tv', 1, 1);
+              if (!Array.isArray(rows) || !rows.length) throw new Error(`${name} returned no rows`);
+              const first = String(rows[0].name || rows[0].title || '');
+              console.log(`${name}: ${first}`);
+              if (/DIAG ID/i.test(first)) throw new Error(`${name} still fails TMDB identity resolution`);
+            }
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
