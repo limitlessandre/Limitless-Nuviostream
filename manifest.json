@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.4.0",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime and HentaiHaven now share a Scarlet Peach external identity resolver so MAL/AniList/SP metadata can coexist with TMDB numeric and IMDb IDs from catalogs such as AIOMetadata. HentaiHaven uses hentaihaven.com first and hentaihaven.vip as its working mirror fallback.",
+  "version": "0.5.0",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime and HentaiHaven share the Scarlet Peach schema v2 catalog and external identity bridge. HentaiHaven uses hentaihaven.com with hentaihaven.vip fallback, supports Octopus VP9 1080p, and derives provider-specific censorship and audio/subtitle metadata from the live site/player.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
@@ -21,11 +21,11 @@
     {
       "id": "scarlet-peach-hentaihaven",
       "name": "HentaiHaven",
-      "description": "HentaiHaven provider with shared TMDB/IMDb identity resolution. Tries hentaihaven.com using the current x-secure-token/HLS flow, including Octopus VP9 playlists, then falls back to hentaihaven.vip with the same secure player flow and Romanization-aware slug matching. Backend-specific playback headers and HLS/MP4 are preserved. Visible diagnostics remain enabled while matching coverage is being verified.",
-      "version": "0.1.2",
+      "description": "Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching, secure player token decoding, HLS extraction, Octopus VP9 1080p, one stream row per quality, provider-specific censorship detection, and live audio/subtitle metadata. Shared Scarlet Peach identity resolution keeps MAL/AniList/SP entries compatible with foreign TMDB/IMDb catalog IDs.",
+      "version": "0.2.0",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v3.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v4.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
