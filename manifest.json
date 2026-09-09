@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.59",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now includes Android-safe base64url decoding for encrypted MegaPlay source payloads plus visible AES-CBC decrypt diagnostics; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
+  "version": "2.1.60",
+  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now uses a standalone resolver matching the in-app diagnostic path that successfully decrypts MegaPlay enc payloads and accepts current rotating CDN hosts; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -66,11 +66,11 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV live resolver with shared MAL/AniList identity, current MegaPlay embed/source resolution, Android-safe base64url decoding for encrypted enc payloads, rotating CDN support, and Anikoto catalog fallback.",
-      "version": "2.0.3",
+      "description": "Standalone AnikotoTV resolver using shared MAL/AniList identity, MegaPlay embed/source extraction, AES-256-CBC enc decryption proven in the Nuvio runtime, rotating CDN acceptance including current imgnex delivery, and Anikoto catalog fallback.",
+      "version": "2.0.4",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v4.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v5.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
