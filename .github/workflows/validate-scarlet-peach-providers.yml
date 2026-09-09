@@ -47,7 +47,7 @@ jobs:
           console.log(`Validated ${manifest.scrapers.length} scraper(s), manifest ${manifest.version}`);
           NODE
 
-      - name: Verify TMDB numeric ID reaches provider matching
+      - name: Verify TMDB numeric ID reaches stable provider matching
         run: |
           node - <<'NODE'
           const checks = [
@@ -80,5 +80,26 @@ jobs:
             if (!names.every(name => /Censored/i.test(name))) throw new Error('HentaiHaven live censorship metadata was not reflected in labels');
             const qualities = rows.map(row => String(row.quality || ''));
             if (new Set(qualities).size !== qualities.length) throw new Error(`Duplicate HentaiHaven quality rows: ${qualities.join(',')}`);
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Verify HStream Scarlet Peach identity and native DASH qualities
+        run: |
+          node - <<'NODE'
+          const provider = require('./providers/scarlet-peach-hstream-v1.js');
+          (async () => {
+            const rows = await provider.getStreams('sp:hanime:deco-x-deco-the-animation', 'tv', 1, 1);
+            if (!Array.isArray(rows) || !rows.length) throw new Error('HStream Deco x Deco returned no rows');
+            const names = rows.map(row => String(row.name || ''));
+            console.log(names.join('\n'));
+            if (names.some(name => /DIAG/i.test(name))) throw new Error('HStream Deco x Deco returned a diagnostic');
+            const qualities = rows.map(row => String(row.quality || ''));
+            for (const expected of ['2160p', '1080p', '720p']) {
+              if (!qualities.includes(expected)) throw new Error(`HStream missing ${expected}: ${qualities.join(',')}`);
+            }
+            if (!names.some(name => /4K\s*2160p/i.test(name))) throw new Error('HStream 2160p row is missing Nexus 4K label');
+            if (!names.every(name => /\[SUB\]/i.test(name))) throw new Error('HStream English subtitle evidence was not reflected as [SUB]');
+            if (!names.every(name => /Censored/i.test(name))) throw new Error('HStream provider censorship was not reflected in labels');
+            if (!rows.every(row => String(row.type || '').toLowerCase() === 'mpd')) throw new Error('HStream rows are not native MPD/DASH');
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
