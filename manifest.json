@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.5.0",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime and HentaiHaven share the Scarlet Peach schema v2 catalog and external identity bridge. HentaiHaven uses hentaihaven.com with hentaihaven.vip fallback, supports Octopus VP9 1080p, and derives provider-specific censorship and audio/subtitle metadata from the live site/player.",
+  "version": "0.6.0",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime, HentaiHaven, and experimental HStream share the Scarlet Peach schema v2 metadata core and external identity bridge. HentaiHaven provides HLS/VP9 playback up to 1080p; HStream provides native DASH playback with proven 720p, 1080p, and 2160p/4K manifests where available.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
@@ -31,6 +31,21 @@
       "limited": true,
       "formats": ["m3u8", "mp4"],
       "logo": "https://hentaihaven.com/favicon.ico",
+      "contentLanguage": ["ja", "en"]
+    },
+    {
+      "id": "scarlet-peach-hstream",
+      "name": "HStream",
+      "description": "Experimental HStream provider using Scarlet Peach MAL/AniList/SP metadata plus the shared TMDB/IMDb ingress bridge. Resolves HStream episode pages through direct slug and search fallback, performs the XSRF-protected player API handshake, follows multiple CDN domains, and returns native DASH/MPD streams. Live tests currently prove 720p, 1080p, and 2160p/4K on supported titles, with provider-specific censorship, studio, frame-rate, and English subtitle metadata preserved by the resolver.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus: Scarlet Peach; protocol reference from cynthia2006/hanime-plugin HStream extractor",
+      "supportedTypes": ["anime", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hstream-v1.js",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mpd"],
+      "logo": "https://hstream.moe/favicon.ico",
       "contentLanguage": ["ja", "en"]
     }
   ]
