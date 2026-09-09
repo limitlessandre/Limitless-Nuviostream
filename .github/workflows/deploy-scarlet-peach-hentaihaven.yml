@@ -41,11 +41,11 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5 6 7 8; do
             body="$(curl --fail --silent --show-error --max-time 15 https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/health || true)"
-            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.1.1"'; then
+            if printf '%s' "$body" | grep -q 'Scarlet Peach HentaiHaven Resolver' && printf '%s' "$body" | grep -q '"version":"0.2.0"'; then
               printf '%s\n' "$body"
               break
             fi
-            echo "Waiting for v0.1.1 propagation (attempt ${attempt})"
+            echo "Waiting for v0.2.0 propagation (attempt ${attempt})"
             if [ "$attempt" = 8 ]; then
               echo 'Worker health/version check failed' >&2
               printf '%s\n' "$body" >&2
@@ -54,21 +54,33 @@ jobs:
             sleep 3
           done
 
-      - name: Probe known HentaiHaven episode
+      - name: Probe HentaiHaven backends
         run: |
           set -euo pipefail
-          status="$(curl --silent --show-error --max-time 40 \
-            -o /tmp/hh.json -w '%{http_code}' \
-            -X POST https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
-            -H 'content-type: application/json' \
-            --data '{"title":"Soshite Watashi wa Sensei ni","episode":1}' || true)"
-          echo "status=${status}"
-          cat /tmp/hh.json 2>/dev/null || true
-          echo
-          test "$status" = "200"
-          node - <<'NODE'
+          probe() {
+            name="$1"
+            payload="$2"
+            expected_backend="$3"
+            body_file="/tmp/${name}.json"
+            status="$(curl --silent --show-error --max-time 45 \
+              -o "$body_file" -w '%{http_code}' \
+              -X POST https://scarlet-peach-hentaihaven.limitlessandre.workers.dev/resolve \
+              -H 'content-type: application/json' \
+              --data "$payload" || true)"
+            echo "${name} status=${status}"
+            cat "$body_file" 2>/dev/null || true
+            echo
+            test "$status" = "200"
+            NAME="$name" EXPECTED_BACKEND="$expected_backend" BODY_FILE="$body_file" node - <<'NODE'
           const fs = require('node:fs');
-          const data = JSON.parse(fs.readFileSync('/tmp/hh.json', 'utf8'));
-          if (!Array.isArray(data.streams) || !data.streams.length) throw new Error('HentaiHaven probe returned no streams');
-          console.log(`HentaiHaven streams=${data.streams.length}`);
+          const data = JSON.parse(fs.readFileSync(process.env.BODY_FILE, 'utf8'));
+          if (!Array.isArray(data.streams) || !data.streams.length) throw new Error(`${process.env.NAME} returned no streams`);
+          if (process.env.EXPECTED_BACKEND && data.backend !== process.env.EXPECTED_BACKEND) {
+            throw new Error(`${process.env.NAME} expected backend=${process.env.EXPECTED_BACKEND}, got ${data.backend}`);
+          }
+          console.log(`${process.env.NAME} backend=${data.backend} streams=${data.streams.length}`);
           NODE
+          }
+
+          probe com-known '{"title":"Soshite Watashi wa Sensei ni","episode":1}' com
+          probe xxx-jimihen '{"title":"Jimihen!!: Jimiko wo Kaechau Jun Isei Kouyuu!!","aliases":["Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu"],"episode":1}' xxx
