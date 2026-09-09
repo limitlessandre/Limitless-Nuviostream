@@ -108,7 +108,6 @@ function audioTag(metadata) {
   const audio = Array.isArray(metadata && metadata.audioLanguages) ? metadata.audioLanguages : [];
   if (audio.map(x => clean(x).toLowerCase()).includes("en")) return subtitles.length ? "[DUB+SUB]" : "[DUB]";
   if (subtitles.length) return "[SUB]";
-  // HentaiHaven presentation fallback. Kept out of the canonical Scarlet Peach metadata layer.
   return "[SUB]";
 }
 function streamLanguage(metadata) {
@@ -152,6 +151,29 @@ function playbackHeaders(payload) {
   if (backend === "vip") return { Referer: "https://hentaihaven.vip/", Origin: "https://hentaihaven.vip" };
   return { Referer: "https://hentaihaven.com/", Origin: "https://hentaihaven.com" };
 }
+function subtitleTracks(metadata) {
+  const raw = Array.isArray(metadata && metadata.subtitleTracks)
+    ? metadata.subtitleTracks
+    : (Array.isArray(metadata && metadata.subtitles) ? metadata.subtitles : []);
+  const seen = new Set();
+  const rows = [];
+  for (let i = 0; i < raw.length; i++) {
+    const track = raw[i] || {};
+    const url = clean(track.url || track.file || track.src);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    const language = clean(track.language || track.lang) || "und";
+    const label = clean(track.label || track.title || track.name) || (language === "en" ? "English" : language.toUpperCase());
+    rows.push({
+      id: `hentaihaven-${language}-${i}`,
+      url,
+      language,
+      lang: language,
+      name: `${PROVIDER} • ${label}`
+    });
+  }
+  return rows;
+}
 
 async function getStreams(inputId, mediaType, season, episode) {
   try {
@@ -185,6 +207,7 @@ async function getStreams(inputId, mediaType, season, episode) {
     const variant = audioTag(providerMeta);
     const language = streamLanguage(providerMeta);
     const headers = playbackHeaders(payload);
+    const subtitles = subtitleTracks(providerMeta);
 
     return streams.map(stream => {
       const details = [qualityTier(stream), variant, censorship].filter(Boolean).join(" • ");
@@ -197,7 +220,7 @@ async function getStreams(inputId, mediaType, season, episode) {
         provider: PROVIDER,
         type: typeFromUrl(stream.url, stream.type),
         headers,
-        subtitles: []
+        subtitles
       };
     });
   } catch (error) {
