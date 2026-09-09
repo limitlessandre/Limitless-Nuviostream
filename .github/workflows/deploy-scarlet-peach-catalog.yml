@@ -50,19 +50,48 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Verify catalog health
+      - name: Verify catalog health and subtitle resource
         run: |
           set -euo pipefail
           for attempt in $(seq 1 12); do
             BODY="$(curl --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/health || true)"
             echo "health attempt ${attempt}: ${BODY}"
             if echo "$BODY" | grep -q '"ok":true' && \
+               echo "$BODY" | grep -q '"version":"0.4.1"' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
+               echo "$BODY" | grep -q '"subtitleResource":true' && \
                echo "$BODY" | grep -q '"hanime"' && \
                echo "$BODY" | grep -q '"hentaihaven"'; then
-              exit 0
+              break
+            fi
+            if [ "$attempt" = 12 ]; then
+              echo "Scarlet Peach merged catalog health verification failed after propagation window" >&2
+              exit 1
             fi
             sleep 3
           done
-          echo "Scarlet Peach merged catalog health verification failed after propagation window" >&2
-          exit 1
+
+          MANIFEST="$(curl --fail --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json)"
+          echo "$MANIFEST"
+          echo "$MANIFEST" | grep -q '"subtitles"'
+
+      - name: Verify Nuvio Desktop subtitle endpoint
+        run: |
+          set -euo pipefail
+          URL='https://scarlet-peach-catalog.limitlessandre.workers.dev/subtitles/series/sp%3Ahanime%3Adeco-x-deco-the-animation%3A1.json'
+          curl --fail --silent --show-error --max-time 90 "$URL" > /tmp/subtitles.json
+          cat /tmp/subtitles.json
+          SUB_URL="$(node - <<'NODE'
+          const fs=require('node:fs');
+          const d=JSON.parse(fs.readFileSync('/tmp/subtitles.json','utf8'));
+          if (!Array.isArray(d.subtitles) || !d.subtitles.length) throw new Error('No Scarlet Peach subtitles returned');
+          const en=d.subtitles.find(s=>String(s.lang||s.language||'').toLowerCase()==='en');
+          if (!en || !en.url) throw new Error('English HentaiHaven subtitle missing');
+          if (!/scarlet-peach-catalog\.limitlessandre\.workers\.dev\/subtitle-proxy\.vtt/i.test(en.url)) throw new Error(`English subtitle is not proxied: ${en.url}`);
+          process.stdout.write(en.url);
+          NODE
+          )"
+          echo "English subtitle: $SUB_URL"
+          curl --fail --silent --show-error --max-time 30 "$SUB_URL" | head -40 > /tmp/subtitle.vtt
+          cat /tmp/subtitle.vtt
+          grep -q 'WEBVTT' /tmp/subtitle.vtt
