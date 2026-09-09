@@ -1,16 +1,16 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.3.1",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime remains the stable schema-v2 provider. HentaiHaven now uses a dual-backend resolver: the working hentaihaven.com secure-token/HLS path first, then hentaihaven.xxx search/watch/AJAX fallback for titles missing from the .com catalog.",
+  "version": "0.4.0",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime and HentaiHaven now share a Scarlet Peach external identity resolver so MAL/AniList/SP metadata can coexist with TMDB numeric and IMDb IDs from catalogs such as AIOMetadata. HentaiHaven uses hentaihaven.com first and hentaihaven.vip as its working mirror fallback.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
       "name": "Hanime",
-      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Optional account settings authenticate directly from Nuvio to Hanime and pass only the temporary session token to the resolver for premium qualities. Stream labels follow the Nexus quality/audio standard and include verified censorship metadata when available.",
-      "version": "0.2.7",
+      "description": "Hanime provider for Scarlet Peach MAL/AniList/SP metadata, TMDB numeric IDs, IMDb IDs, and compatible legacy HentaiStream title slugs. Exact schema v2 Hanime episode mappings bypass catalog search and go directly to the signed AES-GCM handshake. Optional account settings authenticate directly from Nuvio to Hanime and pass only the temporary session token to the resolver for premium qualities. Stream labels follow the Nexus quality/audio standard and include verified censorship metadata when available.",
+      "version": "0.2.8",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from Yuzono AniYomi Hanime and anime-src/hanime-stremio",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v8.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hanime-v9.js",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
@@ -21,16 +21,16 @@
     {
       "id": "scarlet-peach-hentaihaven",
       "name": "HentaiHaven",
-      "description": "Experimental dual-backend HentaiHaven provider. Tries hentaihaven.com using the current x-secure-token player/HLS flow, including Octopus VP9 playlists, then falls back to hentaihaven.xxx using its WordPress search/watch/AJAX player path. Backend-specific playback headers and HLS/MP4 are preserved. Visible diagnostics remain enabled while matching coverage is being verified.",
-      "version": "0.1.1",
+      "description": "HentaiHaven provider with shared TMDB/IMDb identity resolution. Tries hentaihaven.com using the current x-secure-token/HLS flow, including Octopus VP9 playlists, then falls back to hentaihaven.vip with the same secure player flow and Romanization-aware slug matching. Backend-specific playback headers and HLS/MP4 are preserved. Visible diagnostics remain enabled while matching coverage is being verified.",
+      "version": "0.1.2",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
       "supportedTypes": ["anime", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v2.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hentaihaven-v3.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
       "formats": ["m3u8", "mp4"],
-      "logo": "https://hentaihaven.xxx/favicon.ico",
+      "logo": "https://hentaihaven.com/favicon.ico",
       "contentLanguage": ["ja", "en"]
     }
   ]
