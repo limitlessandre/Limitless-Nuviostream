@@ -12,9 +12,9 @@ const jsonHeaders = {
 };
 const manifest = {
   id: 'org.limitlessnexus.scarletpeach.catalog',
-  version: '0.4.1',
+  version: '0.5.0',
   name: 'Limitless Nexus: Scarlet Peach',
-  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, Hanime + HentaiHaven catalog coverage, and HentaiHaven subtitle resources.',
+  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, Hanime + HentaiHaven + HStream catalog coverage, and HentaiHaven subtitle resources.',
   resources: ['catalog', 'meta', 'subtitles'],
   types: ['series'],
   catalogs: [
