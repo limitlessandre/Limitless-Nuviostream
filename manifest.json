@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.66",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab pending upstream or runtime changes; active Nexus remains focused on current provider work.",
+  "version": "2.1.67",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror from All-in-One-Nuvio and Vidlink from Eclipsia are pinned as isolated Nexus adapters for validation.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -62,6 +62,36 @@
       "formats": ["m3u8"],
       "logo": "https://tubitv.com/favicon.ico",
       "contentLanguage": ["en"]
+    },
+    {
+      "id": "limitless-netmirror",
+      "name": "NetMirror",
+      "description": "Pinned Nexus adapter for the NetMirror provider used by All-in-One-Nuvio, covering Netflix, Prime Video, Disney/Hotstar-style sources with upstream settings preserved.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus adapter; upstream NetMirror credit: Dustincos / All-in-One-Nuvio",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-allinone-nexus-v1.js?rev=010",
+      "enabled": true,
+      "hasSettings": true,
+      "limited": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "https://i.postimg.cc/sXFMmJyg/netmirror.png",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "limitless-vidlink",
+      "name": "Vidlink",
+      "description": "Pinned Nexus adapter for Eclipsia's Vidlink provider (nyxora.js), preserving its current Vidlink API extraction and playback headers with normalized visible labels.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus adapter; upstream: Eclipsia",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-eclipsia-nexus-v1.js?rev=010",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
+      "contentLanguage": ["en", "hi", "bn"]
     },
     {
       "id": "limitless-kisskh-test",
