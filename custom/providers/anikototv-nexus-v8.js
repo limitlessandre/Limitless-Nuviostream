@@ -1,10 +1,9 @@
 "use strict";
 
-// AnikotoTV Nexus v2.0.7 relay-v2 playback test.
-// Discovery/extraction remains v2.0.5. The final handoff uses the local relay's
-// /play endpoint so Nuvio Desktop can receive subtitles as an HLS media group.
+// AnikotoTV Nexus v2.0.8. Independent mirrors and SUB/DUB; relay v4 sessions.
+// Captions remain external tracks, without HLS subtitle injection.
 
-const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v6.js";
+const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v6.js?rev=208";
 const RELAY = "http://127.0.0.1:8787";
 let cached = null;
 
@@ -17,16 +16,12 @@ function cleanSubtitle(row) {
   return { ...row, url, language, name };
 }
 
-function relayStreamUrl(mediaUrl, subtitles) {
+function relayStreamUrl(mediaUrl, source, headers) {
   const media = String(mediaUrl || "").trim();
   if (!/^https:\/\//i.test(media)) return media;
   let url = RELAY + "/play?url=" + encodeURIComponent(media);
-  const preferred = (subtitles || []).find((sub) => /^(?:en|eng|english)$/i.test(sub.language || "")) || (subtitles || [])[0];
-  if (preferred && preferred.url) {
-    url += "&sub=" + encodeURIComponent(preferred.url);
-    url += "&lang=" + encodeURIComponent(preferred.language || "eng");
-    url += "&name=" + encodeURIComponent(preferred.name || "English");
-  }
+  if (source && source.embed) url += "&embed=" + encodeURIComponent(source.embed) + "&mode=" + encodeURIComponent(source.mode || "sub");
+  if (headers && (headers.Referer || headers.referer)) url += "&referer=" + encodeURIComponent(headers.Referer || headers.referer);
   return url;
 }
 
@@ -35,7 +30,7 @@ function relaySubtitle(row) {
   if (!sub) return null;
   return {
     ...sub,
-    url: RELAY + "/stream?url=" + encodeURIComponent(sub.url),
+    url: RELAY + "/subtitle?url=" + encodeURIComponent(sub.url),
     headers: {}
   };
 }
@@ -44,13 +39,12 @@ function relayRow(row) {
   if (!row || typeof row !== "object" || !row.url) return row;
   const rawSubs = Array.isArray(row.subtitles) ? row.subtitles.map(cleanSubtitle).filter(Boolean) : [];
   const relayedSubs = rawSubs.map(relaySubtitle).filter(Boolean);
-  const count = rawSubs.length;
   const serverName = String(row.name || "AnikotoTV");
   return {
     ...row,
-    name: serverName + " • Relay2" + (count ? " • SUBS:" + count : ""),
-    url: relayStreamUrl(row.url, rawSubs),
-    type: "m3u8",
+    name: serverName,
+    url: relayStreamUrl(row.url, row.anikotoSource, row.headers),
+    type: row.type || "m3u8",
     headers: {},
     subtitles: relayedSubs
   };

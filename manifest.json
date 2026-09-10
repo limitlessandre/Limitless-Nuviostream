@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.63",
-  "description": "Nexus build/test repository for Limitless providers. Proven providers remain isolated from active experiments. AnikotoTV now uses relay v2 with Arc-matched CDN normalization, narrower disguised-segment handling for better throughput, and HLS subtitle injection for Nuvio Desktop; tokusatsu probing remains focused on KissKH Test and AsiaFlix Test.",
+  "version": "2.1.64",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto adds complete mirror discovery and relay v4 with bounded caching, prefetch and URL refresh. Separate relay startup and Nuvio Desktop subtitle integration are still required; device playback testing is pending.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -66,11 +66,11 @@
     {
       "id": "anikototv",
       "name": "AnikotoTV",
-      "description": "AnikotoTV relay-v2 playback test. Keeps the working AniKoto identity/server extraction path, streams ordinary HLS responses through immediately, unwraps only known disguised MPEG-TS delivery paths, and injects provider VTT captions into HLS for Nuvio Desktop.",
-      "version": "2.0.7",
+      "description": "AniKoto relay-v4 test: dynamic unique mirrors, independent SUB/DUB, getSourcesNew fallback, bounded segment caching/prefetch and expiring URL refresh. Requires the separate local relay. Captions remain external tracks; the Desktop subtitle handoff needs an app fix.",
+      "version": "2.0.8",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v8.js",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v8.js?rev=208",
       "enabled": true,
       "hasSettings": false,
       "limited": true,

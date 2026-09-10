@@ -1,209 +1,48 @@
 "use strict";
-
-// AnikotoTV Nexus v2.0.5 playback wrapper.
-// Keeps the proven v2.0.4 identity + MegaPlay AES path as fallback, but prefers
-// AniKoto's current server-list route (VidPlay/VidTube first) for playable desktop HLS.
-
-const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v5.js";
-let cached = null;
-
-function patchSource(source) {
-  let src = String(source || "");
-  const start = src.indexOf("async function resolveMode(identity, episode, mode) {");
-  const end = src.indexOf("\n\nfunction row(identity, season, requestedEpisode, mode, resolved) {", start);
-  if (start < 0 || end < 0) return null;
-
-  const replacement = `function attrValue(attrs, name) {
-  const re = new RegExp("\\\\b" + name + "=[\\\"']([^\\\"']*)[\\\"']", "i");
-  const m = String(attrs || "").match(re);
-  return m ? m[1] : "";
-}
-
-async function anikotoAjax(path, referer) {
-  return await requestJson(SITE + path, {
-    credentials:"include",
-    headers:{
-      "Accept":"application/json, text/javascript, */*; q=0.01",
-      "X-Requested-With":"XMLHttpRequest",
-      "Referer":referer || SITE + "/"
-    }
-  });
-}
-
-async function episodeServerIds(identity, episode) {
-  const names = aliases(identity);
-  for (const term of names.slice(0, 3)) {
-    const html = await requestText(SITE + "/filter?keyword=" + encodeURIComponent(term), {
-      credentials:"include",
-      headers:{ "Accept":"text/html,application/xhtml+xml", "Referer":SITE + "/" }
+// v5 identity/title/episode/AES logic is retained; replace only source extraction.
+const ROOT = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/";
+let cached;
+async function boundedText(url) {
+  let timer;
+  try {
+    const work = Promise.resolve().then(async () => {
+      const r = await fetch(url, {skipSizeCheck: true}); return r && r.ok ? String(await r.text()) : "";
     });
-    const rows = parseSearch(html).filter(function(row) {
-      return names.some(function(name) { return normalize(name) === normalize(row.title); });
-    }).slice(0, 4);
-
-    for (const row of rows) {
-      // data-tip currently matches the internal AniKoto series id used by episode/list.
-      const payload = await anikotoAjax("/ajax/episode/list/" + encodeURIComponent(row.id) + "?vrf=", SITE + "/");
-      const result = payload && typeof payload.result === "string" ? payload.result : "";
-      if (!result) continue;
-
-      const anchorRe = /<a\\b([^>]*\\bdata-num=[\"']?\\d+[\"']?[^>]*)>/gi;
-      let m;
-      while ((m = anchorRe.exec(result))) {
-        const attrs = m[1];
-        if (Number(attrValue(attrs, "data-num")) !== Number(episode)) continue;
-        const ids = attrValue(attrs, "data-ids");
-        if (ids) return ids;
-      }
-    }
-  }
-  return "";
+    return typeof setTimeout === "function" ? await Promise.race([work, new Promise(resolve => {timer = setTimeout(() => resolve(""), 10000);})]) : await work;
+  } finally { if (timer !== undefined && typeof clearTimeout === "function") clearTimeout(timer); }
 }
-
-function parseAniKotoServers(html, wantedMode) {
-  const out = [];
-  const text = String(html || "");
-  const typeRe = /data-type=[\"'](\\w+)[\"']([\\s\\S]*?)(?=data-type=[\"']|$)/gi;
-  let tm;
-  while ((tm = typeRe.exec(text))) {
-    const rawType = String(tm[1] || "").toLowerCase();
-    const type = rawType === "hsub" ? "sub" : rawType;
-    if (type !== wantedMode) continue;
-    const block = tm[2];
-    const liRe = /<li\\b([^>]*\\bdata-link-id=[\"'][^\"']+[\"'][^>]*)>([\\s\\S]*?)<\\/li>/gi;
-    let lm;
-    while ((lm = liRe.exec(block))) {
-      const linkId = attrValue(lm[1], "data-link-id");
-      if (!linkId) continue;
-      const name = cleanText(lm[2]) || type.toUpperCase();
-      out.push({ linkId:linkId, name:name, type:type });
-    }
-  }
-
-  function score(server) {
-    const name = String(server && server.name || "").toLowerCase();
-    if (/^vidplay|vidtube/.test(name)) return 0;
-    if (/^vidcloud/.test(name)) return 1;
-    if (/^vidstream/.test(name)) return 2;
-    if (/^hd|megaplay/.test(name)) return 3;
-    return 4;
-  }
-  out.sort(function(a,b) { return score(a) - score(b); });
-  return out;
-}
-
-async function resolveExternalPlayer(embedValue, mode) {
-  const embed = validHttps(embedValue);
-  if (!embed) return null;
-  const html = await requestText(embed.href, {
-    credentials:"include",
-    headers:{
-      "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      "Referer":SITE + "/"
-    }
-  });
-  const sourceId = sourceIdFromHtml(html);
-  if (!sourceId) return null;
-
-  const sourceUrl = embed.origin + "/stream/getSources?id=" + encodeURIComponent(sourceId) + "&type=" + encodeURIComponent(mode);
-  const payload = await requestJson(sourceUrl, {
-    credentials:"include",
-    headers:{
-      "Accept":"application/json,text/plain,*/*",
-      "X-Requested-With":"XMLHttpRequest",
-      "Origin":embed.origin,
-      "Referer":embed.href
-    }
-  });
-  if (!payload) return null;
-
-  let file = plainSourceFile(payload);
-  if (!file && payload.enc) file = await decryptEnc(payload.enc);
-  const media = validHttps(file);
-  if (!media) return null;
-
-  return {
-    url:media.href,
-    subtitles:subtitleRows(payload),
-    headers:{ "Referer":embed.origin + "/", "Origin":embed.origin, "User-Agent":UA }
-  };
-}
-
-async function resolveAniKotoServerList(identity, episode, mode) {
+function patchSource(source, extractor) {
+  source = source.replace(/\r\n/g, "\n");
+  source = source.replace("async function requestText(url, options) {", "async function rawRequestText(url, options) {");
+  source += `
+async function requestText(url, options) {
+  if (typeof setTimeout !== "function" || typeof clearTimeout !== "function") return rawRequestText(url, options);
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  let timer;
   try {
-    // Prime same-origin cookies/session before the AJAX chain.
-    await requestText(SITE + "/home", { credentials:"include", headers:{ "Referer":SITE + "/" } });
-    const ids = await episodeServerIds(identity, episode);
-    if (!ids) return null;
-
-    const listPayload = await anikotoAjax("/ajax/server/list?servers=" + encodeURIComponent(ids), SITE + "/");
-    const listHtml = listPayload && typeof listPayload.result === "string" ? listPayload.result : "";
-    const servers = parseAniKotoServers(listHtml, mode);
-    if (!servers.length) return null;
-
-    for (const server of servers.slice(0, 6)) {
-      const linkPayload = await anikotoAjax("/ajax/server?get=" + encodeURIComponent(server.linkId), SITE + "/");
-      const result = linkPayload && linkPayload.result;
-      const embed = result && typeof result === "object" ? result.url : (typeof result === "string" ? result : "");
-      if (!embed) continue;
-      const resolved = await resolveExternalPlayer(embed, mode);
-      if (resolved) return { ...resolved, server:server.name || "AniKoto" };
-    }
-  } catch (_) {}
-  return null;
+    const deadline = new Promise(resolve => { timer = setTimeout(() => { resolve(""); if (controller) controller.abort(); }, 8000); });
+    return await Promise.race([deadline, Promise.resolve().then(() => rawRequestText(url, {...options, ...(controller ? {signal:controller.signal} : {})}))]);
+  } finally {clearTimeout(timer);}
 }
-
-async function resolveMode(identity, episode, mode) {
-  // Current AniKoto clients prefer VidPlay because its akirax/norami CDN is
-  // substantially more reliable on desktop than MegaPlay's imgnex/snapcdn route.
-  const serverList = await resolveAniKotoServerList(identity, episode, mode);
-  if (serverList) return serverList;
-
-  // Proven direct MegaPlay path remains the rescue lane for titles with no VidPlay copy.
-  for (const embed of directCandidates(identity, episode, mode)) {
-    const resolved = await resolveMegaPlay(embed);
-    if (resolved) return { ...resolved, server:"MegaPlay Fallback" };
-  }
-  const fallback = await catalogCandidates(identity, episode, mode);
-  for (const embed of fallback) {
-    const resolved = await resolveMegaPlay(embed);
-    if (resolved) return { ...resolved, server:"Catalog Fallback" };
-  }
-  return null;
-}`;
-
-  return src.slice(0, start) + replacement + src.slice(end);
+`;
+  const start = source.indexOf("async function resolveMode(identity, episode, mode) {");
+  const end = source.indexOf("\n\nfunction row(identity, season, requestedEpisode, mode, resolved) {", start);
+  if (start < 0 || end < 0 || !extractor.includes("function createAniKotoSources")) throw new Error("AniKoto base changed");
+  let result = source.slice(0, start) + extractor + '\nconst aniSources = createAniKotoSources({requestText, requestJson, aliases, parseSearch, normalize, directCandidates, catalogCandidates, decryptEnc, ua: UA});\nasync function resolveMode(identity, episode, mode) { return aniSources.resolveMode(identity, episode, mode); }\n' + source.slice(end);
+  result = result.replace('if (dub) out.push(row(identity, season, requestedEpisode, "dub", dub));', 'for (const item of dub || []) out.push(row(identity, season, requestedEpisode, "dub", item));')
+    .replace('if (sub) out.push(row(identity, season, requestedEpisode, "sub", sub));', 'for (const item of sub || []) out.push(row(identity, season, requestedEpisode, "sub", item));')
+    .replace('quality:"Auto",', 'quality:resolved.quality || "Auto",\n    anikotoSource:{embed:resolved.embed, mode},')
+    .replace('" • Auto • " + audio', '" • " + (resolved.quality || "Auto") + " • " + audio');
+  return result;
 }
-
 async function loadBase() {
-  if (cached && typeof cached.getStreams === "function") return cached;
-  try {
-    const response = await fetch(BASE_URL, { skipSizeCheck:true });
-    if (!response || !response.ok) return null;
-    const raw = String(await response.text() || "");
-    const source = patchSource(raw);
-    if (!source) return null;
-    const mod = { exports:{} };
-    const factory = new Function("module", "exports", "require", source + "\n;return module.exports;");
-    const exported = factory(mod, mod.exports, function(name) { throw new Error("Unsupported nested require: " + name); }) || mod.exports;
-    if (!exported || typeof exported.getStreams !== "function") return null;
-    cached = exported;
-    return cached;
-  } catch (_) {
-    return null;
-  }
+  if (!cached) cached = (async () => {
+    const [base, extractor] = await Promise.all([boundedText(ROOT + "anikototv-nexus-v5.js"), boundedText(ROOT + "anikoto-sources.js?rev=208")]);
+    const mod = {exports: {}};
+    return new Function("module", "exports", "require", patchSource(base, extractor) + "\nreturn module.exports;")(mod, mod.exports, () => {throw new Error("Unsupported require");});
+  })().catch(error => {cached = null; console.log("[AniKoto] " + error.message); return null;});
+  return cached;
 }
-
-async function getStreams(inputId, mediaType, season, episode) {
-  const base = await loadBase();
-  if (!base) return [];
-  try {
-    const rows = await base.getStreams(inputId, mediaType, season, episode);
-    return Array.isArray(rows) ? rows : [];
-  } catch (_) {
-    return [];
-  }
-}
-
-if (typeof module !== "undefined" && module.exports) module.exports = { getStreams };
+async function getStreams(...args) { const base = await loadBase(); return base ? base.getStreams(...args) : []; }
+if (typeof module !== "undefined" && module.exports) module.exports = {getStreams, patchSource};
 else globalThis.getStreams = getStreams;
