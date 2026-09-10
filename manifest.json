@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.75",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror and Vidlink remain active validation providers; KissKH has a hardened Eclipsia-backed control plus a new standalone Nexus implementation for independence/fallback validation. A temporary KissKH audit provider remains for comparison.",
+  "version": "2.1.76",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror and Vidlink remain active validation providers; KissKH is now a standalone Nexus-owned provider with strict title ownership, domain/media fallback handling, clean labels, and no-source diagnostics.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -94,48 +94,18 @@
       "contentLanguage": ["en", "hi", "bn"]
     },
     {
-      "id": "limitless-kisskh-eclipsia",
+      "id": "limitless-kisskh",
       "name": "KissKH",
-      "description": "Working Eclipsia v9.9.0 Fyron/KissKH extraction wrapped with strict TMDB title/alias ownership validation and verified KissKH drama-ID matching, plus Nexus quality/audio/subtitle labels.",
-      "version": "0.3.0",
-      "author": "Eclipsia; Nexus ownership and presentation adapter",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-eclipsia-nexus-v2.js?rev=030",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8", "mkv"],
-      "logo": "https://kisskh.is/favicon.ico",
-      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
-    },
-    {
-      "id": "limitless-kisskh-standalone",
-      "name": "KissKH Standalone",
-      "description": "Nexus-owned KissKH implementation with no Eclipsia/Codeberg runtime dependency, strict TMDB title ownership, sequential KissKH domain failover, Video/Video_tmp direct media fallbacks, EncDec video/subtitle tokens, encrypted subtitle proxy-decryption, and adaptive HLS expansion when a master playlist exists.",
-      "version": "0.1.0",
+      "description": "Standalone Nexus-owned KissKH provider with strict TMDB title/alias ownership, sequential KissKH domain failover, Video/Video_tmp direct media fallback handling, EncDec video/subtitle tokens, encrypted subtitle decryption, adaptive HLS expansion when available, canonical quality/subtitle labels, and a no-source diagnostic.",
+      "version": "1.0.0",
       "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-standalone-nexus-v1.js?rev=010",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-production-v1.js?rev=100",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8"],
-      "logo": "https://kisskh.is/favicon.ico",
-      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
-    },
-    {
-      "id": "limitless-kisskh-audit",
-      "name": "KissKH Audit",
-      "description": "Temporary diagnostic wrapper around Eclipsia Fyron/KissKH. Traces token and episode query shape, playback headers, subtitle flow, source fields, ThirdParty fallback behavior, and HLS variants for Den-O/Ex-Aid comparison.",
-      "version": "0.2.0",
-      "author": "Limitless Nexus diagnostic; upstream: Eclipsia Fyron",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-eclipsia-audit-v1.js?rev=020",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4"],
-      "logo": "https://kisskh.is/favicon.ico",
+      "logo": "https://kisskh.ovh/favicon.ico",
       "contentLanguage": ["en", "ko", "zh", "ja", "th"]
     }
   ]
