@@ -29,6 +29,9 @@ jobs:
       - name: Harvest HentaiHaven provider catalog
         run: npm run import:hentaihaven
 
+      - name: Harvest HStream provider catalog
+        run: npm run import:hstream
+
       - name: Build merged normalized snapshot
         run: npm run build:snapshot
 
@@ -50,7 +53,8 @@ jobs:
             if echo "$BODY" | grep -q '"ok":true' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
                echo "$BODY" | grep -q '"hanime"' && \
-               echo "$BODY" | grep -q '"hentaihaven"'; then
+               echo "$BODY" | grep -q '"hentaihaven"' && \
+               echo "$BODY" | grep -q '"hstream"'; then
               exit 0
             fi
             sleep 3
