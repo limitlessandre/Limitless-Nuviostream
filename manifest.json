@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.76",
+  "version": "2.1.77",
   "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror and Vidlink remain active validation providers; KissKH is now a standalone Nexus-owned provider with strict title ownership, domain/media fallback handling, clean labels, and no-source diagnostics.",
   "scrapers": [
     {
@@ -96,11 +96,11 @@
     {
       "id": "limitless-kisskh",
       "name": "KissKH",
-      "description": "Standalone Nexus-owned KissKH provider with strict TMDB title/alias ownership, sequential KissKH domain failover, Video/Video_tmp direct media fallback handling, EncDec video/subtitle tokens, encrypted subtitle decryption, adaptive HLS expansion when available, canonical quality/subtitle labels, and a no-source diagnostic.",
-      "version": "1.0.0",
+      "description": "Standalone Nexus-owned KissKH provider with strict TMDB title/alias ownership, sequential KissKH domain failover, Video/Video_tmp direct media fallback handling, EncDec video/subtitle tokens, encrypted subtitle decryption, adaptive HLS expansion when available, canonical quality/audio-subtitle labels including HSUB for Japanese hard-subbed rows, and a no-source diagnostic.",
+      "version": "1.0.1",
       "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-production-v1.js?rev=100",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-production-v1.js?rev=101",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
