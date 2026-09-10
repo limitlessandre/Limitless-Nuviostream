@@ -30,7 +30,7 @@ async function loadBase() {
 }
 
 function qualityNumber(row) {
-  const text = `${row && row.quality || ""} ${row && row.name || ""} ${row && row.title || ""}`;
+  const text = `${row && row.quality || ""} ${row && row.name || ""}`;
   if (/\b8k\b/i.test(text)) return 4320;
   if (/\b4k\b/i.test(text)) return 2160;
   const m = text.match(/\b(4320|2160|1440|1080|720|576|540|480|360|240)p?\b/i);
@@ -74,7 +74,7 @@ function isJapanese(row) {
 }
 
 function classification(row) {
-  const text = [row && row.name, row && row.title, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
+  const text = [row && row.name, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
     .filter(Boolean).join(" ").toLowerCase();
   const dual = hasMultipleAudio(row) || /dual\s*audio|\[dual\]|\bdual\b/.test(text);
   const selectable = hasSelectableSubs(row);
@@ -84,8 +84,6 @@ function classification(row) {
   if (selectable) return dub ? "[DUB+SUB]" : "[SUB]";
   if (dub) return "[DUB]";
   if (explicitHsub) return "[HSUB]";
-  // Provider-specific verified rule recorded in NAMING_STANDARDS.md:
-  // current first-party Japanese KissKH streams were manually verified hard-subbed.
   if (isJapanese(row)) return "[HSUB]";
   return "[UNK]";
 }
@@ -104,11 +102,7 @@ function normalizeRow(row) {
   const height = qualityNumber(row);
   if (!row.url && !height) return row;
   const extra = sourceDisambiguator(row);
-  return {
-    ...row,
-    name: `${PROVIDER_NAME} • ${qualityLabel(height)} • ${classification(row)}${extra ? ` • ${extra}` : ""}`,
-    provider: PROVIDER_NAME
-  };
+  return { ...row, name: `${PROVIDER_NAME} • ${qualityLabel(height)} • ${classification(row)}${extra ? ` • ${extra}` : ""}`, provider: PROVIDER_NAME };
 }
 
 function noSource(inputId, mediaType, season, episode) {
@@ -116,16 +110,7 @@ function noSource(inputId, mediaType, season, episode) {
   const detail = type === "movie"
     ? `No exact playable KissKH source found for ${clean(inputId) || "requested movie"}`
     : `No exact playable KissKH source found for ${clean(inputId) || "requested title"} • S${Number(season || 1)}E${Number(episode || 1)}`;
-  return {
-    name: `${PROVIDER_NAME} • DIAG NO SOURCE FOUND`,
-    title: detail,
-    url: FALLBACK,
-    quality: "DIAG",
-    language: "Unavailable",
-    provider: PROVIDER_NAME,
-    type: "mp4",
-    subtitles: []
-  };
+  return { name: `${PROVIDER_NAME} • DIAG NO SOURCE FOUND`, title: detail, url: FALLBACK, quality: "DIAG", language: "Unavailable", provider: PROVIDER_NAME, type: "mp4", subtitles: [] };
 }
 
 async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
@@ -135,9 +120,7 @@ async function getStreams(inputId, mediaType = "tv", season = 1, episode = 1) {
     const rows = await base.getStreams(inputId, mediaType, season, episode);
     const normalized = Array.isArray(rows) ? rows.filter(Boolean).map(normalizeRow) : [];
     return normalized.length ? normalized : [noSource(inputId, mediaType, season, episode)];
-  } catch (_) {
-    return [noSource(inputId, mediaType, season, episode)];
-  }
+  } catch (_) { return [noSource(inputId, mediaType, season, episode)]; }
 }
 
 if (typeof module !== "undefined" && module.exports) module.exports = { getStreams };
