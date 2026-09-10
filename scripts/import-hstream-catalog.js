@@ -50,12 +50,16 @@ async function main() {
   fs.writeFileSync(staged, JSON.stringify(payload, null, 2) + '\n');
   fs.renameSync(staged, target);
 
+  const decoSource = data.filter((row) => /deco/i.test(String(row?.title || '')) || /deco/i.test(String(row?.slug || '')));
+  const decoNormalized = payload.records.filter((row) => /deco/i.test(String(row?.title || '')) || /deco/i.test(String(row?.slug || '')));
   console.log(JSON.stringify({
     provider: payload.provider,
     sourceTitles: data.length,
     normalizedTitles: payload.records.length,
     exactEpisodeMappings: episodeCount,
     skippedEpisodes: payload.skippedEpisodes || 0,
+    decoSource,
+    decoNormalized,
     output: target
   }));
 }
