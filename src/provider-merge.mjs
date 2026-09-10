@@ -55,6 +55,40 @@ function canonicalCandidates(title) {
   ]).map(canonicalProviderTitle).filter(Boolean);
 }
 
+function providerIdentityKey(value) {
+  let raw = clean(value).toLowerCase();
+  if (!raw) return '';
+  raw = raw.replace(/^sp:[^:]+:/, '');
+  raw = raw.replace(/^[^:]+:series:/, '');
+  raw = raw.replace(/^series:/, '');
+  return canonicalProviderTitle(raw);
+}
+
+function recordIdentityKeys(record) {
+  return new Set(unique([
+    record.slug,
+    record.seriesId,
+    record.providerId
+  ]).map(providerIdentityKey).filter(Boolean));
+}
+
+function titleIdentityKeys(title) {
+  const values = [];
+  const id = clean(title?.id);
+  if (/^sp:[^:]+:.+/i.test(id)) values.push(id);
+  for (const mapping of title?.providerMappings || []) {
+    values.push(mapping?.slug, mapping?.seriesId, mapping?.providerId);
+  }
+  return new Set(unique(values).map(providerIdentityKey).filter(Boolean));
+}
+
+function identityOverlap(title, wanted) {
+  if (!wanted.size) return false;
+  const available = titleIdentityKeys(title);
+  for (const key of wanted) if (available.has(key)) return true;
+  return false;
+}
+
 export function findStrongProviderMatch(titles, record) {
   if (record.canonicalId) {
     const direct = titles.find((title) => title.id === record.canonicalId);
@@ -67,6 +101,15 @@ export function findStrongProviderMatch(titles, record) {
   const matches = titles.filter((title) => canonicalCandidates(title).some((candidate) => wanted.has(candidate)));
   if (matches.length === 1) return matches[0];
   if (matches.length <= 1) return null;
+
+  // Exact series/provider identity is a stronger tie-breaker than fuzzy metadata.
+  // This is intentionally used only after titles already match, so a coincidental
+  // slug cannot merge unrelated records by itself.
+  const identityWanted = recordIdentityKeys(record);
+  if (identityWanted.size) {
+    const identityMatches = matches.filter((title) => identityOverlap(title, identityWanted));
+    if (identityMatches.length === 1) return identityMatches[0];
+  }
 
   const year = Number(record.year || 0) || null;
   if (year) {
