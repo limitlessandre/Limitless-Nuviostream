@@ -2,7 +2,7 @@
 
 // Limitless Nexus presentation adapter for the verified-working NetMirror provider
 // from NuvioPlugin/All-in-One-Nuvio. Extraction/settings stay upstream-identical;
-// only the visible stream name is normalized to the Nexus quality-label scheme.
+// only the visible stream name is normalized to the Nexus quality/audio scheme.
 const PROVIDER_NAME = "NetMirror";
 const SOURCE_URL = "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/716057b2a0d55a634da88c1d0d2db7352df07c69/providers/netmirror.js";
 let cached = null;
@@ -47,12 +47,31 @@ function qualityLabel(height) {
   return `SD-Very Low ${height}p`;
 }
 
+function hasSubtitleTracks(row) {
+  const candidates = [row && row.subtitles, row && row.subtitleTracks, row && row.captions, row && row.tracks];
+  return candidates.some(function(value) {
+    if (!Array.isArray(value)) return false;
+    return value.some(function(track) {
+      if (!track) return false;
+      if (typeof track === "string") return !!track;
+      const kind = String(track.kind || track.type || "").toLowerCase();
+      if (kind && !/(sub|caption|text|vtt|srt)/.test(kind)) return false;
+      return !!(track.url || track.file || track.src || track.label || track.language || track.lang);
+    });
+  });
+}
+
 function audioLabel(row) {
-  const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
+  const text = [
+    row && row.name, row && row.title, row && row.audio, row && row.audioType,
+    row && row.audioLanguage, row && row.language, row && row.lang
+  ].filter(Boolean).join(" ").toLowerCase();
+  const hasSubs = hasSubtitleTracks(row) || /hard\s*subs?|soft\s*subs?|\bsubbed\b|\bsubs?\b|\bcaptions?\b/.test(text);
+  const hasDub = /dub\s*\+\s*subs?|dub\+subs?|english\s*dub|\bdubbed\b|\bdub\b/.test(text);
   if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
-  if (/dub\s*\+\s*subs?|dub\+subs?|dubbed[^•]*subs?|english\s*dub[^•]*subs?/.test(text)) return "[DUB+SUB]";
-  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return "[DUB]";
-  if (/hard\s*subs?|soft\s*subs?|\bsubbed\b|\bsubs?\b/.test(text)) return "[SUB]";
+  if (hasDub && hasSubs) return "[DUB+SUB]";
+  if (hasDub) return "[DUB]";
+  if (hasSubs) return "[SUB]";
   return "";
 }
 
@@ -76,20 +95,33 @@ function serviceLabel(row) {
   return "";
 }
 
-function normalizeRow(row) {
-  if (!row || typeof row !== "object") return row;
+function rowMeta(row) {
   const height = qualityNumber(row);
-  const rawQuality = String(row.quality || "").trim();
+  const rawQuality = String(row && row.quality || "").trim();
   let quality = height ? qualityLabel(height) : "";
-  if (!quality && /^(auto|unknown)$/i.test(rawQuality) && row.url) quality = "Unknown Auto";
-  if (!quality) return row;
+  if (!quality && /^(auto|unknown)$/i.test(rawQuality) && row && row.url) quality = "Unknown Auto";
+  if (!quality) return null;
+  return { row: row, quality: quality, audio: audioLabel(row), service: serviceLabel(row) };
+}
 
-  const service = serviceLabel(row);
-  const audio = audioLabel(row);
-  const details = [];
-  if (audio) details.push(audio);
-  if (service) details.push(service);
-  return { ...row, name: `${PROVIDER_NAME} • ${quality}${details.length ? ` • ${details.join(" • ")}` : ""}` };
+function normalizeRows(rows) {
+  const metas = rows.map(rowMeta);
+  const serviceSets = {};
+  metas.forEach(function(meta) {
+    if (!meta) return;
+    const key = `${meta.quality}|${meta.audio}`;
+    if (!serviceSets[key]) serviceSets[key] = new Set();
+    if (meta.service) serviceSets[key].add(meta.service);
+  });
+  return metas.map(function(meta, index) {
+    if (!meta) return rows[index];
+    const key = `${meta.quality}|${meta.audio}`;
+    const showService = serviceSets[key] && serviceSets[key].size > 1 && meta.service;
+    return {
+      ...meta.row,
+      name: `${PROVIDER_NAME} • ${meta.quality}${meta.audio ? ` • ${meta.audio}` : ""}${showService ? ` • ${meta.service}` : ""}`
+    };
+  });
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
@@ -97,7 +129,7 @@ async function getStreams(inputId, mediaType, season, episode) {
   if (!base) return [];
   try {
     const rows = await base.getStreams(inputId, mediaType, season, episode);
-    return Array.isArray(rows) ? rows.map(normalizeRow) : [];
+    return Array.isArray(rows) ? normalizeRows(rows) : [];
   } catch (_) {
     return [];
   }
