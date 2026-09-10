@@ -27,7 +27,7 @@ async function loadBase() {
 }
 
 function qualityNumber(row) {
-  const text = `${row && row.quality || ""} ${row && row.name || ""} ${row && row.title || ""}`;
+  const text = `${row && row.quality || ""} ${row && row.name || ""}`;
   if (/\b8k\b/i.test(text)) return 4320;
   if (/\b4k\b/i.test(text)) return 2160;
   const m = text.match(/\b(4320|2160|1440|1080|720|576|540|480|360|240)p?\b/i);
@@ -67,7 +67,7 @@ function hasMultipleAudio(row) {
 }
 
 function classification(row) {
-  const text = [row && row.name, row && row.title, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
+  const text = [row && row.name, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
     .filter(Boolean).join(" ").toLowerCase();
   const dual = hasMultipleAudio(row) || /dual\s*audio|\[dual\]|\bdual\b/.test(text);
   const selectable = hasSelectableSubs(row);
