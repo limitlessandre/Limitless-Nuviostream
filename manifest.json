@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.72",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror, Vidlink, and KissKH are active validation providers; a temporary KissKH audit provider traces the working Eclipsia Fyron path for fallback and quality analysis.",
+  "version": "2.1.73",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror, Vidlink, and KissKH are active validation providers; a temporary KissKH audit provider traces the working Eclipsia Fyron path for fallback, token, subtitle, header, and quality analysis.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -111,11 +111,11 @@
     {
       "id": "limitless-kisskh-audit",
       "name": "KissKH Audit",
-      "description": "Temporary diagnostic wrapper around Eclipsia Fyron/KissKH. Traces the working request flow, episode source fields, mirror hosts, subtitle count, and HLS quality variants for Den-O/Ex-Aid comparison.",
-      "version": "0.1.0",
+      "description": "Temporary diagnostic wrapper around Eclipsia Fyron/KissKH. Traces token and episode query shape, playback headers, subtitle flow, source fields, ThirdParty fallback behavior, and HLS variants for Den-O/Ex-Aid comparison.",
+      "version": "0.2.0",
       "author": "Limitless Nexus diagnostic; upstream: Eclipsia Fyron",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-eclipsia-audit-v1.js?rev=010",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-eclipsia-audit-v1.js?rev=020",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
