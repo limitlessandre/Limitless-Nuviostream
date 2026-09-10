@@ -5,11 +5,11 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 407,
-  "eligible_plugin_entries_before_dedupe": 90,
-  "unique_plugins": 88,
+  "raw_plugin_entries": 409,
+  "eligible_plugin_entries_before_dedupe": 91,
+  "unique_plugins": 89,
   "duplicate_groups": 2,
-  "language_filtered_entries": 284,
+  "language_filtered_entries": 285,
   "unknown_language_metadata_entries": 24,
   "inactive_filtered_entries": 33,
   "meta_plugin_entries_filtered": 0,
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 82,
+      "plugins": 83,
       "verified": false
     },
     {
@@ -91,7 +91,7 @@
       "name": "Redowan's BDIX repository",
       "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
       "status": "ok",
-      "plugins": 17,
+      "plugins": 18,
       "verified": false
     },
     {

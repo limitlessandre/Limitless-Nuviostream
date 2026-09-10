@@ -1192,14 +1192,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniVortex.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "AniVortex",
         "internalName": "AniVortex",
         "authors": [
           "Phisher98"
         ],
         "description": "AniVortex — Anime, movies & TV series streaming",
-        "fileSize": 139517,
+        "fileSize": 146563,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1211,7 +1211,7 @@
         ],
         "iconUrl": "https://anivortex.in/images/anivortex_logo_transparent.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-ecc803b43feaafa6458f1c6697647ff1653750d60a7fcc09f73791e95c8933de"
+        "fileHash": "sha256-72ed6a08f6fd28f742875be0db8a88fe97b4c9db7f1761f17064e8bb4e789f31"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Aniworld.cs3",
@@ -1898,14 +1898,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 30,
+        "version": 31,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 112750,
+        "fileSize": 121456,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1914,7 +1914,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-35b0b0e027fdc2cde8b00012302531d7731976c90ca8c16b5fdb7faf0302020f"
+        "fileHash": "sha256-84e8ce43b6a3e40af2c8d13bbeb68c643d8af5aaf9f0ecc5dc878f5f9e3346de"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2191,6 +2191,27 @@
         "fileHash": "sha256-03c98c58901a94fc80d82e7996e50e27030c080fd8d3c0e9499770e391326ecb"
       },
       {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "Reanime",
+        "internalName": "Reanime",
+        "authors": [
+          "Phisher98"
+        ],
+        "fileSize": 113267,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+          "AnimeMovie",
+          "Anime",
+          "OVA"
+        ],
+        "iconUrl": "https://reanime.to/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-f6dcd2160746fb1b45c1ee29bbce503fe564bfb8d7252e90eaa942a073b42473"
+      },
+      {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/RingZ.cs3",
         "status": 1,
         "version": 12,
@@ -2246,7 +2267,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1124426,
+        "fileSize": 1129481,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2259,7 +2280,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-b4e772013274ba5224600c8a60b7f7c8e96091e998b5eb0f653fbb491d02d0ca"
+        "fileHash": "sha256-da1b87c13278b6ba606cb8d2c503bb159481f8b7cb092e37191e179b1773d811"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2640,14 +2661,14 @@
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/9kMovies.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "9kMovies",
         "internalName": "9kMovies",
         "authors": [
           "Redowan"
         ],
         "description": "Bangla & Hindi Movies",
-        "fileSize": 14651,
+        "fileSize": 16446,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "hi",
         "tvTypes": [
@@ -2657,7 +2678,28 @@
         ],
         "iconUrl": "https://9kmovies.llc/wp-content/uploads/2026/06/9kmovies-logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9c4d8a427bea0e34aa4403f7860c3877659bf81a3b679353e11d18f681af12ff"
+        "fileHash": "sha256-f1db082792182fa5b2ee25c13e963268666a6fa855a0de7cadb7348fef92907f"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BanglaPlex.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "BanglaPlex",
+        "internalName": "BanglaPlex",
+        "authors": [
+          "Redowan"
+        ],
+        "description": "BanglaPlex Movies & Web Series",
+        "fileSize": 35067,
+        "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
+        "language": "bn",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://banglaplex.biz/uploads/system_logo/favicon_61916a9838d38.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-0e087450fa944b505ffdad56d21cc7e9413ff4c8d1db586d8040a76c0db345c3"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixBdipTV.cs3",
@@ -2669,7 +2711,7 @@
           "Redowan"
         ],
         "description": "BDIX Live Tv in Bangladesh",
-        "fileSize": 16861,
+        "fileSize": 16863,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2677,7 +2719,7 @@
         ],
         "iconUrl": "http://tv.bdiptv.net/assets/images/Live1.jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-d6b3d6f3c3783827ced72f8d149763efc56f65aa7fb56470bff0fc28dd01a0c3"
+        "fileHash": "sha256-8f7264480478dd08fcd9ed584b2484c8588f7fdc0927abbd92d57fdfa9164d76"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixCircleftp.cs3",
@@ -2689,7 +2731,7 @@
           "Redowan"
         ],
         "description": "Only works in Bangladesh. Works even in internet Shutdown",
-        "fileSize": 22073,
+        "fileSize": 22123,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2705,7 +2747,7 @@
         ],
         "iconUrl": "http://new.circleftp.net/static/media/logo.fce2c9029060a10687b8.png",
         "apiVersion": 1,
-        "fileHash": "sha256-cf9443af75c20d9e104e2df8fd5114c800f8070666a40a2bb8f46cd86719908c"
+        "fileHash": "sha256-71823213530de9f96a5faba45ec513da8dd5614a126380df484eb391cc1ce04d"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixCloudTV.cs3",
@@ -2717,7 +2759,7 @@
           "Redowan"
         ],
         "description": "BDIX Live Tv in Bangladesh",
-        "fileSize": 17198,
+        "fileSize": 17223,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2725,7 +2767,7 @@
         ],
         "iconUrl": "http://172.19.178.180/assets/logos/Cloudtv.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1c20151b49caddcaee3e6a619721ca269de05bf84b3fedc5e0e2d3889132dc25"
+        "fileHash": "sha256-774c9e863c2697223ac33c6e3c884b86363085c433ee857c657254e25312cf71"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixDflix.cs3",
@@ -2737,7 +2779,7 @@
           "Redowan"
         ],
         "description": "Discovery BDIX Provider",
-        "fileSize": 19042,
+        "fileSize": 19036,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2753,7 +2795,7 @@
         ],
         "iconUrl": "https://dflix.discoveryftp.net/assets/images/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c801105f4b0aa9fd40e78a6acb0105f73c393b4c07eb9f3dead871a85ed2dc1f"
+        "fileHash": "sha256-27448c29f726c03a1c0f444572be3b9613a665e1954e2138b541f14eb608f1c2"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixDhakaFlix.cs3",
@@ -2765,7 +2807,7 @@
           "Redowan"
         ],
         "description": "Dhaka Flix BDIX Provider",
-        "fileSize": 34228,
+        "fileSize": 34317,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2781,7 +2823,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/refs/heads/master/BdixDhakaFlix/icon.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-1cf8e34724519c16aa6dfd5d8e6f95b13974f1e1b7fdba0fde63c85352983355"
+        "fileHash": "sha256-eaafcac71dab51a4dd851785ce64e6a5df32627f6e2c6ea6db388d4db735a2ce"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixICCFtp.cs3",
@@ -2793,7 +2835,7 @@
           "Redowan"
         ],
         "description": "ICC BDIX Provider",
-        "fileSize": 15524,
+        "fileSize": 15539,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2809,7 +2851,7 @@
         ],
         "iconUrl": "http://10.16.100.244/images/logo-purple.svg",
         "apiVersion": 1,
-        "fileHash": "sha256-222dabebe881403e778b72ed7975fc75ec7d5bb7ece2b2f998476b2f370eab4c"
+        "fileHash": "sha256-24b6b4c6675df04301b79beb50710f74ab34f944126a954a6d807027feeb90e6"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixMyMovieBazarTV.cs3",
@@ -2821,7 +2863,7 @@
           "Redowan"
         ],
         "description": "BDIX Live Tv in Bangladesh",
-        "fileSize": 9655,
+        "fileSize": 9656,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2829,7 +2871,7 @@
         ],
         "iconUrl": "https://mymoviebazar.net/assets/commons/header/logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-0d1eae8c5741d91ab867da9e5a64cb1b21ed6f9d3d8722ca30fbf570c675af97"
+        "fileHash": "sha256-9d71ca9a22e4ec0acd17a83befb9d49641cb1e947caaf62bce298ed7b980f89b"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BdixRoarZoneTV.cs3",
@@ -2841,7 +2883,7 @@
           "Redowan"
         ],
         "description": "BDIX Live Tv in Bangladesh",
-        "fileSize": 10699,
+        "fileSize": 10702,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2849,7 +2891,7 @@
         ],
         "iconUrl": "https://roarzone.info/logo.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-d2a84d77b0af973dd5a6df166c2a62657d30817e6261e36245d7fba0bb2b7a5e"
+        "fileHash": "sha256-e2b11a4238d0ead35e6f0755e171f9e6708614f763dcd72b9d6c329551300620"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/EmwBD.cs3",
@@ -2861,7 +2903,7 @@
           "Redowan"
         ],
         "description": "Movie website in Bangladesh",
-        "fileSize": 12821,
+        "fileSize": 12796,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "bn",
         "tvTypes": [
@@ -2873,7 +2915,7 @@
         ],
         "iconUrl": "https://www.emwbd.xyz/wp-content/uploads/2024/07/cropped-20240718_170236-192x192.png",
         "apiVersion": 1,
-        "fileHash": "sha256-5011319dc38a8e9038431cfe646eafc8ff2d96dac89a0b87da17e8577a79fd87"
+        "fileHash": "sha256-f0b2b9d3f4c1ba22a828157e6cb7ee2ca6137f5f8ab9d4ec8259d6e0bde62c96"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FootReplays.cs3",
@@ -2885,7 +2927,7 @@
           "Redowan"
         ],
         "description": "FootBall Matches Replays and Highlights",
-        "fileSize": 11082,
+        "fileSize": 11048,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "en",
         "tvTypes": [
@@ -2893,7 +2935,7 @@
         ],
         "iconUrl": "https://www.footreplays.com/wp-content/uploads/2024/11/cropped-footreplays-favicon-192x192.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-a8e888528ec4f0e76b7a1419e57e271981d01197f16c8c5a20ac6dd3035bdf08"
+        "fileHash": "sha256-4bd17710924bea32c9db205a8774fe7e86cc087231818a336afcc05795ff25d0"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullReplays.cs3",
@@ -2905,7 +2947,7 @@
           "Redowan"
         ],
         "description": "Watch Football Full Match Replay and Shows",
-        "fileSize": 11064,
+        "fileSize": 11022,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "en",
         "tvTypes": [
@@ -2913,7 +2955,7 @@
         ],
         "iconUrl": "https://www.fullreplays.com/wp-content/uploads/2023/05/logo-ball-150x150.png",
         "apiVersion": 1,
-        "fileHash": "sha256-fa972b4efbe8c41aa7efde233e11a9cc93a21cf45254107e21856c4a14b39f43"
+        "fileHash": "sha256-162230f11f5d95232e35d172e4fb985839217d2563963a718349741d776b0f8b"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/FullyMaza.cs3",
@@ -2935,7 +2977,7 @@
         ],
         "iconUrl": "https://fibwatch.online/themes/default/img/fibwatch-logo-new.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1bfb0d0352dd3961cbb98941559dfeae0c32c0bedde9b135b7fed0213bebad39"
+        "fileHash": "sha256-a7b89b264d96fc938eb7c5db91d8fa957131e476ea0b7dc357594e6c47ec9380"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/MoviPK.cs3",
@@ -2946,7 +2988,7 @@
         "authors": [
           "MoviPK"
         ],
-        "fileSize": 10564,
+        "fileSize": 10567,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "en",
         "tvTypes": [
@@ -2955,7 +2997,7 @@
         ],
         "iconUrl": "https://www.movi.pk/wp-content/uploads/2023/06/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-635be4e2844d2757ca80280a3de12bbbe69376a81409ada1955ed455a557e04c"
+        "fileHash": "sha256-f051f5ecf103825c1941a3cbc64e67e209d2d66c0bf90b0d3235464e224b19fa"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/Mp4Moviez.cs3",
@@ -2967,7 +3009,7 @@
           "salman731"
         ],
         "description": "Download Mp4Moviez free full movies, high quality movies, latest movies from Mp4Moviez. Mp4moviez is number one entertainment hollywood bollywood website and provide free Mp4moviez full movie download facility",
-        "fileSize": 13271,
+        "fileSize": 13275,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "hi",
         "tvTypes": [
@@ -2977,7 +3019,7 @@
         ],
         "iconUrl": "https://www.mp4moviez.glass/images/mp4moviez.png",
         "apiVersion": 1,
-        "fileHash": "sha256-66075ef62358af58b0b0c5a5c4e53c1563d7a6e2980ecafbd00b4299ec6376de"
+        "fileHash": "sha256-3b2254838b38792f54f0b014fc8a4401a7e83f90d3d8ca12043a36b1c9c8c9b1"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/TheMoviesFlix.cs3",
@@ -2989,7 +3031,7 @@
           "salman731,Redowan"
         ],
         "description": "720p Movies, 1080p movies, Dual Audio Movies, Hindi Dubbed Series, Hollywood Movies",
-        "fileSize": 27255,
+        "fileSize": 27276,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "hi",
         "tvTypes": [
@@ -2999,7 +3041,7 @@
         ],
         "iconUrl": "https://themoviesflix.it.com/wp-content/uploads/2024/12/cropped-cropped-favicon-32x32-1-180x180.png",
         "apiVersion": 1,
-        "fileHash": "sha256-79d1d209e0eaf35947e0cdd206e1bad6e51ac42134effd5aea64ee8bfe23003d"
+        "fileHash": "sha256-3b3ed8c66f49f836b3c7a717e9a285f16d41769aa1c477a1e7e1d3f2753dc448"
       },
       {
         "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/WatchMoviesPk.cs3",
@@ -3011,7 +3053,7 @@
           "salman731"
         ],
         "description": "Watch Online Movies in HD Print Quality Free Download,Watch Full Movies Online Bollywood Movies Download Latest Hollywood Movies in DVD Print Quality Free",
-        "fileSize": 12326,
+        "fileSize": 12297,
         "repositoryUrl": "https://github.com/redowan99/Redowan-CloudStream",
         "language": "hi",
         "tvTypes": [
@@ -3020,7 +3062,7 @@
         ],
         "iconUrl": "https://www.watch-movies.com.pk/wp-content/uploads/2022/05/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8ce511ab595bc1736ebdec1926969d01ab24be92b1880a6a4bb2218b87406f9d"
+        "fileHash": "sha256-0f93211265df4f50eb787705c5c22f457e0db08c11cdf3fd332a26cf0aca1ad1"
       }
     ]
   },
@@ -3038,7 +3080,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 31735,
+        "fileSize": 31165,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3047,7 +3089,7 @@
         ],
         "iconUrl": "https://3esk.onl/wp-content/uploads/2021/01/3isk-logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-dbcff2fd052fa3dbb61c9ba31c62563f30538d5fa3c18c5c9e7c1149a12d8545"
+        "fileHash": "sha256-00ead28e610d86add9fc0e3fd937c1dfe863b66b0c5686e28bebf8039c7ab86a"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aflaam.cs3",
@@ -3059,7 +3101,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 15479,
+        "fileSize": 15484,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3068,7 +3110,7 @@
         ],
         "iconUrl": "https://aflaam.com/style/assets/images/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-deb2869c59264b7fd31758f55d3aab832e3e55907b5d3bf0a209864efd07efe8"
+        "fileHash": "sha256-c8cbba4f4f36d76907d2b366baa480d9201b16079cef9c3bd85f20cc3049e183"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aia2tv 2.cs3",
@@ -3080,7 +3122,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 14277,
+        "fileSize": 14286,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3090,7 +3132,7 @@
         ],
         "iconUrl": "https://media.licdn.com/dms/image/v2/C4D0BAQEhyYSi351HRw/company-logo_200_200/company-logo_200_200/0/1630489719119?e=2147483647&v=beta&t=Br69OJ2AwT5vdJHgl-DTvliEqOmp6VQLYwUWcFqG4u4",
         "apiVersion": 1,
-        "fileHash": "sha256-da690f0f972c88fdf04aa20a49741bb76ca7b54b9698d4e776bdb9c75ecc1e5d"
+        "fileHash": "sha256-1de87a498012cf7252b83f54eeb637a8b4cb482fe7114a1bd66b3adfbae1154e"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Akwam.cs3",
@@ -3102,7 +3144,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 27981,
+        "fileSize": 27980,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3111,7 +3153,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vuGLv4zY3XpoN2jza2unCQ95xFfypfe-h3k3xteMbGxl7taw-ziXyNg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-37ad57be6bcac31baa9d40812f6be4c7e904dfae4077ae57cc2eb49ef5a04387"
+        "fileHash": "sha256-cd29b55725e0db70296c1831ea6c6136889f14eb01e57eb6c32afc998e93ecb2"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Alooytv.cs3",
@@ -3123,7 +3165,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 14675,
+        "fileSize": 14658,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3132,7 +3174,7 @@
         ],
         "iconUrl": "https://fitnur.com/uploads/avatars/c5ae8dadf88bcea9549657ec451a1563.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-04ce9c7f1dfa1481ccb8bc86ae9764e0ae746de6dfe7d977232a51c50d8a276c"
+        "fileHash": "sha256-96607f1f5b4e32f5ce688a75b459ab77d8bad97d08b1a2a2bc5f5dcd54035197"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Anim3rb.cs3",
@@ -3144,7 +3186,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 36533,
+        "fileSize": 36516,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3153,7 +3195,7 @@
         ],
         "iconUrl": "https://images.anime3rb.com/favicon/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-0bf13ff9d1d84669456ff5bdab451a7bfe5b63a3ca0385e41c666379c3fe97e5"
+        "fileHash": "sha256-99b3077c567fe62084729d04529f0a0ba831dae8376992b7b0be23f785880f71"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Anime-Phoenix.cs3",
@@ -3165,7 +3207,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 27134,
+        "fileSize": 27126,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3175,7 +3217,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/mBIIR5cqQC4Y-o7HaxbkJfs305X6tbHLSNPk6MRMCDJsH8xP0SfGhK-CBDpSmH95wSff9z99sg=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-51fb746c69a9c247214df4e79a4a14325148fd4ea93011a043947aa01b931df8"
+        "fileHash": "sha256-758b3bb9eab01fee2704b281413960512014c45c3612184c20fe62e1ee984ed1"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Anime4up.cs3",
@@ -3187,7 +3229,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 37813,
+        "fileSize": 37890,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3197,7 +3239,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkVDfHjqUpRyrWJjW8wUHH87BhSO6B9uxI-B80sAy_AQ&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-b668a07035136a96fd56410940265da87c3e9d44e907b8cb88faa47a634ef69d"
+        "fileHash": "sha256-30ae4aaab6596ed950a55d5a41dfd44d42721c7d1e9af0fea2eabc61a40ece06"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Animerco.cs3",
@@ -3209,7 +3251,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 91141,
+        "fileSize": 91390,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3218,7 +3260,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/Oldarabrepo/refs/heads/main/img/file_0000000042f861f49090744dc097ee2f.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1175d9e175952f26689844f52b5e511ca48747b9fba8b00d9c692d384824289e"
+        "fileHash": "sha256-795b94f18654b53250a61513711ace519593a3583bfc48a6cf2e0d5af43bbf7f"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Animewitcher.cs3",
@@ -3230,7 +3272,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 34231,
+        "fileSize": 34328,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3238,7 +3280,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/Oldarabrepo/refs/heads/main/img/anime_witcher_round_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-50ebcc170428cfad2ee1396ddea33602fc83ee747353edb5efd7e28c2aa3f1e8"
+        "fileHash": "sha256-4c639f9392d46e45f4ee84e8799c810cc1d11fba2f13ff7e32865c71987c2fb4"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Bristege.cs3",
@@ -3250,7 +3292,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 26153,
+        "fileSize": 26137,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3258,7 +3300,7 @@
         ],
         "iconUrl": "https://amd.brstej.com/22.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e175d8bc0a2ae65c6dda27e1fde006fb80edeaa43343141686faef145be02550"
+        "fileHash": "sha256-17c6074460176b5547d0d242c09727c427bedae8bfe2529693e60f0b0348cb31"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Cee.cs3",
@@ -3270,7 +3312,7 @@
           "Abodabodd"
         ],
         "description": "لا يعمل خارج العراق",
-        "fileSize": 46160,
+        "fileSize": 47031,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3279,7 +3321,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNEnHalnMz2EfG48BZUI6iC86seq09uafFngG8gz1OWQ&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-644ed9810c457e96425575dddac94af5e9f7c2afb7ef33cb5ffeadba738975bb"
+        "fileHash": "sha256-131f942fa11bc89677543280a02ae2a9e2e19bc5c4d73fa3636ae8c5444c4f46"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/CimaClub.cs3",
@@ -3291,7 +3333,7 @@
           "Abodabodd"
         ],
         "description": "سيرفرات الموقع بها ضعف احيانا اذا لم يفتح  غالبا المشكلة من الموقع",
-        "fileSize": 17359,
+        "fileSize": 17361,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3300,7 +3342,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX1z-0NYyzyEiFs4q7X9c8SSBR6kJtVl7f7A&s",
         "apiVersion": 1,
-        "fileHash": "sha256-d2d3f5e28a1ccf2a64d5f420c68c4dcfa4e6b8dbb377712cb91e9d1a2ca13777"
+        "fileHash": "sha256-2cfbf3abb5892b22f299ac8b5ca7711c073ed38a930c91748e696fbfdd885052"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Cimalight.cs3",
@@ -3312,7 +3354,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 25905,
+        "fileSize": 25913,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3322,7 +3364,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/n2PDvQiQVV00JjGsg66dvMZKmyoolvCeu59Xe40pmEvhiMNE1tHqKsoEY1IpfdNNXdlle4It=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-56df4243a56b43c1cd630546fa6c98c2c9f113197e7d196ff06c7e4cd75a59e5"
+        "fileHash": "sha256-41def442115b7018006e81b3184a3ab99ba75552900a9e043ac257a1bd18651a"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Cimatn.cs3",
@@ -3334,7 +3376,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 38124,
+        "fileSize": 38289,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3344,7 +3386,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-7OxHmLaqTWIj7eJv55zxus1xKVp5ssQPAKYjydt7Lg&s",
         "apiVersion": 1,
-        "fileHash": "sha256-61a0cded665858f211b2f0a1f811e0ce528e8f33505bec74a6d829952a5fc746"
+        "fileHash": "sha256-1540f9de487a50bf0b67d2a79de14314439fda95c1b2df51ca385b6c15402a50"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/cinemana.cs3",
@@ -3356,7 +3398,7 @@
           "Abodabodd"
         ],
         "description": "لا يعمل خارج العراق او اي شبكة غير ايرثلنك",
-        "fileSize": 54102,
+        "fileSize": 54226,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3365,7 +3407,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZlAGH56cEnNEL93W3QqZWpUe8XR8i90olTA&s",
         "apiVersion": 1,
-        "fileHash": "sha256-2839f438b88809608a06dcfcc3adcaea899142a9d119aee17781e4b6ae37ec20"
+        "fileHash": "sha256-5e1efeda9d8770f78eeefab77fc1c0454379496156cdfa8f939277124c1c2ece"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/dima-toon.cs3",
@@ -3377,7 +3419,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 19786,
+        "fileSize": 19812,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3386,7 +3428,7 @@
         ],
         "iconUrl": "https://www.dima-toon.com/wp-content/uploads/2025/10/DimaToonlogo11.png",
         "apiVersion": 1,
-        "fileHash": "sha256-19ee8b9a154e54eba7130cebac99958ccb4d7c372f0607351b0cfcba7976e7a6"
+        "fileHash": "sha256-048fc02cd74f7d43a2618a563a17c3727a2a801accb20f9e1cf13ef6e68619ef"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Egydead.cs3",
@@ -3398,7 +3440,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 53644,
+        "fileSize": 53735,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3409,7 +3451,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_kgVTM6DJtx3tcS4gkPOOPnwFXKNhsrFyMRigWOlWomuQ=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-d6b4e63045f052faee5791c427c4f1f4acba6f464e5a7c7ee7cbf913d060fb83"
+        "fileHash": "sha256-8dcfb769e912cc41aede16da915039ab9a1af20955841957d8be4b08fcbc9e7d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Elif.cs3",
@@ -3421,7 +3463,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 31034,
+        "fileSize": 31069,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3431,7 +3473,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq14Sk88U37tIhiRndbNczqn0ectswZly90f1oCa_zbg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-31acd98275a85eda52150e4229139f37c289eefaa04bef736cd342d2b7346754"
+        "fileHash": "sha256-139d4cf90e5346739b39f72e33d83194fdbcc9601ac64348f1161dcab636e163"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/eseek.cs3",
@@ -3443,7 +3485,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 37919,
+        "fileSize": 37973,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3452,7 +3494,7 @@
         ],
         "iconUrl": "https://gesseh.net/wp-content/uploads/2024/10/keesatlogo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-19098da288569c8f040d6e0f94b6dc17a04503fbcf5134318e585dbeb65252b3"
+        "fileHash": "sha256-70bf9c63b28da3e848ede393cf592fa51d10f42b5518fac3e6c063662c17b166"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Faselhd.cs3",
@@ -3464,7 +3506,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 56112,
+        "fileSize": 55989,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3473,7 +3515,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ03aoQBNDy_Hkm5MUGGvluPvK7To7BdGiSnzQn7WJ3fQ&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-30df06609f61dcb48371cee6c5cffd4bd932947a541987bdbe01814164537ad9"
+        "fileHash": "sha256-53e0e39b74c698265ccc8b37109dfd534188e38c1d8ae7f8169d18a583fdd43d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Krmzy.cs3",
@@ -3485,7 +3527,7 @@
           "Abodabodd"
         ],
         "description": "البحث لا يعمل حاليا مشكلة من الموقع",
-        "fileSize": 29626,
+        "fileSize": 29631,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3494,7 +3536,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwTnAJOvyri3uHzHxjkEdlaBBKs8MAvIuJtFmCoo9u5qYiuFpHZjcl6tDi&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-6754e2e61b88f4d41c886ae1427ed165689d83bb1c0081699bb61c602d62eb1c"
+        "fileHash": "sha256-785b7fc9326398763dd7343b90658e28b5aae1f7ce3fa1de72fc09a67e6b99e6"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Lodynet.cs3",
@@ -3506,7 +3548,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 44448,
+        "fileSize": 44495,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3515,7 +3557,7 @@
         ],
         "iconUrl": "https://lodynet.watch/wp-content/themes/Lodynet2020/Img/Logo.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-246343fc3e9fded0778b6444d4cdc618d00365928e89807da64c687a02f70c91"
+        "fileHash": "sha256-56a9ab9dc9f8e2c05ce66a0a572591581e47575711c378c1d1929c7244ca9f73"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/MyCimaProvider.cs3",
@@ -3527,7 +3569,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 45593,
+        "fileSize": 45475,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3538,7 +3580,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoF3lscri32oVf0iQlhbjFEoUn2xg3OmQIx4wYdDmqw&s",
         "apiVersion": 1,
-        "fileHash": "sha256-966a2f10930e339f7c4bfdb0513bcc4d3d0acf15c848e0134d0cd0c11eb3802f"
+        "fileHash": "sha256-ff8e09bb07cb94fad7216e8c6a29bdff3d5758e6f7f1c4b68bacad18935bfe5a"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Replaymatch.cs3",
@@ -3550,7 +3592,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 29175,
+        "fileSize": 29210,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "en",
         "tvTypes": [
@@ -3560,7 +3602,7 @@
         ],
         "iconUrl": "https://fullmatchshows.com/wp-content/uploads/2024/04/LOGOSASO.png",
         "apiVersion": 1,
-        "fileHash": "sha256-fc430fc69b37758ee69ba37e75d6b583776769498c1262be85d0eb57ba4bb8d1"
+        "fileHash": "sha256-9702287e1acdbc6556a5f43350aac49df0fc323c2bb50ecc55f0f9173851e147"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Shahid4u.cs3",
@@ -3572,7 +3614,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 34656,
+        "fileSize": 34804,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3581,7 +3623,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Ig85ZYdRsjDw--peeI2RsBqOWmvnmvKKsT4UONdPMQ&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-2045b36d7ebdff4c0ca86d0095f1247ffb3e614260d72c2723a2d27ab58e4b67"
+        "fileHash": "sha256-a4d12b9c3b0560434781af67f5816f06fc96d8c11771b7e1187332f52e8091cf"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Shahidwbas.cs3",
@@ -3593,7 +3635,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 18493,
+        "fileSize": 18361,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3602,7 +3644,7 @@
         ],
         "iconUrl": "https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png",
         "apiVersion": 1,
-        "fileHash": "sha256-69b8228e8f319b1915a266724496d4f876506787cde2112dddbca241ecfa2b78"
+        "fileHash": "sha256-f89172fe028aa79efa3ca5a4c48ddb5080548fb430528ee2f42a56f89280895d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Syria-live.cs3",
@@ -3614,7 +3656,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 16777,
+        "fileSize": 16742,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3623,7 +3665,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF607wnarFL8Ob8KLPahUPJzcLjbtg1pEH0A&s",
         "apiVersion": 1,
-        "fileHash": "sha256-d20138386188edc1f38715a7b181a092f0253761d5c43bf10096ddb3bfeae414"
+        "fileHash": "sha256-48b9fa4a88c0372a6c2c756a5502bf21e8f01c7215ab2dc3daebfe259eb8e955"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Topcinema.cs3",
@@ -3635,7 +3677,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 28602,
+        "fileSize": 28702,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3644,7 +3686,7 @@
         ],
         "iconUrl": "https://web8.topcinema.cam/wp-content/uploads/2023/05/cropped-icon-32x32.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f0218104bafd9a6659d7a1d3d464cd3341d867f8c5e0df2da7a8d2509a4b7cb2"
+        "fileHash": "sha256-04fe8195714a8ef8c38545ad8c135b219dfa2b1e2728ba70da82aa509964f69c"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TukTukcima.cs3",
@@ -3656,7 +3698,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 42628,
+        "fileSize": 42735,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3665,7 +3707,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ10TEG3tTtkEF9_g3IslEP3xs0wx9EVhBs7b_H5M1gpg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-41a1e3e4392266e70bca9c67556e135c66056051ccd40bd09f9362a23768083b"
+        "fileHash": "sha256-544bdb138d7644b6da28471fba9f56b50cc57fb877a310a0108f891ab0ab855e"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TuniflexBlog.cs3",
@@ -3677,7 +3719,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 20686,
+        "fileSize": 20750,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3687,7 +3729,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo47ccjaIfUnxJjGujQd6qTKTZH70W6LFeaFXht5TE8w&s",
         "apiVersion": 1,
-        "fileHash": "sha256-4102ad1da6e98f3abde2a2b932ec41444e578b7f595b1107db6a1ed23c56fbbb"
+        "fileHash": "sha256-fb5f3d6a382d5f161d8c0bcaad709a494c3b8acb0579bb491f6c2dcb28771224"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Tuniflix.cs3",
@@ -3699,7 +3741,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 26271,
+        "fileSize": 26298,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3709,7 +3751,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe95deIIAAbyR9ArSievPWdM2QwiVG9bbQ6Y1uDIbRBpathzSs45b8uQ4&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-cef80fb2ee757e0e2d358806a8ab6bf92b49530ed2da21fa120c06d3227bbc84"
+        "fileHash": "sha256-14a4553a97f20063f294bf38ab70317e54e496d94a4923ebad830dc966e63f88"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TVgarden.cs3",
@@ -3721,7 +3763,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 15545,
+        "fileSize": 15565,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3731,7 +3773,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Lci-tXtOtWaHcEp9An7bqIkXs4yzH7EcfA&s",
         "apiVersion": 1,
-        "fileHash": "sha256-7b93904f57ec65178deec802fbcfd518af43b4ef2f6a51ff409f261a6f69f6aa"
+        "fileHash": "sha256-2e81fb135538fb427a6ea20d7a9a4472d240826136088c0deb09352a5c24ee5e"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Viu.cs3",
@@ -3743,7 +3785,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 37953,
+        "fileSize": 38046,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3753,7 +3795,7 @@
         ],
         "iconUrl": "https://img.utdstc.com/icon/a99/c9e/a99c9ee56e731144b335282e9981a54a7584be93fc9644ad7a03b45552307876:200",
         "apiVersion": 1,
-        "fileHash": "sha256-1fb011d2012d04a7a44c32093c8c977572f958c1846ff25520c6f5144f8ab5e7"
+        "fileHash": "sha256-9ff5e88654aa3d58257d681042b74119e55e0f6417b4774532797e923ca63e40"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Wecima.cs3",
@@ -3765,7 +3807,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 29449,
+        "fileSize": 29438,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3774,7 +3816,7 @@
         ],
         "iconUrl": "https://wecima.ac/static/img/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-15d28b1cbfe6e0acae79d724bbbaf77a93d295c9863d5bba6f5f36a0ae4f2d50"
+        "fileHash": "sha256-98b3b61a6e305f48c154cbca21d6bc162d6514dab8ab6d8253978a1422924fdb"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Witanime.cs3",
@@ -3786,7 +3828,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 73922,
+        "fileSize": 73906,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3795,7 +3837,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7AH2oC7LwumXRpHM8_WLpIFvDIfmS67jkjlhsCKpPaZdqcneigzUQX4g&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-5ff66e93c7ad7727997f3a70e5c36e09f7fbfc83cfe14f89bdac7a4bbd9b3d52"
+        "fileHash": "sha256-82920869d407a954b22353155231f4f5aa345d39d5ad3a09ce0f73318d3e0f2d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Yacintv.cs3",
@@ -3807,7 +3849,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 17787,
+        "fileSize": 17864,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3817,7 +3859,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/ulm35tweg3do5istps0TgCjMmJSVczGUL2NIrXMwI1DDRi5ty29BIzQSUHVgqZN5CSo1PHhiA6M=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-cc501bc2434add33dc113ac095eb924809d10cfea5b98cc6a21ac1f26e4f93cb"
+        "fileHash": "sha256-15d89f570f9557faeabcc4a8f474675488ef43dc7f7574e4e9801391e10ad072"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Youtube.cs3",
@@ -3829,7 +3871,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 125819,
+        "fileSize": 125967,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3842,7 +3884,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/Oldarabrepo/refs/heads/main/img/IMG_%D9%A2%D9%A0%D9%A2%D9%A5%D9%A1%D9%A2%D9%A0%D9%A6_%D9%A1%D9%A7%D9%A2%D9%A6%D9%A1%D9%A6.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-d22645baa9a21ed64d40414159e0fa825d5711b20d7c9af012a714c63f1e7099"
+        "fileHash": "sha256-e817010bb388d68b4eae1fc991f2900e853d03579adbb24e5ba632d6db4767f8"
       }
     ]
   },
@@ -8233,7 +8275,7 @@
           "KSHITIJ8473"
         ],
         "description": "KuroAnime - Anime with Sub & Dub",
-        "fileSize": 107241,
+        "fileSize": 106638,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8243,7 +8285,7 @@
         ],
         "iconUrl": "https://kuroanime.lol/icon-192.png",
         "apiVersion": 1,
-        "fileHash": "sha256-2eed892ad10afb70ec35985bdafc2c33e09e9d3299716b99cf71ceb5863aa3f9"
+        "fileHash": "sha256-8e99be67661c3752cf3e69e1adc88e4f94f917f5d32ef77f8b0693677d297730"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
@@ -8698,11 +8740,11 @@
     "description": "AfterDark, Frembed, Flemmix/Wiflix & Xalaflix",
     "plugins": [
       {
-        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLink2.png",
-        "fileHash": "sha256-c42385aad707ff09d922c9eada7f5100a2c1be4c14089a5b312eb78d9e0f29f6",
+        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkAfterDark.png",
+        "fileHash": "sha256-61d5e8eece22da76ee30edfdaf5b3ac1cd1cbd59330bb2326f19b3112fe7ac18",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 152674,
+        "fileSize": 152646,
         "status": 3,
         "language": "fr",
         "authors": [
@@ -8712,39 +8754,18 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 61,
+        "version": 62,
         "internalName": "AfterDark",
         "description": "AfterDark - vérification + lancement de vidéo automatique",
         "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/AfterDark.cs3",
         "name": "AfterDark"
       },
       {
-        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLink3.png",
-        "fileHash": "sha256-63c82b14a471ee5d58823783537e7b7a1da8f8acdea2ac5fd12fcd555d420d02",
+        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkFlemmix.png",
+        "fileHash": "sha256-4315951dd9c97cd5e5ce5d05596792e72db81a672900ed386eec61ecfce894fa",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 68795,
-        "status": 3,
-        "language": "fr",
-        "authors": [
-          "yorik100"
-        ],
-        "tvTypes": [
-          "Movie",
-          "TvSeries"
-        ],
-        "version": 20,
-        "internalName": "Flemmix",
-        "description": "Flemmix/Wiflix - lecteur natif",
-        "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/Flemmix.cs3",
-        "name": "Flemmix/Wiflix"
-      },
-      {
-        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLink.png",
-        "fileHash": "sha256-f018f6f3cf4797cab9e7310ef8e152fb5e1caaa7e554996332559a14da4ffa27",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 75945,
+        "fileSize": 75171,
         "status": 3,
         "language": "fr",
         "authors": [
@@ -8755,17 +8776,17 @@
           "TvSeries"
         ],
         "version": 24,
-        "internalName": "Frembed",
-        "description": "Frembed - lecteur natif",
-        "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/Frembed.cs3",
-        "name": "Frembed"
+        "internalName": "Flemmix",
+        "description": "Flemmix/Wiflix - lecteur natif",
+        "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/Flemmix.cs3",
+        "name": "Flemmix/Wiflix"
       },
       {
-        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLink4.png",
-        "fileHash": "sha256-75a3342194a479aae30b43932bdbf8e6f6813b320bc2698b15641c1e96021d6b",
+        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkFrembed.png",
+        "fileHash": "sha256-aeda82dc30219ecaf8381a6fa0ca57a981464d364a47380a130fd9b5e5aba4ae",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 44930,
+        "fileSize": 78714,
         "status": 3,
         "language": "fr",
         "authors": [
@@ -8775,7 +8796,28 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 8,
+        "version": 26,
+        "internalName": "Frembed",
+        "description": "Frembed - lecteur natif",
+        "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/Frembed.cs3",
+        "name": "Frembed"
+      },
+      {
+        "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkXalaflix.png",
+        "fileHash": "sha256-499a98d319316746e34d4707e1f5e94773d6ca4c1f54a008e7639dd47b0abf18",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/yorik100/Cloudstream",
+        "fileSize": 91001,
+        "status": 3,
+        "language": "fr",
+        "authors": [
+          "yorik100"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 31,
         "internalName": "Xalaflix",
         "description": "Xalaflix - lecteur natif",
         "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/Xalaflix.cs3",

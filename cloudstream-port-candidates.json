@@ -1,9 +1,9 @@
 {
   "native_provider_count": 3,
-  "cloudstream_provider_count": 88,
+  "cloudstream_provider_count": 89,
   "no_obvious_native_overlap_count": 87,
   "likely_overlap_count": 0,
-  "exact_or_alias_overlap_count": 1,
+  "exact_or_alias_overlap_count": 2,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
@@ -2077,6 +2077,36 @@
             "id": "anikototv",
             "name": "AnikotoTV",
             "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv.js"
+          }
+        ]
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Reanime",
+      "name": "Reanime",
+      "description": null,
+      "language": "en",
+      "tvTypes": [
+        "AnimeMovie",
+        "Anime",
+        "OVA"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-reanime",
+            "name": "Re:ANIME",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime.js"
           }
         ]
       },

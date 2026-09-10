@@ -749,7 +749,7 @@
       "Abodabodd"
     ],
     "description": "",
-    "fileSize": 29175,
+    "fileSize": 29210,
     "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
     "language": "en",
     "tvTypes": [
@@ -759,7 +759,7 @@
     ],
     "iconUrl": "https://fullmatchshows.com/wp-content/uploads/2024/04/LOGOSASO.png",
     "apiVersion": 1,
-    "fileHash": "sha256-fc430fc69b37758ee69ba37e75d6b583776769498c1262be85d0eb57ba4bb8d1"
+    "fileHash": "sha256-9702287e1acdbc6556a5f43350aac49df0fc323c2bb50ecc55f0f9173851e147"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
@@ -964,7 +964,7 @@
       "KSHITIJ8473"
     ],
     "description": "KuroAnime - Anime with Sub & Dub",
-    "fileSize": 107241,
+    "fileSize": 106638,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -974,7 +974,7 @@
     ],
     "iconUrl": "https://kuroanime.lol/icon-192.png",
     "apiVersion": 1,
-    "fileHash": "sha256-2eed892ad10afb70ec35985bdafc2c33e09e9d3299716b99cf71ceb5863aa3f9"
+    "fileHash": "sha256-8e99be67661c3752cf3e69e1adc88e4f94f917f5d32ef77f8b0693677d297730"
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=libraryofladev.com&sz=%size%",
@@ -1298,6 +1298,27 @@
     "fileHash": "sha256-e1d0d95937e8000418f1b80abe121d55aab4ad44c7c079517fa1646bffec9bae"
   },
   {
+    "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3",
+    "status": 1,
+    "version": 2,
+    "name": "Reanime",
+    "internalName": "Reanime",
+    "authors": [
+      "Phisher98"
+    ],
+    "fileSize": 113267,
+    "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+    "language": "en",
+    "tvTypes": [
+      "AnimeMovie",
+      "Anime",
+      "OVA"
+    ],
+    "iconUrl": "https://reanime.to/favicon.ico",
+    "apiVersion": 1,
+    "fileHash": "sha256-f6dcd2160746fb1b45c1ee29bbce503fe564bfb8d7252e90eaa942a073b42473"
+  },
+  {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
     "status": 1,
     "version": 3,
@@ -1498,7 +1519,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1124426,
+    "fileSize": 1129481,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1511,7 +1532,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-b4e772013274ba5224600c8a60b7f7c8e96091e998b5eb0f653fbb491d02d0ca"
+    "fileHash": "sha256-da1b87c13278b6ba606cb8d2c503bb159481f8b7cb092e37191e179b1773d811"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 284,
+  "excluded_count": 285,
   "excluded": [
     {
       "internalName": "3isk",
@@ -687,6 +687,20 @@
         "bn"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/BanglaPlex.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "BanglaPlex",
+      "name": "BanglaPlex",
+      "source": "Redowan's BDIX repository",
+      "sourceRepo": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/master/repo.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/BanglaPlex.cs3",
       "reason": "no-allowed-language"
     },
     {

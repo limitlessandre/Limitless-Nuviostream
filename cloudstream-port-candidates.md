@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **3**  
-Filtered CloudStream providers: **88**  
+Filtered CloudStream providers: **89**  
 No obvious native overlap: **87**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **1**
+Exact/alias overlap: **2**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -114,3 +114,4 @@ None.
 ## Exact or alias overlaps
 
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie — AniKoto — native match: AnikotoTV
+- **Reanime** (`Reanime`) — en; AnimeMovie, Anime, OVA — native match: Re:ANIME
