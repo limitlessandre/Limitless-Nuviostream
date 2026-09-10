@@ -44,12 +44,40 @@ function qualityLabel(height) {
   return `SD-Very Low ${height}p`;
 }
 
+function hasSubtitleTracks(row) {
+  const groups = [row && row.subtitles, row && row.subtitleTracks, row && row.captions, row && row.tracks];
+  return groups.some(function(value) {
+    return Array.isArray(value) && value.some(function(track) {
+      if (!track) return false;
+      if (typeof track === "string") return !!String(track).trim();
+      const kind = String(track.kind || track.type || "").toLowerCase();
+      if (kind && !/(sub|caption|text|vtt|srt)/.test(kind)) return false;
+      return !!(track.url || track.file || track.src || track.label || track.name || track.language || track.lang);
+    });
+  });
+}
+
+function isJapaneseAudio(row, text) {
+  const language = String(row && (row.audioLanguage || row.language || row.lang) || "").trim();
+  return /^(?:ja|jpn|japanese)$/i.test(language) || /\bjapanese\s+audio\b/i.test(text || "");
+}
+
 function audioLabel(row) {
-  const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
+  const text = [
+    row && row.name, row && row.title, row && row.audio, row && row.audioType,
+    row && row.audioLanguage, row && row.language, row && row.lang
+  ].filter(Boolean).join(" ").toLowerCase();
+  const externalSubs = hasSubtitleTracks(row);
+  const hardSubs = /\bh\s*sub\b|\bhsub\b|hard\s*subs?/.test(text);
+  const softSubs = /soft\s*subs?|softsub/.test(text);
+  const hasSubs = externalSubs || hardSubs || softSubs || /\bsubbed\b|\bsubs?\b|\bcaptions?\b/.test(text);
+  const hasDub = /dub\s*\+\s*subs?|dub\+subs?|english\s*dub|\bdubbed\b|\bdub\b/.test(text);
   if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
-  if (/dub\s*\+\s*subs?|dub\+subs?|dubbed[^•]*subs?|english\s*dub[^•]*subs?/.test(text)) return "[DUB+SUB]";
-  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return "[DUB]";
-  if (/hard\s*subs?|soft\s*subs?|japanese[^•]*subs?|\bsubbed\b|\bsubs?\b/.test(text)) return "[SUB]";
+  if (hasDub && hasSubs) return "[DUB+SUB]";
+  if (hasDub) return "[DUB]";
+  if (hardSubs) return "[HSUB]";
+  if (externalSubs || softSubs || /\bsubbed\b|\bsubs?\b|\bcaptions?\b/.test(text)) return "[SUB]";
+  if (isJapaneseAudio(row, text)) return "[HSUB]";
   return "";
 }
 
