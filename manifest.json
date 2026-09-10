@@ -1,79 +1,97 @@
 {
   "name": "Limitless Nuviostream",
-  "version": "1.0.0",
-  "description": "Deduplicated Nuvio providers focused on English, Japanese, Korean, and Chinese content.",
+  "version": "1.1.0",
+  "description": "Confirmed Limitless Nexus providers with canonical quality, audio/subtitle, mirror, and unknown-stream naming standards.",
   "scrapers": [
-    {
-      "id": "anikototv",
-      "name": "AnikotoTV",
-      "description": "AnikotoTV with standardized DUB/SOFTSUB/DUB+SUBS output labels based on the provider's existing selectable caption tracks.",
-      "version": "1.0.0",
-      "author": "piratezoro9",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv.js",
-      "enabled": true,
-      "hasSettings": false,
-      "formats": [
-        "mp4"
-      ],
-      "logo": "https://anikototv.to/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ja"
-      ]
-    },
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using TMDB/IMDb to MAL/AniList identity mapping and Re:ANIME's structured Flix API. Uses direct FlixCloud MKV downloads, preserves both HD-2 mirrors, and identifies shared SUB+DUB files as Dual Audio + Subs while keeping SUB-only and DUB-only files correctly labeled.",
-      "version": "1.0.0",
-      "author": "Limitless Nexus port based on maintained Re:ANIME direct-download behavior",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime.js",
+      "description": "Confirmed anime provider with MAL/Jikan, AniList, TMDB/IMDb-backed identity fallbacks, specials handling, and evidence-based Nexus stream labels.",
+      "version": "1.7.1",
+      "author": "Limitless Nexus",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/reanime-master.js?rev=171",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4"
-      ],
+      "formats": ["mp4"],
       "logo": "https://reanime.to/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ja"
-      ]
+      "contentLanguage": ["en", "ja"]
     },
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Production WCO provider with proven wcostream.tv → wcoflix.tv → wcoforever.net frontend fallback coverage for episodes, movies, and Season 0 specials; Episode 0 and fractional-special fallbacks; corrected Dub/Sub/original audio classification; and explicit-only mirror labels.",
-      "version": "1.0.0",
+      "description": "Confirmed WCO provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and Nexus naming standards.",
+      "version": "2.7.1",
       "author": "Limitless Nexus WCO production merge",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production.js",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/wco-master.js?rev=271",
+      "enabled": true,
+      "hasSettings": true,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "limitless-tubi",
+      "name": "Tubi",
+      "description": "Confirmed Tubi provider with anonymous playback auth, nested episode mapping, anime identity support, Power Rangers mapping, diagnostics, and Nexus naming standards.",
+      "version": "1.3.1",
+      "author": "Limitless Nexus Tubi provider",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/tubi-master.js?rev=131",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ja"
-      ]
+      "formats": ["m3u8"],
+      "logo": "https://tubitv.com/favicon.ico",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "limitless-netmirror",
+      "name": "NetMirror",
+      "description": "Confirmed NetMirror adapter with pinned upstream extraction, settings support, multiple verified qualities, and Nexus naming-standard stream labels.",
+      "version": "0.3.1",
+      "author": "Limitless Nexus adapter; upstream NetMirror credit: Dustincos / All-in-One-Nuvio",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/netmirror-master.js?rev=031",
+      "enabled": true,
+      "hasSettings": true,
+      "limited": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "https://i.postimg.cc/sXFMmJyg/netmirror.png",
+      "contentLanguage": ["en"]
+    },
+    {
+      "id": "limitless-vidlink",
+      "name": "Vidlink",
+      "description": "Confirmed Vidlink provider with the validated Haylox extraction path and Nexus naming-standard stream labels.",
+      "version": "0.4.1",
+      "author": "Eclipsia; Nexus presentation adapter",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=041",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
+      "contentLanguage": ["en", "hi", "bn"]
+    },
+    {
+      "id": "limitless-kisskh",
+      "name": "KissKH",
+      "description": "Confirmed standalone Nexus-owned KissKH provider with strict title ownership, domain/media fallbacks, EncDec token/subtitle handling, adaptive HLS support, no-source diagnostics, and Nexus naming-standard tags.",
+      "version": "1.1.1",
+      "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/kisskh-master.js?rev=111",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://kisskh.ovh/favicon.ico",
+      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
     }
   ]
 }
