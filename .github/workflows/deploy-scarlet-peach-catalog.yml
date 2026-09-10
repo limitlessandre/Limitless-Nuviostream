@@ -38,6 +38,9 @@ jobs:
       - name: Harvest HentaiHaven provider catalog
         run: npm run import:hentaihaven
 
+      - name: Harvest HStream provider catalog
+        run: npm run import:hstream
+
       - name: Build merged normalized snapshot
         run: npm run build:snapshot
 
@@ -57,11 +60,12 @@ jobs:
             BODY="$(curl --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/health || true)"
             echo "health attempt ${attempt}: ${BODY}"
             if echo "$BODY" | grep -q '"ok":true' && \
-               echo "$BODY" | grep -q '"version":"0.4.1"' && \
+               echo "$BODY" | grep -q '"version":"0.5.0"' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
                echo "$BODY" | grep -q '"subtitleResource":true' && \
                echo "$BODY" | grep -q '"hanime"' && \
-               echo "$BODY" | grep -q '"hentaihaven"'; then
+               echo "$BODY" | grep -q '"hentaihaven"' && \
+               echo "$BODY" | grep -q '"hstream"'; then
               break
             fi
             if [ "$attempt" = 12 ]; then
@@ -90,6 +94,8 @@ jobs:
           const metas=Array.isArray(d.metas)?d.metas:[];
           const meta=metas.find(m=>/deco\s*x\s*deco/i.test(String(m.name||''))) || metas[0];
           if (!meta || !meta.id) throw new Error('Deco not found in live Scarlet Peach catalog');
+          const hstream=(meta.providerMappings||[]).find(m=>m.provider==='hstream');
+          if (!hstream) throw new Error('Live Deco metadata is missing HStream mapping');
           const videoId=`${meta.id}:1`;
           console.error(`Testing live video ID: ${videoId}`);
           process.stdout.write(encodeURIComponent(videoId));
