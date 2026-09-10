@@ -2,7 +2,7 @@
 
 // Nexus presentation adapter for Eclipsia v9.9.0 Fyron/KissKH.
 // The upstream provider remains authoritative for extraction/playback; this wrapper
-// only normalizes the user-facing stream name to the Nexus quality scheme.
+// only normalizes the user-facing stream name to the Nexus quality/audio scheme.
 const PROVIDER_NAME = "KissKH";
 const SOURCE_URL = "https://codeberg.org/api/v1/repos/eclipsia/nuvio-plugin/raw/providers/fyron.js";
 let cached = null;
@@ -48,12 +48,31 @@ function qualityLabel(height) {
   return `SD-Very Low ${height}p`;
 }
 
+function hasSubtitleTracks(row) {
+  const candidates = [row && row.subtitles, row && row.subtitleTracks, row && row.captions, row && row.tracks];
+  return candidates.some(function(value) {
+    if (!Array.isArray(value)) return false;
+    return value.some(function(track) {
+      if (!track) return false;
+      if (typeof track === "string") return !!track;
+      const kind = String(track.kind || track.type || "").toLowerCase();
+      if (kind && !/(sub|caption|text|vtt|srt)/.test(kind)) return false;
+      return !!(track.url || track.file || track.src || track.label || track.language || track.lang);
+    });
+  });
+}
+
 function audioLabel(row) {
-  const text = `${row && row.name || ""} ${row && row.title || ""}`.toLowerCase();
+  const text = [
+    row && row.name, row && row.title, row && row.audio, row && row.audioType,
+    row && row.audioLanguage, row && row.language, row && row.lang
+  ].filter(Boolean).join(" ").toLowerCase();
+  const hasSubs = hasSubtitleTracks(row) || /hard\s*subs?|soft\s*subs?|\bsubbed\b|\bsubs?\b|\bcaptions?\b/.test(text);
+  const hasDub = /dub\s*\+\s*subs?|dub\+subs?|english\s*dub|\bdubbed\b|\bdub\b/.test(text);
   if (/dual\s*audio|\bdual\b/.test(text)) return "[DUAL]";
-  if (/dub\s*\+\s*subs?|dub\+subs?|dubbed[^•]*subs?|english\s*dub[^•]*subs?/.test(text)) return "[DUB+SUB]";
-  if (/english\s*dub|\bdubbed\b|\bdub\b/.test(text)) return "[DUB]";
-  if (/hard\s*subs?|soft\s*subs?|\bsubbed\b|\bsubs?\b/.test(text)) return "[SUB]";
+  if (hasDub && hasSubs) return "[DUB+SUB]";
+  if (hasDub) return "[DUB]";
+  if (hasSubs) return "[SUB]";
   return "";
 }
 
