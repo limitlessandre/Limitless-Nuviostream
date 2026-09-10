@@ -1,7 +1,7 @@
 {
   "name": "nexus-scarlet-peach-catalog",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "start": "node src/server.js",
     "dev": "wrangler dev",
@@ -13,8 +13,10 @@
     "refresh:hanime": "node scripts/import-hanime-catalog.js && node scripts/build-snapshot.js && node scripts/verify-merged-snapshot.js",
     "import:hentaihaven": "node scripts/import-hentaihaven-catalog.js",
     "refresh:hentaihaven": "node scripts/import-hentaihaven-catalog.js && node scripts/build-snapshot.js && node scripts/verify-merged-snapshot.js",
-    "refresh:providers": "node scripts/import-hanime-catalog.js && node scripts/import-hentaihaven-catalog.js",
-    "refresh:all": "node scripts/import-hanime-catalog.js && node scripts/import-hentaihaven-catalog.js && node scripts/build-snapshot.js && node scripts/verify-merged-snapshot.js",
+    "import:hstream": "node scripts/import-hstream-catalog.js",
+    "refresh:hstream": "node scripts/import-hstream-catalog.js && node scripts/build-snapshot.js && node scripts/verify-merged-snapshot.js",
+    "refresh:providers": "node scripts/import-hanime-catalog.js && node scripts/import-hentaihaven-catalog.js && node scripts/import-hstream-catalog.js",
+    "refresh:all": "node scripts/import-hanime-catalog.js && node scripts/import-hentaihaven-catalog.js && node scripts/import-hstream-catalog.js && node scripts/build-snapshot.js && node scripts/verify-merged-snapshot.js",
     "migrate:v2": "node scripts/migrate-schema-v2.js && node scripts/build-snapshot.js",
     "merge:provider": "node scripts/merge-provider-import.js",
     "build:snapshot": "node scripts/build-snapshot.js",
