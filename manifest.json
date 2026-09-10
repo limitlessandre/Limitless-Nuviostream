@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.74",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror and Vidlink remain active validation providers; KissKH now wraps the working Eclipsia Fyron extractor with strict TMDB/KissKH title ownership checks. A temporary KissKH audit provider remains for fallback analysis.",
+  "version": "2.1.75",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror and Vidlink remain active validation providers; KissKH has a hardened Eclipsia-backed control plus a new standalone Nexus implementation for independence/fallback validation. A temporary KissKH audit provider remains for comparison.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -105,6 +105,21 @@
       "hasSettings": false,
       "limited": true,
       "formats": ["mp4", "m3u8", "mkv"],
+      "logo": "https://kisskh.is/favicon.ico",
+      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
+    },
+    {
+      "id": "limitless-kisskh-standalone",
+      "name": "KissKH Standalone",
+      "description": "Nexus-owned KissKH implementation with no Eclipsia/Codeberg runtime dependency, strict TMDB title ownership, sequential KissKH domain failover, Video/Video_tmp direct media fallbacks, EncDec video/subtitle tokens, encrypted subtitle proxy-decryption, and adaptive HLS expansion when a master playlist exists.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-standalone-nexus-v1.js?rev=010",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
       "logo": "https://kisskh.is/favicon.ico",
       "contentLanguage": ["en", "ko", "zh", "ja", "th"]
     },
