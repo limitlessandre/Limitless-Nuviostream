@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.68",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror from All-in-One-Nuvio, Vidlink from Eclipsia, and Eclipsia's current KissKH/Fyron provider are exposed as isolated Nexus validation entries.",
+  "version": "2.1.69",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror from All-in-One-Nuvio plus current Eclipsia Codeberg KissKH/Fyron and Vidlink/Haylox providers are exposed as isolated Nexus validation entries.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -81,15 +81,15 @@
     {
       "id": "limitless-vidlink",
       "name": "Vidlink",
-      "description": "Pinned Nexus adapter for Eclipsia's Vidlink provider (nyxora.js), preserving its current Vidlink API extraction and playback headers with normalized visible labels.",
-      "version": "0.1.0",
-      "author": "Limitless Nexus adapter; upstream: Eclipsia",
+      "description": "Direct Nexus pointer to the Haylox/Vidlink provider from the Eclipsia Codeberg repository currently installed as Eclipsia v9.9.0.",
+      "version": "0.2.0",
+      "author": "Eclipsia; exposed in Nexus for isolated validation",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-eclipsia-nexus-v1.js?rev=010",
+      "filename": "https://codeberg.org/api/v1/repos/eclipsia/nuvio-plugin/raw/providers/haylox.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": ["mp4", "m3u8", "mkv"],
       "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
       "contentLanguage": ["en", "hi", "bn"]
     },
