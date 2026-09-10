@@ -1,6 +1,6 @@
 "use strict";
 
-// Limitless Nexus KissKH production wrapper v1.0.0.
+// Limitless Nexus KissKH production wrapper v1.0.1.
 // The tested standalone resolver is pinned to an immutable Limitless commit.
 // No runtime dependency on Eclipsia/Codeberg.
 const PROVIDER_NAME = "KissKH";
@@ -31,11 +31,37 @@ async function loadBase() {
   }
 }
 
+function hasSubtitleTracks(row) {
+  const groups = [row && row.subtitles, row && row.subtitleTracks, row && row.captions, row && row.tracks];
+  return groups.some(function(value) {
+    return Array.isArray(value) && value.some(function(track) {
+      if (!track) return false;
+      if (typeof track === "string") return !!clean(track);
+      return !!clean(track.url || track.file || track.src || track.label || track.name || track.language || track.lang);
+    });
+  });
+}
+
+function hasAudioTag(name) {
+  return /\[(?:HSUB|SUB|DUB|DUB\+SUB|DUAL)\]/i.test(clean(name));
+}
+
 function normalizeRow(row) {
   if (!row || typeof row !== "object") return row;
   let name = clean(row.name);
   name = name.replace(/^KissKH Standalone(?=\s*•|$)/i, PROVIDER_NAME);
   if (!name) name = PROVIDER_NAME;
+
+  if (!hasAudioTag(name)) {
+    if (hasSubtitleTracks(row)) {
+      name += " • [SUB]";
+    } else if (/^(?:ja|jpn|japanese)$/i.test(clean(row.language || row.lang || row.audioLanguage))) {
+      // KissKH Japanese-language releases are presented as hard-subbed in our
+      // stream-card scheme when no separate subtitle tracks are exposed.
+      name += " • [HSUB]";
+    }
+  }
+
   return { ...row, name, provider: PROVIDER_NAME };
 }
 
