@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.64",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto adds complete mirror discovery and relay v4 with bounded caching, prefetch and URL refresh. Separate relay startup and Nuvio Desktop subtitle integration are still required; device playback testing is pending.",
+  "version": "2.1.65",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto relay v4 remains the validated Desktop transport; an isolated Android Direct test now exposes raw AniKoto media and subtitle tracks without localhost relay rewriting.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -71,6 +71,21 @@
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-nexus-v8.js?rev=208",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://anikototv.to/favicon.ico",
+      "contentLanguage": ["en", "ja"]
+    },
+    {
+      "id": "anikototv-android-direct",
+      "name": "AnikotoTV Android Direct",
+      "description": "Nexus-only Android playback test. Uses the validated AniKoto mirror/SUB/DUB resolver but returns raw HTTPS media URLs, request headers, and subtitle tracks directly to Nuvio without the localhost relay.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus",
+      "supportedTypes": ["movie", "tv", "anime"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv-android-direct-v1.js?rev=010",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
