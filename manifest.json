@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.1.67",
-  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror from All-in-One-Nuvio and Vidlink from Eclipsia are pinned as isolated Nexus adapters for validation.",
+  "version": "2.1.68",
+  "description": "Nexus build/test repository for Limitless providers. AniKoto experiments are parked in Limitless-Provider-Lab. NetMirror from All-in-One-Nuvio, Vidlink from Eclipsia, and Eclipsia's current KissKH/Fyron provider are exposed as isolated Nexus validation entries.",
   "scrapers": [
     {
       "id": "limitless-reanime",
@@ -94,19 +94,19 @@
       "contentLanguage": ["en", "hi", "bn"]
     },
     {
-      "id": "limitless-kisskh-test",
-      "name": "KissKH Test",
-      "description": "Experimental KissKH provider using the current Sep 2026 API/kkey flow, strict title identity, punctuation-tolerant discovery, and staged diagnostics. Ex-Aid and Build have confirmed the search, episode, kkey, and playback path.",
-      "version": "0.1.2",
-      "author": "Limitless Nexus; current API references from debakarr/kisskh-dl and Yuzono anime-extensions",
+      "id": "limitless-kisskh-eclipsia",
+      "name": "KissKH",
+      "description": "Direct Nexus pointer to the Fyron/KissKH provider from the Eclipsia Codeberg repository currently installed as Eclipsia v9.9.0.",
+      "version": "0.1.0",
+      "author": "Eclipsia; exposed in Nexus for isolated validation",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-nexus-v2.js",
+      "filename": "https://codeberg.org/api/v1/repos/eclipsia/nuvio-plugin/raw/providers/fyron.js",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": ["mp4", "m3u8", "mkv"],
       "logo": "https://kisskh.is/favicon.ico",
-      "contentLanguage": ["ja", "ko", "zh", "th", "en"]
+      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
     }
   ]
 }
