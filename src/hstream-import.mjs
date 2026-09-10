@@ -8,9 +8,38 @@ function humanizeSlug(value) {
     .trim();
 }
 
+function comparable(value) {
+  return clean(value)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '')
+    .trim();
+}
+
 function positiveEpisodeNumber(value) {
   const number = Number(value);
   return Number.isInteger(number) && number > 0 ? number : null;
+}
+
+function seriesTitleFromRow(row) {
+  const raw = clean(row?.title);
+  const slugTitle = humanizeSlug(row?.slug);
+  if (!raw) return slugTitle;
+  if (!slugTitle) return raw;
+
+  const episodeNumbers = new Set((Array.isArray(row?.episodes) ? row.episodes : [])
+    .map((episode) => positiveEpisodeNumber(episode?.episode))
+    .filter(Boolean));
+
+  const match = raw.match(/^(.*?)(?:\s*[-–—:]\s*|\s+)(?:episode\s*)?(\d+)\s*$/i);
+  if (match) {
+    const prefix = clean(match[1]);
+    const number = Number(match[2]);
+    if (prefix && episodeNumbers.has(number) && comparable(prefix) === comparable(slugTitle)) return prefix;
+  }
+
+  return raw;
 }
 
 function makeEpisode(seriesSlug, seriesId, row, now, baseUrl) {
@@ -52,7 +81,8 @@ export function buildHStreamProviderImport(input, now = new Date().toISOString()
   let skippedEpisodes = 0;
 
   for (const row of sourceRows) {
-    const title = clean(row?.title);
+    const rawTitle = clean(row?.title);
+    const title = seriesTitleFromRow(row);
     const japaneseTitle = clean(row?.title_jpn);
     const slug = clean(row?.slug);
     if (!title || !slug) continue;
@@ -70,6 +100,7 @@ export function buildHStreamProviderImport(input, now = new Date().toISOString()
 
     const slugAlias = humanizeSlug(slug);
     const aliases = unique([
+      rawTitle && rawTitle.toLowerCase() !== title.toLowerCase() ? rawTitle : null,
       slugAlias && slugAlias.toLowerCase() !== title.toLowerCase() ? slugAlias : null,
       japaneseTitle || null
     ]);
@@ -80,7 +111,7 @@ export function buildHStreamProviderImport(input, now = new Date().toISOString()
       seriesId,
       slug,
       title,
-      providerTitle: title,
+      providerTitle: rawTitle || title,
       seriesTitle: title,
       japaneseTitle: japaneseTitle || null,
       aliases,
@@ -103,6 +134,7 @@ export function buildHStreamProviderImport(input, now = new Date().toISOString()
         sourceHost: 'hstream.moe',
         sourceEndpoint: '/v1/hentai-list',
         sourceSeriesSlug: slug,
+        sourceTitle: rawTitle || null,
         sourceEpisodeCount: episodes.length,
         japaneseTitle: japaneseTitle || null
       },
@@ -125,4 +157,4 @@ export function buildHStreamProviderImport(input, now = new Date().toISOString()
   };
 }
 
-export const _test = { humanizeSlug, positiveEpisodeNumber, makeEpisode };
+export const _test = { humanizeSlug, comparable, positiveEpisodeNumber, seriesTitleFromRow, makeEpisode };
