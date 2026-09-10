@@ -6,7 +6,7 @@ import { mergeProviderPayload } from '../src/provider-merge.mjs';
 const NOW = '2026-09-09T20:00:00.000Z';
 
 const fixture = [{
-  title: 'Deco x Deco The Animation',
+  title: 'Deco x Deco The Animation - 1',
   title_jpn: 'デコ×デコ THE ANIMATION',
   slug: 'deco-x-deco-the-animation',
   episodes: [
@@ -15,11 +15,14 @@ const fixture = [{
   ]
 }];
 
-test('normalizes HStream public API into exact series and episode mappings', () => {
+test('normalizes HStream first-episode display titles into exact series and episode mappings', () => {
   const payload = buildHStreamProviderImport(fixture, NOW, { minRecords: 1 });
   assert.equal(payload.provider, 'hstream');
   assert.equal(payload.records.length, 1);
   const record = payload.records[0];
+  assert.equal(record.title, 'Deco x Deco The Animation');
+  assert.equal(record.providerTitle, 'Deco x Deco The Animation - 1');
+  assert.ok(record.aliases.includes('Deco x Deco The Animation - 1'));
   assert.equal(record.seriesId, 'hstream:series:deco-x-deco-the-animation');
   assert.equal(record.japaneseTitle, 'デコ×デコ THE ANIMATION');
   assert.equal(record.censorStatus, 'unknown');
@@ -31,7 +34,16 @@ test('normalizes HStream public API into exact series and episode mappings', () 
   assert.equal(record.episodes[0].url, 'https://hstream.moe/hentai/deco-x-deco-the-animation-1');
 });
 
-test('HStream title merges into an existing Scarlet Peach identity instead of duplicating Deco', () => {
+test('does not strip a legitimate numbered title without matching episode evidence', () => {
+  const payload = buildHStreamProviderImport([{
+    title: 'Example 2',
+    slug: 'example-2',
+    episodes: [{ episode: 1, slug: 'example-2-1' }]
+  }], NOW, { minRecords: 1 });
+  assert.equal(payload.records[0].title, 'Example 2');
+});
+
+test('HStream episode display title merges into an existing Scarlet Peach identity instead of duplicating Deco', () => {
   const payload = buildHStreamProviderImport(fixture, NOW, { minRecords: 1 });
   const input = {
     schemaVersion: 2,
