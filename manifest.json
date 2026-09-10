@@ -1,7 +1,7 @@
 {
   "name": "Limitless Nexus: Scarlet Peach Providers",
-  "version": "0.6.5",
-  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime, HentaiHaven, and experimental HStream share the Scarlet Peach schema v2 metadata core and external identity bridge. HentaiHaven uses a quality-scoped HLS master containing video plus its separate audio rendition, while subtitles are exposed independently by the Scarlet Peach catalog addon.",
+  "version": "0.7.0",
+  "description": "Adult-only Scarlet Peach stream providers for Nuvio. Hanime, HentaiHaven, and HStream are production providers sharing the Scarlet Peach schema v2 metadata core and external identity bridge. Provider-specific playback transport remains isolated so one source cannot destabilize the others.",
   "scrapers": [
     {
       "id": "scarlet-peach-hanime",
@@ -21,7 +21,7 @@
     {
       "id": "scarlet-peach-hentaihaven",
       "name": "HentaiHaven",
-      "description": "Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching and secure player token decoding. HLS qualities are returned through a minimal quality-scoped master containing the selected video rendition and separate audio group only. HentaiHaven WebVTT subtitles are exposed independently through the Scarlet Peach catalog addon's subtitles resource so subtitle handling cannot disturb video/audio playback.",
+      "description": "Production HentaiHaven provider. Uses hentaihaven.com first and hentaihaven.vip as a working mirror fallback with Romanization-aware matching and secure player token decoding. HLS qualities use a minimal quality-scoped master containing the selected video rendition and separate audio group only. HentaiHaven WebVTT subtitles are exposed independently through the Scarlet Peach catalog addon's subtitles resource so subtitle handling cannot disturb video/audio playback.",
       "version": "0.2.4",
       "author": "Limitless Nexus: Scarlet Peach; protocol references from cynthia2006/hanime-plugin and ngomile/anigrab HentaiHaven extractors",
       "supportedTypes": ["anime", "tv"],
@@ -36,8 +36,8 @@
     {
       "id": "scarlet-peach-hstream",
       "name": "HStream",
-      "description": "Experimental HStream provider using Scarlet Peach MAL/AniList/SP metadata plus the shared TMDB/IMDb ingress bridge. Resolves HStream episode pages through direct slug and search fallback, performs the XSRF-protected player API handshake, follows multiple CDN domains, and returns DASH/MPD streams. Android receives the clean MPD plus external ASS subtitles; desktop receives the native WebVTT-injected DASH wrapper. Live tests currently prove 720p, 1080p, and 2160p/4K on supported titles.",
-      "version": "0.1.1",
+      "description": "Production HStream provider using Scarlet Peach MAL/AniList/SP metadata plus the shared TMDB/IMDb ingress bridge. Resolves HStream episode pages through direct slug and search fallback, performs the XSRF-protected player API handshake, follows multiple CDN domains, and returns native DASH/MPD streams. Android receives the clean MPD plus external ASS subtitles; desktop receives the native WebVTT-injected DASH wrapper. Client testing has validated 720p, 1080p, 2160p/4K and subtitles on supported titles.",
+      "version": "0.2.0",
       "author": "Limitless Nexus: Scarlet Peach; protocol reference from cynthia2006/hanime-plugin HStream extractor",
       "supportedTypes": ["anime", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/scarlet-peach-providers/providers/scarlet-peach-hstream-v2.js",
