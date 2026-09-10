@@ -15,6 +15,32 @@ const fixture = [{
   ]
 }];
 
+function titleRecord(id, title, providerMappings = []) {
+  return {
+    id,
+    type: 'series',
+    adult: true,
+    sourceConfidence: 'hanime',
+    title,
+    titles: { english: null, romaji: title, japanese: null, aliases: [] },
+    description: null,
+    poster: null,
+    background: null,
+    year: 2026,
+    releaseDate: null,
+    studio: 'Seven',
+    genres: ['Hentai'],
+    tags: [],
+    censorStatus: 'censored',
+    languageVersions: [],
+    episodes: [
+      { number: 1, title: 'Episode 1', censorStatus: 'censored', audioLanguages: [], subtitleLanguages: [], providerMappings: [] },
+      { number: 2, title: 'Episode 2', censorStatus: 'censored', audioLanguages: [], subtitleLanguages: [], providerMappings: [] }
+    ],
+    providerMappings
+  };
+}
+
 test('normalizes HStream first-episode display titles into exact series and episode mappings', () => {
   const payload = buildHStreamProviderImport(fixture, NOW, { minRecords: 1 });
   assert.equal(payload.provider, 'hstream');
@@ -48,29 +74,7 @@ test('HStream episode display title merges into an existing Scarlet Peach identi
   const input = {
     schemaVersion: 2,
     generatedAt: NOW,
-    titles: [{
-      id: 'sp:hanime:deco-x-deco-the-animation',
-      type: 'series',
-      adult: true,
-      sourceConfidence: 'hanime',
-      title: 'Deco x Deco The Animation',
-      titles: { english: null, romaji: 'Deco x Deco The Animation', japanese: null, aliases: [] },
-      description: null,
-      poster: null,
-      background: null,
-      year: 2026,
-      releaseDate: null,
-      studio: 'Seven',
-      genres: ['Hentai'],
-      tags: [],
-      censorStatus: 'censored',
-      languageVersions: [],
-      episodes: [
-        { number: 1, title: 'Episode 1', censorStatus: 'censored', audioLanguages: [], subtitleLanguages: [], providerMappings: [] },
-        { number: 2, title: 'Episode 2', censorStatus: 'censored', audioLanguages: [], subtitleLanguages: [], providerMappings: [] }
-      ],
-      providerMappings: []
-    }]
+    titles: [titleRecord('sp:hanime:deco-x-deco-the-animation', 'Deco x Deco The Animation')]
   };
   const result = mergeProviderPayload(input, payload);
   assert.equal(result.snapshot.titles.length, 1);
@@ -81,4 +85,22 @@ test('HStream episode display title merges into an existing Scarlet Peach identi
   const episodeMapping = title.episodes[0].providerMappings.find((item) => item.provider === 'hstream');
   assert.ok(episodeMapping);
   assert.equal(episodeMapping.slug, 'deco-x-deco-the-animation-1');
+});
+
+test('exact provider series identity breaks an otherwise ambiguous title tie', () => {
+  const payload = buildHStreamProviderImport(fixture, NOW, { minRecords: 1 });
+  const input = {
+    schemaVersion: 2,
+    generatedAt: NOW,
+    titles: [
+      titleRecord('sp:hanime:deco-x-deco-the-animation', 'Deco x Deco The Animation'),
+      titleRecord('sp:hentaihaven:deco-x-deco-the-animation-special', 'Deco x Deco The Animation')
+    ]
+  };
+  const result = mergeProviderPayload(input, payload);
+  assert.equal(result.snapshot.titles.length, 2);
+  const correct = result.snapshot.titles.find((item) => item.id === 'sp:hanime:deco-x-deco-the-animation');
+  const competing = result.snapshot.titles.find((item) => item.id === 'sp:hentaihaven:deco-x-deco-the-animation-special');
+  assert.ok(correct.providerMappings.some((mapping) => mapping.provider === 'hstream'));
+  assert.ok(!competing.providerMappings.some((mapping) => mapping.provider === 'hstream'));
 });
