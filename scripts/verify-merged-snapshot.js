@@ -27,27 +27,33 @@ function requireProviderMapping(title, provider, expectedSlugFragment) {
 
 const jimihenTitle = requireTitle('mal:44044');
 const bibleBlackTitle = requireTitle('mal:368');
+const decoTitle = requireTitle('sp:hanime:deco-x-deco-the-animation');
 const jimihenHanime = requireProviderMapping(jimihenTitle, 'hanime', 'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu-season-1');
 const bibleBlackHanime = requireProviderMapping(bibleBlackTitle, 'hanime', 'bible-black');
 const jimihenHentaiHaven = requireProviderMapping(jimihenTitle, 'hentaihaven', 'jimihen-jimiko-o-kae-chau-jun-isei-kouyuu/episode-1');
 const bibleBlackHentaiHaven = requireProviderMapping(bibleBlackTitle, 'hentaihaven', 'bible-black-1/episode-1');
+const decoHStream = requireProviderMapping(decoTitle, 'hstream', 'deco-x-deco-the-animation-1');
 
 const hanimeMapped = snapshot.titles.filter((title) => (title.providerMappings || []).some((mapping) => mapping.provider === 'hanime')).length;
 const hentaiHavenMapped = snapshot.titles.filter((title) => (title.providerMappings || []).some((mapping) => mapping.provider === 'hentaihaven')).length;
+const hstreamMapped = snapshot.titles.filter((title) => (title.providerMappings || []).some((mapping) => mapping.provider === 'hstream')).length;
 const spHanimeTitles = snapshot.titles.filter((title) => String(title.id || '').startsWith('sp:hanime:')).length;
 const spHentaiHavenTitles = snapshot.titles.filter((title) => String(title.id || '').startsWith('sp:hentaihaven:')).length;
+const spHStreamTitles = snapshot.titles.filter((title) => String(title.id || '').startsWith('sp:hstream:')).length;
 
 if (hanimeMapped < 1000) throw new Error(`Hanime mapped title count unexpectedly low: ${hanimeMapped}`);
 if (spHanimeTitles < 500) throw new Error(`Hanime provider-only title count unexpectedly low: ${spHanimeTitles}`);
 if (hentaiHavenMapped < 900) throw new Error(`HentaiHaven mapped title count unexpectedly low: ${hentaiHavenMapped}`);
 if (spHentaiHavenTitles < 150) throw new Error(`HentaiHaven provider-only title count unexpectedly low: ${spHentaiHavenTitles}`);
+if (hstreamMapped < 100) throw new Error(`HStream mapped title count unexpectedly low: ${hstreamMapped}`);
 
 console.log(JSON.stringify({
   ok: true,
   titleCount: snapshot.titles.length,
   providerCoverage: {
     hanime: { mapped: hanimeMapped, providerOnly: spHanimeTitles },
-    hentaihaven: { mapped: hentaiHavenMapped, providerOnly: spHentaiHavenTitles }
+    hentaihaven: { mapped: hentaiHavenMapped, providerOnly: spHentaiHavenTitles },
+    hstream: { mapped: hstreamMapped, providerOnly: spHStreamTitles }
   },
   jimihen: {
     hanimeTitleMapping: jimihenHanime.titleMapping.seriesId || jimihenHanime.titleMapping.slug || jimihenHanime.titleMapping.providerId,
@@ -61,5 +67,10 @@ console.log(JSON.stringify({
     hentaiHavenTitleMapping: bibleBlackHentaiHaven.titleMapping.seriesId || bibleBlackHentaiHaven.titleMapping.slug || bibleBlackHentaiHaven.titleMapping.providerId,
     hentaiHavenEpisodeCount: bibleBlackHentaiHaven.episodeMappings.length,
     hentaiHavenSampleSlug: bibleBlackHentaiHaven.exact.slug
+  },
+  deco: {
+    hstreamTitleMapping: decoHStream.titleMapping.seriesId || decoHStream.titleMapping.slug || decoHStream.titleMapping.providerId,
+    hstreamEpisodeCount: decoHStream.episodeMappings.length,
+    hstreamSampleSlug: decoHStream.exact.slug
   }
 }));
