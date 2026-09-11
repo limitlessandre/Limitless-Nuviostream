@@ -19,7 +19,7 @@ WCO • FHD 1080p • [DUB] • Mirror 2
 WCO • HD 720p • [HSUB] • Mirror 1
 KissKH • HD 720p • [HSUB]
 Re:ANIME • FHD 1080p • [SUB]
-Vidlink • HD 720p • [UNK]
+Vidlink • HD 720p • [HSUB]
 NetMirror • SD 480p • [DUB]
 ```
 
@@ -75,6 +75,12 @@ anything else     → [UNK]
 The current first-party Japanese KissKH stream class was manually verified during the September 2026 Nexus investigation as hard-subbed when no selectable subtitle tracks are exposed. Therefore current Japanese KissKH first-party rows with no selectable subtitle tracks may use `[HSUB]`.
 
 Do not generalize that rule to other languages or providers. If KissKH changes its playback model, re-verify this assumption.
+
+### Vidlink
+
+The standalone Vidlink rebuild reproducing the confirmed one-row control contract was manually playback-verified in Nuvio during the September 2026 rebuild. Den-O S1E1 returned the expected single 720p direct row and the current stream class was verified as hard-subbed. The confirmed baseline does not expose selectable subtitle tracks to Nuvio, so this stream class may use `[HSUB]`.
+
+Do not infer `[HSUB]` merely from Vidlink language metadata. If the active Vidlink implementation begins exposing selectable caption tracks, dual audio, or a materially different source class, re-run the normal decision tree and re-verify the classification.
 
 ### WCO
 

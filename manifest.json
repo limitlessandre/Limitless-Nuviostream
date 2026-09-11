@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nuviostream",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Confirmed Limitless Nexus providers with canonical quality, audio/subtitle, mirror, and unknown-stream naming standards.",
   "scrapers": [
     {
@@ -66,16 +66,16 @@
     {
       "id": "limitless-vidlink",
       "name": "Vidlink",
-      "description": "Confirmed Vidlink playback path restored after the standalone replacement failed Nuvio playback. Uses the last user-verified Haylox/Vidlink extraction path with Nexus naming-standard labels.",
-      "version": "0.4.2",
-      "author": "Eclipsia; Limitless Nexus presentation adapter",
+      "description": "Confirmed standalone Nexus-owned Vidlink provider reproducing the verified one-row playable control contract without Eclipsia/Codeberg runtime dependency. Current verified stream class is hard-subbed and labeled [HSUB].",
+      "version": "1.0.0",
+      "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=042",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=100",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8", "mkv"],
-      "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://vidlink.pro/favicon.ico",
       "contentLanguage": ["en", "hi", "bn"]
     },
     {
