@@ -1,8 +1,8 @@
 [
   {
-    "name": "Limitless Nexus",
-    "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/manifest.json",
-    "local_path": "custom/manifest.json",
+    "name": "Limitless Master Nexus",
+    "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/manifest.json",
+    "local_path": "manifest.json",
     "priority": 1,
     "enabled": true
   }
