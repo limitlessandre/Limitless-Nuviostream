@@ -1,0 +1,101 @@
+{
+  "sourceId": "mwVault",
+  "stream": {
+    "id": "primary",
+    "type": "file",
+    "qualities": {
+      "360": {
+        "type": "mp4",
+        "url": "https://media.example.invalid/den-o-s1e1-360.mp4",
+        "codecName": "h264",
+        "size": "36138203",
+        "resourceId": "612078124204966872",
+        "linkType": 2,
+        "se": 1,
+        "ep": 1,
+        "headers": {},
+        "requiresProxy": true
+      },
+      "480": {
+        "type": "mp4",
+        "url": "https://media.example.invalid/den-o-s1e1-480.mp4",
+        "codecName": "h264",
+        "size": "63415513",
+        "resourceId": "2398116016271279064",
+        "linkType": 2,
+        "se": 1,
+        "ep": 1,
+        "headers": {},
+        "requiresProxy": true
+      },
+      "720": {
+        "type": "mp4",
+        "url": "https://media.example.invalid/den-o-s1e1-720.mp4",
+        "codecName": "h264",
+        "size": "213690988",
+        "resourceId": "8739184291608940408",
+        "linkType": 2,
+        "se": 1,
+        "ep": 1,
+        "headers": {},
+        "requiresProxy": true
+      }
+    },
+    "captions": [
+      {
+        "id": "7422154079486758776",
+        "url": "https://captions.example.invalid/den-o-s1e1-0.srt",
+        "language": "English",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "504625051845673944",
+        "url": "https://captions.example.invalid/den-o-s1e1-1.srt",
+        "language": "Español",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "5116311070273066144",
+        "url": "https://captions.example.invalid/den-o-s1e1-2.srt",
+        "language": "Filipino",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "5692771822576489632",
+        "url": "https://captions.example.invalid/den-o-s1e1-3.srt",
+        "language": "Indonesian",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "6269232574880013904",
+        "url": "https://captions.example.invalid/den-o-s1e1-4.srt",
+        "language": "Malay",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "2810468061059367024",
+        "url": "https://captions.example.invalid/den-o-s1e1-5.srt",
+        "language": "Português",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      },
+      {
+        "id": "1081085804149097688",
+        "url": "https://captions.example.invalid/den-o-s1e1-6.srt",
+        "language": "中文",
+        "type": "srt",
+        "hasCorsRestrictions": false
+      }
+    ],
+    "flags": [
+      "cors-allowed"
+    ],
+    "TTL": 3600,
+    "deliveryType": "file"
+  }
+}

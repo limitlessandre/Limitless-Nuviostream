@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -92,6 +92,20 @@
       "formats": ["mp4", "m3u8", "mkv"],
       "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
       "contentLanguage": ["en", "hi", "bn"]
+    },
+    {
+      "id": "limitless-vidlink-standalone-rebuild",
+      "name": "Vidlink Standalone Rebuild",
+      "description": "Unconfirmed standalone rebuild matching the measured Vidlink control: Den-O S1E1 returns one 720p direct video row, without playback header overrides or added caption tracks. Actual Nuvio Desktop playback confirmation is still required.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
+      "supportedTypes": ["movie", "tv"],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-rebuild-v1.js?rev=010",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": ["mp4", "m3u8"],
+      "logo": "https://vidlink.pro/favicon.ico"
     },
     {
       "id": "limitless-vidlink-standalone-test",
