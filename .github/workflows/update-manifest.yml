@@ -47,6 +47,23 @@ jobs:
       - name: Build native Nuvio manifest
         run: python scripts/build_manifest.py
 
+      - name: Preserve canonical production manifest metadata
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          generated_path = Path("manifest.json")
+          canonical_path = Path("custom/manifest.json")
+          generated = json.loads(generated_path.read_text(encoding="utf-8"))
+          canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+          for key in ("name", "version", "description"):
+              if canonical.get(key):
+                  generated[key] = canonical[key]
+          generated_path.write_text(json.dumps(generated, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          PY
+
       - name: Build CloudStream compatibility repository
         id: cloudstream
         continue-on-error: true
