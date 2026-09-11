@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -81,40 +81,11 @@
     {
       "id": "limitless-vidlink",
       "name": "Vidlink",
-      "description": "Restored user-confirmed Haylox/Vidlink extraction path with Nexus naming-standard labels. This remains the active Vidlink while the standalone replacement is retested.",
-      "version": "0.4.2",
-      "author": "Eclipsia; Nexus presentation adapter",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-eclipsia-nexus-v3.js?rev=042",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8", "mkv"],
-      "logo": "https://raw.githubusercontent.com/eclipsia-404/util-nuvio/refs/heads/main/icons/icon.png",
-      "contentLanguage": ["en", "hi", "bn"]
-    },
-    {
-      "id": "limitless-vidlink-standalone-rebuild",
-      "name": "Vidlink Standalone Rebuild",
-      "description": "Unconfirmed standalone rebuild matching the measured Vidlink control: Den-O S1E1 returns one 720p direct video row, without playback header overrides or added caption tracks. Actual Nuvio Desktop playback confirmation is still required.",
-      "version": "0.1.0",
+      "description": "Verified standalone Nexus-owned Vidlink provider reproducing the confirmed one-row playable control contract without Eclipsia/Codeberg runtime dependency. Current verified stream class is hard-subbed and labeled [HSUB].",
+      "version": "1.0.0",
       "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-rebuild-v1.js?rev=010",
-      "enabled": true,
-      "hasSettings": false,
-      "limited": true,
-      "formats": ["mp4", "m3u8"],
-      "logo": "https://vidlink.pro/favicon.ico"
-    },
-    {
-      "id": "limitless-vidlink-standalone-test",
-      "name": "Vidlink Standalone Test",
-      "description": "Standalone Vidlink v2 test using the plain Vidlink /api/b endpoint, ordinary Referer/Origin playback headers, direct quality extraction, HLS variant parsing, selectable captions, and no Eclipsia/Codeberg runtime dependency. Not production-confirmed yet.",
-      "version": "0.6.0",
-      "author": "Limitless Nexus; flow cross-checked against standalone Nuvio Vidlink references",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-nexus-v2.js?rev=060",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=100",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
