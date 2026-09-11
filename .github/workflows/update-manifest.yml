@@ -1,4 +1,4 @@
-name: Update Limitless provider manifests
+name: Validate Limitless production manifest
 
 on:
   workflow_dispatch:
@@ -7,11 +7,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "sources.json"
-      - "overrides.json"
+      - "manifest.json"
       - "cloudstream-config.json"
-      - "custom/**"
-      - "scripts/build_manifest.py"
+      - "custom/providers/**"
       - "scripts/build_cloudstream.py"
       - "scripts/audit_port_candidates.py"
       - ".github/workflows/update-manifest.yml"
@@ -44,24 +42,34 @@ jobs:
             node --check "$file"
           done
 
-      - name: Build native Nuvio manifest
-        run: python scripts/build_manifest.py
-
-      - name: Preserve canonical production manifest metadata
+      - name: Validate canonical root Nuvio manifest
         shell: bash
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
-          generated_path = Path("manifest.json")
-          canonical_path = Path("custom/manifest.json")
-          generated = json.loads(generated_path.read_text(encoding="utf-8"))
-          canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
-          for key in ("name", "version", "description"):
-              if canonical.get(key):
-                  generated[key] = canonical[key]
-          generated_path.write_text(json.dumps(generated, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          path = Path("manifest.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          if not isinstance(data, dict):
+              raise SystemExit("manifest.json must contain a JSON object")
+          scrapers = data.get("scrapers")
+          if not isinstance(scrapers, list):
+              raise SystemExit("manifest.json must contain a scrapers array")
+
+          seen_ids = set()
+          for index, provider in enumerate(scrapers, 1):
+              if not isinstance(provider, dict):
+                  raise SystemExit(f"scrapers[{index}] must be an object")
+              for key in ("id", "name", "filename"):
+                  if not str(provider.get(key) or "").strip():
+                      raise SystemExit(f"scrapers[{index}] is missing {key}")
+              provider_id = str(provider["id"]).strip()
+              if provider_id in seen_ids:
+                  raise SystemExit(f"duplicate provider id: {provider_id}")
+              seen_ids.add(provider_id)
+
+          print(f"Validated canonical manifest with {len(scrapers)} providers.")
           PY
 
       - name: Build CloudStream compatibility repository
@@ -75,11 +83,9 @@ jobs:
         continue-on-error: true
         run: python scripts/audit_port_candidates.py
 
-      - name: Commit generated files when changed
+      - name: Commit generated compatibility files when changed
         shell: bash
         run: |
-          git add manifest.json duplicates.json build-status.json language-filter-report.json
-
           if [ "${{ steps.cloudstream.outcome }}" = "success" ]; then
             git add cloudstream-repo.json cloudstream-plugins.json cloudstream-duplicates.json \
               cloudstream-build-status.json cloudstream-language-filter-report.json \
@@ -95,11 +101,11 @@ jobs:
           fi
 
           if git diff --cached --quiet; then
-            echo "No provider changes detected."
+            echo "No generated compatibility changes detected."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: refresh Limitless provider manifests"
+          git commit -m "chore: refresh compatibility metadata"
           git push
