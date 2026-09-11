@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
-Native Limitless providers: **3**  
-Filtered CloudStream providers: **89**  
-No obvious native overlap: **87**  
+Native Limitless providers: **6**  
+Filtered CloudStream providers: **97**  
+No obvious native overlap: **94**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **2**
+Exact/alias overlap: **3**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -15,7 +15,6 @@ Exact/alias overlap: **2**
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies
 - **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
-- **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie
 - **OHLI24** (`OHLI24`) — ko; AsianDrama, TvSeries, Movie — Anime and movies with Korean subtitles only (no Korean audio)
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
@@ -23,7 +22,7 @@ Exact/alias overlap: **2**
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
-- **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!
+- **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
@@ -41,10 +40,12 @@ Exact/alias overlap: **2**
 - **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
 - **Anikai** (`Anikai`) — en; Anime, AnimeMovie, OVA — ANIME- scrapper, clone , aggregator :( NOT ORIGINAL ANIKAI AND NOT ORIGINAL SERVER CLONE
+- **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
 - **Anilight** (`Anilight`) — en; AnimeMovie, Anime, OVA — Anilight Anime Provider
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
+- **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
 - **Animo** (`Animo`) — en; Anime, AnimeMovie, OVA — Anime(sub,dub)
 - **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
 - **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
@@ -71,12 +72,16 @@ Exact/alias overlap: **2**
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
+- **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
+- **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
+- **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
 - **TheMoviesFlix** (`TheMoviesFlix`) — en; Movie, TvSeries — stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider
 - **UHDmoviesProvider** (`UHDmoviesProvider`) — en; Movie, TvSeries — Indian Multi-language 4K Provider
+- **Watch32** (`Watch32`) — en; Movie, TvSeries — Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.
 - **YoTurkish** (`YoTurkish`) — en; TvSeries — YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to
 - **YTS** (`YTS`) — en; Movie, Torrent — YTS Movies 4K Support (Torrent)
 - **Supercartoons** (`Supercartoons`) — en; Cartoon — Watch Cartoons Online. Here you can Watch old Classical Cartoons like Bugs Bunny, Mickey Mouse, Pink Panther, Tom and Jerry and Many Many More!
@@ -85,9 +90,9 @@ Exact/alias overlap: **2**
 
 - **Arte** (`Arte`) — en; Documentary — Concerti, documentari, ecc.. in arte.tv
 - **BasketballReplays** (`BasketballReplays`) — en; Live — BA Replay full games online Free . Stream NBA Basketball replays full games. Spoiler Free , No Blackouts. No signup. Free Download High quality video in HD.
-- **CloudPlay** (`CloudPlay`) — en; Live — CloudPlay Live TV Extension
 - **DocumentaryArea** (`DocumentaryArea`) — en; Documentary — Watch the best online documentary films.Stunning collection of awesome, eyeopening, interesting, just released, full documentaries.
 - **F1FullRaces** (`F1FullRaces`) — en; Live — F1FullRaces
+- **M3UPlaylistPlayerProvider** (`M3UPlaylistPlayerProvider`) — en; Live — Add your own m3u playlists
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
@@ -104,6 +109,8 @@ Exact/alias overlap: **2**
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
 - **TimStreams** (`TimStreams`) — en; Live — Live Sports Events and some Live TV Channels from TimStreams
 - **FootReplays** (`FootReplays`) — en; Others
+- **GoldenAudiobook** (`GoldenAudiobook`) — en; Others — Audiobooks - Use Picture in Picture or VLC as external player
+- **LibriVoxAudiobook** (`LibriVoxAudiobook`) — en; Others — Audiobooks in public domain
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!
 
@@ -113,5 +120,6 @@ None.
 
 ## Exact or alias overlaps
 
-- **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie — AniKoto — native match: AnikotoTV
+- **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: KissKH
+- **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: KissKH
 - **Reanime** (`Reanime`) — en; AnimeMovie, Anime, OVA — native match: Re:ANIME

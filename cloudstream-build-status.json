@@ -1,17 +1,17 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 27,
-  "repositories_loaded": 25,
-  "repositories_using_cache": 1,
+  "repository_database_entries": 28,
+  "repositories_loaded": 27,
+  "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 409,
-  "eligible_plugin_entries_before_dedupe": 91,
-  "unique_plugins": 89,
-  "duplicate_groups": 2,
-  "language_filtered_entries": 285,
-  "unknown_language_metadata_entries": 24,
-  "inactive_filtered_entries": 33,
+  "raw_plugin_entries": 447,
+  "eligible_plugin_entries_before_dedupe": 100,
+  "unique_plugins": 97,
+  "duplicate_groups": 3,
+  "language_filtered_entries": 311,
+  "unknown_language_metadata_entries": 25,
+  "inactive_filtered_entries": 36,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -77,7 +77,14 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 83,
+      "plugins": 82,
+      "verified": false
+    },
+    {
+      "name": "CNC Repo(All Language)",
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "status": "ok",
+      "plugins": 36,
       "verified": false
     },
     {
@@ -98,7 +105,7 @@
       "name": "3rabi عربي",
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "status": "ok",
-      "plugins": 38,
+      "plugins": 39,
       "verified": false
     },
     {
@@ -121,14 +128,6 @@
       "status": "ok",
       "plugins": 7,
       "verified": false
-    },
-    {
-      "name": "CuxPlug",
-      "url": "https://raw.githubusercontent.com/ycngmn/CuxPlug/refs/heads/main/repo.json",
-      "status": "cached",
-      "plugins": 3,
-      "verified": false,
-      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "German providers repository",
@@ -190,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 27,
+      "plugins": 28,
       "verified": false
     },
     {
@@ -203,6 +202,13 @@
     {
       "name": "French providers repository",
       "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/builds/repo.json",
+      "status": "ok",
+      "plugins": 4,
+      "verified": false
+    },
+    {
+      "name": "AllForU",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
       "plugins": 4,
       "verified": false

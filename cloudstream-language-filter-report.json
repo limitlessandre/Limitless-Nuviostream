@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 285,
+  "excluded_count": 311,
   "excluded": [
     {
       "internalName": "3isk",
@@ -346,6 +346,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AnimeRift",
+      "name": "AnimeRift",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/AnimeRift.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "AnimeSail",
       "name": "AnimeSail",
       "source": "Indostream Repo",
@@ -371,20 +385,6 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animesalt.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "AnimeSama",
-      "name": "AnimeSama",
-      "source": "CuxPlug",
-      "sourceRepo": "https://raw.githubusercontent.com/ycngmn/CuxPlug/refs/heads/main/repo.json",
-      "language": [
-        "fr"
-      ],
-      "normalizedLanguages": [
-        "fr"
-      ],
-      "url": "https://raw.githubusercontent.com/ycngmn/CuxPlug/builds/AnimeSama.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -894,6 +894,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "CastleTvProvider",
+      "name": "CastleTvProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CastleTvProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "CatalogoGeneral",
       "name": "CatalogoGeneral",
       "source": "Storm-ext Fork by redblacker8",
@@ -1062,6 +1076,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "CineTvProvider",
+      "name": "CineTvProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineTvProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Cinevood",
       "name": "Cinevood",
       "source": "Cinephile",
@@ -1073,6 +1101,34 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/rockhero1234/cinephile/builds/Cinevood.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "CNC Verse",
+      "name": "CNC Verse",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CNC Verse.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "CNC Verse Mobile",
+      "name": "CNC Verse Mobile",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CNC Verse Mobile.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1115,6 +1171,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/ConanAraby.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "CricifyProvider",
+      "name": "CricifyProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CricifyProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1173,6 +1243,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Desicinemas.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DesiSerialsProvider",
+      "name": "DesiSerialsProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DesiSerialsProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1456,6 +1540,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "EinthusanProvider",
+      "name": "EinthusanProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EinthusanProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Elif",
       "name": "Elif",
       "source": "3rabi عربي",
@@ -1638,20 +1736,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "FrenchStream",
-      "name": "FrenchStream",
-      "source": "CuxPlug",
-      "sourceRepo": "https://raw.githubusercontent.com/ycngmn/CuxPlug/refs/heads/main/repo.json",
-      "language": [
-        "fr"
-      ],
-      "normalizedLanguages": [
-        "fr"
-      ],
-      "url": "https://raw.githubusercontent.com/ycngmn/CuxPlug/builds/FrenchStream.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "FshareProvider",
       "name": "FshareProvider",
       "source": "Vietnamese Extension",
@@ -1797,6 +1881,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "HDrezkaProvider",
+      "name": "HDrezkaProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ru"
+      ],
+      "normalizedLanguages": [
+        "ru"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/HDrezkaProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2276,6 +2374,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "LivXowProvider",
+      "name": "LivXowProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LivXowProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Lodynet",
       "name": "LodyNet",
       "source": "3rabi عربي",
@@ -2374,6 +2486,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "MLSBDProvider",
+      "name": "MLSBDProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MLSBDProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Moflix",
       "name": "Moflix",
       "source": "German providers repository",
@@ -2426,6 +2552,20 @@
     {
       "internalName": "MovieBoxProvider",
       "name": "MovieBoxProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieBoxProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MovieBoxProvider",
+      "name": "MovieBoxProvider",
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "language": [
@@ -2435,6 +2575,34 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MovieBoxProviderIN",
+      "name": "MovieBoxProviderIN",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieBoxProviderIN.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MovieLinkBDProvider",
+      "name": "MovieLinkBDProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieLinkBDProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2472,6 +2640,20 @@
       "sourceRepo": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CS.json",
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/Moviesmod.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "MoviezwapProvider",
+      "name": "MoviezwapProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "te"
+      ],
+      "normalizedLanguages": [
+        "te"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MoviezwapProvider.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "Movix",
@@ -2852,6 +3034,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "PikashowProvider",
+      "name": "PikashowProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PikashowProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Pinoymoviepedia",
       "name": "Pinoymoviepedia",
       "source": "Phisher Repo",
@@ -2877,6 +3073,34 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Piratexplay.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "PlayFyProvider",
+      "name": "PlayFyProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayFyProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "PlayZTVProvider",
+      "name": "PlayZTVProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayZTVProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2936,6 +3160,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "RadioIndiaProvider",
+      "name": "RadioIndiaProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/RadioIndiaProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Raveeflix",
       "name": "Raveeflix",
       "source": "Indostream Repo",
@@ -2989,6 +3227,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/RingZ.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Rtally",
+      "name": "Rtally",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Rtally.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3118,6 +3370,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "SKTechProvider",
+      "name": "SKTechProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SKTechProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Sokuja",
       "name": "Sokuja",
       "source": "cs-karma",
@@ -3174,6 +3440,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "SportzxProvider",
+      "name": "SportzxProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SportzxProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "StarDima",
       "name": "StarDima",
       "source": "Cartoony Repo",
@@ -3199,6 +3479,20 @@
         "it"
       ],
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamCenter.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "StreamFlixProvider",
+      "name": "StreamFlixProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/StreamFlixProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3235,6 +3529,14 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/StremioProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "SubscriptionManager",
+      "name": "SubscriptionManager",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SubscriptionManager.cs3",
       "reason": "unknown-language"
     },
     {
@@ -3291,6 +3593,48 @@
         "ta"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Tamilblasters.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TamilDhoolProvider",
+      "name": "TamilDhoolProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/TamilDhoolProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Tamilian",
+      "name": "Tamilian",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Tamilian.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TamilUltraProvider",
+      "name": "TamilUltraProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/TamilUltraProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3684,6 +4028,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "XonProvider",
+      "name": "XonProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/XonProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "XtreamIPTVProvider",
       "name": "XtreamIPTVProvider",
       "source": "Vietnamese Extension",
@@ -3856,7 +4214,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 24,
+  "unknown_language_metadata_count": 25,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -3962,6 +4320,13 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/StremioProvider.cs3"
+    },
+    {
+      "internalName": "SubscriptionManager",
+      "name": "SubscriptionManager",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SubscriptionManager.cs3"
     },
     {
       "internalName": "TV",

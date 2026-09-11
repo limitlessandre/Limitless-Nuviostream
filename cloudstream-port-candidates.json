@@ -1,9 +1,9 @@
 {
-  "native_provider_count": 3,
-  "cloudstream_provider_count": 89,
-  "no_obvious_native_overlap_count": 87,
+  "native_provider_count": 6,
+  "cloudstream_provider_count": 97,
+  "no_obvious_native_overlap_count": 94,
   "likely_overlap_count": 0,
-  "exact_or_alias_overlap_count": 2,
+  "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
@@ -24,7 +24,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.267,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 667,
+      "version": 668,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -155,33 +155,6 @@
       ]
     },
     {
-      "internalName": "KisskhProvider",
-      "name": "KisskhProvider",
-      "description": null,
-      "language": "en",
-      "tvTypes": [
-        "AsianDrama",
-        "TvSeries",
-        "Anime",
-        "Movie"
-      ],
-      "version": 22,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/KisskhProvider.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.4,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 12,
-      "reasons": [
-        "Asian drama / K-drama coverage",
-        "Anime coverage",
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "OHLI24",
       "name": "OHLI24",
       "description": "Anime and movies with Korean subtitles only (no Korean audio)",
@@ -196,7 +169,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.222,
+        "score": 0.308,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -223,7 +196,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.286,
+        "score": 0.308,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -276,7 +249,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.526,
+        "score": 0.471,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -353,7 +326,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.333,
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -364,25 +337,27 @@
       ]
     },
     {
-      "internalName": "KissKH",
-      "name": "KissKH",
-      "description": "Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!",
+      "internalName": "MovieBox",
+      "name": "MovieBox",
+      "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
       "language": "en",
       "tvTypes": [
-        "AsianDrama"
+        "Movie",
+        "TvSeries"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/KissKH.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "version": 39,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v39.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.333,
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "high-priority",
       "priority_score": 6,
       "reasons": [
-        "Asian drama / K-drama coverage"
+        "Anime coverage",
+        "Movies / Western TV coverage"
       ]
     },
     {
@@ -427,7 +402,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.267,
+        "score": 0.471,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -477,7 +452,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.421,
+        "score": 0.353,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -574,7 +549,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.316,
+        "score": 0.462,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -592,7 +567,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -717,7 +692,31 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.615,
+        "score": 0.462,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AniKoto",
+      "name": "AniKoto",
+      "description": null,
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -741,7 +740,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.737,
+        "score": 0.526,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -765,7 +764,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.533,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -822,6 +821,30 @@
       ]
     },
     {
+      "internalName": "AnimeSuge",
+      "name": "AnimeSuge",
+      "description": null,
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AnimeSuge.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.625,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Animo",
       "name": "Animo",
       "description": "Anime(sub,dub)",
@@ -855,12 +878,12 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anineko.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.714,
+        "score": 0.571,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -953,7 +976,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.476,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1071,7 +1094,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.333,
+        "score": 0.667,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1090,7 +1113,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1136,7 +1159,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 53,
+      "version": 56,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1160,7 +1183,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 4,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1206,12 +1229,12 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 12,
+      "version": 14,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.353,
+        "score": 0.333,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1257,7 +1280,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.364,
+        "score": 0.421,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1280,7 +1303,7 @@
       "repositoryUrl": "https://github.com/Reflex755/ReflexRepo",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.3,
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1303,7 +1326,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.118,
+        "score": 0.286,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1350,7 +1373,30 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.286,
+        "score": 0.25,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Hotstar",
+      "name": "Hotstar",
+      "description": "Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 95,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v95.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.3,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1382,6 +1428,52 @@
       ]
     },
     {
+      "internalName": "Netflix",
+      "name": "Netflix",
+      "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 101,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v101.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "PrimeVideo",
+      "name": "PrimeVideo",
+      "description": "Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 96,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v96.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.471,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "SkymoviesHD",
       "name": "SkymoviesHD",
       "description": "just testing",
@@ -1396,7 +1488,7 @@
       "repositoryUrl": "https://github.com/rockhero1234/cinephile",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.348,
+        "score": 0.385,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1420,7 +1512,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.316,
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1443,7 +1535,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.4,
+        "score": 0.471,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1466,7 +1558,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.3,
+        "score": 0.414,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1499,6 +1591,29 @@
       ]
     },
     {
+      "internalName": "Watch32",
+      "name": "Watch32",
+      "description": "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 33,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.211,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "YoTurkish",
       "name": "YoTurkish",
       "description": "YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to",
@@ -1511,7 +1626,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.25,
+        "score": 0.533,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1556,7 +1671,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.3,
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1606,26 +1721,6 @@
       "reasons": []
     },
     {
-      "internalName": "CloudPlay",
-      "name": "CloudPlay",
-      "description": "CloudPlay Live TV Extension",
-      "language": "en",
-      "tvTypes": [
-        "Live"
-      ],
-      "version": 8,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/CloudPlay.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.24,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": 0,
-      "reasons": []
-    },
-    {
       "internalName": "DocumentaryArea",
       "name": "DocumentaryArea",
       "description": "Watch the best online documentary films.Stunning collection of awesome, eyeopening, interesting, just released, full documentaries.",
@@ -1666,6 +1761,26 @@
       "reasons": []
     },
     {
+      "internalName": "M3UPlaylistPlayerProvider",
+      "name": "M3UPlaylistPlayerProvider",
+      "description": "Add your own m3u playlists",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 16,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.372,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": 0,
+      "reasons": []
+    },
+    {
       "internalName": "Streamed",
       "name": "Streamed",
       "description": "Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.",
@@ -1698,7 +1813,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.267,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1718,7 +1833,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.286,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1733,7 +1848,7 @@
       "tvTypes": [
         "Movie"
       ],
-      "version": 8,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -1761,7 +1876,7 @@
       "repositoryUrl": "https://github.com/Reflex755/ReflexRepo",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.333,
+        "score": 0.348,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1784,7 +1899,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.533,
+        "score": 0.435,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1806,7 +1921,7 @@
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.235,
+        "score": 0.429,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1828,7 +1943,7 @@
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.4,
+        "score": 0.438,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1850,7 +1965,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.4,
+        "score": 0.345,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -1872,7 +1987,7 @@
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.444,
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2014,6 +2129,50 @@
       ]
     },
     {
+      "internalName": "GoldenAudiobook",
+      "name": "GoldenAudiobook",
+      "description": "Audiobooks - Use Picture in Picture or VLC as external player",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 32,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/GoldenAudiobook.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "LibriVoxAudiobook",
+      "name": "LibriVoxAudiobook",
+      "description": "Audiobooks in public domain",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 32,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LibriVoxAudiobook.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.424,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
       "internalName": "Nebula",
       "name": "Nebula",
       "description": "Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv",
@@ -2048,7 +2207,7 @@
       "repositoryUrl": "https://github.com/techtanic/SkillShare-Repo",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.353,
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2058,32 +2217,64 @@
       ]
     },
     {
-      "internalName": "AniKoto",
-      "name": "AniKoto",
-      "description": "AniKoto",
+      "internalName": "KisskhProvider",
+      "name": "KisskhProvider",
+      "description": null,
       "language": "en",
       "tvTypes": [
+        "AsianDrama",
+        "TvSeries",
         "Anime",
-        "AnimeMovie"
+        "Movie"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniKoto.cs3",
+      "version": 22,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/KisskhProvider.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "exact-or-alias",
         "score": 1.0,
         "native_matches": [
           {
-            "id": "anikototv",
-            "name": "AnikotoTV",
-            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikototv.js"
+            "id": "limitless-kisskh",
+            "name": "KissKH",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/kisskh-master.js?rev=111"
           }
         ]
       },
-      "priority": "medium-priority",
-      "priority_score": 4,
+      "priority": "high-priority",
+      "priority_score": 12,
       "reasons": [
-        "Anime coverage"
+        "Asian drama / K-drama coverage",
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "KissKH",
+      "name": "KissKH",
+      "description": "Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch!",
+      "language": "en",
+      "tvTypes": [
+        "AsianDrama"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/KissKH.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-kisskh",
+            "name": "KissKH",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/kisskh-master.js?rev=111"
+          }
+        ]
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Asian drama / K-drama coverage"
       ]
     },
     {
@@ -2106,7 +2297,7 @@
           {
             "id": "limitless-reanime",
             "name": "Re:ANIME",
-            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime.js"
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/reanime-master.js?rev=171"
           }
         ]
       },

@@ -1,35 +1,35 @@
 {
-  "internal:anizone": {
+  "internal:anikoto": {
     "chosen": {
-      "internalName": "Anizone",
-      "name": "Anizone",
+      "internalName": "AniKoto",
+      "name": "AniKoto",
       "version": 8,
       "language": "en",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3"
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3"
     },
     "candidates": [
       {
-        "internalName": "Anizone",
-        "name": "Anizone",
+        "internalName": "AniKoto",
+        "name": "AniKoto",
         "version": 8,
+        "language": "en",
+        "source": "CNC Repo(All Language)",
+        "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3"
+      },
+      {
+        "internalName": "AniKoto",
+        "name": "AniKoto",
+        "version": 4,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3"
-      },
-      {
-        "internalName": "Anizone",
-        "name": "Anizone",
-        "version": 2,
-        "language": "en",
-        "source": "CuxPlug",
-        "sourceRepo": "https://raw.githubusercontent.com/ycngmn/CuxPlug/refs/heads/main/repo.json",
-        "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/ycngmn/CuxPlug/builds/Anizone.cs3"
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniKoto.cs3"
       }
     ]
   },
@@ -64,6 +64,40 @@
         "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Arte.cs3"
+      }
+    ]
+  },
+  "internal:reanime": {
+    "chosen": {
+      "internalName": "Reanime",
+      "name": "Reanime",
+      "version": 2,
+      "language": "en",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Reanime",
+        "name": "Reanime",
+        "version": 2,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+      },
+      {
+        "internalName": "ReAnime",
+        "name": "ReAnime",
+        "version": 1,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3"
       }
     ]
   }
