@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 97,
-  "no_obvious_native_overlap_count": 94,
+  "cloudstream_provider_count": 99,
+  "no_obvious_native_overlap_count": 96,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 39,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v39.cs3",
+      "version": 44,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v44.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -363,14 +363,14 @@
     {
       "internalName": "Multimovies",
       "name": "Multimovies",
-      "description": "Multimovies - Movies, TV Shows & Anime",
+      "description": "Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries",
         "Anime"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -567,7 +567,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -711,7 +711,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -830,7 +830,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AnimeSuge.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -1159,7 +1159,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 56,
+      "version": 57,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1183,12 +1183,36 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.522,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Senshi",
+      "name": "Senshi",
+      "description": "Anime with sub & dub, multi-language subtitles",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1281,6 +1305,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.421,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "DisneyPlus",
+      "name": "Disney+",
+      "description": "Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v2.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.462,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1391,8 +1438,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 95,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v95.cs3",
+      "version": 96,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v96.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1436,8 +1483,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 101,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v101.cs3",
+      "version": 102,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v102.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1459,8 +1506,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 96,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v96.cs3",
+      "version": 97,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v97.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1599,7 +1646,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 33,
+      "version": 34,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -1768,7 +1815,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 16,
+      "version": 17,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2136,7 +2183,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 32,
+      "version": 33,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/GoldenAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2158,7 +2205,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 32,
+      "version": 33,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LibriVoxAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {

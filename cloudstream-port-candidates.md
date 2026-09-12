@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **97**  
-No obvious native overlap: **94**  
+Filtered CloudStream providers: **99**  
+No obvious native overlap: **96**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -23,7 +23,7 @@ Exact/alias overlap: **3**
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
-- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime
+- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
@@ -61,6 +61,7 @@ Exact/alias overlap: **3**
 - **OnePace** (`OnePace`) — en; Anime — One Pace
 - **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
 - **RaghavAnimeKitsu** (`RaghavAnimeKitsu`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog
+- **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — Anime with sub & dub, multi-language subtitles
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 
@@ -68,6 +69,7 @@ Exact/alias overlap: **3**
 
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
+- **Disney+** (`DisneyPlus`) — en; Movie, TvSeries — Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more
 - **DiviCast** (`DiviCast`) — en; Movie, TvSeries — Watch movies and TV series from DiviCast
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
