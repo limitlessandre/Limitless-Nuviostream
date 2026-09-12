@@ -1,6 +1,7 @@
 import { snapshot } from './snapshot.mjs';
 import { fallbackSnapshot } from './fallback-snapshot.mjs';
 import { catalogMetas, parseCatalogRequest, toMeta } from './catalog.mjs';
+import { buildNuvioCollections } from './collections.mjs';
 import { normalizeSnapshot, schemaDescriptor, validateSnapshot } from './schema.mjs';
 import { publicTaxonomy, taxonomyManifestCatalogs } from './taxonomy.mjs';
 
@@ -176,10 +177,12 @@ export default {
       subtitleResource: true,
       subtitleSource: 'hentaihaven',
       taxonomyGroups: publicTaxonomy().length,
+      collectionsResource: true,
       ...summary
     });
     if (url.pathname === '/schema.json') return response(schemaDescriptor());
     if (url.pathname === '/taxonomy.json') return response({ groups: publicTaxonomy() });
+    if (url.pathname === '/collections.json') return response(buildNuvioCollections(catalog, manifest.id));
     if (url.pathname === '/dataset.json' || url.pathname === '/data/current.json') {
       return response(catalog, 200, { ...jsonHeaders, 'cache-control': 'public, max-age=300, stale-while-revalidate=86400' });
     }
