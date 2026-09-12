@@ -1,29 +1,26 @@
 import { catalogMetas } from './catalog.mjs';
-import { publicTaxonomy } from './taxonomy.mjs';
+import { TAXONOMY_GROUPS } from './taxonomy.mjs';
 
 const FALLBACK_ART = 'https://raw.githubusercontent.com/rrevanth/nuvio-assets/main/genres/adult-animation/adult-animation-landscape.png';
 const MINOR_CODED = /(?:^|\b)(?:loli|lolicon|shota|shotacon|school\s*girl|schoolgirl)(?:\b|$)/i;
 
 export function buildNuvioCollections(snapshot, addonId) {
-  return publicTaxonomy().map((group) => {
+  return TAXONOMY_GROUPS.map((group) => {
     const folders = group.categories.map((category) => {
-      const metas = catalogMetas(snapshot, { id: group.id, search: null, genre: category });
+      const metas = catalogMetas(snapshot, { id: group.id, search: null, genre: category.name });
       const artwork = pickArtwork(metas);
-      const source = {
-        provider: 'addon',
-        addonId,
-        type: 'series',
-        catalogId: group.id,
-        genre: category
-      };
+      const genres = [category.name, ...(category.tabs || []).map((item) => item.name)];
+      const sources = genres.map((genre) => addonSource(addonId, group.id, genre));
+      const catalogSources = genres.map((genre) => catalogSource(addonId, group.id, genre));
+
       return {
-        id: `scarlet-peach.${group.key}.${slug(category)}`,
-        title: category,
-        tileShape: 'POSTER',
+        id: `scarlet-peach.${group.key}.${slug(category.name)}`,
+        title: category.name,
+        tileShape: 'LANDSCAPE',
         hideTitle: false,
         focusGifEnabled: false,
-        sources: [source],
-        catalogSources: [source],
+        sources,
+        catalogSources,
         coverImageUrl: artwork.cover,
         heroBackdropUrl: artwork.backdrop
       };
@@ -33,7 +30,7 @@ export function buildNuvioCollections(snapshot, addonId) {
       id: `scarlet-peach.${group.key}`,
       title: `Scarlet Peach ${titleCase(group.key)}`,
       folders,
-      pinToTop: false,
+      pinToTop: true,
       viewMode: 'TABBED_GRID',
       showAllTab: true,
       focusGlowEnabled: true,
@@ -42,15 +39,35 @@ export function buildNuvioCollections(snapshot, addonId) {
   });
 }
 
+function addonSource(addonId, catalogId, genre) {
+  return {
+    provider: 'addon',
+    addonId,
+    type: 'series',
+    catalogId,
+    genre
+  };
+}
+
+function catalogSource(addonId, catalogId, genre) {
+  return {
+    addonId,
+    type: 'series',
+    catalogId,
+    genre
+  };
+}
+
 function pickArtwork(metas) {
   const safe = metas.filter((meta) => !hasMinorCodedSignals(meta));
-  const both = safe.find((meta) => meta.poster && meta.background);
-  if (both) return { cover: both.poster, backdrop: both.background };
-  const coverMeta = safe.find((meta) => meta.poster) || safe.find((meta) => meta.background);
-  const backdropMeta = safe.find((meta) => meta.background) || coverMeta;
+  const both = safe.find((meta) => meta.background && meta.poster);
+  if (both) return { cover: both.background, backdrop: both.background };
+  const landscape = safe.find((meta) => meta.background);
+  if (landscape) return { cover: landscape.background, backdrop: landscape.background };
+  const poster = safe.find((meta) => meta.poster);
   return {
-    cover: coverMeta?.poster || coverMeta?.background || FALLBACK_ART,
-    backdrop: backdropMeta?.background || backdropMeta?.poster || FALLBACK_ART
+    cover: poster?.poster || FALLBACK_ART,
+    backdrop: poster?.poster || FALLBACK_ART
   };
 }
 
