@@ -2,6 +2,7 @@ import { snapshot } from './snapshot.mjs';
 import { fallbackSnapshot } from './fallback-snapshot.mjs';
 import { catalogMetas, parseCatalogRequest, toMeta } from './catalog.mjs';
 import { normalizeSnapshot, schemaDescriptor, validateSnapshot } from './schema.mjs';
+import { publicTaxonomy, taxonomyManifestCatalogs } from './taxonomy.mjs';
 
 const HENTAIHAVEN_RESOLVER = 'https://scarlet-peach-hentaihaven.limitlessandre.workers.dev';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36';
@@ -12,14 +13,15 @@ const jsonHeaders = {
 };
 const manifest = {
   id: 'org.limitlessnexus.scarletpeach.catalog',
-  version: '0.5.0',
+  version: '0.6.0',
   name: 'Limitless Nexus: Scarlet Peach',
-  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, censorship, language, tags, episode metadata, Hanime + HentaiHaven + HStream catalog coverage, and HentaiHaven subtitle resources.',
+  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, normalized browse taxonomy, censorship, language, tags, episode metadata, Hanime + HentaiHaven + HStream catalog coverage, and HentaiHaven subtitle resources.',
   resources: ['catalog', 'meta', 'subtitles'],
   types: ['series'],
   catalogs: [
     { type: 'series', id: 'scarlet-peach-search', name: 'Scarlet Peach Search', extra: [{ name: 'search', isRequired: true }] },
     { type: 'series', id: 'scarlet-peach-latest', name: 'Scarlet Peach Latest' },
+    ...taxonomyManifestCatalogs(),
     { type: 'series', id: 'scarlet-peach-all', name: 'Scarlet Peach All' }
   ]
 };
@@ -173,9 +175,11 @@ export default {
       titleCount: catalog.titles.length,
       subtitleResource: true,
       subtitleSource: 'hentaihaven',
+      taxonomyGroups: publicTaxonomy().length,
       ...summary
     });
     if (url.pathname === '/schema.json') return response(schemaDescriptor());
+    if (url.pathname === '/taxonomy.json') return response({ groups: publicTaxonomy() });
     if (url.pathname === '/dataset.json' || url.pathname === '/data/current.json') {
       return response(catalog, 200, { ...jsonHeaders, 'cache-control': 'public, max-age=300, stale-while-revalidate=86400' });
     }
