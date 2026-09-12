@@ -53,16 +53,17 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Verify catalog health and subtitle resource
+      - name: Verify catalog health, taxonomy, and subtitle resource
         run: |
           set -euo pipefail
           for attempt in $(seq 1 12); do
             BODY="$(curl --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/health || true)"
             echo "health attempt ${attempt}: ${BODY}"
             if echo "$BODY" | grep -q '"ok":true' && \
-               echo "$BODY" | grep -q '"version":"0.5.0"' && \
+               echo "$BODY" | grep -q '"version":"0.6.0"' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
                echo "$BODY" | grep -q '"subtitleResource":true' && \
+               echo "$BODY" | grep -q '"taxonomyGroups":4' && \
                echo "$BODY" | grep -q '"hanime"' && \
                echo "$BODY" | grep -q '"hentaihaven"' && \
                echo "$BODY" | grep -q '"hstream"'; then
@@ -78,6 +79,36 @@ jobs:
           MANIFEST="$(curl --fail --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/manifest.json)"
           echo "$MANIFEST"
           echo "$MANIFEST" | grep -q '"subtitles"'
+          echo "$MANIFEST" | grep -q '"scarlet-peach-main"'
+          echo "$MANIFEST" | grep -q '"scarlet-peach-kinks"'
+          echo "$MANIFEST" | grep -q '"scarlet-peach-characters"'
+          echo "$MANIFEST" | grep -q '"scarlet-peach-niche"'
+
+          TAXONOMY="$(curl --fail --silent --show-error https://scarlet-peach-catalog.limitlessandre.workers.dev/taxonomy.json)"
+          echo "$TAXONOMY"
+          echo "$TAXONOMY" | grep -q '"MILF"'
+          echo "$TAXONOMY" | grep -q '"Rape"'
+          echo "$TAXONOMY" | grep -q '"Womb Tattoo"'
+
+      - name: Report taxonomy and artwork coverage
+        run: |
+          node - <<'NODE'
+          const base = 'https://scarlet-peach-catalog.limitlessandre.workers.dev';
+          const taxonomy = await (await fetch(`${base}/taxonomy.json`)).json();
+          for (const group of taxonomy.groups || []) {
+            console.log(`\n[${group.name}]`);
+            for (const category of group.categories || []) {
+              const url = `${base}/catalog/series/${group.id}/genre=${encodeURIComponent(category)}.json`;
+              const response = await fetch(url);
+              if (!response.ok) throw new Error(`${category}: HTTP ${response.status}`);
+              const payload = await response.json();
+              const metas = Array.isArray(payload.metas) ? payload.metas : [];
+              const posters = metas.filter((meta) => meta.poster).length;
+              const backgrounds = metas.filter((meta) => meta.background).length;
+              console.log(JSON.stringify({ category, titles: metas.length, posters, backgrounds }));
+            }
+          }
+          NODE
 
       - name: Verify Nuvio Desktop subtitle endpoint
         run: |
