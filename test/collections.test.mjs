@@ -20,33 +20,42 @@ const snapshot = { titles: [
   }
 ] };
 
-test('builds exactly four pinned Nuvio home rows with landscape folders', () => {
-  const collections = buildNuvioCollections(snapshot, 'org.limitlessnexus.scarletpeach.catalog');
+const addon = {
+  id: 'org.limitlessnexus.scarletpeach.catalog',
+  name: 'Limitless Nexus: Scarlet Peach',
+  baseUrl: 'https://scarlet-peach-catalog.limitlessandre.workers.dev'
+};
+
+test('builds exactly four anime-style Nuvio collection rows with landscape folders', () => {
+  const collections = buildNuvioCollections(snapshot, addon);
   assert.deepEqual(collections.map((collection) => collection.title), [
     'Scarlet Peach Main',
     'Scarlet Peach Kinks',
     'Scarlet Peach Characters',
     'Scarlet Peach Niche'
   ]);
-  assert.ok(collections.every((collection) => collection.pinToTop === true));
-  assert.ok(collections.every((collection) => collection.viewMode === 'TABBED_GRID'));
+  assert.ok(collections.every((collection) => collection.pinToTop === false));
+  assert.ok(collections.every((collection) => collection.viewMode === 'ROWS'));
   assert.ok(collections.every((collection) => collection.showAllTab === true));
   assert.ok(collections.flatMap((collection) => collection.folders).every((folder) => folder.tileShape === 'LANDSCAPE'));
 });
 
-test('leaf folders use one catalog source and landscape website artwork', () => {
-  const collections = buildNuvioCollections(snapshot, 'org.limitlessnexus.scarletpeach.catalog');
+test('leaf folders use one catalog source, addon metadata, and landscape website artwork', () => {
+  const collections = buildNuvioCollections(snapshot, addon);
   const main = collections.find((collection) => collection.id === 'scarlet-peach.main');
   const milf = main.folders.find((folder) => folder.title === 'MILF');
   assert.equal(milf.catalogSources.length, 1);
   assert.equal(milf.catalogSources[0].catalogId, 'scarlet-peach-main');
   assert.equal(milf.catalogSources[0].genre, 'MILF');
+  assert.equal(milf.sources[0].addonBaseUrl, addon.baseUrl);
+  assert.equal(milf.sources[0].addonName, addon.name);
+  assert.equal(milf.sources[0].catalogName, 'Scarlet Peach Main');
   assert.equal(milf.coverImageUrl, 'https://example.com/adult-bg.jpg');
   assert.equal(milf.heroBackdropUrl, 'https://example.com/adult-bg.jpg');
 });
 
 test('parent folders expose their sub-genres as folder-detail tab sources', () => {
-  const collections = buildNuvioCollections(snapshot, 'org.limitlessnexus.scarletpeach.catalog');
+  const collections = buildNuvioCollections(snapshot, addon);
   const main = collections.find((collection) => collection.id === 'scarlet-peach.main');
   const breasts = main.folders.find((folder) => folder.title === 'Breasts');
   assert.deepEqual(breasts.catalogSources.map((source) => source.genre), ['Breasts', 'Big Boobs', 'Small Breasts']);
@@ -63,7 +72,7 @@ test('parent folders expose their sub-genres as folder-detail tab sources', () =
 
 test('minor-coded source art is not selected for collection tiles', () => {
   const onlyMinor = { titles: [snapshot.titles[2]] };
-  const collections = buildNuvioCollections(onlyMinor, 'org.limitlessnexus.scarletpeach.catalog');
+  const collections = buildNuvioCollections(onlyMinor, addon);
   const main = collections.find((collection) => collection.id === 'scarlet-peach.main');
   const milf = main.folders.find((folder) => folder.title === 'MILF');
   assert.ok(!milf.coverImageUrl.includes('excluded'));
