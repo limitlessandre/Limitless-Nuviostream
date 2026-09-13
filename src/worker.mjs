@@ -12,18 +12,27 @@ const jsonHeaders = {
   'cache-control': 'public, max-age=300',
   'access-control-allow-origin': '*'
 };
+
+function hiddenGenreCatalog(catalog) {
+  return {
+    ...catalog,
+    extra: (catalog.extra || []).map((extra) => ({ ...extra, isRequired: extra.name === 'genre' ? true : extra.isRequired }))
+  };
+}
+
 const manifest = {
   id: 'org.limitlessnexus.scarletpeach.catalog',
-  version: '0.6.0',
+  version: '0.7.0',
   name: 'Limitless Nexus: Scarlet Peach',
-  description: 'Adult-only normalized metadata catalog with schema v2 provider merging, normalized browse taxonomy, censorship, language, tags, episode metadata, Hanime + HentaiHaven + HStream catalog coverage, and HentaiHaven subtitle resources.',
+  description: 'Adult-only normalized metadata catalog with Latest + Popular discovery rows, Nuvio collection folders, schema v2 provider merging, censorship, language, tags, episode metadata, Hanime + HentaiHaven + HStream coverage, and HentaiHaven subtitle resources.',
   resources: ['catalog', 'meta', 'subtitles'],
   types: ['series'],
   catalogs: [
     { type: 'series', id: 'scarlet-peach-search', name: 'Scarlet Peach Search', extra: [{ name: 'search', isRequired: true }] },
     { type: 'series', id: 'scarlet-peach-latest', name: 'Scarlet Peach Latest' },
-    ...taxonomyManifestCatalogs(),
-    { type: 'series', id: 'scarlet-peach-all', name: 'Scarlet Peach All' }
+    { type: 'series', id: 'scarlet-peach-popular', name: 'Scarlet Peach Popular' },
+    ...taxonomyManifestCatalogs().map(hiddenGenreCatalog),
+    { type: 'series', id: 'scarlet-peach-all', name: 'Scarlet Peach All', extra: [{ name: 'genre', options: ['All'], isRequired: true }] }
   ]
 };
 
@@ -178,11 +187,16 @@ export default {
       subtitleSource: 'hentaihaven',
       taxonomyGroups: publicTaxonomy().length,
       collectionsResource: true,
+      featuredCatalogs: ['scarlet-peach-latest', 'scarlet-peach-popular'],
       ...summary
     });
     if (url.pathname === '/schema.json') return response(schemaDescriptor());
     if (url.pathname === '/taxonomy.json') return response({ groups: publicTaxonomy() });
-    if (url.pathname === '/collections.json') return response(buildNuvioCollections(catalog, manifest.id));
+    if (url.pathname === '/collections.json') return response(buildNuvioCollections(catalog, {
+      id: manifest.id,
+      name: manifest.name,
+      baseUrl: url.origin
+    }));
     if (url.pathname === '/dataset.json' || url.pathname === '/data/current.json') {
       return response(catalog, 200, { ...jsonHeaders, 'cache-control': 'public, max-age=300, stale-while-revalidate=86400' });
     }
