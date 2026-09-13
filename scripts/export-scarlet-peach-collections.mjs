@@ -4,6 +4,7 @@ import { TAXONOMY_GROUPS } from '../src/taxonomy.mjs';
 
 const ADDON_ID = 'org.limitlessnexus.scarletpeach.catalog';
 const BASE_URL = 'https://scarlet-peach-catalog.limitlessandre.workers.dev';
+const ART_VERSION = 'hanime-browse-1';
 const OUTPUT = fileURLToPath(new URL('../ScarletPeach.json', import.meta.url));
 
 const slug = (value) => String(value || '')
@@ -14,7 +15,7 @@ const slug = (value) => String(value || '')
   .replace(/^-+|-+$/g, '');
 
 const artworkUrl = (groupId, categoryName) =>
-  `${BASE_URL}/collection-art/${encodeURIComponent(groupId)}/${encodeURIComponent(categoryName)}`;
+  `${BASE_URL}/collection-art/${encodeURIComponent(groupId)}/${encodeURIComponent(categoryName)}?v=${ART_VERSION}`;
 
 const catalogSource = (groupId, genre) => ({
   addonId: ADDON_ID,
