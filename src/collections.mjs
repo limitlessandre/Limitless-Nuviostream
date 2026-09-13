@@ -3,38 +3,44 @@ import { TAXONOMY_GROUPS } from './taxonomy.mjs';
 const FALLBACK_ART = 'https://raw.githubusercontent.com/rrevanth/nuvio-assets/main/genres/adult-animation/adult-animation-landscape.png';
 const MINOR_CODED = /(?:^|\b)(?:loli|lolicon|shota|shotacon|school\s*girl|schoolgirl)(?:\b|$)/i;
 
-export function buildNuvioCollections(snapshot, addonId) {
+export function buildNuvioCollections(snapshot, addonInput) {
+  const addon = addonConfig(addonInput);
   const artworkIndex = buildArtworkIndex(snapshot);
 
   return TAXONOMY_GROUPS.map((group) => {
     const folders = group.categories.map((category) => {
       const genres = [category.name, ...(category.tabs || []).map((item) => item.name)];
-      const sources = genres.map((genre) => addonSource(addonId, group.id, genre));
-      const catalogSources = genres.map((genre) => catalogSource(addonId, group.id, genre));
+      const sources = genres.map((genre) => addonSource(addon, group, genre));
+      const catalogSources = genres.map((genre) => catalogSource(addon, group, genre));
       const artwork = artworkIndex.get(artworkKey(group.id, category.name)) || fallbackArtwork();
 
       return {
         id: `scarlet-peach.${group.key}.${slug(category.name)}`,
         title: category.name,
+        coverImageUrl: artwork.cover,
+        focusGifUrl: null,
+        focusGifEnabled: true,
+        coverEmoji: null,
         tileShape: 'LANDSCAPE',
         hideTitle: false,
-        focusGifEnabled: false,
         sources,
         catalogSources,
-        coverImageUrl: artwork.cover,
-        heroBackdropUrl: artwork.backdrop
+        heroBackdropUrl: artwork.backdrop,
+        heroVideoUrl: null,
+        titleLogoUrl: null
       };
     });
 
     return {
       id: `scarlet-peach.${group.key}`,
-      title: `Scarlet Peach ${titleCase(group.key)}`,
-      folders,
-      pinToTop: true,
-      viewMode: 'TABBED_GRID',
-      showAllTab: true,
+      title: group.name,
+      backdropImageUrl: folders.find((folder) => folder.heroBackdropUrl)?.heroBackdropUrl || FALLBACK_ART,
+      // Latest and Popular are normal addon title rows and should stay above these four collection rows.
+      pinToTop: false,
       focusGlowEnabled: true,
-      backdropImageUrl: folders.find((folder) => folder.heroBackdropUrl)?.heroBackdropUrl || FALLBACK_ART
+      viewMode: 'ROWS',
+      showAllTab: true,
+      folders
     };
   });
 }
@@ -91,21 +97,44 @@ function taxonomyLabels(title) {
   return new Set(values.map(normalize).filter(Boolean));
 }
 
-function addonSource(addonId, catalogId, genre) {
+function addonConfig(input) {
+  if (typeof input === 'string') {
+    return {
+      id: input,
+      name: 'Limitless Nexus: Scarlet Peach',
+      baseUrl: 'https://scarlet-peach-catalog.limitlessandre.workers.dev'
+    };
+  }
+  return {
+    id: clean(input?.id) || 'org.limitlessnexus.scarletpeach.catalog',
+    name: clean(input?.name) || 'Limitless Nexus: Scarlet Peach',
+    baseUrl: clean(input?.baseUrl) || 'https://scarlet-peach-catalog.limitlessandre.workers.dev'
+  };
+}
+
+function addonSource(addon, group, genre) {
   return {
     provider: 'addon',
-    addonId,
+    addonId: addon.id,
+    addonBaseUrl: addon.baseUrl,
+    addonName: addon.name,
     type: 'series',
-    catalogId,
+    catalogId: group.id,
+    catalogName: group.name,
+    title: genre,
     genre
   };
 }
 
-function catalogSource(addonId, catalogId, genre) {
+function catalogSource(addon, group, genre) {
   return {
-    addonId,
+    addonId: addon.id,
+    addonBaseUrl: addon.baseUrl,
+    addonName: addon.name,
     type: 'series',
-    catalogId,
+    catalogId: group.id,
+    catalogName: group.name,
+    title: genre,
     genre
   };
 }
@@ -143,8 +172,4 @@ function normalize(value) {
 
 function slug(value) {
   return String(value || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-}
-
-function titleCase(value) {
-  return String(value || '').replace(/(^|\s)\S/g, (match) => match.toUpperCase());
 }
