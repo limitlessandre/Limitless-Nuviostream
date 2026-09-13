@@ -1,7 +1,62 @@
 import { TAXONOMY_GROUPS } from './taxonomy.mjs';
 
 const FALLBACK_ART = 'https://raw.githubusercontent.com/rrevanth/nuvio-assets/main/genres/adult-animation/adult-animation-landscape.png';
+const HANIME_TAG_ART_BASE = 'https://hanime-cdn.com/images/tags';
 const MINOR_CODED = /(?:^|\b)(?:loli|lolicon|shota|shotacon|school\s*girl|schoolgirl)(?:\b|$)/i;
+
+// Prefer the curated landscape art Hanime itself uses on /browse when a Scarlet Peach
+// folder has a direct match (or an obvious representative child tag). This gives the
+// collection grid purpose-built category art instead of arbitrary title backdrops.
+const HANIME_CATEGORY_ART = new Map([
+  // Main
+  ['scarlet-peach-main:3D', '3d'],
+  ['scarlet-peach-main:Anal', 'anal'],
+  ['scarlet-peach-main:BDSM', 'bdsm'],
+  ['scarlet-peach-main:Breasts', 'big boobs'],
+  ['scarlet-peach-main:Cosplay', 'cosplay'],
+  ['scarlet-peach-main:Fantasy', 'fantasy'],
+  ['scarlet-peach-main:Furry', 'nekomimi'],
+  ['scarlet-peach-main:Futanari', 'futanari'],
+  ['scarlet-peach-main:Group', 'threesome'],
+  ['scarlet-peach-main:Harem', 'harem'],
+  ['scarlet-peach-main:Incest', 'incest'],
+  ['scarlet-peach-main:MILF', 'milf'],
+  ['scarlet-peach-main:Monsters', 'monster'],
+  ['scarlet-peach-main:NTR', 'ntr'],
+  ['scarlet-peach-main:Romance', 'vanilla'],
+  ['scarlet-peach-main:Tentacle', 'tentacle'],
+  ['scarlet-peach-main:Uncensored', 'uncensored'],
+  ['scarlet-peach-main:Yaoi', 'yaoi'],
+  ['scarlet-peach-main:Yuri', 'yuri'],
+
+  // Kinks
+  ['scarlet-peach-kinks:Ahegao', 'ahegao'],
+  ['scarlet-peach-kinks:Body Play', 'boob job'],
+  ['scarlet-peach-kinks:Breeding', 'pregnant'],
+  ['scarlet-peach-kinks:Exhibition', 'public sex'],
+  ['scarlet-peach-kinks:Fluids', 'creampie'],
+  ['scarlet-peach-kinks:Inflation', 'inflation'],
+  ['scarlet-peach-kinks:Manual', 'hand job'],
+  ['scarlet-peach-kinks:Masturbation', 'masturbation'],
+  ['scarlet-peach-kinks:Mind Play', 'mind control'],
+  ['scarlet-peach-kinks:Oral', 'blow job'],
+  ['scarlet-peach-kinks:Scat', 'scat'],
+  ['scarlet-peach-kinks:Toys', 'toys'],
+
+  // Characters: use a representative child tag for umbrella folders.
+  ['scarlet-peach-characters:Archetypes', 'tsundere'],
+  ['scarlet-peach-characters:Looks', 'dark skin'],
+  ['scarlet-peach-characters:Roles', 'maid'],
+  ['scarlet-peach-characters:Styles', 'trap'],
+
+  // Niche
+  ['scarlet-peach-niche:Censored', 'censored'],
+  ['scarlet-peach-niche:Comedy', 'comedy'],
+  ['scarlet-peach-niche:Dark', 'horror'],
+  ['scarlet-peach-niche:Soft', 'softcore'],
+  ['scarlet-peach-niche:Sports', 'swimsuit'],
+  ['scarlet-peach-niche:Style', 'pov']
+]);
 
 export function buildNuvioCollections(snapshot, addonInput) {
   const addon = addonConfig(addonInput);
@@ -68,9 +123,9 @@ export function buildCollectionArtworkIndex(snapshot) {
       if (!matchesCategory(title, labels, candidate.category)) continue;
 
       if (background) {
-        index.set(candidate.key, { cover: background, backdrop: background, landscape: true });
+        index.set(candidate.key, { cover: background, backdrop: background, landscape: true, source: 'catalog' });
       } else if (!current && poster) {
-        index.set(candidate.key, { cover: poster, backdrop: poster, landscape: false });
+        index.set(candidate.key, { cover: poster, backdrop: poster, landscape: false, source: 'catalog' });
       }
     }
   }
@@ -79,7 +134,24 @@ export function buildCollectionArtworkIndex(snapshot) {
 }
 
 export function resolveCollectionArtwork(index, groupId, categoryName) {
-  return index?.get(artworkKey(groupId, categoryName)) || fallbackArtwork();
+  return hanimeCategoryArtwork(groupId, categoryName)
+    || index?.get(artworkKey(groupId, categoryName))
+    || fallbackArtwork();
+}
+
+function hanimeCategoryArtwork(groupId, categoryName) {
+  const tag = HANIME_CATEGORY_ART.get(artworkKey(groupId, categoryName));
+  if (!tag) return null;
+  const image = `${HANIME_TAG_ART_BASE}/${hanimeTagSlug(tag)}-horizontal.min.jpg`;
+  return { cover: image, backdrop: image, landscape: true, source: 'hanime-browse', tag };
+}
+
+function hanimeTagSlug(value) {
+  return String(value || '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
 }
 
 function matchesCategory(title, labels, category) {
@@ -144,7 +216,7 @@ function catalogSource(addon, group, genre) {
 }
 
 function fallbackArtwork() {
-  return { cover: FALLBACK_ART, backdrop: FALLBACK_ART, landscape: true };
+  return { cover: FALLBACK_ART, backdrop: FALLBACK_ART, landscape: true, source: 'fallback' };
 }
 
 function hasMinorCodedSignals(meta) {
