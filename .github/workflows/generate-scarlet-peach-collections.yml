@@ -1,0 +1,46 @@
+name: Generate Scarlet Peach Collection JSON
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - scarlet-peach-catalog
+    paths:
+      - 'src/taxonomy.mjs'
+      - 'scripts/export-scarlet-peach-collections.mjs'
+      - '.github/workflows/generate-scarlet-peach-collections.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: scarlet-peach-catalog
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate import file
+        run: node scripts/export-scarlet-peach-collections.mjs
+
+      - name: Validate JSON
+        run: node -e "const fs=require('node:fs'); const data=JSON.parse(fs.readFileSync('ScarletPeach.json','utf8')); if(!Array.isArray(data)||data.length!==4) throw new Error('Expected four Scarlet Peach collection rows'); console.log('Validated', data.length, 'collections and', data.reduce((n,c)=>n+(c.folders||[]).length,0), 'folders');"
+
+      - name: Commit generated file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ScarletPeach.json
+          if git diff --cached --quiet; then
+            echo "ScarletPeach.json is already current"
+          else
+            git commit -m "chore: refresh Scarlet Peach collection import"
+            git push origin HEAD:scarlet-peach-catalog
+          fi
