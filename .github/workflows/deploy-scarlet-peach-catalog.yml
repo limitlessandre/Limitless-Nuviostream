@@ -53,7 +53,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Verify catalog health, taxonomy, collections, and subtitle resource
+      - name: Verify catalog health, home rows, collections, and subtitle resource
         run: |
           set -euo pipefail
           BASE='https://scarlet-peach-catalog.limitlessandre.workers.dev'
@@ -61,11 +61,12 @@ jobs:
             BODY="$(curl --silent --show-error "$BASE/health" || true)"
             echo "health attempt ${attempt}: ${BODY}"
             if echo "$BODY" | grep -q '"ok":true' && \
-               echo "$BODY" | grep -q '"version":"0.6.0"' && \
+               echo "$BODY" | grep -q '"version":"0.7.0"' && \
                echo "$BODY" | grep -q '"schemaVersion":2' && \
                echo "$BODY" | grep -q '"subtitleResource":true' && \
                echo "$BODY" | grep -q '"taxonomyGroups":4' && \
                echo "$BODY" | grep -q '"collectionsResource":true' && \
+               echo "$BODY" | grep -q '"scarlet-peach-popular"' && \
                echo "$BODY" | grep -q '"hanime"' && \
                echo "$BODY" | grep -q '"hentaihaven"' && \
                echo "$BODY" | grep -q '"hstream"'; then
@@ -78,33 +79,69 @@ jobs:
             sleep 3
           done
 
-          MANIFEST="$(curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/manifest.json")"
-          echo "$MANIFEST"
-          echo "$MANIFEST" | grep -q '"subtitles"'
-          echo "$MANIFEST" | grep -q '"scarlet-peach-main"'
-          echo "$MANIFEST" | grep -q '"scarlet-peach-kinks"'
-          echo "$MANIFEST" | grep -q '"scarlet-peach-characters"'
-          echo "$MANIFEST" | grep -q '"scarlet-peach-niche"'
-          echo "$MANIFEST" | grep -q '"Big Boobs"'
-          echo "$MANIFEST" | grep -q '"Blow Job"'
+          curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/manifest.json" > /tmp/manifest.json
+          curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/taxonomy.json" > /tmp/taxonomy.json
+          curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/collections.json" > /tmp/collections.json
+          curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/catalog/series/scarlet-peach-latest.json" > /tmp/latest.json
+          curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/catalog/series/scarlet-peach-popular.json" > /tmp/popular.json
 
-          TAXONOMY="$(curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/taxonomy.json")"
-          echo "$TAXONOMY"
-          echo "$TAXONOMY" | grep -q '"MILF"'
-          echo "$TAXONOMY" | grep -q '"Rape"'
-          echo "$TAXONOMY" | grep -q '"Womb Tattoo"'
-          echo "$TAXONOMY" | grep -q '"Step Mother"'
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const manifest = JSON.parse(fs.readFileSync('/tmp/manifest.json', 'utf8'));
+          const taxonomy = JSON.parse(fs.readFileSync('/tmp/taxonomy.json', 'utf8'));
+          const collections = JSON.parse(fs.readFileSync('/tmp/collections.json', 'utf8'));
+          const latest = JSON.parse(fs.readFileSync('/tmp/latest.json', 'utf8'));
+          const popular = JSON.parse(fs.readFileSync('/tmp/popular.json', 'utf8'));
 
-          COLLECTIONS="$(curl --fail --retry 4 --retry-all-errors --silent --show-error "$BASE/collections.json")"
-          echo "$COLLECTIONS" | head -c 4000
-          echo
-          echo "$COLLECTIONS" | grep -q '"title":"Scarlet Peach Main"'
-          echo "$COLLECTIONS" | grep -q '"title":"Scarlet Peach Kinks"'
-          echo "$COLLECTIONS" | grep -q '"title":"Scarlet Peach Characters"'
-          echo "$COLLECTIONS" | grep -q '"title":"Scarlet Peach Niche"'
-          echo "$COLLECTIONS" | grep -q '"tileShape":"LANDSCAPE"'
-          echo "$COLLECTIONS" | grep -q '"genre":"Big Boobs"'
-          echo "$COLLECTIONS" | grep -q '"genre":"Maid"'
+          if (manifest.version !== '0.7.0') throw new Error(`wrong manifest version: ${manifest.version}`);
+          if (!manifest.resources.includes('subtitles')) throw new Error('subtitles resource missing');
+
+          const catalogs = new Map((manifest.catalogs || []).map((catalog) => [catalog.id, catalog]));
+          for (const id of ['scarlet-peach-latest', 'scarlet-peach-popular']) {
+            const catalog = catalogs.get(id);
+            if (!catalog) throw new Error(`visible discovery catalog missing: ${id}`);
+            if ((catalog.extra || []).some((extra) => extra.isRequired)) throw new Error(`${id} should remain a visible addon home row`);
+          }
+          for (const id of ['scarlet-peach-main', 'scarlet-peach-kinks', 'scarlet-peach-characters', 'scarlet-peach-niche', 'scarlet-peach-all']) {
+            const catalog = catalogs.get(id);
+            if (!catalog) throw new Error(`collection source catalog missing: ${id}`);
+            if (!(catalog.extra || []).some((extra) => extra.isRequired)) throw new Error(`${id} should be hidden from automatic addon home rows`);
+          }
+
+          if (!Array.isArray(taxonomy.groups) || taxonomy.groups.length !== 4) throw new Error('expected four taxonomy groups');
+          const taxonomyText = JSON.stringify(taxonomy);
+          for (const label of ['MILF', 'Rape', 'Womb Tattoo', 'Step Mother']) {
+            if (!taxonomyText.includes(label)) throw new Error(`taxonomy label missing: ${label}`);
+          }
+
+          if (!Array.isArray(collections) || collections.length !== 4) throw new Error('expected exactly four Scarlet Peach collection rows');
+          const expectedTitles = ['Scarlet Peach Main', 'Scarlet Peach Kinks', 'Scarlet Peach Characters', 'Scarlet Peach Niche'];
+          if (JSON.stringify(collections.map((collection) => collection.title)) !== JSON.stringify(expectedTitles)) {
+            throw new Error(`unexpected collection rows: ${collections.map((collection) => collection.title).join(', ')}`);
+          }
+          for (const collection of collections) {
+            if (collection.pinToTop !== false) throw new Error(`${collection.title} should sit below Latest/Popular by default`);
+            if (collection.viewMode !== 'ROWS') throw new Error(`${collection.title} must use ROWS viewMode`);
+            if (collection.showAllTab !== true) throw new Error(`${collection.title} must expose All tab`);
+            for (const folder of collection.folders || []) {
+              if (folder.tileShape !== 'LANDSCAPE') throw new Error(`${collection.title}/${folder.title} is not LANDSCAPE`);
+            }
+          }
+          const collectionText = JSON.stringify(collections);
+          for (const label of ['Big Boobs', 'Maid']) {
+            if (!collectionText.includes(`\"genre\":\"${label}\"`)) throw new Error(`collection genre missing: ${label}`);
+          }
+
+          if (!Array.isArray(latest.metas) || latest.metas.length === 0) throw new Error('Latest returned no titles');
+          if (!Array.isArray(popular.metas) || popular.metas.length === 0) throw new Error('Popular returned no titles');
+          console.log(JSON.stringify({
+            version: manifest.version,
+            visibleAddonRows: ['Scarlet Peach Latest', 'Scarlet Peach Popular'],
+            collectionRows: collections.map((collection) => ({ title: collection.title, folders: collection.folders.length })),
+            latestCount: latest.metas.length,
+            popularCount: popular.metas.length
+          }, null, 2));
+          NODE
 
       - name: Report taxonomy and artwork coverage
         continue-on-error: true
