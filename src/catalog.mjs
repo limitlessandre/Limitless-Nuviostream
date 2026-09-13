@@ -6,8 +6,9 @@ import {
   taxonomyGroup
 } from './taxonomy.mjs';
 
-const CORE_CATALOG_IDS = ['scarlet-peach-search', 'scarlet-peach-latest', 'scarlet-peach-all'];
+const CORE_CATALOG_IDS = ['scarlet-peach-search', 'scarlet-peach-latest', 'scarlet-peach-popular', 'scarlet-peach-all'];
 const CATALOG_IDS = new Set([...CORE_CATALOG_IDS, ...TAXONOMY_CATALOG_IDS]);
+const MINOR_CODED = /(?:^|\b)(?:loli|lolicon|shota|shotacon|school\s*girl|schoolgirl)(?:\b|$)/i;
 
 export function parseCatalogRequest(url) {
   const parts = url.pathname.split('/').filter(Boolean);
@@ -27,7 +28,18 @@ export function catalogMetas(snapshot, request) {
     const query = String(request.search || '').toLowerCase().trim();
     return titles.filter((title) => !query || searchable(title).includes(query)).map((title) => toMeta(title));
   }
-  if (request.id === 'scarlet-peach-latest') return [...titles].sort((a, b) => dateOf(b) - dateOf(a)).map((title) => toMeta(title));
+  if (request.id === 'scarlet-peach-latest') {
+    return titles
+      .filter(isSafeForFeaturedRows)
+      .sort((a, b) => dateOf(b) - dateOf(a) || String(a.title || '').localeCompare(String(b.title || '')))
+      .map((title) => toMeta(title));
+  }
+  if (request.id === 'scarlet-peach-popular') {
+    return titles
+      .filter(isSafeForFeaturedRows)
+      .sort(comparePopularity)
+      .map((title) => toMeta(title));
+  }
   if (request.id === 'scarlet-peach-all') return titles.map((title) => toMeta(title));
 
   const group = taxonomyGroup(request.id);
@@ -109,6 +121,80 @@ function searchable(title) {
     ...(title.tags || []),
     ...providerText
   ].filter(Boolean).join(' ').toLowerCase();
+}
+
+function isSafeForFeaturedRows(title) {
+  const values = [
+    title?.title,
+    ...(Array.isArray(title?.genres) ? title.genres : []),
+    ...(Array.isArray(title?.tags) ? title.tags : []),
+    ...(Array.isArray(title?.providerMappings) ? title.providerMappings.flatMap((mapping) => [mapping?.title, ...(mapping?.tags || [])]) : [])
+  ];
+  return !values.some((value) => MINOR_CODED.test(String(value || '')));
+}
+
+function comparePopularity(a, b) {
+  const left = popularitySignals(a);
+  const right = popularitySignals(b);
+  return (
+    right.engagement - left.engagement ||
+    right.rating - left.rating ||
+    right.providers - left.providers ||
+    right.episodes - left.episodes ||
+    dateOf(b) - dateOf(a) ||
+    String(a.title || '').localeCompare(String(b.title || ''))
+  );
+}
+
+function popularitySignals(title) {
+  const metadata = [
+    title?.sourceMetadata,
+    ...(Array.isArray(title?.providerMappings) ? title.providerMappings.map((mapping) => mapping?.metadata) : []),
+    ...(Array.isArray(title?.episodes) ? title.episodes.flatMap((episode) =>
+      Array.isArray(episode?.providerMappings) ? episode.providerMappings.map((mapping) => mapping?.metadata) : []
+    ) : [])
+  ].filter((value) => value && typeof value === 'object');
+
+  let views = 0;
+  let likes = 0;
+  let favorites = 0;
+  let interests = 0;
+  let rating = 0;
+
+  for (const object of metadata) {
+    for (const [rawKey, rawValue] of Object.entries(object)) {
+      const key = String(rawKey || '').toLowerCase().replace(/[^a-z0-9]+/g, '_');
+      const value = numericValue(rawValue);
+      if (!Number.isFinite(value) || value < 0) continue;
+      if (/^(?:views?|view_count|views_count|watch_count|watchers|plays?|play_count)$/.test(key)) views = Math.max(views, value);
+      else if (/^(?:likes?|like_count|likes_count)$/.test(key)) likes = Math.max(likes, value);
+      else if (/^(?:favorites?|favourites?|favorite_count|favourite_count)$/.test(key)) favorites = Math.max(favorites, value);
+      else if (/^(?:interests?|interest_count|interests_count)$/.test(key)) interests = Math.max(interests, value);
+      else if (/^(?:rating|rating_score|score|average_score|avg_score)$/.test(key)) rating = Math.max(rating, normalizeRating(value));
+    }
+  }
+
+  const engagement =
+    Math.log1p(views) * 100 +
+    Math.log1p(favorites) * 75 +
+    Math.log1p(interests) * 60 +
+    Math.log1p(likes) * 50;
+  const providers = new Set((title?.providerMappings || []).map((mapping) => mapping?.provider).filter(Boolean)).size;
+  const episodes = Array.isArray(title?.episodes) ? title.episodes.length : 0;
+  return { engagement, rating, providers, episodes };
+}
+
+function numericValue(value) {
+  if (typeof value === 'number') return value;
+  const text = String(value ?? '').replace(/,/g, '').trim();
+  if (!/^\d+(?:\.\d+)?$/.test(text)) return NaN;
+  return Number(text);
+}
+
+function normalizeRating(value) {
+  if (value <= 10) return value;
+  if (value <= 100) return value / 10;
+  return 0;
 }
 
 function dateOf(title) {
