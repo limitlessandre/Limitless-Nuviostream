@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **99**  
-No obvious native overlap: **96**  
+Filtered CloudStream providers: **98**  
+No obvious native overlap: **95**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -93,15 +93,14 @@ Exact/alias overlap: **3**
 - **Arte** (`Arte`) — en; Documentary — Concerti, documentari, ecc.. in arte.tv
 - **BasketballReplays** (`BasketballReplays`) — en; Live — BA Replay full games online Free . Stream NBA Basketball replays full games. Spoiler Free , No Blackouts. No signup. Free Download High quality video in HD.
 - **DocumentaryArea** (`DocumentaryArea`) — en; Documentary — Watch the best online documentary films.Stunning collection of awesome, eyeopening, interesting, just released, full documentaries.
-- **F1FullRaces** (`F1FullRaces`) — en; Live — F1FullRaces
 - **M3UPlaylistPlayerProvider** (`M3UPlaylistPlayerProvider`) — en; Live — Add your own m3u playlists
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
-- **FullRaces** (`FullRaces`) — en; Movie — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
+- **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV

@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 99,
-  "no_obvious_native_overlap_count": 96,
+  "cloudstream_provider_count": 98,
+  "no_obvious_native_overlap_count": 95,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 44,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v44.cs3",
+      "version": 46,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v46.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -567,7 +567,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1159,7 +1159,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 57,
+      "version": 58,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1183,7 +1183,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1322,8 +1322,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v2.cs3",
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v4.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1438,8 +1438,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 96,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v96.cs3",
+      "version": 98,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v98.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1483,8 +1483,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 102,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v102.cs3",
+      "version": 105,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v105.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1506,8 +1506,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 97,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v97.cs3",
+      "version": 99,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v99.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1788,26 +1788,6 @@
       "reasons": []
     },
     {
-      "internalName": "F1FullRaces",
-      "name": "F1FullRaces",
-      "description": "F1FullRaces",
-      "language": "en",
-      "tvTypes": [
-        "Live"
-      ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/F1FullRaces.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.348,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": 0,
-      "reasons": []
-    },
-    {
       "internalName": "M3UPlaylistPlayerProvider",
       "name": "M3UPlaylistPlayerProvider",
       "description": "Add your own m3u playlists",
@@ -1835,7 +1815,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 28,
+      "version": 29,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Streamed.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -1886,29 +1866,6 @@
       "priority": "utility-or-review",
       "priority_score": 0,
       "reasons": []
-    },
-    {
-      "internalName": "FullRaces",
-      "name": "FullRaces",
-      "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-      "language": "en",
-      "tvTypes": [
-        "Movie"
-      ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
-      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.381,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -1,
-      "reasons": [
-        "Movies / Western TV coverage",
-        "Likely utility/live/special-purpose extension"
-      ]
     },
     {
       "internalName": "LibraryOfLadev",
@@ -1969,6 +1926,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "FullRaces",
+      "name": "FullRaces",
+      "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
+      "language": "en",
+      "tvTypes": [
+        "Live",
+        "Others"
+      ],
+      "version": 13,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
+      "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2304,7 +2284,7 @@
       "tvTypes": [
         "AsianDrama"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/KissKH.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
