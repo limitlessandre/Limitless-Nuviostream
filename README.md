@@ -10,6 +10,31 @@ Canonical Nuvio addon URL:
 
 Localhost is development-only: run `npm start`, then use `http://127.0.0.1:7001/manifest.json` for same-device testing.
 
+## Nuvio collection import
+
+Scarlet Peach also ships a standalone Nuvio Collections import file:
+
+`ScarletPeach.json`
+
+Raw file:
+
+`https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/scarlet-peach-catalog/ScarletPeach.json`
+
+Install the Scarlet Peach addon first, then import `ScarletPeach.json` from Nuvio's Collections screen. The file contains only Scarlet Peach collections and follows the same folder-based layout used by the Anime collection example:
+
+- **Scarlet Peach Main**
+- **Scarlet Peach Kinks**
+- **Scarlet Peach Characters**
+- **Scarlet Peach Niche**
+
+Each top-level category is a landscape folder. Categories with child tags expose those children as folder tabs, for example Breasts → Big Boobs / Small Breasts and Monsters → Demon / Orc-Goblin / Succubus / Vampire.
+
+Collection artwork uses stable Scarlet Peach `/collection-art/<catalog>/<category>` URLs. Those routes redirect to current provider/catalog artwork when available, with the existing neutral adult-animation asset as fallback. This keeps the imported JSON stable while allowing category artwork to improve as the catalog snapshot changes.
+
+`ScarletPeach.json` is generated from `src/taxonomy.mjs` by `scripts/export-scarlet-peach-collections.mjs`. The `Generate Scarlet Peach Collection JSON` workflow refreshes and commits the file whenever the taxonomy or exporter changes.
+
+The addon itself exposes **Scarlet Peach Latest** and **Scarlet Peach Popular** as the two normal Home discovery rows. Main/Kinks/Characters/Niche remain hidden addon catalogs used as backing sources for the imported folder collections.
+
 ## Current architecture
 
 Scarlet Peach is the shared adult-animation metadata and subtitle core. Canonical metadata and provider observations remain separate:
@@ -40,6 +65,9 @@ The deployed Worker exposes:
 
 - `/health`
 - `/schema.json`
+- `/taxonomy.json`
+- `/collections.json`
+- `/collection-art/<catalog>/<category>`
 - `/dataset.json`
 - `/data/current.json`
 - normal `catalog` and `meta` routes
@@ -50,7 +78,7 @@ The subtitle resource currently exposes HentaiHaven WebVTT tracks independently 
 
 ## Current production snapshot
 
-Catalog version: **0.5.0**
+Catalog version: **0.7.0**
 
 Validated build on 2026-09-09/10:
 
@@ -148,6 +176,7 @@ Useful commands:
 - `npm run refresh:all`
 - `npm run import:mal` / `npm run refresh:mal`
 - `npm run merge:provider -- <provider-import.json>`
+- `node scripts/export-scarlet-peach-collections.mjs`
 
 Both push deployment and the daily snapshot workflow run tests, harvest **all three production provider catalogs**, build the normalized snapshot, verify exact mappings/coverage, deploy to Cloudflare, and require Hanime + HentaiHaven + HStream in live health checks.
 
@@ -163,11 +192,19 @@ Coverage gates also require healthy mapped-title counts for all three providers.
 
 ## Catalog surface
 
-The visible catalog remains intentionally small:
+Home-visible addon catalogs are intentionally limited to:
 
-- Scarlet Peach Search
 - Scarlet Peach Latest
-- Scarlet Peach All
+- Scarlet Peach Popular
+
+The four normalized taxonomy catalogs remain declared with required genre extras so Nuvio Collections can resolve them without placing them on Home as ordinary addon rows:
+
+- Scarlet Peach Main
+- Scarlet Peach Kinks
+- Scarlet Peach Characters
+- Scarlet Peach Niche
+
+Scarlet Peach Search remains available as a required-search catalog, and Scarlet Peach All remains available as a hidden backing catalog.
 
 Detailed metadata carries schema-v2 extension fields such as aliases, tags, studio, censorship, languages, provider mappings, availability, content rating, provenance, and richer episode metadata.
 
