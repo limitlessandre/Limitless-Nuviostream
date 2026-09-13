@@ -1,7 +1,7 @@
 import { snapshot } from './snapshot.mjs';
 import { fallbackSnapshot } from './fallback-snapshot.mjs';
 import { catalogMetas, parseCatalogRequest, toMeta } from './catalog.mjs';
-import { buildNuvioCollections } from './collections.mjs';
+import { buildCollectionArtworkIndex, buildNuvioCollections, resolveCollectionArtwork } from './collections.mjs';
 import { normalizeSnapshot, schemaDescriptor, validateSnapshot } from './schema.mjs';
 import { publicTaxonomy, taxonomyManifestCatalogs } from './taxonomy.mjs';
 
@@ -39,6 +39,7 @@ const manifest = {
 const primary = normalizeSnapshot(snapshot);
 const fallback = normalizeSnapshot(fallbackSnapshot);
 const catalog = validateSnapshot(primary).ok ? primary : fallback;
+const collectionArtworkIndex = buildCollectionArtworkIndex(catalog);
 const response = (body, status = 200, headers = jsonHeaders) => new Response(JSON.stringify(body), { status, headers });
 
 function catalogSummary(data) {
@@ -202,6 +203,14 @@ export default {
     }
     if (url.pathname === '/subtitle-proxy.vtt') return subtitleProxy(url);
     const parts = url.pathname.split('/').filter(Boolean);
+    if (parts[0] === 'collection-art' && parts[1] && parts[2]) {
+      let groupId = parts[1];
+      let categoryName = parts.slice(2).join('/');
+      try { groupId = decodeURIComponent(groupId); } catch (_) {}
+      try { categoryName = decodeURIComponent(categoryName); } catch (_) {}
+      const artwork = resolveCollectionArtwork(collectionArtworkIndex, groupId, categoryName);
+      return Response.redirect(artwork.cover, 302);
+    }
     if (parts[0] === 'subtitles' && parts[1] === 'series' && parts[2]) {
       return subtitleResource(url, parts[2]);
     }
