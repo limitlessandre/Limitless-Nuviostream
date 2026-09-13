@@ -40,18 +40,22 @@ test('builds exactly four anime-style Nuvio collection rows with landscape folde
   assert.ok(collections.flatMap((collection) => collection.folders).every((folder) => folder.tileShape === 'LANDSCAPE'));
 });
 
-test('leaf folders use one catalog source, addon metadata, and landscape website artwork', () => {
+test('Hanime browse artwork is preferred for matching collection folders', () => {
   const collections = buildNuvioCollections(snapshot, addon);
   const main = collections.find((collection) => collection.id === 'scarlet-peach.main');
   const milf = main.folders.find((folder) => folder.title === 'MILF');
+  const breasts = main.folders.find((folder) => folder.title === 'Breasts');
+
   assert.equal(milf.catalogSources.length, 1);
   assert.equal(milf.catalogSources[0].catalogId, 'scarlet-peach-main');
   assert.equal(milf.catalogSources[0].genre, 'MILF');
   assert.equal(milf.sources[0].addonBaseUrl, addon.baseUrl);
   assert.equal(milf.sources[0].addonName, addon.name);
   assert.equal(milf.sources[0].catalogName, 'Scarlet Peach Main');
-  assert.equal(milf.coverImageUrl, 'https://example.com/adult-bg.jpg');
-  assert.equal(milf.heroBackdropUrl, 'https://example.com/adult-bg.jpg');
+  assert.equal(milf.coverImageUrl, 'https://hanime-cdn.com/images/tags/milf-horizontal.min.jpg');
+  assert.equal(milf.heroBackdropUrl, 'https://hanime-cdn.com/images/tags/milf-horizontal.min.jpg');
+  assert.equal(breasts.coverImageUrl, 'https://hanime-cdn.com/images/tags/big_boobs-horizontal.min.jpg');
+  assert.equal(breasts.heroBackdropUrl, 'https://hanime-cdn.com/images/tags/big_boobs-horizontal.min.jpg');
 });
 
 test('parent folders expose their sub-genres as folder-detail tab sources', () => {
@@ -70,7 +74,7 @@ test('parent folders expose their sub-genres as folder-detail tab sources', () =
   assert.ok(roles.catalogSources.some((source) => source.genre === 'Teacher'));
 });
 
-test('minor-coded source art is not selected for collection tiles', () => {
+test('minor-coded title art is never selected as a collection fallback', () => {
   const onlyMinor = { titles: [snapshot.titles[2]] };
   const collections = buildNuvioCollections(onlyMinor, addon);
   const main = collections.find((collection) => collection.id === 'scarlet-peach.main');
