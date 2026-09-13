@@ -5,14 +5,14 @@ const MINOR_CODED = /(?:^|\b)(?:loli|lolicon|shota|shotacon|school\s*girl|school
 
 export function buildNuvioCollections(snapshot, addonInput) {
   const addon = addonConfig(addonInput);
-  const artworkIndex = buildArtworkIndex(snapshot);
+  const artworkIndex = buildCollectionArtworkIndex(snapshot);
 
   return TAXONOMY_GROUPS.map((group) => {
     const folders = group.categories.map((category) => {
       const genres = [category.name, ...(category.tabs || []).map((item) => item.name)];
       const sources = genres.map((genre) => addonSource(addon, group, genre));
       const catalogSources = genres.map((genre) => catalogSource(addon, group, genre));
-      const artwork = artworkIndex.get(artworkKey(group.id, category.name)) || fallbackArtwork();
+      const artwork = resolveCollectionArtwork(artworkIndex, group.id, category.name);
 
       return {
         id: `scarlet-peach.${group.key}.${slug(category.name)}`,
@@ -45,7 +45,7 @@ export function buildNuvioCollections(snapshot, addonInput) {
   });
 }
 
-function buildArtworkIndex(snapshot) {
+export function buildCollectionArtworkIndex(snapshot) {
   const candidates = TAXONOMY_GROUPS.flatMap((group) =>
     group.categories.map((category) => ({
       key: artworkKey(group.id, category.name),
@@ -76,6 +76,10 @@ function buildArtworkIndex(snapshot) {
   }
 
   return index;
+}
+
+export function resolveCollectionArtwork(index, groupId, categoryName) {
+  return index?.get(artworkKey(groupId, categoryName)) || fallbackArtwork();
 }
 
 function matchesCategory(title, labels, category) {
