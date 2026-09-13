@@ -29,7 +29,7 @@ Install the Scarlet Peach addon first, then import `ScarletPeach.json` from Nuvi
 
 Each top-level category is a landscape folder. Categories with child tags expose those children as folder tabs, for example Breasts → Big Boobs / Small Breasts and Monsters → Demon / Orc-Goblin / Succubus / Vampire.
 
-Collection artwork uses stable Scarlet Peach `/collection-art/<catalog>/<category>` URLs. Those routes redirect to current provider/catalog artwork when available, with the existing neutral adult-animation asset as fallback. This keeps the imported JSON stable while allowing category artwork to improve as the catalog snapshot changes.
+Collection artwork uses stable Scarlet Peach `/collection-art/<catalog>/<category>` URLs. The first choice is curated category artwork from the source sites rather than a random title backdrop. Hanime `/browse` landscape tag art is used for direct matches and representative parent folders; for example **Breasts** intentionally uses Hanime's **Big Boobs** browse artwork (`big_boobs-horizontal.min.jpg`). Categories without a curated source image fall back to category-matching Scarlet Peach title artwork, then the neutral adult-animation fallback. Because the imported JSON points at stable Scarlet Peach artwork URLs, these image choices can improve without changing the collection structure.
 
 `ScarletPeach.json` is generated from `src/taxonomy.mjs` by `scripts/export-scarlet-peach-collections.mjs`. The `Generate Scarlet Peach Collection JSON` workflow refreshes and commits the file whenever the taxonomy or exporter changes.
 
