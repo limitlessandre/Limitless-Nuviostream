@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **98**  
-No obvious native overlap: **95**  
+Filtered CloudStream providers: **99**  
+No obvious native overlap: **96**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -111,6 +111,7 @@ Exact/alias overlap: **3**
 - **TimStreams** (`TimStreams`) — en; Live — Live Sports Events and some Live TV Channels from TimStreams
 - **FootReplays** (`FootReplays`) — en; Others
 - **GoldenAudiobook** (`GoldenAudiobook`) — en; Others — Audiobooks - Use Picture in Picture or VLC as external player
+- **GoldenAudiobooks** (`GoldenAudiobooks`) — en; Others — GoldenAudiobooks — Free online audiobooks streaming with chapter navigation.
 - **LibriVoxAudiobook** (`LibriVoxAudiobook`) — en; Others — Audiobooks in public domain
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!

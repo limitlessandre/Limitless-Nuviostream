@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 311,
+  "excluded_count": 310,
   "excluded": [
     {
       "internalName": "3isk",
@@ -2534,20 +2534,6 @@
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/MonPlayerProvider.cs3",
       "reason": "unknown-language"
-    },
-    {
-      "internalName": "MovieBlast",
-      "name": "MovieBlast",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
-      "language": [
-        "te"
-      ],
-      "normalizedLanguages": [
-        "te"
-      ],
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBlast.cs3",
-      "reason": "no-allowed-language"
     },
     {
       "internalName": "MovieBoxProvider",

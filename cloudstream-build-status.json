@@ -5,13 +5,13 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 448,
-  "eligible_plugin_entries_before_dedupe": 101,
-  "unique_plugins": 98,
+  "raw_plugin_entries": 450,
+  "eligible_plugin_entries_before_dedupe": 102,
+  "unique_plugins": 99,
   "duplicate_groups": 3,
-  "language_filtered_entries": 311,
+  "language_filtered_entries": 310,
   "unknown_language_metadata_entries": 25,
-  "inactive_filtered_entries": 36,
+  "inactive_filtered_entries": 38,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 82,
+      "plugins": 83,
       "verified": false
     },
     {
@@ -161,7 +161,7 @@
       "name": "Storm-ext Fork by redblacker8",
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 35,
+      "plugins": 36,
       "verified": false
     },
     {

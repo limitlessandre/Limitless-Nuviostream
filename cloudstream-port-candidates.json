@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 98,
-  "no_obvious_native_overlap_count": 95,
+  "cloudstream_provider_count": 99,
+  "no_obvious_native_overlap_count": 96,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 668,
+      "version": 669,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -993,7 +993,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 21,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Donghuastream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1322,8 +1322,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v4.cs3",
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v5.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1438,8 +1438,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 98,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v98.cs3",
+      "version": 99,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v99.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1506,8 +1506,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 99,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v99.cs3",
+      "version": 100,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v100.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2169,6 +2169,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "GoldenAudiobooks",
+      "name": "GoldenAudiobooks",
+      "description": "GoldenAudiobooks — Free online audiobooks streaming with chapter navigation.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/GoldenAudiobooks.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.276,
         "native_matches": []
       },
       "priority": "utility-or-review",
