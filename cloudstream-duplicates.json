@@ -3,7 +3,7 @@
     "chosen": {
       "internalName": "AniKoto",
       "name": "AniKoto",
-      "version": 9,
+      "version": 10,
       "language": "en",
       "source": "CNC Repo(All Language)",
       "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -14,7 +14,7 @@
       {
         "internalName": "AniKoto",
         "name": "AniKoto",
-        "version": 9,
+        "version": 10,
         "language": "en",
         "source": "CNC Repo(All Language)",
         "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",

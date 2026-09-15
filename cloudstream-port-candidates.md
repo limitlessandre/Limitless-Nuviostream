@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **99**  
-No obvious native overlap: **96**  
+Filtered CloudStream providers: **100**  
+No obvious native overlap: **97**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -35,7 +35,7 @@ Exact/alias overlap: **3**
 - **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free.
 - **AllWish** (`AllWish`) — en; All — Anime from all-wish.me
 - **AniChan** (`AniChan`) — en; Anime, AnimeMovie — Watch Anime in HD with Sub, Dub and Hardsub
-- **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA
+- **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA — AllManga/Mkissa Source
 - **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub & Hardsub from Anidap
 - **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
@@ -54,6 +54,7 @@ Exact/alias overlap: **3**
 - **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
 - **Enma** (`Enma`) — en; Anime, AnimeMovie, OVA — Enma - Watch Anime Sub & Dub in HD
+- **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
 - **KuroAnime** (`KuroAnime`) — en; Anime, AnimeMovie, OVA — KuroAnime - Anime with Sub & Dub
 - **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE

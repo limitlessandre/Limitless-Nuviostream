@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 310,
+  "excluded_count": 311,
   "excluded": [
     {
       "internalName": "3isk",
@@ -2863,6 +2863,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Nodrakorid.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ObejrzyjTo",
+      "name": "ObejrzyjTo",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "pl"
+      ],
+      "normalizedLanguages": [
+        "pl"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ObejrzyjTo.cs3",
       "reason": "no-allowed-language"
     },
     {

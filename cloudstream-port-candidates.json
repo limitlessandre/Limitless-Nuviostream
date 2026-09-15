@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 99,
-  "no_obvious_native_overlap_count": 96,
+  "cloudstream_provider_count": 100,
+  "no_obvious_native_overlap_count": 97,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 46,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v46.cs3",
+      "version": 47,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v47.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -584,14 +584,14 @@
     {
       "internalName": "Anichi",
       "name": "Anichi",
-      "description": null,
+      "description": "AllManga/Mkissa Source",
       "language": "en",
       "tvTypes": [
         "AnimeMovie",
         "Anime",
         "OVA"
       ],
-      "version": 26,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -711,7 +711,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -735,7 +735,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 13,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -830,7 +830,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AnimeSuge.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -902,7 +902,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1023,6 +1023,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.545,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "HiAnime",
+      "name": "HiAnime",
+      "description": null,
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "OVA"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.714,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1159,7 +1182,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 58,
+      "version": 59,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1183,7 +1206,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 10,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1322,8 +1345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v5.cs3",
+      "version": 6,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v6.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1438,8 +1461,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 99,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v99.cs3",
+      "version": 100,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v100.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1483,8 +1506,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 105,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v105.cs3",
+      "version": 106,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v106.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1506,8 +1529,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 100,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v100.cs3",
+      "version": 101,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v101.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
