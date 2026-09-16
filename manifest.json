@@ -1,16 +1,16 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
       "id": "limitless-reanime",
       "name": "Re:ANIME",
-      "description": "Anime provider using the shared Nexus anime identity layer with MAL/Jikan, AniList, TMDB/IMDb-backed fallbacks, specials handling, and evidence-based Nexus quality/audio/subtitle labels.",
-      "version": "1.7.1",
+      "description": "Anime provider with season-aware TMDB-to-AniList matching for TV seasons above Season 1, shared anime identity fallbacks, Season 0 specials handling, and evidence-based Nexus quality/audio/subtitle labels. Later seasons fail closed instead of silently falling back to Season 1.",
+      "version": "1.8.0",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv", "anime"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v4.js?rev=171",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v5.js?rev=180",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
