@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 100,
-  "no_obvious_native_overlap_count": 97,
+  "cloudstream_provider_count": 101,
+  "no_obvious_native_overlap_count": 98,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -893,6 +893,30 @@
       ]
     },
     {
+      "internalName": "AniSnatch",
+      "name": "AniSnatch",
+      "description": "AniSnatch - Watch Anime Online Free",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "AniSuge",
       "name": "AniSuge",
       "description": "Anime from AniSuge with Sub and Dub support",
@@ -1182,7 +1206,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 59,
+      "version": 60,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1206,7 +1230,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1276,7 +1300,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 14,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
