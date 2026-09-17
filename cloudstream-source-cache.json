@@ -1164,7 +1164,7 @@
           "Anime",
           "Cartoon"
         ],
-        "iconUrl": "https://animexin.dev/wp-content/uploads/2026/01/New-Logo-e1768365053967.png",
+        "iconUrl": "https://a.favicon.im/animexin.dev?larger=true",
         "apiVersion": 1,
         "fileHash": "sha256-b49173260c50f75cbb82258fc706958fe615a7ad723c2a76fa536cb9c69a363f"
       },
@@ -1208,7 +1208,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://www.google.com/s2/favicons?domain=anisnatch.to&sz=%size%",
+        "iconUrl": "https://a.favicon.im/anisnatch.to?larger=true",
         "apiVersion": 1,
         "fileHash": "sha256-aa9795db9c58e436c5b658ef5dbdf93817008618c37ca4ea162996ecb2142e17"
       },
@@ -1548,7 +1548,7 @@
         "tvTypes": [
           "Others"
         ],
-        "iconUrl": "https://raw.githubusercontent.com/google/material-design-icons/master/png/av/library_books/png48/library_books_48dp.png",
+        "iconUrl": "https://a.favicon.im/goldenaudiobooks.com?larger=true",
         "apiVersion": 1,
         "fileHash": "sha256-78655d3f601840b916a7b165db87278cf3a74f0c58dcbe14cedf548a3a1dd738"
       },
@@ -2028,14 +2028,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ObejrzyjTo.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "ObejrzyjTo",
         "internalName": "ObejrzyjTo",
         "authors": [
           "Phisher98"
         ],
         "description": "Obejrzyj.to - Polski serwis z darmowymi filmami i serialami online",
-        "fileSize": 146723,
+        "fileSize": 151554,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "pl",
         "tvTypes": [
@@ -2044,7 +2044,7 @@
         ],
         "iconUrl": "https://www.obejrzyj.to/favicon/icon-512x512.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f41fee0dea36779c9ac51b9ddde76cb08b4416f62f25194ca777d7c41a76991c"
+        "fileHash": "sha256-a32283416da35e2ce8120eac3a1d8707615460eae718055b0b3eb3f94e7cf18c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3",
@@ -2176,14 +2176,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Pmsm.cs3",
         "status": 1,
-        "version": 6,
+        "version": 7,
         "name": "Pmsm",
         "internalName": "Pmsm",
         "authors": [
           "Phisher98,Duro92"
         ],
         "description": "PMSM (Pencuri Movie Sub Malay)",
-        "fileSize": 64181,
+        "fileSize": 64188,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "id",
         "tvTypes": [
@@ -2192,7 +2192,7 @@
         ],
         "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ww192.pencurimoviesubmalay.motorcycles&size=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-9bec6a20510fe72556c8a296b1a89f2076394b32a92d9283b16b14724b927f7b"
+        "fileHash": "sha256-17560eb374da85f4fb07016da46993dca5d46cb16c3ce9501e7f1a2e62e56b73"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/PublicSportsIPTV.cs3",
@@ -2568,14 +2568,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Ultima.cs3",
         "status": 2,
-        "version": 62,
+        "version": 63,
         "name": "Ultima",
         "internalName": "Ultima",
         "authors": [
           "RowdyRushya,Phisher98"
         ],
         "description": "The ultimate All-in-One home screen to access all of your extensions at one place (You need to select/deselect sections in Ultima's settings to load other extensions on home screen)",
-        "fileSize": 222118,
+        "fileSize": 222506,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2583,7 +2583,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Ultima.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-b6c20ae6a71297226616086c87085e2bf5f37b9f05cf816e11684149f032c658"
+        "fileHash": "sha256-bffb4ca63b4b1ee3c96d172938b4e675f527ca08af5bcbfd14c08c8bdaacd60a"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
