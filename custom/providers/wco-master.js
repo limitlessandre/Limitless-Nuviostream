@@ -1,7 +1,8 @@
 "use strict";
 
 // Master pin for the user-confirmed Nexus WCO build.
-const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/0dc4cae83461b97de361af229ca2e569af7e04f8/custom/providers/wco-production-v5.js";
+// Repinned to the current verified Nexus snapshot so the promoted entry is explicit.
+const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/e076be0a4c4f9df8753338f192672bd7196ec97b/custom/providers/wco-production-v5.js";
 let cached = null;
 
 async function loadBase() {
