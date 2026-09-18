@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -66,11 +66,11 @@
     {
       "id": "limitless-netmirror",
       "name": "NetMirror",
-      "description": "Pinned All-in-One-Nuvio NetMirror adapter with upstream settings preserved and Nexus naming-standard quality/audio/subtitle labels; service names appear only when needed to distinguish equivalent rows.",
-      "version": "0.3.1",
-      "author": "Limitless Nexus adapter; upstream NetMirror credit: Dustincos / All-in-One-Nuvio",
+      "description": "Standalone Limitless-owned NetMirror provider with validated Net27 episode identity, deterministic season-aware NewTV catalogue matching, fail-closed platform fallbacks, preserved settings, and Nexus naming-standard labels.",
+      "version": "1.0.0",
+      "author": "Limitless Nexus; transport baseline credited to Dustincos / All-in-One-Nuvio",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-allinone-nexus-v3.js?rev=031",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-standalone-nexus-v1.js?rev=100",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
