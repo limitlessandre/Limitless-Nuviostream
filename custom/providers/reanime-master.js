@@ -1,9 +1,9 @@
 "use strict";
 
-// Master pin for the user-confirmed Nexus Re:ANIME build.
-// The implementation is frozen to the exact validated Nexus commit so later
-// development-branch edits cannot change Master behavior.
-const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/0dc4cae83461b97de361af229ca2e569af7e04f8/custom/providers/reanime-production-v4.js";
+// Master pin for the user-confirmed Nexus Re:ANIME season-aware build.
+// Frozen to the exact validated Nexus commit so later development-branch edits
+// cannot change the promoted top-level provider entry.
+const BASE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/e076be0a4c4f9df8753338f192672bd7196ec97b/custom/providers/reanime-production-v5.js";
 let cached = null;
 
 async function loadBase() {
