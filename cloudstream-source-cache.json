@@ -191,10 +191,10 @@
     "plugins": [
       {
         "iconUrl": "https://animeon.club/assets/images/short-logo.png",
-        "fileHash": "sha256-29f35a05d3135c0a6a8f13d65988d035e343995564edc6acaa81fe552d96fe77",
+        "fileHash": "sha256-307d0654c3b73927b1bf7338038b7fa2f39559776a02ed6f35d5038eb30754e7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 95998,
+        "fileSize": 95706,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -206,7 +206,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "version": 40,
+        "version": 41,
         "internalName": "AnimeONProvider",
         "description": "AnimeON - Дивитися аніме україньскою",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/AnimeONProvider.cs3",
@@ -214,10 +214,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animeua.club&sz=%size%",
-        "fileHash": "sha256-db2e55556597c03f88bb0d01d087b9471a9f25fdd753d38714c8a0daaace6980",
+        "fileHash": "sha256-0b21a92476a98a26ae209ad7c7477ebc47f498a088b463f13a283de7c4b27c1f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 28078,
+        "fileSize": 28337,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -236,10 +236,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=anitube.in.ua&sz=%size%",
-        "fileHash": "sha256-93afe3fbc5c63301e9e07cff2d7524e07bea59ba6f52e037abd2de71793e9a7a",
+        "fileHash": "sha256-434ffe1e4637dba06b4333749248f5001788b7c9fbfd3784cab5d862cdba7429",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 51928,
+        "fileSize": 51900,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -257,10 +257,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bambooua.com&sz=%size%",
-        "fileHash": "sha256-8eba1478af5901dfafbb43a680087d6d15c32856dc12abf973ad03ed7203bdc1",
+        "fileHash": "sha256-2064b87ba4aec1a1750728ec2ce4c3ca11109040d0d44d99d78738196e0027ca",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 25309,
+        "fileSize": 25354,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -278,10 +278,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cikava-ideya.top&sz=%size%",
-        "fileHash": "sha256-b0da0aa3b1986c3d9ec758cd214d6ebec1769e249f89f68dc16bf6fcd1b16f62",
+        "fileHash": "sha256-962b89e58f398be2c72ab742bf95ffe5dcdbc107c023f48d631f4ffda5e7d1ba",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 18080,
+        "fileSize": 18077,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -300,10 +300,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=coani.net&sz=%size%",
-        "fileHash": "sha256-4e188a7cff88add18641ca40920cb0d63a5abe887de8c854452573866c9f5f77",
+        "fileHash": "sha256-d3b8b1fdb43b0737c713a3c763885ba3cba62cfa97595f1b3b7d275269154e93",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 29907,
+        "fileSize": 30065,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -321,10 +321,10 @@
       },
       {
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrZAw8JCRhrw1pDMb5_nYDPYQOPVC4T1JDH3PpLB5Bf35ts32ohXNFsRic&s=10",
-        "fileHash": "sha256-683838e42e79484f289d5a2a287506822610e4923a3b538f63ad2795fd426565",
+        "fileHash": "sha256-27e86014f09c4d29febc2d753d6cbb1af1ec39a49d7b41da09ff429afbf99f09",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 20871,
+        "fileSize": 20965,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -342,10 +342,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=eneyida.tv&sz=%size%",
-        "fileHash": "sha256-f656c8a69afaa8c815b0ac6196601c1ee9c5e7dac204cedb97641cf5b51eb5c4",
+        "fileHash": "sha256-94a6c0bfc948a7291afd0f7895710af097c43bcc18016031f4b924b2d405a37d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 36682,
+        "fileSize": 36775,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -364,10 +364,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hentaiukr.com&sz=%size%",
-        "fileHash": "sha256-369706fec8a2c8b04a6673585c082474c768651c1140399e303397d203215e7f",
+        "fileHash": "sha256-9d3f670d5ac65fc41e281c7ae57c84186e9d258fff72c1f664de6a90c7c1a568",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 19252,
+        "fileSize": 19378,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -384,10 +384,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinostrain.com&sz=%size%",
-        "fileHash": "sha256-ca0ae227d4de33f5622cea450bbfdfb390f4e7ce28163247555a5fb421232b17",
+        "fileHash": "sha256-f4cdbc4c70abd8405d34c894f1232e68f21ce4114935ca5202353e3ca5708bef",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 34373,
+        "fileSize": 34458,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -402,10 +402,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinotron.top&sz=%size%",
-        "fileHash": "sha256-e5ba1cc37123cd572697396d55de4f4e6740c489beb38146178acdb3e55f0769",
+        "fileHash": "sha256-3a099e9ae79f040f6594a6a693f988d5e3131761c76a6685f0a4bad2c7512ab2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 22220,
+        "fileSize": 22204,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -425,10 +425,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinovezha.com&sz=%size%",
-        "fileHash": "sha256-5ad8d43be27c8b48250d6cbe8dc2e2b41e9f20c085776412e64c3dfc59172dbe",
+        "fileHash": "sha256-187b37733d72eaf8a14a97329a981466c213567e724892a4f94509c55e9021d1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 25883,
+        "fileSize": 25990,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -447,10 +447,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=klon.tv&sz=%size%",
-        "fileHash": "sha256-e26e779cbe66a6edb697b41439ff46882caed5abe3febd55707a6ea027f2e8d5",
+        "fileHash": "sha256-dd576fdb39d92244cd70c5d69246cc9ab11a3fae06786051618ac83702499667",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 35587,
+        "fileSize": 35717,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -470,10 +470,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=serialno.tv&sz=%size%",
-        "fileHash": "sha256-f31ebeb681d3db271022c6d9a760f1d4bad1e7457a55d4c337a51343c890f5d0",
+        "fileHash": "sha256-4ef555409081ea839b9fc9b68f389ca88496b7cc257287a77e2f1657a23600f7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 24083,
+        "fileSize": 24080,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -491,10 +491,10 @@
       },
       {
         "iconUrl": "https://simpsonsua.tv/templates/simpsonsua/images/favicon.ico",
-        "fileHash": "sha256-e404c6ef7303481510629a4112209f18724192b483af1db71d29c81a715fb518",
+        "fileHash": "sha256-b72d529dbe16d3c09f40af5f16ee2211ebe10b4cdeaf9801f798a3b128f2241d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 41147,
+        "fileSize": 41099,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -511,10 +511,10 @@
         "name": "SimpsonsUATvProvider"
       },
       {
-        "fileHash": "sha256-9308dbab730cf5a2a9daf756eae593d48d6484b82a164356400223095e5fcbb3",
+        "fileHash": "sha256-016f946d7bcf8ee65dbc952f62f173eb5af9e1151478f4dcd3aa66de337aed82",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 95384,
+        "fileSize": 95301,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -531,10 +531,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uafix.net&sz=%size%",
-        "fileHash": "sha256-524eca219cdcb1bc51437653082bd8fd9f31828b08fef635418811553ad263dd",
+        "fileHash": "sha256-1cdc6bb5ba82d1001acce9a8fd2e961217cb2e5731c8a9b9a34dd9f3539615fd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 33057,
+        "fileSize": 33070,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -554,10 +554,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.club&sz=%size%",
-        "fileHash": "sha256-54709e05f3205499862ba30a664826b221d4b2720968a1f3b4d607313d7ca6ac",
+        "fileHash": "sha256-d2cc819bcc6b1d87ba28d0e268f2e35597e6def6a5b55f48da410019319af7ad",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 32429,
+        "fileSize": 32395,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -577,10 +577,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uaserials.pro&sz=%size%",
-        "fileHash": "sha256-4ea012d9cfe788d9fe83a9a622021be46343e38402d255bee8c90aceba30687e",
+        "fileHash": "sha256-a06c33d55d3c097a2640bc978a919c57671e56d40c9338638d97877c907ab79e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 40026,
+        "fileSize": 40014,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -600,10 +600,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ufdub.com&sz=%size%",
-        "fileHash": "sha256-bc5d6e2f98ef258ea7aa4d93cac5cf258445e5a6856b8701dba00d0f88d1f615",
+        "fileHash": "sha256-2d946f34add283b744a2d22a2e34c9e588ef090e845c3a1e139db7c203ddb64e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 12968,
+        "fileSize": 12978,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -625,10 +625,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=unimay.media&sz=%size%",
-        "fileHash": "sha256-afc2a2e6f5afbf7e78e54eb4ed05da8f36cb91836c700934d44427fafdebc25c",
+        "fileHash": "sha256-4b5acaddd25334606ca232c761374340842f2cfb03adbd3d616195246c3c1f10",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 28893,
+        "fileSize": 29225,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -1040,14 +1040,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animedubhindi.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "Animedubhindi",
         "internalName": "Animedubhindi",
         "authors": [
           "Phisher98"
         ],
         "description": "Anime in Multi Lang",
-        "fileSize": 85933,
+        "fileSize": 92140,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1057,7 +1057,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=animedubhindi.cc&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-83cc36992792907995159359e7fcdf0f0e1df994cd7ea32ef5039c8df2dc7b67"
+        "fileHash": "sha256-edf3c7c32ad325460c88677c12f3c4f53e729e593c90fb4807aafe94c6750b91"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
@@ -1323,14 +1323,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinefreak.cs3",
         "status": 1,
-        "version": 13,
+        "version": 14,
         "name": "Cinefreak",
         "internalName": "Cinefreak",
         "authors": [
           "Phisher98"
         ],
         "description": "Bangla/Hindi Movies/Series",
-        "fileSize": 107515,
+        "fileSize": 108814,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "bn",
         "tvTypes": [
@@ -1340,7 +1340,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/cinefreak.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1678e922073520534d9fd733258ab88e2f24c801a5917f05438f78878384d296"
+        "fileHash": "sha256-65bacc61c1da86e3eb1345f670e65f887eb51feee7a5f06e873efa2f99c7378e"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
@@ -1383,6 +1383,27 @@
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Coflix.png",
         "apiVersion": 1,
         "fileHash": "sha256-01029e13ba1c8b76b0469039f792eba7c54990e1d389e72f0a0e33fb63a376a9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "Comix",
+        "internalName": "Comix",
+        "authors": [
+          "phisher98"
+        ],
+        "description": "Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.",
+        "fileSize": 75290,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+          "Others",
+          "Anime"
+        ],
+        "iconUrl": "https://comix.to/assets/uploads/35595e3de3c99889c1bd2c56f3e3714fc0c457.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-0fb13f8fbba6c2e4b2eb3e12d1a096535e80c06ad299109cc8592ffa7b4061ea"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Desicinemas.cs3",
@@ -1450,14 +1471,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/DudeFilms.cs3",
         "status": 1,
-        "version": 11,
+        "version": 12,
         "name": "DudeFilms",
         "internalName": "DudeFilms",
         "authors": [
           "Phisher98"
         ],
         "description": "Watch Movies & TvSeries (Multi-Lang)",
-        "fileSize": 102652,
+        "fileSize": 108874,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1466,7 +1487,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/dudefilms.png",
         "apiVersion": 1,
-        "fileHash": "sha256-594d9100708729e23755d756ed8ad0d3b4d3d428b0f5aba3bb749f2f156119a8"
+        "fileHash": "sha256-0da5a3e44c19fc865677b6ef472b1100f0cfe16050eba4f5fce5d5e2b6be9871"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fibwatch.cs3",
@@ -1513,14 +1534,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
         "status": 1,
-        "version": 38,
+        "version": 39,
         "name": "FourKHDHub",
         "internalName": "FourKHDHub",
         "authors": [
           "Phisher98"
         ],
         "description": "4K Movies Extension by HDHUB4U",
-        "fileSize": 105226,
+        "fileSize": 106538,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1529,7 +1550,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/4KHDHUB-Bright-Logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-111a4d7c22fd48d746fcd3940c7d195b048bc610a9c2cb2f9d896c92311c1b5c"
+        "fileHash": "sha256-63f1823a30e0f23cb267a630d351d9b9f597cbd762acafc9ca7892d1d93191bb"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/GoldenAudiobooks.cs3",
@@ -1576,13 +1597,13 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HDhub4u.cs3",
         "status": 1,
-        "version": 54,
+        "version": 55,
         "name": "HDhub4u",
         "internalName": "HDhub4u",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 118143,
+        "fileSize": 119238,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1592,7 +1613,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/HDHUB.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ffe9802d16bd81f22c49132d57288d11bdf1f5ef1e170a786796f1060a7f700e"
+        "fileHash": "sha256-a8e13d203258cef18070700428dbf43058392b6be1c5de477ac2031d71c4256e"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
@@ -1942,14 +1963,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
         "status": 1,
-        "version": 14,
+        "version": 15,
         "name": "Movies4u",
         "internalName": "Movies4u",
         "authors": [
           "Phisher98"
         ],
         "description": "Movies4u",
-        "fileSize": 113399,
+        "fileSize": 118415,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1958,7 +1979,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/movies4u.png",
         "apiVersion": 1,
-        "fileHash": "sha256-6fefec6945cc757935cf9b4c023e16849deda458a928f594d4313356ff356c42"
+        "fileHash": "sha256-16376a2a4c555b4bb6e7aac98c272d48686de5684ed7feb240bc58c1e55f72ea"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MPlayerProvider.cs3",
@@ -2303,7 +2324,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 669,
+        "version": 670,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2311,7 +2332,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1555969,
+        "fileSize": 1601667,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2324,7 +2345,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-d58b184b9f8ee0e3983086edc5e997c9e3b660e1b381b6b6b57455c6b0fd9a4b"
+        "fileHash": "sha256-17c3ef4017dc364aace411586dd0b1d2db68ddee4a996bd04f8d68f9cdddc6d4"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2588,14 +2609,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
         "status": 1,
-        "version": 14,
+        "version": 15,
         "name": "XDMovies",
         "internalName": "XDMovies",
         "authors": [
           "Phisher98"
         ],
         "description": "Watch Latest Movies",
-        "fileSize": 149924,
+        "fileSize": 151772,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2608,7 +2629,7 @@
         ],
         "iconUrl": "https://top.xdmovies.wtf/assets/logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-26071c47c2521819484f772a737180e77d91f57ee0ce1993acf982b1d0b5cf4a"
+        "fileHash": "sha256-c1fd26cbb7c2885d80bb2500a0e5623e0727d0c391a1ff72c3b823287cb3ff47"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",
@@ -2634,13 +2655,13 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Zinkmovies.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "Zinkmovies",
         "internalName": "Zinkmovies",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 132062,
+        "fileSize": 133526,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -2650,7 +2671,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/zing.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-2cf02649ea46f89d69a8eee2a859fcfd5135c107360aa3e5e217a084e50fbd67"
+        "fileHash": "sha256-66184b0510b83ea25b389920453d3614d7d24efb7b876f898159a7e73fe2c1d1"
       }
     ]
   },
@@ -2660,10 +2681,10 @@
     "plugins": [
       {
         "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
-        "fileHash": "sha256-2000663fc01adf3746fafb13951135d1039906475af0c955d2e6465f387c6597",
+        "fileHash": "sha256-19459acd32422bce4f72ab830d902f063afa4f1a90766a6a9d6559ee54b5e312",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 66185,
+        "fileSize": 66350,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2681,10 +2702,10 @@
       },
       {
         "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animesuge.cz&size=64",
-        "fileHash": "sha256-ed724eae113b4b9a9347eeb983c6ae97fe828cabf5f3d2f294261ae506ea54b4",
+        "fileHash": "sha256-1b2333c6b01909f8d3dc71678289e4f35a1fcab0dd690779eb62656cf7992a1d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 61399,
+        "fileSize": 61577,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2702,10 +2723,10 @@
       },
       {
         "iconUrl": "https://play-lh.googleusercontent.com/G9s84Cm1TDnKDX2P8nipS_s60cuCnYtjBRRLespF8nivjXmbV9tF1fY37clZhXMLaA",
-        "fileHash": "sha256-5a89a7439c1180d762ce629be81eeb687314c2baf67b3ca3ee846dfd2636ed81",
+        "fileHash": "sha256-7a3f1868e58bc4cb1afdb4574db78411d73c2b158029f84950427b0c85206c3c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 103765,
+        "fileSize": 104387,
         "status": 3,
         "language": "ta",
         "authors": [
@@ -2725,10 +2746,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CastleTvProvider/icon.png",
-        "fileHash": "sha256-edca6ab581446ae3f3614e8a6e0a242693cdb63a7c77ee1fd24d791905c92aed",
+        "fileHash": "sha256-8119ab679c65053dabc671afddcc3460fdd5f3b5fed3a9d8388a1e112de5e26c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 87190,
+        "fileSize": 88009,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2746,10 +2767,10 @@
       },
       {
         "iconUrl": "https://modapk.world/wp-content/uploads/2025/11/Et-90x90.png",
-        "fileHash": "sha256-227172d162e5501540a7634ec9aec752af272ba032652e53ca9666f32dc0fc8a",
+        "fileHash": "sha256-883bc02309c6da77f18f214202f9aa9353913cb36faa20ec642ccedcc692abaf",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 59803,
+        "fileSize": 60002,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2767,10 +2788,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse/icon.png",
-        "fileHash": "sha256-a0581fe6686feb4ab544807bc6f23a06e2c7f60618b1bdbe55d7c21a87739435",
+        "fileHash": "sha256-3ffa92ac07ad7aad9d552354146342a6167abab16fb016558deb63284d224f20",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 104653,
+        "fileSize": 104840,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2788,10 +2809,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse%20Mobile/logo.jpeg",
-        "fileHash": "sha256-09495b2765662de489d38e8ae90c62d229d8648cef868bd46d613d08224b6ece",
+        "fileHash": "sha256-91a6206f1ed1fb852a9ac2d54fd1cc9dde0cee0ac59223950aeba5ac9744e4a7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 96784,
+        "fileSize": 97001,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2809,10 +2830,10 @@
       },
       {
         "iconUrl": "https://cricfy.pro/wp-content/uploads/2024/11/cropped-cricfytv-2.png",
-        "fileHash": "sha256-0a2537e45bcfce0b89202c86db9c1ed9d558e4c947337ad60cd73a08c46a65a4",
+        "fileHash": "sha256-e322a50351055951fd1206260f144451ec17b8d2766986b13c5f7addade9574c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 112965,
+        "fileSize": 113412,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2829,10 +2850,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=desi-serials.to&sz=%size%",
-        "fileHash": "sha256-f5d91857e2acb81a3fa087a7effa5aa478a85b6dc8aad939ce94977c79c40be9",
+        "fileHash": "sha256-efcb2b707bddbd2b8b1442d78cd2c7ac5e89c95a1e51bbe7a36b0570debb4e81",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 58818,
+        "fileSize": 58869,
         "status": 1,
         "language": "hi",
         "authors": [
@@ -2849,10 +2870,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/DoFlixProvider/icon.png",
-        "fileHash": "sha256-647a41937f31796f991152557a98a3ed808282da562d7a7147c1d2662f3eb649",
+        "fileHash": "sha256-762c68a468a8ba03bb847904f10ac8ca4842aa33e590848f5d782de7d4d2d771",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 84444,
+        "fileSize": 85344,
         "status": 0,
         "language": "ta",
         "authors": [
@@ -2870,10 +2891,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/heads/master/Logos/EinthusanProvider/icon.png",
-        "fileHash": "sha256-aeb6eed9b508cbeab4e9c801762d882b8f3b73cf3c3c40efea46a54f2f7d8d0f",
+        "fileHash": "sha256-61beb2c31a559cbc10192b145856b180108c4b99f077577b2b6bd8ecdfa09748",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 40099,
+        "fileSize": 40139,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2890,10 +2911,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=goldenaudiobook.com/&sz=%size%",
-        "fileHash": "sha256-559c2cfaac44049e8cfcb1194057bfa921da43a817698c8b8ded4b596a4e2908",
+        "fileHash": "sha256-c3d0a5fd6e39ee64e0a497abd57047efd939278ccf840ef924f3e7ce2229031d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 37932,
+        "fileSize": 37983,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2910,10 +2931,10 @@
       },
       {
         "iconUrl": "https://images.dwncdn.net/images/t_app-icon-l/p/b0c9663c-0d61-4941-b12f-91c58c06189f/1137087733/hdo-box-logo",
-        "fileHash": "sha256-14e9d79e5e8ada658f173d060474dfa3441672ab33ea862e1fbabcb18c0ad06b",
+        "fileHash": "sha256-fe629aceb38d5404cdbeffaefe551b4058e6dc76fdf9400aa547ec6c2e573ce0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 47974,
+        "fileSize": 48310,
         "status": 0,
         "language": "ta",
         "authors": [
@@ -2931,10 +2952,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=rezka.ag&sz=%size%",
-        "fileHash": "sha256-106eb33198d6b965c772d244121632f41a081cc4b780d8999145399812bd8e00",
+        "fileHash": "sha256-c041bc3c5f50ef029261885831258ef09f75cabc09f54ae3fbd251a86e082e32",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 59161,
+        "fileSize": 59357,
         "status": 1,
         "language": "ru",
         "authors": [
@@ -2953,10 +2974,10 @@
       },
       {
         "iconUrl": "https://librivox.org/wp-content/themes/librivox/images/librivox-logo.png",
-        "fileHash": "sha256-08a180f576d97b1fd532404fd65f0162e4bc78b4d4ac4cea7fd2d9749568590e",
+        "fileHash": "sha256-d8bfa6f610ac84155e2c2f1f7ddb3f639c0741247ea963f17306885e3e89592c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 35442,
+        "fileSize": 35526,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2973,10 +2994,10 @@
       },
       {
         "iconUrl": "https://www.livxow.site/logo.jpg",
-        "fileHash": "sha256-efff3b09ae5c8fc5ebe5ca7a210d4b9cc0a5173f4a2d1f3fa7127a2379703ca3",
+        "fileHash": "sha256-1c2a86147baae3ec966924d5ce803607d81aec28057bd136f8880c99975e7b7e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 122918,
+        "fileSize": 123326,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2993,10 +3014,10 @@
       },
       {
         "iconUrl": "https://play-lh.googleusercontent.com/V4t4JeQV2Cu9u72hKuqOW5c0IfwcZuuVS1d9PF2uJsW3rlIq-aOMTrT5bABVGaAFTcM=w480-h960-rw",
-        "fileHash": "sha256-647569cdd6f2fe0f86050b4c4f7ae5d7e4e36bd05d96cb3ab1d4cd25c4c605ca",
+        "fileHash": "sha256-9d62c5a6d518890472c1f5e6fa3e4f1f4c51703a5a7a1634ec5ab6db41e0336a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 64741,
+        "fileSize": 64859,
         "status": 1,
         "language": "en",
         "authors": [
@@ -3013,10 +3034,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/MLSBD-Logo.png",
-        "fileHash": "sha256-6ef52f187dc97ada37a1c11bcb28976e8047c0744718c77007228f844603016e",
+        "fileHash": "sha256-ab584f3bf487c6301517c82eaf1e3af35daefd4cbaa6afab8b068fc7ba39787a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 70927,
+        "fileSize": 71313,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -3036,10 +3057,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/MovieBoxProvider/icon.png",
-        "fileHash": "sha256-1347030b17517227cdcca2ddde5bf0529c1bcc251da8e1244fd939ef1a6c1ac7",
+        "fileHash": "sha256-50d003cdc70e486e6e7ff5a0bf3f7ec9aedeb9e1f6e5f4d71279ac65c8e33382",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 98053,
+        "fileSize": 97538,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3057,10 +3078,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/MovieBoxProviderIN/icon.png",
-        "fileHash": "sha256-450c3c13b87a50bbf178fed9b8e7edb9b63b63976564b21ee732f88dc4dd1347",
+        "fileHash": "sha256-f7780a8302e7d71095a0c9b4d7b8a152bda41d1571322c91f43294998225abd8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 95463,
+        "fileSize": 94974,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3078,10 +3099,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/movielinkbd.webp",
-        "fileHash": "sha256-e519ec7d5d03882a082e3a21d6303aaed97e3a98d71e61bb4ffa39ee80e71fac",
+        "fileHash": "sha256-db5055c6b8d59a8c1e988f35c4b31170a2d7f425b81fc19d6ef0057357bb917a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 77240,
+        "fileSize": 77757,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -3101,10 +3122,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/heads/master/Logos/MoviezwapProvider/icon.png",
-        "fileHash": "sha256-7101688b7d955490d267eec66965373ace6429de4f4fe15a0cb62de0f13584d9",
+        "fileHash": "sha256-029dcce347a05f2a41becb90fd7b658393d6d89100ace2e97b52b01cfc8349ae",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 40119,
+        "fileSize": 40219,
         "status": 1,
         "language": "te",
         "authors": [
@@ -3121,10 +3142,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PikashowProvider/logo.png",
-        "fileHash": "sha256-ed77e6307de67d232faa7a0fd413fa9437ddea16dbee831a26aa169822f98443",
+        "fileHash": "sha256-1375d18dfc913d2e03036c1aeeccfb46ee266108a6e2e467b7d6f3f4b2ff6d2d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 81504,
+        "fileSize": 82128,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3142,10 +3163,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayFyTvProvider/playfy-tv-4.webp",
-        "fileHash": "sha256-2f805ea52286f4cac82225133f0664a4677a039179529538adb5f38745b91841",
+        "fileHash": "sha256-118fbd727a411069f8c2c44c6da229b6e9e632d0f7d04abfa0f764d91f8b2e97",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 102994,
+        "fileSize": 103190,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3162,10 +3183,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayZTVProvider/logo.jpg",
-        "fileHash": "sha256-4b924a18b1fe880083483561459c9bb1b84064ff5ef8f77c9e3c2d144bf6d6e0",
+        "fileHash": "sha256-9f1ac7089d94c280357e732971b85f0a63ab0bb7da8c5ff0b7634a9bf043f226",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 111007,
+        "fileSize": 111704,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3182,10 +3203,10 @@
       },
       {
         "iconUrl": "https://cdn.mytuner.mobi/static/ctr/icons/App_192x192/in.png",
-        "fileHash": "sha256-4cfc3a7b3e761c4ac625835e0f6104a669970b6edeabd255d66d9cfdfc3dd555",
+        "fileHash": "sha256-f2d13edbc8f8b131c1e9cfefd67afd11cc9149538590e3fbe967eddd18cb23bc",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 36249,
+        "fileSize": 36329,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3202,10 +3223,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/Rtally/icon.png",
-        "fileHash": "sha256-14def911eee8b8f02b5c09c17bcfc86c26cebc725ac3138a22231e53fef19ef4",
+        "fileHash": "sha256-4e330da8d665137462760176e179b07c08b0f0c26ca6dbdca008d276a49ddaa2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 43225,
+        "fileSize": 43282,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3226,10 +3247,10 @@
       },
       {
         "iconUrl": "https://sktechtv.org/wp-content/uploads/2026/05/sktechtv.webp",
-        "fileHash": "sha256-a4843ca739d223e92636d457e10f94e7fe78da9468bcaa7f0d6bd1f7d72de34b",
+        "fileHash": "sha256-e2cea4be319089923711c688750d72cf94bcc5622aa64dc550b6f4ac415dc788",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 121262,
+        "fileSize": 121539,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3246,10 +3267,10 @@
       },
       {
         "iconUrl": "https://sportzxlive.com/wp-content/uploads/2026/04/cropped-logo-1-2048x1611-1-1024x806.png",
-        "fileHash": "sha256-442aa401fbb9b5cd8e3c542020d232728528bfe5ccf7e29afc4894a9503c4926",
+        "fileHash": "sha256-33cb31d2807de73a3a0e4a779ceceb49584828b04c54ca41d108fb173cad1537",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 118061,
+        "fileSize": 118428,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3266,10 +3287,10 @@
       },
       {
         "iconUrl": "https://play-lh.googleusercontent.com/7geBQBtW_yN70BU81Oi2SoZvYsj5VoYrI4FmUNdqWQlchtExJb7XE_1BQysGzgJ6mBU",
-        "fileHash": "sha256-732703e82d5dd00c1c950fe43640808a42c4b5ab3c59ac828cafa2a3970f518e",
+        "fileHash": "sha256-088656562420b65e6b5395235659ec16a87251a58762d3063b90331051780529",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 64740,
+        "fileSize": 65089,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3288,10 +3309,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse/icon.png",
-        "fileHash": "sha256-5c7f90abd5431b9471b9dfa1e736c2a63d30a841460da1c79c71e77c5b7057f4",
+        "fileHash": "sha256-58acb879f321174d067d01e80c4300455de6f3d8c82edabe4bacbbf5c21a4b90",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 38742,
+        "fileSize": 38794,
         "status": 1,
         "authors": [
           "NivinCNC"
@@ -3308,10 +3329,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/TamilDhoolProvider/icon.png",
-        "fileHash": "sha256-b237bc294ed36031e924feb59658ab73e23483501f408533c0c5c3b5d9ddcb1c",
+        "fileHash": "sha256-a9ad733b03c85030a160fcb592f1ea6579de50496bc8cf5461c617d9d09bf4e0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 49671,
+        "fileSize": 49718,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3328,10 +3349,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tamilian.io&sz=%size%",
-        "fileHash": "sha256-ea85a8e289c7a1cd914185eb41fd9b7765d044ab692b410e965d53a1942ed455",
+        "fileHash": "sha256-1e5cdce0eb999a67d58151508a85098fdb75acdbbbac954256833c63bfe0334d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 38144,
+        "fileSize": 38280,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3348,10 +3369,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/TamilUltraProvider/icon.png",
-        "fileHash": "sha256-2648062e72249dc50365e2557d390a0790239c17306ec3b74f5c06ba1e2f6afc",
+        "fileHash": "sha256-2f8ff86feb4c181e7a405bb7981d9173dd358794777cbc9ec83b805496b80270",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 35448,
+        "fileSize": 35478,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3368,10 +3389,10 @@
       },
       {
         "iconUrl": "https://editorialge.com/wp-content/uploads/2023/07/Watch32..jpg",
-        "fileHash": "sha256-24a8efe128eb0bf3bf004b11eb1f9270acb947190cf58d6acc237ae8099771bb",
+        "fileHash": "sha256-6458eca31cd714259fb543e708c85db91424d838becb54d207965a923ecc0e5a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 50881,
+        "fileSize": 51046,
         "status": 1,
         "language": "en",
         "authors": [
@@ -3389,10 +3410,10 @@
       },
       {
         "iconUrl": "https://play-lh.googleusercontent.com/zVq_wAus2snoO-ggyI6IomlsCzfybAozQOGYpBrv71r1--rOYOYWsr_N7DWwVp9t7ro=s248-rw",
-        "fileHash": "sha256-9ae9966691621775c8d096655928343af39c8cea7feff7c0c7857d05c63fd2a5",
+        "fileHash": "sha256-5535c16b48180971065fdace2fec226f2d7e9b8433349dc594a52de41f0adc96",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 63039,
+        "fileSize": 63340,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -4263,7 +4284,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 53735,
+        "fileSize": 53726,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4274,7 +4295,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_kgVTM6DJtx3tcS4gkPOOPnwFXKNhsrFyMRigWOlWomuQ=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-8dcfb769e912cc41aede16da915039ab9a1af20955841957d8be4b08fcbc9e7d"
+        "fileHash": "sha256-837684d369f62ef16deda7e23eb460eac3aae6b8f14183aef700bd203e9ccb3d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Elif.cs3",
@@ -4437,7 +4458,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 36554,
+        "fileSize": 36553,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4446,7 +4467,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Ig85ZYdRsjDw--peeI2RsBqOWmvnmvKKsT4UONdPMQ&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-44518ad0d330b8d8af0c3282c85d59bba1e476cf61585ea76431fd627272ec84"
+        "fileHash": "sha256-4b96b8b6f45a5e2f630ae2ef8d5f8e40f2037a927dbc5275eae30dc7b63b35af"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Shahidwbas.cs3",
@@ -9636,10 +9657,10 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-        "fileHash": "sha256-c9a02f23f324fbf01e4142b818b96b830d94817b3164a76b9758672cc7f27d4d",
+        "fileHash": "sha256-77a3315fb23249eee0e14ab4c4496546164df39b2a51b13c3231f4e82bbada7f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 46412,
+        "fileSize": 47758,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9649,16 +9670,16 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 47,
+        "version": 48,
         "internalName": "MovieBox",
         "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v47.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v48.cs3",
         "name": "MovieBox",
         "pluginClassName": "com.allforu.StreamBoxPlugin"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-72fb8d2e5afccf2de6a52e9d31fb33231841d78c0d27880ed81b98c2f802a15c",
+        "fileHash": "sha256-ed7e8e15f7e2ec8592723871d93727f0bd828c90cd311c3fefb5062858d3ee6e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
         "fileSize": 54740,
@@ -9671,16 +9692,16 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 106,
+        "version": 107,
         "internalName": "Netflix",
         "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v106.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v107.cs3",
         "name": "Netflix",
         "pluginClassName": "com.allforu.NetflixPlugin"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-072e0f90a17acba0baab36a37578cecff2f315114de487f8f38b29ea8fc1cd6b",
+        "fileHash": "sha256-40b150ff81b7be85cce55efd4432a6bcd3b66d15306955103f7a7db20ec1ad1c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
         "fileSize": 55524,
@@ -9693,15 +9714,15 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 100,
+        "version": 101,
         "internalName": "Hotstar",
         "description": "Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v100.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v101.cs3",
         "name": "Hotstar",
         "pluginClassName": "com.allforu.HotstarPlugin"
       },
       {
-        "version": 6,
+        "version": 7,
         "internalName": "DisneyPlus",
         "name": "Disney+",
         "pluginClassName": "com.allforu.DisneyPlugin",
@@ -9716,18 +9737,18 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v6.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v7.cs3",
         "description": "Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more",
-        "fileHash": "sha256-ae5ea460e00df23aecddf21791eacc02f58dcd6af41307fc1205e084ae55eef9",
-        "fileSize": 55534,
+        "fileHash": "sha256-d83f909ebda6a48cae7cf9bf84f0f2ec5b5923fffbff4477410f2cf1c912a2c8",
+        "fileSize": 55533,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-1b48b3bf52f913ac7ca69102154d4c3ad2ff82bd94b04d413a00dc91faac40fa",
+        "fileHash": "sha256-260e21073e862426b6338fe24df8b5a70137363058d93ea6f6c7c18060754133",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 56936,
+        "fileSize": 56937,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9737,12 +9758,54 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 101,
+        "version": 102,
         "internalName": "PrimeVideo",
         "description": "Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v101.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v102.cs3",
         "name": "PrimeVideo",
         "pluginClassName": "com.allforu.PrimePlugin"
+      },
+      {
+        "version": 2,
+        "internalName": "WaveFlix",
+        "name": "WaveFlix",
+        "pluginClassName": "com.allforu.WaveFlixPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WaveFlix-v2.cs3",
+        "description": "WaveFlix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+        "fileHash": "sha256-ff52d2559344f0f2eb2fba71cabc264956521761aac9337623f9f42329201f4d",
+        "fileSize": 44426
+      },
+      {
+        "version": 1,
+        "internalName": "Redflix",
+        "name": "Redflix",
+        "pluginClassName": "com.allforu.RedflixPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Redflix-v1.cs3",
+        "description": "Redflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+        "fileHash": "sha256-e170bf0d06e6de7b013e421c33a20e8d11875f99c9ccb72f821d89370ac4f7fb",
+        "fileSize": 41007
       }
     ]
   }

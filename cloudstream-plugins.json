@@ -151,10 +151,10 @@
   },
   {
     "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
-    "fileHash": "sha256-2000663fc01adf3746fafb13951135d1039906475af0c955d2e6465f387c6597",
+    "fileHash": "sha256-19459acd32422bce4f72ab830d902f063afa4f1a90766a6a9d6559ee54b5e312",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 66185,
+    "fileSize": 66350,
     "status": 1,
     "language": "en",
     "authors": [
@@ -281,10 +281,10 @@
   },
   {
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animesuge.cz&size=64",
-    "fileHash": "sha256-ed724eae113b4b9a9347eeb983c6ae97fe828cabf5f3d2f294261ae506ea54b4",
+    "fileHash": "sha256-1b2333c6b01909f8d3dc71678289e4f35a1fcab0dd690779eb62656cf7992a1d",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 61399,
+    "fileSize": 61577,
     "status": 1,
     "language": "en",
     "authors": [
@@ -579,6 +579,27 @@
     "fileHash": "sha256-30dc643628702d6b2fe139339e59996783c95a0c1d41efe0a31872ae4d10908b"
   },
   {
+    "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3",
+    "status": 1,
+    "version": 2,
+    "name": "Comix",
+    "internalName": "Comix",
+    "authors": [
+      "phisher98"
+    ],
+    "description": "Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.",
+    "fileSize": 75290,
+    "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+    "language": "en",
+    "tvTypes": [
+      "Others",
+      "Anime"
+    ],
+    "iconUrl": "https://comix.to/assets/uploads/35595e3de3c99889c1bd2c56f3e3714fc0c457.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-0fb13f8fbba6c2e4b2eb3e12d1a096535e80c06ad299109cc8592ffa7b4061ea"
+  },
+  {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
     "status": 1,
     "version": 24,
@@ -599,7 +620,7 @@
     "fileHash": "sha256-caa984f2dd78f5b34afe430220c15f219e339b07b17adc29acd9f04ea26acb70"
   },
   {
-    "version": 6,
+    "version": 7,
     "internalName": "DisneyPlus",
     "name": "Disney+",
     "pluginClassName": "com.allforu.DisneyPlugin",
@@ -614,10 +635,10 @@
       "TvSeries"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v6.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v7.cs3",
     "description": "Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more",
-    "fileHash": "sha256-ae5ea460e00df23aecddf21791eacc02f58dcd6af41307fc1205e084ae55eef9",
-    "fileSize": 55534,
+    "fileHash": "sha256-d83f909ebda6a48cae7cf9bf84f0f2ec5b5923fffbff4477410f2cf1c912a2c8",
+    "fileSize": 55533,
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg"
   },
   {
@@ -747,14 +768,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
     "status": 1,
-    "version": 38,
+    "version": 39,
     "name": "FourKHDHub",
     "internalName": "FourKHDHub",
     "authors": [
       "Phisher98"
     ],
     "description": "4K Movies Extension by HDHUB4U",
-    "fileSize": 105226,
+    "fileSize": 106538,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -763,7 +784,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/4KHDHUB-Bright-Logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-111a4d7c22fd48d746fcd3940c7d195b048bc610a9c2cb2f9d896c92311c1b5c"
+    "fileHash": "sha256-63f1823a30e0f23cb267a630d351d9b9f597cbd762acafc9ca7892d1d93191bb"
   },
   {
     "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Replaymatch.cs3",
@@ -811,10 +832,10 @@
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=goldenaudiobook.com/&sz=%size%",
-    "fileHash": "sha256-559c2cfaac44049e8cfcb1194057bfa921da43a817698c8b8ded4b596a4e2908",
+    "fileHash": "sha256-c3d0a5fd6e39ee64e0a497abd57047efd939278ccf840ef924f3e7ce2229031d",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 37932,
+    "fileSize": 37983,
     "status": 1,
     "language": "en",
     "authors": [
@@ -893,7 +914,7 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-072e0f90a17acba0baab36a37578cecff2f315114de487f8f38b29ea8fc1cd6b",
+    "fileHash": "sha256-40b150ff81b7be85cce55efd4432a6bcd3b66d15306955103f7a7db20ec1ad1c",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
     "fileSize": 55524,
@@ -906,10 +927,10 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 100,
+    "version": 101,
     "internalName": "Hotstar",
     "description": "Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v100.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v101.cs3",
     "name": "Hotstar",
     "pluginClassName": "com.allforu.HotstarPlugin"
   },
@@ -1112,10 +1133,10 @@
   },
   {
     "iconUrl": "https://librivox.org/wp-content/themes/librivox/images/librivox-logo.png",
-    "fileHash": "sha256-08a180f576d97b1fd532404fd65f0162e4bc78b4d4ac4cea7fd2d9749568590e",
+    "fileHash": "sha256-d8bfa6f610ac84155e2c2f1f7ddb3f639c0741247ea963f17306885e3e89592c",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 35442,
+    "fileSize": 35526,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1152,10 +1173,10 @@
   },
   {
     "iconUrl": "https://play-lh.googleusercontent.com/V4t4JeQV2Cu9u72hKuqOW5c0IfwcZuuVS1d9PF2uJsW3rlIq-aOMTrT5bABVGaAFTcM=w480-h960-rw",
-    "fileHash": "sha256-647569cdd6f2fe0f86050b4c4f7ae5d7e4e36bd05d96cb3ab1d4cd25c4c605ca",
+    "fileHash": "sha256-9d62c5a6d518890472c1f5e6fa3e4f1f4c51703a5a7a1634ec5ab6db41e0336a",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 64741,
+    "fileSize": 64859,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1194,10 +1215,10 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-    "fileHash": "sha256-c9a02f23f324fbf01e4142b818b96b830d94817b3164a76b9758672cc7f27d4d",
+    "fileHash": "sha256-77a3315fb23249eee0e14ab4c4496546164df39b2a51b13c3231f4e82bbada7f",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "fileSize": 46412,
+    "fileSize": 47758,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1207,10 +1228,10 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 47,
+    "version": 48,
     "internalName": "MovieBox",
     "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v47.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v48.cs3",
     "name": "MovieBox",
     "pluginClassName": "com.allforu.StreamBoxPlugin"
   },
@@ -1258,7 +1279,7 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-72fb8d2e5afccf2de6a52e9d31fb33231841d78c0d27880ed81b98c2f802a15c",
+    "fileHash": "sha256-ed7e8e15f7e2ec8592723871d93727f0bd828c90cd311c3fefb5062858d3ee6e",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
     "fileSize": 54740,
@@ -1271,10 +1292,10 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 106,
+    "version": 107,
     "internalName": "Netflix",
     "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v106.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v107.cs3",
     "name": "Netflix",
     "pluginClassName": "com.allforu.NetflixPlugin"
   },
@@ -1409,10 +1430,10 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-1b48b3bf52f913ac7ca69102154d4c3ad2ff82bd94b04d413a00dc91faac40fa",
+    "fileHash": "sha256-260e21073e862426b6338fe24df8b5a70137363058d93ea6f6c7c18060754133",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "fileSize": 56936,
+    "fileSize": 56937,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1422,10 +1443,10 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 101,
+    "version": 102,
     "internalName": "PrimeVideo",
     "description": "Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v101.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v102.cs3",
     "name": "PrimeVideo",
     "pluginClassName": "com.allforu.PrimePlugin"
   },
@@ -1533,6 +1554,27 @@
     "iconUrl": "https://reanime.to/favicon.ico",
     "apiVersion": 1,
     "fileHash": "sha256-6e765dcfa260b0fcb828f2fc2a5af2d96d9ff4582348fd41f66f4d38866d50c7"
+  },
+  {
+    "version": 1,
+    "internalName": "Redflix",
+    "name": "Redflix",
+    "pluginClassName": "com.allforu.RedflixPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Redflix-v1.cs3",
+    "description": "Redflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+    "fileHash": "sha256-e170bf0d06e6de7b013e421c33a20e8d11875f99c9ccb72f821d89370ac4f7fb",
+    "fileSize": 41007
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
@@ -1749,7 +1791,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 669,
+    "version": 670,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -1757,7 +1799,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1555969,
+    "fileSize": 1601667,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1770,7 +1812,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-d58b184b9f8ee0e3983086edc5e997c9e3b660e1b381b6b6b57455c6b0fd9a4b"
+    "fileHash": "sha256-17c3ef4017dc364aace411586dd0b1d2db68ddee4a996bd04f8d68f9cdddc6d4"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2035,10 +2077,10 @@
   },
   {
     "iconUrl": "https://editorialge.com/wp-content/uploads/2023/07/Watch32..jpg",
-    "fileHash": "sha256-24a8efe128eb0bf3bf004b11eb1f9270acb947190cf58d6acc237ae8099771bb",
+    "fileHash": "sha256-6458eca31cd714259fb543e708c85db91424d838becb54d207965a923ecc0e5a",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 50881,
+    "fileSize": 51046,
     "status": 1,
     "language": "en",
     "authors": [
@@ -2075,6 +2117,27 @@
     "fileHash": "sha256-e60c081865d5584f9fa4dec3006be7cd81cc016499c8d558972bede4d855b5b3"
   },
   {
+    "version": 2,
+    "internalName": "WaveFlix",
+    "name": "WaveFlix",
+    "pluginClassName": "com.allforu.WaveFlixPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WaveFlix-v2.cs3",
+    "description": "WaveFlix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
+    "fileHash": "sha256-ff52d2559344f0f2eb2fba71cabc264956521761aac9337623f9f42329201f4d",
+    "fileSize": 44426
+  },
+  {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
     "status": 1,
     "version": 9,
@@ -2099,14 +2162,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
     "status": 1,
-    "version": 14,
+    "version": 15,
     "name": "XDMovies",
     "internalName": "XDMovies",
     "authors": [
       "Phisher98"
     ],
     "description": "Watch Latest Movies",
-    "fileSize": 149924,
+    "fileSize": 151772,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2119,7 +2182,7 @@
     ],
     "iconUrl": "https://top.xdmovies.wtf/assets/logo1.png",
     "apiVersion": 1,
-    "fileHash": "sha256-26071c47c2521819484f772a737180e77d91f57ee0ce1993acf982b1d0b5cf4a"
+    "fileHash": "sha256-c1fd26cbb7c2885d80bb2500a0e5623e0727d0c391a1ff72c3b823287cb3ff47"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",

@@ -5,9 +5,9 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 452,
-  "eligible_plugin_entries_before_dedupe": 104,
-  "unique_plugins": 101,
+  "raw_plugin_entries": 455,
+  "eligible_plugin_entries_before_dedupe": 107,
+  "unique_plugins": 104,
   "duplicate_groups": 3,
   "language_filtered_entries": 311,
   "unknown_language_metadata_entries": 25,
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 85,
+      "plugins": 86,
       "verified": false
     },
     {
@@ -210,7 +210,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 5,
+      "plugins": 7,
       "verified": false
     }
   ]
