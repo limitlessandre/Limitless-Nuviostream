@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 104,
-  "no_obvious_native_overlap_count": 101,
+  "cloudstream_provider_count": 102,
+  "no_obvious_native_overlap_count": 99,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 48,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v48.cs3",
+      "version": 49,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v49.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1591,29 +1591,6 @@
       ]
     },
     {
-      "internalName": "Redflix",
-      "name": "Redflix",
-      "description": "Redflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Redflix-v1.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.429,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "SkymoviesHD",
       "name": "SkymoviesHD",
       "description": "just testing",
@@ -1745,29 +1722,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.211,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "WaveFlix",
-      "name": "WaveFlix",
-      "description": "WaveFlix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WaveFlix-v2.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.4,
         "native_matches": []
       },
       "priority": "low-priority",

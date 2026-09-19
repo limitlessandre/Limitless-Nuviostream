@@ -2850,10 +2850,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=desi-serials.to&sz=%size%",
-        "fileHash": "sha256-efcb2b707bddbd2b8b1442d78cd2c7ac5e89c95a1e51bbe7a36b0570debb4e81",
+        "fileHash": "sha256-12772e3aa0afd2b16f3c3b6467a93551b817c811aeadf09e7c368661457b4dce",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 58869,
+        "fileSize": 59470,
         "status": 1,
         "language": "hi",
         "authors": [
@@ -2862,7 +2862,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 32,
+        "version": 33,
         "internalName": "DesiSerialsProvider",
         "description": "Desi Serials Tv Shows Provider",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DesiSerialsProvider.cs3",
@@ -3329,10 +3329,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/TamilDhoolProvider/icon.png",
-        "fileHash": "sha256-a9ad733b03c85030a160fcb592f1ea6579de50496bc8cf5461c617d9d09bf4e0",
+        "fileHash": "sha256-a3a57503562d9109a94d1a2cd4e720f3fa1f93530f6f7c102e65565b2f328fdc",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 49718,
+        "fileSize": 50202,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3341,7 +3341,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 38,
+        "version": 39,
         "internalName": "TamilDhoolProvider",
         "description": "Tamil Tv Serial/Shows Provider",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/TamilDhoolProvider.cs3",
@@ -9657,10 +9657,10 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-        "fileHash": "sha256-77a3315fb23249eee0e14ab4c4496546164df39b2a51b13c3231f4e82bbada7f",
+        "fileHash": "sha256-404ec3e4d5fc918de9482ba6ed9cd3341af89d406a07687849cebf9cc3facc46",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 47758,
+        "fileSize": 51967,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9670,10 +9670,10 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 48,
+        "version": 49,
         "internalName": "MovieBox",
         "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v48.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v49.cs3",
         "name": "MovieBox",
         "pluginClassName": "com.allforu.StreamBoxPlugin"
       },
@@ -9764,48 +9764,6 @@
         "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v102.cs3",
         "name": "PrimeVideo",
         "pluginClassName": "com.allforu.PrimePlugin"
-      },
-      {
-        "version": 2,
-        "internalName": "WaveFlix",
-        "name": "WaveFlix",
-        "pluginClassName": "com.allforu.WaveFlixPlugin",
-        "status": 1,
-        "apiVersion": 1,
-        "language": "en",
-        "authors": [
-          "AllForU"
-        ],
-        "tvTypes": [
-          "Movie",
-          "TvSeries"
-        ],
-        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WaveFlix-v2.cs3",
-        "description": "WaveFlix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "fileHash": "sha256-ff52d2559344f0f2eb2fba71cabc264956521761aac9337623f9f42329201f4d",
-        "fileSize": 44426
-      },
-      {
-        "version": 1,
-        "internalName": "Redflix",
-        "name": "Redflix",
-        "pluginClassName": "com.allforu.RedflixPlugin",
-        "status": 1,
-        "apiVersion": 1,
-        "language": "en",
-        "authors": [
-          "AllForU"
-        ],
-        "tvTypes": [
-          "Movie",
-          "TvSeries"
-        ],
-        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Redflix-v1.cs3",
-        "description": "Redflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "fileHash": "sha256-e170bf0d06e6de7b013e421c33a20e8d11875f99c9ccb72f821d89370ac4f7fb",
-        "fileSize": 41007
       }
     ]
   }
