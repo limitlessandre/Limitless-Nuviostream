@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 102,
-  "no_obvious_native_overlap_count": 99,
+  "cloudstream_provider_count": 126,
+  "no_obvious_native_overlap_count": 123,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -19,7 +19,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 670,
+      "version": 672,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -79,7 +79,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 36,
+      "version": 37,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -191,7 +191,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -219,7 +219,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 96,
+      "version": 97,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 49,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v49.cs3",
+      "version": 50,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v50.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -497,7 +497,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animexin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -639,7 +639,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniDb.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -806,7 +806,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 39,
+      "version": 40,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -972,12 +972,36 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "BingeCloud",
+      "name": "BingeCloud",
+      "description": "TV Series, Movies, Anime",
+      "language": "en",
+      "tvTypes": [
+        "Movies",
+        "TV Series",
+        "Anime"
+      ],
+      "version": 210,
+      "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1369,7 +1393,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 26,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1624,7 +1648,7 @@
         "Movie",
         "Torrent"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1647,7 +1671,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 26,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioX.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1938,6 +1962,30 @@
       "reasons": []
     },
     {
+      "internalName": "JioTV",
+      "name": "JioTV",
+      "description": "JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v5.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -1,
+      "reasons": [
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
       "internalName": "LibraryOfLadev",
       "name": "LibraryOfLadev",
       "description": "Library of Ladev - Neuro-sama stream transcript search with YouTube playback",
@@ -1951,6 +1999,30 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.348,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -1,
+      "reasons": [
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "M3UPlayer",
+      "name": "M3U Player",
+      "description": "M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v1.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.32,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2204,6 +2276,160 @@
       ]
     },
     {
+      "internalName": "AriaOfSorrow",
+      "name": "AriaOfSorrow",
+      "description": "Play Aria of Sorrow.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/AriaOfSorrow.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.381,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "AvatarAirbender",
+      "name": "AvatarAirbender",
+      "description": "Play Avatar Airbender.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/AvatarAirbender.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Castlevania",
+      "name": "Castlevania",
+      "description": "Play Castlevania.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Castlevania.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.444,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Contra",
+      "name": "Contra",
+      "description": "Play Contra.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Contra.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.267,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "DesertStrike",
+      "name": "DesertStrike",
+      "description": "Play Desert Strike.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/DesertStrike.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Doom",
+      "name": "Doom",
+      "description": "Play DOOM.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Doom.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.182,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "FlappyBird",
+      "name": "FlappyBird",
+      "description": "Play Flappy Bird.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/FlappyBird.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
       "internalName": "FootReplays",
       "name": "FootReplays",
       "description": null,
@@ -2217,6 +2443,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Game2048",
+      "name": "Game2048",
+      "description": "Play 2048.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Game2048.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2270,6 +2518,28 @@
       ]
     },
     {
+      "internalName": "JackieChan",
+      "name": "JackieChan",
+      "description": "Play Jackie Chan Adventures.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/JackieChan.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
       "internalName": "LibriVoxAudiobook",
       "name": "LibriVoxAudiobook",
       "description": "Audiobooks in public domain",
@@ -2283,6 +2553,94 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.424,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "LittleMermaid",
+      "name": "LittleMermaid",
+      "description": "Play The Little Mermaid.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/LittleMermaid.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.483,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "MedalOfHonor",
+      "name": "MedalOfHonor",
+      "description": "Play Medal of Honor.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/MedalOfHonor.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.357,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "MetalSlugAdvance",
+      "name": "MetalSlugAdvance",
+      "description": "Play Metal Slug.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/MetalSlugAdvance.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "MinishCap",
+      "name": "MinishCap",
+      "description": "Play The Minish Cap.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/MinishCap.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.417,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2314,6 +2672,94 @@
       ]
     },
     {
+      "internalName": "OnePiece",
+      "name": "OnePiece",
+      "description": "Play One Piece.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 16,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/OnePiece.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.353,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Pokemon",
+      "name": "Pokemon",
+      "description": "Play Pokémon FireRed.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Pokemon.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "PrinceOfPersia",
+      "name": "PrinceOfPersia",
+      "description": "Play Prince of Persia.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/PrinceOfPersia.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.296,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "SeriousSam",
+      "name": "SeriousSam",
+      "description": "Play Serious Sam.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/SeriousSam.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.385,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
       "internalName": "SkillShareProvider",
       "name": "SkillShareProvider",
       "description": "Watch Skillshare courses for free!",
@@ -2327,6 +2773,94 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "SuperMario",
+      "name": "SuperMario",
+      "description": "Play Super Mario Bros.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 14,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/SuperMario.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.421,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "TekkenAdvance",
+      "name": "TekkenAdvance",
+      "description": "Play Tekken.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/TekkenAdvance.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.414,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "TombRaider",
+      "name": "TombRaider",
+      "description": "Play Tomb Raider.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/TombRaider.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -4,
+      "reasons": [
+        "Only declares Others"
+      ]
+    },
+    {
+      "internalName": "Zelda",
+      "name": "Zelda",
+      "description": "Play The Legend of Zelda.",
+      "language": "en",
+      "tvTypes": [
+        "Others"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/Zelda.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
         "native_matches": []
       },
       "priority": "utility-or-review",

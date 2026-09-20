@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **102**  
-No obvious native overlap: **99**  
+Filtered CloudStream providers: **126**  
+No obvious native overlap: **123**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -52,6 +52,7 @@ Exact/alias overlap: **3**
 - **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
+- **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
 - **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Comix** (`Comix`) — en; Others, Anime — Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
@@ -100,7 +101,9 @@ Exact/alias overlap: **3**
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
+- **JioTV** (`JioTV`) — en; Movie, TvSeries — JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
+- **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
@@ -112,12 +115,33 @@ Exact/alias overlap: **3**
 - **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
 - **TimStreams** (`TimStreams`) — en; Live — Live Sports Events and some Live TV Channels from TimStreams
+- **AriaOfSorrow** (`AriaOfSorrow`) — en; Others — Play Aria of Sorrow.
+- **AvatarAirbender** (`AvatarAirbender`) — en; Others — Play Avatar Airbender.
+- **Castlevania** (`Castlevania`) — en; Others — Play Castlevania.
+- **Contra** (`Contra`) — en; Others — Play Contra.
+- **DesertStrike** (`DesertStrike`) — en; Others — Play Desert Strike.
+- **Doom** (`Doom`) — en; Others — Play DOOM.
+- **FlappyBird** (`FlappyBird`) — en; Others — Play Flappy Bird.
 - **FootReplays** (`FootReplays`) — en; Others
+- **Game2048** (`Game2048`) — en; Others — Play 2048.
 - **GoldenAudiobook** (`GoldenAudiobook`) — en; Others — Audiobooks - Use Picture in Picture or VLC as external player
 - **GoldenAudiobooks** (`GoldenAudiobooks`) — en; Others — GoldenAudiobooks — Free online audiobooks streaming with chapter navigation.
+- **JackieChan** (`JackieChan`) — en; Others — Play Jackie Chan Adventures.
 - **LibriVoxAudiobook** (`LibriVoxAudiobook`) — en; Others — Audiobooks in public domain
+- **LittleMermaid** (`LittleMermaid`) — en; Others — Play The Little Mermaid.
+- **MedalOfHonor** (`MedalOfHonor`) — en; Others — Play Medal of Honor.
+- **MetalSlugAdvance** (`MetalSlugAdvance`) — en; Others — Play Metal Slug.
+- **MinishCap** (`MinishCap`) — en; Others — Play The Minish Cap.
 - **Nebula** (`Nebula`) — en; Others — Plugin to watch the free videos and ONLY THE FREE VIDEOS from nebula.tv
+- **OnePiece** (`OnePiece`) — en; Others — Play One Piece.
+- **Pokemon** (`Pokemon`) — en; Others — Play Pokémon FireRed.
+- **PrinceOfPersia** (`PrinceOfPersia`) — en; Others — Play Prince of Persia.
+- **SeriousSam** (`SeriousSam`) — en; Others — Play Serious Sam.
 - **SkillShareProvider** (`SkillShareProvider`) — en; Others — Watch Skillshare courses for free!
+- **SuperMario** (`SuperMario`) — en; Others — Play Super Mario Bros.
+- **TekkenAdvance** (`TekkenAdvance`) — en; Others — Play Tekken.
+- **TombRaider** (`TombRaider`) — en; Others — Play Tomb Raider.
+- **Zelda** (`Zelda`) — en; Others — Play The Legend of Zelda.
 
 ## Likely native overlaps to review
 

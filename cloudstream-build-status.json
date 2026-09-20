@@ -1,13 +1,13 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 28,
-  "repositories_loaded": 27,
+  "repository_database_entries": 30,
+  "repositories_loaded": 29,
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 453,
-  "eligible_plugin_entries_before_dedupe": 105,
-  "unique_plugins": 102,
+  "raw_plugin_entries": 477,
+  "eligible_plugin_entries_before_dedupe": 129,
+  "unique_plugins": 126,
   "duplicate_groups": 3,
   "language_filtered_entries": 311,
   "unknown_language_metadata_entries": 25,
@@ -210,7 +210,21 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 5,
+      "plugins": 7,
+      "verified": false
+    },
+    {
+      "name": "Ayu CloudStream Games",
+      "url": "https://raw.githubusercontent.com/errorcode26/Ayu-CloudStream-Games/builds/repo.json",
+      "status": "ok",
+      "plugins": 21,
+      "verified": false
+    },
+    {
+      "name": "FLUMMOX Repo",
+      "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/repo.json",
+      "status": "ok",
+      "plugins": 1,
       "verified": false
     }
   ]
