@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 126,
-  "no_obvious_native_overlap_count": 123,
+  "cloudstream_provider_count": 127,
+  "no_obvious_native_overlap_count": 124,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 672,
+      "version": 673,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 16,
+      "version": 17,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -345,8 +345,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 50,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v50.cs3",
+      "version": 53,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v53.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -615,7 +615,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -893,6 +893,30 @@
       ]
     },
     {
+      "internalName": "AniPM",
+      "name": "AniPM",
+      "description": "Anime with Sub & Dub from ani.pm",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.667,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "AniSnatch",
       "name": "AniSnatch",
       "description": "AniSnatch - Watch Anime Online Free",
@@ -996,7 +1020,7 @@
         "TV Series",
         "Anime"
       ],
-      "version": 210,
+      "version": 212,
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
       "repositoryUrl": null,
       "overlap": {
@@ -1088,7 +1112,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Enma.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1253,7 +1277,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 60,
+      "version": 64,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1277,7 +1301,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 12,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1462,7 +1486,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 39,
+      "version": 41,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2017,8 +2041,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v1.cs3",
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v2.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2932,17 +2956,17 @@
     },
     {
       "internalName": "Reanime",
-      "name": "Reanime",
-      "description": null,
+      "name": "Re:ANIME",
+      "description": "Reanime - Stream anime free online (sub & dub, multi-quality)",
       "language": "en",
       "tvTypes": [
         "AnimeMovie",
         "Anime",
         "OVA"
       ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v5.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",
         "score": 1.0,

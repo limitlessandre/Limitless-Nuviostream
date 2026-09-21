@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **126**  
-No obvious native overlap: **123**  
+Filtered CloudStream providers: **127**  
+No obvious native overlap: **124**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -48,6 +48,7 @@ Exact/alias overlap: **3**
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
 - **Animo** (`Animo`) — en; Anime, AnimeMovie, OVA — Anime(sub,dub)
 - **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
+- **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
 - **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
@@ -151,4 +152,4 @@ None.
 
 - **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: KissKH
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: KissKH
-- **Reanime** (`Reanime`) — en; AnimeMovie, Anime, OVA — native match: Re:ANIME
+- **Re:ANIME** (`Reanime`) — en; AnimeMovie, Anime, OVA — Reanime - Stream anime free online (sub & dub, multi-quality) — native match: Re:ANIME

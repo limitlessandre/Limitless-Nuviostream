@@ -70,15 +70,25 @@
   "internal:reanime": {
     "chosen": {
       "internalName": "Reanime",
-      "name": "Reanime",
-      "version": 2,
+      "name": "Re:ANIME",
+      "version": 5,
       "language": "en",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v5.cs3"
     },
     "candidates": [
+      {
+        "internalName": "Reanime",
+        "name": "Re:ANIME",
+        "version": 5,
+        "language": "en",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v5.cs3"
+      },
       {
         "internalName": "Reanime",
         "name": "Reanime",
