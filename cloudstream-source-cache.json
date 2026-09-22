@@ -3099,10 +3099,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/movielinkbd.webp",
-        "fileHash": "sha256-db5055c6b8d59a8c1e988f35c4b31170a2d7f425b81fc19d6ef0057357bb917a",
+        "fileHash": "sha256-9874eab8f55c589a19110f2997299f9f9722ac865cbb308e1a4731bd0110e6f9",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 77757,
+        "fileSize": 79476,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -3114,7 +3114,7 @@
           "AnimeMovie",
           "AsianDrama"
         ],
-        "version": 19,
+        "version": 20,
         "internalName": "MovieLinkBDProvider",
         "description": "MovieLinkBD - Largest Movie Download Site in Bangladesh",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieLinkBDProvider.cs3",
@@ -4778,7 +4778,7 @@
         ],
         "iconUrl": "https://www.animeunity.so/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-cc74d34d5f616ab0fcdda0763977954d93ebb4fbdc1d8f86d2bf239abab4bc8d"
+        "fileHash": "sha256-a0570b1cab821b39aaa3e46749b0a016d92d8498bf31a124a01af9c7e2c82343"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -4958,26 +4958,28 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamCenter.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "StreamCenter",
         "internalName": "StreamCenter",
         "authors": [
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1410551,
+        "fileSize": 1667603,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
-          "Movie",
           "TvSeries",
+          "Movie",
+          "AsianDrama",
           "Anime",
-          "AnimeMovie",
-          "Live"
+          "Torrent",
+          "Live",
+          "Others"
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-6da90539f75b0f26fe860e65eb441ac7d6c2aa5caed99ec63b254274456cadd1"
+        "fileHash": "sha256-bb45078f6ed06beae1fd61d820f7512f24d3bedecbe1cbf23fd7638f59dc0c5f"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -8942,14 +8944,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
         "status": 1,
-        "version": 1,
+        "version": 3,
         "name": "AniPM",
         "internalName": "AniPM",
         "authors": [
           "raghav"
         ],
         "description": "Anime with Sub & Dub from ani.pm",
-        "fileSize": 55173,
+        "fileSize": 63350,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8959,7 +8961,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
         "apiVersion": 1,
-        "fileHash": "sha256-d0deac33656a423a65b9f4acee5951f587a0e04d8bc7d28aa8c305d2638f313c"
+        "fileHash": "sha256-0cd8f7be9ecfbe48dbc07b39cd428eb5bf6b83bde1166de78383aa8ea8eb0fad"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
@@ -9158,14 +9160,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
         "status": 1,
-        "version": 10,
+        "version": 12,
         "name": "NetNaija",
         "internalName": "NetNaija",
         "authors": [
           "raghav"
         ],
         "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
-        "fileSize": 51743,
+        "fileSize": 68760,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9177,7 +9179,7 @@
         ],
         "iconUrl": "https://netnaija.film/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-763f0b50a82d7258e29f0a21cf45787bc83e3036293a166b53cb9ddb42f922f0"
+        "fileHash": "sha256-9ec3d2df568324b264121765af51978b156bdaa328037d1d73d8e38fe7d7b333"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -9211,7 +9213,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 639076,
+        "fileSize": 639969,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9221,7 +9223,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ba6f7d35781f04471ba88094c168ba50f60be251e13ef074af386a50cbe05149"
+        "fileHash": "sha256-485abdfd054dd1e1f5fda47a5e1d685ad50d9e400f934bda27f08836c8fe9098"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -9233,7 +9235,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 656858,
+        "fileSize": 657962,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9243,7 +9245,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ad0c38c842a09de2ef33473f3412e5c6a96d16b83f489203613c5f01fe5e0227"
+        "fileHash": "sha256-083ea81c0c2e7f3d2b10180e13047f97ae97eb071e1d55b4b5e615e987f9eed3"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3",
@@ -9847,10 +9849,10 @@
           "OVA"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v5.cs3",
-        "version": 5,
-        "fileHash": "sha256-78dc1eaada3043cb6acb0061ffc209dc5d8a34c063200a9e663a9c4edfcb850f",
-        "fileSize": 47137,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v8.cs3",
+        "version": 8,
+        "fileHash": "sha256-02bd15d4d255ca55740cf28a6267627ed23b757f7f659a01e52d0c56c617fd5a",
+        "fileSize": 48167,
         "description": "Reanime - Stream anime free online (sub & dub, multi-quality)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
       }

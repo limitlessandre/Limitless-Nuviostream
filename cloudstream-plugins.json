@@ -369,14 +369,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
     "status": 1,
-    "version": 1,
+    "version": 3,
     "name": "AniPM",
     "internalName": "AniPM",
     "authors": [
       "raghav"
     ],
     "description": "Anime with Sub & Dub from ani.pm",
-    "fileSize": 55173,
+    "fileSize": 63350,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -386,7 +386,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
     "apiVersion": 1,
-    "fileHash": "sha256-d0deac33656a423a65b9f4acee5951f587a0e04d8bc7d28aa8c305d2638f313c"
+    "fileHash": "sha256-0cd8f7be9ecfbe48dbc07b39cd428eb5bf6b83bde1166de78383aa8ea8eb0fad"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -1623,14 +1623,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
     "status": 1,
-    "version": 10,
+    "version": 12,
     "name": "NetNaija",
     "internalName": "NetNaija",
     "authors": [
       "raghav"
     ],
     "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
-    "fileSize": 51743,
+    "fileSize": 68760,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1642,7 +1642,7 @@
     ],
     "iconUrl": "https://netnaija.film/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-763f0b50a82d7258e29f0a21cf45787bc83e3036293a166b53cb9ddb42f922f0"
+    "fileHash": "sha256-9ec3d2df568324b264121765af51978b156bdaa328037d1d73d8e38fe7d7b333"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -1875,7 +1875,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 639076,
+    "fileSize": 639969,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1885,7 +1885,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-ba6f7d35781f04471ba88094c168ba50f60be251e13ef074af386a50cbe05149"
+    "fileHash": "sha256-485abdfd054dd1e1f5fda47a5e1d685ad50d9e400f934bda27f08836c8fe9098"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -1897,7 +1897,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-    "fileSize": 656858,
+    "fileSize": 657962,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1907,7 +1907,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-ad0c38c842a09de2ef33473f3412e5c6a96d16b83f489203613c5f01fe5e0227"
+    "fileHash": "sha256-083ea81c0c2e7f3d2b10180e13047f97ae97eb071e1d55b4b5e615e987f9eed3"
   },
   {
     "internalName": "Reanime",
@@ -1925,10 +1925,10 @@
       "OVA"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v5.cs3",
-    "version": 5,
-    "fileHash": "sha256-78dc1eaada3043cb6acb0061ffc209dc5d8a34c063200a9e663a9c4edfcb850f",
-    "fileSize": 47137,
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v8.cs3",
+    "version": 8,
+    "fileHash": "sha256-02bd15d4d255ca55740cf28a6267627ed23b757f7f659a01e52d0c56c617fd5a",
+    "fileSize": 48167,
     "description": "Reanime - Stream anime free online (sub & dub, multi-quality)",
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
   },
