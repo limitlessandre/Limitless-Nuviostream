@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **127**  
-No obvious native overlap: **124**  
+Filtered CloudStream providers: **129**  
+No obvious native overlap: **126**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -58,6 +58,7 @@ Exact/alias overlap: **3**
 - **Comix** (`Comix`) — en; Others, Anime — Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
 - **Enma** (`Enma`) — en; Anime, AnimeMovie, OVA — Enma - Watch Anime Sub & Dub in HD
+- **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
 - **KuroAnime** (`KuroAnime`) — en; Anime, AnimeMovie, OVA — KuroAnime - Anime with Sub & Dub
@@ -83,6 +84,7 @@ Exact/alias overlap: **3**
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
+- **PvrPlay** (`PvrPlay`) — en; Movie, TvSeries — PvrPlay - Movies & Web Series in HD (multi-server, Tamil, English, Hindi, Telugu & more)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons

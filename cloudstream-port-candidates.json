@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 127,
-  "no_obvious_native_overlap_count": 124,
+  "cloudstream_provider_count": 129,
+  "no_obvious_native_overlap_count": 126,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -397,7 +397,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 12,
+      "version": 14,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1020,7 +1020,7 @@
         "TV Series",
         "Anime"
       ],
-      "version": 212,
+      "version": 215,
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
       "repositoryUrl": null,
       "overlap": {
@@ -1118,6 +1118,30 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.545,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "GoTaku",
+      "name": "GoTaku",
+      "description": "Hardsub and dub from Gotaku",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1277,7 +1301,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 64,
+      "version": 67,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1301,7 +1325,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 16,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1630,6 +1654,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.471,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "PvrPlay",
+      "name": "PvrPlay",
+      "description": "PvrPlay - Movies & Web Series in HD (multi-server, Tamil, English, Hindi, Telugu & more)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PvrPlay-v5.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -2964,8 +3011,8 @@
         "Anime",
         "OVA"
       ],
-      "version": 8,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v8.cs3",
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v9.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",

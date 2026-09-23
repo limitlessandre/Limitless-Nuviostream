@@ -71,23 +71,23 @@
     "chosen": {
       "internalName": "Reanime",
       "name": "Re:ANIME",
-      "version": 8,
+      "version": 9,
       "language": "en",
       "source": "AllForU",
       "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v8.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v9.cs3"
     },
     "candidates": [
       {
         "internalName": "Reanime",
         "name": "Re:ANIME",
-        "version": 8,
+        "version": 9,
         "language": "en",
         "source": "AllForU",
         "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v8.cs3"
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v9.cs3"
       },
       {
         "internalName": "Reanime",
