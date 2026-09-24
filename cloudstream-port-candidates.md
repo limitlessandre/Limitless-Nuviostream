@@ -73,6 +73,7 @@ Exact/alias overlap: **3**
 
 ## Low-priority unique candidates
 
+- **AllForU** (`AllInOne`) — en; Movie, TvSeries — AllForU - All-in-One movies & series: TMDB catalog with multiple stream providers (auto-fallback)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
 - **Disney+** (`DisneyPlus`) — en; Movie, TvSeries — Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more
@@ -84,7 +85,6 @@ Exact/alias overlap: **3**
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
-- **PvrPlay** (`PvrPlay`) — en; Movie, TvSeries — PvrPlay - Movies & Web Series in HD (multi-server, Tamil, English, Hindi, Telugu & more)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 311,
+  "excluded_count": 310,
   "excluded": [
     {
       "internalName": "3isk",
@@ -3820,20 +3820,6 @@
       "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/TV.cs3",
       "reason": "unknown-language"
-    },
-    {
-      "internalName": "TVgarden",
-      "name": "TVgarden(Famelack)",
-      "source": "3rabi عربي",
-      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
-      "language": [
-        "ar"
-      ],
-      "normalizedLanguages": [
-        "ar"
-      ],
-      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TVgarden.cs3",
-      "reason": "no-allowed-language"
     },
     {
       "internalName": "TwitchProvider",

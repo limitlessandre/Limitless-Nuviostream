@@ -110,5 +110,39 @@
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3"
       }
     ]
+  },
+  "internal:tvgarden": {
+    "chosen": {
+      "internalName": "TVGarden",
+      "name": "TVGarden",
+      "version": 11,
+      "language": "en",
+      "source": "cs-karma",
+      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "TVGarden",
+        "name": "TVGarden",
+        "version": 11,
+        "language": "en",
+        "source": "cs-karma",
+        "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3"
+      },
+      {
+        "internalName": "TVgarden",
+        "name": "TVgarden(Famelack)",
+        "version": 1,
+        "language": "en",
+        "source": "3rabi عربي",
+        "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TVgarden.cs3"
+      }
+    ]
   }
 }

@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 18,
+      "version": 26,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1410,6 +1410,29 @@
       ]
     },
     {
+      "internalName": "AllInOne",
+      "name": "AllForU",
+      "description": "AllForU - All-in-One movies & series: TMDB catalog with multiple stream providers (auto-fallback)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllInOne-v5.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "AreaDocumentalProvider",
       "name": "AreaDocumentalProvider",
       "description": null,
@@ -1654,29 +1677,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.471,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "PvrPlay",
-      "name": "PvrPlay",
-      "description": "PvrPlay - Movies & Web Series in HD (multi-server, Tamil, English, Hindi, Telugu & more)",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PvrPlay-v5.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.286,
         "native_matches": []
       },
       "priority": "low-priority",
