@@ -2301,14 +2301,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "ShowBox",
         "internalName": "ShowBox",
         "authors": [
           "Phisher98"
         ],
         "description": "ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.",
-        "fileSize": 156906,
+        "fileSize": 155314,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2319,7 +2319,7 @@
         ],
         "iconUrl": "https://miro.medium.com/v2/1*DyU8bmnyyEiJbFROEXO2VA.png",
         "apiVersion": 1,
-        "fileHash": "sha256-902ce9f52c8c276f7f1150fc81009f027c69116ce96c04ba671aea81d564b87a"
+        "fileHash": "sha256-a5a04f37a4d5f66bff5315cda633dd6237423bedab537b54140994594b4aa0f6"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
@@ -2332,7 +2332,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1621113,
+        "fileSize": 1620376,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2345,7 +2345,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-a76a550c76771aa0573edbd7e51c12c8c00da829a59074c820a53644e91467d7"
+        "fileHash": "sha256-b7ec0b64528c9fdff487209d262d1c098e1caf958843b535635d5c16dc869e7e"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2393,14 +2393,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
         "status": 1,
-        "version": 37,
+        "version": 38,
         "name": "SuperStream",
         "internalName": "SuperStream",
         "authors": [
           "Phisher98"
         ],
         "description": "SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.",
-        "fileSize": 182113,
+        "fileSize": 180800,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2413,7 +2413,7 @@
         ],
         "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.showbox.media/&size=256",
         "apiVersion": 1,
-        "fileHash": "sha256-c6bdac756ca5f1b0a00452e7132acdabbc2608a7c96bb87247763bab3086c2f3"
+        "fileHash": "sha256-780ff0ca943e812198a279a04f2ce560cba372f2090a44fb388df5e2414e2585"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Tamilblasters.cs3",
@@ -2788,10 +2788,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse/icon.png",
-        "fileHash": "sha256-4a31abaf8a99fd966880d60c355998286c441034c14b5d348d65b09408e8c2ea",
+        "fileHash": "sha256-1c6c276b1f28e95538fa4cec9bbce8c9e1e5396b060ece24c2e787a08ae34a66",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 92075,
+        "fileSize": 92054,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2801,7 +2801,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 112,
+        "version": 113,
         "internalName": "CNC Verse",
         "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CNC Verse.cs3",
@@ -9228,14 +9228,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
         "status": 1,
-        "version": 67,
+        "version": 68,
         "name": "RaghavAnime",
         "internalName": "RaghavAnime",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 656250,
+        "fileSize": 655532,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9245,19 +9245,19 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9af9dc94f22196d29476c796add42c51476ff3e768839b9f469f7cb414dc5e6b"
+        "fileHash": "sha256-c49204a780346aca18ea482b6e11c2cee6aef77ea7d4318dec2925c85f843a3c"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
         "status": 1,
-        "version": 19,
+        "version": 20,
         "name": "RaghavAnimeKitsu",
         "internalName": "RaghavAnimeKitsu",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 673475,
+        "fileSize": 666021,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9267,7 +9267,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-af172327857b8bc4124a10eb79bc6ca74958db5aae6b4e419fb18b99e2dc6d6e"
+        "fileHash": "sha256-4927667f795301c2ec210c94cd1688f835fdcb20ba96f3e308c82e754061b474"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3",
@@ -9879,10 +9879,10 @@
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
       },
       {
-        "version": 5,
-        "internalName": "AllInOne",
+        "version": 9,
+        "internalName": "AllForU",
         "name": "AllForU",
-        "pluginClassName": "com.allforu.AllInOnePlugin",
+        "pluginClassName": "com.allforu.AllForUPlugin",
         "status": 1,
         "apiVersion": 1,
         "language": "en",
@@ -9894,11 +9894,11 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllInOne-v5.cs3",
-        "description": "AllForU - All-in-One movies & series: TMDB catalog with multiple stream providers (auto-fallback)",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllForU-v9.cs3",
+        "description": "AllForU - Movies & Series from dozens of servers (multi-audio, 4K/HD, auto-aggregated)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-7ccfb1864a11ccc3ce945b0df70d663daa5625470b67d8e264e7d12ebdfec680",
-        "fileSize": 57251
+        "fileHash": "sha256-f3d6d08f526e06e9de800fd05747da71d539d2b66f96658bf88fbddb85d1d2a0",
+        "fileSize": 56769
       }
     ]
   },
@@ -10292,9 +10292,9 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/BingeCloud/icon.png",
-        "fileHash": "sha256-4a84d3e132d5f8b047039a5ca6e311adea3edaca66ce609fe6a9d99a3f950ab0",
+        "fileHash": "sha256-b0b16e808ed6f9162a3497a2c8bb4164f24db23ec8aa2b1b2c7fc1055a57cb94",
         "apiVersion": 1,
-        "fileSize": 303470,
+        "fileSize": 363349,
         "status": 1,
         "language": "en",
         "authors": [
@@ -10305,7 +10305,7 @@
           "TV Series",
           "Anime"
         ],
-        "version": 215,
+        "version": 216,
         "internalName": "BingeCloud",
         "description": "TV Series, Movies, Anime",
         "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",

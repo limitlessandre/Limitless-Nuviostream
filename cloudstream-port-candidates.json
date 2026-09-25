@@ -79,7 +79,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 37,
+      "version": 38,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -191,7 +191,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1020,7 +1020,7 @@
         "TV Series",
         "Anime"
       ],
-      "version": 215,
+      "version": 216,
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
       "repositoryUrl": null,
       "overlap": {
@@ -1301,7 +1301,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 67,
+      "version": 68,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1325,7 +1325,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 19,
+      "version": 20,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1410,20 +1410,20 @@
       ]
     },
     {
-      "internalName": "AllInOne",
+      "internalName": "AllForU",
       "name": "AllForU",
-      "description": "AllForU - All-in-One movies & series: TMDB catalog with multiple stream providers (auto-fallback)",
+      "description": "AllForU - Movies & Series from dozens of servers (multi-audio, 4K/HD, auto-aggregated)",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries"
       ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllInOne-v5.cs3",
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllForU-v9.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.4,
+        "score": 0.32,
         "native_matches": []
       },
       "priority": "low-priority",

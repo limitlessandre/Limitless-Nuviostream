@@ -73,7 +73,7 @@ Exact/alias overlap: **3**
 
 ## Low-priority unique candidates
 
-- **AllForU** (`AllInOne`) — en; Movie, TvSeries — AllForU - All-in-One movies & series: TMDB catalog with multiple stream providers (auto-fallback)
+- **AllForU** (`AllForU`) — en; Movie, TvSeries — AllForU - Movies & Series from dozens of servers (multi-audio, 4K/HD, auto-aggregated)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
 - **Disney+** (`DisneyPlus`) — en; Movie, TvSeries — Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more
