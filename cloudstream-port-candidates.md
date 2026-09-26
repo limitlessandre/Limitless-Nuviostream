@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **129**  
-No obvious native overlap: **126**  
+Filtered CloudStream providers: **128**  
+No obvious native overlap: **125**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -61,7 +61,6 @@ Exact/alias overlap: **3**
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
-- **KuroAnime** (`KuroAnime`) — en; Anime, AnimeMovie, OVA — KuroAnime - Anime with Sub & Dub
 - **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE
 - **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
 - **OnePace** (`OnePace`) — en; Anime — One Pace
@@ -73,7 +72,6 @@ Exact/alias overlap: **3**
 
 ## Low-priority unique candidates
 
-- **AllForU** (`AllForU`) — en; Movie, TvSeries — AllForU - Movies & Series from dozens of servers (multi-audio, 4K/HD, auto-aggregated)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
 - **Disney+** (`DisneyPlus`) — en; Movie, TvSeries — Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more
@@ -84,6 +82,7 @@ Exact/alias overlap: **3**
 - **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
+- **Omniz** (`Omniz`) — en; Movie, TvSeries — Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
