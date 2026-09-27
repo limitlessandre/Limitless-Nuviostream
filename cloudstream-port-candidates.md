@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **128**  
-No obvious native overlap: **125**  
+Filtered CloudStream providers: **129**  
+No obvious native overlap: **126**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -39,10 +39,10 @@ Exact/alias overlap: **3**
 - **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub & Hardsub from Anidap
 - **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
-- **Anikai** (`Anikai`) — en; Anime, AnimeMovie, OVA — ANIME- scrapper, clone , aggregator :( NOT ORIGINAL ANIKAI AND NOT ORIGINAL SERVER CLONE
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
 - **Anilight** (`Anilight`) — en; AnimeMovie, Anime, OVA — Anilight Anime Provider
+- **AnimeKai** (`AnimeKai`) — en; Anime, AnimeMovie, OVA — unoriginal animekai with sub and dub
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
@@ -50,6 +50,7 @@ Exact/alias overlap: **3**
 - **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
 - **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
+- **AniStream** (`AniStream`) — en; Anime, AnimeMovie — Watch anime in HD with English Sub and Dub from AniStream
 - **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.

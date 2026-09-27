@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 310,
+  "excluded_count": 319,
   "excluded": [
     {
       "internalName": "3isk",
@@ -273,20 +273,6 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeIndo.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "AnimeInWeb",
-      "name": "AnimeInWeb",
-      "source": "raghav repo",
-      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeInWeb.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1193,6 +1179,14 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/SyncProvider.cs3",
+      "reason": "unknown-language"
+    },
+    {
+      "internalName": "Ctg Stream",
+      "name": "Ctg Stream",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Ctg Stream.cs3",
       "reason": "unknown-language"
     },
     {
@@ -2536,6 +2530,20 @@
       "reason": "unknown-language"
     },
     {
+      "internalName": "MovieBox",
+      "name": "MovieBox",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "MovieBoxProvider",
       "name": "MovieBoxProvider",
       "source": "CNC Repo(All Language)",
@@ -2922,6 +2930,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "OttSource",
+      "name": "OttSource",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "OverFlix",
       "name": "OverFlix",
       "source": "saimuel repo",
@@ -3174,6 +3196,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "RareAnimesIndia",
+      "name": "RareAnimesIndia",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Raveeflix",
       "name": "Raveeflix",
       "source": "Indostream Repo",
@@ -3255,6 +3291,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Samehadaku.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "SDmovies",
+      "name": "SDmovies",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/SDmovies.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3496,6 +3546,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "StreamHubOne",
+      "name": "StreamHubOne",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "StreamingCommunity",
       "name": "StreamingCommunity",
       "source": "DieGon Repository",
@@ -3638,6 +3702,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "The Movie Flix",
+      "name": "The Movie Flix",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/The Movie Flix.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "TioAnimeProvider",
       "name": "TioAnimeProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -3691,6 +3769,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ToonTales.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ToonWorldForAll",
+      "name": "ToonWorldForAll",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ToonWorldForAll.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3822,6 +3914,20 @@
       "reason": "unknown-language"
     },
     {
+      "internalName": "TVgarden",
+      "name": "TVgarden(Famelack)",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TVgarden.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "TwitchProvider",
       "name": "TwitchProvider",
       "source": "Cloudstream providers repository",
@@ -3920,6 +4026,20 @@
       "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Vavoo.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "vegamovies",
+      "name": "vegamovies",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/vegamovies.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "VegaMovies",
@@ -4200,7 +4320,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 25,
+  "unknown_language_metadata_count": 26,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -4222,6 +4342,13 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/SyncProvider.cs3"
+    },
+    {
+      "internalName": "Ctg Stream",
+      "name": "Ctg Stream",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Ctg Stream.cs3"
     },
     {
       "internalName": "DailymotionProvider",

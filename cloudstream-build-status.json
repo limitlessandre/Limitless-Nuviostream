@@ -1,16 +1,16 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 30,
-  "repositories_loaded": 29,
+  "repository_database_entries": 31,
+  "repositories_loaded": 30,
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 480,
-  "eligible_plugin_entries_before_dedupe": 133,
-  "unique_plugins": 128,
+  "raw_plugin_entries": 490,
+  "eligible_plugin_entries_before_dedupe": 134,
+  "unique_plugins": 129,
   "duplicate_groups": 4,
-  "language_filtered_entries": 310,
-  "unknown_language_metadata_entries": 25,
+  "language_filtered_entries": 319,
+  "unknown_language_metadata_entries": 26,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
@@ -225,6 +225,13 @@
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/repo.json",
       "status": "ok",
       "plugins": 1,
+      "verified": false
+    },
+    {
+      "name": "Desi Extensions",
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "status": "ok",
+      "plugins": 10,
       "verified": false
     }
   ]
