@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 319,
+  "excluded_count": 318,
   "excluded": [
     {
       "internalName": "3isk",
@@ -3769,20 +3769,6 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ToonTales.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "ToonWorldForAll",
-      "name": "ToonWorldForAll",
-      "source": "Desi Extensions",
-      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ToonWorldForAll.cs3",
       "reason": "no-allowed-language"
     },
     {

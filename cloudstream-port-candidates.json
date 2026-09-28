@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 129,
-  "no_obvious_native_overlap_count": 126,
+  "cloudstream_provider_count": 130,
+  "no_obvious_native_overlap_count": 127,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 678,
+      "version": 680,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1282,6 +1282,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Otakutsu",
+      "name": "Otakutsu",
+      "description": "Anime streaming from Otakutsu",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/Otakutsu.cs3",
+      "repositoryUrl": null,
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
         "native_matches": []
       },
       "priority": "medium-priority",

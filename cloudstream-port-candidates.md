@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **129**  
-No obvious native overlap: **126**  
+Filtered CloudStream providers: **130**  
+No obvious native overlap: **127**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -65,6 +65,7 @@ Exact/alias overlap: **3**
 - **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE
 - **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
 - **OnePace** (`OnePace`) — en; Anime — One Pace
+- **Otakutsu** (`Otakutsu`) — en; Anime, AnimeMovie — Anime streaming from Otakutsu
 - **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
 - **RaghavAnimeKitsu** (`RaghavAnimeKitsu`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog
 - **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — Anime with sub & dub, multi-language subtitles

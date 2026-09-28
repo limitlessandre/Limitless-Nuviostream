@@ -1,15 +1,15 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "repository_database_entries": 31,
-  "repositories_loaded": 30,
-  "repositories_using_cache": 0,
+  "repositories_loaded": 29,
+  "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
   "raw_plugin_entries": 490,
-  "eligible_plugin_entries_before_dedupe": 134,
-  "unique_plugins": 129,
+  "eligible_plugin_entries_before_dedupe": 135,
+  "unique_plugins": 130,
   "duplicate_groups": 4,
-  "language_filtered_entries": 319,
+  "language_filtered_entries": 318,
   "unknown_language_metadata_entries": 26,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
@@ -209,9 +209,10 @@
     {
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 9,
-      "verified": false
+      "verified": false,
+      "error": "HTTP Error 404: Not Found"
     },
     {
       "name": "Ayu CloudStream Games",
@@ -224,14 +225,14 @@
       "name": "FLUMMOX Repo",
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/repo.json",
       "status": "ok",
-      "plugins": 1,
+      "plugins": 2,
       "verified": false
     },
     {
       "name": "Desi Extensions",
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
       "status": "ok",
-      "plugins": 10,
+      "plugins": 9,
       "verified": false
     }
   ]
