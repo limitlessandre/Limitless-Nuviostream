@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 680,
+      "version": 681,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -397,7 +397,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 15,
+      "version": 17,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -621,30 +621,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.462,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
-      "internalName": "AniDb",
-      "name": "AniDb",
-      "description": "Animes",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 16,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniDb.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.5,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1043,7 +1019,7 @@
         "TV Series",
         "Anime"
       ],
-      "version": 216,
+      "version": 218,
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
       "repositoryUrl": null,
       "overlap": {
@@ -2116,6 +2092,31 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.32,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -1,
+      "reasons": [
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "NetNaija-box",
+      "name": "NetNaija-box",
+      "description": "NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Live"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
         "native_matches": []
       },
       "priority": "utility-or-review",

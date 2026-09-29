@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 318,
+  "excluded_count": 319,
   "excluded": [
     {
       "internalName": "3isk",
@@ -3685,6 +3685,20 @@
         "ta"
       ],
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Tamilian.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TamilToon",
+      "name": "TamilToon",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
       "reason": "no-allowed-language"
     },
     {

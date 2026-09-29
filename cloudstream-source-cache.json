@@ -384,17 +384,23 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinostrain.com&sz=%size%",
-        "fileHash": "sha256-f4cdbc4c70abd8405d34c894f1232e68f21ce4114935ca5202353e3ca5708bef",
+        "fileHash": "sha256-4485c2a3c747e76be9dbf3edbf3557cba5b1ed74759bb59415e25861e464ec6c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 34458,
+        "fileSize": 34530,
         "status": 1,
         "language": "uk",
         "authors": [
           "CakesTwix",
           "Partizanin"
         ],
-        "version": 1,
+        "tvTypes": [
+          "TvSeries",
+          "Cartoon",
+          "Movie",
+          "Anime"
+        ],
+        "version": 2,
         "internalName": "KinostrainProvider",
         "description": "kinostrain — Дивись фільми і серіали онлайн українською безкоштовно та у HD якості. Новинки 2025–2026, бойовики, комедії, мелодрами та аніме.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/KinostrainProvider.cs3",
@@ -447,10 +453,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=klon.tv&sz=%size%",
-        "fileHash": "sha256-dd576fdb39d92244cd70c5d69246cc9ab11a3fae06786051618ac83702499667",
+        "fileHash": "sha256-70bc3a94436cde33598efdd3a62bf10f3183470ce6dd49e4a4f1d9cbaec421f9",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 35717,
+        "fileSize": 36524,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -462,7 +468,7 @@
           "Cartoon",
           "Movie"
         ],
-        "version": 20,
+        "version": 21,
         "internalName": "KlonTVProvider",
         "description": "Команда Klon.TV створила безкоштовний онлайн-сервіс, щоб кожен наш глядач з легкістю та без зайвих суперечок вибрав цікавий фільм, або одразу продовжив дивитися улюблений серіал. Минула та пора, коли треба стежити за афішами твого міста, і вгадувати якість майбутньої стрічки. Також вже можна забути про трату часу на довгу дорогу в кінотеатр, півгодинного перегляду трейлерів перед показом, сусідами, що чавкають, яким не зрозуміти, що фільм треба іноді й слухати, а не тільки дивитися. Вибравши наш сервіс для перегляду фільмів онлайн безкоштовно, ви будете приємно здивовані: українське озвучення, перегляд без реєстрації, ніякої реклами на весь екран, і багато інших цікавих можливостей. Klon.TV - цінує кожного глядача, і зробить все можливе, щоб Ви до нас повернулися:).",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/KlonTVProvider.cs3",
@@ -491,10 +497,10 @@
       },
       {
         "iconUrl": "https://simpsonsua.tv/templates/simpsonsua/images/favicon.ico",
-        "fileHash": "sha256-b72d529dbe16d3c09f40af5f16ee2211ebe10b4cdeaf9801f798a3b128f2241d",
+        "fileHash": "sha256-615e75b2fcda1af0c950aa70991573c427e3acfbee0b4642374d63ef127eae7d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 41099,
+        "fileSize": 41170,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -504,7 +510,7 @@
           "Cartoon",
           "TvSeries"
         ],
-        "version": 3,
+        "version": 5,
         "internalName": "SimpsonsUATvProvider",
         "description": "Сайт СІМПСОНИ UA - на якому можна дивитися Сімпсони всі сезони  українською мовою онлайн",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/SimpsonsUATvProvider.cs3",
@@ -554,10 +560,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.club&sz=%size%",
-        "fileHash": "sha256-d2cc819bcc6b1d87ba28d0e268f2e35597e6def6a5b55f48da410019319af7ad",
+        "fileHash": "sha256-e5d60b57dda4e5e0d1cb63a0ec79cd54a8163c102199ee76eb658808e49de2f0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 32395,
+        "fileSize": 40002,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -569,7 +575,7 @@
           "Movie",
           "AsianDrama"
         ],
-        "version": 27,
+        "version": 29,
         "internalName": "UakinoProvider",
         "description": "Дивіться фільми та серіали онлайн в HD якості. У нас можна дивитися кіно онлайн безкоштовно, у високій якості та з якісним українським дубляжем.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UakinoProvider.cs3",
@@ -886,28 +892,6 @@
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Allanime.png",
         "apiVersion": 1,
         "fileHash": "sha256-e77e6915a44482c5cecd5cbf983b3ea8ded02e3c1df371c0cda36437867ee167"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniDb.cs3",
-        "status": 1,
-        "version": 16,
-        "name": "AniDb",
-        "internalName": "AniDb",
-        "authors": [
-          "Phisher98"
-        ],
-        "description": "Animes",
-        "fileSize": 100920,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-          "Anime",
-          "AnimeMovie",
-          "OVA"
-        ],
-        "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/anidb.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-8cc5d15adbbd9754ed1142103a8aa5df0b95665073fa1ae6437a297875b53106"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3",
@@ -1942,14 +1926,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 35,
+        "version": 36,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 164786,
+        "fileSize": 164521,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1958,7 +1942,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-09dd993773319a1dd60593678151f5811ecd874936cda3abc20f6f65edc1ce8d"
+        "fileHash": "sha256-ca21d1b09a83421960cf4e31cbd89ac211f59e0431484a24a19280814711cfc0"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2324,7 +2308,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 680,
+        "version": 681,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2332,7 +2316,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1747326,
+        "fileSize": 1763849,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2345,7 +2329,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-8ef21fb77d060cfd7cd8326eae5bf069a983b996a74aa4de66d684cfc6a65e56"
+        "fileHash": "sha256-97b385e05aa6d074a505f7b3712b63129547af1111553bee012da182995013a9"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -9137,14 +9121,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
         "status": 1,
-        "version": 15,
+        "version": 17,
         "name": "NetNaija",
         "internalName": "NetNaija",
         "authors": [
           "raghav"
         ],
         "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
-        "fileSize": 93898,
+        "fileSize": 93366,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9154,9 +9138,31 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://image.winudf.com/v2/image1/MjEwNjA2MTJfMTcxMjgyNDI5MF8wOTQ/screen-0.png?fakeurl=1&type=webp",
+        "iconUrl": "https://netnaija.film/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-b42c976bab9b738dabee11c01579ba3de0ca0c252f8679d3c848d7a2ca0fa295"
+        "fileHash": "sha256-158be3a9c832780d8e0e1fddd239f3cbbab86c071ceb9dc54d593e5a9b6ee270"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "NetNaija-box",
+        "internalName": "NetNaija-box",
+        "authors": [
+          "raghav"
+        ],
+        "description": "NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.",
+        "fileSize": 141147,
+        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Live"
+        ],
+        "iconUrl": "https://netnaija.film/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-f61ce8b7dbb131c6d67b3d975d573d154913f669e1750dad093243f544a4835e"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -10270,9 +10276,9 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/BingeCloud/icon.png",
-        "fileHash": "sha256-b0b16e808ed6f9162a3497a2c8bb4164f24db23ec8aa2b1b2c7fc1055a57cb94",
+        "fileHash": "sha256-c84564962d2a77ef6896fc54584469eadcf7105ef30a5b1bbfd1d3eb7856df48",
         "apiVersion": 1,
-        "fileSize": 363349,
+        "fileSize": 371315,
         "status": 1,
         "language": "en",
         "authors": [
@@ -10283,7 +10289,7 @@
           "TV Series",
           "Anime"
         ],
-        "version": 216,
+        "version": 218,
         "internalName": "BingeCloud",
         "description": "TV Series, Movies, Anime",
         "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
@@ -10291,9 +10297,9 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/Otakutsu/icon.png",
-        "fileHash": "sha256-83c243d4a347c5418710f6194e1b91aa1713f4dda00e3216820ee64aa75e57ba",
+        "fileHash": "sha256-c48c452e9fdf1389e1d09d1e98481e0d5651498c6a7e2d62900ddff21ee86fc5",
         "apiVersion": 1,
-        "fileSize": 93587,
+        "fileSize": 93570,
         "status": 1,
         "language": "en",
         "authors": [
@@ -10473,6 +10479,28 @@
         "fileHash": "sha256-f6dc480ba11d27536fb93c496c8707703e6eb606319438c6b1ba25a223d736df"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
+        "status": 1,
+        "version": 7,
+        "name": "TamilToon",
+        "internalName": "TamilToon",
+        "authors": [
+          "Toon"
+        ],
+        "description": "TamilTvToons provider for Hindi-dubbed & Tamil Movies & TV shows, Anime and Asian dramas",
+        "fileSize": 44191,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime",
+          "AsianDrama"
+        ],
+        "apiVersion": 1,
+        "fileHash": "sha256-a68c12d4c5dbb045f5e7526fbe3f653c8192be2c7d8f16e511d1ee5544a7b1ad"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/The Movie Flix.cs3",
         "status": 1,
         "version": 26,
@@ -10504,7 +10532,7 @@
           "Faisal"
         ],
         "description": "VegaMovies Provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 54050,
+        "fileSize": 85841,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10514,7 +10542,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(2).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-4dd4e9534d8c0dcee67ec485b10e11353347795a4b67bb879974fcc5e901e210"
+        "fileHash": "sha256-96bc15da4b8a2b198ca9e77c3398b4ff2257ba61c78fc0c39272ec4130f18c4b"
       }
     ]
   }

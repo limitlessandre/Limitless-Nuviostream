@@ -85,28 +85,6 @@
     "fileHash": "sha256-a910a9e288aa14996c57c39cc7260f39a350496b58dbe2cca1c6bfc9093aa8be"
   },
   {
-    "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniDb.cs3",
-    "status": 1,
-    "version": 16,
-    "name": "AniDb",
-    "internalName": "AniDb",
-    "authors": [
-      "Phisher98"
-    ],
-    "description": "Animes",
-    "fileSize": 100920,
-    "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-    "language": "en",
-    "tvTypes": [
-      "Anime",
-      "AnimeMovie",
-      "OVA"
-    ],
-    "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/anidb.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-8cc5d15adbbd9754ed1142103a8aa5df0b95665073fa1ae6437a297875b53106"
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3",
     "status": 1,
     "version": 8,
@@ -593,9 +571,9 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/BingeCloud/icon.png",
-    "fileHash": "sha256-b0b16e808ed6f9162a3497a2c8bb4164f24db23ec8aa2b1b2c7fc1055a57cb94",
+    "fileHash": "sha256-c84564962d2a77ef6896fc54584469eadcf7105ef30a5b1bbfd1d3eb7856df48",
     "apiVersion": 1,
-    "fileSize": 363349,
+    "fileSize": 371315,
     "status": 1,
     "language": "en",
     "authors": [
@@ -606,7 +584,7 @@
       "TV Series",
       "Anime"
     ],
-    "version": 216,
+    "version": 218,
     "internalName": "BingeCloud",
     "description": "TV Series, Movies, Anime",
     "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/BingeCloud.cs3",
@@ -1644,14 +1622,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
     "status": 1,
-    "version": 15,
+    "version": 17,
     "name": "NetNaija",
     "internalName": "NetNaija",
     "authors": [
       "raghav"
     ],
     "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
-    "fileSize": 93898,
+    "fileSize": 93366,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1661,9 +1639,31 @@
       "AnimeMovie",
       "OVA"
     ],
-    "iconUrl": "https://image.winudf.com/v2/image1/MjEwNjA2MTJfMTcxMjgyNDI5MF8wOTQ/screen-0.png?fakeurl=1&type=webp",
+    "iconUrl": "https://netnaija.film/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-b42c976bab9b738dabee11c01579ba3de0ca0c252f8679d3c848d7a2ca0fa295"
+    "fileHash": "sha256-158be3a9c832780d8e0e1fddd239f3cbbab86c071ceb9dc54d593e5a9b6ee270"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
+    "status": 1,
+    "version": 2,
+    "name": "NetNaija-box",
+    "internalName": "NetNaija-box",
+    "authors": [
+      "raghav"
+    ],
+    "description": "NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.",
+    "fileSize": 141147,
+    "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Live"
+    ],
+    "iconUrl": "https://netnaija.film/favicon.ico",
+    "apiVersion": 1,
+    "fileHash": "sha256-f61ce8b7dbb131c6d67b3d975d573d154913f669e1750dad093243f544a4835e"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -1812,9 +1812,9 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/Otakutsu/icon.png",
-    "fileHash": "sha256-83c243d4a347c5418710f6194e1b91aa1713f4dda00e3216820ee64aa75e57ba",
+    "fileHash": "sha256-c48c452e9fdf1389e1d09d1e98481e0d5651498c6a7e2d62900ddff21ee86fc5",
     "apiVersion": 1,
-    "fileSize": 93587,
+    "fileSize": 93570,
     "status": 1,
     "language": "en",
     "authors": [
@@ -2228,7 +2228,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 680,
+    "version": 681,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -2236,7 +2236,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1747326,
+    "fileSize": 1763849,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2249,7 +2249,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-8ef21fb77d060cfd7cd8326eae5bf069a983b996a74aa4de66d684cfc6a65e56"
+    "fileHash": "sha256-97b385e05aa6d074a505f7b3712b63129547af1111553bee012da182995013a9"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

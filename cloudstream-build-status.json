@@ -5,11 +5,11 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 490,
+  "raw_plugin_entries": 491,
   "eligible_plugin_entries_before_dedupe": 135,
   "unique_plugins": 130,
   "duplicate_groups": 4,
-  "language_filtered_entries": 318,
+  "language_filtered_entries": 319,
   "unknown_language_metadata_entries": 26,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
@@ -77,7 +77,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 86,
+      "plugins": 85,
       "verified": false
     },
     {
@@ -189,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 30,
+      "plugins": 31,
       "verified": false
     },
     {
@@ -232,7 +232,7 @@
       "name": "Desi Extensions",
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
       "status": "ok",
-      "plugins": 9,
+      "plugins": 10,
       "verified": false
     }
   ]

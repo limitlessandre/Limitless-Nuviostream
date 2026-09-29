@@ -37,7 +37,6 @@ Exact/alias overlap: **3**
 - **AniChan** (`AniChan`) — en; Anime, AnimeMovie — Watch Anime in HD with Sub, Dub and Hardsub
 - **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA — AllManga/Mkissa Source
 - **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub & Hardsub from Anidap
-- **AniDb** (`AniDb`) — en; Anime, AnimeMovie, OVA — Animes
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
@@ -108,6 +107,7 @@ Exact/alias overlap: **3**
 - **JioTV** (`JioTV`) — en; Movie, TvSeries — JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
+- **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
