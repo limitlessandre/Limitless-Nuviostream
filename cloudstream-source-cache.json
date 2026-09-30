@@ -560,10 +560,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.club&sz=%size%",
-        "fileHash": "sha256-e5d60b57dda4e5e0d1cb63a0ec79cd54a8163c102199ee76eb658808e49de2f0",
+        "fileHash": "sha256-bed2490e90a24b564ac19efd457e1d107bd7806343cd74f9f98348acaa65c13c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 40002,
+        "fileSize": 47325,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -575,7 +575,7 @@
           "Movie",
           "AsianDrama"
         ],
-        "version": 29,
+        "version": 32,
         "internalName": "UakinoProvider",
         "description": "Дивіться фільми та серіали онлайн в HD якості. У нас можна дивитися кіно онлайн безкоштовно, у високій якості та з якісним українським дубляжем.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UakinoProvider.cs3",
@@ -1525,7 +1525,7 @@
           "Phisher98"
         ],
         "description": "4K Movies Extension by HDHUB4U",
-        "fileSize": 105665,
+        "fileSize": 106038,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1534,7 +1534,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/4KHDHUB-Bright-Logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-373cb3547337882551a01eb494555dcebf56a67d144fe8e0c8a16a43fc946007"
+        "fileHash": "sha256-08519070951641e7d0685d74a4beb4462515fa2de8c8a4d51108d43e178ed588"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/GoldenAudiobooks.cs3",
@@ -1587,7 +1587,7 @@
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 117944,
+        "fileSize": 118328,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1597,7 +1597,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/HDHUB.png",
         "apiVersion": 1,
-        "fileHash": "sha256-920dd54c95a00503c275a1b80deb5fdc73969cf10ca2f839dcbe62e36afd755c"
+        "fileHash": "sha256-2c36acdd04d92ec8e7072c9225fea52475e365b76842d4522c8a1e4ea5299f19"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
@@ -2308,7 +2308,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 681,
+        "version": 682,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2316,7 +2316,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1763849,
+        "fileSize": 1810859,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2329,7 +2329,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-97b385e05aa6d074a505f7b3712b63129547af1111553bee012da182995013a9"
+        "fileHash": "sha256-14ad69c3e8e292c55cf20fd4744ff3f08272d6436c197f658dcfc419421dcd3b"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -8494,10 +8494,10 @@
     "plugins": [
       {
         "iconUrl": "https://www.arabic-toons.com/images/logo.png",
-        "fileHash": "sha256-ed0252dceb6d4013e1d00d19669c2ca65a1debec72faf1e4966be6c590bc2e49",
+        "fileHash": "sha256-ccf1d16c43000530d44d2af138586732cc48ca76561111e984c3d9f1d6cec7d8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 24461,
+        "fileSize": 24437,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8516,10 +8516,10 @@
       },
       {
         "iconUrl": "https://carateen.tv/favicon.ico",
-        "fileHash": "sha256-4dd6b829edac650fc64ce9cd03d1cbff3aded573b1553a380042cad6d085b16f",
+        "fileHash": "sha256-8aa044747ffd7989aff2e7c13ec02c0250df391a8786a7acc347d06bf7eafd79",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 32374,
+        "fileSize": 32472,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8538,10 +8538,10 @@
       },
       {
         "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
-        "fileHash": "sha256-31a41237cfcc54200066dfe71b29b4e2992f46cc06d482f11ac7b7a26b433488",
+        "fileHash": "sha256-f9687941a3c7e23c29af3c7a9ba485efb3edda82b018a60c57650bdc3353aaa9",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 42271,
+        "fileSize": 42389,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8560,10 +8560,10 @@
       },
       {
         "iconUrl": "https://conanaraby.com/wp-content/uploads/2023/05/cropped-favicon-192x192.png",
-        "fileHash": "sha256-97c9fbaee06038d5427ba9de0e1fad1f43f73f9be4b62dff9eeb9040ff67c442",
+        "fileHash": "sha256-0bf25651be65729d9a86cd169d35c3f914d37d9469bad69442b1aba8aabf66a1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 20346,
+        "fileSize": 20412,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8582,10 +8582,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/med1245/cartoonyrepo/master/CleanWatch/src/main/res/drawable/cleanwatch_icon.png",
-        "fileHash": "sha256-acb3c53e23c4461691052655b86453bb6e7b6b1186f44478820d454d7fe71a9b",
+        "fileHash": "sha256-9edc3c6d55971a6c40d544feedbf3fea45d14e8e5c18d6c8acfbc0a69bbd56ad",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 17217,
+        "fileSize": 17193,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8605,10 +8605,10 @@
       },
       {
         "iconUrl": "https://egibest.org/wp-content/uploads/2026/02/egybest_logo2-2.png",
-        "fileHash": "sha256-53e937a78a8847a2a6df4fb1fead32858855ce0822d3a1a340debb334ccc32a6",
+        "fileHash": "sha256-625a2f65afad54b1d1a97b701af2d1ddea759a4747a4825cbead1e881b4f3325",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 18414,
+        "fileSize": 18391,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8627,10 +8627,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=faselhdx.bid&sz=%size%",
-        "fileHash": "sha256-024608a4d5a8291b59270cca1ef170ab26a0630e584ef8da617ec3c9018b5897",
+        "fileHash": "sha256-c50a77c8e9ee3ef118fc9158d7706601d7fb2ae8c4bd225386bb48ef2c795253",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 20856,
+        "fileSize": 20872,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8650,7 +8650,7 @@
       },
       {
         "iconUrl": "https://drive.google.com/thumbnail?id=1fhT2IeDtKH-Q7DETP2k_sQtHAXybOFFG&sz=s1000",
-        "fileHash": "sha256-f7fb3c2de908d4e8e0f3129c7561e5bdac51396cfc7d3ae868c7cb067f16081b",
+        "fileHash": "sha256-67ff83df92d08fbf0621452f08caade18d7ade7c3b91dfefde519a5aac73ae56",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
         "fileSize": 27885,
@@ -8671,10 +8671,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=shahid4u.casa&sz=%size%",
-        "fileHash": "sha256-357d715c0083e1002226ab6513f9c467bfbd067794758086b1a400e7f3a6549d",
+        "fileHash": "sha256-1b726d2c42f900853ed4abb80d8a98cca27a3524e36fb97888627975348d2540",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 32958,
+        "fileSize": 34364,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8693,10 +8693,10 @@
       },
       {
         "iconUrl": "https://www.stardima.com/favicon.ico",
-        "fileHash": "sha256-c81965db1873a12892063209527295724369b86220f79f9f104f99768044fcaf",
+        "fileHash": "sha256-9ea628e6d2e503190a357af6f3091d48db756a9f86a1d72188b85674ba6ba7db",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
-        "fileSize": 50884,
+        "fileSize": 51021,
         "status": 1,
         "language": "ar",
         "authors": [
@@ -8712,6 +8712,28 @@
         "description": "Arabic cartoons, anime, series, and movies from stardima.com",
         "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/StarDima.cs3",
         "name": "StarDima"
+      },
+      {
+        "iconUrl": "https://web.topcinema.io/wp-content/uploads/2023/05/cropped-icon-32x32.png",
+        "fileHash": "sha256-f7d68ba16e0ffb578cfa948bcd978df30c17e557623f67bc1c18a9d2a4fa58bd",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/med1245/cartoonyrepo",
+        "fileSize": 45867,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "Mehdi Marsaman"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "version": 2,
+        "internalName": "Topcima",
+        "description": "Movies and series from web.topcinema.io (Topcima)",
+        "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/Topcima.cs3",
+        "name": "Topcima"
       }
     ]
   },
@@ -8781,7 +8803,7 @@
           "raghav"
         ],
         "description": "Watch Anime in HD with Sub, Dub and Hardsub",
-        "fileSize": 49881,
+        "fileSize": 49874,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8790,7 +8812,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=anichan.net&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-6b29cae0c0795c41335bb0867206850a0ea1ad528669c68356c2ecb0c05ab354"
+        "fileHash": "sha256-6e751dce3aeb89fa4c9a52b19eafe0343ad950cd0fda680544997e4db6c44a1a"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
@@ -8802,7 +8824,7 @@
           "raghav"
         ],
         "description": "Anime with Sub, Dub & Hardsub from Anidap",
-        "fileSize": 80756,
+        "fileSize": 80777,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8812,7 +8834,7 @@
         ],
         "iconUrl": "https://anikuro.ru/static/favicon/favicon-96x96.png",
         "apiVersion": 1,
-        "fileHash": "sha256-a910a9e288aa14996c57c39cc7260f39a350496b58dbe2cca1c6bfc9093aa8be"
+        "fileHash": "sha256-7f6c728881a11c2d003d84f4aa4cb55c0273ce3b8faf27d351ede2abf4dc15ab"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
@@ -8824,7 +8846,7 @@
           "KSHITIJ8473"
         ],
         "description": "AniKoto Anime - Watch Anime Sub & Dub in HD",
-        "fileSize": 58189,
+        "fileSize": 58195,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8834,7 +8856,30 @@
         ],
         "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e58ade4602fa38687f3c119f78574672459655b846d278920b13feb67a28149b"
+        "fileHash": "sha256-9c0e038e147cc83527016bd790822ba2484275b40a23b37bc9664d828a9cb10c"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeInWeb.cs3",
+        "status": 1,
+        "version": 4,
+        "name": "AnimeInWeb",
+        "internalName": "AnimeInWeb",
+        "authors": [
+          "raghav"
+        ],
+        "description": "Anime sub indo from AnimeInWeb with multiple qualities",
+        "fileSize": 63098,
+        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+        "language": "id",
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie",
+          "OVA",
+          "TvSeries"
+        ],
+        "iconUrl": "https://animeinweb.com/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-fb153b529e6c9209dc9ead87445d4c53141b26a5645a63c1639f0dbc4ea65c54"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeKai.cs3",
@@ -8846,7 +8891,7 @@
           "KSHITIJ8473"
         ],
         "description": "unoriginal animekai with sub and dub",
-        "fileSize": 57586,
+        "fileSize": 57580,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8856,7 +8901,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=animekai.ro&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-3965d59a237b068b9c74ae79a2029d84c1e1c2c1e55564437d2fb57a96497043"
+        "fileHash": "sha256-ae81f29fe4fec6f44d2d711ac76b1c59dd5ccc42cb65b732020b697b4e32b76b"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeWorldIndia.cs3",
@@ -8868,7 +8913,7 @@
           "raghav"
         ],
         "description": "Anime World India - Hindi, Tamil, Telugu Anime & Cartoons with multi-audio",
-        "fileSize": 62259,
+        "fileSize": 62250,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
@@ -8878,7 +8923,7 @@
         ],
         "iconUrl": "https://watchanimeworld.top/wp-content/uploads/AW_Smiley.png",
         "apiVersion": 1,
-        "fileHash": "sha256-67d0462521931147648cc9e1567d9a3783eca8ecbf09e3e26ca685b3dc7a8b79"
+        "fileHash": "sha256-3f62b5bdd28d91ac090c39b78e6f38c4de6fa96d941e38d605e3f988facae165"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Animo.cs3",
@@ -8890,7 +8935,7 @@
           "raghav"
         ],
         "description": "Anime(sub,dub)",
-        "fileSize": 50542,
+        "fileSize": 50573,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8900,7 +8945,7 @@
         ],
         "iconUrl": "https://4animo.xyz/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-63637443afe0c49f06de353bfd0eab820ae9c3ae9c96e11985785252b2440862"
+        "fileHash": "sha256-4b678dbb9a7825874454c1a2afdcb46164a32250066a27f03100eff02160a04c"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
@@ -8912,7 +8957,7 @@
           "raghav"
         ],
         "description": "Anime with Sub & Dub from ani.pm",
-        "fileSize": 74731,
+        "fileSize": 74747,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8922,7 +8967,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
         "apiVersion": 1,
-        "fileHash": "sha256-7406ebbed43f7787f061c9c3cac9c94bbf2088f47397d1db7255190d6b2b5684"
+        "fileHash": "sha256-a9b37a21ee9467577ca74f99d6400e7a05bbdb9658548165788ae8fa5f74b961"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
@@ -8934,7 +8979,7 @@
           "raghav"
         ],
         "description": "Anime from AniSuge with Sub and Dub support",
-        "fileSize": 72701,
+        "fileSize": 72705,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8944,7 +8989,7 @@
         ],
         "iconUrl": "https://anisuge.tv/assets/images/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1ce5deb47f83efa636382e8be17e215a99855d05698eb779779823096a437f0f"
+        "fileHash": "sha256-028a5b2035f93ca84197dfa4e9f1fce9af3aa3285e762d5d1f32c5b6484f49c0"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
@@ -8956,7 +9001,7 @@
           "raghav"
         ],
         "description": "720p sub and dub anime",
-        "fileSize": 64622,
+        "fileSize": 64632,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8966,7 +9011,7 @@
         ],
         "iconUrl": "https://aniwaves.ru/assets/images/aniwave.png",
         "apiVersion": 1,
-        "fileHash": "sha256-82558139d43a747b6504a4bdd003824d829465fd461e0447ed464ab9016664ee"
+        "fileHash": "sha256-402677b19d3a3f09cd5d71c46c4e72478c45ff99dcb25caed50df1f1d8bf665a"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
@@ -8978,7 +9023,7 @@
           "KSHITIJ8473"
         ],
         "description": "Live sports HIGH QAULITY",
-        "fileSize": 63126,
+        "fileSize": 63107,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -8986,7 +9031,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvvc01IqbjrBZ-AhXwvyrIblnaJBA04IUNKmJNRbqEh46fWVItaGuoRsj&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-b9d479ac0b6eec0cd7a0643f5d0b436007062ccb2b3a40a0bb56b495eb13150b"
+        "fileHash": "sha256-236f2c2dbd83e7cf6f29a10cee0bfc635215e142843035707a95cfb6c6fb6730"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Enma.cs3",
@@ -8998,7 +9043,7 @@
           "KSHITIJ8473"
         ],
         "description": "Enma - Watch Anime Sub & Dub in HD",
-        "fileSize": 78589,
+        "fileSize": 78583,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9008,7 +9053,7 @@
         ],
         "iconUrl": "https://www.enma.lol/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-e3caf01d379396a13ad45f9698c8b9a446c1211a0251e19532baac6e7adc1895"
+        "fileHash": "sha256-8a1a9101524d8bc1c1f5a457a7f2afb2376df4963fcccbd18db3fc72c0200279"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
@@ -9020,7 +9065,7 @@
           "raghav"
         ],
         "description": "Hardsub and dub from Gotaku",
-        "fileSize": 62384,
+        "fileSize": 62366,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9030,7 +9075,28 @@
         ],
         "iconUrl": "https://gotaku.to/images/icons/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-569193fc07c50c710f1186f60a5896ad2a83c7a50866ef6e81bc325c9782af0a"
+        "fileHash": "sha256-653092be685635ae007239aea8121ef39a10cf398e01386207699534af415b8c"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
+        "status": 1,
+        "version": 5,
+        "name": "JustPlay",
+        "internalName": "JustPlay",
+        "authors": [
+          "KSHITIJ8473"
+        ],
+        "description": "Movies and series from multiple sources",
+        "fileSize": 259360,
+        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
+        "apiVersion": 1,
+        "fileHash": "sha256-b9589820f6317111b76581590874a0fc33957cd4a50b66488e857fd5270927a7"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9042,7 +9108,7 @@
           "KSHITIJ8473"
         ],
         "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio",
-        "fileSize": 165425,
+        "fileSize": 164270,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9052,7 +9118,7 @@
         ],
         "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
         "apiVersion": 1,
-        "fileHash": "sha256-4cbd70bbc01b7b925307d575ab6ddfa695967244a0c03a94e6460bcb1ba81ade"
+        "fileHash": "sha256-54e1bbd27c1d7ab76770b2478b573fdf10853079edef5c1fc5efd67b3e724e73"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
@@ -9064,7 +9130,7 @@
           "raghav,cnc"
         ],
         "description": "Watch LIVE TV channels & sports via LIVE TV",
-        "fileSize": 94902,
+        "fileSize": 94914,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9072,7 +9138,7 @@
         ],
         "iconUrl": "https://png.pngtree.com/png-vector/20191026/ourmid/pngtree-live-icon-design-template-vector-isolated-illustration-png-image_1874482.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-e3309901e9f18283df6b92dadf39bdb0a9f6c174c79023ce1fe82685c1ef1b8a"
+        "fileHash": "sha256-f991e851d06f2ef5ff176a56b2eeb35a4a0dd156d0b468c44fc1aaa0c1513784"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Miruro.cs3",
@@ -9084,7 +9150,7 @@
           "raghav"
         ],
         "description": "ANIME(SUB,DUB)-MULTI SOURCE",
-        "fileSize": 93388,
+        "fileSize": 93396,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9094,7 +9160,7 @@
         ],
         "iconUrl": "https://repository-images.githubusercontent.com/567000493/281ea6b4-7159-4ac7-b5f1-34abf335c033",
         "apiVersion": 1,
-        "fileHash": "sha256-67595b4880438d1ce6a8da4a64558bd4bc1f5b9c292388e8c1521e910687dcc0"
+        "fileHash": "sha256-70107ea1e4b739faf2076950da6c0483191512c7b6f5125ca733739677607dca"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
@@ -9106,7 +9172,7 @@
           "raghav,phisher,csksy"
         ],
         "description": "Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more",
-        "fileSize": 122402,
+        "fileSize": 122426,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9116,7 +9182,7 @@
         ],
         "iconUrl": "https://multimovies.casa/wp-content/uploads/2024/01/cropped-CompressJPEG.online_512x512_image.png",
         "apiVersion": 1,
-        "fileHash": "sha256-64501ab6984bf141f104defb4e2d861f5ccb2326c4811922cf6e745ce483550f"
+        "fileHash": "sha256-001ebf735fa35d4062e889b798591439415dd444a29adc35bc7e334a94b8c0ab"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
@@ -9128,7 +9194,7 @@
           "raghav"
         ],
         "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
-        "fileSize": 93366,
+        "fileSize": 93380,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9140,7 +9206,7 @@
         ],
         "iconUrl": "https://netnaija.film/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-158be3a9c832780d8e0e1fddd239f3cbbab86c071ceb9dc54d593e5a9b6ee270"
+        "fileHash": "sha256-cbc85e3ad3e332d2afb4d4442a1c70a0579981809e17d61c30fbde1e9008fd61"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
@@ -9152,7 +9218,7 @@
           "raghav"
         ],
         "description": "NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.",
-        "fileSize": 141147,
+        "fileSize": 141145,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9162,7 +9228,7 @@
         ],
         "iconUrl": "https://netnaija.film/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-f61ce8b7dbb131c6d67b3d975d573d154913f669e1750dad093243f544a4835e"
+        "fileHash": "sha256-976f3b61f2c59b9797128908122ab732d4f797cf64cf7a3b7a68bf4900a33e28"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -9174,7 +9240,7 @@
           "raghav"
         ],
         "description": "anime from 9anime clone with sub and dub",
-        "fileSize": 51147,
+        "fileSize": 51142,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9184,7 +9250,7 @@
         ],
         "iconUrl": "https://cachedimages.podchaser.com/256x256/aHR0cHM6Ly9pLmF1ZGlvbWFjay5jb20vOWFuaW1lcy8zODE4MDE3MGZmLndlYnA%2FbWluPXRydWUmaGVpZ2h0PTE0MDAmd2lkdGg9MTQwMA%3D%3D/aHR0cHM6Ly93d3cucG9kY2hhc2VyLmNvbS9pbWFnZXMvbWlzc2luZy1pbWFnZS5wbmc%3D",
         "apiVersion": 1,
-        "fileHash": "sha256-31d8291d9f928bec7e291139c1de471acf1c3920a42ae2c988c5d2c29ed04d99"
+        "fileHash": "sha256-ddf054498b862280eb7c8fca1bde7991b53a20bc528d63185f46994423983df7"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
@@ -9196,7 +9262,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 587339,
+        "fileSize": 587325,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9206,7 +9272,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-76090eb7b36054947df2f27f9bc25b0b294a54a72e2c34516a8ac7f4f69f0c7e"
+        "fileHash": "sha256-0f7919635c7053a7a7351580063c630bd89d3c7632ac6087de67358ab6a5b533"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -9218,7 +9284,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 598715,
+        "fileSize": 598779,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9228,7 +9294,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-b1f42a3ab1cd4bbd942738d7e58224b4b1e94b14abfab53c3f77639ec5c58a9b"
+        "fileHash": "sha256-3737ae4f859fce204570053a563f94336a5df6c9ed4090b1647500c4a38deb27"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -9240,7 +9306,7 @@
           "raghav"
         ],
         "description": "hindi cartoon (unstable and many dead links)",
-        "fileSize": 156766,
+        "fileSize": 156816,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
@@ -9251,7 +9317,7 @@
         ],
         "iconUrl": "https://www.rareanimes.mov/wp-content/uploads/2023/11/cropped-Rare-Animes-India.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f9a169b6b1e05c99578f0ea2c29b94c331e70c8f5742eb6b4a1133c34a74f96f"
+        "fileHash": "sha256-e1e07c684772e5deee6134de15dfd42c6ad11f9ad0f1a9fda8b7c13abcbe39b4"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3",
@@ -9263,7 +9329,7 @@
           "KSHITIJ8473"
         ],
         "description": "Re:ANIME - Anime with Sub & Dub",
-        "fileSize": 78709,
+        "fileSize": 78733,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9273,7 +9339,7 @@
         ],
         "iconUrl": "https://reanime.to/favicon-32x32.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c532ad931d4b70b1caf3219d0afd3c9850bb883f34806d7c157e7c99f20cef02"
+        "fileHash": "sha256-b30c2c8edd1cad1ba1729897af9d52d622936c91a2869ff9c5e31d1b3c79827d"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
@@ -9285,7 +9351,7 @@
           "raghav"
         ],
         "description": "Sports Replays — Football, Baseball, Rugby & Motorsport",
-        "fileSize": 38275,
+        "fileSize": 38298,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9293,7 +9359,7 @@
         ],
         "iconUrl": "https://media.istockphoto.com/id/1321048723/vector/r-letter-in-the-circle-logo.jpg?s=612x612&w=0&k=20&c=S9TWFtRs2omUlxY2RsyUImNadAVyK3xLdMZJOxAfpSM=",
         "apiVersion": 1,
-        "fileHash": "sha256-3002e8f875d2213e543d9db9ea5798a441c34a3297e161899f077da976981cdb"
+        "fileHash": "sha256-3e251ceb014cf47247b64a5ad6e5f4333b97ea23ddede4fb5ffec6608dc72717"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
@@ -9305,7 +9371,7 @@
           "raghav"
         ],
         "description": "Anime with sub & dub, multi-language subtitles",
-        "fileSize": 90060,
+        "fileSize": 90081,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9315,7 +9381,7 @@
         ],
         "iconUrl": "https://senshi.to/assets/Senshi_Logo-D4bDbCzd.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e5ea68c0e80cc0799e893fa3c2d0875066df783b597763da0727d9b27b09b28c"
+        "fileHash": "sha256-6a0204becbd740e4dd3c83aec06bc2cb3f20975e3bfda2495d129163599bbe4f"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamEast.cs3",
@@ -9327,7 +9393,7 @@
           "RAGHAV"
         ],
         "description": "StreamEast Sports(REQUIRES CLOUDFLARE DNS)",
-        "fileSize": 37770,
+        "fileSize": 37778,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9335,7 +9401,7 @@
         ],
         "iconUrl": "https://d3e6ckxkrs5ntg.cloudfront.net/artists/images/8639152/original/crop:x0y0w500h500/hash:1698153106/a.jpg?1698153106",
         "apiVersion": 1,
-        "fileHash": "sha256-7b416bafc5ec6b6137f06d3029bfb306dd4fde8db0c30ca2d16dc494d3bdee9b"
+        "fileHash": "sha256-4ce955664b0b2a004d742d1a63c00dafd860e25d96773a0686a84479f618fd03"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamedPk.cs3",
@@ -9347,7 +9413,7 @@
           "RAGHAV"
         ],
         "description": "ALL LIVE SPORTS WITH MULTIPLE SERVER",
-        "fileSize": 50361,
+        "fileSize": 50374,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9355,19 +9421,19 @@
         ],
         "iconUrl": "https://streamed.pk/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-51f0aaa6ef6e04332ace71f8b2cb836e496d0e3614bb8d7c416a056ca2528c7f"
+        "fileHash": "sha256-6ced7de3291de05363e867ea7abaec95960a0bc033b5b354de902fb736af746f"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
         "status": 1,
-        "version": 17,
+        "version": 19,
         "name": "TheMoviesFlix",
         "internalName": "TheMoviesFlix",
         "authors": [
           "raghav"
         ],
         "description": "stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider",
-        "fileSize": 75883,
+        "fileSize": 78583,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9376,7 +9442,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj_C9WX4AwepepLyw_cF-EIJeRpqgI4wDiquYSoP9xDFFAKFtTVM-P_zo&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-e4d4252a010726345e4a569d4a99d554ae60ec18351e5bcab7e340a8e9046ed4"
+        "fileHash": "sha256-57e5ba6ce6324bf9b4cab6bcd6cc42022230d3a5faa1e4da94237f4cf140393c"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TimStreams.cs3",
@@ -9396,7 +9462,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEcz-sR5DKHHDqsTKkQ08izA6E8HqZQnbWiTqJL3XjO-eLoixqbHx47INk&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-c1dc8a263f3b90602fed179feb30e25fb84b86d24b59619e8912ee3607dbee02"
+        "fileHash": "sha256-cab609cab4367931991886033deb658e4eda968e376559eb0e421f58d321f379"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
@@ -9408,7 +9474,7 @@
           "raghav"
         ],
         "description": "Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons",
-        "fileSize": 101622,
+        "fileSize": 101646,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9421,7 +9487,7 @@
         ],
         "iconUrl": "https://png.pngtree.com/element_our/png/20181227/movie-icon-which-is-designed-for-all-application-purpose-new-png_287896.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-7bed450814f1417502db9cad19c9696cb2ca2bda78fa595c91ef779ddf856561"
+        "fileHash": "sha256-6d0f0ec95a24e1e3a3bde37221bf13b0b69f5cf4dde1bbad99327862463b9eeb"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
@@ -9433,7 +9499,7 @@
           "raghav"
         ],
         "description": "Anime and movies from 2Dhive with Sub and Dub support",
-        "fileSize": 55032,
+        "fileSize": 55058,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9443,7 +9509,7 @@
         ],
         "iconUrl": "https://wallpapers.com/images/hd/anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-638c41334a00acfc3eee002b1e4b9ccdbd54a70132542c8c18fb3e030d7d9033"
+        "fileHash": "sha256-1ee9a4ff938641aa87fb9e8ec20471cd774ab82d9842ff2ea2de466e6cdd6c63"
       }
     ]
   },
@@ -10390,14 +10456,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
         "status": 1,
-        "version": 11,
+        "version": 12,
         "name": "MovieBox",
         "internalName": "MovieBox",
         "authors": [
           "Faisal"
         ],
         "description": "MovieBox Native - Pure API Provider with Crypto Bypass",
-        "fileSize": 77034,
+        "fileSize": 77812,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10407,7 +10473,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/IMG-20260920-WA0000.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-411bb7ca726ffbe92718310fae0ec4055bd797eee7fe74b5ea8c226712d8d7f2"
+        "fileHash": "sha256-a00797110878a33cd2680438d8b060b690909f08714fd50a4e599c36a1e437ad"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",

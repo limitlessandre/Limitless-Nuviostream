@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 319,
+  "excluded_count": 321,
   "excluded": [
     {
       "internalName": "3isk",
@@ -273,6 +273,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeIndo.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimeInWeb",
+      "name": "AnimeInWeb",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeInWeb.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3797,6 +3811,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Topcartoons.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Topcima",
+      "name": "Topcima",
+      "source": "Cartoony Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/Topcima.cs3",
       "reason": "no-allowed-language"
     },
     {

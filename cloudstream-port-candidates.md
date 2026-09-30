@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **130**  
-No obvious native overlap: **127**  
+Filtered CloudStream providers: **131**  
+No obvious native overlap: **128**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -82,6 +82,7 @@ Exact/alias overlap: **3**
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
+- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies and series from multiple sources
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Omniz** (`Omniz`) — en; Movie, TvSeries — Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more

@@ -5,11 +5,11 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 491,
-  "eligible_plugin_entries_before_dedupe": 135,
-  "unique_plugins": 130,
+  "raw_plugin_entries": 494,
+  "eligible_plugin_entries_before_dedupe": 136,
+  "unique_plugins": 131,
   "duplicate_groups": 4,
-  "language_filtered_entries": 319,
+  "language_filtered_entries": 321,
   "unknown_language_metadata_entries": 26,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
@@ -175,7 +175,7 @@
       "name": "Cartoony Repo",
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/repo.json",
       "status": "ok",
-      "plugins": 10,
+      "plugins": 11,
       "verified": false
     },
     {
@@ -189,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 31,
+      "plugins": 33,
       "verified": false
     },
     {
