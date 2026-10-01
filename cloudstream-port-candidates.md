@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **131**  
-No obvious native overlap: **128**  
+Filtered CloudStream providers: **130**  
+No obvious native overlap: **127**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -46,7 +46,6 @@ Exact/alias overlap: **3**
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
 - **Animo** (`Animo`) — en; Anime, AnimeMovie, OVA — Anime(sub,dub)
-- **Anineko** (`Anineko`) — en; Anime, AnimeMovie, OVA — Anime from Anineko
 - **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
 - **AniStream** (`AniStream`) — en; Anime, AnimeMovie — Watch anime in HD with English Sub and Dub from AniStream

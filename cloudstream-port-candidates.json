@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 131,
-  "no_obvious_native_overlap_count": 128,
+  "cloudstream_provider_count": 130,
+  "no_obvious_native_overlap_count": 127,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 682,
+      "version": 684,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -845,30 +845,6 @@
       ]
     },
     {
-      "internalName": "Anineko",
-      "name": "Anineko",
-      "description": "Anime from Anineko",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 6,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anineko.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.571,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "AniPM",
       "name": "AniPM",
       "description": "Anime with Sub & Dub from ani.pm",
@@ -902,7 +878,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1158,7 +1134,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1786,7 +1762,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 19,
+      "version": 20,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
