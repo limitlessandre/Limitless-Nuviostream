@@ -1,7 +1,7 @@
 {
   "native_provider_count": 6,
-  "cloudstream_provider_count": 130,
-  "no_obvious_native_overlap_count": 127,
+  "cloudstream_provider_count": 126,
+  "no_obvious_native_overlap_count": 123,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -447,7 +447,7 @@
         "TvSeries",
         "Torrent"
       ],
-      "version": 18,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -591,7 +591,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 27,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -726,30 +726,6 @@
       ]
     },
     {
-      "internalName": "AnimeKai",
-      "name": "AnimeKai",
-      "description": "unoriginal animekai with sub and dub",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeKai.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.667,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "Animekhor",
       "name": "Animekhor",
       "description": "Anime and Movies includes (Donghuaword)",
@@ -830,7 +806,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Animo.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1078,30 +1054,6 @@
       ]
     },
     {
-      "internalName": "Enma",
-      "name": "Enma",
-      "description": "Enma - Watch Anime Sub & Dub in HD",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 11,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Enma.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.545,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "GoTaku",
       "name": "GoTaku",
       "description": "Hardsub and dub from Gotaku",
@@ -1111,7 +1063,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1275,7 +1227,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 71,
+      "version": 72,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1299,7 +1251,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 23,
+      "version": 24,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1323,7 +1275,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1369,7 +1321,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 16,
+      "version": 17,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1599,7 +1551,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1762,7 +1714,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 20,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1957,7 +1909,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2281,28 +2233,6 @@
       ]
     },
     {
-      "internalName": "StreamEast",
-      "name": "StreamEast",
-      "description": "StreamEast Sports(REQUIRES CLOUDFLARE DNS)",
-      "language": "en",
-      "tvTypes": [
-        "Live"
-      ],
-      "version": 6,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamEast.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.588,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -3,
-      "reasons": [
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
       "internalName": "StreamedPk",
       "name": "StreamedPk",
       "description": "ALL LIVE SPORTS WITH MULTIPLE SERVER",
@@ -2310,7 +2240,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamedPk.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2338,28 +2268,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.667,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -3,
-      "reasons": [
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
-      "internalName": "TimStreams",
-      "name": "TimStreams",
-      "description": "Live Sports Events and some Live TV Channels from TimStreams",
-      "language": "en",
-      "tvTypes": [
-        "Live"
-      ],
-      "version": 8,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TimStreams.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.538,
         "native_matches": []
       },
       "priority": "utility-or-review",

@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **130**  
-No obvious native overlap: **127**  
+Filtered CloudStream providers: **126**  
+No obvious native overlap: **123**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -41,7 +41,6 @@ Exact/alias overlap: **3**
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
 - **Anilight** (`Anilight`) — en; AnimeMovie, Anime, OVA — Anilight Anime Provider
-- **AnimeKai** (`AnimeKai`) — en; Anime, AnimeMovie, OVA — unoriginal animekai with sub and dub
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
@@ -56,7 +55,6 @@ Exact/alias overlap: **3**
 - **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Comix** (`Comix`) — en; Others, Anime — Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
-- **Enma** (`Enma`) — en; Anime, AnimeMovie, OVA — Enma - Watch Anime Sub & Dub in HD
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
@@ -115,10 +113,8 @@ Exact/alias overlap: **3**
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **ReplayZone** (`ReplayZone`) — en; Live — Sports Replays — Football, Baseball, Rugby & Motorsport
-- **StreamEast** (`StreamEast`) — en; Live — StreamEast Sports(REQUIRES CLOUDFLARE DNS)
 - **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
-- **TimStreams** (`TimStreams`) — en; Live — Live Sports Events and some Live TV Channels from TimStreams
 - **AriaOfSorrow** (`AriaOfSorrow`) — en; Others — Play Aria of Sorrow.
 - **AvatarAirbender** (`AvatarAirbender`) — en; Others — Play Avatar Airbender.
 - **Castlevania** (`Castlevania`) — en; Others — Play Castlevania.
