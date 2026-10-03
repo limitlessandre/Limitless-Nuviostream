@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **6**  
-Filtered CloudStream providers: **126**  
-No obvious native overlap: **123**  
+Filtered CloudStream providers: **127**  
+No obvious native overlap: **124**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -67,6 +67,7 @@ Exact/alias overlap: **3**
 - **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — Anime with sub & dub, multi-language subtitles
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
+- **Xanime** (`Xanime`) — en; Anime, AnimeMovie, OVA — anime with sub and dub
 
 ## Low-priority unique candidates
 

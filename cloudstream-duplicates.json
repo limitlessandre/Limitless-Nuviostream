@@ -124,6 +124,16 @@
         "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v12.cs3"
       },
       {
+        "internalName": "Reanime",
+        "name": "Reanime",
+        "version": 3,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+      },
+      {
         "internalName": "ReAnime",
         "name": "ReAnime",
         "version": 3,
@@ -132,16 +142,6 @@
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3"
-      },
-      {
-        "internalName": "Reanime",
-        "name": "Reanime",
-        "version": 2,
-        "language": "en",
-        "source": "Phisher Repo",
-        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
-        "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
       }
     ]
   }
