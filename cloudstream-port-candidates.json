@@ -758,7 +758,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 41,
+      "version": 43,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1227,7 +1227,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 73,
+      "version": 76,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1251,7 +1251,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 25,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1275,7 +1275,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
