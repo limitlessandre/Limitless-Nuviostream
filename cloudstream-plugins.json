@@ -913,7 +913,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
     "status": 1,
-    "version": 13,
+    "version": 15,
     "name": "FullRaces",
     "internalName": "FullRaces",
     "authors": [
@@ -921,7 +921,7 @@
       "kerimmkirac"
     ],
     "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-    "fileSize": 42757,
+    "fileSize": 54111,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -930,7 +930,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
     "apiVersion": 1,
-    "fileHash": "sha256-dfd6ce5f70d3a26c1a12e05939ecbc289edec285fc873374a66606ed806650db"
+    "fileHash": "sha256-c292f779282f526ccca6f21bd8adafccb5d733ef2c00d20058c8bce32d9ce015"
   },
   {
     "name": "Game2048",
@@ -1184,14 +1184,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 6,
+    "version": 9,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
-    "description": "Movies and series from multiple sources",
-    "fileSize": 272554,
+    "description": "Movies and series from multiple sources with a Manage Sources screen that filters download and stream links",
+    "fileSize": 372225,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1200,7 +1200,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-47585a704a8f74a2b14b7201528e5080b173374d0ced82baf26d0e00bba05e51"
+    "fileHash": "sha256-73fdabfede39c3d016159091eea85d59fa5fcb59d2bb7c8e1e1059dff78421e2"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -1513,14 +1513,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
     "status": 1,
-    "version": 7,
+    "version": 8,
     "name": "Multimovies",
     "internalName": "Multimovies",
     "authors": [
       "raghav,phisher,csksy"
     ],
-    "description": "Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more",
-    "fileSize": 120090,
+    "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
+    "fileSize": 132396,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1528,9 +1528,9 @@
       "TvSeries",
       "Anime"
     ],
-    "iconUrl": "https://multimovies.casa/wp-content/uploads/2024/01/cropped-CompressJPEG.online_512x512_image.png",
+    "iconUrl": "https://multimovies.garden/assets/img/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-2caee4bd3581054584c11cd14dd68c7e15d454641e1bd665b2bfb9ec3af4d831"
+    "fileHash": "sha256-6a596472416e58ee417a1ef001249da0d922b31fe9ab7da1572f030f8749ed84"
   },
   {
     "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Nebula.cs3",
@@ -1748,14 +1748,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
     "status": 1,
-    "version": 2,
+    "version": 3,
     "name": "OnShort",
     "internalName": "OnShort",
     "authors": [
       "kraptor"
     ],
     "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
-    "fileSize": 22078,
+    "fileSize": 21396,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -1763,13 +1763,13 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=https://onshort.net",
     "apiVersion": 1,
-    "fileHash": "sha256-e7db73e98313edb13f010adb433f650d9f554f848ef05d1b48edd6e9dbaea26e"
+    "fileHash": "sha256-6e87e9b6ad2422698829c07e4262f987605fb71339434061d898faf78e589aad"
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/Otakutsu/icon.png",
-    "fileHash": "sha256-c48c452e9fdf1389e1d09d1e98481e0d5651498c6a7e2d62900ddff21ee86fc5",
+    "fileHash": "sha256-e05583b02423bd3168d472724eca636c3fd14846b2e31440b61b87735b80be4e",
     "apiVersion": 1,
-    "fileSize": 93570,
+    "fileSize": 93568,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1779,7 +1779,7 @@
       "Anime",
       "AnimeMovie"
     ],
-    "version": 3,
+    "version": 4,
     "internalName": "Otakutsu",
     "description": "Anime streaming from Otakutsu",
     "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/Otakutsu.cs3",
@@ -2163,7 +2163,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 685,
+    "version": 686,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -2171,7 +2171,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 1907877,
+    "fileSize": 1932040,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2184,7 +2184,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-7e6ca5f25a444e1c8d7c642b677f16e34cecaf877c710c3a76dbd9ca334ce913"
+    "fileHash": "sha256-47eb93026809c343e29874440ce6014d8be1bab761515b50cc1c99500b8c7c49"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

@@ -1285,14 +1285,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinefreak.cs3",
         "status": 1,
-        "version": 16,
+        "version": 17,
         "name": "Cinefreak",
         "internalName": "Cinefreak",
         "authors": [
           "Phisher98"
         ],
         "description": "Bangla/Hindi Movies/Series",
-        "fileSize": 120839,
+        "fileSize": 124078,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "bn",
         "tvTypes": [
@@ -1302,7 +1302,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/cinefreak.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8d9c6d484c78c35bdcebe0e96d8adb82da3bda7152281a55250c641fcc339675"
+        "fileHash": "sha256-9c9ea66e1b6be84115ba17e18d1eb52e6995e8848e925edb1ad8e7d141b1cb6b"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
@@ -1559,13 +1559,13 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HDhub4u.cs3",
         "status": 1,
-        "version": 56,
+        "version": 57,
         "name": "HDhub4u",
         "internalName": "HDhub4u",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 119457,
+        "fileSize": 122852,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1575,7 +1575,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/HDHUB.png",
         "apiVersion": 1,
-        "fileHash": "sha256-6a308da17b16798b9319bef8b820117bf79365c958c1aba7fdd7227dbf9cad05"
+        "fileHash": "sha256-ae9668b4de9849d1f60558f867ecc3a48dbe5a964b4f651b6e886bd42578a8eb"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
@@ -1968,14 +1968,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MultiMoviesProvider.cs3",
         "status": 1,
-        "version": 54,
+        "version": 55,
         "name": "MultiMoviesProvider",
         "internalName": "MultiMoviesProvider",
         "authors": [
           "Phisher98"
         ],
         "description": "Indian Multi-language HD Provider",
-        "fileSize": 138506,
+        "fileSize": 151434,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1985,7 +1985,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/MultiMoviesProvider/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-3ff243f468611d0995c5186811aeeabacfad1739ca0b4fe96a678b1e5afcddba"
+        "fileHash": "sha256-ce2eda6e5c023df55eed57488aafded9533808642a7cb891b8c4c9ce2a328e24"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Netcinez.cs3",
@@ -2286,7 +2286,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 685,
+        "version": 686,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2294,7 +2294,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1907877,
+        "fileSize": 1932040,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2307,7 +2307,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-7e6ca5f25a444e1c8d7c642b677f16e34cecaf877c710c3a76dbd9ca334ce913"
+        "fileHash": "sha256-47eb93026809c343e29874440ce6014d8be1bab761515b50cc1c99500b8c7c49"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -7008,14 +7008,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeYTX.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "AnimeYTX",
         "internalName": "AnimeYTX",
         "authors": [
           "ByAyzen"
         ],
         "description": "Únete a la familia de AnimeYT.es y disfruta del anime online gratis. Disfruta con tus amigos del contenido más popular de la animación japonesa.",
-        "fileSize": 52269,
+        "fileSize": 52609,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7023,7 +7023,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animeyt.cc&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-f912ec57c85b928ddd6a9626bb4fedeb82e3ab76f71b5b3c17dcc925d8ded227"
+        "fileHash": "sha256-0e465f5dfa9bd3bed6022335321daa933c89630fb565f29ccb64cc8c636ebd22"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
@@ -7115,7 +7115,7 @@
           "kraptor"
         ],
         "description": "قصة عشق الأصلي لأحدث المسلسلات التركية والدراما المترجمة علي قصه عشق ، يمكنك من خلال موقع قصة عشق مشاهدة كل جديد في عالم الدراما التركية",
-        "fileSize": 17197,
+        "fileSize": 17199,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "ar",
         "tvTypes": [
@@ -7124,7 +7124,7 @@
         ],
         "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://esheeq.my&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-611b9d4cd00722bd5859fce476591d1dfe71d5cf2731f56ef4f54dcf86cc20f9"
+        "fileHash": "sha256-826f9fa3b1a1886559f6274eb38d5e40c2cf963020c1b29233e22558d92292b3"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Flixlatam.cs3",
@@ -7189,7 +7189,7 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
         "status": 1,
-        "version": 13,
+        "version": 15,
         "name": "FullRaces",
         "internalName": "FullRaces",
         "authors": [
@@ -7197,7 +7197,7 @@
           "kerimmkirac"
         ],
         "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-        "fileSize": 42757,
+        "fileSize": 54111,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7206,7 +7206,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-dfd6ce5f70d3a26c1a12e05939ecbc289edec285fc873374a66606ed806650db"
+        "fileHash": "sha256-c292f779282f526ccca6f21bd8adafccb5d733ef2c00d20058c8bce32d9ce015"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Gnulahd.cs3",
@@ -7357,14 +7357,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Movix.cs3",
         "status": 1,
-        "version": 31,
+        "version": 32,
         "name": "Movix",
         "internalName": "Movix",
         "authors": [
           "ByAyzen"
         ],
         "description": "Explorez les films, séries, collections, alertes et recommandations Movix.",
-        "fileSize": 171190,
+        "fileSize": 184697,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "fr",
         "tvTypes": [
@@ -7374,7 +7374,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movix.fun/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-58e02ed47a33521752195f95fd7a0a7accde30c851c4e55e326e660d33f4a642"
+        "fileHash": "sha256-496660b4e9d444dbaaa86b45d92fe77de93b8c814454acc88cd2895937239b28"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Nekokun.cs3",
@@ -7420,14 +7420,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "OnShort",
         "internalName": "OnShort",
         "authors": [
           "kraptor"
         ],
         "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
-        "fileSize": 22078,
+        "fileSize": 21396,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7435,7 +7435,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=https://onshort.net",
         "apiVersion": 1,
-        "fileHash": "sha256-e7db73e98313edb13f010adb433f650d9f554f848ef05d1b48edd6e9dbaea26e"
+        "fileHash": "sha256-6e87e9b6ad2422698829c07e4262f987605fb71339434061d898faf78e589aad"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Sokuja.cs3",
@@ -9014,14 +9014,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 6,
+        "version": 9,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
-        "description": "Movies and series from multiple sources",
-        "fileSize": 272554,
+        "description": "Movies and series from multiple sources with a Manage Sources screen that filters download and stream links",
+        "fileSize": 372225,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9030,7 +9030,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-47585a704a8f74a2b14b7201528e5080b173374d0ced82baf26d0e00bba05e51"
+        "fileHash": "sha256-73fdabfede39c3d016159091eea85d59fa5fcb59d2bb7c8e1e1059dff78421e2"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9099,14 +9099,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "Multimovies",
         "internalName": "Multimovies",
         "authors": [
           "raghav,phisher,csksy"
         ],
-        "description": "Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more",
-        "fileSize": 120090,
+        "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
+        "fileSize": 132396,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9114,9 +9114,9 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "https://multimovies.casa/wp-content/uploads/2024/01/cropped-CompressJPEG.online_512x512_image.png",
+        "iconUrl": "https://multimovies.garden/assets/img/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-2caee4bd3581054584c11cd14dd68c7e15d454641e1bd665b2bfb9ec3af4d831"
+        "fileHash": "sha256-6a596472416e58ee417a1ef001249da0d922b31fe9ab7da1572f030f8749ed84"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
@@ -10279,9 +10279,9 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/Otakutsu/icon.png",
-        "fileHash": "sha256-c48c452e9fdf1389e1d09d1e98481e0d5651498c6a7e2d62900ddff21ee86fc5",
+        "fileHash": "sha256-e05583b02423bd3168d472724eca636c3fd14846b2e31440b61b87735b80be4e",
         "apiVersion": 1,
-        "fileSize": 93570,
+        "fileSize": 93568,
         "status": 1,
         "language": "en",
         "authors": [
@@ -10291,7 +10291,7 @@
           "Anime",
           "AnimeMovie"
         ],
-        "version": 3,
+        "version": 4,
         "internalName": "Otakutsu",
         "description": "Anime streaming from Otakutsu",
         "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/Otakutsu.cs3",
@@ -10303,6 +10303,26 @@
     "name": "Desi Extensions",
     "description": "Multi-Language Providers (OttSource, NetMirror)",
     "plugins": [
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/18+.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "18+",
+        "internalName": "18+",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Desi Viral Indian Content Provider",
+        "fileSize": 11261,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "NSFW"
+        ],
+        "iconUrl": "https://fsi52.com/favicon-32x32.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-6b4854f9edd563dbe2090e6cbd60933d012dae74f1f2efe2ad638900d21ee2f9"
+      },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AniStream.cs3",
         "status": 1,
@@ -10370,6 +10390,28 @@
         "fileHash": "sha256-105d96a31185a85f9e5f0f519db1b29ea616e2d6b25c8cdf419b270bb74b22cb"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/FilmFly.cs3",
+        "status": 1,
+        "version": 22,
+        "name": "FilmFly",
+        "internalName": "FilmFly",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "FilmyFly Provider for Bollywood, South Hindi Dubbed, Hollywood Movies & Web Series",
+        "fileSize": 29910,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "",
+        "apiVersion": 1,
+        "fileHash": "sha256-26502ec2f06262050a43bef8fb4b44c2d892938e904c00e8a26d24c9896b6c78"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
         "status": 1,
         "version": 12,
@@ -10390,6 +10432,28 @@
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/IMG-20260920-WA0000.jpg",
         "apiVersion": 1,
         "fileHash": "sha256-a00797110878a33cd2680438d8b060b690909f08714fd50a4e599c36a1e437ad"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MoviesDrive.cs3",
+        "status": 1,
+        "version": 18,
+        "name": "MoviesDrive",
+        "internalName": "MoviesDrive",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "MoviesDrive Hindi - Hindi Dubbed Hollywood & Bollywood Content",
+        "fileSize": 47858,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "",
+        "apiVersion": 1,
+        "fileHash": "sha256-f42ddc2bfc56d375c2e47d83bb7b712761d5a87e1dc26dedd7aaa84338e6aa4f"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",
@@ -10439,14 +10503,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 61,
+        "version": 62,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub One - Multilingual provider",
-        "fileSize": 989716,
+        "fileSize": 990502,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10458,7 +10522,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-e4914d6073281f9bf075c3a61b2bf92c980791d05918420cbcd121cd46f19fca"
+        "fileHash": "sha256-968f6b6ce5d1d547903f070f3b9ba6585270a8802d61b8f5f09bd8d23af8f496"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",

@@ -7,8 +7,22 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 321,
+  "excluded_count": 324,
   "excluded": [
+    {
+      "internalName": "18+",
+      "name": "18+",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/18+.cs3",
+      "reason": "no-allowed-language"
+    },
     {
       "internalName": "3isk",
       "name": "3isk",
@@ -1660,6 +1674,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "FilmFly",
+      "name": "FilmFly",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/FilmFly.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "FilmFrei24",
       "name": "FilmFrei24",
       "source": "German providers repository",
@@ -2625,6 +2653,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MoviesDrive",
+      "name": "MoviesDrive",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MoviesDrive.cs3",
       "reason": "no-allowed-language"
     },
     {

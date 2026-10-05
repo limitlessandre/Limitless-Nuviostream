@@ -23,7 +23,6 @@ Exact/alias overlap: **3**
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
-- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
@@ -68,6 +67,7 @@ Exact/alias overlap: **3**
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 - **Xanime** (`Xanime`) — en; Anime, AnimeMovie, OVA — anime with sub and dub
+- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt
 
 ## Low-priority unique candidates
 
@@ -80,7 +80,7 @@ Exact/alias overlap: **3**
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies and series from multiple sources
+- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies and series from multiple sources with a Manage Sources screen that filters download and stream links
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Omniz** (`Omniz`) — en; Movie, TvSeries — Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more

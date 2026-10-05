@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 685,
+      "version": 686,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -361,31 +361,6 @@
       ]
     },
     {
-      "internalName": "Multimovies",
-      "name": "Multimovies",
-      "description": "Multimovies - Movies, TV Shows & Anime. All sources: Cineverse, GD Mirror, Vidout, Nxsha (multi-server) and more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries",
-        "Anime"
-      ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.522,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 6,
-      "reasons": [
-        "Anime coverage",
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "NetNaija",
       "name": "NetNaija",
       "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
@@ -420,7 +395,7 @@
       "tvTypes": [
         "AsianDrama"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -1203,7 +1178,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/builds/Otakutsu.cs3",
       "repositoryUrl": null,
       "overlap": {
@@ -1357,6 +1332,32 @@
       "priority_score": 4,
       "reasons": [
         "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "Multimovies",
+      "name": "Multimovies",
+      "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.522,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 3,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
       ]
     },
     {
@@ -1569,13 +1570,13 @@
     {
       "internalName": "JustPlay",
       "name": "JustPlay",
-      "description": "Movies and series from multiple sources",
+      "description": "Movies and series from multiple sources with a Manage Sources screen that filters download and stream links",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries"
       ],
-      "version": 6,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2154,7 +2155,7 @@
         "Live",
         "Others"
       ],
-      "version": 13,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
