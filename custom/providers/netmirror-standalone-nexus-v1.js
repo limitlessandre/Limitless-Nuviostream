@@ -367,6 +367,8 @@ async function tmdbContext(tmdbId, mediaType, season, episode) {
     title,
     aliases,
     parentYear: yearOf(parentDate),
+    originalLanguage: clean(data && data.original_language).toLowerCase(),
+    originCountries: Array.isArray(data && data.origin_country) ? data.origin_country.map(clean).filter(Boolean) : [],
     seasonName: clean(seasonData && seasonData.name),
     seasonYear: yearOf(seasonData && seasonData.air_date)
   };
@@ -374,6 +376,7 @@ async function tmdbContext(tmdbId, mediaType, season, episode) {
   trace("tmdb", {
     tmdbId, mediaType, season, episode, title,
     originalTitle: mediaType === "tv" ? clean(data.original_name) : clean(data.original_title),
+    originalLanguage: context.originalLanguage, originCountries: context.originCountries,
     seasonTitle: context.seasonName, seasonYear: context.seasonYear,
     aliases: context.aliases, queries: context.queries
   });
@@ -412,6 +415,13 @@ async function fetchFromNetflixDirect(context) {
     return [];
   }
 
+  trace("direct-metadata", {
+    path: "net27-direct", platform: "netflix",
+    responseKeys: data && typeof data === "object" ? Object.keys(data).sort() : [],
+    streamKeys: Array.isArray(data && data.streams) ? unique(data.streams.filter(Boolean).flatMap(item => Object.keys(item || {}))).sort() : [],
+    captionKeys: Array.isArray(data && data.captions) ? unique(data.captions.filter(Boolean).flatMap(item => Object.keys(item || {}))).sort() : []
+  });
+
   const identity = directIdentity(data, context);
   trace(identity.accepted ? "direct-accepted" : "rejection", {
     path: "net27-direct", platform: "netflix", reason: identity.reason || "",
@@ -433,14 +443,14 @@ async function fetchFromNetflixDirect(context) {
   if (Array.isArray(data.streams) && data.streams.length) {
     for (const stream of data.streams) {
       if (!stream || !/^https?:\/\//i.test(clean(stream.url))) continue;
-      rows.push({
+      rows.push(attachAudioMetadata({
         name: `NetMirror (Netflix) - ${stream.resolution}p`, title: context.title,
         url: stream.url, quality: `${stream.resolution}p`, headers: playbackHeaders,
         subtitles, provider: "netmirror"
-      });
+      }, stream, data));
     }
   } else if (/^https?:\/\//i.test(clean(data.mp4))) {
-    rows.push({ name: "NetMirror (Netflix) - Auto", title: context.title, url: data.mp4, quality: "Auto", headers: playbackHeaders, subtitles, provider: "netmirror" });
+    rows.push(attachAudioMetadata({ name: "NetMirror (Netflix) - Auto", title: context.title, url: data.mp4, quality: "Auto", headers: playbackHeaders, subtitles, provider: "netmirror" }, data));
   }
   return rows;
 }
@@ -597,11 +607,54 @@ async function fetchFromPlatform(platformKey, context) {
     mappedProviderEpisode: match.mappedEpisode, internalEpisodeId: match.targetId,
     playerId: match.targetId
   });
-  return [{
+  return [attachAudioMetadata({
     name: `NetMirror (${platform.label})`, title: context.title,
     url: response.video_link, quality: "Auto",
     headers: { Referer: response.referer || apiBase }, provider: "netmirror"
-  }];
+  }, response, match.postData)];
+}
+
+function scalarField(sources, keys) {
+  for (const source of sources) {
+    if (!source || typeof source !== "object") continue;
+    for (const key of keys) {
+      const value = source[key];
+      if (typeof value === "string" || typeof value === "number") {
+        const normalized = clean(value);
+        if (normalized) return normalized;
+      }
+    }
+  }
+  return "";
+}
+
+function arrayField(sources, keys) {
+  for (const source of sources) {
+    if (!source || typeof source !== "object") continue;
+    for (const key of keys) {
+      if (Array.isArray(source[key]) && source[key].filter(Boolean).length) return source[key];
+    }
+  }
+  return null;
+}
+
+function attachAudioMetadata(row, ...sources) {
+  const language = scalarField(sources, ["audioLanguage", "audio_language", "audioLang", "audio_lang", "language", "lang"]);
+  const audioType = scalarField(sources, ["audioType", "audio_type", "audioLabel", "audio_label"]);
+  const audio = scalarField(sources, ["audio"]);
+  const audioTracks = arrayField(sources, ["audioTracks", "audio_tracks", "audios", "audio_streams"]);
+  const explicitDub = sources.some(source => source && typeof source === "object" &&
+    (source.isDubbed === true || source.dubbed === true || source.dub === true));
+  const explicitDual = sources.some(source => source && typeof source === "object" &&
+    (source.dualAudio === true || source.dual_audio === true || source.isDualAudio === true));
+
+  if (language) row.audioLanguage = language;
+  if (audioType) row.audioType = audioType;
+  else if (explicitDub) row.audioType = "dub";
+  else if (explicitDual) row.audioType = "dual";
+  if (audio) row.audio = audio;
+  if (audioTracks) row.audioTracks = audioTracks;
+  return row;
 }
 
 function qualityNumber(row) {
@@ -644,16 +697,42 @@ function hasMultipleAudio(row) {
   return tracks.filter(track => track && typeof track === "object" && /audio/i.test(clean(track.kind || track.type))).length > 1;
 }
 
-function classification(row) {
+function audioEvidence(row) {
+  const languageText = [row && row.audioLanguage, row && row.language, row && row.lang]
+    .filter(Boolean).join(" ").toLowerCase();
+  const descriptiveText = [row && row.audio, row && row.audioType]
+    .filter(Boolean).join(" ").toLowerCase();
+  const allText = `${languageText} ${descriptiveText}`.trim();
+  const explicitDub = /\[dub(?:\+sub)?\]|english\s*dub|\bdubbed\b|\bdub\b/.test(allText);
+  const english = explicitDub || /(?:^|[^a-z])(?:en|eng|english)(?:[^a-z]|$)/i.test(languageText) ||
+    /\benglish\b/i.test(descriptiveText);
+  return {
+    explicitDub,
+    english,
+    hasLanguageEvidence: !!languageText,
+    languageText,
+    descriptiveText
+  };
+}
+
+function classification(row, context) {
   const text = [row && row.name, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
     .filter(Boolean).join(" ").toLowerCase();
   const dual = hasMultipleAudio(row) || /dual\s*audio|\[dual\]|\bdual\b/.test(text);
   const selectable = hasSelectableSubs(row);
-  const dub = /\[dub(?:\+sub)?\]|english\s*dub|\bdubbed\b|\bdub\b/.test(text);
+  const evidence = audioEvidence(row);
   const hardSub = /\[hsub\]|hard[\s-]*subs?|hardsub/.test(text);
+
+  // Nexus uses [DUB] as the user-facing English-audio bucket. Actual stream/provider
+  // metadata wins. When NetMirror exposes no audio-language evidence, English-original
+  // content from TMDB is treated as English default audio.
+  const tmdbEnglish = clean(context && context.originalLanguage).toLowerCase() === "en";
+  const inferredEnglish = !evidence.hasLanguageEvidence && tmdbEnglish;
+  const englishAudio = evidence.english || inferredEnglish;
+
   if (dual) return "[DUAL]";
-  if (selectable) return dub ? "[DUB+SUB]" : "[SUB]";
-  if (dub) return "[DUB]";
+  if (selectable) return englishAudio ? "[DUB+SUB]" : "[SUB]";
+  if (englishAudio) return "[DUB]";
   if (hardSub) return "[HSUB]";
   return "[UNK]";
 }
@@ -669,8 +748,21 @@ function serviceLabel(row) {
   return "";
 }
 
-function normalizeRows(rows) {
-  const metadata = rows.map(row => ({ row, quality: qualityLabel(qualityNumber(row)), tag: classification(row), service: serviceLabel(row) }));
+function normalizeRows(rows, context) {
+  const metadata = rows.map(row => {
+    const quality = qualityLabel(qualityNumber(row));
+    const tag = classification(row, context);
+    const evidence = audioEvidence(row);
+    trace("classification", {
+      quality, tag, originalLanguage: clean(context && context.originalLanguage),
+      audioLanguage: clean(row && (row.audioLanguage || row.language || row.lang)),
+      audioType: clean(row && row.audioType),
+      selectableSubtitles: hasSelectableSubs(row),
+      multipleAudio: hasMultipleAudio(row),
+      inferredEnglishFromTmdb: !evidence.hasLanguageEvidence && clean(context && context.originalLanguage).toLowerCase() === "en"
+    });
+    return { row, quality, tag, service: serviceLabel(row) };
+  });
   const serviceSets = {};
   for (const item of metadata) {
     const key = `${item.quality}|${item.tag}`;
@@ -712,10 +804,10 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
     trace("platform", { platform: platformKey, preferred, forceHd: settings.forceHd !== false });
     if (platformKey === "netflix") {
       const direct = await fetchFromNetflixDirect(context);
-      if (direct.length) return normalizeRows(direct);
+      if (direct.length) return normalizeRows(direct, context);
     }
     const generic = await fetchFromPlatform(platformKey, context);
-    if (generic.length) return normalizeRows(generic);
+    if (generic.length) return normalizeRows(generic, context);
   }
   return [];
 }
@@ -742,7 +834,7 @@ async function onSettings() {
 
 const testApi = {
   normalizeTitle, titleKey, seasonMarker, scoreTitleOwnership, buildSearchQueries, exactEpisode,
-  diagnostics,
+  classification, audioEvidence, attachAudioMetadata, diagnostics,
   reset() { resolvedApiUrl = ""; lastDiagnostics = []; }
 };
 
