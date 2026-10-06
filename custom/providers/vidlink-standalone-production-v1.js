@@ -3,8 +3,10 @@
 // Nexus-owned standalone Vidlink implementation based on the measured and
 // user-verified Haylox/Vidlink playback contract. Keep extraction headers off
 // returned media rows: that is part of the confirmed Nuvio playback behavior.
-// Den-O S1E1 was manually verified as hard-subbed, so this verified stream
-// class uses [HSUB] under NAMING_STANDARDS.md.
+// Den-O S1E1 was manually verified as hard-subbed. Presentation is now
+// content-aware: English-original/default-English content uses the Nexus
+// [DUB] English-audio bucket, while non-English content keeps the verified
+// [HSUB] fallback when Vidlink exposes no selectable subtitles.
 const PROVIDER_NAME = "Vidlink";
 const TMDB_API_URL = "https://api.themoviedb.org/3";
 const TMDB_API_KEY = "307b7b8ef035c6aa336900aef4e203bd";
@@ -124,7 +126,13 @@ async function playlistRows(url) {
   }
 }
 
-function present(rows) {
+function presentationTag(metadata) {
+  const originalLanguage = String(metadata && metadata.original_language || "").trim().toLowerCase();
+  if (originalLanguage === "en") return "[DUB]";
+  return "[HSUB]";
+}
+
+function present(rows, metadata) {
   const seen = new Set();
   const accepted = rows
     .filter(row => QUALITY_HEIGHTS[row.quality] && row.url && row.url.startsWith("https"))
@@ -140,7 +148,7 @@ function present(rows) {
     const tier = height >= 2160 ? "4K" : height >= 1440 ? "Enhanced QHD" : height >= 1080 ? "FHD" : "HD";
     return {
       ...row,
-      name: `${PROVIDER_NAME} • ${tier} ${height}p • [HSUB]`,
+      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata)}`,
       title: sortTag + "Vidlink"
     };
   });
@@ -175,7 +183,7 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     const playlists = await Promise.all(
       extracted.filter(row => row._playlist).map(row => playlistRows(row.url))
     );
-    return present(direct.concat(...playlists));
+    return present(direct.concat(...playlists), metadata);
   } catch (_) {
     return [];
   }
