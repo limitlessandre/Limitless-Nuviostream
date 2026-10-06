@@ -78,13 +78,16 @@ Do not generalize that rule to other languages or providers. If KissKH changes i
 
 ### Vidlink
 
-The standalone Vidlink rebuild reproducing the confirmed control contract does not currently expose selectable subtitle tracks to Nuvio. Playback testing also shows a single audio track for the current stream class.
+Vidlink follows the general Nexus decision tree. The old Den-O S1E1 hard-sub playback check is not a provider-wide rule and must not be used to classify unrelated titles.
 
-Use content-aware labeling for this provider:
-- English-original/default-English content from TMDB `original_language: en` → `[DUB]`
-- Non-English content with no selectable subtitles → retain the manually verified `[HSUB]` fallback for the current Vidlink stream class
+Current behavior:
+- actual Vidlink audio/subtitle metadata takes priority
+- English-original/default-English content may fall back to TMDB `original_language: en` → `[DUB]`
+- non-English content with selectable subtitle tracks → `[SUB]`
+- non-English content with no subtitle/audio evidence → `[UNK]`
+- use `[HSUB]` only when the returned source explicitly establishes hard subtitles
 
-Den-O S1E1 remains the manual verification baseline for the non-English hard-sub fallback. If Vidlink begins exposing selectable captions, multiple audio tracks, or explicit audio-language metadata, prefer that stream evidence and re-run the normal decision tree.
+The production provider reads caption/subtitle arrays returned by Vidlink and uses the same `multiLang=0` API mode observed in Vidlink's own player flow. If future payloads expose multiple audio tracks or explicit English-dub metadata, classify them with the normal `[DUAL]` / `[DUB]` rules.
 
 ### WCO
 
