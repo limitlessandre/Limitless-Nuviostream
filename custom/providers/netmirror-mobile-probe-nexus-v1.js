@@ -36,11 +36,43 @@ async function loadBase() {
   }
 }
 
+function visibleDiagnostics(rows) {
+  const out = [];
+  for (const row of Array.isArray(rows) ? rows : []) {
+    if (!row || !String(row.name || "").includes("• DIAG")) {
+      out.push(row);
+      continue;
+    }
+
+    const detail = String(row.title || "").trim();
+    if (!detail) {
+      out.push(row);
+      continue;
+    }
+
+    // Nuvio's source picker does not surface the row title for diagnostic cards,
+    // so promote the diagnostic payload into the visible stream name. Split long
+    // payloads into compact chunks so keys/metadata can be read directly.
+    const chunks = [];
+    for (let i = 0; i < detail.length; i += 135) chunks.push(detail.slice(i, i + 135));
+
+    chunks.slice(0, 6).forEach((chunk, index) => {
+      out.push({
+        ...row,
+        name: "NetMirror Mobile Probe • " + (index ? "CONT " + (index + 1) + " • " : "") + chunk,
+        title: "NetMirror Mobile Probe diagnostic",
+        quality: "DIAG"
+      });
+    });
+  }
+  return out.slice(0, 24);
+}
+
 async function getStreams(inputId, mediaType, season, episode) {
   const base = await loadBase();
   if (!base) return [];
   try {
-    return await base.getStreams(inputId, mediaType, season, episode);
+    return visibleDiagnostics(await base.getStreams(inputId, mediaType, season, episode));
   } catch (_) {
     return [];
   }
