@@ -46,8 +46,8 @@ A subtitle is considered selectable only when the returned stream exposes actual
 If selectable subtitle tracks exist:
 
 ```text
-verified dub + selectable subtitles → [DUB+SUB]
-otherwise                          → [SUB]
+English/default-English audio + selectable subtitles → [DUB+SUB]
+otherwise                                           → [SUB]
 ```
 
 `[SUB]` and `[DUB+SUB]` must **not** be inferred from a site saying "subbed" or from the audio language alone. They specifically mean selectable/soft subtitle tracks are exposed to Nuvio.
@@ -125,16 +125,19 @@ Nuvio may separately show a language line such as:
 720p • Japanese
 ```
 
-That language field describes the audio/content language. It does **not** by itself decide `[SUB]`, `[HSUB]`, `[DUB]`, or `[UNK]`.
+That language field is evidence about the stream audio when it comes from the returned stream/provider metadata. Content-level language metadata such as TMDB original language is a lower-priority fallback and must not override contradictory stream metadata.
 
 Examples:
 
 ```text
+English stream audio + selectable subtitle tracks → [DUB+SUB]
+English stream audio + no selectable subtitles → [DUB]
+English-original content + no stream audio metadata → [DUB] fallback
+English-original content + selectable subtitles + no stream audio metadata → [DUB+SUB] fallback
 Japanese + selectable subtitle tracks → [SUB]
 Japanese + verified hard subs, no selectable tracks → [HSUB]
 Japanese + subtitle behavior unverified → [UNK]
-English + explicit Dub label, no selectable tracks → [DUB]
-English language only, no other evidence → [UNK]
+Japanese-original anime + explicit English Dub → [DUB]
 ```
 
 ## Implementation rule for future providers
@@ -145,10 +148,12 @@ When adding or refining a provider:
 2. Inspect the raw row metadata before normalizing the visible name.
 3. Detect multiple audio tracks before all other tag logic.
 4. Detect real selectable subtitle tracks from returned track arrays.
-5. Use explicit source/provider text only for verified Dub or Hard-Sub classification.
-6. Never infer subtitle type from Japanese/original language alone.
-7. Fall back to `[UNK]` instead of guessing.
-8. Put mirror/service disambiguation after the tag and only when useful.
-9. Keep diagnostic rows distinct from playable stream rows.
+5. Treat English/default-English audio as the `[DUB]` bucket, whether English-original or an English dub.
+6. Prefer actual stream/provider audio evidence over content metadata.
+7. When stream audio metadata is absent, use trusted content metadata such as TMDB original language only as a fallback for English-original content.
+8. Never infer subtitle type from Japanese/original language alone.
+9. Fall back to `[UNK]` instead of guessing when neither stream nor trusted content metadata establishes the class.
+10. Put mirror/service disambiguation after the tag and only when useful.
+11. Keep diagnostic rows distinct from playable stream rows.
 
 If manual playback establishes a provider-specific rule, record it in this file before teaching wrappers to rely on it.
