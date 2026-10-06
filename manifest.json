@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -82,10 +82,10 @@
       "id": "limitless-netmirror-mobile-probe",
       "name": "NetMirror Mobile Probe",
       "description": "Nexus test-only diagnostic wrapper for NetMirror's current mobile /mobile/* flow. Inspects playlist entry/source/track/audio/language/server/mirror metadata and returns up to two playable sources so alternate English audio or Server 2 data can be verified without changing production NetMirror.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": "Limitless Nexus",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-mobile-probe-nexus-v1.js?rev=010",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-mobile-probe-nexus-v1.js?rev=011",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
