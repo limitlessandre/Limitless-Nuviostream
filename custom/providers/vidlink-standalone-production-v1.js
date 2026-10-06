@@ -46,6 +46,40 @@ function candidate(url, qualityValue) {
   };
 }
 
+function subtitleTrack(item) {
+  if (!item) return null;
+  if (typeof item === "string") {
+    const url = String(item).trim();
+    return /^https?:\/\//i.test(url) ? { url, file: url, language: "Unknown", name: "Unknown" } : null;
+  }
+  const url = String(item.file || item.url || item.src || item.uri || "").trim();
+  if (!/^https?:\/\//i.test(url)) return null;
+  const label = String(item.label || item.name || item.lang || item.language || "Unknown").trim() || "Unknown";
+  const language = String(item.language || item.lang || item.label || item.name || label).trim() || label;
+  return { url, file: url, language, name: label };
+}
+
+function collectSubtitles(data) {
+  const groups = [
+    data && data.stream && data.stream.captions,
+    data && data.stream && data.stream.subtitles,
+    data && data.subtitles,
+    data && data.captions
+  ];
+  const out = [];
+  const seen = new Set();
+  for (const group of groups) {
+    if (!Array.isArray(group)) continue;
+    for (const item of group) {
+      const track = subtitleTrack(item);
+      if (!track || seen.has(track.url)) continue;
+      seen.add(track.url);
+      out.push(track);
+    }
+  }
+  return out;
+}
+
 function extract(data) {
   if (!data) return [];
   const rows = [];
@@ -132,7 +166,7 @@ function presentationTag(metadata) {
   return "[UNK]";
 }
 
-function present(rows, metadata) {
+function present(rows, metadata, subtitles) {
   const seen = new Set();
   const accepted = rows
     .filter(row => QUALITY_HEIGHTS[row.quality] && row.url && row.url.startsWith("https"))
@@ -148,8 +182,9 @@ function present(rows, metadata) {
     const tier = height >= 2160 ? "4K" : height >= 1440 ? "Enhanced QHD" : height >= 1080 ? "FHD" : "HD";
     return {
       ...row,
-      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata)}`,
-      title: sortTag + "Vidlink"
+      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${subtitles.length ? "[SUB]" : presentationTag(metadata)}`,
+      title: sortTag + "Vidlink",
+      subtitles
     };
   });
 }
@@ -178,12 +213,14 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     const response = await fetch(endpoint, { headers: HEADERS });
     if (!response.ok) return [];
 
-    const extracted = extract(await response.json());
+    const payload = await response.json();
+    const subtitles = collectSubtitles(payload);
+    const extracted = extract(payload);
     const direct = extracted.filter(row => !row._playlist);
     const playlists = await Promise.all(
       extracted.filter(row => row._playlist).map(row => playlistRows(row.url))
     );
-    return present(direct.concat(...playlists), metadata);
+    return present(direct.concat(...playlists), metadata, subtitles);
   } catch (_) {
     return [];
   }
