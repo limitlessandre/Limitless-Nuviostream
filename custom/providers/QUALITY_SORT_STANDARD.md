@@ -17,10 +17,10 @@ All manifest-facing Nexus providers should put a sort-friendly quality tier imme
 
 Anime audio/subtitle variants use exactly these compact tags when applicable:
 
-- `[DUB]` = dubbed audio
-- `[SUB]` = original/Japanese audio with subtitles, whether hard or soft
-- `[DUB+SUB]` = dubbed audio with subtitle tracks
-- `[DUAL]` = dual/multiple audio tracks with subtitles
+- `[DUB]` = English/default-English audio, including English-original content and verified English dubs
+- `[SUB]` = non-English/original audio with selectable subtitles
+- `[DUB+SUB]` = English/default-English audio with selectable subtitle tracks
+- `[DUAL]` = dual/multiple selectable audio tracks
 
 Recommended row shape:
 
@@ -41,8 +41,11 @@ Rules:
 
 1. Keep the original numeric resolution in the `quality` field.
 2. Put the quality tier before audio tags and mirror labels.
-3. Use only `[DUB]`, `[SUB]`, `[DUB+SUB]`, and `[DUAL]` for anime audio/subtitle variants.
-4. Hard-vs-soft subtitle detail is intentionally hidden from the main visible label under `[SUB]` unless a future playback requirement makes that distinction necessary.
-5. Do not alter diagnostic or informational rows that do not represent playable video quality.
-6. Preserve existing provider extraction, matching, language metadata, subtitle tracks, headers, and safety logic. Label normalization is presentation-only.
-7. New Nexus providers should follow this convention before being added to the manifest.
+3. Use `[DUB]` as the simplified English-audio bucket for both English-original/default-English content and verified English dubs.
+4. Prefer actual stream/provider audio metadata; content metadata such as TMDB original language is a fallback only when stream audio evidence is absent.
+5. Use `[SUB]` for non-English/original audio with selectable subtitles, `[DUB+SUB]` for English audio with selectable subtitles, and `[DUAL]` when multiple selectable audio tracks are exposed.
+6. Preserve `[HSUB]` and `[UNK]` where the canonical root `NAMING_STANDARDS.md` requires them.
+7. Hard-vs-soft subtitle detail is intentionally compact in the visible label except where `[HSUB]` is needed to describe a verified hard-sub stream.
+8. Do not alter diagnostic or informational rows that do not represent playable video quality.
+9. Preserve existing provider extraction, matching, language metadata, subtitle tracks, headers, and safety logic. Label normalization is presentation-only.
+10. New Nexus providers should follow this convention before being added to the manifest.
