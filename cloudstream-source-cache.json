@@ -1285,14 +1285,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinefreak.cs3",
         "status": 1,
-        "version": 17,
+        "version": 18,
         "name": "Cinefreak",
         "internalName": "Cinefreak",
         "authors": [
           "Phisher98"
         ],
         "description": "Bangla/Hindi Movies/Series",
-        "fileSize": 124078,
+        "fileSize": 136561,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "bn",
         "tvTypes": [
@@ -1302,7 +1302,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/cinefreak.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9c9ea66e1b6be84115ba17e18d1eb52e6995e8848e925edb1ad8e7d141b1cb6b"
+        "fileHash": "sha256-cae18f9c1daf231a2dc8864e8f91fae7c9cdb7e7c3fdf7348c500bd4513ee49a"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
@@ -2294,7 +2294,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1932040,
+        "fileSize": 1934736,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2307,7 +2307,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-47eb93026809c343e29874440ce6014d8be1bab761515b50cc1c99500b8c7c49"
+        "fileHash": "sha256-cab14bece21d74ff20b6d388497f9d9531ce492d58ba837affb61c2d401a3d0c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -3864,7 +3864,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 31165,
+        "fileSize": 31166,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3873,7 +3873,7 @@
         ],
         "iconUrl": "https://3esk.onl/wp-content/uploads/2021/01/3isk-logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-00ead28e610d86add9fc0e3fd937c1dfe863b66b0c5686e28bebf8039c7ab86a"
+        "fileHash": "sha256-4cfc2ee656e3027e99593ca637015e80e620e968ed433f10999f41bac11a4492"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aflaam.cs3",
@@ -4389,6 +4389,27 @@
         "fileHash": "sha256-ff8e09bb07cb94fad7216e8c6a29bdff3d5758e6f7f1c4b68bacad18935bfe5a"
       },
       {
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Rate.cs3",
+        "status": 1,
+        "version": 1,
+        "name": ".Extension Rating تقييم الاضافات",
+        "internalName": "Rate",
+        "authors": [
+          "Abodabodd"
+        ],
+        "description": "",
+        "fileSize": 37131,
+        "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
+        "language": "ar",
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/Rate/src/main/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-4a79e6218f5a151395989e83c495a7e4d9ab33bdb7318e5e8bc6733f2165a636"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Replaymatch.cs3",
         "status": 1,
         "version": 2,
@@ -4483,7 +4504,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 28702,
+        "fileSize": 28913,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4492,7 +4513,7 @@
         ],
         "iconUrl": "https://web8.topcinema.cam/wp-content/uploads/2023/05/cropped-icon-32x32.png",
         "apiVersion": 1,
-        "fileHash": "sha256-04fe8195714a8ef8c38545ad8c135b219dfa2b1e2728ba70da82aa509964f69c"
+        "fileHash": "sha256-be724725a4ea3ce2c089e036449fb92405379c66d2470a337c155120c5b5de2f"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TukTukcima.cs3",
@@ -4504,7 +4525,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 42735,
+        "fileSize": 42902,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4513,7 +4534,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ10TEG3tTtkEF9_g3IslEP3xs0wx9EVhBs7b_H5M1gpg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-544bdb138d7644b6da28471fba9f56b50cc57fb877a310a0108f891ab0ab855e"
+        "fileHash": "sha256-0d9353f8bd3daa0d533f746aaecae5d9379302369da7f439a2c181cb0e771808"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TuniflexBlog.cs3",
@@ -10410,6 +10431,28 @@
         "iconUrl": "",
         "apiVersion": 1,
         "fileHash": "sha256-26502ec2f06262050a43bef8fb4b44c2d892938e904c00e8a26d24c9896b6c78"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/KmMovies.cs3",
+        "status": 1,
+        "version": 3,
+        "name": "KmMovies",
+        "internalName": "KmMovies",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "KMMovies: Download & Stream Free Latest Hindi, English & Dubbed Movies in 480p, 720p, 1080p & 4K – Formerly Khatrimaza.",
+        "fileSize": 28705,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://kmmovies.cyou/wp-content/uploads/2026/02/cropped-favicon-192x192.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-40b1a2fea19383c9ad7c58611d6319f9141bf301ab9d3e89703b0d2c34a0636e"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",

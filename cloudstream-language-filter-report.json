@@ -7,8 +7,22 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 324,
+  "excluded_count": 326,
   "excluded": [
+    {
+      "internalName": "Rate",
+      "name": ".Extension Rating تقييم الاضافات",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Rate.cs3",
+      "reason": "no-allowed-language"
+    },
     {
       "internalName": "18+",
       "name": "18+",
@@ -2239,6 +2253,20 @@
         "uk"
       ],
       "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/KlonTVProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "KmMovies",
+      "name": "KmMovies",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/KmMovies.cs3",
       "reason": "no-allowed-language"
     },
     {
