@@ -34,7 +34,7 @@ function controlQuality(value) {
   return null;
 }
 
-function candidate(url, qualityValue) {
+function candidate(url, qualityValue, payload) {
   const quality = controlQuality(qualityValue);
   if (!url || !quality) return null;
   return {
@@ -42,7 +42,8 @@ function candidate(url, qualityValue) {
     title: "Vidlink",
     url,
     quality,
-    type: url.toLowerCase().includes(".m3u8") ? "m3u8" : "video"
+    type: url.toLowerCase().includes(".m3u8") ? "m3u8" : "video",
+    _payload: payload || null
   };
 }
 
@@ -84,7 +85,7 @@ function extract(data) {
   if (!data) return [];
   const rows = [];
   const add = (url, quality) => {
-    const row = candidate(url, quality);
+    const row = candidate(url, quality, data);
     if (row) rows.push(row);
   };
   const stream = data.stream;
@@ -148,7 +149,7 @@ async function playlistRows(url) {
             resolved = new URL(line, url).toString();
           } catch (_) {}
         }
-        const row = candidate(resolved, resolution);
+        const row = candidate(resolved, resolution, null);
         if (row) rows.push(row);
         pending = false;
       }
@@ -160,9 +161,42 @@ async function playlistRows(url) {
   }
 }
 
-function presentationTag(metadata) {
+function audioEvidence(payload) {
+  const stream = payload && payload.stream;
+  const fields = [
+    stream && stream.audioLanguage,
+    stream && stream.audio_language,
+    stream && stream.language,
+    stream && stream.lang,
+    stream && stream.audio,
+    stream && stream.audioType,
+    payload && payload.audioLanguage,
+    payload && payload.language
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  const groups = [
+    stream && stream.audioTracks,
+    stream && stream.audio_tracks,
+    stream && stream.audios,
+    payload && payload.audioTracks,
+    payload && payload.audios
+  ];
+  const dual = groups.some(group => Array.isArray(group) && group.filter(Boolean).length > 1) ||
+    /dual\s*audio|\bdual\b/.test(fields);
+  const english = /(?:^|[^a-z])(?:en|eng|english)(?:[^a-z]|$)/i.test(fields) ||
+    /english\s*dub|\bdubbed\b|\bdub\b/.test(fields);
+  const hardSub = /hard[\s-]*subs?|hardsub|\bhsub\b/.test(fields);
+  return { dual, english, hardSub, hasAudioEvidence: !!fields };
+}
+
+function presentationTag(metadata, payload, subtitles) {
+  const evidence = audioEvidence(payload);
   const originalLanguage = String(metadata && metadata.original_language || "").trim().toLowerCase();
-  if (originalLanguage === "en") return "[DUB]";
+  const englishAudio = evidence.english || (!evidence.hasAudioEvidence && originalLanguage === "en");
+  if (evidence.dual) return "[DUAL]";
+  if (subtitles.length) return englishAudio ? "[DUB+SUB]" : "[SUB]";
+  if (englishAudio) return "[DUB]";
+  if (evidence.hardSub) return "[HSUB]";
   return "[UNK]";
 }
 
@@ -182,7 +216,7 @@ function present(rows, metadata, subtitles) {
     const tier = height >= 2160 ? "4K" : height >= 1440 ? "Enhanced QHD" : height >= 1080 ? "FHD" : "HD";
     return {
       ...row,
-      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${subtitles.length ? "[SUB]" : presentationTag(metadata)}`,
+      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata, row._payload || null, subtitles)}`,
       title: sortTag + "Vidlink",
       subtitles
     };
@@ -208,8 +242,8 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     }
 
     const endpoint = isTv
-      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}`
-      : `${API_BASE}/movie/${encryption.result}`;
+      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}?multiLang=0`
+      : `${API_BASE}/movie/${encryption.result}?multiLang=0`;
     const response = await fetch(endpoint, { headers: HEADERS });
     if (!response.ok) return [];
 
@@ -220,7 +254,8 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     const playlists = await Promise.all(
       extracted.filter(row => row._playlist).map(row => playlistRows(row.url))
     );
-    return present(direct.concat(...playlists), metadata, subtitles);
+    const playlistRowsFlat = playlists.flat().map(row => ({ ...row, _payload: payload }));
+    return present(direct.concat(playlistRowsFlat), metadata, subtitles);
   } catch (_) {
     return [];
   }
