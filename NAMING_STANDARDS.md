@@ -19,7 +19,7 @@ WCO • FHD 1080p • [DUB] • Mirror 2
 WCO • HD 720p • [HSUB] • Mirror 1
 KissKH • HD 720p • [HSUB]
 Re:ANIME • FHD 1080p • [SUB]
-Vidlink • HD 720p • [HSUB]
+Vidlink • HD 720p • [DUB]
 NetMirror • SD 480p • [DUB]
 ```
 
@@ -78,9 +78,13 @@ Do not generalize that rule to other languages or providers. If KissKH changes i
 
 ### Vidlink
 
-The standalone Vidlink rebuild reproducing the confirmed one-row control contract was manually playback-verified in Nuvio during the September 2026 rebuild. Den-O S1E1 returned the expected single 720p direct row and the current stream class was verified as hard-subbed. The confirmed baseline does not expose selectable subtitle tracks to Nuvio, so this stream class may use `[HSUB]`.
+The standalone Vidlink rebuild reproducing the confirmed control contract does not currently expose selectable subtitle tracks to Nuvio. Playback testing also shows a single audio track for the current stream class.
 
-Do not infer `[HSUB]` merely from Vidlink language metadata. If the active Vidlink implementation begins exposing selectable caption tracks, dual audio, or a materially different source class, re-run the normal decision tree and re-verify the classification.
+Use content-aware labeling for this provider:
+- English-original/default-English content from TMDB `original_language: en` → `[DUB]`
+- Non-English content with no selectable subtitles → retain the manually verified `[HSUB]` fallback for the current Vidlink stream class
+
+Den-O S1E1 remains the manual verification baseline for the non-English hard-sub fallback. If Vidlink begins exposing selectable captions, multiple audio tracks, or explicit audio-language metadata, prefer that stream evidence and re-run the normal decision tree.
 
 ### WCO
 
