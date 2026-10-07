@@ -1,8 +1,8 @@
 # Limitless Nexus
 
-**Limitless Nexus** is the active custom-provider development branch for Limitless Nuviostream. This is where providers are researched, compared with maintained upstream implementations, adapted for Nuvio, and tested before they are promoted to `Limitless-Master-Nexus`.
+**Limitless Nexus** is the active custom-provider development branch for Limitless Nuviostream. Providers are researched, rebuilt, tested, and cleaned up here before their production implementation is promoted individually to `Limitless-Master-Nexus`.
 
-The branch exists because the earlier all-in-one provider experiment became too difficult to reason about. Nexus restarted from a clean base and adopted a provider-by-provider approach so identity matching, extraction, playback, language labeling, and fallback behavior can be understood independently instead of being buried inside a giant manifest.
+Nexus is intentionally not a mirror of Master. It may contain newer provider implementations, test providers, diagnostic scripts, and branch-specific production filenames.
 
 ## Install
 
@@ -12,88 +12,112 @@ Nuvio development manifest:
 https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/manifest.json
 ```
 
-[Open the Limitless Nexus manifest](https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/manifest.json)
+The root `manifest.json` is the active Nexus manifest.
 
-A branch-local copy is also maintained at `custom/manifest.json`.
+## Branch model
 
-## Purpose and design
+- **`Limitless-Provider-Lab`**: historical provider bench, old ports, broad experiments, alternate architectures, and unfinished research.
+- **`Limitless-nexus`**: focused development and device-testing branch.
+- **`Limitless-Master-Nexus`**: stable day-to-day catalog containing only individually promoted provider implementations.
 
-Nexus is intended to become a compact, well-rounded provider repository rather than a catalogue of every scraper that can be found. The working target is around **twenty providers or fewer**, with roughly five useful choices or fallbacks across the major content areas when crossover providers are counted.
+### Promotion is provider-by-provider
 
-The intended coverage includes anime, Western animation, movies, live-action television, Asian drama, and eventually dedicated donghua coverage. A provider earns a place by adding useful independent coverage, not by inflating the provider count.
+Do **not** merge Nexus wholesale into Master merely to promote a completed provider. The branches intentionally have unrelated/divergent history.
 
-The branch favors providers with clean naming conventions, explicit season and episode structures, reliable TMDB/IMDb/MAL/AniList identity paths, and stream metadata that can be labeled without guessing. Minimal title transformation is preferred because every special-case search rewrite becomes another maintenance point later.
+For a promotion:
 
-Nexus does not rely on Real-Debrid, TorBox, P2P, or similar debrid/torrent services. The project is focused on direct provider scraping and playback paths that work inside Nuvio itself.
+1. finish the provider here;
+2. device-test its identity, episode, playback, audio, subtitles, quality, and naming behavior;
+3. copy only the tested production implementation into the corresponding Master provider file;
+4. update only that provider's Master manifest entry and the Master repository version as appropriate;
+5. synchronize relevant canonical documentation;
+6. leave unrelated Nexus experiments and diagnostics here.
 
-## Current providers
+Master and Nexus provider files are not expected to be byte-identical. Same-version providers can legitimately have different filenames, SHAs, comments, or branch packaging. Compare **provider version and actual promotion state**, not blob size alone.
 
-| Provider | Version | State | Notes |
-|---|---:|---|---|
-| Re:ANIME | 1.5.0 | Complete | Direct anime media with MAL/AniList identity mapping, dual-audio handling, and embedded subtitle preservation. |
-| WCO | 2.4.8 | Complete | Anime/animation provider with three proven frontend fallbacks, movie and special support, corrected language labels, and real mirror handling. |
-| AnikotoTV | 1.0.6 | Casual test / next development target | Known-working provider inherited from the earlier lab. It is being used normally before its deeper Nexus cleanup begins. |
+## Canonical naming
 
-Repository version: **2.0.28**
+The root `NAMING_STANDARDS.md` is authoritative.
 
-## Re:ANIME
-
-Re:ANIME was the first provider completed after the clean Nexus restart. It uses TMDB/IMDb metadata with MAL and AniList identity mapping and Re:ANIME's structured Flix data.
-
-The provider preserves meaningful distinctions between streams instead of treating every source label as a separate file. If SUB and DUB entries resolve to the same MKV, the result is treated as shared media and labeled according to the tracks it actually contains. Genuinely separate SUB-only and DUB-only files remain separate. Direct FlixCloud media is used without forcing a proxy when the source already provides a usable file.
-
-This provider established an important Nexus rule: **site labels are clues, not proof of the media tracks inside the file**.
-
-## WCO
-
-WCO was the second provider completed and received a much broader round of source testing because the WCO family exposes several related frontends with uneven behavior.
-
-The proven production order is:
+General grammar:
 
 ```text
-wcostream.tv → wcoflix.tv → wcoforever.net
+Provider • Quality • [TAG] • Optional Mirror/Disambiguator
 ```
 
-These three frontends were validated across normal anime episodes, Western animation, movies, Season 0 specials, and fallback cases. `wco.tv`, `wcoanimedub.tv`, and `wcoanimesub.tv` were investigated but did not provide enough reliable value to justify adding them to the production chain.
+Evidence priority is:
 
-The current WCO provider includes:
+```text
+actual stream/audio metadata
+→ provider/source evidence
+→ content metadata such as TMDB original language
+→ [UNK]
+```
 
-- normal episode matching with season protection;
-- movies and Season 0/special discovery;
-- Episode 0 and fractional-special fallbacks;
-- corrected Dub, Sub, and original-audio classification;
-- explicit-only mirror numbering so different CDN hosts are not falsely presented as separate mirrors;
-- direct-series-page fallback for titles that normal WCO search does not surface correctly;
-- deliberate non-matching of full-season bundle entries when Nuvio requests an individual episode.
+TMDB original language is a fallback, not proof that a particular returned stream uses that language. `[DUAL]` is reserved for media with genuinely selectable multiple audio tracks, not separate original/dub encodes.
 
-The full-season behavior matters for shows such as *Red vs. Blue*, where older seasons may exist on WCO only as `Season X Full` or multi-part compilations even though Nuvio metadata still exposes individual episodes. Because Nuvio does not currently provide a clean provider-supplied start-offset mechanism, Nexus leaves those compilation files alone rather than attaching the same full-season video to every episode.
+Do not add redundant suffixes such as `English Dub` or `Original` when the canonical tag already communicates the distinction.
 
-### WCO Premium research
+## Current Nexus providers
 
-Authenticated premium access was tested separately and answered a useful architectural question. A valid browser session reaches the premium episode and player, but the actual media request is generated dynamically as a tokenized `getvid?evid=...` URL and also relies on authenticated request context such as Cookie, Referer, and byte-range behavior.
+The active manifest is authoritative for exact versions. Current checkpoint:
 
-That experiment showed that premium playback is coupled to WCO's browser-side player rather than being a simple authenticated static stream. Premium support is therefore intentionally excluded from the production provider. The diagnostic files are retained in Git history for reference, but the temporary Domain Test provider is no longer exposed in the manifest.
+| Provider | Version | State |
+|---|---:|---|
+| Re:ANIME | 1.8.0 | Established |
+| WCO | 2.7.1 | Established |
+| AsiaFlix Test | 0.3.6 | Active development/test provider |
+| Tubi | 1.3.1 | Established |
+| NetMirror | 2.0.2 | Complete and promoted to Master |
+| Vidlink | 1.2.0 | Newer than Master; next clear promotion-review candidate |
+| KissKH | 1.1.1 | Established |
 
-## AnikotoTV
+Repository version: **2.3.14**
 
-AnikotoTV is the third provider currently present in Nexus. The starting implementation comes from the earlier provider laboratory and already works well enough for normal viewing, which makes it useful to test casually before modifying it.
+Re:ANIME, WCO, Tubi, and KissKH currently share their advertised provider versions with Master. Their branch files differ by design and should **not** be treated as unpromoted solely because the blobs differ.
 
-Its existing implementation combines TMDB information with MAL/AniList mapping and additional episode-number fallbacks, then resolves anime streams through the provider's current player path. The next dedicated provider-development cycle will evaluate which parts should be simplified, which identity fallbacks are actually useful, and whether the current subtitle/audio labeling accurately reflects the returned media.
+## NetMirror checkpoint
 
-Until that work begins, AnikotoTV should be treated as a known-working baseline rather than a finished Nexus rewrite.
+NetMirror **2.0.2** is complete on Nexus and has been promoted individually to Master.
 
-## Provider strategy
+The fast production route uses Net27 plus Aoneroom subject topology. It resolves verified English-dub and original encodes separately, fails closed on subject/episode mismatch, preserves selectable subtitles, and keeps only the **two highest distinct qualities per audio lane**.
 
-The project roadmap favors a small core with independent fallbacks. Anime specialists are balanced with crossover providers that can strengthen animation, drama, movies, and television without multiplying maintenance work. Candidate names discussed during planning include sources such as AnimePahe, AnimeKai, HiAnime/AniNeko-style alternatives, KissKH and other drama sources, plus broader movie/TV providers where their naming and extraction paths fit Nuvio well.
+Production names rely on canonical tags rather than redundant `English Dub` / `Original` suffixes. TMDB `original_language` is used as a fallback for original-language classification when stronger stream evidence is unavailable.
 
-The exact final list is intentionally flexible. Reliability and maintainability matter more than reaching a quota, and five genuinely independent options are more useful than five mirrors of the same underlying infrastructure.
+A separate slow session-based NetMirror route can expose genuine multi-audio masters. Its cold bootstrap remains too slow for production, so that implementation is parked in Provider Lab as **NetMirror Multi-Audio Lab**. Future work on true `[DUAL]` NetMirror should resume there rather than complicating the fast production resolver.
 
-Identity resolution and media extraction are treated as separate layers. If a provider finds the correct title and episode but playback fails, the working matching layer should be preserved while extraction is investigated. Likewise, a playable stream is not considered correctly implemented until its audio, subtitle, quality, and mirror labels reflect what the media actually provides.
+## Current next steps
 
-## Branch family
+At this checkpoint:
 
-- **`Limitless-Master-Nexus`**: stable promotion branch for providers that have passed Nexus development and are ready for broader use.
-- **`Limitless-nexus`**: this branch, where active provider development and targeted experiments happen.
-- **`Limitless-Provider-Lab`**: preserved legacy/provider laboratory with the larger historical provider set, older ports, and experiments useful for research and comparison.
+1. **Vidlink** is the obvious stable-vs-development version gap: Nexus 1.2.0 vs Master 1.0.0. Review/test it before promotion.
+2. **AsiaFlix Test** remains Nexus-only and should get its own development cycle next rather than being promoted just because it is absent from Master.
+3. Re:ANIME, WCO, Tubi, and KissKH should be considered version-synchronized unless provider history shows a post-promotion change.
+4. Provider Lab should be reviewed separately when choosing new provider candidates.
 
-Temporary diagnostic providers belong here or in the lab, not in Master. Once a provider reaches a stable state, the relevant production code is promoted forward while the investigative debris stays behind in history where it can still be useful later.
+## Provider development principles
+
+Nexus aims for a compact catalog, roughly twenty or fewer maintainable providers, with useful independent overlap across anime, Western animation, Asian drama, movies, and live-action television.
+
+Prefer providers with reliable identity paths, explicit episode structure, useful language metadata, and extraction paths that work directly in Nuvio. Independent fallbacks are more valuable than several frontends backed by the same source.
+
+Identity resolution and extraction are separate concerns. Preserve a working matching layer while debugging playback. Likewise, a playable URL is not considered finished until the returned media's quality, audio, subtitle, and mirror labels are evidence-based.
+
+Site labels are clues, not proof of media tracks.
+
+## Notes for future chats
+
+When continuing work in a new conversation:
+
+- Start by reading this README, the Master README, `NAMING_STANDARDS.md`, and the active manifests.
+- Assume `Limitless-nexus` is the working branch unless the user explicitly asks for promotion.
+- Never promote the whole Nexus branch to Master for a single provider.
+- Fetch current files before GitHub writes and update using the current blob SHA.
+- Keep production changes isolated from unrelated providers.
+- Bump provider/cache revisions when necessary to defeat stale Nuvio caching.
+- Preserve episode/title identity safeguards.
+- Do not infer audio language from a dub/source label when stronger media evidence contradicts it.
+- Keep diagnostic providers out of Master.
+- After device testing succeeds, promote only the finished provider's production code and manifest metadata.
+
+The point of Nexus is to make provider work understandable one source at a time, rather than turning the repository back into a single giant experiment.
