@@ -12,6 +12,8 @@ function slug(v){return clean(v).toLowerCase().replace(/&/g," and ").replace(/[^
 function host(u){try{return new URL(u).hostname;}catch(_){return "unknown";}}
 function diag(label,detail){return {name:PROVIDER_NAME+" • DIAG "+label+" • "+short(detail),title:short(detail),url:BASE_URL+"/favicon.ico",quality:"DIAG",language:"Unavailable",provider:PROVIDER_NAME,type:"mp4",subtitles:[]};}
 async function json(url){try{var r=await fetch(url,{headers:API_HEADERS,redirect:"follow",skipSizeCheck:true});if(!r||!r.ok)return null;return await r.json();}catch(_){return null;}}
+async function apiText(url){try{var r=await fetch(url,{headers:API_HEADERS,redirect:"follow",skipSizeCheck:true});var body=r?await r.text():"";return {status:r?Number(r.status||0):0,body:body,finalUrl:r&&r.url?r.url:url};}catch(e){return {status:0,body:"",finalUrl:url};}}
+function b64(v){try{if(typeof btoa==="function")return btoa(v);}catch(_){}var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",s=String(v),out="",i=0;while(i<s.length){var a=s.charCodeAt(i++)&255,b=i<s.length?s.charCodeAt(i++)&255:NaN,d=i<s.length?s.charCodeAt(i++)&255:NaN;out+=chars[a>>2]+chars[((a&3)<<4)|(b>>4)]+(isNaN(b)?"=":chars[((b&15)<<2)|(d>>6)])+(isNaN(d)?"=":chars[d&63]);}return out;}
 async function text(url){try{var r=await fetch(url,{headers:{"User-Agent":UA,"Accept":"text/html,*/*","Referer":BASE_URL+"/"},redirect:"follow",skipSizeCheck:true});var body=r?await r.text():"";return {status:r?Number(r.status||0):0,body:body,finalUrl:r&&r.url?r.url:url};}catch(e){return {status:0,body:"",finalUrl:url};}}
 function swId(u){var m=clean(u).match(/\/[efd]\/([a-zA-Z0-9]+)/);return m?m[1]:"";}
 function allMatches(s,re,max){var out=[],m;while((m=re.exec(s))&&out.length<(max||8)){out.push(m[1]||m[0]);if(!re.global)break;}return out;}
@@ -34,7 +36,13 @@ async function getStreams(inputId,mediaType,season,episode){
   var d=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(slug(title)));if(!d)return [diag("DETAIL",title+" not found")];
   var eps=Array.isArray(d.episodes)?d.episodes:[],ep=type==="movie"?eps[0]:eps.find(function(x){return Number(x&&x.number)===epNo;});if(!ep)return [diag("EPISODE",title+" E"+epNo+" not found")];
   var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[],sw=urls.find(function(x){return /streamwish/i.test(clean(x&&x.source))||/(dwish|streamwish|cybervynx|vibuxer)/i.test(clean(x&&x.url));});if(!sw)return [diag("STREAMWISH","not present")];
-  var sid=swId(clean(sw.url)),out=[diag("MATCH OK",title+" • E"+epNo+" • id="+(sid||"none"))];if(!sid)return out;
+  var sid=swId(clean(sw.url)),out=[diag("MATCH OK",title+" • E"+epNo+" • id="+(sid||"none"))];
+  var resolver=API_URL+"/drama/get-stream-url?value="+encodeURIComponent(b64(clean(sw.url)))+"&server="+encodeURIComponent(clean(sw.source||"streamwish").toLowerCase());
+  var ar=await apiText(resolver),aj=null;try{aj=JSON.parse(ar.body);}catch(_){}
+  var sources=aj&&Array.isArray(aj.sources)?aj.sources:[];
+  out.push(diag("API RESOLVER","HTTP "+ar.status+" • source="+clean(sw.source||"streamwish")+" • sources="+sources.length+" • body="+short(ar.body,180)));
+  for(var z=0;z<sources.length&&z<4;z++){var sf=sources[z]||{};out.push(diag("API SOURCE "+(z+1),"host="+host(sf.url)+" • m3u8="+String(!!sf.isM3U8)+" • url="+short(sf.url,180)));}
+  if(!sid)return out;
   for(var i=0;i<SW_DOMAINS.length;i++){
     var u="https://"+SW_DOMAINS[i]+"/"+sid,r=await text(u),q=inspect(r.body,r.finalUrl);
     out.push(diag("SW PAGE "+(i+1),SW_DOMAINS[i]+" • HTTP "+r.status+" • body="+r.body.length+" • title="+(q.title||"none")+" • inline="+q.inline+" • words="+(q.words.join(",")||"none")));
