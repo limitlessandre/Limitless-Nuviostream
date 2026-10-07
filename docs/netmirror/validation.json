@@ -1,0 +1,2008 @@
+[
+  {
+    "title": "Teach You a Lesson",
+    "tmdbId": 276161,
+    "season": 1,
+    "episode": 1,
+    "elapsedMs": 48880,
+    "rows": [
+      {
+        "name": "NetMirror • HD 720p • [DUAL]",
+        "url": "https://net52.cc/mobile/hls/81947712.m3u8",
+        "quality": "720p",
+        "headers": {
+          "User-Agent": "Mozilla/5.0 (Linux; Android 13; Pixel 5 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/149.0.7827.91 Safari/537.36 /OS.Gatu v3.0",
+          "Accept": "*/*",
+          "Accept-Language": "en-IN,en-US;q=0.9,en;q=0.8",
+          "Referer": "https://net52.cc/mobile/home?app=1"
+        },
+        "audioTracks": [
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "1. Czech",
+            "language": "cs",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/0/0.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "2. German",
+            "language": "de",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/1/1.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "3. English",
+            "language": "en",
+            "default": true,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/2/2.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "4. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/3/3.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "5. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/4/4.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "6. Filipino (Tagalog)",
+            "language": "fil",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/5/5.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "7. French",
+            "language": "fr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/6/6.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "8. Hindi",
+            "language": "hi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/7/7.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "9. Hungarian",
+            "language": "hu",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/8/8.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "10. Indonesian",
+            "language": "id",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/9/9.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "11. Italian",
+            "language": "it",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/10/10.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "12. Japanese",
+            "language": "ja",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/11/11.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "13. Korean",
+            "language": "ko",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/12/12.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "14. Polish",
+            "language": "pl",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/13/13.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "15. Portuguese",
+            "language": "pt",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/14/14.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "16. Romanian",
+            "language": "ro",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/15/15.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "17. Tamil",
+            "language": "ta",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/16/16.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "18. Telugu",
+            "language": "te",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/17/17.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "19. Thai",
+            "language": "th",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/18/18.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "20. Turkish",
+            "language": "tr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/19/19.m3u8"
+          }
+        ],
+        "subtitleCount": 9,
+        "subtitleLanguages": [
+          "81947712-ar",
+          "81947712-de",
+          "81947712-de",
+          "81947712-en",
+          "81947712-en",
+          "81947712-es",
+          "81947712-es",
+          "81947712-ko",
+          "81947712-ko"
+        ]
+      }
+    ],
+    "diagnostics": [
+      {
+        "event": "request",
+        "requestedTmdbId": 276161,
+        "requestedMediaType": "tv",
+        "requestedSeason": 1,
+        "requestedEpisode": 1
+      },
+      {
+        "event": "tmdb",
+        "tmdbId": 276161,
+        "mediaType": "tv",
+        "season": 1,
+        "episode": 1,
+        "title": "Teach You a Lesson",
+        "originalTitle": "참교육",
+        "originalLanguage": "ko",
+        "originCountries": [
+          "KR"
+        ],
+        "seasonTitle": "Season 1",
+        "seasonYear": 2026,
+        "aliases": [
+          "Teach You a Lesson",
+          "참교육",
+          "Aprendendo a Lição",
+          "真教育",
+          "不良指导官",
+          "Chamgyoyuk",
+          "Ch'amgyoyuk",
+          "Пусть послужит вам уроком"
+        ],
+        "queries": [
+          "Teach You a Lesson Season 1",
+          "Teach You a Lesson 1st Season",
+          "참교육 Season 1",
+          "참교육 1st Season",
+          "Aprendendo a Lição Season 1",
+          "Aprendendo a Lição 1st Season",
+          "Teach You a Lesson",
+          "참교육",
+          "Aprendendo a Lição",
+          "真教育",
+          "不良指导官",
+          "Chamgyoyuk"
+        ]
+      },
+      {
+        "event": "platform",
+        "platform": "netflix",
+        "preferred": "all",
+        "forceHd": true
+      },
+      {
+        "event": "newtv-discovery",
+        "discoveryDomain": "https://mobiledetects.com",
+        "apiBase": "https://tv.imgcdn.kim"
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Teach You a Lesson Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Teach You a Lesson 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "참교육 Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "참교육 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Aprendendo a Lição Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Aprendendo a Lição 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Teach You a Lesson",
+        "resultCount": 1,
+        "candidates": [
+          {
+            "id": "81947300",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          }
+        ]
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "참교육",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Aprendendo a Lição",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "真教育",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "不良指导官",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Chamgyoyuk",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "generic-accepted",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Teach You a Lesson",
+        "candidateTitle": "Teach You a Lesson",
+        "candidateId": "81947300",
+        "candidateSeasonStructure": [
+          {
+            "id": "81947301",
+            "number": 1,
+            "selected": true
+          }
+        ],
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "catalogueLayout": "multi-season",
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "internalEpisodeId": "81947712",
+        "playerId": "81947712"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81947712",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81947712",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81947712",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81947712",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "mobile-verify",
+        "attempt": 1,
+        "done": false
+      },
+      {
+        "event": "mobile-verify",
+        "attempt": 2,
+        "done": false
+      },
+      {
+        "event": "mobile-verify",
+        "attempt": 3,
+        "done": false
+      },
+      {
+        "event": "mobile-verify",
+        "attempt": 4,
+        "done": true
+      },
+      {
+        "event": "mobile-playlist",
+        "path": "mobile-netflix",
+        "entryCount": 1,
+        "sourceCount": 2,
+        "subtitleCount": 9,
+        "sourceLabels": [
+          "Auto",
+          "Mid HD"
+        ],
+        "sourceLanguages": [
+          "eng"
+        ],
+        "entryKeys": [
+          "image2",
+          "sources",
+          "tracks"
+        ]
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81947712",
+        "height": 720,
+        "audioLanguages": [
+          "cs",
+          "de",
+          "en",
+          "es",
+          "fil",
+          "fr",
+          "hi",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "pl",
+          "pt",
+          "ro",
+          "ta",
+          "te",
+          "th",
+          "tr"
+        ],
+        "audioCount": 20,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81947712",
+        "height": 720,
+        "audioLanguages": [
+          "cs",
+          "de",
+          "en",
+          "es",
+          "fil",
+          "fr",
+          "hi",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "pl",
+          "pt",
+          "ro",
+          "ta",
+          "te",
+          "th",
+          "tr"
+        ],
+        "audioCount": 20,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "dedup",
+        "reason": "same-episode-quality-tracks-media",
+        "quality": "720p"
+      },
+      {
+        "event": "mobile-accepted",
+        "path": "mobile-netflix",
+        "candidateTitle": "Teach You a Lesson",
+        "playerId": "81947712",
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "returnedRows": 1
+      },
+      {
+        "event": "classification",
+        "quality": "HD 720p",
+        "tag": "[DUAL]",
+        "originalLanguage": "ko",
+        "audioLanguage": "eng",
+        "audioType": "",
+        "selectableSubtitles": true,
+        "multipleAudio": true,
+        "inferredEnglishFromTmdb": false
+      }
+    ]
+  },
+  {
+    "title": "Centaurworld",
+    "tmdbId": 93233,
+    "season": 1,
+    "episode": 1,
+    "elapsedMs": 5747,
+    "rows": [
+      {
+        "name": "NetMirror • HD 720p • [DUAL]",
+        "url": "https://net52.cc/mobile/hls/81048667.m3u8",
+        "quality": "720p",
+        "headers": {
+          "User-Agent": "Mozilla/5.0 (Linux; Android 13; Pixel 5 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/149.0.7827.91 Safari/537.36 /OS.Gatu v3.0",
+          "Accept": "*/*",
+          "Accept-Language": "en-IN,en-US;q=0.9,en;q=0.8",
+          "Referer": "https://net52.cc/mobile/home?app=1"
+        },
+        "audioTracks": [
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "1. Arabic",
+            "language": "ar",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/0/0.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "2. Czech",
+            "language": "cs",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/1/1.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "3. Danish",
+            "language": "da",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/2/2.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "4. German",
+            "language": "de",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/3/3.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "5. Greek",
+            "language": "el",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/4/4.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "6. English",
+            "language": "en",
+            "default": true,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/5/5.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "7. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/6/6.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "8. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/7/7.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "9. Finnish",
+            "language": "fi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/8/8.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "10. French",
+            "language": "fr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/9/9.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "11. Hebrew",
+            "language": "he",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/10/10.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "12. Hindi",
+            "language": "hi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/11/11.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "13. Croatian",
+            "language": "hr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/12/12.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "14. Hungarian",
+            "language": "hu",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/13/13.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "15. Indonesian",
+            "language": "id",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/14/14.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "16. Italian",
+            "language": "it",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/15/15.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "17. Japanese",
+            "language": "ja",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/16/16.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "18. Korean",
+            "language": "ko",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/17/17.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "19. Malay",
+            "language": "ms",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/18/18.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "20. Norwegian",
+            "language": "nb",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/19/19.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "21. Dutch",
+            "language": "nl",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/20/20.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "22. Polish",
+            "language": "pl",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/21/21.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "23. Portuguese",
+            "language": "pt",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/22/22.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "24. Portuguese",
+            "language": "pt",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/23/23.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "25. Romanian",
+            "language": "ro",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/24/24.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "26. Russian",
+            "language": "ru",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/25/25.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "27. Swedish",
+            "language": "sv",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/26/26.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "28. Thai",
+            "language": "th",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/27/27.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "29. Turkish",
+            "language": "tr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/28/28.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "30. Ukrainian",
+            "language": "uk",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/29/29.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "31. Vietnamese",
+            "language": "vi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/30/30.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "32. Chinese",
+            "language": "zh",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://s24.freecdn3.top/files/81048667/a/31/31.m3u8"
+          }
+        ],
+        "subtitleCount": 33,
+        "subtitleLanguages": [
+          "81048667-ar",
+          "81048667-ar",
+          "81048667-cs",
+          "81048667-da",
+          "81048667-de",
+          "81048667-el",
+          "81048667-en",
+          "81048667-es-es",
+          "81048667-es",
+          "81048667-fi",
+          "81048667-fr",
+          "81048667-he",
+          "81048667-hr",
+          "81048667-hu",
+          "81048667-id",
+          "81048667-it",
+          "81048667-ja",
+          "81048667-ko",
+          "81048667-ms",
+          "81048667-nb",
+          "81048667-nl",
+          "81048667-pl",
+          "81048667-pt-br",
+          "81048667-pt",
+          "81048667-ro",
+          "81048667-ru",
+          "81048667-sv",
+          "81048667-th",
+          "81048667-tr",
+          "81048667-uk",
+          "81048667-vi",
+          "81048667-zh-hans",
+          "81048667-zh-hant"
+        ]
+      }
+    ],
+    "diagnostics": [
+      {
+        "event": "request",
+        "requestedTmdbId": 93233,
+        "requestedMediaType": "tv",
+        "requestedSeason": 1,
+        "requestedEpisode": 1
+      },
+      {
+        "event": "tmdb",
+        "tmdbId": 93233,
+        "mediaType": "tv",
+        "season": 1,
+        "episode": 1,
+        "title": "Centaurworld",
+        "originalTitle": "Centaurworld",
+        "originalLanguage": "en",
+        "originCountries": [
+          "US"
+        ],
+        "seasonTitle": "Season 1",
+        "seasonYear": 2021,
+        "aliases": [
+          "Centaurworld",
+          "O Mundo dos Centauros",
+          "半人马世界",
+          "人马乐园",
+          "Kentaurie",
+          "Kentauruerden",
+          "Ο Κόσμος των Κενταύρων",
+          "Kentaurföld"
+        ],
+        "queries": [
+          "Centaurworld Season 1",
+          "Centaurworld 1st Season",
+          "O Mundo dos Centauros Season 1",
+          "O Mundo dos Centauros 1st Season",
+          "半人马世界 Season 1",
+          "半人马世界 1st Season",
+          "Centaurworld",
+          "O Mundo dos Centauros",
+          "半人马世界",
+          "人马乐园",
+          "Kentaurie",
+          "Kentauruerden"
+        ]
+      },
+      {
+        "event": "platform",
+        "platform": "netflix",
+        "preferred": "all",
+        "forceHd": true
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Centaurworld Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Centaurworld 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "O Mundo dos Centauros Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "O Mundo dos Centauros 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "半人马世界 Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "半人马世界 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Centaurworld",
+        "resultCount": 1,
+        "candidates": [
+          {
+            "id": "80992673",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          }
+        ]
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "O Mundo dos Centauros",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "半人马世界",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "人马乐园",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Kentaurie",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Kentauruerden",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "generic-accepted",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Centaurworld",
+        "candidateTitle": "Centaurworld",
+        "candidateId": "80992673",
+        "candidateSeasonStructure": [
+          {
+            "id": "80992674",
+            "number": 1,
+            "selected": false
+          },
+          {
+            "id": "81011599",
+            "number": 2,
+            "selected": true
+          }
+        ],
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "catalogueLayout": "multi-season",
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "internalEpisodeId": "81048667",
+        "playerId": "81048667"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81048667",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81048667",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81048667",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81048667",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "mobile-playlist",
+        "path": "mobile-netflix",
+        "entryCount": 1,
+        "sourceCount": 2,
+        "subtitleCount": 33,
+        "sourceLabels": [
+          "Auto",
+          "Mid HD"
+        ],
+        "sourceLanguages": [
+          "eng"
+        ],
+        "entryKeys": [
+          "image2",
+          "sources",
+          "tracks"
+        ]
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81048667",
+        "height": 720,
+        "audioLanguages": [
+          "ar",
+          "cs",
+          "da",
+          "de",
+          "el",
+          "en",
+          "es",
+          "fi",
+          "fr",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "ms",
+          "nb",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh"
+        ],
+        "audioCount": 32,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81048667",
+        "height": 720,
+        "audioLanguages": [
+          "ar",
+          "cs",
+          "da",
+          "de",
+          "el",
+          "en",
+          "es",
+          "fi",
+          "fr",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "ms",
+          "nb",
+          "nl",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "sv",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh"
+        ],
+        "audioCount": 32,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "dedup",
+        "reason": "same-episode-quality-tracks-media",
+        "quality": "720p"
+      },
+      {
+        "event": "mobile-accepted",
+        "path": "mobile-netflix",
+        "candidateTitle": "Centaurworld",
+        "playerId": "81048667",
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "returnedRows": 1
+      },
+      {
+        "event": "classification",
+        "quality": "HD 720p",
+        "tag": "[DUAL]",
+        "originalLanguage": "en",
+        "audioLanguage": "eng",
+        "audioType": "",
+        "selectableSubtitles": true,
+        "multipleAudio": true,
+        "inferredEnglishFromTmdb": false
+      }
+    ]
+  },
+  {
+    "title": "Squid Game",
+    "tmdbId": 93405,
+    "season": 1,
+    "episode": 1,
+    "elapsedMs": 5164,
+    "rows": [
+      {
+        "name": "NetMirror • HD 720p • [DUAL]",
+        "url": "https://net52.cc/mobile/hls/81262746.m3u8",
+        "quality": "720p",
+        "headers": {
+          "User-Agent": "Mozilla/5.0 (Linux; Android 13; Pixel 5 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/149.0.7827.91 Safari/537.36 /OS.Gatu v3.0",
+          "Accept": "*/*",
+          "Accept-Language": "en-IN,en-US;q=0.9,en;q=0.8",
+          "Referer": "https://net52.cc/mobile/home?app=1"
+        },
+        "audioTracks": [
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "1. Arabic",
+            "language": "ar",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/0/0.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "2. Czech",
+            "language": "cs",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/1/1.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "3. German",
+            "language": "de",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/2/2.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "4. English",
+            "language": "en",
+            "default": true,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/3/3.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "5. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/4/4.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "6. Spanish",
+            "language": "es",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/5/5.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "7. Filipino (Tagalog)",
+            "language": "fil",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/6/6.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "8. French",
+            "language": "fr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/7/7.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "9. Hindi",
+            "language": "hi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/8/8.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "10. Hungarian",
+            "language": "hu",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/9/9.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "11. Indonesian",
+            "language": "id",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/10/10.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "12. Italian",
+            "language": "it",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/11/11.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "13. Japanese",
+            "language": "ja",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/12/12.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "14. Korean",
+            "language": "ko",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/13/13.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "15. Polish",
+            "language": "pl",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/14/14.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "16. Portuguese",
+            "language": "pt",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/15/15.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "17. Romanian",
+            "language": "ro",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/16/16.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "18. Russian",
+            "language": "ru",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/17/17.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "19. Tamil",
+            "language": "ta",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/18/18.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "20. Telugu",
+            "language": "te",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/19/19.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "21. Thai",
+            "language": "th",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/20/20.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "22. Turkish",
+            "language": "tr",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/21/21.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "23. Ukrainian",
+            "language": "uk",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/22/22.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "24. Vietnamese",
+            "language": "vi",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/23/23.m3u8"
+          },
+          {
+            "type": "AUDIO",
+            "groupId": "aac",
+            "name": "25. Unknown",
+            "language": "und",
+            "default": false,
+            "autoselect": null,
+            "forced": false,
+            "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/24/24.m3u8"
+          }
+        ],
+        "subtitleCount": 63,
+        "subtitleLanguages": [
+          "81262746-ar",
+          "81262746-ca",
+          "81262746-cs",
+          "81262746-cs",
+          "81262746-cs",
+          "81262746-da",
+          "81262746-de",
+          "81262746-de",
+          "81262746-de",
+          "81262746-el",
+          "81262746-en",
+          "81262746-en",
+          "81262746-en",
+          "81262746-es",
+          "81262746-es-es",
+          "81262746-es-es",
+          "81262746-es-es",
+          "81262746-es",
+          "81262746-es",
+          "81262746-eu",
+          "81262746-fi",
+          "81262746-fil",
+          "81262746-fr",
+          "81262746-fr",
+          "81262746-fr",
+          "81262746-gl",
+          "81262746-he",
+          "81262746-hr",
+          "81262746-hu",
+          "81262746-hu",
+          "81262746-hu",
+          "81262746-id",
+          "81262746-id",
+          "81262746-id",
+          "81262746-it",
+          "81262746-it",
+          "81262746-it",
+          "81262746-ja",
+          "81262746-ja",
+          "81262746-ja",
+          "81262746-ko",
+          "81262746-ms",
+          "81262746-nb",
+          "81262746-nl",
+          "81262746-pl",
+          "81262746-pl",
+          "81262746-pt-br",
+          "81262746-pt-br",
+          "81262746-pt-br",
+          "81262746-pt",
+          "81262746-ro",
+          "81262746-ru",
+          "81262746-sv",
+          "81262746-th",
+          "81262746-th",
+          "81262746-th",
+          "81262746-tr",
+          "81262746-tr",
+          "81262746-tr",
+          "81262746-uk",
+          "81262746-vi",
+          "81262746-zh-hans",
+          "81262746-zh-hant"
+        ]
+      }
+    ],
+    "diagnostics": [
+      {
+        "event": "request",
+        "requestedTmdbId": 93405,
+        "requestedMediaType": "tv",
+        "requestedSeason": 1,
+        "requestedEpisode": 1
+      },
+      {
+        "event": "tmdb",
+        "tmdbId": 93405,
+        "mediaType": "tv",
+        "season": 1,
+        "episode": 1,
+        "title": "Squid Game",
+        "originalTitle": "오징어 게임",
+        "originalLanguage": "ko",
+        "originCountries": [
+          "KR"
+        ],
+        "seasonTitle": "Season 1",
+        "seasonYear": 2021,
+        "aliases": [
+          "Squid Game",
+          "오징어 게임",
+          "משחקי הדיונון",
+          "स्क्विड गेम",
+          "بازی مرکب",
+          "بازی ماهی مرکب",
+          "イカゲーム",
+          "Ojingeo Geim"
+        ],
+        "queries": [
+          "Squid Game Season 1",
+          "Squid Game 1st Season",
+          "오징어 게임 Season 1",
+          "오징어 게임 1st Season",
+          "משחקי הדיונון Season 1",
+          "משחקי הדיונון 1st Season",
+          "Squid Game",
+          "오징어 게임",
+          "משחקי הדיונון",
+          "स्क्विड गेम",
+          "بازی مرکب",
+          "بازی ماهی مرکب"
+        ]
+      },
+      {
+        "event": "platform",
+        "platform": "netflix",
+        "preferred": "all",
+        "forceHd": true
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "오징어 게임 Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "오징어 게임 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "משחקי הדיונון Season 1",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "משחקי הדיונון 1st Season",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "resultCount": 6,
+        "candidates": [
+          {
+            "id": "81040344",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          },
+          {
+            "id": "81922471",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          },
+          {
+            "id": "82027101",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          },
+          {
+            "id": "81985477",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          },
+          {
+            "id": "81615540",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          },
+          {
+            "id": "81734609",
+            "title": "",
+            "mediaType": "",
+            "year": null
+          }
+        ]
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "오징어 게임",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "משחקי הדיונון",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "स्क्विड गेम",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "بازی مرکب",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "search",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "بازی ماهی مرکب",
+        "resultCount": 0,
+        "candidates": []
+      },
+      {
+        "event": "rejection",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Squid Game: Making Season 2",
+        "candidateId": "81922471",
+        "reason": "title-not-owned"
+      },
+      {
+        "event": "rejection",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Squid Game in Conversation",
+        "candidateId": "82027101",
+        "reason": "title-not-owned"
+      },
+      {
+        "event": "rejection",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Squid Game: Fireplace",
+        "candidateId": "81985477",
+        "reason": "title-not-owned"
+      },
+      {
+        "event": "rejection",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Squid Game: The Challenge",
+        "candidateId": "81615540",
+        "reason": "title-not-owned"
+      },
+      {
+        "event": "rejection",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Making Squid Game: The Challenge",
+        "candidateId": "81734609",
+        "reason": "title-not-owned"
+      },
+      {
+        "event": "generic-accepted",
+        "path": "newtv-generic",
+        "platform": "netflix",
+        "query": "Squid Game",
+        "candidateTitle": "Squid Game",
+        "candidateId": "81040344",
+        "candidateSeasonStructure": [
+          {
+            "id": "81105887",
+            "number": 1,
+            "selected": false
+          },
+          {
+            "id": "81203480",
+            "number": 2,
+            "selected": false
+          },
+          {
+            "id": "81615967",
+            "number": 3,
+            "selected": true
+          }
+        ],
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "catalogueLayout": "multi-season",
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "internalEpisodeId": "81262746",
+        "playerId": "81262746"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81262746",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81262746",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81262746",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "hls-rejected",
+        "episodeId": "81262746",
+        "reason": "HLS video episode identity mismatch"
+      },
+      {
+        "event": "mobile-playlist",
+        "path": "mobile-netflix",
+        "entryCount": 1,
+        "sourceCount": 2,
+        "subtitleCount": 63,
+        "sourceLabels": [
+          "Auto",
+          "Mid HD"
+        ],
+        "sourceLanguages": [
+          "eng"
+        ],
+        "entryKeys": [
+          "image2",
+          "sources",
+          "tracks"
+        ]
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81262746",
+        "height": 720,
+        "audioLanguages": [
+          "ar",
+          "cs",
+          "de",
+          "en",
+          "es",
+          "fil",
+          "fr",
+          "hi",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "und",
+          "vi"
+        ],
+        "audioCount": 25,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "hls-accepted",
+        "episodeId": "81262746",
+        "height": 720,
+        "audioLanguages": [
+          "ar",
+          "cs",
+          "de",
+          "en",
+          "es",
+          "fil",
+          "fr",
+          "hi",
+          "hu",
+          "id",
+          "it",
+          "ja",
+          "ko",
+          "pl",
+          "pt",
+          "ro",
+          "ru",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "und",
+          "vi"
+        ],
+        "audioCount": 25,
+        "subtitleLanguages": [],
+        "preservedMasterUrl": true
+      },
+      {
+        "event": "dedup",
+        "reason": "same-episode-quality-tracks-media",
+        "quality": "720p"
+      },
+      {
+        "event": "mobile-accepted",
+        "path": "mobile-netflix",
+        "candidateTitle": "Squid Game",
+        "playerId": "81262746",
+        "requestedSeason": 1,
+        "requestedEpisode": 1,
+        "mappedProviderSeason": 1,
+        "mappedProviderEpisode": 1,
+        "returnedRows": 1
+      },
+      {
+        "event": "classification",
+        "quality": "HD 720p",
+        "tag": "[DUAL]",
+        "originalLanguage": "ko",
+        "audioLanguage": "eng",
+        "audioType": "",
+        "selectableSubtitles": true,
+        "multipleAudio": true,
+        "inferredEnglishFromTmdb": false
+      }
+    ]
+  }
+]

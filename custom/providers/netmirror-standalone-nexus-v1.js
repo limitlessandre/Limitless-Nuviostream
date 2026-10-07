@@ -1,9 +1,9 @@
 "use strict";
 
 // Standalone Limitless Nexus NetMirror provider.
-// Transport behavior is based on the previously pinned All-in-One-Nuvio
-// implementation (commit 716057b2a0d55a634da88c1d0d2db7352df07c69),
-// with Limitless-owned identity validation and season-aware matching.
+// Transport reference: Sushan64/NetMirror-Extension master
+// 40a3319ce03d9a6fb3a59aacf420341a24c4e630 (NetflixMirrorProvider.kt / Utils.kt).
+// See docs/netmirror/INVESTIGATION.md for independent transport evidence.
 
 const PROVIDER_NAME = "NetMirror";
 const TMDB_API_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
@@ -95,20 +95,60 @@ function safeAtob(encoded) {
   throw new Error("No Base64 decoder available");
 }
 
-async function fetchJson(url, options) {
-  const response = await fetch(url, options);
-  if (!response || response.ok === false) throw new Error(`HTTP ${response && response.status || "error"}`);
-  return await response.json();
+// Deadlines cover the response body as well as connection establishment. Do not
+// depend on AbortController support: older Nuvio bridges can ignore its signal.
+function checkBudget(context) {
+  if (context && (context.cancelled || Date.now() >= context.deadline)) throw new Error("NetMirror stage deadline");
 }
 
-async function resolveApiUrl() {
+async function bounded(ms, operation, cancel) {
+  if (typeof setTimeout !== "function" || typeof clearTimeout !== "function") throw new Error("Runtime timers unavailable");
+  let timer;
+  try {
+    return await Promise.race([
+      operation(),
+      new Promise((_, reject) => { timer = setTimeout(() => { if (cancel) cancel(); reject(new Error("NetMirror timeout")); }, ms); })
+    ]);
+  } finally { clearTimeout(timer); }
+}
+
+async function request(url, options, context) {
+  checkBudget(context);
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  const timeout = Math.max(1, Math.min(6000, context && context.deadline ? context.deadline - Date.now() : 6000));
+  if (context && context.controllers && controller) context.controllers.add(controller);
+  try {
+    return await bounded(timeout, async () => {
+      const response = await fetch(url, { ...(options || {}), timeout, ...(controller ? { signal: controller.signal } : {}) });
+      if (!response || response.ok === false) throw new Error(`HTTP ${response && response.status || "error"}`);
+      // Some host bridges expose only json(); keep that supported and bounded.
+      const body = typeof response.text === "function" ? await response.text() : JSON.stringify(await response.json());
+      checkBudget(context);
+      return { ok: true, status: response.status, headers: response.headers, url: response.url || url,
+        text: async () => body, json: async () => JSON.parse(body) };
+    }, () => { if (controller) controller.abort(); });
+  } finally { if (context && context.controllers) context.controllers.delete(controller); }
+}
+
+async function fetchJson(url, options, context) { return (await request(url, options, context)).json(); }
+
+async function runStage(context, label, ms, operation) {
+  const budget = { ...context, deadline: Math.min(context.deadline || Infinity, Date.now() + ms), controllers: new Set() };
+  const stop = () => { budget.cancelled = true; budget.controllers.forEach(c => c.abort()); };
+  try { checkBudget(budget); return await bounded(Math.max(1, budget.deadline - Date.now()), () => operation(budget), stop); }
+  catch (error) { trace("stage-failed", { path: label, reason: clean(error.message) }); return []; }
+  finally { stop(); }
+}
+
+async function resolveApiUrl(context) {
   if (resolvedApiUrl) return resolvedApiUrl;
   for (const encoded of NEW_TV_DOMAINS) {
+    checkBudget(context);
     const discoveryBase = safeAtob(encoded).replace(/\/$/, "");
     try {
       const data = await fetchJson(`${discoveryBase}/checknewtv.php`, {
-        headers: { ...NEW_TV_BASE_HEADERS, "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" }
-      });
+        headers: NEW_TV_BASE_HEADERS
+      }, context);
       if (!data || !data.token_hash) continue;
       const apiBase = safeAtob(data.token_hash).replace(/\/$/, "");
       if (!/^https:\/\//i.test(apiBase)) continue;
@@ -311,19 +351,19 @@ function seasonEntries(postData) {
   }));
 }
 
-async function fetchEpisodesPage(seasonId, page, forcedSeason, platform, apiBase) {
+async function fetchEpisodesPage(seasonId, page, forcedSeason, platform, apiBase, context) {
   const episodes = [];
   let current = page;
   for (let guard = 0; guard < 100; guard++, current++) {
     const url = `${apiBase}/newtv/episodes.php?id=${encodeURIComponent(seasonId)}&page=${current}`;
-    const data = await fetchJson(url, { headers: buildNewTvHeaders(platform.ott) });
+    const data = await fetchJson(url, { headers: buildNewTvHeaders(platform.ott) }, context);
     addEpisodes(episodes, data && data.episodes, forcedSeason);
     if (!data || data.nextPageShow !== 1) break;
   }
   return episodes;
 }
 
-async function getAllEpisodes(postData, platform, apiBase) {
+async function getAllEpisodes(postData, platform, apiBase, context, wantedSeason) {
   const episodes = [];
   const seasons = seasonEntries(postData);
   const selected = seasons.find(item => item.selected);
@@ -331,12 +371,12 @@ async function getAllEpisodes(postData, platform, apiBase) {
   const selectedSeasonNumber = selected ? selected.number : null;
 
   addEpisodes(episodes, postData && postData.episodes, selectedSeasonNumber);
-  if (postData && postData.nextPageShow === 1 && selectedSeasonId) {
-    episodes.push(...await fetchEpisodesPage(selectedSeasonId, 2, selectedSeasonNumber, platform, apiBase));
+  if (postData && postData.nextPageShow === 1 && selectedSeasonId && (wantedSeason == null || selectedSeasonNumber === wantedSeason)) {
+    episodes.push(...await fetchEpisodesPage(selectedSeasonId, 2, selectedSeasonNumber, platform, apiBase, context));
   }
   for (const season of seasons) {
-    if (!season.id || String(season.id) === String(selectedSeasonId)) continue;
-    episodes.push(...await fetchEpisodesPage(season.id, 1, season.number, platform, apiBase));
+    if (!season.id || String(season.id) === String(selectedSeasonId) || wantedSeason != null && season.number !== wantedSeason) continue;
+    episodes.push(...await fetchEpisodesPage(season.id, 1, season.number, platform, apiBase, context));
   }
   return { episodes, seasons };
 }
@@ -409,12 +449,18 @@ function mobileSetCookies(headers, responseUrl) {
     const value = pair.slice(eq + 1).trim();
     const domainMatch = clean(raw).match(/(?:^|;)\s*domain=([^;]+)/i);
     const domain = clean(domainMatch ? domainMatch[1] : host).replace(/^\./, "").toLowerCase();
-    const index = mobileCookieJar.findIndex(item => item.name === name && item.domain === domain);
+    if (!domain || host !== domain && !host.endsWith("." + domain) || !domain.includes(".")) continue;
+    const pathMatch = clean(raw).match(/(?:^|;)\s*path=([^;]+)/i);
+    const cookiePath = pathMatch ? pathMatch[1] : "/";
+    const age = clean(raw).match(/(?:^|;)\s*max-age=(-?\d+)/i);
+    const expiry = clean(raw).match(/(?:^|;)\s*expires=([^;]+)/i);
+    const expiresAt = age ? Date.now() + Number(age[1]) * 1000 : expiry ? Date.parse(expiry[1]) : Infinity;
+    const index = mobileCookieJar.findIndex(item => item.name === name && item.domain === domain && item.path === cookiePath);
     if (!value || /max-age\s*=\s*0/i.test(raw)) {
       if (index >= 0) mobileCookieJar.splice(index, 1);
       continue;
     }
-    const item = { name, value, domain };
+    const item = { name, value, domain, path: cookiePath, hostOnly: !domainMatch, expiresAt, secure: /;\s*secure(?:;|$)/i.test(raw) };
     if (index >= 0) mobileCookieJar[index] = item;
     else mobileCookieJar.push(item);
   }
@@ -422,19 +468,22 @@ function mobileSetCookies(headers, responseUrl) {
 
 function mobileCookieHeader(url) {
   let host = "";
-  try { host = new URL(url).hostname.toLowerCase(); } catch (_) {}
+  let parsed;
+  try { parsed = new URL(url); host = parsed.hostname.toLowerCase(); } catch (_) { return ""; }
   return mobileCookieJar
-    .filter(item => host === item.domain || host.endsWith("." + item.domain))
+    .filter(item => (host === item.domain || !item.hostOnly && host.endsWith("." + item.domain)) &&
+      (parsed.pathname === item.path || parsed.pathname.startsWith(item.path.endsWith("/") ? item.path : item.path + "/")) &&
+      (!item.secure || parsed.protocol === "https:") && !(item.expiresAt <= Date.now()))
     .map(item => item.name + "=" + item.value)
     .join("; ");
 }
 
-async function mobileRequest(url, options) {
+async function mobileRequest(url, options, context) {
   const opts = options || {};
   const headers = { ...(opts.headers || {}) };
   const jar = mobileCookieHeader(url);
   if (jar) headers.Cookie = headers.Cookie ? headers.Cookie + "; " + jar : jar;
-  const response = await fetch(url, { ...opts, headers });
+  const response = await request(url, { ...opts, headers }, context);
   mobileSetCookies(response && response.headers, response && response.url || url);
   return response;
 }
@@ -444,25 +493,20 @@ function mobileCookie(name) {
   return row ? row.value : "";
 }
 
-async function mobileDelay(ms) {
-  if (typeof setTimeout === "function") return new Promise(resolve => setTimeout(resolve, ms));
-  if (typeof SharedArrayBuffer === "function" && typeof Atomics !== "undefined" && typeof Atomics.wait === "function") {
-    try {
-      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
-      return;
-    } catch (_) {}
-  }
-  const end = Date.now() + ms;
-  while (Date.now() < end) {}
+async function mobileDelay(ms, context) {
+  checkBudget(context);
+  if (typeof setTimeout !== "function") throw new Error("Runtime timers unavailable");
+  await new Promise(resolve => setTimeout(resolve, Math.min(ms, context && context.deadline ? Math.max(0, context.deadline - Date.now()) : ms)));
+  checkBudget(context);
 }
 
-async function mobileBypass() {
+async function mobileBypass(context) {
   if (mobileVerifiedCookie && Date.now() - mobileVerifiedAt < 15 * 60 * 60 * 1000) return mobileVerifiedCookie;
   mobileCookieJar = [];
   mobileVerifiedCookie = "";
   try {
     const appHeaders = { "User-Agent": MOBILE_APP_UA, "X-Requested-With": "app.netmirror.netmirrornew" };
-    const home = await mobileRequest(MOBILE_BASE + "/mobile/home?app=1", { headers: appHeaders });
+    const home = await mobileRequest(MOBILE_BASE + "/mobile/home?app=1", { headers: appHeaders }, context);
     const html = String(await home.text() || "");
     const match = html.match(/data-addhash\s*=\s*["']([^"']+)["']/i);
     if (!home.ok || !match) return "";
@@ -470,12 +514,12 @@ async function mobileBypass() {
     const hash = match[1];
     const userver = await mobileRequest(
       "https://userver.net52.cc/?hee5=" + encodeURIComponent(hash) + "&a=y&t=" + Date.now(),
-      { headers: appHeaders }
+      { headers: appHeaders }, context
     );
     await userver.text();
 
-    for (let attempt = 1; attempt <= 7; attempt++) {
-      await mobileDelay(10000);
+    for (let attempt = 1; attempt <= 4; attempt++) {
+      await mobileDelay(10000, context);
       const verify = await mobileRequest(MOBILE_BASE + "/mobile/verify2.php", {
         method: "POST",
         headers: {
@@ -484,7 +528,7 @@ async function mobileBypass() {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: "verify=" + encodeURIComponent(hash)
-      });
+      }, context);
       const text = String(await verify.text() || "");
       let done = text.includes('"statusup":"All Done"');
       if (!done) {
@@ -505,8 +549,8 @@ async function mobileBypass() {
   return "";
 }
 
-async function mobileJson(url, headers) {
-  const response = await mobileRequest(url, { headers });
+async function mobileJson(url, headers, context) {
+  const response = await mobileRequest(url, { headers }, context);
   if (!response || !response.ok) throw new Error("HTTP " + (response && response.status || "error"));
   return response.json();
 }
@@ -530,10 +574,11 @@ function mobileTrack(track, playbackHeaders) {
   let url = clean(track.file || track.url || track.src || track.uri);
   if (!url) return null;
   if (url.startsWith("//")) url = "https:" + url;
-  else if (url.startsWith("/")) url = MOBILE_BASE + url;
+  else if (url.startsWith("/")) url = "https://subscdn.top" + url;
   if (!/^https?:\/\//i.test(url)) return null;
   const label = clean(track.label || track.name || track.lang || track.language) || "Unknown";
-  return { url, language: clean(track.language || track.lang || label) || label, name: label, headers: playbackHeaders };
+  const fileLanguage = (url.match(/\/([^/?]+)\.(?:vtt|srt|m3u8)(?:\?|$)/i) || [])[1];
+  return { url, language: languageCode(track.language || track.lang || fileLanguage || label), name: label, headers: { Referer: playbackHeaders.Referer, "User-Agent": playbackHeaders["User-Agent"] } };
 }
 
 function mobileSourceUrl(file) {
@@ -571,52 +616,214 @@ function resolveHlsUrl(value, base) {
   try { return new URL(raw, base).toString(); } catch (_) { return ""; }
 }
 
-async function mobileMasterRows(sourceUrl, playbackHeaders, subtitles, context, sourceMeta) {
-  try {
-    const response = await fetch(sourceUrl, { headers: playbackHeaders });
-    if (!response || !response.ok) return [];
-    const text = String(await response.text() || "");
-    const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-    let maxHeight = 0;
-    let audioGroupCount = 0;
+function hlsAttributes(line) {
+  const result = {};
+  const pattern = /([A-Z0-9-]+)=(?:"([^"]*)"|([^,]*))/g;
+  let match;
+  while ((match = pattern.exec(line))) result[match[1]] = match[2] == null ? match[3] : match[2];
+  return result;
+}
 
-    for (const line of lines) {
-      if (line.startsWith("#EXT-X-STREAM-INF:")) {
-        const res = line.match(/RESOLUTION=\d+x(\d+)/i);
-        if (res) maxHeight = Math.max(maxHeight, Number(res[1]) || 0);
-      } else if (line.startsWith("#EXT-X-MEDIA:") && /TYPE=AUDIO/i.test(line)) {
-        audioGroupCount++;
-      }
+function languageCode(value) {
+  const code = clean(value).toLowerCase().replace(/\.\[cc\]|\(\d+\)/g, "");
+  const codes = { eng: "en", english: "en", kor: "ko", korean: "ko", jpn: "ja", japanese: "ja", ces: "cs", deu: "de", spa: "es", fra: "fr", hin: "hi", hun: "hu", ind: "id", ita: "it", pol: "pl", por: "pt", ron: "ro", tam: "ta", tel: "te", tha: "th", tur: "tr", ara: "ar", dan: "da", ell: "el", fin: "fi", heb: "he", hrv: "hr", msa: "ms", nob: "nb", nld: "nl", rus: "ru", swe: "sv", ukr: "uk", vie: "vi", zho: "zh" };
+  return codes[code] || code || "und";
+}
+
+function parseHls(text, base) {
+  if (!clean(text).startsWith("#EXTM3U")) throw new Error("Non-HLS response body");
+  const lines = text.split(/\r?\n/).map(clean);
+  const media = [], variants = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith("#EXT-X-MEDIA:")) {
+      const a = hlsAttributes(lines[i]);
+      media.push({ type: a.TYPE, groupId: a["GROUP-ID"], name: a.NAME, language: languageCode(a.LANGUAGE),
+        default: a.DEFAULT === "YES", autoselect: a.AUTOSELECT == null ? null : a.AUTOSELECT === "YES",
+        forced: a.FORCED === "YES", url: a.URI ? resolveHlsUrl(a.URI, base) : "" });
     }
-
-    trace("mobile-master", {
-      path: "mobile-netflix",
-      sourceLabel: clean(sourceMeta && sourceMeta.label),
-      maxHeight,
-      audioGroupCount,
-      preservedMasterUrl: true
-    });
-
-    // Keep the original master URL intact. Its child video variants can rely on
-    // EXT-X-MEDIA audio groups; handing Nuvio a child variant directly can drop
-    // the English audio even though the master plays correctly.
-    return [attachAudioMetadata({
-      name: "NetMirror (Netflix Mobile) - " + (maxHeight ? maxHeight + "p" : clean(sourceMeta && sourceMeta.label || "Auto")),
-      title: context.title,
-      url: sourceUrl,
-      quality: maxHeight ? maxHeight + "p" : mobileQuality(sourceMeta && sourceMeta.label, sourceUrl),
-      headers: playbackHeaders,
-      subtitles,
-      provider: "netmirror",
-      type: "m3u8"
-    }, { audioLanguage: mobileAudioLanguage(sourceUrl) }, sourceMeta)];
-  } catch (_) {
-    return [];
+    if (lines[i].startsWith("#EXT-X-STREAM-INF:")) {
+      const a = hlsAttributes(lines[i]);
+      const uri = lines.slice(i + 1).find(line => line && !line.startsWith("#"));
+      const url = resolveHlsUrl(uri, base);
+      if (url) variants.push({ url, audio: a.AUDIO, subtitles: a.SUBTITLES, resolution: a.RESOLUTION,
+        height: Number((a.RESOLUTION || "").split("x")[1]) || 0, bandwidth: Number(a.BANDWIDTH) || 0 });
+    }
   }
+  const seenAudio = new Set();
+  const audioTracks = media.filter(m => {
+    if (m.type !== "AUDIO" || !variants.some(v => v.audio === m.groupId)) return false;
+    const key = [m.language, m.name, mediaIdentity(m.url)].join("|");
+    if (seenAudio.has(key)) return false;
+    seenAudio.add(key); return true;
+  });
+  const subtitleTracks = media.filter(m => m.type === "SUBTITLES" && m.url && variants.some(v => v.subtitles === m.groupId));
+  if (!variants.length && !lines.some(line => line.startsWith("#EXTINF:"))) throw new Error("Empty HLS playlist");
+  return { variants, audioTracks, subtitleTracks };
+}
+
+function nativeHost(url) {
+  try { return /^(?:[a-z0-9-]+\.)*(?:net52|net77|net22|net27)\.cc$/.test(new URL(url).hostname.toLowerCase()); } catch (_) { return false; }
+}
+
+function playbackHeaders(url, base) {
+  const headers = { ...(base || {}) };
+  for (const key of Object.keys(headers)) {
+    if (/^(?:cookie|origin|x-requested-with|content-type)$/i.test(key)) delete headers[key];
+  }
+  if (nativeHost(url)) {
+    headers.Origin = "https://net77.cc";
+    const cookie = mobileCookieHeader(url);
+    if (cookie) headers.Cookie = cookie;
+  }
+  return headers;
+}
+
+function mediaIdentity(value) {
+  try {
+    const url = new URL(value);
+    // These CDN wrappers expose the same /files/<episode>/<rendition> asset.
+    const nativeCdn = /(?:^|\.)(?:freecdn\d*|nm-cdn\d+)\.top$/.test(url.hostname);
+    const file = nativeCdn && url.pathname.match(/\/files\/\d+\/.+/);
+    for (const key of Array.from(url.searchParams.keys())) {
+      if (/^(?:sign|signature|token|expires|expiry|policy|key-pair-id)$/i.test(key) ||
+          key === "in" && (nativeCdn || nativeHost(value)) ||
+          key === "t" && /(?:^|\.)hakunaymatata\.com$/.test(url.hostname)) url.searchParams.delete(key);
+    }
+    url.searchParams.sort();
+    return (file ? "netmirror:" + file[0] : url.origin + url.pathname) + (url.search ? url.search : "");
+  } catch (_) { return clean(value); }
+}
+
+function trackLanguages(tracks) { return unique((tracks || []).map(t => languageCode(t.language || t.lang))).sort(); }
+
+function completeAudioMaster(row, context) {
+  const languages = trackLanguages(row.audioTracks);
+  const original = languageCode(context.originalLanguage);
+  return hasMultipleAudio(row) && languages.includes("en") && (original === "und" || languages.includes(original));
+}
+
+function semanticDedupe(rows, context) {
+  const result = [];
+  const key = row => JSON.stringify([
+    context.mediaType, context.tmdbId, context.season, context.episode, qualityNumber(row),
+    trackLanguages(row.audioTracks && row.audioTracks.length ? row.audioTracks : [{ language: row.audioLanguage }]),
+    trackLanguages(row.embeddedSubtitles && row.embeddedSubtitles.length ? row.embeddedSubtitles : row.subtitles),
+    unique((row.hls && row.hls.variants.length ? row.hls.variants.map(v => v.url) : [row.url]).map(mediaIdentity)).sort(),
+    // Equal language sets can still contain distinct commentary/accessibility tracks.
+    unique((row.audioTracks || []).map(t => [t.language, t.name, mediaIdentity(t.url)].join(":"))).sort()
+  ]);
+  const seen = new Set();
+  for (const row of rows) {
+    const identity = key(row);
+    if (seen.has(identity)) { trace("dedup", { reason: "same-episode-quality-tracks-media", quality: row.quality }); continue; }
+    seen.add(identity); result.push(row);
+  }
+  return result.filter(row => {
+    if (!row.hls || !row.hls.variants.length) return true;
+    const videos = unique(row.hls.variants.map(v => mediaIdentity(v.url)));
+    const audio = JSON.stringify(trackLanguages(row.audioTracks));
+    const subs = JSON.stringify(trackLanguages(row.embeddedSubtitles && row.embeddedSubtitles.length ? row.embeddedSubtitles : row.subtitles));
+    const covered = result.some(other => other !== row && other.hls && other.hls.variants.length &&
+      unique(other.hls.variants.map(v => mediaIdentity(v.url))).length > videos.length &&
+      audio === JSON.stringify(trackLanguages(other.audioTracks)) &&
+      subs === JSON.stringify(trackLanguages(other.embeddedSubtitles && other.embeddedSubtitles.length ? other.embeddedSubtitles : other.subtitles)) &&
+      videos.every(v => other.hls.variants.some(o => mediaIdentity(o.url) === v)) &&
+      (row.audioTracks || []).every(t => (other.audioTracks || []).some(o => mediaIdentity(o.url) === mediaIdentity(t.url) && o.name === t.name)));
+    if (covered) trace("dedup", { reason: "rendition-contained-in-intact-master", quality: row.quality });
+    return !covered;
+  });
+}
+
+async function inspectHls(row, context, episodeId) {
+  try {
+    const headers = playbackHeaders(row.url, row.headers);
+    // Validate exactly the headers we can safely give Nuvio's static map.
+    delete headers.Cookie;
+    delete headers.Origin;
+    const response = await request(row.url, { headers }, context);
+    const hls = parseHls(await response.text(), response.url);
+    // An authenticated-looking master may contain a common access/OTP video.
+    // Validate the video identity, not just its correct audio/subtitle URLs.
+    if (episodeId && hls.variants.concat(hls.audioTracks, hls.subtitleTracks).some(v => {
+      const match = clean(v.url).match(/\/(?:files|subs)\/(\d+)\//);
+      return match && match[1] !== String(episodeId);
+    })) throw new Error("HLS video episode identity mismatch");
+    const sampleAudio = hls.audioTracks.filter(t => t.default || ["en", languageCode(context.originalLanguage)].includes(t.language));
+    const children = unique(hls.variants.map(v => v.url).concat(sampleAudio.map(t => t.url)).filter(Boolean));
+    await Promise.all(children.map(async url => {
+      const child = await request(url, { headers: playbackHeaders(url, headers) }, context);
+      parseHls(await child.text(), child.url);
+    }));
+    const height = Math.max(0, ...hls.variants.map(v => v.height));
+    trace("hls-accepted", { episodeId, height, audioLanguages: trackLanguages(hls.audioTracks),
+      audioCount: hls.audioTracks.length, subtitleLanguages: trackLanguages(hls.subtitleTracks), preservedMasterUrl: true });
+    // Cookie is intentionally absent from exported playback headers: Nuvio's
+    // static header map cannot scope it per child host. Signed URLs carry access;
+    // probes verify CDN children with only the link's own Referer/User-Agent.
+    const exportedHeaders = { ...headers }; delete exportedHeaders.Cookie; delete exportedHeaders.Origin;
+    return { ...row, headers: exportedHeaders, type: "m3u8", quality: height ? height + "p" : row.quality,
+      hls, audioTracks: hls.audioTracks, embeddedSubtitles: hls.subtitleTracks,
+      subtitles: hls.subtitleTracks.length ? [] : row.subtitles || [] };
+  } catch (error) { trace("hls-rejected", { episodeId, reason: clean(error.message) }); return null; }
+}
+
+function playlistEntries(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (payload && Array.isArray(payload.playlist)) return payload.playlist;
+  if (payload && Array.isArray(payload.data)) return payload.data;
+  return payload && Array.isArray(payload.sources) ? [payload] : [];
+}
+
+function playlistEpisodeMatches(entry, episodeId) {
+  if (!entry) return false;
+  if (entry.id != null && String(entry.id) !== String(episodeId)) return false;
+  const poster = clean(entry.image2).match(/\/(\d+)\.(?:jpg|png|webp)(?:\?|$)/i);
+  if (poster && poster[1] !== String(episodeId)) return false;
+  return !(entry.sources || []).some(source => {
+    const match = clean(source.file).match(/\/hls\/(\d+)\.m3u8/);
+    return match && match[1] !== String(episodeId);
+  });
+}
+
+async function fetchFromNetflixNative(context) {
+  const match = context.shared && context.shared.netflixMatch;
+  if (!match) return [];
+  const headers = { "User-Agent": MOBILE_WEB_UA, Referer: "https://net77.cc/home", Origin: "https://net77.cc", "X-Requested-With": "XMLHttpRequest" };
+  // The reference treats warm-up failures as recoverable: play.php can still
+  // issue a token. Keep this path available when the home page is challenged.
+  try { await mobileRequest("https://net77.cc/home", { headers }, context); } catch (_) { checkBudget(context); }
+  try { await mobileRequest(`${MOBILE_BASE}/mobile/post.php?id=${encodeURIComponent(match.targetId)}&t=${Math.floor(Date.now() / 1000)}`, { headers }, context); } catch (_) { checkBudget(context); }
+  const play = await mobileRequest("https://net77.cc/play.php", {
+    method: "POST", headers: { ...headers, "Content-Type": "application/x-www-form-urlencoded" },
+    body: "id=" + encodeURIComponent(match.targetId)
+  }, context);
+  const token = await play.json();
+  if (!token || !token.h) return [];
+  const playlist = await mobileRequest(`${MOBILE_BASE}/playlist.php?id=${encodeURIComponent(match.targetId)}&t=${encodeURIComponent(context.title)}&tm=${Math.floor(Date.now() / 1000)}&h=${encodeURIComponent(token.h)}`, { headers }, context);
+  const entries = playlistEntries(await playlist.json()).filter(entry => playlistEpisodeMatches(entry, match.targetId));
+  const rows = [];
+  for (const entry of entries) {
+    const subtitles = (entry.tracks || []).map(t => mobileTrack(t, headers)).filter(Boolean);
+    for (const source of entry.sources || []) {
+      const url = mobileSourceUrl(source.file);
+      if (!url) continue;
+      const row = await inspectHls({ url, headers, subtitles, title: context.title, name: "NetMirror (Netflix Native)",
+        quality: mobileQuality(source.label, url), provider: "netmirror" }, context, match.targetId);
+      if (row) rows.push(row);
+    }
+  }
+  return semanticDedupe(rows, context);
+}
+
+async function mobileMasterRows(sourceUrl, headers, subtitles, context, sourceMeta, episodeId) {
+  const row = await inspectHls({ name: "NetMirror (Netflix Mobile)", title: context.title,
+    url: sourceUrl, headers, subtitles, quality: mobileQuality(sourceMeta && sourceMeta.label, sourceUrl),
+    provider: "netmirror", audioLanguage: mobileAudioLanguage(sourceUrl) }, context, episodeId);
+  return row ? [row] : [];
 }
 
 async function fetchFromNetflixMobile(context, forceHd) {
-  const cookie = await mobileBypass();
+  const cookie = await mobileBypass(context);
   if (!cookie) {
     trace("rejection", { path: "mobile-netflix", reason: "mobile-cookie-unavailable" });
     return [];
@@ -632,12 +839,13 @@ async function fetchFromNetflixMobile(context, forceHd) {
   };
 
   const aliases = unique([context.title, ...context.aliases]).slice(0, 4);
-  let matched = null;
+  let matched = context.shared && context.shared.netflixMatch ? { ...context.shared.netflixMatch, resultTitle: context.shared.netflixMatch.title } : null;
 
-  for (const query of aliases) {
+  for (const query of (matched ? [] : aliases)) {
+    checkBudget(context);
     let search;
     try {
-      search = await mobileJson(MOBILE_BASE + "/mobile/search.php?s=" + encodeURIComponent(query) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders);
+      search = await mobileJson(MOBILE_BASE + "/mobile/search.php?s=" + encodeURIComponent(query) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders, context);
     } catch (_) {
       continue;
     }
@@ -646,7 +854,7 @@ async function fetchFromNetflixMobile(context, forceHd) {
       if (!result || result.id == null) continue;
       let post;
       try {
-        post = await mobileJson(MOBILE_BASE + "/mobile/post.php?id=" + encodeURIComponent(result.id) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders);
+        post = await mobileJson(MOBILE_BASE + "/mobile/post.php?id=" + encodeURIComponent(result.id) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders, context);
       } catch (_) {
         continue;
       }
@@ -679,7 +887,7 @@ async function fetchFromNetflixMobile(context, forceHd) {
                   MOBILE_BASE + "/mobile/episodes.php?s=" + encodeURIComponent(seasonRow.id) +
                   "&series=" + encodeURIComponent(result.id) +
                   "&t=" + Math.floor(Date.now() / 1000) + "&page=" + page,
-                  baseHeaders
+      baseHeaders, context
                 );
               } catch (_) {
                 break;
@@ -720,21 +928,21 @@ async function fetchFromNetflixMobile(context, forceHd) {
       MOBILE_BASE + "/mobile/playlist.php?id=" + encodeURIComponent(matched.targetId) +
       "&t=" + encodeURIComponent(context.title) +
       "&tm=" + Math.floor(Date.now() / 1000),
-      baseHeaders
+      baseHeaders, context
     );
   } catch (error) {
     trace("rejection", { path: "mobile-netflix", reason: "mobile-playlist-failed", message: clean(error && error.message) });
     return [];
   }
 
-  const entries = Array.isArray(payload) ? payload : (payload && (payload.playlist || payload.data)) || [];
+  const entries = playlistEntries(payload).filter(entry => playlistEpisodeMatches(entry, matched.targetId));
   const subtitles = [];
   const seenSubtitles = new Set();
   const sourceRows = [];
 
   for (const entry of entries) {
     for (const track of (entry && entry.tracks) || []) {
-      const mapped = mobileTrack(track, baseHeaders);
+      const mapped = mobileTrack(track, baseHeaders, context);
       if (!mapped || seenSubtitles.has(mapped.url)) continue;
       seenSubtitles.add(mapped.url);
       subtitles.push(mapped);
@@ -758,28 +966,8 @@ async function fetchFromNetflixMobile(context, forceHd) {
 
   if (!sourceRows.length) return [];
 
-  const auto = sourceRows.find(item => /auto/i.test(clean(item.source && item.source.label))) || sourceRows[0];
-  const expanded = await mobileMasterRows(auto.url, baseHeaders, subtitles, context, auto.source);
-
-  const rows = [];
-  if (expanded.length) rows.push(...expanded);
-
-  for (const item of sourceRows) {
-    if (expanded.length && item.url === auto.url) continue;
-    rows.push(attachAudioMetadata({
-      name: "NetMirror (Netflix Mobile) - " + clean(item.source && item.source.label || "Auto"),
-      title: context.title,
-      url: item.url,
-      quality: mobileQuality(item.source && item.source.label, item.url),
-      headers: baseHeaders,
-      subtitles,
-      provider: "netmirror",
-      type: /m3u8/i.test(item.url) ? "m3u8" : "video"
-    }, { audioLanguage: mobileAudioLanguage(item.url) }, item.source));
-  }
-
-  const seen = new Set();
-  rows = rows.filter(row => row && row.url && !seen.has(row.url) && seen.add(row.url));
+  const inspected = await Promise.all(sourceRows.map(item => mobileMasterRows(item.url, baseHeaders, subtitles, context, item.source, matched.targetId)));
+  const rows = semanticDedupe(inspected.flat(), context);
   trace("mobile-accepted", {
     path: "mobile-netflix",
     candidateTitle: matched.resultTitle,
@@ -816,11 +1004,11 @@ function directIdentity(data, context) {
 
 async function fetchFromNetflixDirect(context) {
   const apiUrl = context.mediaType === "tv"
-    ? `${NET27_BASE}/api/embed-tmdb/${context.tmdbId}?type=tv&se=${context.season}&ep=${context.episode}`
+    ? `${NET27_BASE}/api/embed-tmdb/${context.tmdbId}?type=tv&s=${context.season}&e=${context.episode}`
     : `${NET27_BASE}/api/embed-tmdb/${context.tmdbId}`;
   let data;
   try {
-    data = await fetchJson(apiUrl, { headers: { Accept: "application/json, text/plain, */*", Referer: `${NET27_BASE}/`, "User-Agent": NET27_UA } });
+    data = await fetchJson(apiUrl, { headers: { Accept: "application/json, text/plain, */*", Referer: NET27_PLAYBACK_REFERER, "User-Agent": NET27_UA } }, context);
   } catch (error) {
     trace("rejection", { path: "net27-direct", platform: "netflix", reason: "direct-request-failed", message: clean(error && error.message) });
     return [];
@@ -848,7 +1036,7 @@ async function fetchFromNetflixDirect(context) {
   const subtitles = (Array.isArray(data.captions) ? data.captions : []).map(caption => {
     let url = clean(caption && caption.url);
     if (url.startsWith("/")) url = `${NET27_BASE}${url}`;
-    return { url, language: clean(caption && caption.lang) || "en", name: clean(caption && caption.name) || "English", headers: playbackHeaders };
+    return { url, language: clean(caption && caption.lang) || "und", name: clean(caption && caption.name) || "English", headers: playbackHeaders };
   }).filter(item => /^https?:\/\//i.test(item.url));
   const rows = [];
   if (Array.isArray(data.streams) && data.streams.length) {
@@ -863,17 +1051,20 @@ async function fetchFromNetflixDirect(context) {
   } else if (/^https?:\/\//i.test(clean(data.mp4))) {
     rows.push(attachAudioMetadata({ name: "NetMirror (Netflix) - Auto", title: context.title, url: data.mp4, quality: "Auto", headers: playbackHeaders, subtitles, provider: "netmirror" }, data));
   }
-  return rows;
+  const inspected = await Promise.all(rows.map(async row => /\.m3u8(?:[?#]|$)/i.test(row.url)
+    ? inspectHls(row, context, null) : { ...row, type: "video" }));
+  return semanticDedupe(inspected.filter(Boolean), context);
 }
 
 async function searchPlatform(platformKey, context, apiBase) {
   const platform = PLATFORM_MAP[platformKey];
   const found = new Map();
   for (let queryIndex = 0; queryIndex < context.queries.length; queryIndex++) {
+    checkBudget(context);
     const query = context.queries[queryIndex];
     try {
       const url = `${apiBase}/newtv/search.php?s=${encodeURIComponent(query)}`;
-      const data = await fetchJson(url, { headers: buildNewTvHeaders(platform.ott) });
+      const data = await fetchJson(url, { headers: buildNewTvHeaders(platform.ott) }, context);
       const results = Array.isArray(data && data.searchResult) ? data.searchResult : [];
       trace("search", {
         path: "newtv-generic", platform: platformKey, query, resultCount: results.length,
@@ -903,7 +1094,7 @@ async function inspectCandidate(platformKey, candidate, context, apiBase) {
   try {
     postData = await fetchJson(`${apiBase}/newtv/post.php?id=${encodeURIComponent(contentId)}`, {
       headers: buildNewTvHeaders(platform.ott, { Lastep: "", Usertoken: "" })
-    });
+    }, context);
   } catch (error) {
     trace("rejection", { path: "newtv-generic", platform: platformKey, query: candidate.query, candidateId: contentId, reason: "post-request-failed", message: clean(error && error.message) });
     return null;
@@ -922,7 +1113,7 @@ async function inspectCandidate(platformKey, candidate, context, apiBase) {
   let mappedEpisode = null;
   if (context.mediaType === "tv") {
     let enumerated;
-    try { enumerated = await getAllEpisodes(postData, platform, apiBase); }
+    try { enumerated = await getAllEpisodes(postData, platform, apiBase, context, ownership.providerSeason); }
     catch (error) {
       trace("rejection", { path: "newtv-generic", platform: platformKey, query: candidate.query, candidateTitle: title, candidateId: contentId, reason: "episode-enumeration-failed", message: clean(error && error.message) });
       return null;
@@ -973,7 +1164,7 @@ async function fetchFromPlatform(platformKey, context) {
   const platform = PLATFORM_MAP[platformKey];
   if (!platform) return [];
   let apiBase;
-  try { apiBase = await resolveApiUrl(); }
+  try { apiBase = await resolveApiUrl(context); }
   catch (error) {
     trace("rejection", { path: "newtv-generic", platform: platformKey, reason: "api-discovery-failed", message: clean(error && error.message) });
     return [];
@@ -982,6 +1173,7 @@ async function fetchFromPlatform(platformKey, context) {
   const searchCandidates = await searchPlatform(platformKey, context, apiBase);
   const inspected = [];
   for (const candidate of searchCandidates) {
+    checkBudget(context);
     const owned = await inspectCandidate(platformKey, candidate, context, apiBase);
     if (owned) inspected.push(owned);
   }
@@ -995,16 +1187,17 @@ async function fetchFromPlatform(platformKey, context) {
   }
 
   const match = chosen.candidate;
+  if (platformKey === "netflix") { context.shared = context.shared || {}; context.shared.netflixMatch = match; }
   let response;
   try {
     response = await fetchJson(`${apiBase}/newtv/player.php?id=${encodeURIComponent(match.targetId)}`, {
       headers: buildNewTvHeaders(platform.ott, { Usertoken: "" })
-    });
+    }, context);
   } catch (error) {
     trace("rejection", { path: "newtv-generic", platform: platformKey, candidateTitle: match.title, candidateId: match.contentId, playerId: match.targetId, reason: "player-request-failed", message: clean(error && error.message) });
     return [];
   }
-  if (!response || response.status !== "ok" || !/^https?:\/\//i.test(clean(response.video_link))) {
+  if (!response || !/^https?:\/\//i.test(clean(response.video_link))) {
     trace("rejection", { path: "newtv-generic", platform: platformKey, candidateTitle: match.title, candidateId: match.contentId, playerId: match.targetId, reason: "player-source-unavailable" });
     return [];
   }
@@ -1018,11 +1211,24 @@ async function fetchFromPlatform(platformKey, context) {
     mappedProviderEpisode: match.mappedEpisode, internalEpisodeId: match.targetId,
     playerId: match.targetId
   });
-  return [attachAudioMetadata({
+  const source = {
     name: `NetMirror (${platform.label})`, title: context.title,
     url: response.video_link, quality: "Auto",
-    headers: { Referer: response.referer || apiBase }, provider: "netmirror"
-  }, response, match.postData)];
+    headers: { Referer: response.referer || apiBase, "User-Agent": NEW_TV_BASE_HEADERS["User-Agent"] }, provider: "netmirror"
+  };
+  if (/\.mp4(?:[?#]|$)/i.test(source.url)) return [attachAudioMetadata(source, response)];
+  const row = await inspectHls(source, context, platformKey === "netflix" ? match.targetId : null);
+  if (row && platformKey === "netflix" && !row.embeddedSubtitles.length) {
+    // The request and any declared poster/source IDs must agree with the exact
+    // Netflix episode selected above. Never combine subtitles by title alone.
+    try {
+      const payload = await mobileJson(`${MOBILE_BASE}/mobile/playlist.php?id=${encodeURIComponent(match.targetId)}&t=${encodeURIComponent(context.title)}&tm=${Math.floor(Date.now() / 1000)}`,
+        { "User-Agent": MOBILE_WEB_UA, Referer: MOBILE_BASE + "/mobile/home?app=1" }, context);
+      row.subtitles = playlistEntries(payload).filter(entry => playlistEpisodeMatches(entry, match.targetId))
+        .flatMap(entry => (entry.tracks || []).map(t => mobileTrack(t, { Referer: MOBILE_BASE + "/mobile/home?app=1", "User-Agent": MOBILE_WEB_UA })).filter(Boolean));
+    } catch (_) {}
+  }
+  return row ? [row] : [];
 }
 
 function scalarField(sources, keys) {
@@ -1127,24 +1333,16 @@ function audioEvidence(row) {
 }
 
 function classification(row, context) {
-  const text = [row && row.name, row && row.audio, row && row.audioType, row && row.audioLanguage, row && row.language, row && row.lang]
-    .filter(Boolean).join(" ").toLowerCase();
-  const dual = hasMultipleAudio(row) || /dual\s*audio|\[dual\]|\bdual\b/.test(text);
-  const selectable = hasSelectableSubs(row);
   const evidence = audioEvidence(row);
-  const hardSub = /\[hsub\]|hard[\s-]*subs?|hardsub/.test(text);
-
-  // Nexus uses [DUB] as the user-facing English-audio bucket. Actual stream/provider
-  // metadata wins. When NetMirror exposes no audio-language evidence, English-original
-  // content from TMDB is treated as English default audio.
-  const tmdbEnglish = clean(context && context.originalLanguage).toLowerCase() === "en";
-  const inferredEnglish = !evidence.hasLanguageEvidence && tmdbEnglish;
-  const englishAudio = evidence.english || inferredEnglish;
-
-  if (dual) return "[DUAL]";
-  if (selectable) return englishAudio ? "[DUB+SUB]" : "[SUB]";
-  if (englishAudio) return "[DUB]";
-  if (hardSub) return "[HSUB]";
+  if (hasMultipleAudio(row)) return "[DUAL]";
+  const embedded = row && row.embeddedSubtitles && row.embeddedSubtitles.length > 0;
+  const selectable = embedded || hasSelectableSubs(row);
+  const languages = trackLanguages(row && row.audioTracks && row.audioTracks.length ? row.audioTracks : [{ language: row && row.audioLanguage }]);
+  const english = languages.includes("en") || evidence.english;
+  const nonEnglish = languages.some(l => l !== "en" && l !== "und");
+  if (english) return selectable ? "[DUB+SUB]" : "[DUB]";
+  if (nonEnglish && selectable) return "[SUB]";
+  if (row && (row.hardSub === true || row.hardsub === true || row.isHardSub === true)) return "[HSUB]";
   return "[UNK]";
 }
 
@@ -1160,7 +1358,7 @@ function serviceLabel(row) {
 }
 
 function normalizeRows(rows, context) {
-  const metadata = rows.map(row => {
+  const metadata = semanticDedupe(rows, context).map(row => {
     const quality = qualityLabel(qualityNumber(row));
     const tag = classification(row, context);
     const evidence = audioEvidence(row);
@@ -1170,7 +1368,7 @@ function normalizeRows(rows, context) {
       audioType: clean(row && row.audioType),
       selectableSubtitles: hasSelectableSubs(row),
       multipleAudio: hasMultipleAudio(row),
-      inferredEnglishFromTmdb: !evidence.hasLanguageEvidence && clean(context && context.originalLanguage).toLowerCase() === "en"
+      inferredEnglishFromTmdb: false
     });
     return { row, quality, tag, service: serviceLabel(row) };
   });
@@ -1206,34 +1404,29 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
     return [];
   }
 
+  context.deadline = Date.now() + 90000;
+  context.shared = {};
   const settings = globalThis.SCRAPER_SETTINGS || {};
   const preferred = clean(settings.preferredPlatform) || "all";
-  let platforms = ["netflix", "primevideo", "hotstar", "disney"];
-  if (preferred !== "all" && PLATFORM_MAP[preferred]) platforms = [preferred, ...platforms.filter(item => item !== preferred)];
-
+  let platforms = ["netflix", "primevideo", "hotstar"];
+  if (preferred === "disney") platforms = ["disney", "netflix", "primevideo"];
+  else if (preferred !== "all" && PLATFORM_MAP[preferred]) platforms = [preferred, ...platforms.filter(item => item !== preferred)];
   for (const platformKey of platforms) {
+    if (Date.now() >= context.deadline) break;
     trace("platform", { platform: platformKey, preferred, forceHd: settings.forceHd !== false });
-    if (platformKey === "netflix") {
-      // Keep both Netflix stream families when available:
-      // - current mobile playlist: English-selected audio + captions
-      // - Net27 direct: original-language audio + captions
-      // This preserves separate [DUB+SUB] and [SUB] choices instead of treating
-      // the original-language stream as a fallback that disappears when dub works.
-      const [mobile, direct] = await Promise.all([
-        fetchFromNetflixMobile(context, settings.forceHd !== false),
-        fetchFromNetflixDirect(context)
-      ]);
-      const seenNetflixUrls = new Set();
-      const netflixRows = mobile.concat(direct).filter(row => {
-        const url = clean(row && row.url);
-        if (!url || seenNetflixUrls.has(url)) return false;
-        seenNetflixUrls.add(url);
-        return true;
-      });
-      if (netflixRows.length) return normalizeRows(netflixRows, context);
-    }
-    const generic = await fetchFromPlatform(platformKey, context);
-    if (generic.length) return normalizeRows(generic, context);
+    const primary = await runStage(context, "newtv-" + platformKey, 18000, c => fetchFromPlatform(platformKey, c));
+    if (platformKey !== "netflix") { if (primary.length) return normalizeRows(primary, context); continue; }
+    // A complete selectable-audio master is the preferred stream family. Do not
+    // concatenate separate Net27 rows for languages already selectable here.
+    if (primary.some(row => completeAudioMaster(row, context) && (row.embeddedSubtitles.length || hasSelectableSubs(row)))) return normalizeRows(primary, context);
+    const native = await runStage(context, "native", 12000, c => fetchFromNetflixNative(c));
+    if (native.some(row => completeAudioMaster(row, context))) return normalizeRows(native, context);
+    const mobile = await runStage(context, "mobile", 52000, c => fetchFromNetflixMobile(c, settings.forceHd !== false));
+    const hlsRows = primary.concat(native, mobile);
+    const complete = hlsRows.filter(row => completeAudioMaster(row, context));
+    if (complete.length) return normalizeRows(complete, context);
+    const direct = await runStage(context, "net27", 8000, c => fetchFromNetflixDirect(c));
+    if (hlsRows.length || direct.length) return normalizeRows(hlsRows.concat(direct), context);
   }
   return [];
 }
@@ -1261,6 +1454,9 @@ async function onSettings() {
 const testApi = {
   normalizeTitle, titleKey, seasonMarker, scoreTitleOwnership, buildSearchQueries, exactEpisode,
   classification, audioEvidence, attachAudioMetadata, diagnostics,
+  parseHls, semanticDedupe, mediaIdentity, inspectHls, playbackHeaders, request, runStage,
+  playlistEntries, playlistEpisodeMatches, mobileSetCookies, mobileCookieHeader,
+  fetchFromNetflixMobile, fetchFromNetflixNative, fetchFromNetflixDirect,
   reset() {
     resolvedApiUrl = "";
     lastDiagnostics = [];

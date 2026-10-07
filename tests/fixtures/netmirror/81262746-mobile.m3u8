@@ -1,0 +1,31 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ara",NAME="1. Arabic",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/0/0.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ces",NAME="2. Czech",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/1/1.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="deu",NAME="3. German",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/2/2.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="eng",NAME="4. English",DEFAULT=YES,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/3/3.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="spa",NAME="5. Spanish",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/4/4.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="spa",NAME="6. Spanish",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/5/5.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fil",NAME="7. Filipino (Tagalog)",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/6/6.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="8. French",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/7/7.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="hin",NAME="9. Hindi",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/8/8.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="hun",NAME="10. Hungarian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/9/9.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ind",NAME="11. Indonesian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/10/10.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ita",NAME="12. Italian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/11/11.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="jpn",NAME="13. Japanese",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/12/12.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="kor",NAME="14. Korean",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/13/13.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="pol",NAME="15. Polish",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/14/14.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="por",NAME="16. Portuguese",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/15/15.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ron",NAME="17. Romanian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/16/16.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="rus",NAME="18. Russian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/17/17.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tam",NAME="19. Tamil",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/18/18.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tel",NAME="20. Telugu",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/19/19.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tha",NAME="21. Thai",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/20/20.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tur",NAME="22. Turkish",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/21/21.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ukr",NAME="23. Ukrainian",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/22/22.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="vie",NAME="24. Vietnamese",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/23/23.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="und",NAME="25. Unknown",DEFAULT=NO,URI="https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/24/24.m3u8"
+#EXT-X-STREAM-INF:BANDWIDTH=1000002,AUDIO="aac",RESOLUTION=1920x1080,CLOSED-CAPTIONS=NONE
+https://hd1.freecdn4.top/s26.freecdn51.top/files/81262746/1080p/1080p.m3u8?in=<redacted>
+#EXT-X-STREAM-INF:BANDWIDTH=600000,AUDIO="aac",RESOLUTION=1280x720,CLOSED-CAPTIONS=NONE
+https://f.freecdn4.top/s26.freecdn51.top/files/81262746/720p/720p.m3u8?in=<redacted>

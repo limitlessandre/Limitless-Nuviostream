@@ -1,0 +1,38 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ara",NAME="1. Arabic",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/0/0.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ces",NAME="2. Czech",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/1/1.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="dan",NAME="3. Danish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/2/2.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="deu",NAME="4. German",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/3/3.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ell",NAME="5. Greek",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/4/4.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="eng",NAME="6. English",DEFAULT=YES,URI="https://s24.freecdn3.top/files/81048667/a/5/5.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="spa",NAME="7. Spanish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/6/6.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="spa",NAME="8. Spanish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/7/7.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fin",NAME="9. Finnish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/8/8.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="fra",NAME="10. French",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/9/9.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="heb",NAME="11. Hebrew",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/10/10.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="hin",NAME="12. Hindi",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/11/11.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="hrv",NAME="13. Croatian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/12/12.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="hun",NAME="14. Hungarian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/13/13.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ind",NAME="15. Indonesian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/14/14.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ita",NAME="16. Italian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/15/15.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="jpn",NAME="17. Japanese",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/16/16.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="kor",NAME="18. Korean",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/17/17.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="msa",NAME="19. Malay",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/18/18.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="nob",NAME="20. Norwegian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/19/19.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="nld",NAME="21. Dutch",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/20/20.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="pol",NAME="22. Polish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/21/21.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="por",NAME="23. Portuguese",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/22/22.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="por",NAME="24. Portuguese",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/23/23.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ron",NAME="25. Romanian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/24/24.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="rus",NAME="26. Russian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/25/25.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="swe",NAME="27. Swedish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/26/26.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tha",NAME="28. Thai",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/27/27.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="tur",NAME="29. Turkish",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/28/28.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="ukr",NAME="30. Ukrainian",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/29/29.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="vie",NAME="31. Vietnamese",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/30/30.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",LANGUAGE="zho",NAME="32. Chinese",DEFAULT=NO,URI="https://s24.freecdn3.top/files/81048667/a/31/31.m3u8"
+#EXT-X-STREAM-INF:BANDWIDTH=600000,AUDIO="aac",RESOLUTION=1280x720,CLOSED-CAPTIONS=NONE
+https://s24.freecdn3.top/files/81048667/720p/720p.m3u8?in=<redacted>
+#EXT-X-STREAM-INF:BANDWIDTH=500000,AUDIO="aac",DEFAULT=YES,RESOLUTION=940x720,CLOSED-CAPTIONS=NONE
+https://s24.freecdn3.top/files/81048667/720p/720p.m3u8?in=<redacted>

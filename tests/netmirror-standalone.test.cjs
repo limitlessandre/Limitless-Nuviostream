@@ -35,6 +35,7 @@ function harness({
 } = {}) {
   const calls = [];
   const sandbox = {
+    URL, setTimeout, clearTimeout, AbortController,
     module: { exports: {} },
     console: { log() {}, error() {}, warn() {} },
     atob: value => Buffer.from(value, 'base64').toString('binary'),
@@ -54,6 +55,7 @@ function harness({
       if (parsed.pathname === '/checknewtv.php') {
         return jsonResponse({ token_hash: Buffer.from(API).toString('base64') });
       }
+      if (/\.example$/.test(parsed.hostname) && /\.m3u8$/.test(parsed.pathname)) return {ok:true,status:200,text:async()=> '#EXTM3U\n#EXTINF:10,\nsegment.ts\n#EXT-X-ENDLIST'};
       if (parsed.origin !== API) throw new Error('Unexpected runtime dependency: ' + url);
       const ott = options.headers && options.headers.Ott;
       if (parsed.pathname === '/newtv/search.php') {
@@ -111,7 +113,7 @@ function multiSeasonPages(prefix = 'shield') {
   return pages;
 }
 
-test('provider is standalone and exports without eval, require, timers, or downloaded code', async () => {
+test('provider is standalone and exports without eval, require, or downloaded code', async () => {
   assert.doesNotMatch(source, /raw\.githubusercontent\.com|new Function\s*\(|\beval\s*\(/);
   const h = harness({
     direct: { ok: true, tmdbId: 83095, type: 'tv', title: 'The Rising of the Shield Hero', currentSeason: 1, currentEpisode: 1,
@@ -124,13 +126,13 @@ test('provider is standalone and exports without eval, require, timers, or downl
   assert.equal(h.calls.some(call => call.url.includes('github')), false);
 });
 
-test('manifest activates only the standalone 1.0.0 NetMirror provider', () => {
+test('manifest activates only the standalone 1.3.0 NetMirror provider', () => {
   const manifest = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../manifest.json'), 'utf8'));
   const entries = manifest.scrapers.filter(item => item.id === 'limitless-netmirror');
-  assert.equal(manifest.version, '2.3.0');
+  assert.equal(manifest.version, '2.3.9');
   assert.equal(entries.length, 1);
-  assert.equal(entries[0].version, '1.0.0');
-  assert.match(entries[0].filename, /\/custom\/providers\/netmirror-standalone-nexus-v1\.js\?rev=100$/);
+  assert.equal(entries[0].version, '1.3.0');
+  assert.match(entries[0].filename, /\/custom\/providers\/netmirror-standalone-nexus-v1\.js\?rev=130$/);
   assert.doesNotMatch(entries[0].filename, /NuvioPlugin|All-in-One-Nuvio/);
 });
 
@@ -152,12 +154,12 @@ test('Net27 direct accepts only an explicitly confirmed requested TV episode', a
   const rows = await h.run('83095', 'tv', 4, 3);
   assert.equal(rows.length, 1);
   assert.equal(rows[0].url, 'https://cdn.example/shield-s4e3.mp4');
-  assert.equal(rows[0].name, 'NetMirror • FHD 1080p • [SUB]');
+  assert.equal(rows[0].name, 'NetMirror • FHD 1080p • [UNK]');
   const directCall = h.calls.find(call => call.url.startsWith('https://net27.cc/api/embed-tmdb/'));
-  assert.match(directCall.url, /[?&]se=4(?:&|$)/);
-  assert.match(directCall.url, /[?&]ep=3(?:&|$)/);
-  assert.doesNotMatch(directCall.url, /[?&]s=|[?&]e=/);
-  assert.equal(h.calls.some(call => call.url.includes('/checknewtv.php')), false);
+  assert.match(directCall.url, /[?&]s=4(?:&|$)/);
+  assert.match(directCall.url, /[?&]e=3(?:&|$)/);
+  assert.doesNotMatch(directCall.url, /[?&]se=|[?&]ep=/);
+  assert.equal(h.calls.some(call => call.url.includes('/checknewtv.php')), true);
   assert.equal(h.diagnostics().find(item => item.event === 'direct-accepted').returnedSeason, 4);
 });
 
@@ -311,8 +313,9 @@ test('Shield Hero resolver matrix never substitutes the same episode number from
       players: { [`shield-s${season}e${episode}`]: { status: 'ok', video_link: `https://generic.example/shield-s${season}e${episode}.mp4` } }
     });
     const rows = await h.run('83095', 'tv', season, episode);
-    assert.equal(rows.length, 1, `S${season}E${episode}`);
-    const expectedPath = season === 1 ? 'direct' : 'generic';
+    assert.ok(rows.length >= 1, `S${season}E${episode}`);
+    assert.ok(rows.every(row => row.url.includes(`s${season}e${episode}`)));
+    const expectedPath = 'generic';
     assert.match(rows[0].url, new RegExp(`${expectedPath}\\.example/shield-s${season}e${episode}\\.mp4$`), `S${season}E${episode}`);
     if (season > 1) assert.doesNotMatch(rows[0].url, /shield-s1e\d+\.mp4$/, `S${season}E${episode} must not silently map to S1`);
   }
