@@ -4,7 +4,7 @@
 // Fast Net27/Aoneroom path. Emits independently verified Original + English Dub rows.
 // Never uses the slow mobile bootstrap and fails closed when a requested subject is not returned.
 
-const NAME = "NetMirror Helix";
+const NAME = "NetMirror";
 const BASE = "https://net27.cc";
 const AONE = "https://h5-api.aoneroom.com";
 const API_REFERER = "https://net27.cc/";
