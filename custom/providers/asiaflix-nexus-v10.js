@@ -18,6 +18,7 @@ async function text(url){try{var r=await fetch(url,{headers:{"User-Agent":UA,"Ac
 function swId(u){var m=clean(u).match(/\/[efd]\/([a-zA-Z0-9]+)/);return m?m[1]:"";}
 function allMatches(s,re,max){var out=[],m;while((m=re.exec(s))&&out.length<(max||8)){out.push(m[1]||m[0]);if(!re.global)break;}return out;}
 function abs(u,b){try{return new URL(u,b).toString();}catch(_){return u;}}
+function swDeep(body,base){var low=body.toLowerCase(),idx=low.indexOf("manifest"),ctx=idx>=0?body.slice(Math.max(0,idx-260),Math.min(body.length,idx+620)):"";var urls=allMatches(body,/(https?:\/\/[^"'\s<>]+\.m3u8[^"'\s<>]*)/ig,4);var rel=allMatches(body,/(\/stream\/[^"'\s<>]+\.m3u8[^"'\s<>]*)/ig,4).map(function(x){return abs(x,base);});var packed=/eval\(function\(p,a,c,k,e,[dr]\)/i.test(body);return {packed:packed,urls:urls.concat(rel),ctx:short(ctx,760)};}
 function inspect(body,base){
   var title=(body.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[])[1]||"";
   var scripts=allMatches(body,/<script[^>]+src=["']([^"']+)["']/ig,8).map(function(x){return abs(x,base);});
@@ -45,7 +46,7 @@ async function getStreams(inputId,mediaType,season,episode){
   if(!sid)return out;
   for(var i=0;i<SW_DOMAINS.length;i++){
     var u="https://"+SW_DOMAINS[i]+"/"+sid,r=await text(u),q=inspect(r.body,r.finalUrl);
-    out.push(diag("SW PAGE "+(i+1),SW_DOMAINS[i]+" • HTTP "+r.status+" • body="+r.body.length+" • title="+(q.title||"none")+" • inline="+q.inline+" • words="+(q.words.join(",")||"none")));
+    var deep=swDeep(r.body,r.finalUrl);out.push(diag("SW PAGE "+(i+1),SW_DOMAINS[i]+" • HTTP "+r.status+" • body="+r.body.length+" • title="+(q.title||"none")+" • inline="+q.inline+" • packed="+deep.packed+" • m3u8="+deep.urls.length+" • words="+(q.words.join(",")||"none")));if(deep.urls.length)out.push(diag("SW M3U8 "+(i+1),deep.urls.slice(0,3).join(" | ")));if(deep.ctx)out.push(diag("SW MANIFEST CTX "+(i+1),deep.ctx));
     out.push(diag("SW LINKS "+(i+1),"scripts="+(q.scripts.map(host).join(",")||"none")+" • iframes="+(q.iframes.map(host).join(",")||"none")+" • forms="+(q.forms.map(host).join(",")||"none")+" • meta="+(q.meta||"none")));
     if(q.scripts.length)out.push(diag("SW SCRIPT URL "+(i+1),q.scripts.slice(0,3).join(" | ")));
     if(q.iframes.length)out.push(diag("SW IFRAME URL "+(i+1),q.iframes.slice(0,3).join(" | ")));
