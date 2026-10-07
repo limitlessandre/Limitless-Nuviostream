@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const source=fs.readFileSync(path.resolve(__dirname,'../custom/providers/asiaflix-nexus-v10.js'),'utf8');
+const source=fs.readFileSync(path.resolve(__dirname,'../custom/providers/asiaflix-production-v3.js'),'utf8');
 // Only codec configuration bytes from the live first segment: no signed URL or media payload.
 const liveSps=Array.from(Buffer.from('0000016764001facc86014016ec05a808080a000000300470100142000000781e30633400000000168e978f3c8','hex'));
 function runtime(fetch){const box={module:{exports:{}},URL,Uint8Array,AbortController,setTimeout,clearTimeout,fetch};vm.createContext(box,{codeGeneration:{strings:false,wasm:false}});vm.runInContext(source,box);return box.module.exports.__test;}
@@ -31,7 +31,7 @@ test('invalid implicit offset is not guessed and identical ranges are not fetche
 for(const mode of ['reader','arrayBuffer','text'])test(mode+' byte transport keeps the live SPS, intact playback URL, captions and SUB tag',async()=>{
  const calls=[],bytes=Array(262144).fill(255);bytes.splice(1293,liveSps.length,...liveSps);const api=runtime(async(url,o)=>{calls.push({url,o});return o.headers.Range?response(url,bytes,mode):{ok:true,status:200,url,text:async()=>media};});
  const url='https://cdn.test/index.m3u8?signature=exact%2Bvalue',sub={url:'https://cdn.test/en.vtt',language:'en',name:'English'},row=await api.playable(url,'https://vidbasic.top/embed/episode',{deadline:Date.now()+1000,title:'Any Film',language:'tl',episodeType:'SUB'},[sub]);
- assert.equal(row.quality,'720p');assert.equal(row.name,'AsiaFlix Test • HD 720p • [SUB]');assert.equal(row.url,url);assert.equal(row.subtitles[0].url,sub.url);assert.equal(row.subtitles[0].language,'en');assert.equal(calls.filter(x=>x.o.headers.Range).length,1);assert.equal(row.headers.Referer,'https://vidbasic.top/');
+ assert.equal(row.quality,'720p');assert.equal(row.name,'AsiaFlix • HD 720p • [SUB]');assert.equal(row.url,url);assert.equal(row.subtitles[0].url,sub.url);assert.equal(row.subtitles[0].language,'en');assert.equal(calls.filter(x=>x.o.headers.Range).length,1);assert.equal(row.headers.Referer,'https://vidbasic.top/');
 });
 test('irreversibly UTF-8-decoded binary does not invent a resolution or discard playback',async()=>{
  const api=runtime(async(url,o)=>o.headers.Range?response(url,liveSps,'lossy'):{ok:true,status:200,url,text:async()=>media});const row=await api.playable('https://cdn.test/index.m3u8','https://vidbasic.top',{deadline:Date.now()+1000,language:'tl'},[{url:'https://cdn.test/en.vtt',language:'en'}]);assert.equal(row.quality,'Auto');assert.match(row.name,/Unknown Auto.*\[SUB\]/);assert.equal(row.subtitles.length,1);

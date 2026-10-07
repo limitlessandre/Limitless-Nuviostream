@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto'),vm=require('node:vm'),fs=require('node:fs');
-const source=fs.readFileSync(require('node:path').resolve(__dirname,'../custom/providers/asiaflix-nexus-v10.js'),'utf8');
+const source=fs.readFileSync(require('node:path').resolve(__dirname,'../custom/providers/asiaflix-production-v3.js'),'utf8');
 const key='94588293375053432799222445521289',iv='5259228356829423',signed='https://cdn.test/master.m3u8?t=abc%2BDEF&s=1&f=episode1';
 const master='#EXTM3U\n#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="Korean",LANGUAGE="ko",URI="ko.m3u8"\n#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="English",LANGUAGE="en",URI="en.m3u8"\n#EXT-X-STREAM-INF:RESOLUTION=1280x720,CODECS="avc1.64001f,mp4a.40.2",AUDIO="audio"\nvideo.m3u8';
 const child='#EXTM3U\n#EXTINF:20,\nsegment.ts\n#EXT-X-ENDLIST';

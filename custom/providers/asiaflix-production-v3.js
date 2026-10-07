@@ -1,5 +1,5 @@
 "use strict";
-const PROVIDER_NAME="AsiaFlix Test";
+const PROVIDER_NAME="AsiaFlix";
 const BASE_URL="https://asiaflix.net";
 const API_URL="https://api.asiaflix.net/v1";
 const TMDB_API_KEY="1865f43a0549ca50d341dd9ab8b29f49";
