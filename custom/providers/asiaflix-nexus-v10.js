@@ -10,6 +10,14 @@ const SW_DOMAINS=["niramirus.com","medixiru.com"];
 let lastDiagnostics=[];
 function clean(v){return String(v==null?"":v).trim();}
 function slug(v){return clean(v).toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+function norm(v){return clean(v).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();}
+async function detailForTitle(title,context){
+ const direct=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(slug(title)),context);if(direct&&direct.name)return direct;
+ const search=await json(API_URL+"/drama/search?q="+encodeURIComponent(title)+"&page=1",context),rows=search&&Array.isArray(search.body)?search.body:[];
+ const wanted=norm(title),ranked=rows.map(x=>{const names=[x&&x.name].concat(Array.isArray(x&&x.altNames)?x.altNames:[]).filter(Boolean).map(norm);let score=99;if(names.some(n=>n===wanted))score=0;else if(names.some(n=>n.includes(wanted)||wanted.includes(n)))score=1;return {x,score};}).filter(y=>y.x&&y.x.slug).sort((a,b)=>a.score-b.score);
+ if(!ranked.length||ranked[0].score>1)return null;
+ return json(API_URL+"/drama/detail?slug="+encodeURIComponent(ranked[0].x.slug),context);
+}
 function abs(u,b){try{const url=new URL(u,b);return /^https?:$/.test(url.protocol)?url.toString():"";}catch(_){return "";}}
 function swId(u){var m=clean(u).match(/\/[efd]\/([a-zA-Z0-9]+)/);return m?m[1]:"";}
 function note(stage,detail){lastDiagnostics.push({stage:stage,detail:detail});}
@@ -95,7 +103,7 @@ async function getStreams(inputId,mediaType,season,episode){
  if(!/^\d+$/.test(id))return [];
  var meta=await json("https://api.themoviedb.org/3/"+type+"/"+id+"?api_key="+TMDB_API_KEY,context);if(!meta)return [];
  var title=clean(type==="movie"?(meta.title||meta.original_title):(meta.name||meta.original_name));
- var d=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(slug(title)),context);if(!d)return [];
+ var d=await detailForTitle(title,context);if(!d)return [];
  var eps=Array.isArray(d.episodes)?d.episodes:[],ep=type==="movie"?eps[0]:eps.find(function(x){return Number(x&&x.number)===epNo;});if(!ep)return [];
  var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[],sw=urls.filter(function(x){return /streamwish/i.test(clean(x&&x.source))||/(dwish|streamwish|cybervynx|vibuxer)/i.test(clean(x&&x.url));});
  context.title=title;return resolveWish(sw,context);
