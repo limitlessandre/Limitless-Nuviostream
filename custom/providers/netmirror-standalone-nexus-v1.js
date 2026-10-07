@@ -577,28 +577,39 @@ async function mobileMasterRows(sourceUrl, playbackHeaders, subtitles, context, 
     if (!response || !response.ok) return [];
     const text = String(await response.text() || "");
     const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-    const rows = [];
-    for (let i = 0; i < lines.length; i++) {
-      if (!lines[i].startsWith("#EXT-X-STREAM-INF:")) continue;
-      const res = lines[i].match(/RESOLUTION=\d+x(\d+)/i);
-      let j = i + 1;
-      while (j < lines.length && lines[j].startsWith("#")) j++;
-      if (j >= lines.length) continue;
-      const url = resolveHlsUrl(lines[j], sourceUrl);
-      if (!url) continue;
-      const height = res ? Number(res[1]) : qualityNumber({ quality: lines[i], name: lines[i] });
-      rows.push(attachAudioMetadata({
-        name: "NetMirror (Netflix Mobile) - " + (height ? height + "p" : clean(sourceMeta && sourceMeta.label || "Auto")),
-        title: context.title,
-        url,
-        quality: height ? height + "p" : mobileQuality(sourceMeta && sourceMeta.label, url),
-        headers: playbackHeaders,
-        subtitles,
-        provider: "netmirror",
-        type: "m3u8"
-      }, { audioLanguage: mobileAudioLanguage(sourceUrl) || mobileAudioLanguage(url) }, sourceMeta));
+    let maxHeight = 0;
+    let audioGroupCount = 0;
+
+    for (const line of lines) {
+      if (line.startsWith("#EXT-X-STREAM-INF:")) {
+        const res = line.match(/RESOLUTION=\d+x(\d+)/i);
+        if (res) maxHeight = Math.max(maxHeight, Number(res[1]) || 0);
+      } else if (line.startsWith("#EXT-X-MEDIA:") && /TYPE=AUDIO/i.test(line)) {
+        audioGroupCount++;
+      }
     }
-    return rows;
+
+    trace("mobile-master", {
+      path: "mobile-netflix",
+      sourceLabel: clean(sourceMeta && sourceMeta.label),
+      maxHeight,
+      audioGroupCount,
+      preservedMasterUrl: true
+    });
+
+    // Keep the original master URL intact. Its child video variants can rely on
+    // EXT-X-MEDIA audio groups; handing Nuvio a child variant directly can drop
+    // the English audio even though the master plays correctly.
+    return [attachAudioMetadata({
+      name: "NetMirror (Netflix Mobile) - " + (maxHeight ? maxHeight + "p" : clean(sourceMeta && sourceMeta.label || "Auto")),
+      title: context.title,
+      url: sourceUrl,
+      quality: maxHeight ? maxHeight + "p" : mobileQuality(sourceMeta && sourceMeta.label, sourceUrl),
+      headers: playbackHeaders,
+      subtitles,
+      provider: "netmirror",
+      type: "m3u8"
+    }, { audioLanguage: mobileAudioLanguage(sourceUrl) }, sourceMeta)];
   } catch (_) {
     return [];
   }
@@ -749,10 +760,13 @@ async function fetchFromNetflixMobile(context, forceHd) {
 
   const auto = sourceRows.find(item => /auto/i.test(clean(item.source && item.source.label))) || sourceRows[0];
   const expanded = await mobileMasterRows(auto.url, baseHeaders, subtitles, context, auto.source);
-  let rows = expanded;
 
-  if (!rows.length) {
-    rows = sourceRows.map(item => attachAudioMetadata({
+  const rows = [];
+  if (expanded.length) rows.push(...expanded);
+
+  for (const item of sourceRows) {
+    if (expanded.length && item.url === auto.url) continue;
+    rows.push(attachAudioMetadata({
       name: "NetMirror (Netflix Mobile) - " + clean(item.source && item.source.label || "Auto"),
       title: context.title,
       url: item.url,
