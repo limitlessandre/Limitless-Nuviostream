@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.14",
+  "version": "2.3.15",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -131,14 +131,14 @@
     {
       "id": "limitless-vidlink",
       "name": "Vidlink",
-      "description": "Verified standalone Nexus-owned Vidlink provider using the general Nexus audio/subtitle decision tree. Caption tracks from the Vidlink payload are exposed to Nuvio; English-original content can fall back to [DUB], while non-English streams without subtitle/audio evidence remain [UNK].",
-      "version": "1.2.0",
+      "description": "Vidlink Nexus playback A/B revision: preserves 1.2.x caption and canonical naming logic while restoring the proven base playback endpoint without multiLang=0 to test intermittent loading against the Master control.",
+      "version": "1.2.1",
       "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=120",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=121",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
