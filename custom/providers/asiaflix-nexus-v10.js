@@ -37,10 +37,12 @@ async function request(url,headers,context,binary){
   if(!r||!r.ok)throw Error("HTTP "+(r&&r.status||0));
   let body;
   if(binary&&r.body&&typeof r.body.getReader==='function'){
-   const reader=r.body.getReader(),chunk=await reader.read();await reader.cancel();body=Array.from(chunk.value||[]).slice(0,65536);
-  }else if(binary&&typeof r.arrayBuffer==='function')body=Array.from(new Uint8Array(await r.arrayBuffer()));
+   const reader=r.body.getReader(),bytes=[];let total=0;
+   while(total<262144){const chunk=await reader.read();if(chunk.done)break;const part=Array.from(chunk.value||[]),take=Math.min(part.length,262144-total);bytes.push(...part.slice(0,take));total+=take;if(take<part.length)break;}
+   await reader.cancel();body=bytes;
+  }else if(binary&&typeof r.arrayBuffer==='function')body=Array.from(new Uint8Array(await r.arrayBuffer())).slice(0,262144);
   else body=typeof r.text==="function"?await r.text():JSON.stringify(await r.json());
-  return {body:body,url:r.url||url};
+  return {body:body,url:r.url||url,status:Number(r.status||0),contentRange:r.headers&&r.headers.get?r.headers.get('content-range')||'':'',contentLength:r.headers&&r.headers.get?r.headers.get('content-length')||'':''};
  })(),new Promise((_,reject)=>{timer=setTimeout(()=>{if(controller)controller.abort();reject(Error("request timeout"));},ms);})]);}
  finally{clearTimeout(timer);if(controller&&context.controllers)context.controllers.delete(controller);}
 }
@@ -117,7 +119,7 @@ function h264Height(b){
 function detectedHeight(b){return mp4Height(b)||h264Height(b)||0;}
 async function probeHlsHeight(child,base,headers,context){
  const segment=child.split(/\r?\n/).find(x=>x.trim()&&!x.startsWith('#'));if(!segment)return 0;
- try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-65535'},context,true);return detectedHeight(r.body);}catch(_){return 0;}
+ try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-262143'},context,true);return detectedHeight(r.body);}catch(_){return 0;}
 }
 function streamTag(context,hasSelectable,audioCount){
  if(audioCount>1)return '[DUAL]';
@@ -190,10 +192,15 @@ function captions(body,page){
 async function mediaRow(url,isHls,page,context,subs,headers){
  if(!abs(url,page))return null;
  if(isHls)return playable(url,page,context,subs,headers);
- try{const r=await request(url,{...(headers||videoHeaders(page)),Range:'bytes=0-65535'},context,true),b=typeof r.body==='string'?Array.from(r.body,c=>c.charCodeAt(0)):r.body;
+ try{const mediaHeaders=headers||videoHeaders(page),r=await request(url,{...mediaHeaders,Range:'bytes=0-262143'},context,true),b=typeof r.body==='string'?Array.from(r.body,c=>c.charCodeAt(0)):r.body;
   if(b.length<12||String.fromCharCode(...b.slice(4,8))!=='ftyp')throw Error('not MP4');
-  const height=detectedHeight(b),tag=streamTag(context,(subs||[]).length>0,0),label=qualityLabel(height);
-  return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:r.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'mp4',headers:headers||videoHeaders(page),subtitles:subtitleRows(subs,headers||videoHeaders(page))};
+  let height=detectedHeight(b);
+  if(!height){
+   const m=clean(r.contentRange).match(/\/(\d+)$/),total=m?Number(m[1]):0;
+   if(total>262144){try{const tail=await request(url,{...mediaHeaders,Range:'bytes='+Math.max(0,total-262144)+'-'},context,true),tb=typeof tail.body==='string'?Array.from(tail.body,c=>c.charCodeAt(0)):tail.body;height=detectedHeight(tb);}catch(_){}}
+  }
+  const tag=streamTag(context,(subs||[]).length>0,0),label=qualityLabel(height);
+  return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:r.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'mp4',headers:mediaHeaders,subtitles:subtitleRows(subs,mediaHeaders)};
  }catch(e){note('media',e.message);return null;}
 }
 async function hostFallback(host,context){
@@ -234,7 +241,7 @@ async function resolveEpisode(entries,context){
  unique.sort((a,b)=>rank(a)-rank(b));context.controllers=new Set();
  // A bounded batch tries first-party media before any extractor in that batch.
  // Each worker validates its own API response; the first usable result wins.
- const first=jobs=>new Promise(resolve=>{let pending=jobs.length;if(!pending)return resolve(null);for(const job of jobs)job.then(row=>{if(row)resolve(row);if(!--pending)resolve(null);},()=>{if(!--pending)resolve(null);});});
+ const first=async jobs=>{if(!jobs.length)return null;const settled=await Promise.all(jobs.map(j=>j.catch(()=>null))),rows=settled.filter(Boolean);return rows.find(x=>clean(x.quality)!=='Auto')||rows[0]||null;};
  try{for(let i=0;i<unique.length&&Date.now()<context.deadline;i+=3){const batch=unique.slice(i,i+3);let row=await first(batch.map(host=>apiHost(host,context)));if(row)return [row];row=await first(batch.map(host=>hostFallback(host,context)));if(row)return [row];}return [];}
  finally{context.cancelled=true;for(const c of context.controllers)c.abort();}
 }
