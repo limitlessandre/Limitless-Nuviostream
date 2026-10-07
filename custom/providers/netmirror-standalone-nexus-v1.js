@@ -1200,10 +1200,23 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
   for (const platformKey of platforms) {
     trace("platform", { platform: platformKey, preferred, forceHd: settings.forceHd !== false });
     if (platformKey === "netflix") {
-      const mobile = await fetchFromNetflixMobile(context, settings.forceHd !== false);
-      if (mobile.length) return normalizeRows(mobile, context);
-      const direct = await fetchFromNetflixDirect(context);
-      if (direct.length) return normalizeRows(direct, context);
+      // Keep both Netflix stream families when available:
+      // - current mobile playlist: English-selected audio + captions
+      // - Net27 direct: original-language audio + captions
+      // This preserves separate [DUB+SUB] and [SUB] choices instead of treating
+      // the original-language stream as a fallback that disappears when dub works.
+      const [mobile, direct] = await Promise.all([
+        fetchFromNetflixMobile(context, settings.forceHd !== false),
+        fetchFromNetflixDirect(context)
+      ]);
+      const seenNetflixUrls = new Set();
+      const netflixRows = mobile.concat(direct).filter(row => {
+        const url = clean(row && row.url);
+        if (!url || seenNetflixUrls.has(url)) return false;
+        seenNetflixUrls.add(url);
+        return true;
+      });
+      if (netflixRows.length) return normalizeRows(netflixRows, context);
     }
     const generic = await fetchFromPlatform(platformKey, context);
     if (generic.length) return normalizeRows(generic, context);
