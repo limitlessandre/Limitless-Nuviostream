@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "description": "Nexus build/test repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -67,10 +67,10 @@
       "id": "limitless-netmirror",
       "name": "NetMirror",
       "description": "Standalone Limitless-owned NetMirror provider that keeps both verified Netflix stream families when available: the current mobile English-audio playlist with captions and the Net27 original-language stream with captions, producing separate [DUB+SUB] and [SUB] choices under Nexus naming.",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "author": "Limitless Nexus; transport baseline credited to Dustincos / All-in-One-Nuvio",
       "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-standalone-nexus-v1.js?rev=121",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-standalone-nexus-v1.js?rev=122",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
