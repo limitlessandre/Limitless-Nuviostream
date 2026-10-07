@@ -12,27 +12,37 @@ function clean(v){return String(v==null?"":v).trim();}
 function slug(v){return clean(v).toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
 function norm(v){return clean(v).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();}
 async function detailForTitle(title,context){
- const direct=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(slug(title)),context);if(direct&&direct.name)return direct;
+ const owns=d=>d&&[d.name].concat(d.altNames||[]).some(n=>norm(n)===norm(title));
+ const usable=d=>owns(d)&&Array.isArray(d.episodes)&&d.episodes.some(e=>Number(e.number)===context.episode&&Array.isArray(e.streamUrls)&&e.streamUrls.some(x=>x&&clean(x.url)));
+ const direct=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(slug(title)),context);if(usable(direct))return direct;
  const search=await json(API_URL+"/drama/search?q="+encodeURIComponent(title)+"&page=1",context),rows=search&&Array.isArray(search.body)?search.body:[];
  const wanted=norm(title),ranked=rows.map(x=>{const names=[x&&x.name].concat(Array.isArray(x&&x.altNames)?x.altNames:[]).filter(Boolean).map(norm);let score=99;if(names.some(n=>n===wanted))score=0;else if(names.some(n=>n.includes(wanted)||wanted.includes(n)))score=1;return {x,score};}).filter(y=>y.x&&y.x.slug).sort((a,b)=>a.score-b.score);
  if(!ranked.length||ranked[0].score>1)return null;
- return json(API_URL+"/drama/detail?slug="+encodeURIComponent(ranked[0].x.slug),context);
+ for(const candidate of ranked.filter(x=>x.score===0).slice(0,3)){
+  if(candidate.x.slug===slug(title))continue;
+  const detail=await json(API_URL+"/drama/detail?slug="+encodeURIComponent(candidate.x.slug),context);if(usable(detail))return detail;
+ }return null;
 }
 function abs(u,b){try{const url=new URL(u,b);return /^https?:$/.test(url.protocol)?url.toString():"";}catch(_){return "";}}
 function swId(u){var m=clean(u).match(/\/[efd]\/([a-zA-Z0-9]+)/);return m?m[1]:"";}
 function note(stage,detail){lastDiagnostics.push({stage:stage,detail:detail});}
-async function request(url,headers,context){
- const ms=Math.max(1,Math.min(5000,context.deadline-Date.now()));
- if(Date.now()>=context.deadline)throw Error("resolution deadline");
+async function request(url,headers,context,binary){
+ const ms=Math.max(1,Math.min(4000,context.deadline-Date.now()));
+ if(context.cancelled||Date.now()>=context.deadline)throw Error("resolution deadline");
  if(typeof setTimeout!=="function"||typeof clearTimeout!=="function")throw Error("runtime timers unavailable");
  let timer;const controller=typeof AbortController==="function"?new AbortController():null;
+ if(controller&&context.controllers)context.controllers.add(controller);
  try{return await Promise.race([(async()=>{
   const r=await fetch(url,{headers:headers,redirect:"follow",skipSizeCheck:true,timeout:ms,...(controller?{signal:controller.signal}:{})});
   if(!r||!r.ok)throw Error("HTTP "+(r&&r.status||0));
-  const body=typeof r.text==="function"?await r.text():JSON.stringify(await r.json());
+  let body;
+  if(binary&&r.body&&typeof r.body.getReader==='function'){
+   const reader=r.body.getReader(),chunk=await reader.read();await reader.cancel();body=Array.from(chunk.value||[]).slice(0,1024);
+  }else if(binary&&typeof r.arrayBuffer==='function')body=Array.from(new Uint8Array(await r.arrayBuffer()));
+  else body=typeof r.text==="function"?await r.text():JSON.stringify(await r.json());
   return {body:body,url:r.url||url};
  })(),new Promise((_,reject)=>{timer=setTimeout(()=>{if(controller)controller.abort();reject(Error("request timeout"));},ms);})]);}
- finally{clearTimeout(timer);}
+ finally{clearTimeout(timer);if(controller&&context.controllers)context.controllers.delete(controller);}
 }
 async function json(url,context){try{return JSON.parse((await request(url,API_HEADERS,context)).body);}catch(e){note("api",e.message);return null;}}
 // Static P.A.C.K.E.R decoding: never execute the remote player script.
@@ -61,7 +71,7 @@ function playerLinks(body,base){
  if(/File Not Found|no longer available|locked watch or does not exist/i.test(body))return [];
  const decoded=unpack(body),match=decoded.match(/\b(?:var|let|const)\s+links\s*=\s*(\{[^;]+\})/),out=[];
  if(match){try{const links=JSON.parse(match[1]);for(const key of ['hls4','hls3','hls2'])if(typeof links[key]==='string')out.push(abs(links[key],base));}catch(_){}}
- if(!out.length){const re=/\bfile\s*:\s*(['"])(https?:\/\/[^'"\s]+\.m3u8[^'"\s]*)\1/g;let m;while((m=re.exec(decoded))&&out.length<4)out.push(abs(m[2],base));}
+ if(!out.length){const re=/(?:\bfile|"file"|'file')\s*:\s*('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")/g;let m;while((m=re.exec(decoded))&&out.length<4){const url=literal(m[1]);if(/\.m3u8(?:\?|$)/i.test(url))out.push(abs(url,base));}}
  return [...new Set(out.filter(Boolean))];
 }
 function variants(body,base){
@@ -72,18 +82,22 @@ function variants(body,base){
   const url=abs(lines[n]||'',base);if(url)out.push({url:url,height:resolution?Number(resolution[2]):0,codecs:codecs?codecs[1]:''});
  }return out;
 }
-async function playable(url,page,context){
- const origin=new URL(page).origin,headers={"User-Agent":UA,Referer:origin+"/",Origin:origin};
+function videoHeaders(page){const origin=new URL(page).origin;return {"User-Agent":UA,Referer:origin+"/",Origin:origin};}
+function qualityLabel(h){return !h?'Unknown Auto':(h>=4320?'2x4K 8K ':h>=2160?'4K ':h>=1440?'Enhanced QHD ':h>=1080?'FHD ':h>=720?'HD ':h>=540?'HD-Low ':h>=480?'SD ':h>=360?'SD-Low ':'SD-Very Low ')+h+'p';}
+function subtitleRows(tracks,headers){return (tracks||[]).map(x=>({...x,name:x.name||x.label||'Subtitle',headers:x.headers||headers}));}
+async function playable(url,page,context,subtitles,exportedHeaders){
+ const headers=exportedHeaders||videoHeaders(page);
  try{
   const response=await request(url,headers,context),body=response.body.trim();if(!body.startsWith('#EXTM3U'))throw Error('not HLS');
   const video=variants(body,response.url).sort((a,b)=>b.height-a.height),selected=video[0];
   if(selected&&selected.codecs&&!/avc|hev|hvc|vp0?9|av01|mp4v/i.test(selected.codecs))throw Error('audio-only variant');
   const child=selected?(await request(selected.url,headers,context)).body:body;
   if(!child.trim().startsWith('#EXTM3U')||!/#EXTINF:/.test(child)||!/#EXT-X-ENDLIST/.test(child))throw Error('invalid video playlist');
-  const audio=new Set([...body.matchAll(/#EXT-X-MEDIA:TYPE=AUDIO,[^\r\n]+/g)].filter(m=>/URI=/.test(m[0])).map(m=>m[0]));
-  const captions=/#EXT-X-MEDIA:TYPE=SUBTITLES,/.test(body),tag=audio.size>1?'[DUAL]':captions?'[SUB]':'[UNK]';
-  const height=selected&&selected.height||0,label=height>=1080?'FHD '+height+'p':height>=720?'HD '+height+'p':height?'SD '+height+'p':'Auto';
-  return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:response.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'m3u8',headers:headers,subtitles:[]};
+  const audio=new Set([...body.matchAll(/#EXT-X-MEDIA:[^\r\n]+/g)].filter(m=>/TYPE=AUDIO(?:,|$)/.test(m[0])&&/URI=/.test(m[0])).map(m=>m[0]));
+  const captions=/#EXT-X-MEDIA:[^\r\n]*TYPE=SUBTITLES[^\r\n]*URI=/.test(body)||(subtitles||[]).length,tag=audio.size>1?'[DUAL]':captions?(context.language==='en'?'[DUB+SUB]':'[SUB]'):context.language==='en'?'[DUB]':'[UNK]';
+  const duration=[...child.matchAll(/#EXTINF:([\d.]+)/g)].reduce((s,m)=>s+Number(m[1]),0);if(!(duration>0))throw Error('empty video');
+  const height=selected&&selected.height||0,label=qualityLabel(height);
+  return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:response.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'m3u8',headers:headers,subtitles:subtitleRows(subtitles,headers)};
  }catch(e){note('manifest',e.message);return null;}
 }
 async function resolveWish(entries,context){
@@ -97,15 +111,102 @@ async function resolveWish(entries,context){
   }
  }return [];
 }
+function base64Bytes(s){
+ const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',out=[];let bits=0,value=0;
+ if(!/^[A-Za-z0-9+/]*={0,2}$/.test(s)||s.length%4===1)throw Error('invalid base64');
+ for(const c of s.replace(/=+$/,'')){value=(value<<6)|chars.indexOf(c);bits+=6;if(bits>=8){bits-=8;out.push((value>>bits)&255);}}return out;
+}
+function base64(s){
+ const bytes=unescape(encodeURIComponent(s)),chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',out=[];
+ for(let i=0;i<bytes.length;i+=3){const a=bytes.charCodeAt(i),b=bytes.charCodeAt(i+1),c=bytes.charCodeAt(i+2),n=(a<<16)|((b||0)<<8)|(c||0);out.push(chars[n>>>18],chars[(n>>>12)&63],i+1<bytes.length?chars[(n>>>6)&63]:'=',i+2<bytes.length?chars[n&63]:'=');}return out.join('');
+}
+// Small AES-CBC decoder for the public Vidbasic player configuration. No remote JS executes.
+// Kept independent of native crypto modules so the same provider works on all Nuvio runtimes.
+function aesUrl(value,key,iv){
+ const data=base64Bytes(value),k=Array.from(key,c=>c.charCodeAt(0)),initial=Array.from(iv,c=>c.charCodeAt(0));
+ if(k.length!==32||initial.length!==16||!data.length||data.length%16)throw Error('invalid AES input');
+ function mul(a,b){let n=0;while(b){if(b&1)n^=a;a=(a<<1)^((a&128)?283:0);b>>=1;}return n&255;}
+ const box=[],inverse=[];for(let x=0;x<256;x++){let y=0;if(x){y=1;for(let j=0;j<254;j++)y=mul(y,x);}const rot=n=>((y<<n)|(y>>(8-n)))&255;const z=y^rot(1)^rot(2)^rot(3)^rot(4)^99;box[x]=z;inverse[z]=x;}
+ const expanded=k.slice();let rc=1;while(expanded.length<240){let t=expanded.slice(-4),pos=expanded.length;if(pos%32===0){t.push(t.shift());t=t.map(x=>box[x]);t[0]^=rc;rc=mul(rc,2);}else if(pos%32===16)t=t.map(x=>box[x]);for(let j=0;j<4;j++)expanded.push(expanded[pos-32+j]^t[j]);}
+ const output=[];let previous=initial;
+ for(let start=0;start<data.length;start+=16){let state=data.slice(start,start+16);const add=r=>{for(let i=0;i<16;i++)state[i]^=expanded[r*16+i];};add(14);
+  for(let r=13;r>=0;r--){const old=state.slice();for(let row=0;row<4;row++)for(let c=0;c<4;c++)state[c*4+row]=inverse[old[((c-row+4)%4)*4+row]];add(r);
+   if(r)for(let c=0;c<4;c++){const i=c*4,a=state.slice(i,i+4);state[i]=mul(a[0],14)^mul(a[1],11)^mul(a[2],13)^mul(a[3],9);state[i+1]=mul(a[0],9)^mul(a[1],14)^mul(a[2],11)^mul(a[3],13);state[i+2]=mul(a[0],13)^mul(a[1],9)^mul(a[2],14)^mul(a[3],11);state[i+3]=mul(a[0],11)^mul(a[1],13)^mul(a[2],9)^mul(a[3],14);}
+  }for(let i=0;i<16;i++)output.push(state[i]^previous[i]);previous=data.slice(start,start+16);
+ }
+ const pad=output[output.length-1];if(pad<1||pad>16||!output.slice(-pad).every(x=>x===pad))throw Error('invalid AES padding');
+ const text=decodeURIComponent(output.slice(0,-pad).map(x=>'%'+x.toString(16).padStart(2,'0')).join(''));if(!/^https?:\/\//.test(text))throw Error('invalid decrypted URL');return text;
+}
+function vidbasicData(body,page){
+ const cipher=body.match(/data-name="crypto"\s+data-value="([^"]+)"/),keys=body.match(/key=CryptoJS[^;]+?\]\(('\d+'(?:\+'\d+')*)\),iv=CryptoJS[^;]+?\]\(('\d+'(?:\+'\d+')*)\)/);
+ if(!cipher||!keys)throw Error('unsupported Vidbasic player');
+ const join=s=>[...s.matchAll(/'(\d+)'/g)].map(x=>x[1]).join(''),key=join(keys[1]),iv=join(keys[2]),url=aesUrl(cipher[1],key,iv),sub=new URL(page).searchParams.get('sub');
+ return {url,subtitles:sub?[{url:aesUrl(sub,key,iv),language:'en',label:'English'}]:[]};
+}
+function captions(body,page){
+ const block=unpack(body).match(/tracks\s*:\s*\[([\s\S]*?)\]/),out=[];if(!block)return out;
+ for(const m of block[1].matchAll(/\{[^{}]*\}/g)){const file=m[0].match(/(?:file|"file")\s*:\s*(['"])(.*?)\1/),kind=m[0].match(/(?:kind|"kind")\s*:\s*(['"])(.*?)\1/),label=m[0].match(/(?:label|"label")\s*:\s*(['"])(.*?)\1/);if(file&&kind&&/^(captions|subtitles)$/i.test(kind[2]))out.push({url:abs(file[2],page),language:label&&/english/i.test(label[2])?'en':'und',label:label?label[2]:'Subtitle'});}return out.filter(x=>x.url);
+}
+async function mediaRow(url,isHls,page,context,subs,headers){
+ if(!abs(url,page))return null;
+ if(isHls)return playable(url,page,context,subs,headers);
+ try{const r=await request(url,{...(headers||videoHeaders(page)),Range:'bytes=0-1023'},context,true),b=typeof r.body==='string'?Array.from(r.body,c=>c.charCodeAt(0)):r.body;
+  if(b.length<12||String.fromCharCode(...b.slice(4,8))!=='ftyp')throw Error('not MP4');
+  const tag=(subs||[]).length?(context.language==='en'?'[DUB+SUB]':'[SUB]'):context.language==='en'?'[DUB]':'[UNK]';
+  return {name:PROVIDER_NAME+' • Unknown Auto • '+tag,title:context.title,url:r.url,quality:'Auto',provider:PROVIDER_NAME,type:'mp4',headers:headers||videoHeaders(page),subtitles:subtitleRows(subs,headers||videoHeaders(page))};
+ }catch(e){note('media',e.message);return null;}
+}
+async function hostFallback(host,context){
+ const u=clean(host.url),kind=(clean(host.source)+' '+u).toLowerCase();
+ if(/streamwish|dwish|cybervynx|hglink|hgcloud|vibuxer/.test(kind))return (await resolveWish([host],context))[0]||null;
+ let page=u;if(/streamtape|watchadsontape/.test(kind)){const id=swId(u);if(!id)return null;page='https://streamtape.com/e/'+id;}
+ else if(/vidmoly/.test(kind))page=u.replace(/^https?:\/\/[^/]+/,'https://vidmoly.biz');
+ else if(!/vidbasic|vidhide|dlions|smoothpre|minochinos|mixdrop|dood|d000d|do0od|playmogo/.test(kind))return null;
+ try{
+  const r=await request(page,videoHeaders(/vidmoly/.test(kind)?'https://vidmoly.biz':BASE_URL),context),body=unpack(r.body);page=r.url;
+  if(/vidbasic/.test(kind)){
+   const title=r.body.match(/<title>([^<]+)<\/title>/i),wanted=norm(context.title);if(!title||!norm(title[1]).includes(wanted)||!new RegExp('Episode\\s+'+context.episode+'(?:\\D|$)','i').test(title[1]))throw Error('Vidbasic episode ownership mismatch');
+   const frame=r.body.match(/<iframe[^>]+id="embedvideo"[^>]+src="([^"]+)"/i);if(!frame)throw Error('missing Standard Server');const target=abs(frame[1].replace(/&amp;/g,'&'),page);
+   if(!target||new URL(target).origin!==new URL(page).origin||new URL(target).pathname!=='/3rdplayer.html'||new URL(target).searchParams.get('id')!==new URL(page).pathname.split('/').pop())throw Error('invalid Standard Server identity');
+   const p=await request(target,videoHeaders(page),context),data=vidbasicData(p.body,target);return mediaRow(data.url,/\.m3u8(?:\?|$)/i.test(data.url),page,context,data.subtitles);
+  }
+  if(/dood|d000d|do0od|playmogo/.test(kind)){const pass=body.match(/\/pass_md5\/[^'"\s]+/);if(!pass)return null;const p=await request(abs(pass[0],page),{'User-Agent':UA,Referer:page},context),token=pass[0].split('/').pop(),url=clean(p.body)+Math.random().toString(36).slice(2,12)+'?token='+encodeURIComponent(token)+'&expiry='+Date.now();return mediaRow(url,false,page,context,[]);}
+  if(/streamtape|watchadsontape/.test(kind)){
+   const expression=body.match(/document\.getElementById\(['"]robotlink['"]\)\.innerHTML\s*=\s*([^;]+)/),literals=expression&&[...expression[1].matchAll(/'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"/g)];if(!literals||literals.length<2)return null;
+   let tail=literal(literals[1][0]);const offsets=[...expression[1].matchAll(/\.substring\((\d+)\)/g)];for(const x of offsets)tail=tail.slice(Number(x[1]));return mediaRow(abs(literal(literals[0][0])+tail,page),false,page,context,[]);
+  }
+  const mix=body.match(/(?:MDCore|Core)\.wurl\s*=\s*('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")/),urls=mix?[abs(literal(mix[1]),page)]:playerLinks(body,page);
+  for(const url of urls){const row=await mediaRow(url,!mix,page,context,captions(body,page));if(row)return row;}
+ }catch(e){note('host',e.message);}return null;
+}
+async function apiHost(host,context){
+ const value=base64(clean(host.url)),source=clean(host.source).toLowerCase();
+ // Live AsiaFlix strips its source label prefix before calling the resolver (Yuzono v32 does not).
+ const server=source.startsWith('asiaflix-')?source.split('-').pop():source,result=await json(API_URL+'/drama/get-stream-url?value='+encodeURIComponent(value)+'&server='+encodeURIComponent(server),context);
+ const subs=(result&&Array.isArray(result.subtitles)?result.subtitles:[]).map(x=>({url:abs(x.url||x.file,BASE_URL),language:x.language||x.lang||'und',label:x.label||x.name||'Subtitle'})).filter(x=>x.url);
+ for(const file of result&&Array.isArray(result.sources)?result.sources:[]){if(!file||!file.url||file.isTickCounter)continue;const row=await mediaRow(file.url,file.isM3U8===true||/\.m3u8(?:\?|$)/i.test(file.url),BASE_URL,context,subs);if(row)return row;}
+ return null;
+}
+async function resolveEpisode(entries,context){
+ const unique=[...new Map(entries.filter(x=>x&&abs(x.url,BASE_URL)).map(x=>[x.url,x])).values()];
+ // Prefer ordinary resolver-supported hosts; aliases that time out cannot starve a working source.
+ const rank=x=>/^streamwish$/i.test(x.source)?0:/^mixdrop$/i.test(x.source)?1:/vidbasic/i.test(x.source)?2:3;
+ unique.sort((a,b)=>rank(a)-rank(b));context.controllers=new Set();
+ // A bounded batch tries first-party media before any extractor in that batch.
+ // Each worker validates its own API response; the first usable result wins.
+ const first=jobs=>new Promise(resolve=>{let pending=jobs.length;if(!pending)return resolve(null);for(const job of jobs)job.then(row=>{if(row)resolve(row);if(!--pending)resolve(null);},()=>{if(!--pending)resolve(null);});});
+ try{for(let i=0;i<unique.length&&Date.now()<context.deadline;i+=3){const batch=unique.slice(i,i+3);let row=await first(batch.map(host=>apiHost(host,context)));if(row)return [row];row=await first(batch.map(host=>hostFallback(host,context)));if(row)return [row];}return [];}
+ finally{context.cancelled=true;for(const c of context.controllers)c.abort();}
+}
 async function getStreams(inputId,mediaType,season,episode){
- lastDiagnostics=[];const context={deadline:Date.now()+15000};
+ lastDiagnostics=[];const context={deadline:Date.now()+12000};
  var id=clean(inputId),type=String(mediaType||"tv").toLowerCase()==="movie"?"movie":"tv",epNo=Number(episode||1);
  if(!/^\d+$/.test(id))return [];
  var meta=await json("https://api.themoviedb.org/3/"+type+"/"+id+"?api_key="+TMDB_API_KEY,context);if(!meta)return [];
  var title=clean(type==="movie"?(meta.title||meta.original_title):(meta.name||meta.original_name));
- var d=await detailForTitle(title,context);if(!d)return [];
- var eps=Array.isArray(d.episodes)?d.episodes:[],ep=type==="movie"?eps[0]:eps.find(function(x){return Number(x&&x.number)===epNo;});if(!ep)return [];
- var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[],sw=urls.filter(function(x){return /streamwish/i.test(clean(x&&x.source))||/(dwish|streamwish|cybervynx|vibuxer)/i.test(clean(x&&x.url));});
- context.title=title;return resolveWish(sw,context);
+ context.episode=epNo;var d=await detailForTitle(title,context);if(!d)return [];
+ var eps=Array.isArray(d.episodes)?d.episodes:[],ep=eps.find(function(x){return Number(x&&x.number)===epNo;});if(!ep)return [];
+ var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[];
+ context.title=title;context.episode=Number(ep.number);context.language=meta.original_language;return resolveEpisode(urls,context);
 }
-if(typeof module!=="undefined")module.exports={getStreams:getStreams,__test:{literal:literal,unpack:unpack,playerLinks:playerLinks,playable:playable,diagnostics:()=>lastDiagnostics.slice()}};
+if(typeof module!=="undefined")module.exports={getStreams:getStreams,__test:{literal,unpack,playerLinks,playable,base64,aesUrl,vidbasicData,resolveEpisode,diagnostics:()=>lastDiagnostics.slice()}};
