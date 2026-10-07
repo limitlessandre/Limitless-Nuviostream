@@ -116,7 +116,21 @@ function h264Height(b){
   const height=(2-frameOnly)*(h+1)*16-cropY*(top+bottom);return height>=100&&height<=10000?height:0;
  }catch(_){return 0;}
 }
-function detectedHeight(b){return mp4Height(b)||h264Height(b)||0;}
+function tsPayloadHeight(b){
+ if(!b||b.length<188)return 0;
+ let off=0;while(off<188&&b[off]!==0x47)off++;if(off>=188)return 0;
+ const payloads=new Map();
+ for(let p=off;p+188<=b.length;p+=188){
+  if(b[p]!==0x47)continue;
+  const pid=((b[p+1]&31)<<8)|b[p+2],afc=(b[p+3]>>4)&3;if(afc===0||afc===2)continue;
+  let i=p+4;if(afc===3){i+=1+(b[i]||0);if(i>=p+188)continue;}
+  const part=b.slice(i,p+188);if(!payloads.has(pid))payloads.set(pid,[]);payloads.get(pid).push(...part);
+ }
+ // Prefer elementary streams that actually expose an H.264 SPS after TS packet headers are removed.
+ for(const bytes of payloads.values()){const h=h264Height(bytes);if(h)return h;}
+ return 0;
+}
+function detectedHeight(b){return mp4Height(b)||h264Height(b)||tsPayloadHeight(b)||0;}
 async function probeHlsHeight(child,base,headers,context){
  const segments=child.split(/\r?\n/).filter(x=>x.trim()&&!x.startsWith('#')).slice(0,5);
  for(const segment of segments){
