@@ -112,7 +112,7 @@ async function runOne(title) {
   const refs = walk(response.json);
   const urls = [...new Map(refs.filter(x => /^https?:\/\//i.test(x.value)).map(x => [x.value, x])).values()];
   const inventory = urls.map(x => ({ ...x, kind: classifyUrl(x.value) }));
-  const variantsProbe = await probeVariants(fixture);
+  const variantsProbe = await probeVariants(title);
   const fallbackProbe = await probeFallback(response.json && response.json.fallbackHls);
   const probes = [];
   for (const item of inventory.filter(x => ["hls","mp4","audio-resource"].includes(x.kind)).slice(0, 20)) {
