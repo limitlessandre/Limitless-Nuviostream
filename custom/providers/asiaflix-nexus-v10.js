@@ -37,7 +37,7 @@ async function request(url,headers,context,binary){
   if(!r||!r.ok)throw Error("HTTP "+(r&&r.status||0));
   let body;
   if(binary&&r.body&&typeof r.body.getReader==='function'){
-   const reader=r.body.getReader(),chunk=await reader.read();await reader.cancel();body=Array.from(chunk.value||[]).slice(0,1024);
+   const reader=r.body.getReader(),chunk=await reader.read();await reader.cancel();body=Array.from(chunk.value||[]).slice(0,65536);
   }else if(binary&&typeof r.arrayBuffer==='function')body=Array.from(new Uint8Array(await r.arrayBuffer()));
   else body=typeof r.text==="function"?await r.text():JSON.stringify(await r.json());
   return {body:body,url:r.url||url};
@@ -85,6 +85,46 @@ function variants(body,base){
 function videoHeaders(page){const origin=new URL(page).origin;return {"User-Agent":UA,Referer:origin+"/",Origin:origin};}
 function qualityLabel(h){return !h?'Unknown Auto':(h>=4320?'2x4K 8K ':h>=2160?'4K ':h>=1440?'Enhanced QHD ':h>=1080?'FHD ':h>=720?'HD ':h>=540?'HD-Low ':h>=480?'SD ':h>=360?'SD-Low ':'SD-Very Low ')+h+'p';}
 function subtitleRows(tracks,headers){return (tracks||[]).map(x=>({...x,name:x.name||x.label||'Subtitle',headers:x.headers||headers}));}
+function u32(b,i){return i>=0&&i+3<b.length?(((b[i]<<24)>>>0)+(b[i+1]<<16)+(b[i+2]<<8)+b[i+3])>>>0:0;}
+function asciiAt(b,i,s){for(let j=0;j<s.length;j++)if(b[i+j]!==s.charCodeAt(j))return false;return true;}
+function mp4Height(b){
+ for(let i=4;i+4<b.length;i++)if(asciiAt(b,i,'tkhd')){
+  const start=i-4,size=u32(b,start),end=start+size;if(size>=40&&end<=b.length){const h=u32(b,end-4)/65536;if(h>=100&&h<=10000)return Math.round(h);}
+ }
+ return 0;
+}
+function h264Height(b){
+ let start=-1;
+ for(let i=0;i+5<b.length;i++){
+  const three=b[i]===0&&b[i+1]===0&&b[i+2]===1,four=b[i]===0&&b[i+1]===0&&b[i+2]===0&&b[i+3]===1,n=i+(four?4:three?3:0);
+  if(n>i&&(b[n]&31)===7){start=n+1;break;}
+ }
+ if(start<0)return 0;let end=b.length;
+ for(let i=start;i+4<b.length;i++)if(b[i]===0&&b[i+1]===0&&(b[i+2]===1||(b[i+2]===0&&b[i+3]===1))){end=i;break;}
+ const raw=b.slice(start,end),rb=[];for(let i=0;i<raw.length;i++){if(i+2<raw.length&&raw[i]===0&&raw[i+1]===0&&raw[i+2]===3){rb.push(0,0);i+=2;}else rb.push(raw[i]);}
+ let bit=0;const bits=n=>{let v=0;for(let k=0;k<n;k++){if(bit>=rb.length*8)throw Error('short SPS');v=(v<<1)|((rb[bit>>3]>>(7-(bit&7)))&1);bit++;}return v;};
+ const ue=()=>{let z=0;while(bits(1)===0&&z<32)z++;return ((1<<z)-1)+(z?bits(z):0);},se=()=>{const v=ue();return v&1?(v+1)>>1:-(v>>1);};
+ try{
+  const profile=bits(8);bits(8);bits(8);ue();let chroma=1,separate=0;
+  if([100,110,122,244,44,83,86,118,128,138,139,134,135].includes(profile)){chroma=ue();if(chroma===3)separate=bits(1);ue();ue();bits(1);if(bits(1)){const count=chroma!==3?8:12;for(let i=0;i<count;i++)if(bits(1)){let last=8,next=8,size=i<6?16:64;for(let j=0;j<size;j++){if(next!==0)next=(last+se()+256)%256;last=next===0?last:next;}}}}
+  ue();const pct=ue();if(pct===0)ue();else if(pct===1){bits(1);se();se();for(let i=0,n=ue();i<n;i++)se();}
+  ue();bits(1);const w=ue(),h=ue(),frameOnly=bits(1);if(!frameOnly)bits(1);bits(1);
+  let left=0,right=0,top=0,bottom=0;if(bits(1)){left=ue();right=ue();top=ue();bottom=ue();}
+  const subW=chroma===3?1:2,subH=chroma===1?2:1,cropX=(separate?1:subW),cropY=(separate?1:subH)*(2-frameOnly);
+  const height=(2-frameOnly)*(h+1)*16-cropY*(top+bottom);return height>=100&&height<=10000?height:0;
+ }catch(_){return 0;}
+}
+function detectedHeight(b){return mp4Height(b)||h264Height(b)||0;}
+async function probeHlsHeight(child,base,headers,context){
+ const segment=child.split(/\r?\n/).find(x=>x.trim()&&!x.startsWith('#'));if(!segment)return 0;
+ try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-65535'},context,true);return detectedHeight(r.body);}catch(_){return 0;}
+}
+function streamTag(context,hasSelectable,audioCount){
+ if(audioCount>1)return '[DUAL]';
+ if(hasSelectable)return context.language==='en'?'[DUB+SUB]':'[SUB]';
+ if(/sub/i.test(clean(context.episodeType))&&context.language!=='en')return '[HSUB]';
+ return context.language==='en'?'[DUB]':'[UNK]';
+}
 async function playable(url,page,context,subtitles,exportedHeaders){
  const headers=exportedHeaders||videoHeaders(page);
  try{
@@ -94,9 +134,9 @@ async function playable(url,page,context,subtitles,exportedHeaders){
   const child=selected?(await request(selected.url,headers,context)).body:body;
   if(!child.trim().startsWith('#EXTM3U')||!/#EXTINF:/.test(child)||!/#EXT-X-ENDLIST/.test(child))throw Error('invalid video playlist');
   const audio=new Set([...body.matchAll(/#EXT-X-MEDIA:[^\r\n]+/g)].filter(m=>/TYPE=AUDIO(?:,|$)/.test(m[0])&&/URI=/.test(m[0])).map(m=>m[0]));
-  const captions=/#EXT-X-MEDIA:[^\r\n]*TYPE=SUBTITLES[^\r\n]*URI=/.test(body)||(subtitles||[]).length,tag=audio.size>1?'[DUAL]':captions?(context.language==='en'?'[DUB+SUB]':'[SUB]'):context.language==='en'?'[DUB]':'[UNK]';
+  const captions=/#EXT-X-MEDIA:[^\r\n]*TYPE=SUBTITLES[^\r\n]*URI=/.test(body)||(subtitles||[]).length,tag=streamTag(context,!!captions,audio.size);
   const duration=[...child.matchAll(/#EXTINF:([\d.]+)/g)].reduce((s,m)=>s+Number(m[1]),0);if(!(duration>0))throw Error('empty video');
-  const height=selected&&selected.height||0,label=qualityLabel(height);
+  const height=selected&&selected.height||await probeHlsHeight(child,selected?selected.url:response.url,headers,context),label=qualityLabel(height);
   return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:response.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'m3u8',headers:headers,subtitles:subtitleRows(subtitles,headers)};
  }catch(e){note('manifest',e.message);return null;}
 }
@@ -150,10 +190,10 @@ function captions(body,page){
 async function mediaRow(url,isHls,page,context,subs,headers){
  if(!abs(url,page))return null;
  if(isHls)return playable(url,page,context,subs,headers);
- try{const r=await request(url,{...(headers||videoHeaders(page)),Range:'bytes=0-1023'},context,true),b=typeof r.body==='string'?Array.from(r.body,c=>c.charCodeAt(0)):r.body;
+ try{const r=await request(url,{...(headers||videoHeaders(page)),Range:'bytes=0-65535'},context,true),b=typeof r.body==='string'?Array.from(r.body,c=>c.charCodeAt(0)):r.body;
   if(b.length<12||String.fromCharCode(...b.slice(4,8))!=='ftyp')throw Error('not MP4');
-  const tag=(subs||[]).length?(context.language==='en'?'[DUB+SUB]':'[SUB]'):context.language==='en'?'[DUB]':'[UNK]';
-  return {name:PROVIDER_NAME+' • Unknown Auto • '+tag,title:context.title,url:r.url,quality:'Auto',provider:PROVIDER_NAME,type:'mp4',headers:headers||videoHeaders(page),subtitles:subtitleRows(subs,headers||videoHeaders(page))};
+  const height=detectedHeight(b),tag=streamTag(context,(subs||[]).length>0,0),label=qualityLabel(height);
+  return {name:PROVIDER_NAME+' • '+label+' • '+tag,title:context.title,url:r.url,quality:height?height+'p':'Auto',provider:PROVIDER_NAME,type:'mp4',headers:headers||videoHeaders(page),subtitles:subtitleRows(subs,headers||videoHeaders(page))};
  }catch(e){note('media',e.message);return null;}
 }
 async function hostFallback(host,context){
@@ -207,6 +247,6 @@ async function getStreams(inputId,mediaType,season,episode){
  context.episode=epNo;var d=await detailForTitle(title,context);if(!d)return [];
  var eps=Array.isArray(d.episodes)?d.episodes:[],ep=eps.find(function(x){return Number(x&&x.number)===epNo;});if(!ep)return [];
  var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[];
- context.title=title;context.episode=Number(ep.number);context.language=meta.original_language;return resolveEpisode(urls,context);
+ context.title=title;context.episode=Number(ep.number);context.episodeType=clean(ep.type);context.language=meta.original_language;return resolveEpisode(urls,context);
 }
 if(typeof module!=="undefined")module.exports={getStreams:getStreams,__test:{literal,unpack,playerLinks,playable,base64,aesUrl,vidbasicData,resolveEpisode,diagnostics:()=>lastDiagnostics.slice()}};
