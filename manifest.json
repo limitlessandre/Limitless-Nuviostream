@@ -9,23 +9,14 @@
       "description": "Anime provider with season-aware TMDB-to-AniList matching for TV seasons above Season 1, shared anime identity fallbacks, Season 0 specials handling, and evidence-based Nexus quality/audio/subtitle labels. Later seasons fail closed instead of silently falling back to Season 1.",
       "version": "1.8.0",
       "author": "Limitless Nexus",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
+      "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-production-v5.js?rev=180",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4"
-      ],
+      "formats": ["mp4"],
       "logo": "https://reanime.to/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ja"
-      ]
+      "contentLanguage": ["en", "ja"]
     },
     {
       "id": "limitless-wco",
@@ -33,24 +24,14 @@
       "description": "WCO production provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and evidence-based Nexus quality/audio/subtitle labels.",
       "version": "2.7.1",
       "author": "Limitless Nexus WCO production merge",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
+      "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v5.js?rev=271",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ja"
-      ]
+      "contentLanguage": ["en", "ja"]
     },
     {
       "id": "asiaflix-nexus",
@@ -58,27 +39,14 @@
       "description": "AsiaFlix v0.3.6 StreamWish canonical-player markup diagnostic based on verified-working Yuzono AniYomi AsiaFlix v32. Catalog and episode matching remain verified; this entry currently returns diagnostic rows rather than normal playable stream cards.",
       "version": "0.3.6",
       "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v10.js?rev=036",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://asiaflix.net/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ko",
-        "zh",
-        "ja",
-        "th",
-        "tl"
-      ]
+      "contentLanguage": ["en", "ko", "zh", "ja", "th", "tl"]
     },
     {
       "id": "limitless-tubi",
@@ -86,22 +54,14 @@
       "description": "Tubi playback provider with current anonymous auth, nested episode mapping, anime identity support, Power Rangers franchise-title mapping, compact diagnostics, and evidence-based Nexus stream labels.",
       "version": "1.3.1",
       "author": "Limitless Nexus Tubi provider",
-      "supportedTypes": [
-        "movie",
-        "tv",
-        "anime"
-      ],
+      "supportedTypes": ["movie", "tv", "anime"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production-v4.js?rev=131",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "m3u8"
-      ],
+      "formats": ["m3u8"],
       "logo": "https://tubitv.com/favicon.ico",
-      "contentLanguage": [
-        "en"
-      ]
+      "contentLanguage": ["en"]
     },
     {
       "id": "limitless-netmirror",
@@ -109,23 +69,14 @@
       "description": "Standalone NetMirror with repeated player-header validation, video-duration checks, signed quality-master preference, normalized subtitle languages, selectable multi-audio and bounded fallbacks.",
       "version": "1.4.0",
       "author": "Limitless Nexus; transport references Sushan64 / NetMirror-Extension and Dustincos / All-in-One-Nuvio",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-standalone-nexus-v1.js?rev=140",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8",
-        "mkv"
-      ],
+      "formats": ["mp4", "m3u8", "mkv"],
       "logo": "https://i.postimg.cc/sXFMmJyg/netmirror.png",
-      "contentLanguage": [
-        "en"
-      ]
+      "contentLanguage": ["en"]
     },
     {
       "id": "limitless-netmirror-helix",
@@ -133,22 +84,14 @@
       "description": "Experimental Nexus device-test provider for Net27's cold variant-aware MP4 path. Prefers an explicit English dub variant, preserves native quality choices and captions, fails closed on no-source/episode mismatches, and does not use NetMirror's slow mobile bootstrap.",
       "version": "0.1.0",
       "author": "Limitless Nexus",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-helix-nexus-v1.js?rev=010",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4"
-      ],
+      "formats": ["mp4"],
       "logo": "https://i.postimg.cc/sXFMmJyg/netmirror.png",
-      "contentLanguage": [
-        "en",
-        "ko"
-      ]
+      "contentLanguage": ["en", "ko"]
     },
     {
       "id": "limitless-netmirror-mobile-probe",
@@ -156,25 +99,14 @@
       "description": "Nexus test-only diagnostic wrapper for NetMirror's current mobile /mobile/* flow. Inspects playlist entry/source/track/audio/language/server/mirror metadata and returns up to two playable sources so alternate English audio or Server 2 data can be verified without changing production NetMirror.",
       "version": "0.1.1",
       "author": "Limitless Nexus",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-mobile-probe-nexus-v1.js?rev=011",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://net52.cc/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ko",
-        "ja",
-        "hi"
-      ]
+      "contentLanguage": ["en", "ko", "ja", "hi"]
     },
     {
       "id": "limitless-vidlink",
@@ -182,24 +114,14 @@
       "description": "Verified standalone Nexus-owned Vidlink provider using the general Nexus audio/subtitle decision tree. Caption tracks from the Vidlink payload are exposed to Nuvio; English-original content can fall back to [DUB], while non-English streams without subtitle/audio evidence remain [UNK].",
       "version": "1.2.0",
       "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=120",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://vidlink.pro/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "hi",
-        "bn"
-      ]
+      "contentLanguage": ["en", "hi", "bn"]
     },
     {
       "id": "limitless-kisskh",
@@ -207,26 +129,14 @@
       "description": "Standalone Nexus-owned KissKH provider with strict title ownership, sequential domain/media fallbacks, EncDec token/subtitle handling, adaptive HLS expansion, no-source diagnostics, and Nexus naming-standard tags. Current Japanese first-party KissKH streams are manually verified [HSUB] when no selectable subtitle tracks exist.",
       "version": "1.1.1",
       "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
+      "supportedTypes": ["movie", "tv"],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/kisskh-production-v2.js?rev=111",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
+      "formats": ["mp4", "m3u8"],
       "logo": "https://kisskh.ovh/favicon.ico",
-      "contentLanguage": [
-        "en",
-        "ko",
-        "zh",
-        "ja",
-        "th"
-      ]
+      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
     }
   ]
 }
