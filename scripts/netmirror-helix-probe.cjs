@@ -65,6 +65,25 @@ async function getJson(url) {
   const text = await r.text();
   return { ms: Date.now() - started, status: r.status, finalUrl: r.url, json: JSON.parse(text) };
 }
+async function probeFallback(pathname) {
+  if (!pathname) return null;
+  const url = /^https?:\/\//i.test(pathname) ? pathname : BASE + pathname;
+  const started = Date.now();
+  try {
+    const r = await fetch(url, {
+      headers: { Accept: "*/*", Referer: BASE + "/", "User-Agent": UA },
+      redirect: "manual",
+      signal: AbortSignal.timeout(8000)
+    });
+    const body = await r.text();
+    return {
+      status: r.status, ms: Date.now() - started,
+      contentType: r.headers.get("content-type") || "",
+      location: redact(r.headers.get("location") || ""),
+      bodyPreview: redact(body.slice(0, 4000))
+    };
+  } catch (e) { return { error: e.message, ms: Date.now() - started }; }
+}
 async function headish(url) {
   const started = Date.now();
   try {
@@ -82,6 +101,7 @@ async function runOne(title) {
   const refs = walk(response.json);
   const urls = [...new Map(refs.filter(x => /^https?:\/\//i.test(x.value)).map(x => [x.value, x])).values()];
   const inventory = urls.map(x => ({ ...x, kind: classifyUrl(x.value) }));
+  const fallbackProbe = await probeFallback(response.json && response.json.fallbackHls);
   const probes = [];
   for (const item of inventory.filter(x => ["hls","mp4","audio-resource"].includes(x.kind)).slice(0, 20)) {
     probes.push({ path: item.path, kind: item.kind, url: item.value, probe: await headish(item.value) });
@@ -116,7 +136,7 @@ async function runOne(title) {
       noSource: response.json && response.json.noSource,
       error: response.json && response.json.error
     }, (key, value) => typeof value === "string" ? redact(value) : value)),
-    inventory, probes,
+    fallbackProbe, inventory, probes,
     counts: inventory.reduce((a, x) => (a[x.kind] = (a[x.kind] || 0) + 1, a), {})
   };
 }
