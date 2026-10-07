@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.13",
+  "version": "2.3.14",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -106,14 +106,14 @@
     {
       "id": "limitless-netmirror",
       "name": "NetMirror",
-      "description": "Fast NetMirror provider using verified Net27/Aoneroom subject routing. Returns separately verified English Dub and Original encodes, uses TMDB original language only as a fallback when direct audio evidence is unavailable, preserves native quality choices and selectable captions, and fails closed on subject/episode mismatch.",
-      "version": "2.0.1",
+      "description": "Fast NetMirror provider using verified Net27/Aoneroom subject routing. Returns separately verified English and original audio encodes under the canonical naming tags, keeps only the two highest available qualities per audio lane, uses TMDB original language only as a fallback when direct audio evidence is unavailable, preserves selectable captions, and fails closed on subject/episode mismatch.",
+      "version": "2.0.2",
       "author": "Limitless Nexus; fast subject routing informed by Net27/Aoneroom topology investigation",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-helix-nexus-v1.js?rev=201",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/netmirror-helix-nexus-v1.js?rev=202",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
