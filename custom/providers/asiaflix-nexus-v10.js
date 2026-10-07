@@ -38,10 +38,11 @@ async function request(url,headers,context,binary){
   let body;
   if(binary&&r.body&&typeof r.body.getReader==='function'){
    const reader=r.body.getReader(),bytes=[];let total=0;
-   while(total<262144){const chunk=await reader.read();if(chunk.done)break;const part=Array.from(chunk.value||[]),take=Math.min(part.length,262144-total);bytes.push(...part.slice(0,take));total+=take;if(take<part.length)break;}
+   while(total<262144){const chunk=await reader.read();if(chunk.done)break;const part=chunk.value||[],take=Math.min(part.length,262144-total);for(let i=0;i<take;i++)bytes.push(part[i]);total+=take;if(take<part.length)break;}
    await reader.cancel();body=bytes;
   }else if(binary&&typeof r.arrayBuffer==='function')body=Array.from(new Uint8Array(await r.arrayBuffer())).slice(0,262144);
   else body=typeof r.text==="function"?await r.text():JSON.stringify(await r.json());
+  if(binary)body=mediaBytes(body);
   return {body:body,url:r.url||url,status:Number(r.status||0),contentRange:r.headers&&r.headers.get?r.headers.get('content-range')||'':'',contentLength:r.headers&&r.headers.get?r.headers.get('content-length')||'':''};
  })(),new Promise((_,reject)=>{timer=setTimeout(()=>{if(controller)controller.abort();reject(Error("request timeout"));},ms);})]);}
  finally{clearTimeout(timer);if(controller&&context.controllers)context.controllers.delete(controller);}
@@ -95,13 +96,19 @@ function mp4Height(b){
  }
  return 0;
 }
-function h264Height(b){
+function mediaBytes(body){
+ if(typeof body!=='string')return body;
+ // Some fetch bridges return a byte string. Never parse lossy UTF-8 text as codec bytes.
+ // Keep a trustworthy ASCII MP4 signature so missing quality cannot discard valid playback.
+ const bytes=[];for(let i=0;i<Math.min(body.length,262144);i++){const n=body.charCodeAt(i);if(n>255){const prefix=body.slice(0,12);return prefix.slice(4,8)==='ftyp'&&/^[\x00-\x7f]{12}$/.test(prefix)?Array.from(prefix,c=>c.charCodeAt(0)):[];}bytes.push(n);}return bytes;
+}
+function h264Dimensions(b){
  let start=-1;
  for(let i=0;i+5<b.length;i++){
   const three=b[i]===0&&b[i+1]===0&&b[i+2]===1,four=b[i]===0&&b[i+1]===0&&b[i+2]===0&&b[i+3]===1,n=i+(four?4:three?3:0);
   if(n>i&&(b[n]&31)===7){start=n+1;break;}
  }
- if(start<0)return 0;let end=b.length;
+ if(start<0)return null;let end=b.length;
  for(let i=start;i+4<b.length;i++)if(b[i]===0&&b[i+1]===0&&(b[i+2]===1||(b[i+2]===0&&b[i+3]===1))){end=i;break;}
  const raw=b.slice(start,end),rb=[];for(let i=0;i<raw.length;i++){if(i+2<raw.length&&raw[i]===0&&raw[i+1]===0&&raw[i+2]===3){rb.push(0,0);i+=2;}else rb.push(raw[i]);}
  let bit=0;const bits=n=>{let v=0;for(let k=0;k<n;k++){if(bit>=rb.length*8)throw Error('short SPS');v=(v<<1)|((rb[bit>>3]>>(7-(bit&7)))&1);bit++;}return v;};
@@ -113,9 +120,11 @@ function h264Height(b){
   ue();bits(1);const w=ue(),h=ue(),frameOnly=bits(1);if(!frameOnly)bits(1);bits(1);
   let left=0,right=0,top=0,bottom=0;if(bits(1)){left=ue();right=ue();top=ue();bottom=ue();}
   const subW=chroma===3?1:2,subH=chroma===1?2:1,cropX=(separate?1:subW),cropY=(separate?1:subH)*(2-frameOnly);
-  const height=(2-frameOnly)*(h+1)*16-cropY*(top+bottom);return height>=100&&height<=10000?height:0;
- }catch(_){return 0;}
+  const height=(2-frameOnly)*(h+1)*16-cropY*(top+bottom),width=(w+1)*16-cropX*(left+right);
+  return height>=100&&height<=10000&&width>=100&&width<=10000?{width,height}:null;
+ }catch(_){return null;}
 }
+function h264Height(b){const dimensions=h264Dimensions(b);return dimensions?dimensions.height:0;}
 function tsPayloadHeight(b){
  if(!b||b.length<188)return 0;
  let off=0;while(off<188&&b[off]!==0x47)off++;if(off>=188)return 0;
@@ -132,11 +141,25 @@ function tsPayloadHeight(b){
 }
 function detectedHeight(b){return mp4Height(b)||h264Height(b)||tsPayloadHeight(b)||0;}
 async function probeHlsHeight(child,base,headers,context){
- const segments=child.split(/\r?\n/).filter(x=>x.trim()&&!x.startsWith('#')).slice(0,5);
- for(const segment of segments){
-  try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-262143'},context,true),h=detectedHeight(r.body);if(h)return h;}catch(_){}
+ // A byte-range playlist can store many segments in one object. Probe each declared offset,
+ // not the same first bytes five times. Init maps cover fMP4 without losing the master URL.
+ const probes=hlsProbes(child,base),deadline=Math.min(context.deadline,Date.now()+2000);
+ for(const probe of probes){
+  if(Date.now()>=deadline)break;
+  try{const r=await request(probe.url,{...headers,Range:probe.range},{...context,deadline},true);
+   if(probe.offset&&!(r.status===206&&clean(r.contentRange).startsWith('bytes '+probe.offset+'-')))continue;
+   const h=detectedHeight(r.body);if(h)return h;}catch(_){}
  }
  return 0;
+}
+function hlsProbes(body,base){
+ const probes=[],seen=new Set();let pending=null,lastUrl='',end=0;
+ const add=(url,range)=>{if(!url)return;const offset=range?range.offset:0,length=range?Math.min(range.length,32768):32768,key=url+' '+offset;if(!length||seen.has(key))return;seen.add(key);probes.push({url,offset,range:'bytes='+offset+'-'+(offset+length-1)});};
+ const parse=value=>{const m=clean(value).match(/^(\d+)(?:@(\d+))?$/);return m?{length:Number(m[1]),offset:m[2]===undefined?null:Number(m[2])}:null;};
+ for(const raw of body.split(/\r?\n/)){const line=raw.trim();if(line.startsWith('#EXT-X-MAP:')){const u=line.match(/URI="([^"]+)"/),r=line.match(/BYTERANGE="([^"]+)"/),range=r?parse(r[1]):null;if(u&&(!range||range.offset!==null))add(abs(u[1],base),range);}
+  else if(line.startsWith('#EXT-X-BYTERANGE:'))pending=parse(line.slice(17));
+  else if(line&&!line.startsWith('#')){const url=abs(line,base);if(pending){if(pending.offset===null){if(url!==lastUrl){pending=null;continue;}pending.offset=end;}add(url,pending);end=pending.offset+pending.length;}else {add(url,null);end=0;}lastUrl=url;pending=null;if(probes.length>=5)break;}
+ }return probes;
 }
 function streamTag(context,hasSelectable,audioCount){
  if(audioCount>1)return '[DUAL]';
@@ -273,4 +296,4 @@ async function getStreams(inputId,mediaType,season,episode){
  var urls=Array.isArray(ep.streamUrls)?ep.streamUrls:[];
  context.title=title;context.episode=Number(ep.number);context.episodeType=clean(ep.type);context.language=meta.original_language;return resolveEpisode(urls,context);
 }
-if(typeof module!=="undefined")module.exports={getStreams:getStreams,__test:{literal,unpack,playerLinks,playable,base64,aesUrl,vidbasicData,resolveEpisode,diagnostics:()=>lastDiagnostics.slice()}};
+if(typeof module!=="undefined")module.exports={getStreams:getStreams,__test:{literal,unpack,playerLinks,playable,base64,aesUrl,vidbasicData,resolveEpisode,mediaBytes,h264Dimensions,detectedHeight,hlsProbes,diagnostics:()=>lastDiagnostics.slice()}};

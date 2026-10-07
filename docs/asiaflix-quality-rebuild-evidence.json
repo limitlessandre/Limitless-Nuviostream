@@ -1,0 +1,396 @@
+{
+  "tested": "2026-10-07T22:16:15.897Z",
+  "baseline": "03e1dc7 / AsiaFlix 0.5.1",
+  "control": {
+    "id": 1788779,
+    "type": "movie",
+    "name": "Unang Pasok Episode 1",
+    "url": {
+      "host": "stream.vidbasic.top",
+      "path": "/0b4f3d7e-4dc3-d047-dde4-a862382a974c/index.m3u8"
+    },
+    "playlist": {
+      "container": "MPEG-TS byte-range media playlist",
+      "hasMaster": false,
+      "hasInitMap": false,
+      "contentType": "image/jpeg"
+    },
+    "samples": [
+      {
+        "range": "bytes=0-32767",
+        "status": 206,
+        "contentRange": "bytes 0-32767/375105120",
+        "contentType": "text/html",
+        "bytes": 32768,
+        "sha256": "47a52b0a885324fee81411937b6aa1a10fb133a10db4baf74b84bc9c4875d143",
+        "height": 720,
+        "pmt": [
+          {
+            "pid": 256,
+            "streamType": 27
+          },
+          {
+            "pid": 257,
+            "streamType": 15
+          }
+        ],
+        "sps": [
+          {
+            "pid": 256,
+            "offset": 1293
+          }
+        ]
+      },
+      {
+        "range": "bytes=494252-527019",
+        "status": 206,
+        "contentRange": "bytes 494252-527019/375105120",
+        "contentType": "text/html",
+        "bytes": 32768,
+        "sha256": "efe16aeb3609bd0f7e6a728ebe346f3c894ee2fbbddc671552cd4ead83e9cb73",
+        "height": 720,
+        "pmt": [
+          {
+            "pid": 256,
+            "streamType": 27
+          },
+          {
+            "pid": 257,
+            "streamType": 15
+          }
+        ],
+        "sps": [
+          {
+            "pid": 256,
+            "offset": 414
+          }
+        ]
+      },
+      {
+        "range": "bytes=1283288-1316055",
+        "status": 206,
+        "contentRange": "bytes 1283288-1316055/375105120",
+        "contentType": "text/html",
+        "bytes": 32768,
+        "sha256": "d1224e51e56aad21f46c27d9e77cc2e08f96dca2f5649aa85ba434cf76d8f0aa",
+        "height": 720,
+        "pmt": [
+          {
+            "pid": 256,
+            "streamType": 27
+          },
+          {
+            "pid": 257,
+            "streamType": 15
+          }
+        ],
+        "sps": [
+          {
+            "pid": 256,
+            "offset": 414
+          }
+        ]
+      },
+      {
+        "range": "bytes=3307860-3340627",
+        "status": 206,
+        "contentRange": "bytes 3307860-3340627/375105120",
+        "contentType": "text/html",
+        "bytes": 32768,
+        "sha256": "f008a2c2a14fd417ce7694468de4e46887b8b207df13313f626c87a06c0aa6e0",
+        "height": 720,
+        "pmt": [
+          {
+            "pid": 256,
+            "streamType": 27
+          },
+          {
+            "pid": 257,
+            "streamType": 15
+          }
+        ],
+        "sps": [
+          {
+            "pid": 256,
+            "offset": 414
+          }
+        ]
+      },
+      {
+        "range": "bytes=4865816-4898583",
+        "status": 206,
+        "contentRange": "bytes 4865816-4898583/375105120",
+        "contentType": "text/html",
+        "bytes": 32768,
+        "sha256": "01818bdce060c52e5d90aa4416d29306b6a013c9b45a4c0a28e7ae80ebdf2391",
+        "height": 720,
+        "pmt": [
+          {
+            "pid": 256,
+            "streamType": 27
+          },
+          {
+            "pid": 257,
+            "streamType": 15
+          }
+        ],
+        "sps": [
+          {
+            "pid": 256,
+            "offset": 414
+          }
+        ]
+      }
+    ],
+    "codecEvidence": {
+      "spsHex": "0000016764001facc86014016ec05a808080a000000300470100142000000781e30633400000000168e978f3c8",
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "parser": "H.264 SPS macroblock dimensions and frame cropping"
+    },
+    "transportComparison": [
+      {
+        "mode": "single-chunk",
+        "baseline": {
+          "error": "Maximum call stack size exceeded"
+        },
+        "fixed": {
+          "height": 720,
+          "bodyType": "object"
+        }
+      },
+      {
+        "mode": "arrayBuffer",
+        "baseline": {
+          "height": 720,
+          "bodyType": "object"
+        },
+        "fixed": {
+          "height": 720,
+          "bodyType": "object"
+        }
+      },
+      {
+        "mode": "latin1-text",
+        "baseline": {
+          "height": 0,
+          "bodyType": "string"
+        },
+        "fixed": {
+          "height": 720,
+          "bodyType": "object"
+        }
+      },
+      {
+        "mode": "utf8-text",
+        "baseline": {
+          "height": 0,
+          "bodyType": "string"
+        },
+        "fixed": {
+          "height": 0,
+          "bodyType": "object"
+        }
+      }
+    ]
+  },
+  "live": {
+    "tested": "2026-10-07T22:11:25.119Z",
+    "controls": [
+      {
+        "name": "Unang Pasok Episode 1",
+        "id": 1788779,
+        "type": "movie",
+        "elapsedMs": 1705,
+        "requestCount": 7,
+        "events": [
+          {
+            "host": "api.themoviedb.org",
+            "path": "/3/movie/1788779",
+            "status": 200,
+            "ms": 150
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/detail",
+            "status": 200,
+            "ms": 584
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/get-stream-url",
+            "status": 500,
+            "ms": 246
+          },
+          {
+            "host": "vidbasic.top",
+            "path": "/embed/qv3zeirwez3",
+            "status": 200,
+            "ms": 283
+          },
+          {
+            "host": "vidbasic.top",
+            "path": "/3rdplayer.html",
+            "status": 200,
+            "ms": 156
+          },
+          {
+            "host": "stream.vidbasic.top",
+            "path": "/0b4f3d7e-4dc3-d047-dde4-a862382a974c/index.m3u8",
+            "status": 200,
+            "ms": 146
+          },
+          {
+            "host": "exoidol.space",
+            "path": "/0b4f3d7e-4dc3-d047-dde4-a862382a974c/0.html",
+            "status": 206,
+            "ms": 97,
+            "range": "bytes=0-32767"
+          }
+        ],
+        "rows": [
+          {
+            "name": "AsiaFlix Test • HD 720p • [SUB]",
+            "quality": "720p",
+            "type": "m3u8",
+            "url": {
+              "host": "stream.vidbasic.top",
+              "path": "/0b4f3d7e-4dc3-d047-dde4-a862382a974c/index.m3u8"
+            },
+            "headers": {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/147 Safari/537.36",
+              "Referer": "https://vidbasic.top/",
+              "Origin": "https://vidbasic.top"
+            },
+            "caption": {
+              "status": 200,
+              "language": "en",
+              "name": "English",
+              "valid": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "The Prosecutor's Proposal S1E1",
+        "id": 322055,
+        "type": "tv",
+        "elapsedMs": 4642,
+        "requestCount": 10,
+        "events": [
+          {
+            "host": "api.themoviedb.org",
+            "path": "/3/tv/322055",
+            "status": 200,
+            "ms": 62
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/detail",
+            "status": 200,
+            "ms": 252
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/search",
+            "status": 200,
+            "ms": 1220
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/detail",
+            "status": 200,
+            "ms": 251
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/get-stream-url",
+            "status": 500,
+            "ms": 538
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/get-stream-url",
+            "status": 200,
+            "ms": 1036
+          },
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/get-stream-url",
+            "status": 200,
+            "ms": 1417
+          },
+          {
+            "host": "hlsproxy-l7-1.asiaflix.in",
+            "path": "/m3u8-proxy",
+            "status": 200,
+            "ms": 1041
+          },
+          {
+            "host": "hlsproxy-l7-1.asiaflix.in",
+            "path": "/mp4-proxy",
+            "status": 206,
+            "ms": 1477,
+            "range": "bytes=0-262143"
+          },
+          {
+            "host": "hlsproxy-l7-1.asiaflix.in",
+            "path": "/m3u8-proxy",
+            "status": 200,
+            "ms": 205
+          }
+        ],
+        "rows": [
+          {
+            "name": "AsiaFlix Test • HD-Low 640p • [HSUB]",
+            "quality": "640p",
+            "type": "m3u8",
+            "url": {
+              "host": "hlsproxy-l7-1.asiaflix.in",
+              "path": "/m3u8-proxy"
+            },
+            "headers": {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/147 Safari/537.36",
+              "Referer": "https://asiaflix.net/",
+              "Origin": "https://asiaflix.net"
+            },
+            "caption": null
+          }
+        ]
+      },
+      {
+        "name": "Prosecutor verified API MixDrop MP4 lane",
+        "elapsedMs": 1392,
+        "requestCount": 2,
+        "events": [
+          {
+            "host": "api.asiaflix.net",
+            "path": "/v1/drama/get-stream-url",
+            "status": 200,
+            "ms": 759
+          },
+          {
+            "host": "hlsproxy-l7-1.asiaflix.in",
+            "path": "/mp4-proxy",
+            "status": 206,
+            "ms": 305,
+            "range": "bytes=0-262143"
+          }
+        ],
+        "rows": [
+          {
+            "name": "AsiaFlix Test • HD-Low 640p • [HSUB]",
+            "quality": "640p",
+            "type": "mp4",
+            "url": {
+              "host": "hlsproxy-l7-1.asiaflix.in",
+              "path": "/mp4-proxy"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
