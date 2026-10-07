@@ -10,7 +10,7 @@
   "unique_plugins": 127,
   "duplicate_groups": 4,
   "language_filtered_entries": 326,
-  "unknown_language_metadata_entries": 26,
+  "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
@@ -69,9 +69,10 @@
     {
       "name": "FStream",
       "url": "https://git.disroot.org/ayza/FStream/raw/branch/main/repo.json",
-      "status": "ok",
+      "status": "cached",
       "plugins": 1,
-      "verified": false
+      "verified": false,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "name": "Phisher Repo",
@@ -209,10 +210,9 @@
     {
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "status": "cached",
-      "plugins": 9,
-      "verified": false,
-      "error": "HTTP Error 404: Not Found"
+      "status": "ok",
+      "plugins": 8,
+      "verified": false
     },
     {
       "name": "Ayu CloudStream Games",
@@ -232,7 +232,7 @@
       "name": "Desi Extensions",
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
       "status": "ok",
-      "plugins": 14,
+      "plugins": 15,
       "verified": false
     }
   ]

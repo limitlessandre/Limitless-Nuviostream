@@ -1002,14 +1002,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimeDekhoProvider.cs3",
         "status": 1,
-        "version": 70,
+        "version": 71,
         "name": "AnimeDekhoProvider",
         "internalName": "AnimeDekhoProvider",
         "authors": [
           "Phisher98"
         ],
         "description": "Includes AnimeDekho,OnePace(DUB,SUB) and HindiSubAnime",
-        "fileSize": 107624,
+        "fileSize": 123407,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1019,7 +1019,7 @@
         ],
         "iconUrl": "https://animedekho.app/wp-content/uploads/2023/07/AnimeDekho-Logo-300x-1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-504d0f45339eea5ebd944fd5e37f3d0d6a44fffc1a1b3903cad411c13b2c6014"
+        "fileHash": "sha256-6e9b9bf288f82d30c33eadcc09c4f68895cdc88abb2e635c3fe6aec30fea969c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animedubhindi.cs3",
@@ -1454,22 +1454,22 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fibwatch.cs3",
         "status": 1,
-        "version": 11,
+        "version": 12,
         "name": "Fibwatch",
         "internalName": "Fibwatch",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 77894,
+        "fileSize": 80253,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "hi",
+        "language": "bn",
         "tvTypes": [
           "Movie",
           "TvSeries"
         ],
         "iconUrl": "https://f.pondit.xyz/fibwatch-logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-7d5a5a824f897d955f3ff4a344218ead2bb56b972cebf29d65e9880552705de7"
+        "fileHash": "sha256-9fc3e9bc05ae8292fbadc2b2a95688efe216b0735d211f377ced0feeccdfe9f7"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fivemovierulz.cs3",
@@ -1642,13 +1642,13 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/IdlixProvider.cs3",
         "status": 1,
-        "version": 16,
+        "version": 17,
         "name": "IdlixProvider",
         "internalName": "IdlixProvider",
         "authors": [
           "Phisher98"
         ],
-        "fileSize": 92061,
+        "fileSize": 99794,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "id",
         "tvTypes": [
@@ -1659,7 +1659,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/idlix.png",
         "apiVersion": 1,
-        "fileHash": "sha256-332395846879d696da3f944ce89a1d90eda204f1c9fc2b01f6921c6f9e4eb67c"
+        "fileHash": "sha256-70b163c3d4a898d2f6d59d5f96b924d35678f89869aad44c0f65d82effcb65da"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/IPTVPlayer.cs3",
@@ -3928,7 +3928,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 27980,
+        "fileSize": 30584,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -3937,7 +3937,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vuGLv4zY3XpoN2jza2unCQ95xFfypfe-h3k3xteMbGxl7taw-ziXyNg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-cd29b55725e0db70296c1831ea6c6136889f14eb01e57eb6c32afc998e93ecb2"
+        "fileHash": "sha256-b7d3e7e03576ed07f7971ae23245a654a15805ebd045e6e3f93f1f3e93aba5b7"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Alooytv.cs3",
@@ -4398,7 +4398,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 37131,
+        "fileSize": 37121,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4407,7 +4407,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/Rate/src/main/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-4a79e6218f5a151395989e83c495a7e4d9ab33bdb7318e5e8bc6733f2165a636"
+        "fileHash": "sha256-3c81c2479bca04347271c3e13dc7b32965633f7d1aeb659f1aa7202b81dc9f14"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Replaymatch.cs3",
@@ -4751,7 +4751,7 @@
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134701,
+        "fileSize": 134698,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4761,7 +4761,7 @@
         ],
         "iconUrl": "https://www.animeunity.so/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-a0570b1cab821b39aaa3e46749b0a016d92d8498bf31a124a01af9c7e2c82343"
+        "fileHash": "sha256-80e54b8f25bd03152c62b6940d986835c6a9182fbd38380073906f693ba26b62"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -4941,14 +4941,14 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamCenter.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "StreamCenter",
         "internalName": "StreamCenter",
         "authors": [
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1667603,
+        "fileSize": 1715319,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4962,7 +4962,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bb45078f6ed06beae1fd61d820f7512f24d3bedecbe1cbf23fd7638f59dc0c5f"
+        "fileHash": "sha256-beac90998eca5f04f91ee77c04656a344b94ebae79b431bd96a2774b03449463"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -7582,7 +7582,7 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "Wcoflix",
         "internalName": "Wcoflix",
         "authors": [
@@ -7590,7 +7590,7 @@
           "kraptor"
         ],
         "description": "We have wide range of cartoons and anime that you can watch in HD and High quality for free.",
-        "fileSize": 22311,
+        "fileSize": 23834,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7599,7 +7599,7 @@
         ],
         "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wcoflix.tv/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-3a44e6944851c296e597ef5b4a41a0c9e9a66d8be37348dc152af371df469637"
+        "fileHash": "sha256-8f2556de6d18188f43070de47bd4fd5177282e9f58642530083d66d1ca06e4a4"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Yablom.cs3",
@@ -9382,14 +9382,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
         "status": 1,
-        "version": 19,
+        "version": 21,
         "name": "TorrentsV1",
         "internalName": "TorrentsV1",
         "authors": [
           "raghav"
         ],
         "description": "Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons",
-        "fileSize": 100953,
+        "fileSize": 118012,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9402,7 +9402,7 @@
         ],
         "iconUrl": "https://png.pngtree.com/element_our/png/20181227/movie-icon-which-is-designed-for-all-application-purpose-new-png_287896.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-181fbdf9af74465222fa79c4af6e8d33feb5612f88c0352c7c139941eb6d97a9"
+        "fileHash": "sha256-867fe24b5e0a7b5d98d31e0d24744d790ac5022defbedd8b8d577dc9be0c3fd0"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
@@ -9819,28 +9819,6 @@
         "fileHash": "sha256-b667f3d75db2084f32c410e733f93a4c83b00a04c32dbbf51681c2eba52098d5",
         "fileSize": 42861,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/jiotv.png"
-      },
-      {
-        "version": 1,
-        "internalName": "Omniz",
-        "name": "Omniz",
-        "pluginClassName": "com.allforu.OmnizPlugin",
-        "status": 1,
-        "apiVersion": 1,
-        "language": "en",
-        "authors": [
-          "AllForU"
-        ],
-        "tvTypes": [
-          "Movie",
-          "TvSeries"
-        ],
-        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Omniz-v1.cs3",
-        "description": "Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches",
-        "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-522a5aaee99b15bffb53bde2ff97442de1c7105e4999d25d4ba9093b0f25d529",
-        "fileSize": 56562
       },
       {
         "version": 5,
@@ -10327,14 +10305,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/18+.cs3",
         "status": 1,
-        "version": 1,
+        "version": 2,
         "name": "18+",
         "internalName": "18+",
         "authors": [
           "Faisal"
         ],
         "description": "Desi Viral Indian Content Provider",
-        "fileSize": 11261,
+        "fileSize": 20267,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10342,7 +10320,29 @@
         ],
         "iconUrl": "https://fsi52.com/favicon-32x32.png",
         "apiVersion": 1,
-        "fileHash": "sha256-6b4854f9edd563dbe2090e6cbd60933d012dae74f1f2efe2ad638900d21ee2f9"
+        "fileHash": "sha256-3e69a6a97fd33a6c3e550c7963eff1c2918b6b46722dbbe9f4a00c62ab7a304e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeDubHindi.cs3",
+        "status": 1,
+        "version": 3,
+        "name": "AnimeDubHindi",
+        "internalName": "AnimeDubHindi",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Hindi Dubbed Anime & Donghua Provider",
+        "fileSize": 41041,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://www.animedubhindi.link/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-73f0395bac4dc122bb56c948909f9e987606edcd12280fed691233eebd65c7ae"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AniStream.cs3",
@@ -10388,29 +10388,6 @@
         "fileHash": "sha256-33484614bec52df3e8b577400098b2e6e313c1b520bebd87f5bf50000043ec05"
       },
       {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Ctg Stream.cs3",
-        "status": 1,
-        "version": 2,
-        "name": "Ctg Stream",
-        "internalName": "Ctg Stream",
-        "authors": [
-          "Faisal"
-        ],
-        "description": "multi Language Provider",
-        "fileSize": 33864,
-        "repositoryUrl": "https://github.com/Faisal0786/Desi",
-        "tvTypes": [
-          "TvSeries",
-          "Movie",
-          "AsianDrama",
-          "Anime",
-          "Torrent"
-        ],
-        "iconUrl": " ",
-        "apiVersion": 1,
-        "fileHash": "sha256-105d96a31185a85f9e5f0f519db1b29ea616e2d6b25c8cdf419b270bb74b22cb"
-      },
-      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/FilmFly.cs3",
         "status": 1,
         "version": 22,
@@ -10428,7 +10405,7 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "",
+        "iconUrl": "https://img.iwebp.store/images/files/afaa901b76bc48d57a346319423035dd384208.png",
         "apiVersion": 1,
         "fileHash": "sha256-26502ec2f06262050a43bef8fb4b44c2d892938e904c00e8a26d24c9896b6c78"
       },
@@ -10442,7 +10419,7 @@
           "Faisal"
         ],
         "description": "KMMovies: Download & Stream Free Latest Hindi, English & Dubbed Movies in 480p, 720p, 1080p & 4K – Formerly Khatrimaza.",
-        "fileSize": 28705,
+        "fileSize": 32425,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10452,7 +10429,7 @@
         ],
         "iconUrl": "https://kmmovies.cyou/wp-content/uploads/2026/02/cropped-favicon-192x192.png",
         "apiVersion": 1,
-        "fileHash": "sha256-40b1a2fea19383c9ad7c58611d6319f9141bf301ab9d3e89703b0d2c34a0636e"
+        "fileHash": "sha256-f1b92b38a8c952f463239f52b3a12f0135f236b086faac01d78eb815efe8dd5b"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
@@ -10494,7 +10471,7 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "",
+        "iconUrl": "https://new1.moviesdrive.beer/wp-content/uploads/2026/01/cropped-Gemini_Generated_Image_qt93aqt93aqt93aq-1.png",
         "apiVersion": 1,
         "fileHash": "sha256-f42ddc2bfc56d375c2e47d83bb7b712761d5a87e1dc26dedd7aaa84338e6aa4f"
       },
@@ -10553,7 +10530,7 @@
           "Faisal"
         ],
         "description": "StreamHub One - Multilingual provider",
-        "fileSize": 990502,
+        "fileSize": 990494,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10565,12 +10542,12 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-968f6b6ce5d1d547903f070f3b9ba6585270a8802d61b8f5f09bd8d23af8f496"
+        "fileHash": "sha256-afb741f8da3f59037060f410e3aa22b447ea081706e409ceb6bf40b26bf222bd"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "TamilToon",
         "internalName": "TamilToon",
         "authors": [
@@ -10586,20 +10563,21 @@
           "Anime",
           "AsianDrama"
         ],
+        "iconUrl": "https://tamiltvtoons.sbs/wp-content/uploads/2025/10/cropped-photo_2025-05-20_17-44-49.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-a68c12d4c5dbb045f5e7526fbe3f653c8192be2c7d8f16e511d1ee5544a7b1ad"
+        "fileHash": "sha256-2af135560429668743cf4cbcb8030a5ecdb4e378528ee605be5b9e88ee65112d"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/The Movie Flix.cs3",
         "status": 1,
-        "version": 26,
+        "version": 27,
         "name": "The Movie Flix",
         "internalName": "The Movie Flix",
         "authors": [
           "Faisal"
         ],
         "description": "TheMoviesFlix provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 56992,
+        "fileSize": 56995,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10609,19 +10587,19 @@
         ],
         "iconUrl": "https://moviesflixi.com/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-c473160b23e333dd10e92f3cb5bbb1a7322bfe993a4bc7692ff0904018c30260"
+        "fileHash": "sha256-4fb71304fff2f9a84dfc00fe9037b276726130b22d3009f7a01e53112526af03"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/vegamovies.cs3",
         "status": 1,
-        "version": 37,
+        "version": 38,
         "name": "vegamovies",
         "internalName": "vegamovies",
         "authors": [
           "Faisal"
         ],
         "description": "VegaMovies Provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 85841,
+        "fileSize": 96153,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10631,7 +10609,29 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(2).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-96bc15da4b8a2b198ca9e77c3398b4ff2257ba61c78fc0c39272ec4130f18c4b"
+        "fileHash": "sha256-ade8e7ff50e4ae14b766a4eb7364b03a91bd639a4b65715d94932992133b40ac"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "WatchDrama",
+        "internalName": "WatchDrama",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "WatchDrama — Free Short Drama Streaming",
+        "fileSize": 23097,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "en",
+        "tvTypes": [
+          "TvSeries",
+          "Anime",
+          "Movie"
+        ],
+        "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
+        "apiVersion": 1,
+        "fileHash": "sha256-e55eed26721dd2b1f342cd54c4829fa85579857720a36a53f55c5ae98b881a6d"
       }
     ]
   }

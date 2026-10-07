@@ -26,6 +26,7 @@ Exact/alias overlap: **3**
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
+- **WatchDrama** (`WatchDrama`) — en; TvSeries, Anime, Movie — WatchDrama — Free Short Drama Streaming
 
 ## Medium-priority unique candidates
 
@@ -82,7 +83,6 @@ Exact/alias overlap: **3**
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies and series from multiple sources with a Manage Sources screen that filters download and stream links
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
-- **Omniz** (`Omniz`) — en; Movie, TvSeries — Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url

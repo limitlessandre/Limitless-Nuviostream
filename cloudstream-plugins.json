@@ -1665,28 +1665,6 @@
     "fileHash": "sha256-36405b23f1e4e1704c0de28ad99617905ce7618affc8daea0df4676769b8662b"
   },
   {
-    "version": 1,
-    "internalName": "Omniz",
-    "name": "Omniz",
-    "pluginClassName": "com.allforu.OmnizPlugin",
-    "status": 1,
-    "apiVersion": 1,
-    "language": "en",
-    "authors": [
-      "AllForU"
-    ],
-    "tvTypes": [
-      "Movie",
-      "TvSeries"
-    ],
-    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Omniz-v1.cs3",
-    "description": "Omniz - Movies & Series, multi-audio and 4K/HD from every source we can reach, zero mismatches",
-    "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-522a5aaee99b15bffb53bde2ff97442de1c7105e4999d25d4ba9093b0f25d529",
-    "fileSize": 56562
-  },
-  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OnePace.cs3",
     "status": 1,
     "version": 23,
@@ -2396,14 +2374,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
     "status": 1,
-    "version": 19,
+    "version": 21,
     "name": "TorrentsV1",
     "internalName": "TorrentsV1",
     "authors": [
       "raghav"
     ],
     "description": "Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons",
-    "fileSize": 100953,
+    "fileSize": 118012,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2416,7 +2394,7 @@
     ],
     "iconUrl": "https://png.pngtree.com/element_our/png/20181227/movie-icon-which-is-designed-for-all-application-purpose-new-png_287896.jpg",
     "apiVersion": 1,
-    "fileHash": "sha256-181fbdf9af74465222fa79c4af6e8d33feb5612f88c0352c7c139941eb6d97a9"
+    "fileHash": "sha256-867fe24b5e0a7b5d98d31e0d24744d790ac5022defbedd8b8d577dc9be0c3fd0"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3",
@@ -2503,6 +2481,28 @@
     "name": "Watch32"
   },
   {
+    "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "WatchDrama",
+    "internalName": "WatchDrama",
+    "authors": [
+      "Faisal"
+    ],
+    "description": "WatchDrama — Free Short Drama Streaming",
+    "fileSize": 23097,
+    "repositoryUrl": "https://github.com/Faisal0786/Desi",
+    "language": "en",
+    "tvTypes": [
+      "TvSeries",
+      "Anime",
+      "Movie"
+    ],
+    "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
+    "apiVersion": 1,
+    "fileHash": "sha256-e55eed26721dd2b1f342cd54c4829fa85579857720a36a53f55c5ae98b881a6d"
+  },
+  {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
     "status": 1,
     "version": 18,
@@ -2525,7 +2525,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "Wcoflix",
     "internalName": "Wcoflix",
     "authors": [
@@ -2533,7 +2533,7 @@
       "kraptor"
     ],
     "description": "We have wide range of cartoons and anime that you can watch in HD and High quality for free.",
-    "fileSize": 22311,
+    "fileSize": 23834,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -2542,7 +2542,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wcoflix.tv/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-3a44e6944851c296e597ef5b4a41a0c9e9a66d8be37348dc152af371df469637"
+    "fileHash": "sha256-8f2556de6d18188f43070de47bd4fd5177282e9f58642530083d66d1ca06e4a4"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",

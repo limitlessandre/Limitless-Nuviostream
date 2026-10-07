@@ -276,6 +276,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AnimeDubHindi",
+      "name": "AnimeDubHindi",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeDubHindi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Animedubhindi",
       "name": "Animedubhindi",
       "source": "Phisher Repo",
@@ -1224,14 +1238,6 @@
       "reason": "unknown-language"
     },
     {
-      "internalName": "Ctg Stream",
-      "name": "Ctg Stream",
-      "source": "Desi Extensions",
-      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
-      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Ctg Stream.cs3",
-      "reason": "unknown-language"
-    },
-    {
       "internalName": "CuevanaProvider",
       "name": "CuevanaProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -1679,10 +1685,10 @@
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "language": [
-        "hi"
+        "bn"
       ],
       "normalizedLanguages": [
-        "hi"
+        "bn"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fibwatch.cs3",
       "reason": "no-allowed-language"
@@ -4418,7 +4424,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 26,
+  "unknown_language_metadata_count": 25,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -4440,13 +4446,6 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/SyncProvider.cs3"
-    },
-    {
-      "internalName": "Ctg Stream",
-      "name": "Ctg Stream",
-      "source": "Desi Extensions",
-      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
-      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Ctg Stream.cs3"
     },
     {
       "internalName": "DailymotionProvider",
