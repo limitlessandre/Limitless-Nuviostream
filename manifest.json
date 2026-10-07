@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.17",
+  "version": "2.3.18",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -131,14 +131,14 @@
     {
       "id": "limitless-vidlink",
       "name": "Vidlink",
-      "description": "Vidlink diagnostic baseline reset to the exact known-good Master 1.0.0 provider code. Use this to confirm playback reliability on Nexus before reapplying naming/subtitle improvements one change at a time.",
-      "version": "1.3.0-baseline.1",
+      "description": "Vidlink diagnostic URL-isolation test: Nexus manifest points directly to the known-working Master Vidlink 1.0.0 provider resource to isolate branch/path/cache behavior from provider code.",
+      "version": "1.3.0-baseline.2",
       "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=1301",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=100",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
