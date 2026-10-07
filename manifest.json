@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.34",
+  "version": "2.3.35",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -55,14 +55,14 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "AsiaFlix first-party resolver with bounded host fallbacks, Vidbasic Standard Server playback/captions, improved MP4/HLS quality probing, evidence-based hard-sub labeling, validated media, and numeric-suffix search for stale direct title records.",
-      "version": "0.4.9",
+      "description": "AsiaFlix first-party resolver with bounded host fallbacks, Vidbasic Standard Server playback/captions, multi-segment HLS quality probing, MP4 quality probing, evidence-based hard-sub labeling, validated media, and numeric-suffix search for stale direct title records.",
+      "version": "0.5.0",
       "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v10.js?rev=049",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v10.js?rev=050",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
