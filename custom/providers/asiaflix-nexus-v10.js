@@ -118,8 +118,11 @@ function h264Height(b){
 }
 function detectedHeight(b){return mp4Height(b)||h264Height(b)||0;}
 async function probeHlsHeight(child,base,headers,context){
- const segment=child.split(/\r?\n/).find(x=>x.trim()&&!x.startsWith('#'));if(!segment)return 0;
- try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-262143'},context,true);return detectedHeight(r.body);}catch(_){return 0;}
+ const segments=child.split(/\r?\n/).filter(x=>x.trim()&&!x.startsWith('#')).slice(0,5);
+ for(const segment of segments){
+  try{const r=await request(abs(segment,base),{...headers,Range:'bytes=0-262143'},context,true),h=detectedHeight(r.body);if(h)return h;}catch(_){}
+ }
+ return 0;
 }
 function streamTag(context,hasSelectable,audioCount){
  if(audioCount>1)return '[DUAL]';
