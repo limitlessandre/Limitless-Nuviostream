@@ -96,13 +96,12 @@ async function tmdbOriginalLanguage(tmdbId, type) {
 function rowsFor(data, variant, kind, originalLanguage) {
   const subtitles = (Array.isArray(data.captions) ? data.captions : []).map(subtitle).filter(Boolean);
   const tag = tagFor(kind, subtitles, originalLanguage);
-  const label = kind === "english" ? "English Dub" : "Original";
   const headers = { Referer: PLAYBACK_REFERER, "User-Agent": UA };
   const streams = Array.isArray(data.streams) ? data.streams.filter(x => x && /^https?:\/\//i.test(clean(x.url))) : [];
   const rows = streams.map(stream => {
     const h = integer(stream.resolution);
     return {
-      name: `${NAME} • ${qualityLabel(h)} • ${tag} • ${label}`,
+      name: `${NAME} • ${qualityLabel(h)} • ${tag}`,
       title: clean(data.title), url: clean(stream.url), quality: h ? `${h}p` : "Auto",
       type: "video", headers, subtitles, provider: "netmirror",
       audioLanguage: kind === "english" ? "en" : "", audioType: kind === "english" ? "dub" : "original"
@@ -111,13 +110,23 @@ function rowsFor(data, variant, kind, originalLanguage) {
   if (!rows.length && /^https?:\/\//i.test(clean(data.mp4))) {
     const h = integer(data.resolution);
     rows.push({
-      name: `${NAME} • ${qualityLabel(h)} • ${tag} • ${label}`,
+      name: `${NAME} • ${qualityLabel(h)} • ${tag}`,
       title: clean(data.title), url: clean(data.mp4), quality: h ? `${h}p` : "Auto",
       type: "video", headers, subtitles, provider: "netmirror",
       audioLanguage: kind === "english" ? "en" : "", audioType: kind === "english" ? "dub" : "original"
     });
   }
-  return rows;
+  // Keep only the two highest distinct quality rows for this audio lane.
+  rows.sort((a,b) => integer(b.quality) - integer(a.quality));
+  const kept = [], seen = {};
+  for (const row of rows) {
+    const q = clean(row.quality);
+    if (seen[q]) continue;
+    seen[q] = true;
+    kept.push(row);
+    if (kept.length === 2) break;
+  }
+  return kept;
 }
 
 async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1) {
