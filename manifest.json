@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.21",
+  "version": "2.3.22",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -55,14 +55,14 @@
     {
       "id": "asiaflix-nexus",
       "name": "AsiaFlix Test",
-      "description": "AsiaFlix v0.3.6 StreamWish canonical-player markup diagnostic based on verified-working Yuzono AniYomi AsiaFlix v32. Catalog and episode matching remain verified; this entry currently returns diagnostic rows rather than normal playable stream cards.",
-      "version": "0.3.6",
+      "description": "AsiaFlix v0.3.7 first-party get-stream-url resolver diagnostic based directly on Yuzono v32. Tests AsiaFlix API resolution before falling back to StreamWish player markup diagnostics.",
+      "version": "0.3.7",
       "author": "Limitless Nexus port based directly on verified-working Yuzono AsiaFlix v32",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v10.js?rev=036",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/asiaflix-nexus-v10.js?rev=037",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
