@@ -70,6 +70,19 @@ anything else     → [UNK]
 
 ## Current provider-specific verification
 
+### NetMirror
+
+The main NetMirror provider uses the fast verified Net27/Aoneroom subject route. English Dub and Original encodes are separate stream rows rather than being labeled `[DUAL]` unless the returned media itself exposes multiple selectable audio tracks.
+
+- verified English Dub + selectable subtitles → `[DUB+SUB]`
+- verified English Dub + no selectable subtitles → `[DUB]`
+- verified non-English Original + selectable subtitles → `[SUB]`
+- English-original/default-English content + selectable subtitles → `[DUB+SUB]` when stream/provider evidence or trusted content-language fallback establishes English
+- English-original/default-English content + no selectable subtitles → `[DUB]` on the same evidence basis
+- use `[DUAL]` only for a genuine multi-audio source, not merely because separate dub/original encodes both exist
+
+The slower session-based NetMirror implementation that can expose genuine selectable multi-audio masters is parked in Provider Lab until its cold bootstrap delay is solved.
+
 ### KissKH
 
 The current first-party Japanese KissKH stream class was manually verified during the September 2026 Nexus investigation as hard-subbed when no selectable subtitle tracks are exposed. Therefore current Japanese KissKH first-party rows with no selectable subtitle tracks may use `[HSUB]`.
