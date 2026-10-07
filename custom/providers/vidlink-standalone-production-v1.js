@@ -218,7 +218,8 @@ function present(rows, metadata, subtitles) {
       ...row,
       name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata, row._payload || null, subtitles)}`,
       title: sortTag + "Vidlink",
-      subtitles
+      // A/B test: do not attach caption tracks to the media row. Caption
+      // attachment was added after the known-good Master playback control.
     };
   });
 }
