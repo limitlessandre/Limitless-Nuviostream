@@ -76,6 +76,28 @@ async function probeVariants(fixture) {
   } catch(e) { return { error:e.message, ms:Date.now()-started, path }; }
 }
 
+async function probeVariantEmbeds(fixture, variantsData) {
+  const variants = variantsData && Array.isArray(variantsData.variants) ? variantsData.variants : [];
+  const interesting = variants.filter(v => /english dub|default/i.test(String(v.language || ""))).slice(0, 4);
+  const out = [];
+  for (const v of interesting) {
+    const params = new URLSearchParams({ type:"tv", se:String(fixture.season), ep:String(fixture.episode) });
+    if (v.dubSubjectId) params.set("dubSubjectId", String(v.dubSubjectId));
+    if (v.detailPath) params.set("detailPath", String(v.detailPath));
+    const path = `/api/embed-tmdb/${fixture.tmdb}?${params}`;
+    const started = Date.now();
+    try {
+      const r = await fetch(BASE + path, { headers:{ Accept:"application/json, text/plain, */*", Referer:BASE+"/", "User-Agent":UA }, signal:AbortSignal.timeout(8000) });
+      const body = await r.text(); let json=null; try { json=JSON.parse(body); } catch {}
+      out.push({ language:v.language, dubSubjectId:v.dubSubjectId, detailPath:v.detailPath, path, status:r.status, ms:Date.now()-started,
+        identity: json && { ok:json.ok, tmdbId:json.tmdbId, currentSeason:json.currentSeason, currentEpisode:json.currentEpisode, subjectId:json.subjectId, title:json.title },
+        topology: json && JSON.parse(JSON.stringify({ streams:json.streams, captions:json.captions, mp4:json.mp4, resolution:json.resolution, detailPath:json.detailPath, match:json.match, mode:json.mode, noSource:json.noSource, error:json.error },(k,val)=>typeof val==="string"?redact(val):val))
+      });
+    } catch(e) { out.push({ language:v.language, dubSubjectId:v.dubSubjectId, detailPath:v.detailPath, path, error:e.message, ms:Date.now()-started }); }
+  }
+  return out;
+}
+
 async function probeFallback(pathname) {
   if (!pathname) return null;
   const url = /^https?:\/\//i.test(pathname) ? pathname : BASE + pathname;
@@ -113,6 +135,7 @@ async function runOne(title) {
   const urls = [...new Map(refs.filter(x => /^https?:\/\//i.test(x.value)).map(x => [x.value, x])).values()];
   const inventory = urls.map(x => ({ ...x, kind: classifyUrl(x.value) }));
   const variantsProbe = await probeVariants(title);
+  const variantEmbeds = await probeVariantEmbeds(title, variantsProbe && variantsProbe.data);
   const fallbackProbe = await probeFallback(response.json && response.json.fallbackHls);
   const probes = [];
   for (const item of inventory.filter(x => ["hls","mp4","audio-resource"].includes(x.kind)).slice(0, 20)) {
@@ -148,7 +171,7 @@ async function runOne(title) {
       noSource: response.json && response.json.noSource,
       error: response.json && response.json.error
     }, (key, value) => typeof value === "string" ? redact(value) : value)),
-    variantsProbe, fallbackProbe, inventory, probes,
+    variantsProbe, variantEmbeds, fallbackProbe, inventory, probes,
     counts: inventory.reduce((a, x) => (a[x.kind] = (a[x.kind] || 0) + 1, a), {})
   };
 }
