@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nuviostream",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Confirmed Limitless Nexus providers with canonical quality, audio/subtitle, mirror, and unknown-stream naming standards.",
   "scrapers": [
     {
@@ -9,14 +9,23 @@
       "description": "Confirmed anime provider with season-aware TMDB-to-AniList matching for TV seasons above Season 1, MAL/Jikan and AniList identity fallbacks, Season 0 specials handling, and evidence-based Nexus stream labels. Later seasons fail closed instead of silently falling back to Season 1.",
       "version": "1.8.0",
       "author": "Limitless Nexus",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/reanime-master.js?rev=180",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://reanime.to/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-wco",
@@ -24,14 +33,24 @@
       "description": "Confirmed WCO provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and Nexus naming standards.",
       "version": "2.7.1",
       "author": "Limitless Nexus WCO production merge",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/wco-master.js?rev=271p2",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://www.wcostream.tv/favicon.ico",
-      "contentLanguage": ["en", "ja"]
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
     },
     {
       "id": "limitless-tubi",
@@ -39,29 +58,47 @@
       "description": "Confirmed Tubi provider with anonymous playback auth, nested episode mapping, anime identity support, Power Rangers mapping, diagnostics, and Nexus naming standards.",
       "version": "1.3.1",
       "author": "Limitless Nexus Tubi provider",
-      "supportedTypes": ["movie", "tv", "anime"],
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/tubi-master.js?rev=131",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["m3u8"],
+      "formats": [
+        "m3u8"
+      ],
       "logo": "https://tubitv.com/favicon.ico",
-      "contentLanguage": ["en"]
+      "contentLanguage": [
+        "en"
+      ]
     },
     {
       "id": "limitless-netmirror",
       "name": "NetMirror",
-      "description": "Confirmed NetMirror adapter with pinned upstream extraction, settings support, multiple verified qualities, and Nexus naming-standard stream labels.",
-      "version": "0.3.1",
-      "author": "Limitless Nexus adapter; upstream NetMirror credit: Dustincos / All-in-One-Nuvio",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/netmirror-master.js?rev=031",
+      "description": "Fast NetMirror provider using verified Net27/Aoneroom subject routing. Returns separately verified English and original audio encodes under the canonical naming tags, keeps only the two highest available qualities per audio lane, uses TMDB original language only as a fallback when direct audio evidence is unavailable, preserves selectable captions, and fails closed on subject/episode mismatch.",
+      "version": "2.0.2",
+      "author": "Limitless Nexus; fast subject routing informed by Net27/Aoneroom topology investigation",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/netmirror-master.js?rev=202",
       "enabled": true,
-      "hasSettings": true,
+      "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8", "mkv"],
+      "formats": [
+        "mp4"
+      ],
       "logo": "https://i.postimg.cc/sXFMmJyg/netmirror.png",
-      "contentLanguage": ["en"]
+      "contentLanguage": [
+        "en",
+        "ko",
+        "ja",
+        "hi"
+      ]
     },
     {
       "id": "limitless-vidlink",
@@ -69,14 +106,24 @@
       "description": "Confirmed standalone Nexus-owned Vidlink provider reproducing the verified one-row playable control contract without Eclipsia/Codeberg runtime dependency. Current verified stream class is hard-subbed and labeled [HSUB].",
       "version": "1.0.0",
       "author": "Limitless Nexus; control behavior reference: Eclipsia Haylox/Vidlink",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=100",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://vidlink.pro/favicon.ico",
-      "contentLanguage": ["en", "hi", "bn"]
+      "contentLanguage": [
+        "en",
+        "hi",
+        "bn"
+      ]
     },
     {
       "id": "limitless-kisskh",
@@ -84,14 +131,26 @@
       "description": "Confirmed standalone Nexus-owned KissKH provider with strict title ownership, domain/media fallbacks, EncDec token/subtitle handling, adaptive HLS support, no-source diagnostics, and Nexus naming-standard tags.",
       "version": "1.1.1",
       "author": "Limitless Nexus; flow cross-checked against maintained KissKH references",
-      "supportedTypes": ["movie", "tv"],
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/kisskh-master.js?rev=111",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
-      "formats": ["mp4", "m3u8"],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "logo": "https://kisskh.ovh/favicon.ico",
-      "contentLanguage": ["en", "ko", "zh", "ja", "th"]
+      "contentLanguage": [
+        "en",
+        "ko",
+        "zh",
+        "ja",
+        "th"
+      ]
     }
   ]
 }
