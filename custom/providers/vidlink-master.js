@@ -3,8 +3,10 @@
 // Nexus-owned standalone Vidlink implementation based on the measured and
 // user-verified Haylox/Vidlink playback contract. Keep extraction headers off
 // returned media rows: that is part of the confirmed Nuvio playback behavior.
-// Den-O S1E1 was manually verified as hard-subbed, so this verified stream
-// class uses [HSUB] under NAMING_STANDARDS.md.
+// Presentation follows the general Nexus naming scheme. The old Den-O
+// verification must not be generalized to unrelated content. English-original
+// content falls into the [DUB] bucket; non-English content without subtitle or
+// audio evidence remains [UNK].
 const PROVIDER_NAME = "Vidlink";
 const TMDB_API_URL = "https://api.themoviedb.org/3";
 const TMDB_API_KEY = "307b7b8ef035c6aa336900aef4e203bd";
@@ -32,7 +34,7 @@ function controlQuality(value) {
   return null;
 }
 
-function candidate(url, qualityValue) {
+function candidate(url, qualityValue, payload) {
   const quality = controlQuality(qualityValue);
   if (!url || !quality) return null;
   return {
@@ -40,15 +42,50 @@ function candidate(url, qualityValue) {
     title: "Vidlink",
     url,
     quality,
-    type: url.toLowerCase().includes(".m3u8") ? "m3u8" : "video"
+    type: url.toLowerCase().includes(".m3u8") ? "m3u8" : "video",
+    _payload: payload || null
   };
+}
+
+function subtitleTrack(item) {
+  if (!item) return null;
+  if (typeof item === "string") {
+    const url = String(item).trim();
+    return /^https?:\/\//i.test(url) ? { url, file: url, language: "Unknown", name: "Unknown" } : null;
+  }
+  const url = String(item.file || item.url || item.src || item.uri || "").trim();
+  if (!/^https?:\/\//i.test(url)) return null;
+  const label = String(item.label || item.name || item.lang || item.language || "Unknown").trim() || "Unknown";
+  const language = String(item.language || item.lang || item.label || item.name || label).trim() || label;
+  return { url, file: url, language, name: label };
+}
+
+function collectSubtitles(data) {
+  const groups = [
+    data && data.stream && data.stream.captions,
+    data && data.stream && data.stream.subtitles,
+    data && data.subtitles,
+    data && data.captions
+  ];
+  const out = [];
+  const seen = new Set();
+  for (const group of groups) {
+    if (!Array.isArray(group)) continue;
+    for (const item of group) {
+      const track = subtitleTrack(item);
+      if (!track || seen.has(track.url)) continue;
+      seen.add(track.url);
+      out.push(track);
+    }
+  }
+  return out;
 }
 
 function extract(data) {
   if (!data) return [];
   const rows = [];
   const add = (url, quality) => {
-    const row = candidate(url, quality);
+    const row = candidate(url, quality, data);
     if (row) rows.push(row);
   };
   const stream = data.stream;
@@ -112,7 +149,7 @@ async function playlistRows(url) {
             resolved = new URL(line, url).toString();
           } catch (_) {}
         }
-        const row = candidate(resolved, resolution);
+        const row = candidate(resolved, resolution, null);
         if (row) rows.push(row);
         pending = false;
       }
@@ -124,7 +161,46 @@ async function playlistRows(url) {
   }
 }
 
-function present(rows) {
+function audioEvidence(payload) {
+  const stream = payload && payload.stream;
+  const fields = [
+    stream && stream.audioLanguage,
+    stream && stream.audio_language,
+    stream && stream.language,
+    stream && stream.lang,
+    stream && stream.audio,
+    stream && stream.audioType,
+    payload && payload.audioLanguage,
+    payload && payload.language
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  const groups = [
+    stream && stream.audioTracks,
+    stream && stream.audio_tracks,
+    stream && stream.audios,
+    payload && payload.audioTracks,
+    payload && payload.audios
+  ];
+  const dual = groups.some(group => Array.isArray(group) && group.filter(Boolean).length > 1) ||
+    /dual\s*audio|\bdual\b/.test(fields);
+  const english = /(?:^|[^a-z])(?:en|eng|english)(?:[^a-z]|$)/i.test(fields) ||
+    /english\s*dub|\bdubbed\b|\bdub\b/.test(fields);
+  const hardSub = /hard[\s-]*subs?|hardsub|\bhsub\b/.test(fields);
+  return { dual, english, hardSub, hasAudioEvidence: !!fields };
+}
+
+function presentationTag(metadata, payload, subtitles) {
+  const evidence = audioEvidence(payload);
+  const originalLanguage = String(metadata && metadata.original_language || "").trim().toLowerCase();
+  const englishAudio = evidence.english || (!evidence.hasAudioEvidence && originalLanguage === "en");
+  if (evidence.dual) return "[DUAL]";
+  if (subtitles.length) return englishAudio ? "[DUB+SUB]" : "[SUB]";
+  if (englishAudio) return "[DUB]";
+  if (evidence.hardSub) return "[HSUB]";
+  return "[UNK]";
+}
+
+function present(rows, metadata, subtitles) {
   const seen = new Set();
   const accepted = rows
     .filter(row => QUALITY_HEIGHTS[row.quality] && row.url && row.url.startsWith("https"))
@@ -140,8 +216,9 @@ function present(rows) {
     const tier = height >= 2160 ? "4K" : height >= 1440 ? "Enhanced QHD" : height >= 1080 ? "FHD" : "HD";
     return {
       ...row,
-      name: `${PROVIDER_NAME} • ${tier} ${height}p • [HSUB]`,
-      title: sortTag + "Vidlink"
+      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata, row._payload || null, subtitles)}`,
+      title: sortTag + "Vidlink",
+      subtitles
     };
   });
 }
@@ -165,17 +242,20 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     }
 
     const endpoint = isTv
-      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}`
-      : `${API_BASE}/movie/${encryption.result}`;
+      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}?multiLang=0`
+      : `${API_BASE}/movie/${encryption.result}?multiLang=0`;
     const response = await fetch(endpoint, { headers: HEADERS });
     if (!response.ok) return [];
 
-    const extracted = extract(await response.json());
+    const payload = await response.json();
+    const subtitles = collectSubtitles(payload);
+    const extracted = extract(payload);
     const direct = extracted.filter(row => !row._playlist);
     const playlists = await Promise.all(
       extracted.filter(row => row._playlist).map(row => playlistRows(row.url))
     );
-    return present(direct.concat(...playlists));
+    const playlistRowsFlat = playlists.flat().map(row => ({ ...row, _payload: payload }));
+    return present(direct.concat(playlistRowsFlat), metadata, subtitles);
   } catch (_) {
     return [];
   }
