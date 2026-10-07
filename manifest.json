@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.19",
+  "version": "2.3.20",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -139,6 +139,31 @@
         "tv"
       ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-standalone-production-v1.js?rev=120",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://vidlink.pro/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "hi",
+        "bn"
+      ]
+    },
+    {
+      "id": "limitless-vidlink-diagnostic",
+      "name": "Vidlink Diagnostic",
+      "description": "Temporary Nexus diagnostic provider that exposes Vidlink direct-quality and parsed playlist variants as separately labeled rows for upstream playback comparison. Production Vidlink remains untouched.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus diagnostic",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/vidlink-diagnostic-v1.js?rev=010",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
