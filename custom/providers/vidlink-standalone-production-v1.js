@@ -242,8 +242,8 @@ async function getStreams(tmdbId, mediaType, season, episode) {
     }
 
     const endpoint = isTv
-      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}?multiLang=0`
-      : `${API_BASE}/movie/${encryption.result}?multiLang=0`;
+      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}`
+      : `${API_BASE}/movie/${encryption.result}`;
     const response = await fetch(endpoint, { headers: HEADERS });
     if (!response.ok) return [];
 
