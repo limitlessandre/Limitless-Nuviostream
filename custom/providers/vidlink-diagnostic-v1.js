@@ -1,0 +1,266 @@
+"use strict";
+
+// Nexus-owned standalone Vidlink implementation based on the measured and
+// user-verified Haylox/Vidlink playback contract. Keep extraction headers off
+// returned media rows: that is part of the confirmed Nuvio playback behavior.
+// Presentation follows the general Nexus naming scheme. The old Den-O
+// verification must not be generalized to unrelated content. English-original
+// content falls into the [DUB] bucket; non-English content without subtitle or
+// audio evidence remains [UNK].
+const PROVIDER_NAME = "Vidlink Diagnostic";
+const TMDB_API_URL = "https://api.themoviedb.org/3";
+const TMDB_API_KEY = "307b7b8ef035c6aa336900aef4e203bd";
+const API_BASE = "https://vidlink.pro/api/b";
+const HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+  "Connection": "keep-alive",
+  "Referer": "https://vidlink.pro/",
+  "Origin": "https://vidlink.pro"
+};
+const QUALITY_HEIGHTS = { "4K": 2160, "1440p": 1440, "1080p": 1080, "720p": 720 };
+
+function controlQuality(value) {
+  if (!value) return null;
+  const text = String(value).toLowerCase();
+  if (text.includes("2160") || text.includes("4k")) return "4K";
+  if (text.includes("1440") || text.includes("2k")) return "1440p";
+  if (text.includes("1080") || text.includes("fhd")) return "1080p";
+  if (text.includes("720") || text.includes("hd")) return "720p";
+  const match = text.match(/(\d{3,4})[p]?/);
+  const height = match ? Number(match[1]) : 0;
+  for (const quality of Object.keys(QUALITY_HEIGHTS)) {
+    if (height >= QUALITY_HEIGHTS[quality]) return quality;
+  }
+  return null;
+}
+
+function candidate(url, qualityValue, payload, source) {
+  const quality = controlQuality(qualityValue);
+  if (!url || !quality) return null;
+  return {
+    name: "Vidlink",
+    title: "Vidlink",
+    url,
+    quality,
+    type: url.toLowerCase().includes(".m3u8") ? "m3u8" : "video",
+    _payload: payload || null,
+    _source: source || "Direct"
+  };
+}
+
+function subtitleTrack(item) {
+  if (!item) return null;
+  if (typeof item === "string") {
+    const url = String(item).trim();
+    return /^https?:\/\//i.test(url) ? { url, file: url, language: "Unknown", name: "Unknown" } : null;
+  }
+  const url = String(item.file || item.url || item.src || item.uri || "").trim();
+  if (!/^https?:\/\//i.test(url)) return null;
+  const label = String(item.label || item.name || item.lang || item.language || "Unknown").trim() || "Unknown";
+  const language = String(item.language || item.lang || item.label || item.name || label).trim() || label;
+  return { url, file: url, language, name: label };
+}
+
+function collectSubtitles(data) {
+  const groups = [
+    data && data.stream && data.stream.captions,
+    data && data.stream && data.stream.subtitles,
+    data && data.subtitles,
+    data && data.captions
+  ];
+  const out = [];
+  const seen = new Set();
+  for (const group of groups) {
+    if (!Array.isArray(group)) continue;
+    for (const item of group) {
+      const track = subtitleTrack(item);
+      if (!track || seen.has(track.url)) continue;
+      seen.add(track.url);
+      out.push(track);
+    }
+  }
+  return out;
+}
+
+function extract(data) {
+  if (!data) return [];
+  const rows = [];
+  const add = (url, quality) => {
+    const row = candidate(url, quality, data, "Direct");
+    if (row) rows.push(row);
+  };
+  const stream = data.stream;
+  if (stream && stream.qualities) {
+    for (const key of Object.keys(stream.qualities)) {
+      const item = stream.qualities[key];
+      if (item && item.url) add(item.url, key);
+    }
+    if (stream.playlist) rows.push({ _playlist: true, url: stream.playlist });
+  } else if (stream && stream.playlist) {
+    rows.push({ _playlist: true, url: stream.playlist });
+  } else if (data.url) {
+    add(data.url, data.quality || null);
+  } else if (Array.isArray(data.streams)) {
+    for (const item of data.streams) {
+      if (item && item.url) add(item.url, item.quality || item.resolution || null);
+    }
+  } else if (Array.isArray(data.links)) {
+    for (const item of data.links) {
+      if (item && item.url) add(item.url, item.quality || null);
+    }
+  } else {
+    // Preserve the confirmed control's legacy response support without adding
+    // subtitle/caption URLs as media candidates.
+    const visit = object => {
+      if (!object || typeof object !== "object") return;
+      for (const key of Object.keys(object)) {
+        if (/subtitle|caption/.test(key.toLowerCase())) continue;
+        const value = object[key];
+        if (typeof value === "string" && value.startsWith("http")) {
+          if (![".srt", ".vtt", "subtitle", "caption"].some(part => value.includes(part))) {
+            add(value, key);
+          }
+        } else if (value && typeof value === "object") {
+          visit(value);
+        }
+      }
+    };
+    visit(data);
+  }
+  return rows;
+}
+
+async function playlistRows(url) {
+  try {
+    const response = await fetch(url, { headers: HEADERS });
+    if (!response.ok) return [];
+    const text = await response.text();
+    const rows = [];
+    let resolution;
+    let pending = false;
+    for (const line of text.split("\n").map(value => value.trim()).filter(Boolean)) {
+      if (line.startsWith("#EXT-X-STREAM-INF:")) {
+        const match = line.match(/RESOLUTION=(\d+x\d+)/);
+        resolution = match ? match[1].split("x").pop() + "p" : null;
+        pending = true;
+      } else if (pending && !line.startsWith("#")) {
+        let resolved = line;
+        if (!line.startsWith("http")) {
+          try {
+            resolved = new URL(line, url).toString();
+          } catch (_) {}
+        }
+        const row = candidate(resolved, resolution, null, "Playlist");
+        if (row) rows.push(row);
+        pending = false;
+      }
+    }
+    // A media playlist, unknown resolution or failed fetch is not a fallback row.
+    return rows;
+  } catch (_) {
+    return [];
+  }
+}
+
+function audioEvidence(payload) {
+  const stream = payload && payload.stream;
+  const fields = [
+    stream && stream.audioLanguage,
+    stream && stream.audio_language,
+    stream && stream.language,
+    stream && stream.lang,
+    stream && stream.audio,
+    stream && stream.audioType,
+    payload && payload.audioLanguage,
+    payload && payload.language
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  const groups = [
+    stream && stream.audioTracks,
+    stream && stream.audio_tracks,
+    stream && stream.audios,
+    payload && payload.audioTracks,
+    payload && payload.audios
+  ];
+  const dual = groups.some(group => Array.isArray(group) && group.filter(Boolean).length > 1) ||
+    /dual\s*audio|\bdual\b/.test(fields);
+  const english = /(?:^|[^a-z])(?:en|eng|english)(?:[^a-z]|$)/i.test(fields) ||
+    /english\s*dub|\bdubbed\b|\bdub\b/.test(fields);
+  const hardSub = /hard[\s-]*subs?|hardsub|\bhsub\b/.test(fields);
+  return { dual, english, hardSub, hasAudioEvidence: !!fields };
+}
+
+function presentationTag(metadata, payload, subtitles) {
+  const evidence = audioEvidence(payload);
+  const originalLanguage = String(metadata && metadata.original_language || "").trim().toLowerCase();
+  const englishAudio = evidence.english || (!evidence.hasAudioEvidence && originalLanguage === "en");
+  if (evidence.dual) return "[DUAL]";
+  if (subtitles.length) return englishAudio ? "[DUB+SUB]" : "[SUB]";
+  if (englishAudio) return "[DUB]";
+  if (evidence.hardSub) return "[HSUB]";
+  return "[UNK]";
+}
+
+function present(rows, metadata, subtitles) {
+  const seen = new Set();
+  const accepted = rows
+    .filter(row => QUALITY_HEIGHTS[row.quality] && row.url && row.url.startsWith("https"))
+    .filter(row => !seen.has(row.url) && seen.add(row.url));
+  accepted.sort((a, b) => QUALITY_HEIGHTS[b.quality] - QUALITY_HEIGHTS[a.quality]);
+  return accepted.map((row, index) => {
+    const sortTag = (index + 1)
+      .toString(2)
+      .padStart(20, "0")
+      .replace(/0/g, "\u200B")
+      .replace(/1/g, "\uFEFF");
+    const height = QUALITY_HEIGHTS[row.quality];
+    const tier = height >= 2160 ? "4K" : height >= 1440 ? "Enhanced QHD" : height >= 1080 ? "FHD" : "HD";
+    return {
+      ...row,
+      name: `${PROVIDER_NAME} • ${tier} ${height}p • ${presentationTag(metadata, row._payload || null, subtitles)} • ${row._source || "Direct"}`,
+      title: sortTag + `Vidlink Diagnostic ${row._source || "Direct"}`,
+      subtitles
+    };
+  });
+}
+
+async function getStreams(tmdbId, mediaType, season, episode) {
+  try {
+    const isTv = mediaType === "tv";
+    if (isTv && (season == null || episode == null)) return [];
+
+    const [metadata, encryption] = await Promise.all([
+      fetch(`${TMDB_API_URL}/${isTv ? "tv" : "movie"}/${tmdbId}?api_key=${TMDB_API_KEY}`)
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null),
+      fetch(`https://enc-dec.app/api/enc-vidlink?text=${tmdbId}`)
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null)
+    ]);
+
+    if (!metadata || !(isTv ? metadata.name : metadata.title) || !encryption || !encryption.result) {
+      return [];
+    }
+
+    const endpoint = isTv
+      ? `${API_BASE}/tv/${encryption.result}/${season}/${episode}?multiLang=0`
+      : `${API_BASE}/movie/${encryption.result}?multiLang=0`;
+    const response = await fetch(endpoint, { headers: HEADERS });
+    if (!response.ok) return [];
+
+    const payload = await response.json();
+    const subtitles = collectSubtitles(payload);
+    const extracted = extract(payload);
+    const direct = extracted.filter(row => !row._playlist);
+    const playlists = await Promise.all(
+      extracted.filter(row => row._playlist).map(row => playlistRows(row.url))
+    );
+    const playlistRowsFlat = playlists.flat().map(row => ({ ...row, _payload: payload }));
+    return present(direct.concat(playlistRowsFlat), metadata, subtitles);
+  } catch (_) {
+    return [];
+  }
+}
+
+if (typeof module !== "undefined" && module.exports) module.exports = { getStreams };
+else globalThis.getStreams = getStreams;
