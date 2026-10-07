@@ -1,6 +1,6 @@
 "use strict";
 
-// NetMirror Helix experimental provider.
+// NetMirror production provider.
 // Fast Net27/Aoneroom path. Emits independently verified Original + English Dub rows.
 // Never uses the slow mobile bootstrap and fails closed when a requested subject is not returned.
 
@@ -10,6 +10,8 @@ const AONE = "https://h5-api.aoneroom.com";
 const API_REFERER = "https://net27.cc/";
 const PLAYBACK_REFERER = "https://videodownloader.site/";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36";
+const TMDB_API_URL = "https://api.themoviedb.org/3";
+const TMDB_API_KEY = "307b7b8ef035c6aa336900aef4e203bd";
 
 function clean(v) { return String(v == null ? "" : v).trim(); }
 function integer(v) { const m = clean(v).match(/-?\d+/); return m ? Number(m[0]) : null; }
@@ -80,13 +82,20 @@ async function enrichEnglishVariant(vd, variant) {
   } catch (_) {}
   return variant;
 }
-function tagFor(kind, subtitles) {
-  if (kind === "english") return subtitles.length ? "[DUB+SUB]" : "[DUB]";
+function tagFor(kind, subtitles, originalLanguage) {
+  if (kind === "english" || (kind === "original" && originalLanguage === "en"))
+    return subtitles.length ? "[DUB+SUB]" : "[DUB]";
   return subtitles.length ? "[SUB]" : "[UNK]";
 }
-function rowsFor(data, variant, kind) {
+async function tmdbOriginalLanguage(tmdbId, type) {
+  try {
+    const data = await json(`${TMDB_API_URL}/${type === "tv" ? "tv" : "movie"}/${tmdbId}?api_key=${TMDB_API_KEY}`);
+    return clean(data && data.original_language).toLowerCase();
+  } catch (_) { return ""; }
+}
+function rowsFor(data, variant, kind, originalLanguage) {
   const subtitles = (Array.isArray(data.captions) ? data.captions : []).map(subtitle).filter(Boolean);
-  const tag = tagFor(kind, subtitles);
+  const tag = tagFor(kind, subtitles, originalLanguage);
   const label = kind === "english" ? "English Dub" : "Original";
   const headers = { Referer: PLAYBACK_REFERER, "User-Agent": UA };
   const streams = Array.isArray(data.streams) ? data.streams.filter(x => x && /^https?:\/\//i.test(clean(x.url))) : [];
@@ -95,7 +104,7 @@ function rowsFor(data, variant, kind) {
     return {
       name: `${NAME} • ${qualityLabel(h)} • ${tag} • ${label}`,
       title: clean(data.title), url: clean(stream.url), quality: h ? `${h}p` : "Auto",
-      type: "video", headers, subtitles, provider: "netmirror-helix",
+      type: "video", headers, subtitles, provider: "netmirror",
       audioLanguage: kind === "english" ? "en" : "", audioType: kind === "english" ? "dub" : "original"
     };
   });
@@ -104,7 +113,7 @@ function rowsFor(data, variant, kind) {
     rows.push({
       name: `${NAME} • ${qualityLabel(h)} • ${tag} • ${label}`,
       title: clean(data.title), url: clean(data.mp4), quality: h ? `${h}p` : "Auto",
-      type: "video", headers, subtitles, provider: "netmirror-helix",
+      type: "video", headers, subtitles, provider: "netmirror",
       audioLanguage: kind === "english" ? "en" : "", audioType: kind === "english" ? "dub" : "original"
     });
   }
@@ -118,6 +127,8 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
   const e = type === "tv" ? integer(episode) : null;
   if (!tmdbId || (type === "tv" && (!s || !e))) return [];
 
+  const originalLanguage = await tmdbOriginalLanguage(tmdbId, type);
+
   const basePath = type === "tv"
     ? `${BASE}/api/embed-tmdb/${tmdbId}?type=tv&se=${s}&ep=${e}`
     : `${BASE}/api/embed-tmdb/${tmdbId}?type=movie`;
@@ -127,7 +138,7 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
     try {
       const data = await json(basePath);
       if (!identity(data, tmdbId, type, s, e) || data.noSource === true || clean(data.mode).toLowerCase() === "none") return [];
-      return rowsFor(data, null, "original").sort((a,b) => integer(b.quality) - integer(a.quality));
+      return rowsFor(data, null, "original", originalLanguage).sort((a,b) => integer(b.quality) - integer(a.quality));
     } catch (_) { return []; }
   }
 
@@ -153,7 +164,7 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
       if (data.noSource === true || clean(data.mode).toLowerCase() === "none") continue;
       // Critical Stage-6 guard: a dub row exists only if Net27 actually returned that exact dub subject/path.
       if (!sameSubject(data, req.variant)) continue;
-      out.push(...rowsFor(data, req.variant, req.kind));
+      out.push(...rowsFor(data, req.variant, req.kind, originalLanguage));
     } catch (_) {}
   }
 
