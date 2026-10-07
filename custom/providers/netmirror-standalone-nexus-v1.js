@@ -12,6 +12,9 @@ const NET27_BASE = "https://net27.cc";
 const NET27_PLAYBACK_REFERER = "https://videodownloader.site/";
 const TMDB_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 const NET27_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36";
+const MOBILE_BASE = "https://net52.cc";
+const MOBILE_APP_UA = "Mozilla/5.0 (Linux; Android 12; RMX2117 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/147.0.7727.55 Mobile Safari/537.36 /OS.Gatu v3.0";
+const MOBILE_WEB_UA = "Mozilla/5.0 (Linux; Android 13; Pixel 5 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/149.0.7827.91 Safari/537.36 /OS.Gatu v3.0";
 
 const PLATFORM_MAP = {
   netflix: { ott: "nf", label: "Netflix" },
@@ -58,6 +61,9 @@ const NEW_TV_DOMAINS = [
 
 let resolvedApiUrl = "";
 let lastDiagnostics = [];
+let mobileCookieJar = [];
+let mobileVerifiedCookie = "";
+let mobileVerifiedAt = 0;
 
 function clean(value) { return String(value == null ? "" : value).trim(); }
 function integer(value) {
@@ -381,6 +387,397 @@ async function tmdbContext(tmdbId, mediaType, season, episode) {
     aliases: context.aliases, queries: context.queries
   });
   return context;
+}
+
+function mobileSetCookies(headers, responseUrl) {
+  if (!headers) return;
+  let rows = [];
+  try {
+    if (typeof headers.getSetCookie === "function") rows = headers.getSetCookie();
+  } catch (_) {}
+  if (!rows.length && headers.get) {
+    const raw = headers.get("set-cookie") || headers.get("Set-Cookie") || "";
+    if (raw) rows = raw.split(/,(?=\s*[^;,\s]+=)/g);
+  }
+  let host = "";
+  try { host = new URL(responseUrl).hostname.toLowerCase(); } catch (_) {}
+  for (const raw of rows) {
+    const pair = clean(raw).split(";", 1)[0];
+    const eq = pair.indexOf("=");
+    if (eq <= 0) continue;
+    const name = pair.slice(0, eq).trim();
+    const value = pair.slice(eq + 1).trim();
+    const domainMatch = clean(raw).match(/(?:^|;)\s*domain=([^;]+)/i);
+    const domain = clean(domainMatch ? domainMatch[1] : host).replace(/^\./, "").toLowerCase();
+    const index = mobileCookieJar.findIndex(item => item.name === name && item.domain === domain);
+    if (!value || /max-age\s*=\s*0/i.test(raw)) {
+      if (index >= 0) mobileCookieJar.splice(index, 1);
+      continue;
+    }
+    const item = { name, value, domain };
+    if (index >= 0) mobileCookieJar[index] = item;
+    else mobileCookieJar.push(item);
+  }
+}
+
+function mobileCookieHeader(url) {
+  let host = "";
+  try { host = new URL(url).hostname.toLowerCase(); } catch (_) {}
+  return mobileCookieJar
+    .filter(item => host === item.domain || host.endsWith("." + item.domain))
+    .map(item => item.name + "=" + item.value)
+    .join("; ");
+}
+
+async function mobileRequest(url, options) {
+  const opts = options || {};
+  const headers = { ...(opts.headers || {}) };
+  const jar = mobileCookieHeader(url);
+  if (jar) headers.Cookie = headers.Cookie ? headers.Cookie + "; " + jar : jar;
+  const response = await fetch(url, { ...opts, headers });
+  mobileSetCookies(response && response.headers, response && response.url || url);
+  return response;
+}
+
+function mobileCookie(name) {
+  const row = mobileCookieJar.find(item => item.name === name);
+  return row ? row.value : "";
+}
+
+async function mobileDelay(ms) {
+  if (typeof setTimeout === "function") return new Promise(resolve => setTimeout(resolve, ms));
+  if (typeof SharedArrayBuffer === "function" && typeof Atomics !== "undefined" && typeof Atomics.wait === "function") {
+    try {
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+      return;
+    } catch (_) {}
+  }
+  const end = Date.now() + ms;
+  while (Date.now() < end) {}
+}
+
+async function mobileBypass() {
+  if (mobileVerifiedCookie && Date.now() - mobileVerifiedAt < 15 * 60 * 60 * 1000) return mobileVerifiedCookie;
+  mobileCookieJar = [];
+  mobileVerifiedCookie = "";
+  try {
+    const appHeaders = { "User-Agent": MOBILE_APP_UA, "X-Requested-With": "app.netmirror.netmirrornew" };
+    const home = await mobileRequest(MOBILE_BASE + "/mobile/home?app=1", { headers: appHeaders });
+    const html = String(await home.text() || "");
+    const match = html.match(/data-addhash\s*=\s*["']([^"']+)["']/i);
+    if (!home.ok || !match) return "";
+
+    const hash = match[1];
+    const userver = await mobileRequest(
+      "https://userver.net52.cc/?hee5=" + encodeURIComponent(hash) + "&a=y&t=" + Date.now(),
+      { headers: appHeaders }
+    );
+    await userver.text();
+
+    for (let attempt = 1; attempt <= 7; attempt++) {
+      await mobileDelay(10000);
+      const verify = await mobileRequest(MOBILE_BASE + "/mobile/verify2.php", {
+        method: "POST",
+        headers: {
+          "User-Agent": MOBILE_APP_UA,
+          "X-Requested-With": "XMLHttpRequest",
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "verify=" + encodeURIComponent(hash)
+      });
+      const text = String(await verify.text() || "");
+      let done = text.includes('"statusup":"All Done"');
+      if (!done) {
+        try { done = JSON.parse(text).statusup === "All Done"; } catch (_) {}
+      }
+      trace("mobile-verify", { attempt, done });
+      if (!done) continue;
+      const cookie = mobileCookie("t_hash_t");
+      if (cookie) {
+        mobileVerifiedCookie = cookie;
+        mobileVerifiedAt = Date.now();
+        return cookie;
+      }
+    }
+  } catch (error) {
+    trace("rejection", { path: "mobile-netflix", reason: "mobile-verification-failed", message: clean(error && error.message) });
+  }
+  return "";
+}
+
+async function mobileJson(url, headers) {
+  const response = await mobileRequest(url, { headers });
+  if (!response || !response.ok) throw new Error("HTTP " + (response && response.status || "error"));
+  return response.json();
+}
+
+function mobileEpisodeNumber(item) {
+  return integer(item && (item.ep != null ? item.ep : item.epNum != null ? item.epNum : item.episode_number));
+}
+
+function mobileSeasonNumber(item, fallback) {
+  if (!item) return fallback;
+  const values = [item.s, item.sNum, item.season, item.season_number, item.number, item.name, item.title];
+  for (const value of values) {
+    const number = integer(value);
+    if (number != null) return number;
+  }
+  return fallback;
+}
+
+function mobileTrack(track, playbackHeaders) {
+  if (!track || !/(caption|sub)/i.test(clean(track.kind || track.type))) return null;
+  let url = clean(track.file || track.url || track.src || track.uri);
+  if (!url) return null;
+  if (url.startsWith("//")) url = "https:" + url;
+  else if (url.startsWith("/")) url = MOBILE_BASE + url;
+  if (!/^https?:\/\//i.test(url)) return null;
+  const label = clean(track.label || track.name || track.lang || track.language) || "Unknown";
+  return { url, language: clean(track.language || track.lang || label) || label, name: label, headers: playbackHeaders };
+}
+
+function mobileSourceUrl(file) {
+  const raw = clean(file);
+  if (!raw) return "";
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (raw.startsWith("//")) return "https:" + raw;
+  return MOBILE_BASE + (raw.startsWith("/") ? "" : "/") + raw;
+}
+
+function mobileAudioLanguage(url) {
+  try {
+    const parsed = new URL(url);
+    return clean(parsed.searchParams.get("lang"));
+  } catch (_) {
+    const match = clean(url).match(/[?&]lang=([^&#]+)/i);
+    return match ? decodeURIComponent(match[1]) : "";
+  }
+}
+
+function mobileQuality(label, url) {
+  const text = clean(label) + " " + clean(url);
+  const explicit = qualityNumber({ quality: text, name: text });
+  if (explicit) return explicit + "p";
+  if (/full\s*hd/i.test(text)) return "1080p";
+  if (/mid\s*hd/i.test(text)) return "720p";
+  if (/low\s*hd/i.test(text)) return "480p";
+  return "Auto";
+}
+
+function resolveHlsUrl(value, base) {
+  const raw = clean(value);
+  if (!raw) return "";
+  if (/^https?:\/\//i.test(raw)) return raw;
+  try { return new URL(raw, base).toString(); } catch (_) { return ""; }
+}
+
+async function mobileMasterRows(sourceUrl, playbackHeaders, subtitles, context, sourceMeta) {
+  try {
+    const response = await fetch(sourceUrl, { headers: playbackHeaders });
+    if (!response || !response.ok) return [];
+    const text = String(await response.text() || "");
+    const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    const rows = [];
+    for (let i = 0; i < lines.length; i++) {
+      if (!lines[i].startsWith("#EXT-X-STREAM-INF:")) continue;
+      const res = lines[i].match(/RESOLUTION=\d+x(\d+)/i);
+      let j = i + 1;
+      while (j < lines.length && lines[j].startsWith("#")) j++;
+      if (j >= lines.length) continue;
+      const url = resolveHlsUrl(lines[j], sourceUrl);
+      if (!url) continue;
+      const height = res ? Number(res[1]) : qualityNumber({ quality: lines[i], name: lines[i] });
+      rows.push(attachAudioMetadata({
+        name: "NetMirror (Netflix Mobile) - " + (height ? height + "p" : clean(sourceMeta && sourceMeta.label || "Auto")),
+        title: context.title,
+        url,
+        quality: height ? height + "p" : mobileQuality(sourceMeta && sourceMeta.label, url),
+        headers: playbackHeaders,
+        subtitles,
+        provider: "netmirror",
+        type: "m3u8"
+      }, { audioLanguage: mobileAudioLanguage(sourceUrl) || mobileAudioLanguage(url) }, sourceMeta));
+    }
+    return rows;
+  } catch (_) {
+    return [];
+  }
+}
+
+async function fetchFromNetflixMobile(context, forceHd) {
+  const cookie = await mobileBypass();
+  if (!cookie) {
+    trace("rejection", { path: "mobile-netflix", reason: "mobile-cookie-unavailable" });
+    return [];
+  }
+
+  const baseHeaders = {
+    "User-Agent": MOBILE_WEB_UA,
+    "Accept": "*/*",
+    "Accept-Language": "en-IN,en-US;q=0.9,en;q=0.8",
+    "X-Requested-With": "app.netmirror.netmirrornew",
+    "Referer": MOBILE_BASE + "/mobile/home?app=1",
+    "Cookie": "t_hash_t=" + cookie + "; ott=nf" + (forceHd === false ? "" : "; hd=on")
+  };
+
+  const aliases = unique([context.title, ...context.aliases]).slice(0, 4);
+  let matched = null;
+
+  for (const query of aliases) {
+    let search;
+    try {
+      search = await mobileJson(MOBILE_BASE + "/mobile/search.php?s=" + encodeURIComponent(query) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders);
+    } catch (_) {
+      continue;
+    }
+    const results = Array.isArray(search && search.searchResult) ? search.searchResult : [];
+    for (const result of results.slice(0, 12)) {
+      if (!result || result.id == null) continue;
+      let post;
+      try {
+        post = await mobileJson(MOBILE_BASE + "/mobile/post.php?id=" + encodeURIComponent(result.id) + "&t=" + Math.floor(Date.now() / 1000), baseHeaders);
+      } catch (_) {
+        continue;
+      }
+
+      const resultTitle = candidateTitle(result, post);
+      const ownership = scoreTitleOwnership(resultTitle, result, post, context);
+      if (!ownership.accepted) continue;
+
+      let targetId = result.id;
+      let mappedSeason = null;
+      let mappedEpisode = null;
+
+      if (context.mediaType === "tv") {
+        const wantedSeason = ownership.providerSeason;
+        const wantedEpisode = context.episode;
+        const seasons = Array.isArray(post && post.season) ? post.season.filter(Boolean) : [];
+        const selectedIndex = seasons.findIndex(item => item && item.selected === true);
+        const fallbackSeason = selectedIndex >= 0 ? selectedIndex + 1 : wantedSeason;
+        let episodeRow = (Array.isArray(post && post.episodes) ? post.episodes : []).find(item =>
+          item && mobileEpisodeNumber(item) === wantedEpisode && mobileSeasonNumber(item, fallbackSeason) === wantedSeason
+        );
+
+        if (!episodeRow) {
+          const seasonRow = seasons.find(item => mobileSeasonNumber(item, null) === wantedSeason);
+          if (seasonRow && seasonRow.id) {
+            for (let page = 1; page <= 30 && !episodeRow; page++) {
+              let pageData;
+              try {
+                pageData = await mobileJson(
+                  MOBILE_BASE + "/mobile/episodes.php?s=" + encodeURIComponent(seasonRow.id) +
+                  "&series=" + encodeURIComponent(result.id) +
+                  "&t=" + Math.floor(Date.now() / 1000) + "&page=" + page,
+                  baseHeaders
+                );
+              } catch (_) {
+                break;
+              }
+              episodeRow = (Array.isArray(pageData && pageData.episodes) ? pageData.episodes : []).find(item =>
+                item && mobileEpisodeNumber(item) === wantedEpisode && mobileSeasonNumber(item, wantedSeason) === wantedSeason
+              );
+              if (!pageData || !pageData.nextPageShow || Number(pageData.nextPageShow) === 0) break;
+            }
+          }
+        }
+
+        if (!episodeRow || episodeRow.id == null) continue;
+        targetId = episodeRow.id;
+        mappedSeason = wantedSeason;
+        mappedEpisode = wantedEpisode;
+      } else {
+        const isSeries = explicitMediaType(post && post.type) === "tv" ||
+          Array.isArray(post && post.episodes) && post.episodes.filter(Boolean).length > 0;
+        if (isSeries) continue;
+        targetId = post && post.main_id || result.id;
+      }
+
+      matched = { result, post, ownership, resultTitle, targetId, mappedSeason, mappedEpisode };
+      break;
+    }
+    if (matched) break;
+  }
+
+  if (!matched) {
+    trace("rejection", { path: "mobile-netflix", reason: "mobile-title-or-episode-unavailable" });
+    return [];
+  }
+
+  let payload;
+  try {
+    payload = await mobileJson(
+      MOBILE_BASE + "/mobile/playlist.php?id=" + encodeURIComponent(matched.targetId) +
+      "&t=" + encodeURIComponent(context.title) +
+      "&tm=" + Math.floor(Date.now() / 1000),
+      baseHeaders
+    );
+  } catch (error) {
+    trace("rejection", { path: "mobile-netflix", reason: "mobile-playlist-failed", message: clean(error && error.message) });
+    return [];
+  }
+
+  const entries = Array.isArray(payload) ? payload : (payload && (payload.playlist || payload.data)) || [];
+  const subtitles = [];
+  const seenSubtitles = new Set();
+  const sourceRows = [];
+
+  for (const entry of entries) {
+    for (const track of (entry && entry.tracks) || []) {
+      const mapped = mobileTrack(track, baseHeaders);
+      if (!mapped || seenSubtitles.has(mapped.url)) continue;
+      seenSubtitles.add(mapped.url);
+      subtitles.push(mapped);
+    }
+    for (const source of (entry && entry.sources) || []) {
+      const url = mobileSourceUrl(source && source.file);
+      if (!url) continue;
+      sourceRows.push({ source, url });
+    }
+  }
+
+  trace("mobile-playlist", {
+    path: "mobile-netflix",
+    entryCount: entries.length,
+    sourceCount: sourceRows.length,
+    subtitleCount: subtitles.length,
+    sourceLabels: sourceRows.map(item => clean(item.source && item.source.label)),
+    sourceLanguages: unique(sourceRows.map(item => mobileAudioLanguage(item.url)).filter(Boolean)),
+    entryKeys: unique(entries.flatMap(entry => Object.keys(entry || {}))).sort()
+  });
+
+  if (!sourceRows.length) return [];
+
+  const auto = sourceRows.find(item => /auto/i.test(clean(item.source && item.source.label))) || sourceRows[0];
+  const expanded = await mobileMasterRows(auto.url, baseHeaders, subtitles, context, auto.source);
+  let rows = expanded;
+
+  if (!rows.length) {
+    rows = sourceRows.map(item => attachAudioMetadata({
+      name: "NetMirror (Netflix Mobile) - " + clean(item.source && item.source.label || "Auto"),
+      title: context.title,
+      url: item.url,
+      quality: mobileQuality(item.source && item.source.label, item.url),
+      headers: baseHeaders,
+      subtitles,
+      provider: "netmirror",
+      type: /m3u8/i.test(item.url) ? "m3u8" : "video"
+    }, { audioLanguage: mobileAudioLanguage(item.url) }, item.source));
+  }
+
+  const seen = new Set();
+  rows = rows.filter(row => row && row.url && !seen.has(row.url) && seen.add(row.url));
+  trace("mobile-accepted", {
+    path: "mobile-netflix",
+    candidateTitle: matched.resultTitle,
+    candidateId: matched.result && matched.result.id,
+    playerId: matched.targetId,
+    requestedSeason: context.season,
+    requestedEpisode: context.episode,
+    mappedProviderSeason: matched.mappedSeason,
+    mappedProviderEpisode: matched.mappedEpisode,
+    returnedRows: rows.length
+  });
+  return rows;
 }
 
 function directIdentity(data, context) {
@@ -803,6 +1200,8 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
   for (const platformKey of platforms) {
     trace("platform", { platform: platformKey, preferred, forceHd: settings.forceHd !== false });
     if (platformKey === "netflix") {
+      const mobile = await fetchFromNetflixMobile(context, settings.forceHd !== false);
+      if (mobile.length) return normalizeRows(mobile, context);
       const direct = await fetchFromNetflixDirect(context);
       if (direct.length) return normalizeRows(direct, context);
     }
@@ -835,7 +1234,13 @@ async function onSettings() {
 const testApi = {
   normalizeTitle, titleKey, seasonMarker, scoreTitleOwnership, buildSearchQueries, exactEpisode,
   classification, audioEvidence, attachAudioMetadata, diagnostics,
-  reset() { resolvedApiUrl = ""; lastDiagnostics = []; }
+  reset() {
+    resolvedApiUrl = "";
+    lastDiagnostics = [];
+    mobileCookieJar = [];
+    mobileVerifiedCookie = "";
+    mobileVerifiedAt = 0;
+  }
 };
 
 if (typeof module !== "undefined" && module.exports) module.exports = { getStreams, onSettings, __test: testApi };
