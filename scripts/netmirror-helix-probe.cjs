@@ -99,6 +99,23 @@ async function runOne(title) {
     },
     topLevelKeys: Object.keys(response.json || {}).sort(),
     episodeAssetIds: episodeIds(response.json),
+    // Stage 2: retain the response fields the old provider flattened or ignored.
+    // URLs are redacted, but surrounding type/language/resolution/source metadata stays intact.
+    topology: JSON.parse(JSON.stringify({
+      streams: response.json && response.json.streams,
+      captions: response.json && response.json.captions,
+      direct: response.json && response.json.direct,
+      source: response.json && response.json.source,
+      fallbackHls: response.json && response.json.fallbackHls,
+      cdn: response.json && response.json.cdn,
+      resolution: response.json && response.json.resolution,
+      mp4: response.json && response.json.mp4,
+      detailPath: response.json && response.json.detailPath,
+      match: response.json && response.json.match,
+      mode: response.json && response.json.mode,
+      noSource: response.json && response.json.noSource,
+      error: response.json && response.json.error
+    }, (key, value) => typeof value === "string" ? redact(value) : value)),
     inventory, probes,
     counts: inventory.reduce((a, x) => (a[x.kind] = (a[x.kind] || 0) + 1, a), {})
   };
