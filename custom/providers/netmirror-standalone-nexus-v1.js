@@ -414,6 +414,8 @@ async function tmdbContext(tmdbId, mediaType, season, episode) {
     aliases,
     parentYear: yearOf(parentDate),
     originalLanguage: clean(data && data.original_language).toLowerCase(),
+    runtimeSeconds: Math.max(0, Number(mediaType === "movie" ? data.runtime :
+      (seasonData && Array.isArray(seasonData.episodes) && seasonData.episodes.find(item => Number(item.episode_number) === episode) || {}).runtime) || 0) * 60,
     originCountries: Array.isArray(data && data.origin_country) ? data.origin_country.map(clean).filter(Boolean) : [],
     seasonName: clean(seasonData && seasonData.name),
     seasonYear: yearOf(seasonData && seasonData.air_date)
@@ -569,16 +571,9 @@ function mobileSeasonNumber(item, fallback) {
   return fallback;
 }
 
-function mobileTrack(track, playbackHeaders) {
+function mobileTrack(track, headers) {
   if (!track || !/(caption|sub)/i.test(clean(track.kind || track.type))) return null;
-  let url = clean(track.file || track.url || track.src || track.uri);
-  if (!url) return null;
-  if (url.startsWith("//")) url = "https:" + url;
-  else if (url.startsWith("/")) url = "https://subscdn.top" + url;
-  if (!/^https?:\/\//i.test(url)) return null;
-  const label = clean(track.label || track.name || track.lang || track.language) || "Unknown";
-  const fileLanguage = (url.match(/\/([^/?]+)\.(?:vtt|srt|m3u8)(?:\?|$)/i) || [])[1];
-  return { url, language: languageCode(track.language || track.lang || fileLanguage || label), name: label, headers: { Referer: playbackHeaders.Referer, "User-Agent": playbackHeaders["User-Agent"] } };
+  return playback.normalizeSubtitle(track, { Referer: headers.Referer, "User-Agent": headers["User-Agent"] });
 }
 
 function mobileSourceUrl(file) {
@@ -616,6 +611,181 @@ function resolveHlsUrl(value, base) {
   try { return new URL(raw, base).toString(); } catch (_) { return ""; }
 }
 
+// Playback selection passed the pre-production repeated-fetch gate.
+// Kept standalone: no downloaded helper code or module dependency at runtime.
+const playback = (() => {
+const baseline = { mediaIdentity };
+const unique = values => [...new Set(values)].sort();
+const text = value => String(value == null ? '' : value).trim();
+const aliases = {eng:'en',kor:'ko',jpn:'ja',ara:'ar',ces:'cs',deu:'de',spa:'es',fra:'fr',por:'pt',zho:'zh',dan:'da',ell:'el',fin:'fi',heb:'he',hin:'hi',hrv:'hr',hun:'hu',ind:'id',ita:'it',msa:'ms',nob:'nb',nld:'nl',pol:'pl',ron:'ro',rus:'ru',swe:'sv',tam:'ta',tel:'te',tha:'th',tur:'tr',ukr:'uk',vie:'vi'};
+const names = {Arabic:'ar',Czech:'cs',Danish:'da',German:'de',Greek:'el',English:'en',Spanish:'es','European Spanish':'es-ES','Latin American Spanish':'es-419',Finnish:'fi',French:'fr',Hebrew:'he',Hindi:'hi',Croatian:'hr',Hungarian:'hu',Indonesian:'id',Italian:'it',Japanese:'ja',Korean:'ko',Malay:'ms',Norwegian:'nb',Dutch:'nl',Polish:'pl','Brazilian Portuguese':'pt-BR',Portuguese:'pt',Romanian:'ro',Russian:'ru',Swedish:'sv',Thai:'th',Turkish:'tr',Ukrainian:'uk',Vietnamese:'vi','Chinese (Simplified)':'zh-Hans','Chinese (Traditional)':'zh-Hant','Filipino (Tagalog)':'fil',Catalan:'ca',Basque:'eu',Galician:'gl',Tamil:'ta',Telugu:'te'};
+const known = new Set(Object.values(names).map(x=>x.split('-')[0]).concat(Object.values(aliases),'und'));
+
+function language(value) {
+  let raw=text(value).replace(/^\d+[-_]/,'').replace(/\.\[CC\]|\[CC\]|\(\d+\)/gi,'').replace(/_/g,'-').trim();
+  const named=Object.entries(names).find(([name])=>name.toLowerCase()===raw.toLowerCase());
+  if(named)return named[1];
+  const parts=raw.split('-');const primary=aliases[parts[0].toLowerCase()]||parts[0].toLowerCase();
+  if(!known.has(primary))return 'und';
+  return [primary,...parts.slice(1).map(p=>p.length===2?p.toUpperCase():p.length===4?p[0].toUpperCase()+p.slice(1).toLowerCase():p)].join('-');
+}
+
+function normalizeSubtitle(track, headers={}) {
+  const url=text(track.url||track.file||track.uri);if(!url)return null;
+  let absolute;
+  try {const parsed=new URL(url,'https://subscdn.top/');if(!/^https?:$/.test(parsed.protocol))return null;absolute=parsed.href;}catch{return null;}
+  let file=new URL(absolute).pathname.split('/').pop();
+  try {file=decodeURIComponent(file);}catch{}
+  file=file.replace(/\.(?:srt|vtt|m3u8)$/i,'');
+  const name=text(track.name||track.label);
+  const code=[track.language,track.lang,file,name].map(language).find(x=>x!=='und')||'und';
+  const baseName=Object.entries(names).find(([,value])=>value===code)?.[0]||code;
+  let label=name||baseName;
+  if(/\[CC\]/i.test(file)&&!/\[CC\]/i.test(label))label+=' [CC]';
+  const edition=file.match(/\(\d+\)/);if(edition&&!label.includes(edition[0]))label+=' '+edition[0];
+  return {url:absolute,language:code,name:label,headers:{...headers,...(track.headers||{})}};
+}
+
+function subtitleKey(track) {
+  // Only the known NetMirror /files/<episode>/<episode>-lang.srt and
+  // /subs/<episode>/lang.m3u8 routes are declared equivalent. No language-only merge.
+  const url=new URL(track.url);const match=url.pathname.match(/^\/(?:files\/(\d+)\/\d+-|subs\/(\d+)\/)(.+)\.(?:srt|vtt|m3u8)$/i);
+  const media=/(?:^|\.)subscdn\.top$/.test(url.hostname)&&match ? `${match[1]||match[2]}:${match[3].toLowerCase()}` : baseline.mediaIdentity(track.url);
+  return `${language(track.language)}|${media}`;
+}
+
+function normalizeSubtitles(external=[], embedded=[], headers={}) {
+  const result=new Map();
+  // Separate caption files win for a proven identical track. Embedded-only
+  // metadata remains in the intact HLS master and is also retained here.
+  for(const [source,tracks]of [['external',external],['embedded',embedded]])for(const track of tracks){
+    const normalized=normalizeSubtitle(track,headers);if(!normalized)continue;
+    const key=subtitleKey(normalized);if(!result.has(key))result.set(key,{...normalized,source});
+  }
+  return [...result.values()];
+}
+
+function attributes(line) {
+  return Object.fromEntries([...line.matchAll(/([A-Z0-9-]+)=(?:"([^"]*)"|([^,]*))/g)].map(m=>[m[1],m[2]??m[3]]));
+}
+
+function audioKey(track) {
+  return JSON.stringify([language(track.language),track.name,track.characteristics||'',track.channels||'',track.default,track.autoselect,baseline.mediaIdentity(track.url||'')]);
+}
+
+function parsePlaylist(body,base) {
+  if(!text(body).startsWith('#EXTM3U'))throw Error('not-hls');
+  const lines=body.split(/\r?\n/).map(text),media=[],variants=[],segments=[];
+  let duration=0;
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i];
+    if(line.startsWith('#EXT-X-MEDIA:')){
+      const a=attributes(line);
+      media.push({type:a.TYPE,groupId:a['GROUP-ID'],language:language(a.LANGUAGE),name:a.NAME||'',url:a.URI?new URL(a.URI,base).href:'',
+        characteristics:a.CHARACTERISTICS||'',channels:a.CHANNELS||'',default:a.DEFAULT==='YES',autoselect:a.AUTOSELECT==null?null:a.AUTOSELECT==='YES',forced:a.FORCED==='YES'});
+    }
+    if(line.startsWith('#EXT-X-STREAM-INF:')){
+      const a=attributes(line);let next=i+1;while(next<lines.length&&!lines[next])next++;
+      if(!lines[next]||lines[next].startsWith('#'))throw Error('missing-video-uri');
+      const [width,height]=(a.RESOLUTION||'').split('x').map(Number);
+      variants.push({url:new URL(lines[next],base).href,width:width||0,height:height||0,audio:a.AUDIO||'',subtitles:a.SUBTITLES||'',codecs:a.CODECS||''});
+    }
+    if(line.startsWith('#EXTINF:')){
+      const seconds=Number(line.slice(8).split(',')[0]);if(!Number.isFinite(seconds)||seconds<=0)throw Error('invalid-duration');
+      duration+=seconds;let next=i+1;while(next<lines.length&&(!lines[next]||lines[next].startsWith('#')))next++;
+      if(!lines[next])throw Error('missing-segment');segments.push(new URL(lines[next],base).href);
+    }
+  }
+  const reachable=(type,field)=>media.filter(m=>m.type===type&&variants.some(v=>v[field]===m.groupId));
+  const audio=new Map();for(const track of reachable('AUDIO','audio'))if(!audio.has(audioKey(track)))audio.set(audioKey(track),track);
+  return {variants,audioTracks:[...audio.values()],subtitleTracks:reachable('SUBTITLES','subtitles'),duration,segments,endList:lines.includes('#EXT-X-ENDLIST')};
+}
+
+function identity(playlist) {
+  return JSON.stringify({video:unique(playlist.variants.map(v=>JSON.stringify([baseline.mediaIdentity(v.url),v.width,v.height,v.codecs,v.audio,v.subtitles]))),
+    audio:unique(playlist.audioTracks.map(audioKey)),
+    subtitles:unique(playlist.subtitleTracks.map(t=>JSON.stringify([t.groupId,language(t.language),t.name,t.forced,t.default,t.autoselect,baseline.mediaIdentity(t.url)])))});
+}
+
+function durationPlausible(video, audios=[], runtimeSeconds) {
+  if(!(video>0))return false;
+  // Metadata is approximate: tolerate recaps, credits, alternate cuts and rounding.
+  // Relative bounds preserve real short-form titles; there is no fixed minute floor.
+  if(runtimeSeconds>0&&(video<runtimeSeconds*0.45&&runtimeSeconds-video>60||video>runtimeSeconds*1.9+120))return false;
+  return audios.filter(x=>x>0).every(audio=>Math.abs(video-audio)<=Math.max(12,Math.max(video,audio)*0.15));
+}
+
+function signedQualitySource(url) {
+  const params=new URL(url).searchParams;
+  return /^(?:2160|1440|1080|720|480|360)p$/.test(params.get('q')||'')&&!!(params.get('in')||params.get('sign')||params.get('token'));
+}
+
+async function verifyCandidate(row, context, io) {
+  const rounds=[],headers={...(row.headers||{})};const started=Date.now();
+  const delays=io.delays||[0,1500,4000];
+  if(delays.length<3)throw Error('at-least-three-rounds-required');
+  try{
+    let expected;
+    for(const delay of delays){
+      if(delay)await io.pause(delay);
+      const response=await io.read(row.url,headers);
+      const master=parsePlaylist(response.body,response.url||row.url);
+      if(!master.variants.length)throw Error('no-video-rendition');
+      const members=[...master.variants,...master.audioTracks,...master.subtitleTracks];
+      if(context.episodeId&&members.some(m=>{const id=m.url.match(/\/(?:files|subs)\/(\d+)\//)?.[1];return id&&id!==String(context.episodeId);}))throw Error('episode-identity-mismatch');
+      const fingerprint=identity(master);
+      if(expected&&expected!==fingerprint)throw Error('master-mutated');expected=fingerprint;
+      const selectedAudio=master.audioTracks.filter(t=>t.default||['en',language(context.originalLanguage).split('-')[0]].includes(language(t.language).split('-')[0]));
+      const children=new Map();
+      const get=async url=>{if(!children.has(url))children.set(url,io.read(url,headers).then(r=>parsePlaylist(r.body,r.url||url)));return children.get(url);};
+      const audioMedia=await Promise.all(selectedAudio.filter(t=>t.url).map(async t=>{
+        const child=await get(t.url);
+        if(child.variants.length||!child.endList||!child.segments.length||!(child.duration>0))throw Error('invalid-audio-media');
+        return {duration:child.duration,segments:child.segments.map(baseline.mediaIdentity)};
+      }));
+      const audioDurations=audioMedia.map(m=>m.duration);
+      const audioIdentity=JSON.stringify(audioMedia.map(m=>m.segments));
+      if(rounds.length&&rounds[0].audioIdentity!==audioIdentity)throw Error('audio-child-mutated');
+      const video=[];
+      for(const variant of master.variants){
+        const codecs=variant.codecs.toLowerCase();
+        const videoCodec=/avc[13]|hev1|hvc1|vp0?9|av01|mp4v/.test(codecs);
+        if(codecs&&!videoCodec||!videoCodec&&!(variant.width>0&&variant.height>0))throw Error('audio-only-rendition');
+        if(master.audioTracks.some(t=>baseline.mediaIdentity(t.url)===baseline.mediaIdentity(variant.url))||/\/a\/\d+\//.test(variant.url))throw Error('audio-only-rendition');
+        const child=await get(variant.url);
+        if(child.variants.length||!child.endList||!child.segments.length)throw Error('not-complete-video-media');
+        if(!durationPlausible(child.duration,audioDurations,context.runtimeSeconds))throw Error('implausible-video-duration');
+        video.push({url:variant.url,height:variant.height,duration:child.duration,segmentCount:child.segments.length,
+          segmentIdentity:child.segments.map(baseline.mediaIdentity)});
+      }
+      // A child can switch media while the parent URL remains unchanged.
+      const videoIdentity=JSON.stringify(video.map(v=>[baseline.mediaIdentity(v.url),v.segmentIdentity]));
+      if(rounds.length&&(rounds[0].videoIdentity!==videoIdentity||video.some((v,i)=>Math.abs(v.duration-rounds[0].video[i].duration)>Math.max(2,v.duration*0.01))))throw Error('video-child-mutated');
+      const subtitles=normalizeSubtitles(row.subtitles||[],master.subtitleTracks,headers);
+      rounds.push({master,video,videoIdentity,audioIdentity,audioDurations,subtitles,fingerprint});
+    }
+    const last=rounds[rounds.length - 1];
+    return {...row,headers,quality:Math.max(...last.video.map(v=>v.height))+'p',hls:last.master,audioTracks:last.master.audioTracks,
+      embeddedSubtitles:last.master.subtitleTracks,subtitles:last.subtitles,
+      validation:{stable:true,rounds:rounds.length,elapsedMs:Date.now()-started,signedQuality:signedQualitySource(row.url),video:last.video,audioDurations:last.audioDurations,fingerprint:last.fingerprint}};
+  }catch(error){if(io.rejected)io.rejected({url:row.url,reason:error.message,completedRounds:rounds.length});return null;}
+}
+
+function selectCandidates(rows, context) {
+  const valid=rows.filter(r=>r&&r.validation?.stable&&r.validation.rounds>=3&&r.validation.video?.length);
+  const score=row=>[row.validation.signedQuality?1:0,row.validation.rounds,(row.audioTracks||[]).length,(row.subtitles||[]).length,Number.parseInt(row.quality)||0];
+  valid.sort((a,b)=>{const x=score(a),y=score(b);for(let i=0;i<x.length;i++)if(x[i]!==y[i])return y[i]-x[i];return 0;});
+  const seen=new Set();
+  return valid.filter(row=>{
+    const key=JSON.stringify([context.tmdbId,context.season,context.episode,row.quality,
+      unique(row.hls.variants.map(v=>baseline.mediaIdentity(v.url))),unique(row.audioTracks.map(audioKey)),unique(normalizeSubtitles(row.subtitles,row.embeddedSubtitles).map(subtitleKey))]);
+    if(seen.has(key))return false;seen.add(key);return true;
+  });
+}
+
+return {language,normalizeSubtitle,normalizeSubtitles,subtitleKey,parsePlaylist,audioKey,identity,durationPlausible,signedQualitySource,verifyCandidate,selectCandidates};
+})();
+
 function hlsAttributes(line) {
   const result = {};
   const pattern = /([A-Z0-9-]+)=(?:"([^"]*)"|([^,]*))/g;
@@ -624,42 +794,9 @@ function hlsAttributes(line) {
   return result;
 }
 
-function languageCode(value) {
-  const code = clean(value).toLowerCase().replace(/\.\[cc\]|\(\d+\)/g, "");
-  const codes = { eng: "en", english: "en", kor: "ko", korean: "ko", jpn: "ja", japanese: "ja", ces: "cs", deu: "de", spa: "es", fra: "fr", hin: "hi", hun: "hu", ind: "id", ita: "it", pol: "pl", por: "pt", ron: "ro", tam: "ta", tel: "te", tha: "th", tur: "tr", ara: "ar", dan: "da", ell: "el", fin: "fi", heb: "he", hrv: "hr", msa: "ms", nob: "nb", nld: "nl", rus: "ru", swe: "sv", ukr: "uk", vie: "vi", zho: "zh" };
-  return codes[code] || code || "und";
-}
+function languageCode(value) { return playback.language(value); }
 
-function parseHls(text, base) {
-  if (!clean(text).startsWith("#EXTM3U")) throw new Error("Non-HLS response body");
-  const lines = text.split(/\r?\n/).map(clean);
-  const media = [], variants = [];
-  for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith("#EXT-X-MEDIA:")) {
-      const a = hlsAttributes(lines[i]);
-      media.push({ type: a.TYPE, groupId: a["GROUP-ID"], name: a.NAME, language: languageCode(a.LANGUAGE),
-        default: a.DEFAULT === "YES", autoselect: a.AUTOSELECT == null ? null : a.AUTOSELECT === "YES",
-        forced: a.FORCED === "YES", url: a.URI ? resolveHlsUrl(a.URI, base) : "" });
-    }
-    if (lines[i].startsWith("#EXT-X-STREAM-INF:")) {
-      const a = hlsAttributes(lines[i]);
-      const uri = lines.slice(i + 1).find(line => line && !line.startsWith("#"));
-      const url = resolveHlsUrl(uri, base);
-      if (url) variants.push({ url, audio: a.AUDIO, subtitles: a.SUBTITLES, resolution: a.RESOLUTION,
-        height: Number((a.RESOLUTION || "").split("x")[1]) || 0, bandwidth: Number(a.BANDWIDTH) || 0 });
-    }
-  }
-  const seenAudio = new Set();
-  const audioTracks = media.filter(m => {
-    if (m.type !== "AUDIO" || !variants.some(v => v.audio === m.groupId)) return false;
-    const key = [m.language, m.name, mediaIdentity(m.url)].join("|");
-    if (seenAudio.has(key)) return false;
-    seenAudio.add(key); return true;
-  });
-  const subtitleTracks = media.filter(m => m.type === "SUBTITLES" && m.url && variants.some(v => v.subtitles === m.groupId));
-  if (!variants.length && !lines.some(line => line.startsWith("#EXTINF:"))) throw new Error("Empty HLS playlist");
-  return { variants, audioTracks, subtitleTracks };
-}
+function parseHls(text, base) { return playback.parsePlaylist(text, base); }
 
 function nativeHost(url) {
   try { return /^(?:[a-z0-9-]+\.)*(?:net52|net77|net22|net27)\.cc$/.test(new URL(url).hostname.toLowerCase()); } catch (_) { return false; }
@@ -697,74 +834,50 @@ function mediaIdentity(value) {
 function trackLanguages(tracks) { return unique((tracks || []).map(t => languageCode(t.language || t.lang))).sort(); }
 
 function completeAudioMaster(row, context) {
-  const languages = trackLanguages(row.audioTracks);
-  const original = languageCode(context.originalLanguage);
+  const languages = trackLanguages(row.audioTracks).map(code => code.split("-")[0]);
+  const original = languageCode(context.originalLanguage).split("-")[0];
   return hasMultipleAudio(row) && languages.includes("en") && (original === "und" || languages.includes(original));
 }
 
 function semanticDedupe(rows, context) {
-  const result = [];
-  const key = row => JSON.stringify([
-    context.mediaType, context.tmdbId, context.season, context.episode, qualityNumber(row),
-    trackLanguages(row.audioTracks && row.audioTracks.length ? row.audioTracks : [{ language: row.audioLanguage }]),
-    trackLanguages(row.embeddedSubtitles && row.embeddedSubtitles.length ? row.embeddedSubtitles : row.subtitles),
-    unique((row.hls && row.hls.variants.length ? row.hls.variants.map(v => v.url) : [row.url]).map(mediaIdentity)).sort(),
-    // Equal language sets can still contain distinct commentary/accessibility tracks.
-    unique((row.audioTracks || []).map(t => [t.language, t.name, mediaIdentity(t.url)].join(":"))).sort()
-  ]);
+  const hls = playback.selectCandidates(rows.filter(row => row && row.hls), context);
+  const plain = rows.filter(row => row && !row.hls);
   const seen = new Set();
-  for (const row of rows) {
-    const identity = key(row);
-    if (seen.has(identity)) { trace("dedup", { reason: "same-episode-quality-tracks-media", quality: row.quality }); continue; }
-    seen.add(identity); result.push(row);
-  }
-  return result.filter(row => {
-    if (!row.hls || !row.hls.variants.length) return true;
-    const videos = unique(row.hls.variants.map(v => mediaIdentity(v.url)));
-    const audio = JSON.stringify(trackLanguages(row.audioTracks));
-    const subs = JSON.stringify(trackLanguages(row.embeddedSubtitles && row.embeddedSubtitles.length ? row.embeddedSubtitles : row.subtitles));
-    const covered = result.some(other => other !== row && other.hls && other.hls.variants.length &&
-      unique(other.hls.variants.map(v => mediaIdentity(v.url))).length > videos.length &&
-      audio === JSON.stringify(trackLanguages(other.audioTracks)) &&
-      subs === JSON.stringify(trackLanguages(other.embeddedSubtitles && other.embeddedSubtitles.length ? other.embeddedSubtitles : other.subtitles)) &&
-      videos.every(v => other.hls.variants.some(o => mediaIdentity(o.url) === v)) &&
-      (row.audioTracks || []).every(t => (other.audioTracks || []).some(o => mediaIdentity(o.url) === mediaIdentity(t.url) && o.name === t.name)));
-    if (covered) trace("dedup", { reason: "rendition-contained-in-intact-master", quality: row.quality });
-    return !covered;
+  const selected = hls.concat(plain).filter(row => {
+    if (row.hls) return true; // The richer audio/variant/subtitle key already ran above.
+    const key = JSON.stringify([context.mediaType, context.tmdbId, context.season, context.episode,
+      qualityNumber(row), mediaIdentity(row.url), trackLanguages(row.audioTracks && row.audioTracks.length ? row.audioTracks : [{language: row.audioLanguage}]),
+      trackLanguages(row.subtitles)]);
+    if (seen.has(key)) return false;
+    seen.add(key); return true;
   });
+  if (selected.length < rows.length) trace("dedup", { reason: "stable-signed-source-preferred", before: rows.length, after: selected.length });
+  return selected;
 }
 
 async function inspectHls(row, context, episodeId) {
-  try {
-    const headers = playbackHeaders(row.url, row.headers);
-    // Validate exactly the headers we can safely give Nuvio's static map.
-    delete headers.Cookie;
-    delete headers.Origin;
-    const response = await request(row.url, { headers }, context);
-    const hls = parseHls(await response.text(), response.url);
-    // An authenticated-looking master may contain a common access/OTP video.
-    // Validate the video identity, not just its correct audio/subtitle URLs.
-    if (episodeId && hls.variants.concat(hls.audioTracks, hls.subtitleTracks).some(v => {
-      const match = clean(v.url).match(/\/(?:files|subs)\/(\d+)\//);
-      return match && match[1] !== String(episodeId);
-    })) throw new Error("HLS video episode identity mismatch");
-    const sampleAudio = hls.audioTracks.filter(t => t.default || ["en", languageCode(context.originalLanguage)].includes(t.language));
-    const children = unique(hls.variants.map(v => v.url).concat(sampleAudio.map(t => t.url)).filter(Boolean));
-    await Promise.all(children.map(async url => {
-      const child = await request(url, { headers: playbackHeaders(url, headers) }, context);
-      parseHls(await child.text(), child.url);
-    }));
-    const height = Math.max(0, ...hls.variants.map(v => v.height));
-    trace("hls-accepted", { episodeId, height, audioLanguages: trackLanguages(hls.audioTracks),
-      audioCount: hls.audioTracks.length, subtitleLanguages: trackLanguages(hls.subtitleTracks), preservedMasterUrl: true });
-    // Cookie is intentionally absent from exported playback headers: Nuvio's
-    // static header map cannot scope it per child host. Signed URLs carry access;
-    // probes verify CDN children with only the link's own Referer/User-Agent.
-    const exportedHeaders = { ...headers }; delete exportedHeaders.Cookie; delete exportedHeaders.Origin;
-    return { ...row, headers: exportedHeaders, type: "m3u8", quality: height ? height + "p" : row.quality,
-      hls, audioTracks: hls.audioTracks, embeddedSubtitles: hls.subtitleTracks,
-      subtitles: hls.subtitleTracks.length ? [] : row.subtitles || [] };
-  } catch (error) { trace("hls-rejected", { episodeId, reason: clean(error.message) }); return null; }
+  const headers = playbackHeaders(row.url, row.headers);
+  delete headers.Cookie;
+  delete headers.Origin;
+  const inspected = await playback.verifyCandidate({ ...row, headers }, { ...context, episodeId }, {
+    pause: ms => mobileDelay(ms, context),
+    read: async (url, exportedHeaders) => {
+      // Child requests use exactly the exported map too: no hidden jar/Origin.
+      const response = await request(url, { headers: exportedHeaders }, context);
+      return { url: response.url, body: await response.text() };
+    },
+    rejected: details => trace("hls-rejected", { episodeId, reason: details.reason, completedRounds: details.completedRounds })
+  });
+  if (!inspected) return null;
+  trace("hls-accepted", { episodeId, height: qualityNumber(inspected),
+    audioLanguages: trackLanguages(inspected.audioTracks), audioCount: inspected.audioTracks.length,
+    subtitleLanguages: trackLanguages(inspected.subtitles), preservedMasterUrl: true,
+    stabilityRounds: inspected.validation.rounds, signedQuality: inspected.validation.signedQuality,
+    videoDurations: inspected.validation.video.map(v => v.duration) });
+  return { ...inspected, type: "m3u8",
+    // Embedded HLS subtitle manifests stay in the master. Avoid feeding .m3u8
+    // URLs to Nuvio's external SRT/VTT subtitle loader.
+    subtitles: inspected.subtitles.filter(track => track.source === "external") };
 }
 
 function playlistEntries(payload) {
@@ -801,18 +914,17 @@ async function fetchFromNetflixNative(context) {
   if (!token || !token.h) return [];
   const playlist = await mobileRequest(`${MOBILE_BASE}/playlist.php?id=${encodeURIComponent(match.targetId)}&t=${encodeURIComponent(context.title)}&tm=${Math.floor(Date.now() / 1000)}&h=${encodeURIComponent(token.h)}`, { headers }, context);
   const entries = playlistEntries(await playlist.json()).filter(entry => playlistEpisodeMatches(entry, match.targetId));
-  const rows = [];
+  const pending = [];
   for (const entry of entries) {
     const subtitles = (entry.tracks || []).map(t => mobileTrack(t, headers)).filter(Boolean);
     for (const source of entry.sources || []) {
       const url = mobileSourceUrl(source.file);
       if (!url) continue;
-      const row = await inspectHls({ url, headers, subtitles, title: context.title, name: "NetMirror (Netflix Native)",
-        quality: mobileQuality(source.label, url), provider: "netmirror" }, context, match.targetId);
-      if (row) rows.push(row);
+      pending.push(inspectHls({ url, headers, subtitles, title: context.title, name: "NetMirror (Netflix Native)",
+        quality: mobileQuality(source.label, url), provider: "netmirror" }, context, match.targetId));
     }
   }
-  return semanticDedupe(rows, context);
+  return semanticDedupe((await Promise.all(pending)).filter(Boolean), context);
 }
 
 async function mobileMasterRows(sourceUrl, headers, subtitles, context, sourceMeta, episodeId) {
@@ -1036,8 +1148,8 @@ async function fetchFromNetflixDirect(context) {
   const subtitles = (Array.isArray(data.captions) ? data.captions : []).map(caption => {
     let url = clean(caption && caption.url);
     if (url.startsWith("/")) url = `${NET27_BASE}${url}`;
-    return { url, language: clean(caption && caption.lang) || "und", name: clean(caption && caption.name) || "English", headers: playbackHeaders };
-  }).filter(item => /^https?:\/\//i.test(item.url));
+    return playback.normalizeSubtitle({ url, language: clean(caption && caption.lang), name: clean(caption && caption.name) }, playbackHeaders);
+  }).filter(Boolean);
   const rows = [];
   if (Array.isArray(data.streams) && data.streams.length) {
     for (const stream of data.streams) {
@@ -1218,7 +1330,7 @@ async function fetchFromPlatform(platformKey, context) {
   };
   if (/\.mp4(?:[?#]|$)/i.test(source.url)) return [attachAudioMetadata(source, response)];
   const row = await inspectHls(source, context, platformKey === "netflix" ? match.targetId : null);
-  if (row && platformKey === "netflix" && !row.embeddedSubtitles.length) {
+  if (row && platformKey === "netflix") {
     // The request and any declared poster/source IDs must agree with the exact
     // Netflix episode selected above. Never combine subtitles by title alone.
     try {
@@ -1404,7 +1516,7 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
     return [];
   }
 
-  context.deadline = Date.now() + 90000;
+  context.deadline = Date.now() + 105000;
   context.shared = {};
   const settings = globalThis.SCRAPER_SETTINGS || {};
   const preferred = clean(settings.preferredPlatform) || "all";
@@ -1419,9 +1531,9 @@ async function getStreams(inputId, mediaType = "movie", season = 1, episode = 1)
     // A complete selectable-audio master is the preferred stream family. Do not
     // concatenate separate Net27 rows for languages already selectable here.
     if (primary.some(row => completeAudioMaster(row, context) && (row.embeddedSubtitles.length || hasSelectableSubs(row)))) return normalizeRows(primary, context);
-    const native = await runStage(context, "native", 12000, c => fetchFromNetflixNative(c));
+    const native = await runStage(context, "native", 20000, c => fetchFromNetflixNative(c));
     if (native.some(row => completeAudioMaster(row, context))) return normalizeRows(native, context);
-    const mobile = await runStage(context, "mobile", 52000, c => fetchFromNetflixMobile(c, settings.forceHd !== false));
+    const mobile = await runStage(context, "mobile", 65000, c => fetchFromNetflixMobile(c, settings.forceHd !== false));
     const hlsRows = primary.concat(native, mobile);
     const complete = hlsRows.filter(row => completeAudioMaster(row, context));
     if (complete.length) return normalizeRows(complete, context);
@@ -1454,7 +1566,7 @@ async function onSettings() {
 const testApi = {
   normalizeTitle, titleKey, seasonMarker, scoreTitleOwnership, buildSearchQueries, exactEpisode,
   classification, audioEvidence, attachAudioMetadata, diagnostics,
-  parseHls, semanticDedupe, mediaIdentity, inspectHls, playbackHeaders, request, runStage,
+  parseHls, semanticDedupe, mediaIdentity, inspectHls, playbackHeaders, request, runStage, playback,
   playlistEntries, playlistEpisodeMatches, mobileSetCookies, mobileCookieHeader,
   fetchFromNetflixMobile, fetchFromNetflixNative, fetchFromNetflixDirect,
   reset() {

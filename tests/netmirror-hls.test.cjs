@@ -13,7 +13,7 @@ function harness(fetch,extras={}){
  return{api:sandbox.module.exports,helpers:sandbox.module.exports.__test,calls};
 }
 function row(api,body,url='https://net52.cc/mobile/hls/81947712.m3u8?in=one',extra={}){
- const hls=api.parseHls(body,url);return{url,quality:Math.max(...hls.variants.map(v=>v.height))+'p',hls,audioTracks:hls.audioTracks,embeddedSubtitles:hls.subtitleTracks,subtitles:[],...extra};
+ const hls=api.parseHls(body,url);return{url,quality:Math.max(...hls.variants.map(v=>v.height))+'p',hls,audioTracks:hls.audioTracks,embeddedSubtitles:hls.subtitleTracks,subtitles:[],validation:{stable:true,rounds:3,video:hls.variants.map(v=>({...v,duration:1574}))},...extra};
 }
 test('captured mobile masters preserve reachable audio groups and actual qualities',()=>{
  const h=harness(()=>{throw Error('offline');});
@@ -46,7 +46,7 @@ test('naming uses actual audio/subtitle evidence, never TMDB original language a
 test('rejects correct-looking NewTV audio/subtitles when video belongs to common asset 220884',async()=>{
  const h=harness(()=>response(fixture('81947712','newtv')));
  assert.equal(await h.helpers.inspectHls({url:'https://tv.test/master.m3u8',headers:{}},context(),'81947712'),null);
- assert.equal(h.calls.length,1);assert.match(h.helpers.diagnostics().at(-1).reason,/identity mismatch/);
+ assert.equal(h.calls.length,1);assert.match(h.helpers.diagnostics().at(-1).reason,/identity-mismatch/);
 });
 test('HTTP 200 HTML in a child rejects the master, and no cookie leaks to playback hosts',async()=>{
  const h=harness(url=>response(url.includes('master')?fixture('81947712'):'<h1>Only Valid Users Allowed</h1>'));
@@ -66,9 +66,9 @@ test('semantic dedup ignores signing and duplicate STREAM-INF entries without di
  assert.notEqual(a.mediaIdentity('https://cdn.test/file.mp4?lang=en&sign=one'),a.mediaIdentity('https://cdn.test/file.mp4?lang=ko&sign=two'));
  assert.notEqual(a.mediaIdentity('https://cdn.test/a.mp4?sign=one'),a.mediaIdentity('https://cdn.test/b.mp4?sign=two'));
 });
-test('an intact multi-quality master replaces its contained rendition but not a different asset',()=>{
+test('separately verified intact quality masters remain available',()=>{
  const a=harness(()=>{}).helpers;const master=row(a,fixture('81947712'));const low={...master,url:master.url+'&q=720p',quality:'720p',hls:{...master.hls,variants:[master.hls.variants[1]]}};
- assert.equal(a.semanticDedupe([low,master],context()).length,1);
+ assert.equal(a.semanticDedupe([low,master],context()).length,2);
  const other={...low,hls:{...low.hls,variants:[{...low.hls.variants[0],url:'https://cdn.test/different.m3u8'}]}};
  assert.equal(a.semanticDedupe([master,other],context()).length,2);
 });
@@ -105,6 +105,25 @@ test('timerless runtimes fail promptly instead of busy-waiting or starting unbou
  const h=harness(()=>{throw Error('must not fetch');},{setTimeout:undefined,clearTimeout:undefined});
  await assert.rejects(h.helpers.request('https://test/'),/timers unavailable/);assert.equal(h.calls.length,0);
 });
+test('native qualities verify concurrently and preserve both intact multi-audio masters',async()=>{
+ const full=fixture('81947712');
+ const mid=full.replace(/#EXT-X-STREAM-INF:[^\n]*1920x1080[^\n]*\r?\n[^\n]*\r?\n/,'');
+ const child=fs.readFileSync(path.join(__dirname,'fixtures/netmirror/device/81947712-video.m3u8'),'utf8');
+ let mastersStarted=0;
+ const h=harness(url=>{
+  if(url.includes('/play.php'))return response({h:'fixture'});
+  if(url.includes('/playlist.php'))return response([{sources:[
+   {file:'/hls/81947712.m3u8?in=one',label:'Full HD'},
+   {file:'/hls/81947712.m3u8?q=720p&in=two',label:'Mid HD'}]}]);
+  if(url.includes('/hls/')){mastersStarted++;return response(url.includes('q=720p')?mid:full);}
+  if(url.includes('/files/')){assert.ok(mastersStarted>=2,'both qualities start before child verification');return response(child);}
+  return response({});
+ },{setTimeout:(fn,ms)=>setTimeout(fn,[1500,4000].includes(ms)?0:ms)});
+ const rows=await h.helpers.fetchFromNetflixNative(context({runtimeSeconds:3160,shared:{netflixMatch:{targetId:'81947712'}}}));
+ assert.deepEqual(Array.from(rows,r=>r.quality).sort(),['1080p','720p']);
+ for(const r of rows){assert.equal(r.validation.rounds,3);assert.equal(r.audioTracks.length,20);assert.ok(r.url.includes('/hls/'));}
+});
+
 test('successful mobile playlist survives const regression and collapses Centaurworld duplicate rows',async()=>{
  const h=harness(url=>{
   if(url.includes('/mobile/home'))return response('<div data-addhash="test"></div>');
@@ -113,7 +132,7 @@ test('successful mobile playlist survives const regression and collapses Centaur
   if(url.includes('/mobile/playlist.php'))return response([{image2:'https://img.test/81048667.jpg',sources:[{file:'/mobile/hls/81048667.m3u8?in=one',label:'Auto'},{file:'/mobile/hls/81048667.m3u8?q=720p&in=two',label:'Mid HD'}],tracks:[{kind:'captions',file:'https://subscdn.top/subs/81048667/en.[CC].vtt',label:'English [CC]'}]}]);
   if(url.includes('/mobile/hls/'))return response(fixture('81048667'));
   return response(media);
- },{setTimeout:(fn,ms)=>setTimeout(fn,ms===10000?0:ms)});
+ },{setTimeout:(fn,ms)=>setTimeout(fn,[10000,1500,4000].includes(ms)?0:ms)});
  const rows=await h.helpers.fetchFromNetflixMobile(context({originalLanguage:'en',shared:{netflixMatch:{targetId:'81048667',title:'Centaurworld'}}}),true);
  assert.equal(rows.length,1);assert.equal(rows[0].audioTracks.length,32);assert.equal(rows[0].subtitles.length,1);
  assert.equal(h.helpers.classification(rows[0],context()),'[DUAL]');assert.equal(rows[0].headers.Cookie,undefined);

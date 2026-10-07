@@ -1,5 +1,7 @@
 # NetMirror transport investigation — 2026-10-06
 
+Historical HTTP-only baseline report. Device testing subsequently exposed playback and subtitle defects; see [DEVICE-INVESTIGATION.md](DEVICE-INVESTIGATION.md) for the NetMirror 1.4.0 follow-up and stronger validation.
+
 Baseline: Nexus 2.3.8 / NetMirror 1.2.2, commit `8df7879` on `Limitless-nexus`.
 Reference: Sushan64/NetMirror-Extension master `40a3319ce03d9a6fb3a59aacf420341a24c4e630`, NetflixMirrorProvider.kt and Utils.kt.
 These probes were completed before editing the production provider.

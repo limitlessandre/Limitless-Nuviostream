@@ -35,7 +35,7 @@ function harness({
 } = {}) {
   const calls = [];
   const sandbox = {
-    URL, setTimeout, clearTimeout, AbortController,
+    URL, setTimeout: (fn, ms) => setTimeout(fn, [1500, 4000].includes(ms) ? 0 : ms), clearTimeout, AbortController,
     module: { exports: {} },
     console: { log() {}, error() {}, warn() {} },
     atob: value => Buffer.from(value, 'base64').toString('binary'),
@@ -55,7 +55,7 @@ function harness({
       if (parsed.pathname === '/checknewtv.php') {
         return jsonResponse({ token_hash: Buffer.from(API).toString('base64') });
       }
-      if (/\.example$/.test(parsed.hostname) && /\.m3u8$/.test(parsed.pathname)) return {ok:true,status:200,text:async()=> '#EXTM3U\n#EXTINF:10,\nsegment.ts\n#EXT-X-ENDLIST'};
+      if (/\.example$/.test(parsed.hostname) && /\.m3u8$/.test(parsed.pathname)) return {ok:true,status:200,text:async()=> parsed.pathname.endsWith('/child.m3u8') ? '#EXTM3U\n#EXTINF:10,\nsegment.ts\n#EXT-X-ENDLIST' : '#EXTM3U\n#EXT-X-STREAM-INF:RESOLUTION=1280x720,CODECS="avc1.4d401f"\nchild.m3u8'};
       if (parsed.origin !== API) throw new Error('Unexpected runtime dependency: ' + url);
       const ott = options.headers && options.headers.Ott;
       if (parsed.pathname === '/newtv/search.php') {
@@ -126,13 +126,13 @@ test('provider is standalone and exports without eval, require, or downloaded co
   assert.equal(h.calls.some(call => call.url.includes('github')), false);
 });
 
-test('manifest activates only the standalone 1.3.0 NetMirror provider', () => {
+test('manifest activates only the standalone 1.4.0 NetMirror provider', () => {
   const manifest = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../manifest.json'), 'utf8'));
   const entries = manifest.scrapers.filter(item => item.id === 'limitless-netmirror');
-  assert.equal(manifest.version, '2.3.9');
+  assert.equal(manifest.version, '2.3.10');
   assert.equal(entries.length, 1);
-  assert.equal(entries[0].version, '1.3.0');
-  assert.match(entries[0].filename, /\/custom\/providers\/netmirror-standalone-nexus-v1\.js\?rev=130$/);
+  assert.equal(entries[0].version, '1.4.0');
+  assert.match(entries[0].filename, /\/custom\/providers\/netmirror-standalone-nexus-v1\.js\?rev=140$/);
   assert.doesNotMatch(entries[0].filename, /NuvioPlugin|All-in-One-Nuvio/);
 });
 
@@ -190,7 +190,7 @@ test('Shield Hero S4 rejects Net27 S1 media and falls through to a correct separ
   const rows = await h.run('83095', 'tv', 4, 1);
   assert.equal(rows.length, 1);
   assert.equal(rows[0].url, 'https://prime.example/shield-s4e1.m3u8');
-  assert.equal(rows[0].name, 'NetMirror • Unknown Auto • [UNK]');
+  assert.equal(rows[0].name, 'NetMirror • HD 720p • [UNK]');
   assert.equal(h.calls.some(call => call.url.includes('wrong-s1e1.mp4')), false);
   const rejectedDirect = h.diagnostics().find(item => item.path === 'net27-direct' && item.event === 'rejection');
   assert.equal(rejectedDirect.reason, 'direct-season-episode-mismatch');

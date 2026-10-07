@@ -1,0 +1,43 @@
+{
+  "captured": [
+    {
+      "file": "81947712-video.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 3163.078683999997,
+      "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/720p/720p.m3u8"
+    },
+    {
+      "file": "81947712-english.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 3162.9862540000045,
+      "url": "https://s88.nm-cdn30.top/s24.freecdn3.top/files/81947712/a/2/2.m3u8"
+    },
+    {
+      "file": "81048667-video.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 1574.2499980000002,
+      "url": "https://s24.freecdn3.top/files/81048667/720p/720p.m3u8"
+    },
+    {
+      "file": "81048667-english.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 1574.3580199999994,
+      "url": "https://s24.freecdn3.top/files/81048667/a/5/5.m3u8"
+    },
+    {
+      "file": "81262746-video.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 3655.8537410000004,
+      "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/720p/720p.m3u8"
+    },
+    {
+      "file": "81262746-english.m3u8",
+      "origin": "captured HTTP audit before device report",
+      "durationSeconds": 3655.701242000006,
+      "url": "https://f.freecdn4.top/s26.freecdn51.top/files/81262746/a/3/3.m3u8"
+    }
+  ],
+  "synthetic": {
+    "centaurworld-19s.m3u8": "Synthetic regression reproducing user-reported ~19-second duration; not an actual captured player response."
+  }
+}

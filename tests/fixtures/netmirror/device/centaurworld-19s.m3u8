@@ -1,0 +1,10 @@
+#EXTM3U
+# Synthetic regression for the user's device observation, not captured HTTP data.
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXTINF:9.5,
+incorrect-0.ts
+#EXTINF:9.5,
+incorrect-1.ts
+#EXT-X-ENDLIST
