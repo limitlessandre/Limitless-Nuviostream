@@ -1,6 +1,6 @@
 # CloudStream → Nuvio port candidate audit
 
-Native Limitless providers: **6**  
+Native Limitless providers: **7**  
 Filtered CloudStream providers: **127**  
 No obvious native overlap: **124**  
 Likely overlap requiring review: **0**  

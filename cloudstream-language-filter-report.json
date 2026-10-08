@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 326,
+  "excluded_count": 328,
   "excluded": [
     {
       "internalName": "Rate",
@@ -497,6 +497,20 @@
         "it"
       ],
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeUnity.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimeVilla",
+      "name": "AnimeVilla",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeVilla.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4316,6 +4330,20 @@
       "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
       "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "ZDKSerials",
+      "name": "ZDKSerials",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ZDKSerials.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "Zinkmovies",
