@@ -101,27 +101,95 @@
       }
     ]
   },
+  "internal:chikianimation": {
+    "chosen": {
+      "internalName": "Chikianimation",
+      "name": "Chikianimation",
+      "version": 3,
+      "language": "zh",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v3.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Chikianimation",
+        "name": "Chikianimation",
+        "version": 3,
+        "language": "zh",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v3.cs3"
+      },
+      {
+        "internalName": "Chikianimation",
+        "name": "Chikianimation",
+        "version": 2,
+        "language": "zh",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Chikianimation.cs3"
+      }
+    ]
+  },
+  "internal:ohli24": {
+    "chosen": {
+      "internalName": "OHLI24",
+      "name": "OHLI24",
+      "version": 7,
+      "language": "ko",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "OHLI24",
+        "name": "OHLI24",
+        "version": 7,
+        "language": "ko",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3"
+      },
+      {
+        "internalName": "OHLI24",
+        "name": "OHLI24",
+        "version": 3,
+        "language": "en",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v3.cs3"
+      }
+    ]
+  },
   "internal:reanime": {
     "chosen": {
       "internalName": "Reanime",
       "name": "Re:ANIME",
-      "version": 20,
+      "version": 22,
       "language": "en",
       "source": "AllForU",
       "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v20.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v22.cs3"
     },
     "candidates": [
       {
         "internalName": "Reanime",
         "name": "Re:ANIME",
-        "version": 20,
+        "version": 22,
         "language": "en",
         "source": "AllForU",
         "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v20.cs3"
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v22.cs3"
       },
       {
         "internalName": "ReAnime",

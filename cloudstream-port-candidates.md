@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **127**  
-No obvious native overlap: **124**  
+Filtered CloudStream providers: **126**  
+No obvious native overlap: **123**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -20,6 +20,7 @@ Exact/alias overlap: **3**
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
+- **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
@@ -52,7 +53,6 @@ Exact/alias overlap: **3**
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
 - **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
-- **Chikianimation** (`Chikianimation`) — zh; AnimeMovie, Anime — English anime and donghua from chikianimation.com
 - **Comix** (`Comix`) — en; Others, Anime — Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
@@ -103,7 +103,6 @@ Exact/alias overlap: **3**
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
-- **JioTV** (`JioTV`) — en; Movie, TvSeries — JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.

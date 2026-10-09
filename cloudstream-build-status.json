@@ -1,15 +1,15 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
   "repository_database_entries": 31,
-  "repositories_loaded": 29,
-  "repositories_using_cache": 1,
+  "repositories_loaded": 30,
+  "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 497,
-  "eligible_plugin_entries_before_dedupe": 132,
-  "unique_plugins": 127,
-  "duplicate_groups": 4,
-  "language_filtered_entries": 328,
+  "raw_plugin_entries": 504,
+  "eligible_plugin_entries_before_dedupe": 133,
+  "unique_plugins": 126,
+  "duplicate_groups": 6,
+  "language_filtered_entries": 334,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 37,
   "meta_plugin_entries_filtered": 0,
@@ -69,10 +69,9 @@
     {
       "name": "FStream",
       "url": "https://git.disroot.org/ayza/FStream/raw/branch/main/repo.json",
-      "status": "cached",
+      "status": "ok",
       "plugins": 1,
-      "verified": false,
-      "error": "Expecting value: line 1 column 1 (char 0)"
+      "verified": false
     },
     {
       "name": "Phisher Repo",
@@ -176,7 +175,7 @@
       "name": "Cartoony Repo",
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/repo.json",
       "status": "ok",
-      "plugins": 11,
+      "plugins": 12,
       "verified": false
     },
     {
@@ -211,7 +210,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 8,
+      "plugins": 14,
       "verified": false
     },
     {

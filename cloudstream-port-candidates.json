@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 127,
-  "no_obvious_native_overlap_count": 124,
+  "cloudstream_provider_count": 126,
+  "no_obvious_native_overlap_count": 123,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -290,6 +290,30 @@
       ]
     },
     {
+      "internalName": "Chikianimation",
+      "name": "Chikianimation",
+      "description": "Chikianimation - Donghua (Chinese anime) in multiple subtitles",
+      "language": "zh",
+      "tvTypes": [
+        "Movie",
+        "Anime"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v3.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "JPFilms",
       "name": "JPFilms",
       "description": "Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.",
@@ -345,8 +369,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 70,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v70.cs3",
+      "version": 72,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v72.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -986,29 +1010,6 @@
       ]
     },
     {
-      "internalName": "Chikianimation",
-      "name": "Chikianimation",
-      "description": "English anime and donghua from chikianimation.com",
-      "language": "zh",
-      "tvTypes": [
-        "AnimeMovie",
-        "Anime"
-      ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Chikianimation.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.4,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "Comix",
       "name": "Comix",
       "description": "Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.",
@@ -1440,8 +1441,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 21,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v21.cs3",
+      "version": 23,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v23.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1556,8 +1557,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 115,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v115.cs3",
+      "version": 117,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v117.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1601,7 +1602,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1624,8 +1625,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 121,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v121.cs3",
+      "version": 123,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v123.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1647,8 +1648,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 116,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v116.cs3",
+      "version": 118,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v118.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2009,30 +2010,6 @@
       "reasons": []
     },
     {
-      "internalName": "JioTV",
-      "name": "JioTV",
-      "description": "JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 16,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v16.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.286,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -1,
-      "reasons": [
-        "Movies / Western TV coverage",
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
       "internalName": "LibraryOfLadev",
       "name": "LibraryOfLadev",
       "description": "Library of Ladev - Neuro-sama stream transcript search with YouTube playback",
@@ -2064,8 +2041,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 13,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v13.cs3",
+      "version": 15,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v15.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2968,8 +2945,8 @@
         "Anime",
         "OVA"
       ],
-      "version": 20,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v20.cs3",
+      "version": 22,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v22.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",

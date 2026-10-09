@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 328,
+  "excluded_count": 334,
   "excluded": [
     {
       "internalName": "Rate",
@@ -217,6 +217,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeAV.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Animeav1",
+      "name": "AnimeAv1",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -595,6 +609,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeYTX.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AniVortex",
+      "name": "AniVortex",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v5.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2150,6 +2178,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "JioTV",
+      "name": "JioTV",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v18.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "JKAnimeProvider",
       "name": "JKAnimeProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -2371,6 +2413,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/LaMovieProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Latanime",
+      "name": "Latanime",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2910,6 +2966,20 @@
     {
       "internalName": "Netcinez",
       "name": "Netcinez",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "pt-br"
+      ],
+      "normalizedLanguages": [
+        "pt-br"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v3.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Netcinez",
+      "name": "Netcinez",
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "language": [
@@ -3283,6 +3353,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Pusatfilm.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "QFilm",
+      "name": "QFilm",
+      "source": "Cartoony Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/QFilm.cs3",
       "reason": "no-allowed-language"
     },
     {
