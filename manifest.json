@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.40",
+  "version": "2.3.41",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -30,14 +30,14 @@
     {
       "id": "limitless-anikoto-resurrection-test",
       "name": "AniKoto Resurrection Test",
-      "description": "Experimental Nexus-only direct AniKoto rebuild. Uses current VRF search/episode APIs, actual embed-origin resolution, MegaPlay AES-CBC source decryption plus short-lived HMAC signing, Mewcdn HOST_MAP handling, direct HLS/MP4, selectable subtitles, mirror failover, and skips image-wrapped s=tcdn streams. No localhost relay or legacy AniKoto resolver chain.",
-      "version": "0.2.0",
+      "description": "Experimental Nexus-only AniKoto diagnostic rebuild. Runs the current direct AniKoto flow with bounded stage timeouts and returns visible DIAG rows identifying identity, search, watch-page, episode API, server-list, or embed-resolution failures. No localhost relay.",
+      "version": "0.2.1",
       "author": "Limitless Nexus",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikoto-resurrection-nexus-v1.js?rev=020",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikoto-resurrection-nexus-v1.js?rev=021",
       "enabled": true,
       "hasSettings": false,
       "limited": true,
