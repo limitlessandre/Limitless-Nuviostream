@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.38",
+  "version": "2.3.39",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -25,6 +25,30 @@
       "contentLanguage": [
         "en",
         "ja"
+      ]
+    },
+    {
+      "id": "limitless-anikoto-resurrection-test",
+      "name": "AniKoto Resurrection Test",
+      "description": "Experimental Nexus-only direct AniKoto canary. Reuses the proven resolver but exposes only direct/already-valid HTTPS streams, including Mewcdn/direct HLS, while rejecting image-wrapped s=tcdn lanes and unsigned current MegaPlay CDN URLs. No localhost relay.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anikoto-resurrection-nexus-v1.js?rev=010",
+      "enabled": true,
+      "hasSettings": false,
+      "limited": true,
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
+      "logo": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
+      "contentLanguage": [
+        "ja",
+        "en"
       ]
     },
     {
