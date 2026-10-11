@@ -2286,7 +2286,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 687,
+        "version": 688,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2294,7 +2294,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 1957398,
+        "fileSize": 1959576,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2307,7 +2307,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-fc779f9c8e07afba3cca8a9c63c58cd3c40b514cbb4369b6115ad466bf3eca00"
+        "fileHash": "sha256-8767734564493632854088fd4292250d17abbfe793e817bb9c2a5dbf47e9ddde"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2551,14 +2551,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Ultima.cs3",
         "status": 2,
-        "version": 67,
+        "version": 70,
         "name": "Ultima",
         "internalName": "Ultima",
         "authors": [
           "RowdyRushya,Phisher98"
         ],
         "description": "The ultimate All-in-One home screen to access all of your extensions at one place (You need to select/deselect sections in Ultima's settings to load other extensions on home screen)",
-        "fileSize": 338701,
+        "fileSize": 342415,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2566,19 +2566,19 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Ultima.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-fcd9e3e6f05690a0c57159dbffea4cb390cccaaa5b39fade8cc2b799ef517227"
+        "fileHash": "sha256-73c153a0e091af95ef1301c308e20b3dd774ceb66662142000a7a999c1d428ce"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/WatchParty.cs3",
         "status": 1,
-        "version": 1,
+        "version": 2,
         "name": "WatchParty",
         "internalName": "WatchParty",
         "authors": [
           "Phisher98"
         ],
         "description": "Synchronized Watch Party: Watch movies and series together with real-time playback sync, persistent chat window, and host moderation.",
-        "fileSize": 129303,
+        "fileSize": 128964,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2586,7 +2586,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/w1.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-36193ff92d81c55e314ab67d783186191146dbf8003ce2b4131636043783c2c8"
+        "fileHash": "sha256-e3f3cdb11abaabf64f3d7b2c417040d72b4e6f824c882cbde6677f99138fb9a8"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
@@ -4095,7 +4095,7 @@
           "Abodabodd"
         ],
         "description": "⚠️ تنبيه: يُرجى استخدام VPN لتجنب حظر عنوان الـ IP الخاص بك",
-        "fileSize": 48574,
+        "fileSize": 48567,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4105,7 +4105,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/AnimeRift/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9ba88208f3fcd51845046737380453ec02dc1d4b48bab326ca7f329d8136e27f"
+        "fileHash": "sha256-67d0d55cf4984efbe1572f9c00d980a329796215874d72eaba5038aabca3d950"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Animewitcher.cs3",
@@ -4274,6 +4274,27 @@
         "iconUrl": "https://www.dima-toon.com/wp-content/uploads/2025/10/DimaToonlogo11.png",
         "apiVersion": 1,
         "fileHash": "sha256-048fc02cd74f7d43a2618a563a17c3727a2a801accb20f9e1cf13ef6e68619ef"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Egy.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "EgyWatch",
+        "internalName": "Egy",
+        "authors": [
+          "Abodabodd"
+        ],
+        "description": "",
+        "fileSize": 51510,
+        "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
+        "language": "ar",
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/Egy/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-14f4fe50d78a6ee9433b8e4958d4c5bfd578d66b8598522cb5de4f3e8d55c582"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Egydead.cs3",
@@ -7006,7 +7027,7 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeAV.cs3",
         "status": 1,
-        "version": 19,
+        "version": 20,
         "name": "AnimeAV",
         "internalName": "AnimeAV",
         "authors": [
@@ -7014,7 +7035,7 @@
           "ByAyzen"
         ],
         "description": "Disfruta de los últimos episodios y animes agregados en HD y Sub Español. Miles de series, películas y OVAs disponibles para ver online totalmente gratis.",
-        "fileSize": 50592,
+        "fileSize": 68843,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7022,7 +7043,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=animeav1.com",
         "apiVersion": 1,
-        "fileHash": "sha256-f49cbe0eb57a13b9749bcc41950b4ddf798d23abf51accab42d7dda1069f5cff"
+        "fileHash": "sha256-e11e556c2eafb5b2aca005a5fe001a785ea40903acd4daba5b6125ab529e06ca"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Animejara.cs3",
@@ -7068,14 +7089,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/AnimeYTX.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "AnimeYTX",
         "internalName": "AnimeYTX",
         "authors": [
           "ByAyzen"
         ],
         "description": "Únete a la familia de AnimeYT.es y disfruta del anime online gratis. Disfruta con tus amigos del contenido más popular de la animación japonesa.",
-        "fileSize": 52609,
+        "fileSize": 82089,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7083,19 +7104,19 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animeyt.cc&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-0e465f5dfa9bd3bed6022335321daa933c89630fb565f29ccb64cc8c636ebd22"
+        "fileHash": "sha256-68b0e28fd1a94c8a557675dac4db7cb1a424a27f699618f5dfddc691ef6908e7"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "BasketballReplays",
         "internalName": "BasketballReplays",
         "authors": [
           "ByAyzen"
         ],
         "description": "BA Replay full games online Free . Stream NBA Basketball replays full games. Spoiler Free , No Blackouts. No signup. Free Download High quality video in HD.",
-        "fileSize": 16980,
+        "fileSize": 55689,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7103,7 +7124,7 @@
         ],
         "iconUrl": "https://basketballreplays.net/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-9d05ef7042422c3ba6df8ccb79cc5949cd33c76d2fb7fd7240b6f4fe70fb5a0c"
+        "fileHash": "sha256-d7244d846adc02b44306c952dc0e01d3dcb460f57532a4b26fd3286c6bb61842"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/DocumentaryArea.cs3",
@@ -7128,14 +7149,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/DoramasLatinoX.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "DoramasLatinoX",
         "internalName": "DoramasLatinoX",
         "authors": [
           "ByAyzen"
         ],
         "description": "Doramas en Audio Español Latino y Subtitulado.",
-        "fileSize": 30684,
+        "fileSize": 64006,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7143,7 +7164,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://doramaslatinox.com/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-432f079bfa4b9efe2812084e43667a80f9fcf8adc5b1dff267b04a4f31bf6d44"
+        "fileHash": "sha256-612dd16c4ad5bd3b6be5359c162c96fa0298885ac14e84cfb6c2e1ad0cd83e6e"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Dubbindo.cs3",
@@ -7168,35 +7189,35 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Esheaq.cs3",
         "status": 1,
-        "version": 21,
+        "version": 22,
         "name": "Esheaq",
         "internalName": "Esheaq",
         "authors": [
           "kraptor"
         ],
         "description": "قصة عشق الأصلي لأحدث المسلسلات التركية والدراما المترجمة علي قصه عشق ، يمكنك من خلال موقع قصة عشق مشاهدة كل جديد في عالم الدراما التركية",
-        "fileSize": 17199,
+        "fileSize": 17196,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "ar",
         "tvTypes": [
           "Movie",
           "TvSeries"
         ],
-        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://esheeq.my&size=128",
+        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://esheeq.study&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-826f9fa3b1a1886559f6274eb38d5e40c2cf963020c1b29233e22558d92292b3"
+        "fileHash": "sha256-16bda1dbb502620efe1406708207c8f167f6e2cd95937858e51f6ba22fa40543"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Flixlatam.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "Flixlatam",
         "internalName": "Flixlatam",
         "authors": [
           "ByAyzen"
         ],
         "description": "Mira tus Series, Películas y Animes en Latino Online!",
-        "fileSize": 41676,
+        "fileSize": 78003,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7204,7 +7225,7 @@
         ],
         "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://flixlatam.com&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-eb6824a7efe8f78ae9410f2ba5e0b807fde9d9e7eecf21699923ebdc6693dae6"
+        "fileHash": "sha256-00c99bdd57e1628924143a9010688e5e5e40b860b95e2947672b9d7f97e4cb79"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Footballia.cs3",
@@ -7230,13 +7251,13 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FootReplays.cs3",
         "status": 1,
-        "version": 1,
+        "version": 2,
         "name": "FootReplays",
         "internalName": "FootReplays",
         "authors": [
           "ByAyzen"
         ],
-        "fileSize": 25573,
+        "fileSize": 66959,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7244,12 +7265,12 @@
         ],
         "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.footreplays.com/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-165ec2dfe90778873a879572e04cf35f7a9f5c0a0466ca50d4fd7b705f203185"
+        "fileHash": "sha256-e03aadfd14b54f944f7de4cba93d87b3c5f7cd7b2bffbfe2b7404144d6278a53"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
         "status": 1,
-        "version": 15,
+        "version": 16,
         "name": "FullRaces",
         "internalName": "FullRaces",
         "authors": [
@@ -7257,7 +7278,7 @@
           "kerimmkirac"
         ],
         "description": "Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this exciting sports event. We offer to watch F1 Full Races replays FREE in HD",
-        "fileSize": 54111,
+        "fileSize": 67885,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7266,19 +7287,19 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullraces.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-c292f779282f526ccca6f21bd8adafccb5d733ef2c00d20058c8bce32d9ce015"
+        "fileHash": "sha256-9cbdc07955ac1327632cdc6136339e067cb1cf35ffdf5acfe64ecc23c3a2e107"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Gnulahd.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "Gnulahd",
         "internalName": "Gnulahd",
         "authors": [
           "ByAyzen"
         ],
         "description": "GnulaHD",
-        "fileSize": 37159,
+        "fileSize": 73844,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "mx",
         "tvTypes": [
@@ -7288,7 +7309,29 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ww3.gnulahd.nu/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-a8be877d161ef649cc7ba25c70beb0c0dcbe1786d491889f8e6b883eb23f622f"
+        "fileHash": "sha256-2a6b4ffe97ad3564273d717865de323f1a9478e6094181ec9cab303993415153"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Hackstore.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "Hackstore",
+        "internalName": "Hackstore",
+        "authors": [
+          "ByAyzen"
+        ],
+        "description": "Descargar peliculas, series y animes en alta calidad de forma rápida y segura. Disfruta de una amplia selección de contenido. ¡Empieza hoy mismo!",
+        "fileSize": 42915,
+        "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
+        "language": "es",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hackstore2.com/&size=128",
+        "apiVersion": 1,
+        "fileHash": "sha256-d0ae64df7d3de29e9bdbf4e229a91c44ba2c1aa91926665f6e47229e191f52ad"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Iwatchtheoffice.cs3",
@@ -7394,7 +7437,7 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/LayarKaca.cs3",
         "status": 1,
-        "version": 15,
+        "version": 16,
         "name": "LayarKaca",
         "internalName": "LayarKaca",
         "authors": [
@@ -7403,7 +7446,7 @@
           "Hexated"
         ],
         "description": "Nonton dan download film & series terbaru di LK21. Streaming sub Indo gratis, kualitas HD. Tersedia drama Korea, anime, film barat, dan Asia lengkap!",
-        "fileSize": 35953,
+        "fileSize": 69907,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "id",
         "tvTypes": [
@@ -7412,19 +7455,19 @@
         ],
         "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tv12.lk21official.cc&size=256",
         "apiVersion": 1,
-        "fileHash": "sha256-2cd1759976cceacf73766fce19c3f9e3a6b977b0bbf5e892c137f92c3f6f91b9"
+        "fileHash": "sha256-d0a3842a9fe05b428a9dbe41def7bd502e4b1ab5c1f8ea911f8ff48da3cc45c8"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Movix.cs3",
         "status": 1,
-        "version": 32,
+        "version": 33,
         "name": "Movix",
         "internalName": "Movix",
         "authors": [
           "ByAyzen"
         ],
         "description": "Explorez les films, séries, collections, alertes et recommandations Movix.",
-        "fileSize": 184697,
+        "fileSize": 219238,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "fr",
         "tvTypes": [
@@ -7434,19 +7477,19 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movix.fun/&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-496660b4e9d444dbaaa86b45d92fe77de93b8c814454acc88cd2895937239b28"
+        "fileHash": "sha256-ced9099329347aa0cd994a5cacb1cad1283a265c27ccbbf947c849d6aa78f646"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Nekokun.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "Nekokun",
         "internalName": "Nekokun",
         "authors": [
           "ByAyzen"
         ],
         "description": "Nekokun adalah tempat nonton dan streaming animu favoritmu! Di sini tersedia berbagai resolusi untuk kalian download mulai dari 480p, 720p, dan 1080p. Selain bisa download kalian juga langsung bisa streaming dengan lancar dan tanpa lag!",
-        "fileSize": 25399,
+        "fileSize": 25371,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "id",
         "tvTypes": [
@@ -7454,19 +7497,19 @@
         ],
         "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nekokun.my.id&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-96c38b283edf694dfdba1c12afb17abe70c0567332bfbfdc3286934a12fc736d"
+        "fileHash": "sha256-f8bc12bdb75f54b4b9039d44d74b23f54c7358f8aec353cf9c31e5a281a0f7e6"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OK.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "OK",
         "internalName": "OK",
         "authors": [
           "ByAyzen"
         ],
         "description": "OKRU Videos.",
-        "fileSize": 32302,
+        "fileSize": 68008,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "ru",
         "tvTypes": [
@@ -7475,7 +7518,7 @@
         ],
         "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ok.ru/video/c12842395&size=128",
         "apiVersion": 1,
-        "fileHash": "sha256-f79349cf015293af149f239964fb17d14c6ff682c0f1f21e9a5f902001efa965"
+        "fileHash": "sha256-91b4686bd7c505b7a97ad3676add3c4c43114d166ba8caabebceaaeef9f81bcd"
       },
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
@@ -7663,14 +7706,14 @@
       {
         "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "YoTurkish",
         "internalName": "YoTurkish",
         "authors": [
           "kraptor"
         ],
         "description": "YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to",
-        "fileSize": 20039,
+        "fileSize": 20051,
         "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
         "language": "en",
         "tvTypes": [
@@ -7678,7 +7721,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=yoturkish.to",
         "apiVersion": 1,
-        "fileHash": "sha256-8b613d44af2acd30aca70ea98bb454556bfba191bf2557550ee332518dd3f00a"
+        "fileHash": "sha256-04f17302b6995b4538477d2e9fd2783b920acec8e88882129960ce42d22ddc51"
       }
     ]
   },
@@ -9117,14 +9160,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 14,
+        "version": 16,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies and series from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 428325,
+        "fileSize": 432430,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9133,7 +9176,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-bd00795360a8051378dc2ed555904260e75ec1d2c171264e962ad6dc17210587"
+        "fileHash": "sha256-7640bfe6c02a90b6cd4c3d97ae2b190cb98ea86db237fd25d36c6232f2fc318b"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9336,14 +9379,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
         "status": 1,
-        "version": 3,
+        "version": 4,
         "name": "RareAnimesIndia",
         "internalName": "RareAnimesIndia",
         "authors": [
           "raghav"
         ],
         "description": "hindi cartoon (unstable and many dead links)",
-        "fileSize": 158077,
+        "fileSize": 159136,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
@@ -9354,7 +9397,7 @@
         ],
         "iconUrl": "https://www.rareanimes.mov/wp-content/uploads/2023/11/cropped-Rare-Animes-India.png",
         "apiVersion": 1,
-        "fileHash": "sha256-b97e462d1ce8626037c0548e1d3c037881cd235981c46dd5fb7157db381cf218"
+        "fileHash": "sha256-4c97ef01a8626f4d95c23881e4e8bf322adbcf00643b5de772d6ec41fddee02c"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3",
@@ -9795,10 +9838,10 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-        "fileHash": "sha256-3a8377d1863a72810e61cfd26cf9dd7196a6401961be3d2d1ecb9ce3c86b64d0",
+        "fileHash": "sha256-28a0682f538066048794b1f6cf23f1826b46991f9ebe3052fe42b879cc4aaefd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 54055,
+        "fileSize": 54016,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9808,19 +9851,19 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 74,
+        "version": 79,
         "internalName": "MovieBox",
         "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v74.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v79.cs3",
         "name": "MovieBox",
         "pluginClassName": "com.allforu.StreamBoxPlugin"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-cedc05377c2445b5e387084dee0d04bdaae402af1ea87ef3031612b06029b1fc",
+        "fileHash": "sha256-66e65cd779c337aa104675b151ca1d0df542f9a90a52fe35054cf40d813bd5bc",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 56910,
+        "fileSize": 56829,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9830,19 +9873,19 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 125,
+        "version": 130,
         "internalName": "Netflix",
         "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v125.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v130.cs3",
         "name": "Netflix",
         "pluginClassName": "com.allforu.NetflixPlugin"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-703c304f16c21f84a9470727b49fa099e864924af5d0c47d8887c221e4aebb43",
+        "fileHash": "sha256-3dc6533ca911fc4582195b9c0bbd7faf6d64f305c4b79d527442bb325932c314",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 56844,
+        "fileSize": 56810,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9852,15 +9895,15 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 119,
+        "version": 124,
         "internalName": "Hotstar",
         "description": "Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v119.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v124.cs3",
         "name": "Hotstar",
         "pluginClassName": "com.allforu.HotstarPlugin"
       },
       {
-        "version": 25,
+        "version": 30,
         "internalName": "DisneyPlus",
         "name": "Disney+",
         "pluginClassName": "com.allforu.DisneyPlugin",
@@ -9875,18 +9918,18 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v25.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v30.cs3",
         "description": "Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more",
-        "fileHash": "sha256-e38783ad9fff8248d1a0b829c120ffb9fc76050a966b1949871afdea663e1e69",
-        "fileSize": 56882,
+        "fileHash": "sha256-1426ef593b9fe294164a67794440c31349bbb94cb93393173450a927ac499deb",
+        "fileSize": 56815,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-f2487798d4276917018d66ef456be7b09297bf6fc960dd0677cdce10e3ae2307",
+        "fileHash": "sha256-6cbbc208ff54223830652e6433521df872db48ad742d15a2c614bfe9e548f4f0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 58475,
+        "fileSize": 58428,
         "status": 1,
         "language": "en",
         "authors": [
@@ -9896,15 +9939,15 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 120,
+        "version": 125,
         "internalName": "PrimeVideo",
         "description": "Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v120.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v125.cs3",
         "name": "PrimeVideo",
         "pluginClassName": "com.allforu.PrimePlugin"
       },
       {
-        "version": 20,
+        "version": 25,
         "internalName": "JioTV",
         "name": "JioTV",
         "pluginClassName": "com.allforu.JioTvPlugin",
@@ -9919,14 +9962,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v20.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v25.cs3",
         "description": "JioTV - Live JioTV channels (News, Entertainment, Movies, Sports, Devotional & more)",
-        "fileHash": "sha256-575626317368e7238db189e0cd1f22ce61bee3e6aae350146e406314efe95dd5",
-        "fileSize": 43632,
+        "fileHash": "sha256-3c6b33e7687030ed8a7eed78a33da0d2d058e6f777790cd85b56864df20c697c",
+        "fileSize": 43593,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/jiotv.png"
       },
       {
-        "version": 17,
+        "version": 22,
         "internalName": "M3UPlayer",
         "name": "M3U Player",
         "pluginClassName": "com.allforu.M3uPlayerPlugin",
@@ -9941,10 +9984,10 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v17.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v22.cs3",
         "description": "M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)",
-        "fileHash": "sha256-76ccd144eef5ff504710608be3ed600d4d615499d8d0afd589375c7e61c5cc97",
-        "fileSize": 44607,
+        "fileHash": "sha256-c178ab264ef4a8a2bd350bebef68806324355e99dd030fa0149550622e93bb98",
+        "fileSize": 44561,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/m3uplayer.png"
       },
       {
@@ -9963,15 +10006,15 @@
           "OVA"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v24.cs3",
-        "version": 24,
-        "fileHash": "sha256-0dd248ea3e60dad1b76eb41bac4a264fb830a5c476e5833a4a5237d1cca67f30",
-        "fileSize": 49603,
-        "description": "Reanime - Stream anime free online (sub & dub, multi-quality)",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v29.cs3",
+        "version": 29,
+        "fileHash": "sha256-6255bfa6f948b63caf1549977d61f5886641c9b0a3c2efbe2e1ff3ec401c55ea",
+        "fileSize": 49555,
+        "description": "Re:ANIME - Stream anime free online (sub & dub, multi-quality)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
       },
       {
-        "version": 6,
+        "version": 11,
         "internalName": "Animeav1",
         "name": "AnimeAv1",
         "pluginClassName": "com.allforu.Animeav1Plugin",
@@ -9986,14 +10029,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v6.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v11.cs3",
         "description": "AnimeAv1 - Anime en espanol latino (multi-servidor, sub)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/animeav1.png",
-        "fileHash": "sha256-6787ab12a1eb2c1b566a228c26449547b9cffc60eb40e649c2eff73eee01b18e",
-        "fileSize": 25260
+        "fileHash": "sha256-581da1c7deeabeab8dff2080e50bfcfeace399083f84d3daa1221fa3212aba47",
+        "fileSize": 25201
       },
       {
-        "version": 6,
+        "version": 11,
         "internalName": "Latanime",
         "name": "Latanime",
         "pluginClassName": "com.allforu.LatanimePlugin",
@@ -10008,14 +10051,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v6.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v11.cs3",
         "description": "Latanime - Anime en espanol latino (sub & doblaje)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/latanime.png",
-        "fileHash": "sha256-7ee737cfe7ce2e8c813e2144de52d06ca6ecadd08451df57a65687423b8db52e",
-        "fileSize": 22070
+        "fileHash": "sha256-b3761edeeb95ab4186ce0b4b3f02229764afd9db596f7762925d86a64d079aca",
+        "fileSize": 22015
       },
       {
-        "version": 5,
+        "version": 10,
         "internalName": "Netcinez",
         "name": "Netcinez",
         "pluginClassName": "com.allforu.NetcinezPlugin",
@@ -10030,14 +10073,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v5.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v10.cs3",
         "description": "Netcinez - Filmes, Series & Animes dublados (Portugues)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/netcinez.png",
-        "fileHash": "sha256-6eff3afd452d6c6f3c65fdbb761dc0d1c348da55551e8a512262ba4e005d3b33",
-        "fileSize": 25005
+        "fileHash": "sha256-9a23904915e711613524b4e0540842a5c2a7779469880677ca32b91b5ae2f557",
+        "fileSize": 24959
       },
       {
-        "version": 5,
+        "version": 10,
         "internalName": "Chikianimation",
         "name": "Chikianimation",
         "pluginClassName": "com.allforu.ChikianimationPlugin",
@@ -10052,14 +10095,14 @@
           "Anime"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v5.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v10.cs3",
         "description": "Chikianimation - Donghua (Chinese anime) in multiple subtitles",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/chikianimation.png",
-        "fileHash": "sha256-de53f0fca783830d4658dd96a40ae325509d55795ac129afd69df5dc5c2aa995",
-        "fileSize": 40076
+        "fileHash": "sha256-62facd480734720e2891197743f8f0ad30e8bda6c566d3ff91d995e7f885af7d",
+        "fileSize": 40039
       },
       {
-        "version": 5,
+        "version": 10,
         "internalName": "OHLI24",
         "name": "OHLI24",
         "pluginClassName": "com.allforu.Ohli24Plugin",
@@ -10074,14 +10117,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v5.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v10.cs3",
         "description": "OHLI24 - Korean anime streaming (K-sub)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/ohli24.png",
-        "fileHash": "sha256-1ab4d38f71b85d483fe6da564928c622fdf4cb24b3aa287ef315ff4f5c710b51",
-        "fileSize": 26213
+        "fileHash": "sha256-9f810dc5dbe3158a56215d1f2c76f29d9d32fd90072f9628ad250a6d764d1e65",
+        "fileSize": 26163
       },
       {
-        "version": 7,
+        "version": 12,
         "internalName": "AniVortex",
         "name": "AniVortex",
         "pluginClassName": "com.allforu.AniVortexPlugin",
@@ -10098,16 +10141,16 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v12.cs3",
         "description": "AniVortex - Anime, movies & series from many OTT catalogues",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/anivortex.png",
-        "fileHash": "sha256-4f4b9e889f93f27dc41fc4ae187c7347f629b97305ff7e616f9dd5d9c6e2180b",
-        "fileSize": 53369
+        "fileHash": "sha256-6df6723af450bbc0ac6a1e85091013dce002024216c740f9208e36f90c99e690",
+        "fileSize": 53349
       },
       {
-        "version": 4,
+        "version": 12,
         "internalName": "NetNaija",
-        "name": "NetNaija",
+        "name": "AllDubz",
         "pluginClassName": "com.allforu.NetNaijaPlugin",
         "status": 1,
         "apiVersion": 1,
@@ -10122,14 +10165,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v4.cs3",
-        "description": "NetNaija - Movies, series & anime with configurable host, sources & home sections",
-        "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/netnaija.png",
-        "fileHash": "sha256-057909ab4e4d72b940ba3b5dd85877906af08949f7cf16a02fa65fbc14d3e78b",
-        "fileSize": 78912
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v12.cs3",
+        "description": "AllDubz - Movies, series & anime in every region dub (configurable host, sources & sections)",
+        "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/alldubz.png",
+        "fileHash": "sha256-f4e68fd11d9280fc5bedb518322482f68f59fc27a161a445df84d3c38208bb5d",
+        "fileSize": 84797
       },
       {
-        "version": 4,
+        "version": 9,
         "internalName": "Coflix",
         "name": "Coflix",
         "pluginClassName": "com.allforu.CoflixPlugin",
@@ -10146,11 +10189,11 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v9.cs3",
         "description": "Coflix - Films, series, animes & doramas en streaming (French)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/coflix.png",
-        "fileHash": "sha256-0824279f7a0ce604e29cfda29c078d9d6e01fdf7814596841cd0ddac4f75ce99",
-        "fileSize": 30690
+        "fileHash": "sha256-974cbca7fd702240ffcc10250b9d5fdad307feb6c2da1a3dc67b86e325be7e72",
+        "fileSize": 30644
       }
     ]
   },
@@ -10785,6 +10828,28 @@
         "fileHash": "sha256-f42ddc2bfc56d375c2e47d83bb7b712761d5a87e1dc26dedd7aaa84338e6aa4f"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MoviesHunt.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "MoviesHunt",
+        "internalName": "MoviesHunt",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Movieshunt Provider for Hindi Dubbed, Bollywood, Hollywood Movies & Web Series.",
+        "fileSize": 32961,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://movieshunt.living/wp-content/uploads/2024/11/favicon-icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-fb0fcf002e5322d1b6ce72256b3a420fac92db802d347b3573f1f10f3d81c95b"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/NetMovie.cs3",
         "status": 1,
         "version": 1,
@@ -10854,14 +10919,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 63,
+        "version": 66,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1099831,
+        "fileSize": 1151762,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10873,7 +10938,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-d099a75fe33a918eea0500b08bdbeff34566b10664b9c84cb7c2e53e472b9a57"
+        "fileHash": "sha256-8dd8fd09ba812b2d651672c76aa2519eb5bf72e1ef92dbcfca469c174b5d562f"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -10930,7 +10995,7 @@
           "Faisal"
         ],
         "description": "VegaMovies Provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 96153,
+        "fileSize": 74388,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -10940,7 +11005,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(2).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-ade8e7ff50e4ae14b766a4eb7364b03a91bd639a4b65715d94932992133b40ac"
+        "fileHash": "sha256-dabe16f3febc26c1860ee0ecb613d005baea953f46c4fdbb9e52788797b9d15c"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",

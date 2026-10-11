@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 687,
+      "version": 688,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -144,32 +144,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.538,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 12,
-      "reasons": [
-        "Asian drama / K-drama coverage",
-        "Anime coverage",
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "OHLI24",
-      "name": "OHLI24",
-      "description": "Anime and movies with Korean subtitles only (no Korean audio)",
-      "language": "ko",
-      "tvTypes": [
-        "AsianDrama",
-        "TvSeries",
-        "Movie"
-      ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.308,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -298,8 +272,8 @@
         "Movie",
         "Anime"
       ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v5.cs3",
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v10.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -369,8 +343,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 74,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v74.cs3",
+      "version": 79,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v79.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1174,6 +1148,29 @@
       ]
     },
     {
+      "internalName": "OHLI24",
+      "name": "OHLI24",
+      "description": "OHLI24 - Korean anime streaming (K-sub)",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v10.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.308,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "OnePace",
       "name": "OnePace",
       "description": "One Pace",
@@ -1441,8 +1438,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 25,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v25.cs3",
+      "version": 30,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v30.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1557,8 +1554,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 119,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v119.cs3",
+      "version": 124,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v124.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1602,7 +1599,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 14,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1625,8 +1622,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 125,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v125.cs3",
+      "version": 130,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v130.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1648,8 +1645,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 120,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v120.cs3",
+      "version": 125,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v125.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1810,7 +1807,7 @@
       "tvTypes": [
         "TvSeries"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -1897,7 +1894,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2041,8 +2038,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 17,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v17.cs3",
+      "version": 22,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v22.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2134,7 +2131,7 @@
         "Live",
         "Others"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FullRaces.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2288,7 +2285,7 @@
       "tvTypes": [
         "All"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/WatchParty.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2464,7 +2461,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/FootReplays.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2960,15 +2957,15 @@
     {
       "internalName": "Reanime",
       "name": "Re:ANIME",
-      "description": "Reanime - Stream anime free online (sub & dub, multi-quality)",
+      "description": "Re:ANIME - Stream anime free online (sub & dub, multi-quality)",
       "language": "en",
       "tvTypes": [
         "AnimeMovie",
         "Anime",
         "OVA"
       ],
-      "version": 24,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v24.cs3",
+      "version": 29,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v29.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",

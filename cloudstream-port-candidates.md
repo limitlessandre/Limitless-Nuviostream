@@ -15,7 +15,6 @@ Exact/alias overlap: **3**
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies
 - **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
-- **OHLI24** (`OHLI24`) — ko; AsianDrama, TvSeries, Movie — Anime and movies with Korean subtitles only (no Korean audio)
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
@@ -60,6 +59,7 @@ Exact/alias overlap: **3**
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
 - **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE
 - **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
+- **OHLI24** (`OHLI24`) — en; Anime, AnimeMovie — OHLI24 - Korean anime streaming (K-sub)
 - **OnePace** (`OnePace`) — en; Anime — One Pace
 - **Otakutsu** (`Otakutsu`) — en; Anime, AnimeMovie — Anime streaming from Otakutsu
 - **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
@@ -152,4 +152,4 @@ None.
 
 - **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: KissKH
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: KissKH
-- **Re:ANIME** (`Reanime`) — en; AnimeMovie, Anime, OVA — Reanime - Stream anime free online (sub & dub, multi-quality) — native match: Re:ANIME
+- **Re:ANIME** (`Reanime`) — en; AnimeMovie, Anime, OVA — Re:ANIME - Stream anime free online (sub & dub, multi-quality) — native match: Re:ANIME

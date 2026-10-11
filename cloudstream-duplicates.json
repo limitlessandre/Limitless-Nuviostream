@@ -105,23 +105,23 @@
     "chosen": {
       "internalName": "Chikianimation",
       "name": "Chikianimation",
-      "version": 5,
+      "version": 10,
       "language": "zh",
       "source": "AllForU",
       "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v5.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v10.cs3"
     },
     "candidates": [
       {
         "internalName": "Chikianimation",
         "name": "Chikianimation",
-        "version": 5,
+        "version": 10,
         "language": "zh",
         "source": "AllForU",
         "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v5.cs3"
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v10.cs3"
       },
       {
         "internalName": "Chikianimation",
@@ -159,13 +159,13 @@
       },
       {
         "internalName": "NetNaija",
-        "name": "NetNaija",
-        "version": 4,
+        "name": "AllDubz",
+        "version": 12,
         "language": "en",
         "source": "AllForU",
         "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v4.cs3"
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v12.cs3"
       }
     ]
   },
@@ -173,14 +173,24 @@
     "chosen": {
       "internalName": "OHLI24",
       "name": "OHLI24",
-      "version": 7,
-      "language": "ko",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "version": 10,
+      "language": "en",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v10.cs3"
     },
     "candidates": [
+      {
+        "internalName": "OHLI24",
+        "name": "OHLI24",
+        "version": 10,
+        "language": "en",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v10.cs3"
+      },
       {
         "internalName": "OHLI24",
         "name": "OHLI24",
@@ -190,16 +200,6 @@
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OHLI24.cs3"
-      },
-      {
-        "internalName": "OHLI24",
-        "name": "OHLI24",
-        "version": 5,
-        "language": "en",
-        "source": "AllForU",
-        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-        "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v5.cs3"
       }
     ]
   },
@@ -207,23 +207,23 @@
     "chosen": {
       "internalName": "Reanime",
       "name": "Re:ANIME",
-      "version": 24,
+      "version": 29,
       "language": "en",
       "source": "AllForU",
       "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "verifiedRepo": false,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v24.cs3"
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v29.cs3"
     },
     "candidates": [
       {
         "internalName": "Reanime",
         "name": "Re:ANIME",
-        "version": 24,
+        "version": 29,
         "language": "en",
         "source": "AllForU",
         "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
         "verifiedRepo": false,
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v24.cs3"
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v29.cs3"
       },
       {
         "internalName": "ReAnime",
