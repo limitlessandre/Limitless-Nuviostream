@@ -10,6 +10,7 @@ const DOMAINS = ["anikototv.to","anikoto.bz","anikoto.cz","anikoto.me","anikoto.
 const IDENTITY_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anime-identity.js";
 const TMDB_API_KEY = "1c29a5198ee1854bd5eb45dbe8d17d92";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36";
+const DIAG_URL = "https://anikototv.to/AnikotoTheme/assets/images/favicon.png";
 let identityCache = null;
 let preferredBase = "";
 
@@ -429,48 +430,150 @@ async function findSeries(identity) {
   return null;
 }
 
-async function getStreams(inputId, mediaType, season, episode) {
-  try {
-    const helper = await loadIdentity();
-    if (!helper) return [];
-    const identity = await helper.resolveAnimeIdentity(inputId, mediaType, season, episode, TMDB_API_KEY);
-    if (!identity || !identity.isAnime) return [];
-    const requestedEpisode = String(mediaType || "tv").toLowerCase() === "movie" ? 1 : Number(episode || 1);
-    const mappedEpisode = String(mediaType || "tv").toLowerCase() === "movie" ? 1 : Number(identity.mappedEpisode || requestedEpisode || 1);
-    const found = await findSeries(identity);
-    if (!found || !found.path) return [];
-    const watch = await siteText(found.base, found.path + "/ep-" + mappedEpisode, {Referer:found.base + "/"}, 4500);
-    if (!watch) return [];
-    const animeId = parseAnimeId(watch);
-    if (!animeId) return [];
-    const list = await requestJson(found.base + "/ajax/episode/list/" + encodeURIComponent(animeId) + "?vrf=" + vrfEncrypt(animeId), {
-      headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path,"X-Requested-With":"XMLHttpRequest"}
-    },4500);
-    const ep = parseEpisode(list && list.result, mappedEpisode);
-    if (!ep || !ep.ids) return [];
-    const serverPayload = await requestJson(found.base + "/ajax/server/list?servers=" + encodeURIComponent(ep.ids), {
-      headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path + "/ep-" + mappedEpisode,"X-Requested-With":"XMLHttpRequest"}
-    },4500);
-    const servers = parseServers(serverPayload && (serverPayload.result || serverPayload.html));
-    if (!servers.length) return [];
 
-    const work = servers.slice(0,6).map(async function(server) {
-      try {
-        const target = await requestJson(found.base + "/ajax/server?get=" + encodeURIComponent(server.id), {
-          headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path + "/ep-" + mappedEpisode,"X-Requested-With":"XMLHttpRequest"}
-        },4000);
-        const embed = target && target.result && (typeof target.result === "string" ? target.result : target.result.url);
-        if (!embed) return null;
-        const resolved = await resolveEmbed(embed, found.base, found.base + found.path + "/ep-" + mappedEpisode);
-        return resolved ? rowFor(identity, season, requestedEpisode, server, resolved) : null;
-      } catch (_) { return null; }
-    });
-    const rows = (await Promise.all(work)).filter(Boolean);
-    const seen = new Set();
-    return rows.filter(function(r){ if (seen.has(r.url)) return false; seen.add(r.url); return true; }).slice(0,6);
-  } catch (_) {
-    return [];
+function diag(stage, detail) {
+  return {
+    name: PROVIDER_NAME + " • DIAG " + String(stage || "UNKNOWN"),
+    title: String(detail || stage || "AniKoto diagnostic"),
+    url: DIAG_URL,
+    quality: "DIAG",
+    language: "Diagnostic",
+    provider: PROVIDER_NAME,
+    type: "mp4",
+    subtitles: []
+  };
+}
+
+async function timed(promise, ms) {
+  let timer;
+  try {
+    return await Promise.race([
+      Promise.resolve(promise).then(function(value){ return {ok:true,value:value}; }, function(error){ return {ok:false,error:String(error && error.message || error || "error")}; }),
+      new Promise(function(resolve){ timer = setTimeout(function(){ resolve({ok:false,timeout:true}); }, ms); })
+    ]);
+  } finally {
+    if (timer && typeof clearTimeout === "function") clearTimeout(timer);
   }
+}
+
+async function getStreams(inputId, mediaType, season, episode) {
+  const requestedEpisode = String(mediaType || "tv").toLowerCase() === "movie" ? 1 : Number(episode || 1);
+
+  const helperStep = await timed(loadIdentity(), 3000);
+  if (!helperStep.ok || !helperStep.value) {
+    return [diag(helperStep.timeout ? "IDENTITY LOAD TIMEOUT" : "IDENTITY LOAD FAIL",
+      helperStep.error || "Could not load shared anime identity helper")];
+  }
+
+  const identityStep = await timed(
+    helperStep.value.resolveAnimeIdentity(inputId, mediaType, season, episode, TMDB_API_KEY),
+    3500
+  );
+  if (!identityStep.ok) {
+    return [diag(identityStep.timeout ? "IDENTITY RESOLVE TIMEOUT" : "IDENTITY RESOLVE FAIL",
+      identityStep.error || "Anime identity did not resolve within the diagnostic budget")];
+  }
+
+  const identity = identityStep.value;
+  if (!identity || !identity.isAnime) {
+    return [diag("IDENTITY NOT ANIME", "Shared identity returned no anime match for this item")];
+  }
+
+  const mappedEpisode = String(mediaType || "tv").toLowerCase() === "movie"
+    ? 1 : Number(identity.mappedEpisode || requestedEpisode || 1);
+
+  const searchStep = await timed(findSeries(identity), 4000);
+  if (!searchStep.ok) {
+    return [diag(searchStep.timeout ? "SEARCH TIMEOUT" : "SEARCH FAIL",
+      searchStep.error || "Current AniKoto VRF search did not complete")];
+  }
+
+  const found = searchStep.value;
+  if (!found || !found.path) {
+    return [diag("SEARCH NO MATCH",
+      "Identity OK • no exact AniKoto title match • " + String(identity.title || (identity.animeAliases && identity.animeAliases[0]) || inputId))];
+  }
+
+  const watchStep = await timed(
+    siteText(found.base, found.path + "/ep-" + mappedEpisode, {Referer:found.base + "/"}, 2200),
+    2500
+  );
+  if (!watchStep.ok || !watchStep.value) {
+    return [diag(watchStep.timeout ? "WATCH PAGE TIMEOUT" : "WATCH PAGE FAIL",
+      "Search OK • " + found.base + found.path + "/ep-" + mappedEpisode)];
+  }
+
+  const animeId = parseAnimeId(watchStep.value);
+  if (!animeId) {
+    return [diag("ANIME ID MISSING", "Search/watch OK • #watch-main did not expose data-id/data-tip")];
+  }
+
+  const episodeStep = await timed(requestJson(
+    found.base + "/ajax/episode/list/" + encodeURIComponent(animeId) + "?vrf=" + vrfEncrypt(animeId),
+    {headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path,"X-Requested-With":"XMLHttpRequest"}},
+    2200
+  ), 2500);
+  if (!episodeStep.ok || !episodeStep.value) {
+    return [diag(episodeStep.timeout ? "EPISODE API TIMEOUT" : "EPISODE API FAIL",
+      "Identity/search/watch OK • animeId=" + animeId)];
+  }
+
+  const ep = parseEpisode(episodeStep.value && episodeStep.value.result, mappedEpisode);
+  if (!ep || !ep.ids) {
+    return [diag("EPISODE NOT FOUND",
+      "Episode API OK • requested mapped episode " + mappedEpisode + " had no server ids")];
+  }
+
+  const serverStep = await timed(requestJson(
+    found.base + "/ajax/server/list?servers=" + encodeURIComponent(ep.ids),
+    {headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path + "/ep-" + mappedEpisode,"X-Requested-With":"XMLHttpRequest"}},
+    2200
+  ), 2500);
+  if (!serverStep.ok || !serverStep.value) {
+    return [diag(serverStep.timeout ? "SERVER LIST TIMEOUT" : "SERVER LIST FAIL",
+      "Episode API OK • ids present but server list failed")];
+  }
+
+  const servers = parseServers(serverStep.value && (serverStep.value.result || serverStep.value.html));
+  if (!servers.length) {
+    return [diag("SERVER LIST EMPTY", "Episode API OK • AniKoto returned no playable server rows")];
+  }
+
+  const stats = {targets:0, embeds:0, resolved:0, tcdn:0};
+  const work = servers.slice(0,6).map(async function(server) {
+    try {
+      const targetStep = await timed(requestJson(
+        found.base + "/ajax/server?get=" + encodeURIComponent(server.id),
+        {headers:{Accept:"application/json, text/javascript, */*; q=0.01",Referer:found.base + found.path + "/ep-" + mappedEpisode,"X-Requested-With":"XMLHttpRequest"}},
+        1800
+      ), 2100);
+      if (!targetStep.ok || !targetStep.value) return null;
+      stats.targets++;
+      const target = targetStep.value;
+      const embed = target && target.result && (typeof target.result === "string" ? target.result : target.result.url);
+      if (!embed) return null;
+      stats.embeds++;
+      if (isTcdn(embed)) { stats.tcdn++; return null; }
+      const resolvedStep = await timed(resolveEmbed(embed, found.base, found.base + found.path + "/ep-" + mappedEpisode), 3000);
+      if (!resolvedStep.ok || !resolvedStep.value) return null;
+      stats.resolved++;
+      return rowFor(identity, season, requestedEpisode, server, resolvedStep.value);
+    } catch (_) { return null; }
+  });
+
+  const allStep = await timed(Promise.all(work), 4200);
+  if (!allStep.ok) {
+    return [diag("EMBED RESOLVE TIMEOUT",
+      "servers=" + servers.length + " targets=" + stats.targets + " embeds=" + stats.embeds + " tcdn=" + stats.tcdn + " resolved=" + stats.resolved)];
+  }
+
+  const rows = (allStep.value || []).filter(Boolean);
+  const seen = new Set();
+  const playable = rows.filter(function(r){ if (seen.has(r.url)) return false; seen.add(r.url); return true; }).slice(0,6);
+  if (playable.length) return playable;
+
+  return [diag("NO PLAYABLE EMBED",
+    "servers=" + servers.length + " targets=" + stats.targets + " embeds=" + stats.embeds + " tcdn=" + stats.tcdn + " resolved=" + stats.resolved)];
 }
 
 if (typeof module !== "undefined" && module.exports) module.exports = {getStreams};
