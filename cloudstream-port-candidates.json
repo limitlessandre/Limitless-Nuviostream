@@ -370,7 +370,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -986,15 +986,15 @@
     {
       "internalName": "Comix",
       "name": "Comix",
-      "description": "Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.",
+      "description": "Comix - Read manhwa, manhua & manga online (premium in-app reader)",
       "language": "en",
       "tvTypes": [
-        "Others",
-        "Anime"
+        "Anime",
+        "Others"
       ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v5.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.308,
@@ -1225,7 +1225,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 76,
+      "version": 78,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1249,7 +1249,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 28,
+      "version": 30,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1591,29 +1591,6 @@
       ]
     },
     {
-      "internalName": "JustPlay",
-      "name": "JustPlay",
-      "description": "Movies and series from multiple sources with a Manage Sources screen that filters download and stream links",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 16,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.25,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "Netflix",
       "name": "Netflix",
       "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
@@ -1762,7 +1739,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 41,
+      "version": 42,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2007,6 +1984,30 @@
       "reasons": []
     },
     {
+      "internalName": "JustPlay",
+      "name": "JustPlay",
+      "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 18,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.25,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -1,
+      "reasons": [
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
       "internalName": "LibraryOfLadev",
       "name": "LibraryOfLadev",
       "description": "Library of Ladev - Neuro-sama stream transcript search with YouTube playback",
@@ -2153,7 +2154,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 37,
+      "version": 40,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {

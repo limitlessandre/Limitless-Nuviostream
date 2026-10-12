@@ -52,7 +52,7 @@ Exact/alias overlap: **3**
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
 - **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
-- **Comix** (`Comix`) — en; Others, Anime — Comix — Read Manga, Manhwa, and Comics directly in CloudStream with custom reader.
+- **Comix** (`Comix`) — en; Anime, Others — Comix - Read manhwa, manhua & manga online (premium in-app reader)
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
@@ -81,7 +81,6 @@ Exact/alias overlap: **3**
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies and series from multiple sources with a Manage Sources screen that filters download and stream links
 - **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
@@ -103,6 +102,7 @@ Exact/alias overlap: **3**
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
+- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.

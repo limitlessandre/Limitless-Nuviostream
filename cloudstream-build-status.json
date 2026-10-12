@@ -5,10 +5,10 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 513,
-  "eligible_plugin_entries_before_dedupe": 135,
+  "raw_plugin_entries": 514,
+  "eligible_plugin_entries_before_dedupe": 136,
   "unique_plugins": 127,
-  "duplicate_groups": 7,
+  "duplicate_groups": 8,
   "language_filtered_entries": 341,
   "unknown_language_metadata_entries": 25,
   "inactive_filtered_entries": 37,
@@ -210,7 +210,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 16,
+      "plugins": 17,
       "verified": false
     },
     {

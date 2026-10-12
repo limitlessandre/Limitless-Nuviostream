@@ -135,11 +135,45 @@
       }
     ]
   },
+  "internal:comix": {
+    "chosen": {
+      "internalName": "Comix",
+      "name": "Comix",
+      "version": 5,
+      "language": "en",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v5.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Comix",
+        "name": "Comix",
+        "version": 5,
+        "language": "en",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v5.cs3"
+      },
+      {
+        "internalName": "Comix",
+        "name": "Comix",
+        "version": 2,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3"
+      }
+    ]
+  },
   "internal:netnaija": {
     "chosen": {
       "internalName": "NetNaija",
       "name": "NetNaija",
-      "version": 17,
+      "version": 18,
       "language": "en",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -150,7 +184,7 @@
       {
         "internalName": "NetNaija",
         "name": "NetNaija",
-        "version": 17,
+        "version": 18,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
