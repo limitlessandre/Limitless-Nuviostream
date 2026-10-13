@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 127,
-  "no_obvious_native_overlap_count": 124,
+  "cloudstream_provider_count": 128,
+  "no_obvious_native_overlap_count": 125,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -272,8 +272,8 @@
         "Movie",
         "Anime"
       ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v10.cs3",
+      "version": 11,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v11.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -343,8 +343,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 79,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v79.cs3",
+      "version": 80,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v80.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -992,8 +992,8 @@
         "Anime",
         "Others"
       ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v5.cs3",
+      "version": 6,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v6.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1156,8 +1156,8 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v10.cs3",
+      "version": 11,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v11.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1225,7 +1225,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 78,
+      "version": 79,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1249,7 +1249,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 30,
+      "version": 31,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1438,8 +1438,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 30,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v30.cs3",
+      "version": 31,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v31.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1554,8 +1554,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 124,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v124.cs3",
+      "version": 125,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v125.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1599,8 +1599,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 130,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v130.cs3",
+      "version": 131,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v131.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1622,8 +1622,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 125,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v125.cs3",
+      "version": 126,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v126.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1992,7 +1992,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 18,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2039,8 +2039,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 22,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v22.cs3",
+      "version": 23,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v23.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2070,6 +2070,30 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.5,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -1,
+      "reasons": [
+        "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "SmartTube",
+      "name": "SmartTube",
+      "description": "SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)",
+      "language": "en",
+      "tvTypes": [
+        "Others",
+        "Movie"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v3.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.462,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -2965,8 +2989,8 @@
         "Anime",
         "OVA"
       ],
-      "version": 29,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v29.cs3",
+      "version": 30,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v30.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 341,
+  "excluded_count": 343,
   "excluded": [
     {
       "internalName": "Rate",
@@ -230,7 +230,7 @@
       "normalizedLanguages": [
         "es"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v11.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v12.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -636,7 +636,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v12.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v13.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1254,7 +1254,7 @@
       "normalizedLanguages": [
         "fr"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v9.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v10.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1694,6 +1694,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "EliteStreams",
+      "name": "EliteStreams",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/EliteStreams.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "EntrepeliculasyseriesProvider",
       "name": "EntrepeliculasyseriesProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -2066,6 +2080,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "HiCine",
+      "name": "HiCine",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/HiCine.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Hindmoviez",
       "name": "Hindmoviez",
       "source": "Phisher Repo",
@@ -2244,7 +2272,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v25.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v26.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2482,7 +2510,7 @@
       "normalizedLanguages": [
         "es"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v11.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v12.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3044,7 +3072,7 @@
       "normalizedLanguages": [
         "pt-br"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v10.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v11.cs3",
       "reason": "no-allowed-language"
     },
     {

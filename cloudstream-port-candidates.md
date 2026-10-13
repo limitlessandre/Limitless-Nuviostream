@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **127**  
-No obvious native overlap: **124**  
+Filtered CloudStream providers: **128**  
+No obvious native overlap: **125**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -106,6 +106,7 @@ Exact/alias overlap: **3**
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.
+- **SmartTube** (`SmartTube`) — en; Others, Movie — SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
