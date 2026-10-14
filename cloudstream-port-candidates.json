@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 128,
-  "no_obvious_native_overlap_count": 125,
+  "cloudstream_provider_count": 129,
+  "no_obvious_native_overlap_count": 126,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 688,
+      "version": 689,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -206,6 +206,30 @@
       "reasons": [
         "Asian drama / K-drama coverage",
         "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "KissAsian",
+      "name": "KissAsian",
+      "description": "KissAsian - Asian dramas & movies with direct HLS",
+      "language": "zh",
+      "tvTypes": [
+        "TvSeries",
+        "Movie"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v2.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.538,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 8,
+      "reasons": [
+        "Asian drama / K-drama coverage",
         "Movies / Western TV coverage"
       ]
     },
@@ -2088,8 +2112,8 @@
         "Others",
         "Movie"
       ],
-      "version": 3,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v3.cs3",
+      "version": 5,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v5.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",

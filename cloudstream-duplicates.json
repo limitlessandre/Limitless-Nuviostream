@@ -160,7 +160,7 @@
       {
         "internalName": "Comix",
         "name": "Comix",
-        "version": 2,
+        "version": 3,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",

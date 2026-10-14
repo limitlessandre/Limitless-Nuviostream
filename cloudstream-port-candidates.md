@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **128**  
-No obvious native overlap: **125**  
+Filtered CloudStream providers: **129**  
+No obvious native overlap: **126**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -17,6 +17,7 @@ Exact/alias overlap: **3**
 - **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
+- **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 343,
+  "excluded_count": 356,
   "excluded": [
     {
       "internalName": "Rate",
@@ -49,6 +49,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/3isk.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "SevenMovies",
+      "name": "7Movies",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SevenMovies-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -161,6 +175,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Animasu.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimePhoenix",
+      "name": "Anime Phoenix",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimePhoenix-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -371,6 +399,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/AnimeJlProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimeOdcinki",
+      "name": "AnimeOdcinki",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "pl"
+      ],
+      "normalizedLanguages": [
+        "pl"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeOdcinki-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1400,6 +1442,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "DiziPal",
+      "name": "DiziPal",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DiziPal-v2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DocumaniaTVProvider",
       "name": "DocumaniaTVProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -1621,6 +1677,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/Egibest.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "EgyBest",
+      "name": "EgyBest",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1887,6 +1957,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Flixlatam.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FS27",
+      "name": "FrenchStream",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "fr"
+      ],
+      "normalizedLanguages": [
+        "fr"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2332,6 +2416,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Kinogo",
+      "name": "Kinogo",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "ru"
+      ],
+      "normalizedLanguages": [
+        "ru"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "KinoKing",
       "name": "KinoKing",
       "source": "German providers repository",
@@ -2758,6 +2856,20 @@
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/MonPlayerProvider.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "Movie2K",
+      "name": "Movie2K",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Movie2K-v2.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "MovieBox",
@@ -3258,6 +3370,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "PelisForte",
+      "name": "PelisForte",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PelisForte-v2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "PelispediaProvider",
       "name": "PelispediaProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -3367,6 +3493,20 @@
         "fil"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Pinoymoviepedia.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "PiratexPlay",
+      "name": "PiratexPlay",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3577,6 +3717,20 @@
         "ta"
       ],
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Rtally.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Samehadaku",
+      "name": "Samehadaku",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Samehadaku-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3885,6 +4039,20 @@
         "it"
       ],
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "StreamUnity",
+      "name": "StreamUnity",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4540,6 +4708,20 @@
       "sourceRepo": "https://raw.githubusercontent.com/recloudstream/extensions/master/repo.json",
       "url": "https://raw.githubusercontent.com/recloudstream/extensions/builds/YoutubeProvider.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "YummyAni",
+      "name": "YummyAni",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "ru"
+      ],
+      "normalizedLanguages": [
+        "ru"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v2.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "ZDKSerials",
