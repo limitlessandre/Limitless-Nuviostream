@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **129**  
-No obvious native overlap: **126**  
+Filtered CloudStream providers: **130**  
+No obvious native overlap: **127**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -20,6 +20,7 @@ Exact/alias overlap: **3**
 - **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
+- **AllStream** (`AllStream`) — en; Movie, TvSeries, Anime, AnimeMovie — AllStream - Hub: browse via Cinemeta, play via all AllForU plugins (multi-audio+quality)
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio

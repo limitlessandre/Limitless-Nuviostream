@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 129,
-  "no_obvious_native_overlap_count": 126,
+  "cloudstream_provider_count": 130,
+  "no_obvious_native_overlap_count": 127,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 689,
+      "version": 690,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -218,8 +218,8 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 2,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v2.cs3",
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v3.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -285,6 +285,32 @@
         "Anime coverage",
         "Movies / Western TV coverage",
         "Cartoon coverage"
+      ]
+    },
+    {
+      "internalName": "AllStream",
+      "name": "AllStream",
+      "description": "AllStream - Hub: browse via Cinemeta, play via all AllForU plugins (multi-audio+quality)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 12,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllStream-v12.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.56,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
       ]
     },
     {

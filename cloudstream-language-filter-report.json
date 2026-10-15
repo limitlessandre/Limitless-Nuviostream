@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 356,
+  "excluded_count": 354,
   "excluded": [
     {
       "internalName": "Rate",
@@ -49,20 +49,6 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/3isk.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "SevenMovies",
-      "name": "7Movies",
-      "source": "AllForU",
-      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "language": [
-        "es"
-      ],
-      "normalizedLanguages": [
-        "es"
-      ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SevenMovies-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -188,7 +174,7 @@
       "normalizedLanguages": [
         "ar"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimePhoenix-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimePhoenix-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -412,7 +398,7 @@
       "normalizedLanguages": [
         "pl"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeOdcinki-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeOdcinki-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1442,20 +1428,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "DiziPal",
-      "name": "DiziPal",
-      "source": "AllForU",
-      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DiziPal-v2.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "DocumaniaTVProvider",
       "name": "DocumaniaTVProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -1690,7 +1662,7 @@
       "normalizedLanguages": [
         "ar"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1970,7 +1942,7 @@
       "normalizedLanguages": [
         "fr"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2426,7 +2398,7 @@
       "normalizedLanguages": [
         "ru"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2581,6 +2553,20 @@
         "es"
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/LACartoonsProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "LaMovie",
+      "name": "LaMovie",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2868,7 +2854,7 @@
       "normalizedLanguages": [
         "de"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Movie2K-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Movie2K-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3370,20 +3356,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "PelisForte",
-      "name": "PelisForte",
-      "source": "AllForU",
-      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "language": [
-        "es"
-      ],
-      "normalizedLanguages": [
-        "es"
-      ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PelisForte-v2.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "PelispediaProvider",
       "name": "PelispediaProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -3506,7 +3478,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3730,7 +3702,7 @@
       "normalizedLanguages": [
         "id"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Samehadaku-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Samehadaku-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4052,7 +4024,7 @@
       "normalizedLanguages": [
         "it"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4720,7 +4692,7 @@
       "normalizedLanguages": [
         "ru"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v2.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v3.cs3",
       "reason": "no-allowed-language"
     },
     {
