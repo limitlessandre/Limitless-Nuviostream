@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 130,
-  "no_obvious_native_overlap_count": 127,
+  "cloudstream_provider_count": 127,
+  "no_obvious_native_overlap_count": 124,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 690,
+      "version": 691,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -258,6 +258,34 @@
       ]
     },
     {
+      "internalName": "Nepu",
+      "name": "Nepu",
+      "description": "Movies, shows, cartoons and anime in HD",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AnimeMovie",
+        "Cartoon"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 7,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage",
+        "Cartoon coverage"
+      ]
+    },
+    {
       "internalName": "SimklProvider",
       "name": "SimklProvider",
       "description": "No Streaming. This is just to open the info page of a show from the simkl library",
@@ -285,32 +313,6 @@
         "Anime coverage",
         "Movies / Western TV coverage",
         "Cartoon coverage"
-      ]
-    },
-    {
-      "internalName": "AllStream",
-      "name": "AllStream",
-      "description": "AllStream - Hub: browse via Cinemeta, play via all AllForU plugins (multi-audio+quality)",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries",
-        "Anime",
-        "AnimeMovie"
-      ],
-      "version": 12,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllStream-v12.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.56,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 6,
-      "reasons": [
-        "Anime coverage",
-        "Movies / Western TV coverage"
       ]
     },
     {
@@ -393,8 +395,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 80,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v80.cs3",
+      "version": 81,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v81.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -520,7 +522,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animenosub.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -845,30 +847,6 @@
       ]
     },
     {
-      "internalName": "Animo",
-      "name": "Animo",
-      "description": "Anime(sub,dub)",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 6,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Animo.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.667,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "AniPM",
       "name": "AniPM",
       "description": "Anime with Sub & Dub from ani.pm",
@@ -1010,6 +988,30 @@
       ]
     },
     {
+      "internalName": "Anv",
+      "name": "Anv",
+      "description": "Anime sub and dub from multiple servers with subtitle language support",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anv.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.0,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "BingeCloud",
       "name": "BingeCloud",
       "description": "TV Series, Movies, Anime",
@@ -1135,7 +1137,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 27,
+      "version": 29,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1275,7 +1277,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 79,
+      "version": 80,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1299,7 +1301,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 31,
+      "version": 32,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1434,6 +1436,29 @@
       ]
     },
     {
+      "internalName": "AllOtt",
+      "name": "AllOtt",
+      "description": "AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v3.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "AreaDocumentalProvider",
       "name": "AreaDocumentalProvider",
       "description": null,
@@ -1471,29 +1496,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.421,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "DisneyPlus",
-      "name": "Disney+",
-      "description": "Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 31,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/DisneyPlus-v31.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.462,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1596,29 +1598,6 @@
       ]
     },
     {
-      "internalName": "Hotstar",
-      "name": "Hotstar",
-      "description": "Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 125,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Hotstar-v125.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.3,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
       "internalName": "Iwatchtheoffice",
       "name": "Iwatchtheoffice",
       "description": "Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC",
@@ -1632,52 +1611,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.348,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "Netflix",
-      "name": "Netflix",
-      "description": "Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 131,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netflix-v131.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.533,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "PrimeVideo",
-      "name": "PrimeVideo",
-      "description": "Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries"
-      ],
-      "version": 126,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PrimeVideo-v126.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.471,
         "native_matches": []
       },
       "priority": "low-priority",

@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **130**  
-No obvious native overlap: **127**  
+Filtered CloudStream providers: **127**  
+No obvious native overlap: **124**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -19,8 +19,8 @@ Exact/alias overlap: **3**
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
 - **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
+- **Nepu** (`Nepu`) — en; Movie, TvSeries, Anime, AnimeMovie, Cartoon — Movies, shows, cartoons and anime in HD
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
-- **AllStream** (`AllStream`) — en; Movie, TvSeries, Anime, AnimeMovie — AllStream - Hub: browse via Cinemeta, play via all AllForU plugins (multi-audio+quality)
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
@@ -46,13 +46,13 @@ Exact/alias overlap: **3**
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
-- **Animo** (`Animo`) — en; Anime, AnimeMovie, OVA — Anime(sub,dub)
 - **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
 - **AniStream** (`AniStream`) — en; Anime, AnimeMovie — Watch anime in HD with English Sub and Dub from AniStream
 - **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
 - **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
+- **Anv** (`Anv`) — en; Anime, AnimeMovie, OVA — Anime sub and dub from multiple servers with subtitle language support
 - **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
 - **Comix** (`Comix`) — en; Anime, Others — Comix - Read manhwa, manhua & manga online (premium in-app reader)
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
@@ -74,17 +74,14 @@ Exact/alias overlap: **3**
 
 ## Low-priority unique candidates
 
+- **AllOtt** (`AllOtt`) — en; Movie, TvSeries — AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
-- **Disney+** (`DisneyPlus`) — en; Movie, TvSeries — Disney+ - Disney, Marvel, Star Wars & Pixar Movies & Series in Tamil, English, Hindi & more
 - **DiviCast** (`DiviCast`) — en; Movie, TvSeries — Watch movies and TV series from DiviCast
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
-- **Hotstar** (`Hotstar`) — en; Movie, TvSeries — Hotstar - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **Netflix** (`Netflix`) — en; Movie, TvSeries — Netflix - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
-- **PrimeVideo** (`PrimeVideo`) — en; Movie, TvSeries — Prime Video - Movies & Series in Tamil, English, Hindi, Telugu, Malayalam & more
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
