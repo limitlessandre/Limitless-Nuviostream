@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **127**  
-No obvious native overlap: **124**  
+Filtered CloudStream providers: **128**  
+No obvious native overlap: **125**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -43,6 +43,7 @@ Exact/alias overlap: **3**
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
 - **Anilight** (`Anilight`) — en; AnimeMovie, Anime, OVA — Anilight Anime Provider
+- **AnimeGG** (`AnimeGG`) — en; Anime, AnimeMovie, OVA — Extracts Anime from Animegg (Subbed & Dubbed)
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA

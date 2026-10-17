@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 127,
-  "no_obvious_native_overlap_count": 124,
+  "cloudstream_provider_count": 128,
+  "no_obvious_native_overlap_count": 125,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -49,7 +49,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 691,
+      "version": 692,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -109,7 +109,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 26,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -395,8 +395,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 81,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v81.cs3",
+      "version": 86,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v86.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -641,7 +641,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 28,
+      "version": 29,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -776,6 +776,30 @@
       ]
     },
     {
+      "internalName": "AnimeGG",
+      "name": "AnimeGG",
+      "description": "Extracts Anime from Animegg (Subbed & Dubbed)",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie",
+        "OVA"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeGG.cs3",
+      "repositoryUrl": "https://github.com/Faisal0786/Desi",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.714,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
       "internalName": "Animekhor",
       "name": "Animekhor",
       "description": "Anime and Movies includes (Donghuaword)",
@@ -808,7 +832,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 43,
+      "version": 44,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1444,8 +1468,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 3,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v3.cs3",
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v4.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1745,7 +1769,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 34,
+      "version": 35,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2022,8 +2046,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 23,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v23.cs3",
+      "version": 28,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v28.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2513,7 +2537,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 33,
+      "version": 34,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/GoldenAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2579,7 +2603,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 33,
+      "version": 34,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LibriVoxAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {

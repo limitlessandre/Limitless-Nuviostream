@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 354,
+  "excluded_count": 355,
   "excluded": [
     {
       "internalName": "Rate",
@@ -1442,6 +1442,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "DoFlixProvider",
+      "name": "DoFlixProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DoFlixProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DonghuaNoSekai",
       "name": "DonghuaNoSekai",
       "source": "saimuel repo",
@@ -1942,7 +1956,7 @@
       "normalizedLanguages": [
         "fr"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v5.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3478,7 +3492,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v5.cs3",
       "reason": "no-allowed-language"
     },
     {
