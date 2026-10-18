@@ -1089,14 +1089,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
         "status": 1,
-        "version": 44,
+        "version": 47,
         "name": "AnimePahe",
         "internalName": "AnimePahe",
         "authors": [
           "Cloudburst,Lorem Ipsum,Phisher98"
         ],
         "description": "Animes (SUB/DUB)",
-        "fileSize": 151775,
+        "fileSize": 154972,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1106,7 +1106,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/animepahe.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bb45f0cbd441d8ced90fd2c0871872b2eb761350b54d147e529759a2177a44d2"
+        "fileHash": "sha256-854ba2cb8fc6d35f52ab641663310e37ff3c00d602dcace08e2c589d6c9ed29f"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animesalt.cs3",
@@ -2788,6 +2788,27 @@
         "name": "CineTvProvider"
       },
       {
+        "iconUrl": "https://cinevood.chat/cinevood-logo.webp",
+        "fileHash": "sha256-7bbc504288bd6bfda47008063a28265cb03e9a99cd1ac14b58dbfa1fffc2ecb2",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 112039,
+        "status": 1,
+        "language": "hi",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 2,
+        "internalName": "CineVoodProvider",
+        "description": "Bollywood, Hollywood, Hindi dubbed and South movies & series from CineVood",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineVoodProvider.cs3",
+        "name": "CineVoodProvider"
+      },
+      {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse/icon.png",
         "fileHash": "sha256-61dce8378f02424fb50a214f4b7b5fd62ab62c36736432627ff808b245043507",
         "apiVersion": 1,
@@ -3035,10 +3056,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/MLSBD-Logo.png",
-        "fileHash": "sha256-56fd9198b2564731a63840fb28d181ba87819b9982a06ffb6783ec6c2727f1b0",
+        "fileHash": "sha256-b60688cf38355217b36df162ae4d5cd1376451cdb22333608ec14413a18dd227",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 117689,
+        "fileSize": 118734,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -3050,7 +3071,7 @@
           "AnimeMovie",
           "AsianDrama"
         ],
-        "version": 34,
+        "version": 35,
         "internalName": "MLSBDProvider",
         "description": "The largest movie link store in Bangladesh",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MLSBDProvider.cs3",
@@ -3224,10 +3245,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/Rtally/icon.png",
-        "fileHash": "sha256-e7ce19eaf309001ca0099f783190a10fe1514957cb6cfeceb28720e75d9d66a8",
+        "fileHash": "sha256-93bd486939947b4d8435a3d536f642505e412a87a778859e7716d376e3fb8075",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 110342,
+        "fileSize": 111335,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3240,7 +3261,7 @@
           "AnimeMovie",
           "AsianDrama"
         ],
-        "version": 51,
+        "version": 52,
         "internalName": "Rtally",
         "description": "Movie and TV Series provider",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Rtally.cs3",
@@ -3913,6 +3934,28 @@
         "iconUrl": "https://3esk.onl/wp-content/uploads/2021/01/3isk-logo.png",
         "apiVersion": 1,
         "fileHash": "sha256-4cfc2ee656e3027e99593ca637015e80e620e968ed433f10999f41bac11a4492"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/5TV.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "5TV",
+        "internalName": "5TV",
+        "authors": [
+          "Abodabodd"
+        ],
+        "description": "",
+        "fileSize": 26624,
+        "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
+        "language": "ar",
+        "tvTypes": [
+          "TvSeries",
+          "Movie",
+          "AsianDrama"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/5TV/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-3b5e0d25c6fdf184a1d2feaf01b49d1f77891122ce6231cd5b37f986cb58417d"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aflaam.cs3",
@@ -10175,30 +10218,6 @@
         "fileSize": 86180
       },
       {
-        "version": 10,
-        "internalName": "Coflix",
-        "name": "Coflix",
-        "pluginClassName": "com.allforu.CoflixPlugin",
-        "status": 1,
-        "apiVersion": 1,
-        "language": "fr",
-        "authors": [
-          "AllForU"
-        ],
-        "tvTypes": [
-          "Movie",
-          "TvSeries",
-          "Anime",
-          "AnimeMovie"
-        ],
-        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v10.cs3",
-        "description": "Coflix - Films, series, animes & doramas en streaming (French)",
-        "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/coflix.png",
-        "fileHash": "sha256-6bc5a37b81e3d95fb429fa87d2f438c93fac9ac5deb65a93680f2d1017e634db",
-        "fileSize": 32238
-      },
-      {
         "version": 6,
         "internalName": "Comix",
         "name": "Comix",
@@ -10397,7 +10416,7 @@
         "fileSize": 26387
       },
       {
-        "version": 3,
+        "version": 4,
         "internalName": "Kinogo",
         "name": "Kinogo",
         "pluginClassName": "com.allforu.KinogoPlugin",
@@ -10412,11 +10431,11 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v4.cs3",
         "description": "Kinogo - Russian movies & series (фильмы и сериалы)",
         "iconUrl": "https://kinogo.la/templates/Kinogo/images/favicon/apple-touch-icon.png",
-        "fileHash": "sha256-1086c5d0acfabc77cedaa7fbf96d2e9e73441e30013a085475a5aca2a6d2887c",
-        "fileSize": 27764
+        "fileHash": "sha256-4773b27f664510511fcc8ccc1f8fe5fd4bbf822f8018dae2b36d80159bb01d25",
+        "fileSize": 28368
       },
       {
         "version": 3,
@@ -10487,7 +10506,7 @@
         "fileSize": 29164
       },
       {
-        "version": 3,
+        "version": 4,
         "internalName": "LaMovie",
         "name": "LaMovie",
         "pluginClassName": "com.allforu.LaMoviePlugin",
@@ -10504,11 +10523,32 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v4.cs3",
         "description": "LaMovie - Peliculas, series y anime en HD (Spanish)",
         "iconUrl": "https://lamovie.org/wp-content/uploads/2025/05/cropped-La.movie_-192x192.png",
-        "fileHash": "sha256-2afb96e86c937e0dfd40f3d7258be9aca321d556b1ce18f570abb782bb756f16",
-        "fileSize": 37065
+        "fileHash": "sha256-41f54db4cf08ecd21d8a65c6c48a9d4cd21e842c3ba476f4262f041a913a05a2",
+        "fileSize": 43929
+      },
+      {
+        "version": 1,
+        "internalName": "Rate",
+        "name": "Rate AllForU",
+        "pluginClassName": "com.allforu.RatePlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v1.cs3",
+        "description": "Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
+        "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
+        "fileHash": "sha256-5dd71a331169122ab73eb820eb423b4ffaadd02e75f2f17c8ef845b1a3568eac",
+        "fileSize": 48418
       }
     ]
   },
@@ -10999,7 +11039,7 @@
           "Faisal"
         ],
         "description": "Extracts Anime from Animegg (Subbed & Dubbed)",
-        "fileSize": 32351,
+        "fileSize": 32344,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "en",
         "tvTypes": [
@@ -11009,7 +11049,7 @@
         ],
         "iconUrl": "https://www.animegg.org/images/anime.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8a999604f9a48c8da5890f3b447733e8477b5981a3eecf578b72a418a9376226"
+        "fileHash": "sha256-39e6a02afa555e7c9ed1c4044360f93fd637a34d4b126caea108428c0ee9a6a9"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeVilla.cs3",
@@ -11099,6 +11139,28 @@
         "fileHash": "sha256-f1ec51af3aa384e16db9bfb1ab947397778234fe857e9a1e97e1e9be31a1daca"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Joya9.cs3",
+        "status": 1,
+        "version": 3,
+        "name": "Joya9",
+        "internalName": "Joya9",
+        "authors": [
+          "Faisal Ansari"
+        ],
+        "description": "Watch and download free movies and web series. (Use VPN in India)",
+        "fileSize": 26156,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "bn",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://joya9tv1.com/wp-content/uploads/2024/02/cropped-JAYA9-APK-512x512-1.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-28c8952bf01e8f1b0a2304a1bf12d5475ebac8a9411a1a729186d46375501a42"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/KmMovies.cs3",
         "status": 1,
         "version": 4,
@@ -11123,14 +11185,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
         "status": 1,
-        "version": 13,
+        "version": 14,
         "name": "MovieBox",
         "internalName": "MovieBox",
         "authors": [
           "Faisal"
         ],
         "description": "MovieBox Native - Pure API Provider with Crypto Bypass",
-        "fileSize": 82166,
+        "fileSize": 92218,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11140,7 +11202,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/IMG-20260920-WA0000.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-5b2e5a220696c64ae6aa5f69f7559ff983be4c1db77434eaadbcd30067ff5b86"
+        "fileHash": "sha256-a9ccf2d9bcf5cd69ad43c7cb7aaa6d405d1d8946a97a48958a7b77247e5222a5"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MoviesDrive.cs3",
@@ -11310,7 +11372,7 @@
           "Faisal"
         ],
         "description": "TheMoviesFlix provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 56994,
+        "fileSize": 62249,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11320,19 +11382,19 @@
         ],
         "iconUrl": "https://moviesflixi.com/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-e96ea27fff94a77eb05b2fbc2f2f31f262556d68e3b1c8e2462c8ec1c3a1a454"
+        "fileHash": "sha256-a08ca0ec31409703353a420c898a0e8a91513c6c961f184af9efe4830ed1f316"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/vegamovies.cs3",
         "status": 1,
-        "version": 38,
+        "version": 39,
         "name": "vegamovies",
         "internalName": "vegamovies",
         "authors": [
           "Faisal"
         ],
         "description": "VegaMovies Provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 74388,
+        "fileSize": 73046,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11342,7 +11404,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(2).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-dabe16f3febc26c1860ee0ecb613d005baea953f46c4fdbb9e52788797b9d15c"
+        "fileHash": "sha256-6db905c8d392d8083c83f865e60e70abbdc40e141219080add771ea5e5cd72ab"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",

@@ -202,7 +202,7 @@
       "Faisal"
     ],
     "description": "Extracts Anime from Animegg (Subbed & Dubbed)",
-    "fileSize": 32351,
+    "fileSize": 32344,
     "repositoryUrl": "https://github.com/Faisal0786/Desi",
     "language": "en",
     "tvTypes": [
@@ -212,7 +212,7 @@
     ],
     "iconUrl": "https://www.animegg.org/images/anime.png",
     "apiVersion": 1,
-    "fileHash": "sha256-8a999604f9a48c8da5890f3b447733e8477b5981a3eecf578b72a418a9376226"
+    "fileHash": "sha256-39e6a02afa555e7c9ed1c4044360f93fd637a34d4b126caea108428c0ee9a6a9"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
@@ -260,14 +260,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
     "status": 1,
-    "version": 44,
+    "version": 47,
     "name": "AnimePahe",
     "internalName": "AnimePahe",
     "authors": [
       "Cloudburst,Lorem Ipsum,Phisher98"
     ],
     "description": "Animes (SUB/DUB)",
-    "fileSize": 151775,
+    "fileSize": 154972,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -277,7 +277,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/animepahe.png",
     "apiVersion": 1,
-    "fileHash": "sha256-bb45f0cbd441d8ced90fd2c0871872b2eb761350b54d147e529759a2177a44d2"
+    "fileHash": "sha256-854ba2cb8fc6d35f52ab641663310e37ff3c00d602dcace08e2c589d6c9ed29f"
   },
   {
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animesuge.cz&size=64",
@@ -1886,6 +1886,27 @@
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
     "fileHash": "sha256-e2160d5f190737e7484f864b21a4895b1e0dab668003b4ba3a47dc2f49adac73"
+  },
+  {
+    "version": 1,
+    "internalName": "Rate",
+    "name": "Rate AllForU",
+    "pluginClassName": "com.allforu.RatePlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Movie"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v1.cs3",
+    "description": "Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
+    "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
+    "fileHash": "sha256-5dd71a331169122ab73eb820eb423b4ffaadd02e75f2f17c8ef845b1a3568eac",
+    "fileSize": 48418
   },
   {
     "internalName": "Reanime",

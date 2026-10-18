@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 128,
-  "no_obvious_native_overlap_count": 125,
+  "cloudstream_provider_count": 129,
+  "no_obvious_native_overlap_count": 126,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -832,7 +832,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 44,
+      "version": 47,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1635,6 +1635,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.348,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Rate",
+      "name": "Rate AllForU",
+      "description": "Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
+      "language": "en",
+      "tvTypes": [
+        "Movie"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v1.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.545,
         "native_matches": []
       },
       "priority": "low-priority",

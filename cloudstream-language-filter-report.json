@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 355,
+  "excluded_count": 357,
   "excluded": [
     {
       "internalName": "Rate",
@@ -49,6 +49,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/3isk.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "5TV",
+      "name": "5TV",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/5TV.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1230,6 +1244,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "CineVoodProvider",
+      "name": "CineVoodProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineVoodProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "CNC Verse",
       "name": "CNC Verse",
       "source": "CNC Repo(All Language)",
@@ -1269,20 +1297,6 @@
         "uk"
       ],
       "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/CoaninetProvider.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "Coflix",
-      "name": "Coflix",
-      "source": "AllForU",
-      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
-      "language": [
-        "fr"
-      ],
-      "normalizedLanguages": [
-        "fr"
-      ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Coflix-v10.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2360,6 +2374,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Joya9",
+      "name": "Joya9",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Joya9.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Kartoons",
       "name": "Kartoons",
       "source": "Phisher Repo",
@@ -2412,7 +2440,7 @@
       "normalizedLanguages": [
         "ru"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2580,7 +2608,7 @@
       "normalizedLanguages": [
         "es"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
