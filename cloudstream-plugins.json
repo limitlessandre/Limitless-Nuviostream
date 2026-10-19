@@ -1,6 +1,27 @@
 [
   {
     "version": 4,
+    "internalName": "Rate",
+    "name": "All4U Rate",
+    "pluginClassName": "com.allforu.RatePlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Movie"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v4.cs3",
+    "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
+    "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
+    "fileHash": "sha256-dc03dcc84ef48d4bb764757208fe7c2bb05088ff08a15c727c1b0ed8665b454e",
+    "fileSize": 51914
+  },
+  {
+    "version": 4,
     "internalName": "AllOtt",
     "name": "AllOtt",
     "pluginClassName": "com.allforu.allott.AllOttPlugin",
@@ -202,7 +223,7 @@
       "Faisal"
     ],
     "description": "Extracts Anime from Animegg (Subbed & Dubbed)",
-    "fileSize": 32344,
+    "fileSize": 34371,
     "repositoryUrl": "https://github.com/Faisal0786/Desi",
     "language": "en",
     "tvTypes": [
@@ -212,7 +233,7 @@
     ],
     "iconUrl": "https://www.animegg.org/images/anime.png",
     "apiVersion": 1,
-    "fileHash": "sha256-39e6a02afa555e7c9ed1c4044360f93fd637a34d4b126caea108428c0ee9a6a9"
+    "fileHash": "sha256-4cec4d806767849ec93e54b9c6070e273362d9d49f6134658ac8b45030381603"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animekhor.cs3",
@@ -376,7 +397,7 @@
       "Faisal"
     ],
     "description": "Watch anime in HD with English Sub and Dub from AniStream",
-    "fileSize": 42482,
+    "fileSize": 43942,
     "repositoryUrl": "https://github.com/Faisal0786/Desi",
     "language": "en",
     "tvTypes": [
@@ -385,7 +406,7 @@
     ],
     "iconUrl": "https://anistream.one/og.png",
     "apiVersion": 1,
-    "fileHash": "sha256-1dfb001393e7b3de29622ce9b05131eaa50cfe6878cb9ae211a357b74a3a3631"
+    "fileHash": "sha256-14d3529bc15c12eeddc53c2aa59c242667a586ef167df2d9de620cba7250f117"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
@@ -1492,10 +1513,10 @@
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-    "fileHash": "sha256-d7a142f88493e5ddcfc5d5e2ed2c88efa2553b6c46143b392ccd170c3f412e0c",
+    "fileHash": "sha256-fef316c32c981d354fe5f5dc17155cc895ab4edaea1e90925ca36bf21fd31282",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "fileSize": 66510,
+    "fileSize": 79623,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1505,10 +1526,10 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 86,
+    "version": 89,
     "internalName": "MovieBox",
     "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v86.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v89.cs3",
     "name": "MovieBox",
     "pluginClassName": "com.allforu.StreamBoxPlugin"
   },
@@ -1888,27 +1909,6 @@
     "fileHash": "sha256-e2160d5f190737e7484f864b21a4895b1e0dab668003b4ba3a47dc2f49adac73"
   },
   {
-    "version": 1,
-    "internalName": "Rate",
-    "name": "Rate AllForU",
-    "pluginClassName": "com.allforu.RatePlugin",
-    "status": 1,
-    "apiVersion": 1,
-    "language": "en",
-    "authors": [
-      "AllForU"
-    ],
-    "tvTypes": [
-      "Movie"
-    ],
-    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v1.cs3",
-    "description": "Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
-    "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-5dd71a331169122ab73eb820eb423b4ffaadd02e75f2f17c8ef845b1a3568eac",
-    "fileSize": 48418
-  },
-  {
     "internalName": "Reanime",
     "name": "Re:ANIME",
     "pluginClassName": "com.allforu.ReanimePlugin",
@@ -1930,6 +1930,28 @@
     "fileSize": 51211,
     "description": "Re:ANIME - Stream anime free online (sub & dub, multi-quality)",
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "ReelFren",
+    "internalName": "ReelFren",
+    "authors": [
+      "Faisal"
+    ],
+    "description": "reelfren",
+    "fileSize": 19545,
+    "repositoryUrl": "https://github.com/Faisal0786/Desi",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Anime"
+    ],
+    "iconUrl": "",
+    "apiVersion": 1,
+    "fileHash": "sha256-ed0f915b5e91f89a9f4f4eff8bc090a92868dc0e2689fab8dde7e55f32e5866e"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",

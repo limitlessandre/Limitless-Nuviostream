@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 357,
+  "excluded_count": 358,
   "excluded": [
     {
       "internalName": "Rate",
@@ -2356,7 +2356,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v26.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v37.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4457,6 +4457,20 @@
         "uk"
       ],
       "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UAFlixProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "UaKinoCXProvider",
+      "name": "UaKinoCXProvider",
+      "source": "CakesTwix Providers Repository Codeberg",
+      "sourceRepo": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/master/repo.json",
+      "language": [
+        "uk"
+      ],
+      "normalizedLanguages": [
+        "uk"
+      ],
+      "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UaKinoCXProvider.cs3",
       "reason": "no-allowed-language"
     },
     {

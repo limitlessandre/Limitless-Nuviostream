@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **129**  
-No obvious native overlap: **126**  
+Filtered CloudStream providers: **130**  
+No obvious native overlap: **127**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -27,6 +27,7 @@ Exact/alias overlap: **3**
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
+- **ReelFren** (`ReelFren`) — en; Movie, TvSeries, Anime — reelfren
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 - **WatchDrama** (`WatchDrama`) — en; TvSeries, Anime, Movie — WatchDrama — Free Short Drama Streaming
 
@@ -75,6 +76,7 @@ Exact/alias overlap: **3**
 
 ## Low-priority unique candidates
 
+- **All4U Rate** (`Rate`) — en; Movie — All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)
 - **AllOtt** (`AllOtt`) — en; Movie, TvSeries — AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
@@ -83,7 +85,6 @@ Exact/alias overlap: **3**
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
-- **Rate AllForU** (`Rate`) — en; Movie — Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons

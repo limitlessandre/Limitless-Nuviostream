@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 129,
-  "no_obvious_native_overlap_count": 126,
+  "cloudstream_provider_count": 130,
+  "no_obvious_native_overlap_count": 127,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -395,8 +395,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 86,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v86.cs3",
+      "version": 89,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v89.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -457,6 +457,31 @@
       "priority_score": 6,
       "reasons": [
         "Asian drama / K-drama coverage"
+      ]
+    },
+    {
+      "internalName": "ReelFren",
+      "name": "ReelFren",
+      "description": "reelfren",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
+      "repositoryUrl": "https://github.com/Faisal0786/Desi",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
       ]
     },
     {
@@ -1460,6 +1485,28 @@
       ]
     },
     {
+      "internalName": "Rate",
+      "name": "All4U Rate",
+      "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
+      "language": "en",
+      "tvTypes": [
+        "Movie"
+      ],
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v4.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.545,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "AllOtt",
       "name": "AllOtt",
       "description": "AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)",
@@ -1635,28 +1682,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.348,
-        "native_matches": []
-      },
-      "priority": "low-priority",
-      "priority_score": 2,
-      "reasons": [
-        "Movies / Western TV coverage"
-      ]
-    },
-    {
-      "internalName": "Rate",
-      "name": "Rate AllForU",
-      "description": "Rate AllForU - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
-      "language": "en",
-      "tvTypes": [
-        "Movie"
-      ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v1.cs3",
-      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.545,
         "native_matches": []
       },
       "priority": "low-priority",
