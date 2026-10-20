@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **130**  
-No obvious native overlap: **127**  
+Filtered CloudStream providers: **128**  
+No obvious native overlap: **125**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -15,6 +15,7 @@ Exact/alias overlap: **3**
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies
 - **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
+- **ReelFren** (`ReelFren`) — en; Movie, TvSeries, Anime, AsianDrama — ReelFren Provide Shorts Videos From Various Providers
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
 - **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
@@ -25,9 +26,9 @@ Exact/alias overlap: **3**
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
+- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
-- **ReelFren** (`ReelFren`) — en; Movie, TvSeries, Anime — reelfren
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 - **WatchDrama** (`WatchDrama`) — en; TvSeries, Anime, Movie — WatchDrama — Free Short Drama Streaming
 
@@ -61,7 +62,6 @@ Exact/alias overlap: **3**
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
-- **Miruro** (`Miruro`) — en; Anime, AnimeMovie, OVA — ANIME(SUB,DUB)-MULTI SOURCE
 - **NineAnime** (`NineAnime`) — en; Anime, AnimeMovie, OVA — anime from 9anime clone with sub and dub
 - **OHLI24** (`OHLI24`) — en; Anime, AnimeMovie — OHLI24 - Korean anime streaming (K-sub)
 - **OnePace** (`OnePace`) — en; Anime — One Pace
@@ -72,7 +72,6 @@ Exact/alias overlap: **3**
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 - **Xanime** (`Xanime`) — en; Anime, AnimeMovie, OVA — anime with sub and dub
-- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt
 
 ## Low-priority unique candidates
 
@@ -115,7 +114,6 @@ Exact/alias overlap: **3**
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
-- **ReplayZone** (`ReplayZone`) — en; Live — Sports Replays — Football, Baseball, Rugby & Motorsport
 - **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
 - **WatchParty** (`WatchParty`) — en; All — Synchronized Watch Party: Watch movies and series together with real-time playback sync, persistent chat window, and host moderation.

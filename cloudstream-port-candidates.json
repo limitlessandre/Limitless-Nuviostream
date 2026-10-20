@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 130,
-  "no_obvious_native_overlap_count": 127,
+  "cloudstream_provider_count": 128,
+  "no_obvious_native_overlap_count": 125,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -144,6 +144,33 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.538,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 12,
+      "reasons": [
+        "Asian drama / K-drama coverage",
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "ReelFren",
+      "name": "ReelFren",
+      "description": "ReelFren Provide Shorts Videos From Various Providers",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AsianDrama"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
+      "repositoryUrl": "https://github.com/Faisal0786/Desi",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
         "native_matches": []
       },
       "priority": "high-priority",
@@ -411,6 +438,31 @@
       ]
     },
     {
+      "internalName": "Multimovies",
+      "name": "Multimovies",
+      "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime"
+      ],
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.522,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "NetNaija",
       "name": "NetNaija",
       "description": "NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.",
@@ -457,31 +509,6 @@
       "priority_score": 6,
       "reasons": [
         "Asian drama / K-drama coverage"
-      ]
-    },
-    {
-      "internalName": "ReelFren",
-      "name": "ReelFren",
-      "description": "reelfren",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries",
-        "Anime"
-      ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
-      "repositoryUrl": "https://github.com/Faisal0786/Desi",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.4,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 6,
-      "reasons": [
-        "Anime coverage",
-        "Movies / Western TV coverage"
       ]
     },
     {
@@ -1201,30 +1228,6 @@
       ]
     },
     {
-      "internalName": "Miruro",
-      "name": "Miruro",
-      "description": "ANIME(SUB,DUB)-MULTI SOURCE",
-      "language": "en",
-      "tvTypes": [
-        "Anime",
-        "AnimeMovie",
-        "OVA"
-      ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Miruro.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.667,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
-      ]
-    },
-    {
       "internalName": "NineAnime",
       "name": "NineAnime",
       "description": "anime from 9anime clone with sub and dub",
@@ -1459,32 +1462,6 @@
       ]
     },
     {
-      "internalName": "Multimovies",
-      "name": "Multimovies",
-      "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
-      "language": "en",
-      "tvTypes": [
-        "Movie",
-        "TvSeries",
-        "Anime"
-      ],
-      "version": 8,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.522,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 3,
-      "reasons": [
-        "Anime coverage",
-        "Movies / Western TV coverage",
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
       "internalName": "Rate",
       "name": "All4U Rate",
       "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
@@ -1492,8 +1469,8 @@
       "tvTypes": [
         "Movie"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v4.cs3",
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v7.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2046,7 +2023,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 19,
+      "version": 20,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2282,28 +2259,6 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.364,
-        "native_matches": []
-      },
-      "priority": "utility-or-review",
-      "priority_score": -3,
-      "reasons": [
-        "Likely utility/live/special-purpose extension"
-      ]
-    },
-    {
-      "internalName": "ReplayZone",
-      "name": "ReplayZone",
-      "description": "Sports Replays — Football, Baseball, Rugby & Motorsport",
-      "language": "en",
-      "tvTypes": [
-        "Live"
-      ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
-      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.588,
         "native_matches": []
       },
       "priority": "utility-or-review",

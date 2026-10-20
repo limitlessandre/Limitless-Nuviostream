@@ -2356,7 +2356,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v37.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v45.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2967,6 +2967,20 @@
         "bn"
       ],
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieLinkBDProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Movies4u",
+      "name": "Movies4u",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Movies4u.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4641,20 +4655,6 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Witanime.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "Xcine",
-      "name": "Xcine",
-      "source": "German providers repository",
-      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
-      "language": [
-        "de"
-      ],
-      "normalizedLanguages": [
-        "de"
-      ],
-      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Xcine.cs3",
       "reason": "no-allowed-language"
     },
     {

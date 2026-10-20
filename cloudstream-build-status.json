@@ -5,9 +5,9 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 533,
-  "eligible_plugin_entries_before_dedupe": 139,
-  "unique_plugins": 130,
+  "raw_plugin_entries": 531,
+  "eligible_plugin_entries_before_dedupe": 137,
+  "unique_plugins": 128,
   "duplicate_groups": 8,
   "language_filtered_entries": 358,
   "unknown_language_metadata_entries": 25,
@@ -133,7 +133,7 @@
       "name": "German providers repository",
       "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
       "status": "ok",
-      "plugins": 25,
+      "plugins": 24,
       "verified": false
     },
     {
@@ -189,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 35,
+      "plugins": 33,
       "verified": false
     },
     {
@@ -231,7 +231,7 @@
       "name": "Desi Extensions",
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
       "status": "ok",
-      "plugins": 21,
+      "plugins": 22,
       "verified": false
     }
   ]

@@ -2875,10 +2875,10 @@
       },
       {
         "iconUrl": "https://cricfy.pro/wp-content/uploads/2024/11/cropped-cricfytv-2.png",
-        "fileHash": "sha256-c36b78630420569a3fdeb912963c9de47f5df1fe2b99a5a2bd7db51e8822d6ec",
+        "fileHash": "sha256-eb26c7aca8aec8da4fe7b90e5b22d052ea7f84f1f07d05e19f0eb6435b363222",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 117026,
+        "fileSize": 117310,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2887,7 +2887,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 71,
+        "version": 73,
         "internalName": "CricifyProvider",
         "description": "Watch Live sports and TV channels",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CricifyProvider.cs3",
@@ -3039,10 +3039,10 @@
       },
       {
         "iconUrl": "https://www.livxow.site/logo.jpg",
-        "fileHash": "sha256-1c078966138490b7da7f48f7eb36d4c20b538c311016a5b7341ef1fbf91d0086",
+        "fileHash": "sha256-3e19b1a54c049d3fc13cfa3e820ab05cafd8586f6daab4f53f37b93f97daec7e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 127205,
+        "fileSize": 127417,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3051,7 +3051,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 20,
+        "version": 22,
         "internalName": "LivXowProvider",
         "description": "Watch Live Sports and TV Channels via LivXow",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LivXowProvider.cs3",
@@ -3208,10 +3208,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayFyTvProvider/playfy-tv-4.webp",
-        "fileHash": "sha256-365edb434209a559a3a7dfd7b6744b28831c137f2ef098fa418b08bfc1390250",
+        "fileHash": "sha256-33980145643ff96863f03e9b8e2768cc8bc3c236a77aa1adb1e2f7a5c35cb0c8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 106982,
+        "fileSize": 107306,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3220,7 +3220,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 14,
+        "version": 16,
         "internalName": "PlayFyProvider",
         "description": "Watch Live sports and TV channels via PlayFy",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayFyProvider.cs3",
@@ -3228,10 +3228,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayZTVProvider/logo.jpg",
-        "fileHash": "sha256-e6411013cca732e3f597f60493798b2c3841ed7d5d8ecdffa84a3248fae75b4c",
+        "fileHash": "sha256-be077d7bb04557a32b1820810b8b595a84d6fb59d1b4baa87e7d8dff813238c3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 117275,
+        "fileSize": 117498,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3240,7 +3240,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 42,
+        "version": 44,
         "internalName": "PlayZTVProvider",
         "description": "Watch Live TV channels & sports via PlayZTV",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayZTVProvider.cs3",
@@ -3292,10 +3292,10 @@
       },
       {
         "iconUrl": "https://sktechtv.org/wp-content/uploads/2026/05/sktechtv.webp",
-        "fileHash": "sha256-f7605368aff29d108c0975d23bddf4f98b3d6dae0662c5db3f5be0c76ab9150d",
+        "fileHash": "sha256-c24b0cf65fa5a492db6a8793d3f75a0769afb856f7f42194c242039e1de56eca",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 125231,
+        "fileSize": 125456,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3304,7 +3304,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 58,
+        "version": 60,
         "internalName": "SKTechProvider",
         "description": "Watch Live sports and TV channels via SK Tech",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SKTechProvider.cs3",
@@ -3312,10 +3312,10 @@
       },
       {
         "iconUrl": "https://sportzxlive.com/wp-content/uploads/2026/04/cropped-logo-1-2048x1611-1-1024x806.png",
-        "fileHash": "sha256-62d24fa711dd5a9c0dec3e60b67ae5eaf2e3f7d71e6b5687039b65e70367b451",
+        "fileHash": "sha256-aefca8bcb6067424bdf507596ea05fac31613815faf9cb1529ceb206c67528e1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 123166,
+        "fileSize": 123413,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3324,7 +3324,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 26,
+        "version": 28,
         "internalName": "SportzxProvider",
         "description": "Watch Live Sports Events via SportzX",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SportzxProvider.cs3",
@@ -4870,14 +4870,14 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeUnity.cs3",
         "status": 1,
-        "version": 26,
+        "version": 27,
         "name": "AnimeUnity",
         "internalName": "AnimeUnity",
         "authors": [
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134699,
+        "fileSize": 134696,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4885,9 +4885,9 @@
           "Anime",
           "OVA"
         ],
-        "iconUrl": "https://www.animeunity.so/apple-touch-icon.png",
+        "iconUrl": "https://www.animeunity.to/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ce83baae5fbbe0f04d17c46a528fceaf134694cb4189fcda32d198d14afcee93"
+        "fileHash": "sha256-dd12a1f2faa77e16cb8b328392e68226fc0c12c949e81cbe8af95adbb104a8cf"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -5074,7 +5074,7 @@
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1715315,
+        "fileSize": 1715310,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -5088,7 +5088,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-7d78567bf15b0b7da5720bcdce60648da3aaaba6389be6dda09d2fa8dcd4d3ed"
+        "fileHash": "sha256-881394e6ebe1d53808400e0ba18981651da5294e23eb6325790a485a456039a2"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -5711,10 +5711,10 @@
     "plugins": [
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://aniworld.to.to&sz=%size%",
-        "fileHash": "sha256-cc875abd55a70413db7ed618a6239a922316107e4b7bba622fea1eea4789fe22",
+        "fileHash": "sha256-6e0d9c7fc5adeadd04cd887622938b437b2cda514d76935468fa6f95c0753b81",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 17490,
+        "fileSize": 17507,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5733,10 +5733,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://ardmediathek.de&sz=%size%",
-        "fileHash": "sha256-3ab6aa103e71b0bbbab4c6452a72287a18e90341e416ec2878263fcf9e817587",
+        "fileHash": "sha256-7ed6113b0f2cc76977a02db849cce534b702dc76a1712d74a776501ca5d4ea5a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 52347,
+        "fileSize": 52848,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5755,10 +5755,10 @@
       },
       {
         "iconUrl": "https://static-cdn.arte.tv/replay/favicons/favicon-%size%x%size%.png",
-        "fileHash": "sha256-2339d8b587559feff8ef427f770e2fac722e6c00fb8405a4436b3f417aec0b2e",
+        "fileHash": "sha256-8b4e4168918b71d5c7461ea695a182c7f2499bb2fa72c58cb279aa3f3b49e86e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 36162,
+        "fileSize": 36558,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5776,10 +5776,10 @@
       },
       {
         "iconUrl": "https://media.ccc.de/favicon-96x96.png",
-        "fileHash": "sha256-2ebe1fb0ee0d194fdd927d34a121821cc8e6a9778eaf35e89cac3237b3e42e84",
+        "fileHash": "sha256-27e674e42ce8966db09fccb277f727e758a4492a94d044e60ff6bf8f161bb6c4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 18365,
+        "fileSize": 18455,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5796,10 +5796,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://dmax.de&sz=%size%",
-        "fileHash": "sha256-50df3804e7ffe18f9c280aec99a19fce0a18843881d532bcd000ee53de99b109",
+        "fileHash": "sha256-11632720a8339c2540ff4398c1f20d55365b93e4db69d17deb769d081713a052",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 31815,
+        "fileSize": 32001,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5816,10 +5816,10 @@
         "name": "Discovery"
       },
       {
-        "fileHash": "sha256-ac6374f5a83efe7e4c535120ce269e41d4140ee2d466dcef05e153d28378ce18",
+        "fileHash": "sha256-9f18ca2c8e4000a909d6856d3f8f3742966daeaf2ceb57e0a5982a385e3f9e80",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 14038,
+        "fileSize": 14051,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5836,10 +5836,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmfrei24.com&sz=%size%",
-        "fileHash": "sha256-fc7cede1f3c77299c889a1eee34273c4e27906ff6a0eb04f557751f3c6d4071a",
+        "fileHash": "sha256-d566386853536147c514597af807dacadb876046b8de21e73483f3ed598b93ed",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 14440,
+        "fileSize": 14467,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5856,10 +5856,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmo.to&sz=%size%",
-        "fileHash": "sha256-023ae28d2ad34cda920810f910ab04f504bcd9f8242eaf1e137ff519ed603f77",
+        "fileHash": "sha256-13b5f5fb6f14309cb7ec6ef00a9e3ee8b07592756f2d9c667f122541025a106c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 12510,
+        "fileSize": 12509,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5876,10 +5876,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://filmpalast.to&sz=%size%",
-        "fileHash": "sha256-e6770003a8efe0f5d878868df92df326559f625746a356e9375857e55635693e",
+        "fileHash": "sha256-2485822e57a38c55b31c51ac703d4168bea0a27c56fa1f863dd420df8c8e4667",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 13525,
+        "fileSize": 13536,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5897,10 +5897,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=flixitv-stream.eu&sz=%size%",
-        "fileHash": "sha256-6bc1af7e7af3696c3a83756fd90848b450ef599afe45c251f1ed2479356367e5",
+        "fileHash": "sha256-a03158b15d70809454d8445ab6b9c1013ed10b586fc4d5e2637169fffdbba600",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 10342,
+        "fileSize": 10341,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5918,10 +5918,10 @@
       },
       {
         "iconUrl": "https://hdfilme.my/templates/hdfilme/images/favicon-%size%x%size%.png",
-        "fileHash": "sha256-4c8df8274427f59b794ee58423c2d885ef4c2e460fe78d4c6ed20b845753d1d5",
+        "fileHash": "sha256-afee1f8210be47d2321846fffc48c0bfa5413cff869379190b789b3986aaecac",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 19379,
+        "fileSize": 19354,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5939,10 +5939,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=huhu.to&sz=%size%",
-        "fileHash": "sha256-020c5287503276b5453ed86699a19e33b29b0e1eafd5f4514e0d13d9b253a328",
+        "fileHash": "sha256-0564719586d3c9bac88ffe7b94b192a83fa69343fa4e52ad0dd0798f1458079a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 25924,
+        "fileSize": 25612,
         "status": 1,
         "language": "de",
         "authors": [
@@ -5952,7 +5952,7 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "HuhuTo",
         "description": "Filme und Serien streamen",
         "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/HuhuTo.cs3",
@@ -5960,10 +5960,10 @@
       },
       {
         "iconUrl": "https://avatars.githubusercontent.com/iptv-org?s=%size%",
-        "fileHash": "sha256-fdea100bf68d00420008b1d1eb0902b551212bfce9c0778cdf68d3c3974fde20",
+        "fileHash": "sha256-24705c400af61e9c05222bb70f951755e36d41e3be756d59df13f11cbff2ea67",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 22813,
+        "fileSize": 22862,
         "status": 1,
         "authors": [
           "Adippe",
@@ -5981,10 +5981,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.kellerkino.com&sz=%size%",
-        "fileHash": "sha256-a9bdb3f1f133bd1d1ed0ddcf263be08c01489ec09253e7ae0211264ecd85120b",
+        "fileHash": "sha256-e2da14bfa24c683b7fbbd8f508342c709c5d0cfe1bb94e2588cd00bf787f35ee",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 12730,
+        "fileSize": 12734,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6001,10 +6001,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinoger.com&sz=%size%",
-        "fileHash": "sha256-0c853082b077bdc97c9a3370f372a301308443dd7d5830f4c0601d313b356a17",
+        "fileHash": "sha256-32adc2ee2f022452b0f80290390cb72427e602d2b48d4ff45a7047371768e409",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 17382,
+        "fileSize": 17347,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6023,10 +6023,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinoking.cc&sz=%size%",
-        "fileHash": "sha256-82bb978f913cc949a017097bc1948559557db98441ca464ea1083d3b87a8d702",
+        "fileHash": "sha256-d8109caff4f539bcff50a0afffa857e2ecac4a25d4d5a48ba5358b6a1a7ef6d8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 21913,
+        "fileSize": 21923,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6044,10 +6044,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://megakino4.to&sz=%size%",
-        "fileHash": "sha256-c6db1af5534e821b6c5914edd66e530b75dc745896ec056bea23d9d498ce264e",
+        "fileHash": "sha256-940a258ecc565fe9871d525a16de5ad6f101bc98b1a679c31760ae175036ef84",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 16624,
+        "fileSize": 16606,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6067,10 +6067,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=moflix-stream.xyz&sz=%size%",
-        "fileHash": "sha256-d61e5119a3866eb98b522f0d466f8604e09cc49d88d4c10685290d5e3ef2c711",
+        "fileHash": "sha256-7e7e18a157818a3c8b4300b92c9af9ffce38068b1006480903efbe7472f7ff4f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 35730,
+        "fileSize": 36001,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6089,10 +6089,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://netzkino.de&sz=%size%",
-        "fileHash": "sha256-e8e87f897f6ea9071dac615ad794d022ae89d188983885c922ea63af73416ef1",
+        "fileHash": "sha256-ad0dcc0bad379949e5bb339597e9faaf61515c7f14c109bd8bd544362cb40363",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 25945,
+        "fileSize": 26223,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6109,10 +6109,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://pluto.tv&sz=%size%",
-        "fileHash": "sha256-8cecab6732288898daf9f21d6b76ab8997f691d1e65d4ccaa692c45ad0dd0095",
+        "fileHash": "sha256-45c3df81e9f22eb008745522217da054c4d77f9a12d349d25c5cdc37be50234a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 43591,
+        "fileSize": 44029,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6131,10 +6131,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://serienstream.to&sz=%size%",
-        "fileHash": "sha256-d385e386eb949f508facf917ed6f20b350796b6837249ce96c9afe8b4f30bd5a",
+        "fileHash": "sha256-c153da49787d03b50dcb70568bf70bf342927b3492cf90eab5d7912f1c19795b",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 14822,
+        "fileSize": 14816,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6151,10 +6151,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://southpark.de&sz=%size%",
-        "fileHash": "sha256-033941d8f31d6c8bde8cb3703e3e9595c3b6381aeb14aa3975f6990164bb65f2",
+        "fileHash": "sha256-2662e9bac61e8549ba6190fafd002842f7c60ede9cfcbceaba64b00ce82e07be",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 30726,
+        "fileSize": 31031,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6171,10 +6171,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://www.spiegel.de&sz=%size%",
-        "fileHash": "sha256-9e0521c4cd52d91562240917a993b8509474d80b46655fd5ef53f3721bcfeee9",
+        "fileHash": "sha256-ab0d24651dd1da6f2db03e7a3b044b4fdd498ec6f0579114585ac678d9292a4f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 27473,
+        "fileSize": 27648,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6191,10 +6191,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://www.welt.de&sz=%size%",
-        "fileHash": "sha256-fafea5d8ca2142e51ff0c2830af33193965ef8784fc9d59d2b857957cde49b47",
+        "fileHash": "sha256-ab6991040b581a62d1a0b0f6763fbdf6514f650b4a2cd8e3ed7c89e2fc15b7e2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 22757,
+        "fileSize": 22825,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6208,27 +6208,6 @@
         "description": "Videos von Welt (mit Vorsicht zu genießen: gehört zum Axel Springer Verlag)",
         "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Welt.cs3",
         "name": "Welt"
-      },
-      {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=https://xcine.ru&sz=%size%",
-        "fileHash": "sha256-63936209537d563527c448526dacbe50d0b4b6eac410b9d9f5031a52b9671ea1",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 27900,
-        "status": 1,
-        "language": "de",
-        "authors": [
-          "Bnyro"
-        ],
-        "tvTypes": [
-          "TvSeries",
-          "Movie"
-        ],
-        "version": 15,
-        "internalName": "Xcine",
-        "description": "Enthält: Xcine, Movie4k, Streamcloud, Kinokiste",
-        "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Xcine.cs3",
-        "name": "Xcine"
       }
     ]
   },
@@ -9271,14 +9250,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 19,
+        "version": 20,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 488389,
+        "fileSize": 499706,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9287,7 +9266,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-d57642386ad714243b14d764b4ba6d199c31139c17c30307d19e9c041e94e1fe"
+        "fileHash": "sha256-4cd4861b704969743e0023ad80543744f4115c3c5e64e72fa1886117d1f5001f"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9332,38 +9311,16 @@
         "fileHash": "sha256-391bd4f92efaa3c4e41bb407bfe49897785b24d6a6d96c772341f075ae106382"
       },
       {
-        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Miruro.cs3",
-        "status": 1,
-        "version": 7,
-        "name": "Miruro",
-        "internalName": "Miruro",
-        "authors": [
-          "raghav"
-        ],
-        "description": "ANIME(SUB,DUB)-MULTI SOURCE",
-        "fileSize": 92315,
-        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-        "language": "en",
-        "tvTypes": [
-          "Anime",
-          "AnimeMovie",
-          "OVA"
-        ],
-        "iconUrl": "https://repository-images.githubusercontent.com/567000493/281ea6b4-7159-4ac7-b5f1-34abf335c033",
-        "apiVersion": 1,
-        "fileHash": "sha256-30983ddb1ee701e6cc06040b54ebaf644af4d3c2115c54a011dce35b2dd95190"
-      },
-      {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "Multimovies",
         "internalName": "Multimovies",
         "authors": [
           "raghav,phisher,csksy"
         ],
-        "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
-        "fileSize": 132511,
+        "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt",
+        "fileSize": 143668,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9371,9 +9328,9 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "https://multimovies.garden/assets/img/logo.png",
+        "iconUrl": "https://m1.multimovies.courses/assets/img/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-29f31d617b85b5d4bc3291ade3120df5648d7b527dfd591fdad12b6e35312f27"
+        "fileHash": "sha256-b50e0deede57413034a685f890c2fab20abdaf9d11f3e806751175dacde6e324"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
@@ -9555,26 +9512,6 @@
         "iconUrl": "https://reanime.to/favicon-32x32.png",
         "apiVersion": 1,
         "fileHash": "sha256-1fc6fc54949ad105c0323e13b0fbecb07d09c880049b020dddef824ae5189cd0"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
-        "status": 1,
-        "version": 4,
-        "name": "ReplayZone",
-        "internalName": "ReplayZone",
-        "authors": [
-          "raghav"
-        ],
-        "description": "Sports Replays — Football, Baseball, Rugby & Motorsport",
-        "fileSize": 36658,
-        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-        "language": "en",
-        "tvTypes": [
-          "Live"
-        ],
-        "iconUrl": "https://media.istockphoto.com/id/1321048723/vector/r-letter-in-the-circle-logo.jpg?s=612x612&w=0&k=20&c=S9TWFtRs2omUlxY2RsyUImNadAVyK3xLdMZJOxAfpSM=",
-        "apiVersion": 1,
-        "fileHash": "sha256-7479d8ed156afe859b8e35cb14c7d03f37be190f8640335143247c2aacfa9d35"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
@@ -9972,7 +9909,7 @@
     "description": "MovieBox, Netflix, Hotstar & Prime Video — all in one",
     "plugins": [
       {
-        "version": 4,
+        "version": 7,
         "internalName": "Rate",
         "name": "All4U Rate",
         "pluginClassName": "com.allforu.RatePlugin",
@@ -9986,11 +9923,11 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v7.cs3",
         "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-dc03dcc84ef48d4bb764757208fe7c2bb05088ff08a15c727c1b0ed8665b454e",
-        "fileSize": 51914
+        "fileHash": "sha256-e3e228a8fd64c7933ffdcbcb6d5830c4d925e5a1d7663ecac824eed515820eda",
+        "fileSize": 67365
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
@@ -10037,7 +9974,7 @@
         "fileSize": 139029
       },
       {
-        "version": 37,
+        "version": 45,
         "internalName": "JioTV",
         "name": "JioTV",
         "pluginClassName": "com.allforu.JioTvPlugin",
@@ -10052,10 +9989,10 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v37.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v45.cs3",
         "description": "JioTV - Live JioTV channels + Live Sports (live events, sports channels & highlights)",
-        "fileHash": "sha256-49389a6ec9740da1c29594077e352c85ec6310f6df3e88439846edc4bb138dba",
-        "fileSize": 80170,
+        "fileHash": "sha256-409430992cbbd975e37725ac804b34d817305f3fba5de36d6c4b459bfffe6b7a",
+        "fileSize": 91076,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/jiotv.png"
       },
       {
@@ -11201,7 +11138,7 @@
           "TvSeries",
           "Anime"
         ],
-        "iconUrl": "https://kmmovies.cyou/wp-content/uploads/2026/02/cropped-favicon-192x192.png",
+        "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/kmmovies.png",
         "apiVersion": 1,
         "fileHash": "sha256-284d74af0a3da6bf37a307d6dbac3d1129b42c7bc97a0c92bdebff1e0b79950a"
       },
@@ -11226,6 +11163,28 @@
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/IMG-20260920-WA0000.jpg",
         "apiVersion": 1,
         "fileHash": "sha256-a9ccf2d9bcf5cd69ad43c7cb7aaa6d405d1d8946a97a48958a7b77247e5222a5"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Movies4u.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Movies4u",
+        "internalName": "Movies4u",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Provider for Hindi Dubbed, Bollywood, Hollywood Movies & Web Series.",
+        "fileSize": 47462,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/Movies4u.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-0becb39913a0156ee07e0a482625466351b819dbec4dc0e3c5f40979ad720cb2"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MoviesDrive.cs3",
@@ -11317,24 +11276,25 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
         "status": 1,
-        "version": 1,
+        "version": 3,
         "name": "ReelFren",
         "internalName": "ReelFren",
         "authors": [
           "Faisal"
         ],
-        "description": "reelfren",
-        "fileSize": 19545,
+        "description": "ReelFren Provide Shorts Videos From Various Providers",
+        "fileSize": 45582,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "en",
         "tvTypes": [
           "Movie",
           "TvSeries",
-          "Anime"
+          "Anime",
+          "AsianDrama"
         ],
-        "iconUrl": "",
+        "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/ReelFren.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ed0f915b5e91f89a9f4f4eff8bc090a92868dc0e2689fab8dde7e55f32e5866e"
+        "fileHash": "sha256-cf552ddfdb2ec63fe315513bf8332637aec913ede492a977cb7bd4e98d552a4a"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/SDmovies.cs3",
@@ -11439,7 +11399,7 @@
           "Faisal"
         ],
         "description": "VegaMovies Provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 74319,
+        "fileSize": 85717,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11449,7 +11409,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(2).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-03ba7b84f32645057f717f92f14c62f9fe4924897cfdeb62c91c48a52b9eee72"
+        "fileHash": "sha256-8643abc022dc9fb99d7b03a158f505544cafc6f872326b271810e489edf4be14"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",
@@ -11461,7 +11421,7 @@
           "Faisal"
         ],
         "description": "WatchDrama — Free Short Drama Streaming",
-        "fileSize": 23097,
+        "fileSize": 34927,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "en",
         "tvTypes": [
@@ -11471,7 +11431,7 @@
         ],
         "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
         "apiVersion": 1,
-        "fileHash": "sha256-e55eed26721dd2b1f342cd54c4829fa85579857720a36a53f55c5ae98b881a6d"
+        "fileHash": "sha256-ae656085800cacc31ed0c0d47bc8fbd0f710bb498a2f5b63946155d5f2fd6887"
       }
     ]
   }

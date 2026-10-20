@@ -1,6 +1,6 @@
 [
   {
-    "version": 4,
+    "version": 7,
     "internalName": "Rate",
     "name": "All4U Rate",
     "pluginClassName": "com.allforu.RatePlugin",
@@ -14,11 +14,11 @@
       "Movie"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v4.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v7.cs3",
     "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-dc03dcc84ef48d4bb764757208fe7c2bb05088ff08a15c727c1b0ed8665b454e",
-    "fileSize": 51914
+    "fileHash": "sha256-e3e228a8fd64c7933ffdcbcb6d5830c4d925e5a1d7663ecac824eed515820eda",
+    "fileSize": 67365
   },
   {
     "version": 4,
@@ -1185,14 +1185,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 19,
+    "version": 20,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-    "fileSize": 488389,
+    "fileSize": 499706,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1201,7 +1201,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-d57642386ad714243b14d764b4ba6d199c31139c17c30307d19e9c041e94e1fe"
+    "fileHash": "sha256-4cd4861b704969743e0023ad80543744f4115c3c5e64e72fa1886117d1f5001f"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -1490,28 +1490,6 @@
     "fileSize": 7732050
   },
   {
-    "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Miruro.cs3",
-    "status": 1,
-    "version": 7,
-    "name": "Miruro",
-    "internalName": "Miruro",
-    "authors": [
-      "raghav"
-    ],
-    "description": "ANIME(SUB,DUB)-MULTI SOURCE",
-    "fileSize": 92315,
-    "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-    "language": "en",
-    "tvTypes": [
-      "Anime",
-      "AnimeMovie",
-      "OVA"
-    ],
-    "iconUrl": "https://repository-images.githubusercontent.com/567000493/281ea6b4-7159-4ac7-b5f1-34abf335c033",
-    "apiVersion": 1,
-    "fileHash": "sha256-30983ddb1ee701e6cc06040b54ebaf644af4d3c2115c54a011dce35b2dd95190"
-  },
-  {
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
     "fileHash": "sha256-fef316c32c981d354fe5f5dc17155cc895ab4edaea1e90925ca36bf21fd31282",
     "apiVersion": 1,
@@ -1536,14 +1514,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
     "status": 1,
-    "version": 8,
+    "version": 9,
     "name": "Multimovies",
     "internalName": "Multimovies",
     "authors": [
       "raghav,phisher,csksy"
     ],
-    "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidout, Vidsync, Bingr, Filmu, VidBolt",
-    "fileSize": 132511,
+    "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt",
+    "fileSize": 143668,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1551,9 +1529,9 @@
       "TvSeries",
       "Anime"
     ],
-    "iconUrl": "https://multimovies.garden/assets/img/logo.png",
+    "iconUrl": "https://m1.multimovies.courses/assets/img/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-29f31d617b85b5d4bc3291ade3120df5648d7b527dfd591fdad12b6e35312f27"
+    "fileHash": "sha256-b50e0deede57413034a685f890c2fab20abdaf9d11f3e806751175dacde6e324"
   },
   {
     "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Nebula.cs3",
@@ -1934,44 +1912,25 @@
   {
     "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
     "status": 1,
-    "version": 1,
+    "version": 3,
     "name": "ReelFren",
     "internalName": "ReelFren",
     "authors": [
       "Faisal"
     ],
-    "description": "reelfren",
-    "fileSize": 19545,
+    "description": "ReelFren Provide Shorts Videos From Various Providers",
+    "fileSize": 45582,
     "repositoryUrl": "https://github.com/Faisal0786/Desi",
     "language": "en",
     "tvTypes": [
       "Movie",
       "TvSeries",
-      "Anime"
+      "Anime",
+      "AsianDrama"
     ],
-    "iconUrl": "",
+    "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/ReelFren.png",
     "apiVersion": 1,
-    "fileHash": "sha256-ed0f915b5e91f89a9f4f4eff8bc090a92868dc0e2689fab8dde7e55f32e5866e"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReplayZone.cs3",
-    "status": 1,
-    "version": 4,
-    "name": "ReplayZone",
-    "internalName": "ReplayZone",
-    "authors": [
-      "raghav"
-    ],
-    "description": "Sports Replays — Football, Baseball, Rugby & Motorsport",
-    "fileSize": 36658,
-    "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
-    "language": "en",
-    "tvTypes": [
-      "Live"
-    ],
-    "iconUrl": "https://media.istockphoto.com/id/1321048723/vector/r-letter-in-the-circle-logo.jpg?s=612x612&w=0&k=20&c=S9TWFtRs2omUlxY2RsyUImNadAVyK3xLdMZJOxAfpSM=",
-    "apiVersion": 1,
-    "fileHash": "sha256-7479d8ed156afe859b8e35cb14c7d03f37be190f8640335143247c2aacfa9d35"
+    "fileHash": "sha256-cf552ddfdb2ec63fe315513bf8332637aec913ede492a977cb7bd4e98d552a4a"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
@@ -2537,7 +2496,7 @@
       "Faisal"
     ],
     "description": "WatchDrama — Free Short Drama Streaming",
-    "fileSize": 23097,
+    "fileSize": 34927,
     "repositoryUrl": "https://github.com/Faisal0786/Desi",
     "language": "en",
     "tvTypes": [
@@ -2547,7 +2506,7 @@
     ],
     "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
     "apiVersion": 1,
-    "fileHash": "sha256-e55eed26721dd2b1f342cd54c4829fa85579857720a36a53f55c5ae98b881a6d"
+    "fileHash": "sha256-ae656085800cacc31ed0c0d47bc8fbd0f710bb498a2f5b63946155d5f2fd6887"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/WatchParty.cs3",
