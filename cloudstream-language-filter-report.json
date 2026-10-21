@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 358,
+  "excluded_count": 362,
   "excluded": [
     {
       "internalName": "Rate",
@@ -936,6 +936,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Bombuj",
+      "name": "Bombuj",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "cs"
+      ],
+      "normalizedLanguages": [
+        "cs"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bombuj-v2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Bristege",
       "name": "Brstej",
       "source": "3rabi عربي",
@@ -1185,6 +1199,20 @@
         "mx"
       ],
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/CinecalidadProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Cinedoz",
+      "name": "Cinedoz",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Cinedoz.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2805,6 +2833,20 @@
         "de"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Megakino.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MicroTV",
+      "name": "MicroTV",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MicroTV-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4591,6 +4633,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "VegaMoviesProvider",
+      "name": "VegaMoviesProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/VegaMoviesProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
