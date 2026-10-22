@@ -5,13 +5,13 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 537,
+  "raw_plugin_entries": 541,
   "eligible_plugin_entries_before_dedupe": 139,
   "unique_plugins": 130,
   "duplicate_groups": 8,
-  "language_filtered_entries": 362,
+  "language_filtered_entries": 363,
   "unknown_language_metadata_entries": 25,
-  "inactive_filtered_entries": 36,
+  "inactive_filtered_entries": 39,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -105,7 +105,7 @@
       "name": "3rabi عربي",
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
       "status": "ok",
-      "plugins": 42,
+      "plugins": 43,
       "verified": false
     },
     {
@@ -119,7 +119,7 @@
       "name": "DieGon Repository",
       "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
       "status": "ok",
-      "plugins": 18,
+      "plugins": 20,
       "verified": false
     },
     {
@@ -140,7 +140,7 @@
       "name": "Indostream Repo",
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "status": "ok",
-      "plugins": 30,
+      "plugins": 28,
       "verified": false
     },
     {
@@ -210,7 +210,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 30,
+      "plugins": 33,
       "verified": false
     },
     {

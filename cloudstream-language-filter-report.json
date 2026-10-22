@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 362,
+  "excluded_count": 363,
   "excluded": [
     {
       "internalName": "Rate",
@@ -161,6 +161,20 @@
         "it"
       ],
       "url": "https://raw.githubusercontent.com/Gian-Fr/ItalianProvider/builds/AltadefinizioneProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "An1me",
+      "name": "An1me",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "el"
+      ],
+      "normalizedLanguages": [
+        "el"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/An1me-v1.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -964,6 +978,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Budi",
+      "name": "Budi",
+      "source": "Indostream Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Budi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "C3TV",
       "name": "C3TV",
       "source": "German providers repository",
@@ -1596,34 +1624,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Dramaid",
-      "name": "Dramaid",
-      "source": "Indostream Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Dramaid.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "DramaSerial",
-      "name": "DramaSerial",
-      "source": "Indostream Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/DramaSerial.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "DriveM3UProvider",
       "name": "DriveM3UProvider",
       "source": "Cartoony Repo",
@@ -2024,20 +2024,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Funmovieslix",
-      "name": "Funmovieslix",
-      "source": "Indostream Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Funmovieslix.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "Gnulahd",
       "name": "Gnulahd",
       "source": "cs-karma",
@@ -2052,8 +2038,8 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Gomov",
-      "name": "Gomov",
+      "internalName": "Gomunime",
+      "name": "Gomunime",
       "source": "Indostream Repo",
       "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "language": [
@@ -2062,7 +2048,7 @@
       "normalizedLanguages": [
         "id"
       ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Gomov.cs3",
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Gomunime.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2161,6 +2147,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Hdmovie2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "HDMozi",
+      "name": "HDMozi",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "hu"
+      ],
+      "normalizedLanguages": [
+        "hu"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HDMozi-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3012,6 +3012,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "MoviesNiPipay",
+      "name": "Movies Ni Pipay",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "fil"
+      ],
+      "normalizedLanguages": [
+        "fil"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MoviesNiPipay-v1.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Movies4u",
       "name": "Movies4u",
       "source": "Desi Extensions",
@@ -3230,20 +3244,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Neonime",
-      "name": "Neonime",
-      "source": "Indostream Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Neonime.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "NetCine",
       "name": "NetCine",
       "source": "saimuel repo",
@@ -3268,7 +3268,7 @@
       "normalizedLanguages": [
         "pt-br"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v11.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v12.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3342,8 +3342,8 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Nodrakorid",
-      "name": "Nodrakorid",
+      "internalName": "NontonAnimeID",
+      "name": "NontonAnimeID",
       "source": "Indostream Repo",
       "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "language": [
@@ -3352,7 +3352,21 @@
       "normalizedLanguages": [
         "id"
       ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Nodrakorid.cs3",
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/NontonAnimeID.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "NontonDrama",
+      "name": "NontonDrama",
+      "source": "Indostream Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/NontonDrama.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3395,6 +3409,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Oploverz.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "OscarTv",
+      "name": "OscarTv",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/OscarTv.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3720,8 +3748,8 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Raveeflix",
-      "name": "Raveeflix",
+      "internalName": "RaviFlix",
+      "name": "RaviFlix",
       "source": "Indostream Repo",
       "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "language": [
@@ -3730,21 +3758,7 @@
       "normalizedLanguages": [
         "id"
       ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Raveeflix.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "Rebahin",
-      "name": "Rebahin",
-      "source": "Indostream Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
-      "language": [
-        "id"
-      ],
-      "normalizedLanguages": [
-        "id"
-      ],
-      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Rebahin.cs3",
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/RaviFlix.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4122,7 +4136,7 @@
       "normalizedLanguages": [
         "it"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v4.cs3",
       "reason": "no-allowed-language"
     },
     {

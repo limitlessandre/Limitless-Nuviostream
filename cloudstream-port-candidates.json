@@ -296,7 +296,7 @@
         "AnimeMovie",
         "Cartoon"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -398,7 +398,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -958,7 +958,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1355,7 +1355,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 80,
+      "version": 81,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1991,7 +1991,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 19,
+      "version": 20,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2072,7 +2072,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 20,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {

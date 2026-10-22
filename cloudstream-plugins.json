@@ -346,14 +346,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
     "status": 1,
-    "version": 4,
+    "version": 5,
     "name": "AniPM",
     "internalName": "AniPM",
     "authors": [
       "raghav"
     ],
     "description": "Anime with Sub & Dub from ani.pm",
-    "fileSize": 77549,
+    "fileSize": 78446,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -363,7 +363,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
     "apiVersion": 1,
-    "fileHash": "sha256-f45a424533a48b6d672c9d0df030e1a86cb218592681c57d10ff092912c298dd"
+    "fileHash": "sha256-2f7e0259e93a5c0a8610118e82cf991d7649ae3e7c27e7c76165ebda515a0b62"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -1185,14 +1185,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 20,
+    "version": 22,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-    "fileSize": 499706,
+    "fileSize": 515259,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1201,19 +1201,19 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-4cd4861b704969743e0023ad80543744f4115c3c5e64e72fa1886117d1f5001f"
+    "fileHash": "sha256-890e14e52874b628f371502446f8c73c3614f238426fac399d5ee0f0c28bd980"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
     "status": 1,
-    "version": 3,
+    "version": 4,
     "name": "Kdesa",
     "internalName": "Kdesa",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio",
-    "fileSize": 152684,
+    "fileSize": 62450,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1223,7 +1223,7 @@
     ],
     "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
     "apiVersion": 1,
-    "fileHash": "sha256-af58ad4d4a515b5d71206b2ac822275e1cc834903e16a15bec518cbaa8df58eb"
+    "fileHash": "sha256-02bdd23a40ab95887ea7e288bd0cb51e316c7a477cfd1436a361c856a60cfb95"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
@@ -1417,10 +1417,10 @@
   },
   {
     "iconUrl": "https://play-lh.googleusercontent.com/V4t4JeQV2Cu9u72hKuqOW5c0IfwcZuuVS1d9PF2uJsW3rlIq-aOMTrT5bABVGaAFTcM=w480-h960-rw",
-    "fileHash": "sha256-ecafdf807418d757f385a813aac2f6a4f07800d72c7217152698e0b39a308f75",
+    "fileHash": "sha256-1739a3f2f7b289eb51f73602feb9ac739545c6b5146c718258cb48ef0bcd7da7",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 65133,
+    "fileSize": 65790,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1429,7 +1429,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 19,
+    "version": 20,
     "internalName": "M3UPlaylistPlayerProvider",
     "description": "Add your own m3u playlists",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
@@ -1579,14 +1579,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
     "status": 1,
-    "version": 3,
+    "version": 4,
     "name": "Nepu",
     "internalName": "Nepu",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, shows, cartoons and anime in HD",
-    "fileSize": 68835,
+    "fileSize": 77829,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1598,7 +1598,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/RVADHx9LB0v5T0icvbhDrnVN32jrNMGG6MpDKWnHK6uPIQESx0yIIbQNQBCj_GcX42HqnQ6Bf1sfkTKDMSrnQQ=w240-h480-rw",
     "apiVersion": 1,
-    "fileHash": "sha256-3964a5c1716b062bbe79795ef1f9f2cdf2b7a694d7ad87f2c3484b83ac4dc935"
+    "fileHash": "sha256-44b495bbe7df483460b9b5010f2397195ef876f0e40e0d6c28ad4a45cddabf41"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
@@ -1890,14 +1890,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
     "status": 1,
-    "version": 80,
+    "version": 81,
     "name": "RaghavAnime",
     "internalName": "RaghavAnime",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 653486,
+    "fileSize": 676753,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1907,7 +1907,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-e6c0bb88e10f64d41dba55d09705ce90c0fdebb27b69f16dd0df1b05130f4c5d"
+    "fileHash": "sha256-f77121277e1e0a7081e6d739bb4e7e9ba3940270d4e506f79d00e8a45deb7a13"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
