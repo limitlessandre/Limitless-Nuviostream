@@ -1927,14 +1927,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 37,
+        "version": 38,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 157871,
+        "fileSize": 148989,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1943,7 +1943,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-5b773f860478ee8ba0fc0b5e704ee5ed81afdd9d3aa12cc6c7092afc8deb46c1"
+        "fileHash": "sha256-dcb537cef5f3dbec3e0792d690c4f4aabf4251cad1c79fdd3b1642e68fca3c5f"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2317,7 +2317,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2060358,
+        "fileSize": 2038526,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2330,7 +2330,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-948eb8168439a49ba961586a95d25c539d7fcc9a5b0c15afc0a4bb99397a44c7"
+        "fileHash": "sha256-2c9be0404fe4527a70824a17740f8a0f2b3906b74fdf759600e7475364e4ab5c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -4122,7 +4122,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 27126,
+        "fileSize": 43522,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4132,7 +4132,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/mBIIR5cqQC4Y-o7HaxbkJfs305X6tbHLSNPk6MRMCDJsH8xP0SfGhK-CBDpSmH95wSff9z99sg=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-758b3bb9eab01fee2704b281413960512014c45c3612184c20fe62e1ee984ed1"
+        "fileHash": "sha256-0fdf714ffe859daa3fc0acee11e58311fb86e8fee3766302a6f694bec3461e27"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Anime4up.cs3",
@@ -4831,7 +4831,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 60477,
+        "fileSize": 60602,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4840,7 +4840,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7AH2oC7LwumXRpHM8_WLpIFvDIfmS67jkjlhsCKpPaZdqcneigzUQX4g&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-93b32fcf8ad35ea37e10281c5e8003249e69c06a13927a9bf524987c82f1274a"
+        "fileHash": "sha256-c44a16641dbac196199ca600d69457da0105b62e54a9f6a0760f75d928ff258c"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Yacintv.cs3",
@@ -4920,14 +4920,14 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeUnity.cs3",
         "status": 1,
-        "version": 27,
+        "version": 28,
         "name": "AnimeUnity",
         "internalName": "AnimeUnity",
         "authors": [
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134696,
+        "fileSize": 134673,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4937,7 +4937,7 @@
         ],
         "iconUrl": "https://www.animeunity.to/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-dd12a1f2faa77e16cb8b328392e68226fc0c12c949e81cbe8af95adbb104a8cf"
+        "fileHash": "sha256-f98617c6ce28e1135ac74abb0de9d272d8ae1d94b451bf4f4b67fb411ace6eff"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -5124,7 +5124,7 @@
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1715310,
+        "fileSize": 1715295,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -5138,7 +5138,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-881394e6ebe1d53808400e0ba18981651da5294e23eb6325790a485a456039a2"
+        "fileHash": "sha256-7aee81f915a5aa7cd1327ece5f70e4866853b935feeba28b820ac0aa0b06799c"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -5341,7 +5341,7 @@
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AutoExtensions.cs3",
         "status": 3,
-        "version": 1,
+        "version": 2,
         "name": "AutoExtensions",
         "internalName": "AutoExtensions",
         "authors": [
@@ -5355,7 +5355,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/AutoExtensions/AutoExtensions_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-4c2756d9e712d1eff1cc0946630c696bf964d892d1c21d4c1b8acda92c104f98"
+        "fileHash": "sha256-1edb5028d3853b856a4d72e32caf7ffd0377257735b6f827283eb61447871940"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/CalcioStreaming.cs3",
@@ -5465,15 +5465,15 @@
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/OnlineSerieTV.cs3",
-        "status": 0,
-        "version": 4,
+        "status": 1,
+        "version": 5,
         "name": "OnlineSerieTV",
         "internalName": "OnlineSerieTV",
         "authors": [
           "DieGon"
         ],
         "description": "Film e SerieTV da OnlineSerieTV",
-        "fileSize": 35994,
+        "fileSize": 43878,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "language": "it",
         "tvTypes": [
@@ -5483,9 +5483,9 @@
           "Anime",
           "Documentary"
         ],
-        "iconUrl": "https://lingering-truth-455c.diegon7771.workers.dev/wp-content/uploads/2023/01/cropped-tv-1.png",
+        "iconUrl": "https://onlineserietv.mom/wp-content/uploads/2023/01/cropped-tv-1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-579d48952d5d0f253a21bc96deddd4166f6f8c72ecb20eab07e7f2ab0b528276"
+        "fileHash": "sha256-38a83982f5307ff95b4e3678d01a51b73a86d5cb33d52df59a5faf611a23435f"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/SectionOrganizer.cs3",
@@ -5650,6 +5650,25 @@
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/WatchParty/WatchParty_icon.png",
         "apiVersion": 1,
         "fileHash": "sha256-4be443539b3a90261fffe671231cc9c048ce8bc93802c18ee395b4f0892755de"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Wrapped.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Wrapped",
+        "internalName": "Wrapped",
+        "authors": [
+          "DieGon"
+        ],
+        "description": "Generate your CloudStream Wrapped: track total time, movies/series, your Nerd Rank, and get a shareable summary.",
+        "fileSize": 622512,
+        "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
+        "tvTypes": [
+          "Others"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/Wrapped/Wrapped_icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-86f592522b0871a70880044651f3d42f8c5a7e02d0b02c4b6b658f000987ad06"
       }
     ]
   },
@@ -6005,10 +6024,10 @@
       },
       {
         "iconUrl": "https://hdfilme.my/templates/hdfilme/images/favicon-%size%x%size%.png",
-        "fileHash": "sha256-8d3d94ea3256bbc7841c56f2cf4c0f7e28cd0727ed720c7c0b8a8c57e6dd8b7e",
+        "fileHash": "sha256-f5e7235ff0801d1eb9656204c48a719929ddaf92e58079a25bebb92e8a5919fb",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 26800,
+        "fileSize": 26939,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6018,7 +6037,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "HDFilme",
         "description": "Filme und Serien online kostenlos ansehen",
         "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/HDFilme.cs3",
@@ -6154,10 +6173,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=moflix-stream.xyz&sz=%size%",
-        "fileHash": "sha256-7e7e18a157818a3c8b4300b92c9af9ffce38068b1006480903efbe7472f7ff4f",
+        "fileHash": "sha256-0dd11c5462a14d004c7f39e74a038e16c6993933d004e7f2c1cd6744ad0d1608",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Bnyro/GermanProviders",
-        "fileSize": 36001,
+        "fileSize": 36239,
         "status": 1,
         "language": "de",
         "authors": [
@@ -6168,7 +6187,7 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "Moflix",
         "description": "Filme und Serien kostenlos streamen",
         "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Moflix.cs3",
@@ -6305,14 +6324,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Animasu.cs3",
         "status": 1,
-        "version": 17,
+        "version": 18,
         "name": "Animasu",
         "internalName": "Animasu",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming anime subtitle Indonesia terlengkap dan terupdate dari Animasu.",
-        "fileSize": 36785,
+        "fileSize": 36768,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6322,7 +6341,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=animasu.me&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-2075a33bfe6b706c961b626b7a1259ffb0b9cd6067d33ba00c5dcd8c84f432d4"
+        "fileHash": "sha256-be19c329668b91e08afe543298794f6e80e2f293092abf3bb219a644ce476d41"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeIndo.cs3",
@@ -6349,14 +6368,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeSail.cs3",
         "status": 1,
-        "version": 18,
+        "version": 20,
         "name": "AnimeSail",
         "internalName": "AnimeSail",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming anime subtitle Indonesia terlengkap dari AnimeSail.",
-        "fileSize": 27438,
+        "fileSize": 28678,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6366,7 +6385,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=anisail.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-0673df7557fdc45d925b18f02721fb7372f754bd57244b218fd6399fd8a8e441"
+        "fileHash": "sha256-066175c56a82dc9f8d88ac7327ad1334941607076469e49949fe2f856a2c3dc9"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Anoboy.cs3",
@@ -6409,26 +6428,6 @@
         "iconUrl": "https://budi.kemendikdasmen.go.id/assets/images/logo/si-glen.png",
         "apiVersion": 1,
         "fileHash": "sha256-8a868e01f6fc89e97793be79cedff369850ec4f9efdc24366ba7901415419137"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Cgvindo.cs3",
-        "status": 3,
-        "version": 2,
-        "name": "Cgvindo",
-        "internalName": "Cgvindo",
-        "authors": [
-          "TeKuma25"
-        ],
-        "description": "Nonton streaming movie terlengkap dan terupdate dari Cgvindo.",
-        "fileSize": 23275,
-        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
-        "language": "id",
-        "tvTypes": [
-          "Movie"
-        ],
-        "iconUrl": "https://www.google.com/s2/favicons?domain=167.172.35.72&sz=%size%",
-        "apiVersion": 1,
-        "fileHash": "sha256-a4ec043b48e4b994664f229f88143d107c785a9769d490a1d69be62fc4af0355"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Dubbindo.cs3",
@@ -6478,14 +6477,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Gomunime.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "Gomunime",
         "internalName": "Gomunime",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming anime subtitle Indonesia terlengkap dari Gomunime.",
-        "fileSize": 22022,
+        "fileSize": 25009,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6495,7 +6494,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=gomunime.top&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-0b4d7153d38725c29509727e82c9b6ca529355a53a64ed12c862f439e636e1b4"
+        "fileHash": "sha256-b946791e43e4105e2dbcf2f563b66d3fb3e48dcde15f5518b460135dd836188c"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Idlix.cs3",
@@ -6539,27 +6538,6 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=%size%",
         "apiVersion": 1,
         "fileHash": "sha256-6b73fa46399deac0cb593ce6ee70b02a0884692cc057bb5a2c1a7b4415ab92a4"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Kitanonton.cs3",
-        "status": 3,
-        "version": 2,
-        "name": "Kitanonton",
-        "internalName": "Kitanonton",
-        "authors": [
-          "TeKuma25"
-        ],
-        "description": "Nonton streaming movie dan serial drama terlengkap dan terupdate dari Kitanonton.",
-        "fileSize": 31669,
-        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
-        "language": "id",
-        "tvTypes": [
-          "Movie",
-          "TvSeries"
-        ],
-        "iconUrl": "https://www.google.com/s2/favicons?domain=kitanonton2.beer&sz=%size%",
-        "apiVersion": 1,
-        "fileHash": "sha256-b85b7d884e32849eafffc0c31a50af8db28d498557b3eea4b69b2d4f7a016639"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Kuramanime.cs3",
@@ -6720,7 +6698,7 @@
           "TeKuma25"
         ],
         "description": "Nonton anime subtitle Indonesia terlengkap dan terupdate gratis dari NontonAnimeID.",
-        "fileSize": 33491,
+        "fileSize": 33676,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6730,7 +6708,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=nontonanimeid.my.id&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-13c861446c061da0180aff153a567c349ec489c74e6306e72d911912ecd54855"
+        "fileHash": "sha256-38eadb5384a975e11461498d03b4f2d616e8af43ed79f024131e9c5a016c0b08"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/NontonDrama.cs3",
@@ -6756,14 +6734,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Oploverz.cs3",
         "status": 1,
-        "version": 52,
+        "version": 55,
         "name": "Oploverz",
         "internalName": "Oploverz",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton anime subtitle Indonesia dari Oploverz dengan pilihan kualitas video.",
-        "fileSize": 60697,
+        "fileSize": 60416,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6773,7 +6751,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=oploverz.xin&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-0ee215d152a971f87ad83212d0700faebb695f378fca8696b061198c7b6bc048"
+        "fileHash": "sha256-4094346283dadf27af958cc58d637fc99fecb4d806aacd6862787698e57342a0"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Otakudesu.cs3",
@@ -6863,29 +6841,6 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=raviflixx.blogspot.com&sz=%size%",
         "apiVersion": 1,
         "fileHash": "sha256-c5f3e7c9ca1ca901272e830417b0ee05ffd016063a38f1f1d9878f31797c28d3"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Rebahin.cs3",
-        "status": 3,
-        "version": 17,
-        "name": "Rebahin",
-        "internalName": "Rebahin",
-        "authors": [
-          "TeKuma25"
-        ],
-        "description": "Nonton streaming film dan drama Asia terlengkap dari Rebahin.",
-        "fileSize": 34086,
-        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
-        "language": "id",
-        "tvTypes": [
-          "AsianDrama",
-          "Anime",
-          "TvSeries",
-          "Movie"
-        ],
-        "iconUrl": "https://www.google.com/s2/favicons?domain=rebahinxxi3.mom&sz=%size%",
-        "apiVersion": 1,
-        "fileHash": "sha256-0c06e9d4f2ed46d1b694a4b7942854942f27841d19a90905d6853c9290fd95fc"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Samehadaku.cs3",
@@ -9273,14 +9228,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "GoTaku",
         "internalName": "GoTaku",
         "authors": [
           "raghav"
         ],
         "description": "Hardsub and dub from Gotaku",
-        "fileSize": 64443,
+        "fileSize": 65469,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9290,7 +9245,7 @@
         ],
         "iconUrl": "https://gotaku.to/images/icons/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-722d19dcd8af243530d653d8e09a195fbdfdfe49456abe00663df56f0f850522"
+        "fileHash": "sha256-ab6a31d27c01416850c6a3a4d5f74947f20b3098e2dd6c6522213caec1b13c66"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/HiCine.cs3",
@@ -9318,14 +9273,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 22,
+        "version": 27,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 515259,
+        "fileSize": 539363,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9334,7 +9289,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-890e14e52874b628f371502446f8c73c3614f238426fac399d5ee0f0c28bd980"
+        "fileHash": "sha256-1b8621355d27892b5b75defb2b62c5008643c0d2e5b19eb26d7bad903e895a63"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9433,7 +9388,7 @@
           "KSHITIJ8473"
         ],
         "description": "Movies, shows, cartoons and anime in HD",
-        "fileSize": 77829,
+        "fileSize": 78045,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9445,7 +9400,7 @@
         ],
         "iconUrl": "https://play-lh.googleusercontent.com/RVADHx9LB0v5T0icvbhDrnVN32jrNMGG6MpDKWnHK6uPIQESx0yIIbQNQBCj_GcX42HqnQ6Bf1sfkTKDMSrnQQ=w240-h480-rw",
         "apiVersion": 1,
-        "fileHash": "sha256-44b495bbe7df483460b9b5010f2397195ef876f0e40e0d6c28ad4a45cddabf41"
+        "fileHash": "sha256-a6be77ae720eb7fc3c35036b2b6eeaa64fa8bb683383313f29b40ce0834d1cd3"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
@@ -9518,14 +9473,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
         "status": 1,
-        "version": 81,
+        "version": 82,
         "name": "RaghavAnime",
         "internalName": "RaghavAnime",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 676753,
+        "fileSize": 656181,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9535,19 +9490,19 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f77121277e1e0a7081e6d739bb4e7e9ba3940270d4e506f79d00e8a45deb7a13"
+        "fileHash": "sha256-444d7fe78fff4b4fad58c102f59899558dafdb940fa45a01d851f6bcb0522725"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
         "status": 1,
-        "version": 32,
+        "version": 33,
         "name": "RaghavAnimeKitsu",
         "internalName": "RaghavAnimeKitsu",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 664698,
+        "fileSize": 643836,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9557,7 +9512,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-e2160d5f190737e7484f864b21a4895b1e0dab668003b4ba3a47dc2f49adac73"
+        "fileHash": "sha256-5a22996a6d6af54e68c777abe53e873ebebdc47fb54b594d287bb66f8178b897"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -9585,14 +9540,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/ReAnime.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "ReAnime",
         "internalName": "ReAnime",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Re:ANIME - Anime with Sub & Dub",
-        "fileSize": 81319,
+        "fileSize": 55330,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9602,19 +9557,19 @@
         ],
         "iconUrl": "https://reanime.to/favicon-32x32.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1fc6fc54949ad105c0323e13b0fbecb07d09c880049b020dddef824ae5189cd0"
+        "fileHash": "sha256-f631644070dd5240d7aabf846a27e1df0fff2545542cd878859e0d9a5e5e0cfa"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "Senshi",
         "internalName": "Senshi",
         "authors": [
           "raghav"
         ],
         "description": "Anime with sub & dub, multi-language subtitles",
-        "fileSize": 108324,
+        "fileSize": 109156,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9624,7 +9579,7 @@
         ],
         "iconUrl": "https://senshi.to/assets/Senshi_Logo-D4bDbCzd.png",
         "apiVersion": 1,
-        "fileHash": "sha256-898653a74626c8d29998d193516476bbb8284a29d3d90e6d217df3ef5690fa0f"
+        "fileHash": "sha256-2b0f83f8e1ff4a4f95be90d2af3faba75a233ebe92b153586bb1135a95716709"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamedPk.cs3",
@@ -9677,7 +9632,7 @@
           "KSHITIJ8473"
         ],
         "description": "cartoons and anime in hindi, english and japanese sub",
-        "fileSize": 81082,
+        "fileSize": 87088,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
@@ -9688,7 +9643,7 @@
         ],
         "iconUrl": "https://toonix.bond/icon.png?df3a3feb46702fd9",
         "apiVersion": 1,
-        "fileHash": "sha256-6f286dd0fd657bb1d0a519e6408e77a0337c9414d68e8874de0a789f9d1a55ef"
+        "fileHash": "sha256-206a3b8d27b091d5f270152c8c92f6811e40363a111dcd1ff0ff76c448ad8698"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
@@ -9736,6 +9691,27 @@
         "iconUrl": "https://wallpapers.com/images/hd/anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.jpg",
         "apiVersion": 1,
         "fileHash": "sha256-bfbad54602019424e7fda9f6b99ac734f8fb3775a9afcccc5590861f0ab6d25a"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "VegaMovies",
+        "internalName": "VegaMovies",
+        "authors": [
+          "KSHITIJ8473"
+        ],
+        "description": "Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer",
+        "fileSize": 82654,
+        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://new1.vegamovies.lease/images/logom.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-7c3bdee0938dc8eca348ea9e7678ea1e34deaf83223d6bc598f81c5d7b9cdbe2"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
@@ -9911,10 +9887,10 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkAfterDark.png",
-        "fileHash": "sha256-f2bf8314926adfb8cb6bde70c999ffc6fbf7fa32b09ab4554ddaec77734b6322",
+        "fileHash": "sha256-06855c0a4420215a9baf684fef0c3e19de630f86f8191a41e234be4120926729",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 204499,
+        "fileSize": 220474,
         "status": 3,
         "language": "fr",
         "authors": [
@@ -9924,7 +9900,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 105,
+        "version": 109,
         "internalName": "AfterDark",
         "description": "AfterDark - vérification + lancement de vidéo automatique",
         "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/AfterDark.cs3",
@@ -10378,7 +10354,28 @@
         "fileSize": 28551
       },
       {
-        "version": 3,
+        "version": 1,
+        "internalName": "SimpMusic",
+        "name": "SimpMusic",
+        "pluginClassName": "com.allforu.SimpMusicPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Music"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v1.cs3",
+        "description": "SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)",
+        "iconUrl": "https://www.simpmusic.org/logo.png",
+        "fileHash": "sha256-59de6880886a2152db240bdfaafb8e509119904ed26c4ea3803cadb6fa2d40e8",
+        "fileSize": 47533
+      },
+      {
+        "version": 4,
         "internalName": "EgyBest",
         "name": "EgyBest",
         "pluginClassName": "com.allforu.EgyBestPlugin",
@@ -10393,11 +10390,11 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v4.cs3",
         "description": "EgyBest - Arabic movies & series (افلام و مسلسلات)",
-        "iconUrl": "https://egybest.la/favicon/icon-192x192.png",
-        "fileHash": "sha256-5bd56ff70dac53d3d3bda551a05cffa106d61103ac2cf6de6b9b642482092cfd",
-        "fileSize": 28991
+        "iconUrl": "https://egybest.co.in/favicon/icon-192x192.png",
+        "fileHash": "sha256-d7ce977e2220940e36245d2992d3c296e7773bd5ff832cd2715f86fc8232157e",
+        "fileSize": 29976
       },
       {
         "version": 4,
@@ -10666,6 +10663,27 @@
         "iconUrl": "https://hdmozi.hu/wp-content/uploads/2024/07/3D-smile-2.jpg",
         "fileHash": "sha256-f9e6f0c61dbceb240f553f30cf9184ad0067af61cb87a43d646f577615d79557",
         "fileSize": 31895
+      },
+      {
+        "version": 1,
+        "internalName": "Dizipal",
+        "name": "Dizipal",
+        "pluginClassName": "com.allforu.DizipalPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "tr",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Dizipal-v1.cs3",
+        "description": "Dizipal - Türkçe altyazılı ve dublajlı yabancı diziler (Turkish subs & dubs)",
+        "iconUrl": "https://dizipal1453.com/wp-content/uploads/2026/04/dpalsymbol.png",
+        "fileHash": "sha256-6275f7fc46b7149817938d6adb5e5a5a173fac21fbc4136e421cbeb8993c301c",
+        "fileSize": 32466
       },
       {
         "version": 1,

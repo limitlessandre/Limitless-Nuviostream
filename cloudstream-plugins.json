@@ -1060,14 +1060,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
     "status": 1,
-    "version": 4,
+    "version": 5,
     "name": "GoTaku",
     "internalName": "GoTaku",
     "authors": [
       "raghav"
     ],
     "description": "Hardsub and dub from Gotaku",
-    "fileSize": 64443,
+    "fileSize": 65469,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1077,7 +1077,7 @@
     ],
     "iconUrl": "https://gotaku.to/images/icons/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-722d19dcd8af243530d653d8e09a195fbdfdfe49456abe00663df56f0f850522"
+    "fileHash": "sha256-ab6a31d27c01416850c6a3a4d5f74947f20b3098e2dd6c6522213caec1b13c66"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
@@ -1185,14 +1185,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 22,
+    "version": 27,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-    "fileSize": 515259,
+    "fileSize": 539363,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1201,7 +1201,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-890e14e52874b628f371502446f8c73c3614f238426fac399d5ee0f0c28bd980"
+    "fileHash": "sha256-1b8621355d27892b5b75defb2b62c5008643c0d2e5b19eb26d7bad903e895a63"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -1586,7 +1586,7 @@
       "KSHITIJ8473"
     ],
     "description": "Movies, shows, cartoons and anime in HD",
-    "fileSize": 77829,
+    "fileSize": 78045,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1598,7 +1598,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/RVADHx9LB0v5T0icvbhDrnVN32jrNMGG6MpDKWnHK6uPIQESx0yIIbQNQBCj_GcX42HqnQ6Bf1sfkTKDMSrnQQ=w240-h480-rw",
     "apiVersion": 1,
-    "fileHash": "sha256-44b495bbe7df483460b9b5010f2397195ef876f0e40e0d6c28ad4a45cddabf41"
+    "fileHash": "sha256-a6be77ae720eb7fc3c35036b2b6eeaa64fa8bb683383313f29b40ce0834d1cd3"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
@@ -1890,14 +1890,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
     "status": 1,
-    "version": 81,
+    "version": 82,
     "name": "RaghavAnime",
     "internalName": "RaghavAnime",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 676753,
+    "fileSize": 656181,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1907,19 +1907,19 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-f77121277e1e0a7081e6d739bb4e7e9ba3940270d4e506f79d00e8a45deb7a13"
+    "fileHash": "sha256-444d7fe78fff4b4fad58c102f59899558dafdb940fa45a01d851f6bcb0522725"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
     "status": 1,
-    "version": 32,
+    "version": 33,
     "name": "RaghavAnimeKitsu",
     "internalName": "RaghavAnimeKitsu",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-    "fileSize": 664698,
+    "fileSize": 643836,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1929,7 +1929,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-e2160d5f190737e7484f864b21a4895b1e0dab668003b4ba3a47dc2f49adac73"
+    "fileHash": "sha256-5a22996a6d6af54e68c777abe53e873ebebdc47fb54b594d287bb66f8178b897"
   },
   {
     "internalName": "Reanime",
@@ -1980,14 +1980,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
     "status": 1,
-    "version": 8,
+    "version": 9,
     "name": "Senshi",
     "internalName": "Senshi",
     "authors": [
       "raghav"
     ],
     "description": "Anime with sub & dub, multi-language subtitles",
-    "fileSize": 108324,
+    "fileSize": 109156,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1997,7 +1997,7 @@
     ],
     "iconUrl": "https://senshi.to/assets/Senshi_Logo-D4bDbCzd.png",
     "apiVersion": 1,
-    "fileHash": "sha256-898653a74626c8d29998d193516476bbb8284a29d3d90e6d217df3ef5690fa0f"
+    "fileHash": "sha256-2b0f83f8e1ff4a4f95be90d2af3faba75a233ebe92b153586bb1135a95716709"
   },
   {
     "name": "SeriousSam",
@@ -2065,6 +2065,27 @@
     "iconUrl": "https://eu.simkl.in/img_favicon/v2/favicon-192x192.png",
     "apiVersion": 1,
     "fileHash": "sha256-a11f30544c4c0754aed0cd649c8c2205c0907a7edc6b45621217338f46043f9e"
+  },
+  {
+    "version": 1,
+    "internalName": "SimpMusic",
+    "name": "SimpMusic",
+    "pluginClassName": "com.allforu.SimpMusicPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Music"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v1.cs3",
+    "description": "SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)",
+    "iconUrl": "https://www.simpmusic.org/logo.png",
+    "fileHash": "sha256-59de6880886a2152db240bdfaafb8e509119904ed26c4ea3803cadb6fa2d40e8",
+    "fileSize": 47533
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=skillshare.com&sz=%size%",
@@ -2200,7 +2221,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 2060358,
+    "fileSize": 2038526,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2213,7 +2234,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-948eb8168439a49ba961586a95d25c539d7fcc9a5b0c15afc0a4bb99397a44c7"
+    "fileHash": "sha256-2c9be0404fe4527a70824a17740f8a0f2b3906b74fdf759600e7475364e4ab5c"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2509,6 +2530,27 @@
     "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/UHDmoviesProvider/icon.png",
     "apiVersion": 1,
     "fileHash": "sha256-c6b0a38398b55b93934a61236aba5e0dc69b791efe3cb2e7526ff1cbb34de5fc"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
+    "status": 1,
+    "version": 2,
+    "name": "VegaMovies",
+    "internalName": "VegaMovies",
+    "authors": [
+      "KSHITIJ8473"
+    ],
+    "description": "Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer",
+    "fileSize": 82654,
+    "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "iconUrl": "https://new1.vegamovies.lease/images/logom.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-7c3bdee0938dc8eca348ea9e7678ea1e34deaf83223d6bc598f81c5d7b9cdbe2"
   },
   {
     "iconUrl": "https://editorialge.com/wp-content/uploads/2023/07/Watch32..jpg",

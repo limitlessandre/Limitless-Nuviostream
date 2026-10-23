@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 363,
+  "excluded_count": 366,
   "excluded": [
     {
       "internalName": "Rate",
@@ -1498,6 +1498,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Dizipal",
+      "name": "Dizipal",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Dizipal-v1.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DocumaniaTVProvider",
       "name": "DocumaniaTVProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -1718,7 +1732,7 @@
       "normalizedLanguages": [
         "ar"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v3.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v4.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3398,6 +3412,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "OnlineSerieTV",
+      "name": "OnlineSerieTV",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/OnlineSerieTV.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Oploverz",
       "name": "Oploverz",
       "source": "Indostream Repo",
@@ -4728,6 +4756,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Wrapped",
+      "name": "Wrapped",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Wrapped.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "XonProvider",
       "name": "XonProvider",
       "source": "CNC Repo(All Language)",
@@ -4942,7 +4978,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 25,
+  "unknown_language_metadata_count": 26,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -5090,6 +5126,13 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/ViStreamProvider.cs3"
+    },
+    {
+      "internalName": "Wrapped",
+      "name": "Wrapped",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Wrapped.cs3"
     },
     {
       "internalName": "XtreamIPTVProvider",

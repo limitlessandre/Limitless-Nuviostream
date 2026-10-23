@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 130,
-  "no_obvious_native_overlap_count": 127,
+  "cloudstream_provider_count": 132,
+  "no_obvious_native_overlap_count": 129,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 3,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -1192,7 +1192,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1355,7 +1355,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 81,
+      "version": 82,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1379,7 +1379,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 32,
+      "version": 33,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1403,7 +1403,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1834,6 +1834,29 @@
       ]
     },
     {
+      "internalName": "VegaMovies",
+      "name": "VegaMovies",
+      "description": "Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.471,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Watch32",
       "name": "Watch32",
       "description": "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.",
@@ -2072,7 +2095,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 22,
+      "version": 27,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2308,6 +2331,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.364,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "SimpMusic",
+      "name": "SimpMusic",
+      "description": "SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)",
+      "language": "en",
+      "tvTypes": [
+        "Music"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v1.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "utility-or-review",

@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **130**  
-No obvious native overlap: **127**  
+Filtered CloudStream providers: **132**  
+No obvious native overlap: **129**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **3**
 
@@ -91,6 +91,7 @@ Exact/alias overlap: **3**
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
 - **TheMoviesFlix** (`TheMoviesFlix`) — en; Movie, TvSeries — stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider
 - **UHDmoviesProvider** (`UHDmoviesProvider`) — en; Movie, TvSeries — Indian Multi-language 4K Provider
+- **VegaMovies** (`VegaMovies`) — en; Movie, TvSeries — Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer
 - **Watch32** (`Watch32`) — en; Movie, TvSeries — Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.
 - **YoTurkish** (`YoTurkish`) — en; TvSeries — YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to
 - **YTS** (`YTS`) — en; Movie, Torrent — YTS Movies 4K Support (Torrent)
@@ -116,6 +117,7 @@ Exact/alias overlap: **3**
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
+- **SimpMusic** (`SimpMusic`) — en; Music — SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)
 - **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
 - **WatchParty** (`WatchParty`) — en; All — Synchronized Watch Party: Watch movies and series together with real-time playback sync, persistent chat window, and host moderation.

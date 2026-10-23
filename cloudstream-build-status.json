@@ -5,13 +5,13 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 541,
-  "eligible_plugin_entries_before_dedupe": 139,
-  "unique_plugins": 130,
+  "raw_plugin_entries": 542,
+  "eligible_plugin_entries_before_dedupe": 141,
+  "unique_plugins": 132,
   "duplicate_groups": 8,
-  "language_filtered_entries": 363,
-  "unknown_language_metadata_entries": 25,
-  "inactive_filtered_entries": 39,
+  "language_filtered_entries": 366,
+  "unknown_language_metadata_entries": 26,
+  "inactive_filtered_entries": 35,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -119,7 +119,7 @@
       "name": "DieGon Repository",
       "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
       "status": "ok",
-      "plugins": 20,
+      "plugins": 21,
       "verified": false
     },
     {
@@ -140,7 +140,7 @@
       "name": "Indostream Repo",
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "status": "ok",
-      "plugins": 28,
+      "plugins": 25,
       "verified": false
     },
     {
@@ -189,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 34,
+      "plugins": 35,
       "verified": false
     },
     {
@@ -210,7 +210,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 33,
+      "plugins": 35,
       "verified": false
     },
     {
