@@ -4187,7 +4187,7 @@
           "Abodabodd"
         ],
         "description": "⚠️ تنبيه: يُرجى استخدام VPN لتجنب حظر عنوان الـ IP الخاص بك",
-        "fileSize": 49245,
+        "fileSize": 49807,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4197,7 +4197,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/AnimeRift/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-4303b7122dda9da84628eb377e0e8b402edd58b2d7365c8e457d1e1452812624"
+        "fileHash": "sha256-986a25407da636b4dd1656712b594ca4f4daba02448103661818edd9dc61ed1e"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Animewitcher.cs3",
@@ -4927,7 +4927,7 @@
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134673,
+        "fileSize": 134671,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -4937,7 +4937,7 @@
         ],
         "iconUrl": "https://www.animeunity.to/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f98617c6ce28e1135ac74abb0de9d272d8ae1d94b451bf4f4b67fb411ace6eff"
+        "fileHash": "sha256-d6ecd470e517a506735785ccdb8f8896ac8b8e22f7b75d485d885d99c0f12065"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -5117,14 +5117,14 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamCenter.cs3",
         "status": 1,
-        "version": 11,
+        "version": 12,
         "name": "StreamCenter",
         "internalName": "StreamCenter",
         "authors": [
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 1715295,
+        "fileSize": 5531883,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -5138,7 +5138,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-7aee81f915a5aa7cd1327ece5f70e4866853b935feeba28b820ac0aa0b06799c"
+        "fileHash": "sha256-069e7b47696ee043711a91604ee1fd16dda9bcc25b6dae16a7d3a4ffec1e514f"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -6368,14 +6368,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/AnimeSail.cs3",
         "status": 1,
-        "version": 20,
+        "version": 21,
         "name": "AnimeSail",
         "internalName": "AnimeSail",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming anime subtitle Indonesia terlengkap dari AnimeSail.",
-        "fileSize": 28678,
+        "fileSize": 28861,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6385,7 +6385,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=anisail.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-066175c56a82dc9f8d88ac7327ad1334941607076469e49949fe2f856a2c3dc9"
+        "fileHash": "sha256-69df3073a02c8a1119a50c5ae3b46b628f4af81109184fdca6daeee8f41ed7bc"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Anoboy.cs3",
@@ -9887,10 +9887,10 @@
     "plugins": [
       {
         "iconUrl": "https://raw.githubusercontent.com/yorik100/Cloudstream/refs/heads/main/icons/KeepLinkAfterDark.png",
-        "fileHash": "sha256-06855c0a4420215a9baf684fef0c3e19de630f86f8191a41e234be4120926729",
+        "fileHash": "sha256-e01d647d1cc0c093b7d8a2e4bdcc5071298aa833b4e48ac22ba10085a46c97e8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/yorik100/Cloudstream",
-        "fileSize": 220474,
+        "fileSize": 220997,
         "status": 3,
         "language": "fr",
         "authors": [
@@ -9900,7 +9900,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 109,
+        "version": 110,
         "internalName": "AfterDark",
         "description": "AfterDark - vérification + lancement de vidéo automatique",
         "url": "https://raw.githubusercontent.com/yorik100/Cloudstream/builds/AfterDark.cs3",
@@ -10354,7 +10354,7 @@
         "fileSize": 28551
       },
       {
-        "version": 1,
+        "version": 5,
         "internalName": "SimpMusic",
         "name": "SimpMusic",
         "pluginClassName": "com.allforu.SimpMusicPlugin",
@@ -10368,11 +10368,11 @@
           "Music"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v1.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v5.cs3",
         "description": "SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)",
         "iconUrl": "https://www.simpmusic.org/logo.png",
-        "fileHash": "sha256-59de6880886a2152db240bdfaafb8e509119904ed26c4ea3803cadb6fa2d40e8",
-        "fileSize": 47533
+        "fileHash": "sha256-9c88a1fc85ed28b58ea2a2d2edad52d5ceec6ef431aaaee027c7dc9ebadaf168",
+        "fileSize": 56740
       },
       {
         "version": 4,
