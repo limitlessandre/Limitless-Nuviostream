@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 366,
+  "excluded_count": 368,
   "excluded": [
     {
       "internalName": "Rate",
@@ -2650,7 +2650,7 @@
       "normalizedLanguages": [
         "es"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v4.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v5.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2763,6 +2763,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/LayarKacaProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "LiveTgTv",
+      "name": "LiveTgTv",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTgTv.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4855,6 +4869,20 @@
         "ru"
       ],
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v3.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ZDF",
+      "name": "ZDF",
+      "source": "German providers repository",
+      "sourceRepo": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
+      "language": [
+        "de"
+      ],
+      "normalizedLanguages": [
+        "de"
+      ],
+      "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/ZDF.cs3",
       "reason": "no-allowed-language"
     },
     {

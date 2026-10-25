@@ -5,11 +5,11 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 542,
+  "raw_plugin_entries": 544,
   "eligible_plugin_entries_before_dedupe": 141,
   "unique_plugins": 132,
   "duplicate_groups": 8,
-  "language_filtered_entries": 366,
+  "language_filtered_entries": 368,
   "unknown_language_metadata_entries": 26,
   "inactive_filtered_entries": 35,
   "meta_plugin_entries_filtered": 0,
@@ -133,7 +133,7 @@
       "name": "German providers repository",
       "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/refs/heads/master/repo.json",
       "status": "ok",
-      "plugins": 24,
+      "plugins": 25,
       "verified": false
     },
     {
@@ -189,7 +189,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 35,
+      "plugins": 36,
       "verified": false
     },
     {

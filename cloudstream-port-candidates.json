@@ -398,7 +398,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 4,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -448,7 +448,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -473,7 +473,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -500,7 +500,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 18,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -550,7 +550,7 @@
         "TvSeries",
         "Torrent"
       ],
-      "version": 23,
+      "version": 24,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -695,7 +695,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 14,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -743,7 +743,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -815,7 +815,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -958,7 +958,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1029,7 +1029,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1053,7 +1053,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 7,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1099,7 +1099,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anv.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1192,7 +1192,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1263,7 +1263,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1355,7 +1355,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 82,
+      "version": 84,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1379,7 +1379,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 33,
+      "version": 35,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1403,7 +1403,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1449,7 +1449,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1473,7 +1473,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 1,
+      "version": 2,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1796,7 +1796,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 22,
+      "version": 23,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1842,7 +1842,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2095,7 +2095,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 27,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2167,7 +2167,7 @@
         "TvSeries",
         "Live"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2214,7 +2214,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 25,
+      "version": 26,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2281,7 +2281,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 40,
+      "version": 41,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2369,7 +2369,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 12,
+      "version": 13,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/StreamedPk.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
