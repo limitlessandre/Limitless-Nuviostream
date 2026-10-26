@@ -33,6 +33,40 @@
       }
     ]
   },
+  "internal:anipm": {
+    "chosen": {
+      "internalName": "AniPM",
+      "name": "AniPM",
+      "version": 8,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "AniPM",
+        "name": "AniPM",
+        "version": 8,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3"
+      },
+      {
+        "internalName": "AniPm",
+        "name": "AniPm",
+        "version": 1,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniPm.cs3"
+      }
+    ]
+  },
   "internal:anizone": {
     "chosen": {
       "internalName": "Anizone",
@@ -173,7 +207,7 @@
     "chosen": {
       "internalName": "NetNaija",
       "name": "NetNaija",
-      "version": 19,
+      "version": 20,
       "language": "en",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -184,7 +218,7 @@
       {
         "internalName": "NetNaija",
         "name": "NetNaija",
-        "version": 19,
+        "version": 20,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -262,7 +296,7 @@
       {
         "internalName": "ReAnime",
         "name": "ReAnime",
-        "version": 6,
+        "version": 7,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 368,
+  "excluded_count": 370,
   "excluded": [
     {
       "internalName": "Rate",
@@ -3524,6 +3524,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "PelishaxPro",
+      "name": "PelishaxPro",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "es"
+      ],
+      "normalizedLanguages": [
+        "es"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PelishaxPro-v4.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "PelispediaProvider",
       "name": "PelispediaProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -4293,6 +4307,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TamilTvToons",
+      "name": "TamilTvToons",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/TamilTvToons-v2.cs3",
       "reason": "no-allowed-language"
     },
     {
