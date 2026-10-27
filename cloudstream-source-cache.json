@@ -191,10 +191,10 @@
     "plugins": [
       {
         "iconUrl": "https://animeon.club/assets/images/short-logo.png",
-        "fileHash": "sha256-e707c5704f4b07befbf5e30fe6692436d36f1112a976935b2749287fcda8224c",
+        "fileHash": "sha256-3207f89f57074cc912f9fc29351aa5cf36391da39b4324dd38d0c2da3bcb96ef",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 126784,
+        "fileSize": 127420,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -206,7 +206,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "version": 42,
+        "version": 43,
         "internalName": "AnimeONProvider",
         "description": "AnimeON - Дивитися аніме україньскою",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/AnimeONProvider.cs3",
@@ -1185,7 +1185,7 @@
           "Phisher98"
         ],
         "description": "AniPm - Watch Anime Online Free",
-        "fileSize": 104803,
+        "fileSize": 107763,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1195,7 +1195,7 @@
         ],
         "iconUrl": "https://a.favicon.im/ani.pm?larger=true",
         "apiVersion": 1,
-        "fileHash": "sha256-3c500f351c34ca8d6be59d0b7110c60aca00b20bfff18d6431c7aaca68a02fb8"
+        "fileHash": "sha256-469050c224f0445d3362cbe0ea68d86f1d4c65fac110ee5d9892df25dc79e19e"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -1949,14 +1949,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 38,
+        "version": 39,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 148989,
+        "fileSize": 153064,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1965,7 +1965,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-dcb537cef5f3dbec3e0792d690c4f4aabf4251cad1c79fdd3b1642e68fca3c5f"
+        "fileHash": "sha256-79d3b0264756c539a05438b7c92282745a1041ef2a87fbbd3bd70ccf80ebe29c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2339,7 +2339,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2064706,
+        "fileSize": 2069528,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2352,7 +2352,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-2b5ab52df0c647731cd42abd6bc8dd1cfe46fb2db4ed3f19a95b91f4ae4dd095"
+        "fileHash": "sha256-1726577c5677292ac4c7c7cb8c7e46457f509ca2a116b0972cdd1f3e96ea7b94"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2899,10 +2899,10 @@
       },
       {
         "iconUrl": "https://cricfy.pro/wp-content/uploads/2024/11/cropped-cricfytv-2.png",
-        "fileHash": "sha256-cefafae659ae0b6e345af18a7d2b2b7b5c5ff04b566377788f29b759a9439630",
+        "fileHash": "sha256-add9c368a8c267368dc9618a4c055ec6faf0316d546071a55aac5aa5df74f91c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 117945,
+        "fileSize": 117712,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2911,7 +2911,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 75,
+        "version": 76,
         "internalName": "CricifyProvider",
         "description": "Watch Live sports and TV channels",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CricifyProvider.cs3",
@@ -3063,10 +3063,10 @@
       },
       {
         "iconUrl": "https://www.livxow.site/logo.jpg",
-        "fileHash": "sha256-24b0e2b9587a028e629347a93e2c3b91e6f4d244f9d6890d367c626b057e6215",
+        "fileHash": "sha256-c57a0d6c12a298de09d1b5d8390573c4f8c6f856edf3cb0f669dbba2db81961b",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 127929,
+        "fileSize": 127811,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3075,7 +3075,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 24,
+        "version": 25,
         "internalName": "LivXowProvider",
         "description": "Watch Live Sports and TV Channels via LivXow",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LivXowProvider.cs3",
@@ -3232,10 +3232,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayFyTvProvider/playfy-tv-4.webp",
-        "fileHash": "sha256-a65dc2067fb27c78534c6ea5cbc6edce3b10b18ea52d36fd8188b65a80ae933a",
+        "fileHash": "sha256-e6a861d77f99b87e6e0dc6ba436fa407091be8b9916ac2869a13b8176e84b7d7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 108162,
+        "fileSize": 107930,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3244,7 +3244,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 18,
+        "version": 19,
         "internalName": "PlayFyProvider",
         "description": "Watch Live sports and TV channels via PlayFy",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayFyProvider.cs3",
@@ -3252,10 +3252,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PlayZTVProvider/logo.jpg",
-        "fileHash": "sha256-9d338234475f0b23a6cf68fab2447f91350fcee626ac69755828ad4e550dc9dd",
+        "fileHash": "sha256-18860301358cf5ae42c3bf21a4f3a6bc2da0cf5aec9c7aca6d1389be7147f9f4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 118998,
+        "fileSize": 118827,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3264,7 +3264,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 46,
+        "version": 47,
         "internalName": "PlayZTVProvider",
         "description": "Watch Live TV channels & sports via PlayZTV",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayZTVProvider.cs3",
@@ -3316,10 +3316,10 @@
       },
       {
         "iconUrl": "https://sktechtv.org/wp-content/uploads/2026/05/sktechtv.webp",
-        "fileHash": "sha256-ce400ccfc734adcd8173dd4ab8e4b7588298a31550e5c7b28de7f6848589c7e4",
+        "fileHash": "sha256-3f9686aea4bef9ea44885359255bc1165d3875b3ff18e5f001a20b74d51838b5",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 126069,
+        "fileSize": 125890,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3328,7 +3328,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 62,
+        "version": 63,
         "internalName": "SKTechProvider",
         "description": "Watch Live sports and TV channels via SK Tech",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SKTechProvider.cs3",
@@ -3336,10 +3336,10 @@
       },
       {
         "iconUrl": "https://sportzxlive.com/wp-content/uploads/2026/04/cropped-logo-1-2048x1611-1-1024x806.png",
-        "fileHash": "sha256-18c5b17d642d0f631f038c1c9517f81094900442dd5b570a49555137219493a5",
+        "fileHash": "sha256-4a060ff6e5a177c37b5e38bc11c32c9d63ee172003485dc5115c28ce89fecfd3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 123939,
+        "fileSize": 123765,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3348,7 +3348,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 30,
+        "version": 31,
         "internalName": "SportzxProvider",
         "description": "Watch Live Sports Events via SportzX",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SportzxProvider.cs3",
@@ -6544,14 +6544,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Idlix.cs3",
         "status": 1,
-        "version": 24,
+        "version": 28,
         "name": "Idlix",
         "internalName": "Idlix",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming film dan serial TV subtitle Indonesia terlengkap dari Idlix.",
-        "fileSize": 64897,
+        "fileSize": 73704,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6562,7 +6562,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=z2.idlixku.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-87fb3ae04d4c64b845d5c783d5f86dbe4979b68a35ce45314ee8e77feb54ecde"
+        "fileHash": "sha256-3c3b8170d0909b47467061e93990c5659b77ff25cbde9fc1c4068fc5f022e341"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/IndoTV.cs3",
@@ -9028,7 +9028,7 @@
           "Anime",
           "AnimeMovie"
         ],
-        "iconUrl": "https://www.google.com/s2/favicons?domain=anichan.net&sz=%size%",
+        "iconUrl": "https://play-lh.googleusercontent.com/YxgDK6JP2h08FlpZs__vP2otL3HKp3IXfvb9jVUt0HgWy1V9xcWbIdkH8_o9Z6QQYnRVYPatjcPTcOIpeWtI",
         "apiVersion": 1,
         "fileHash": "sha256-88712f3601c4666019cea673730537f0e146dc8d0180116d61df129ae5554371"
       },
@@ -9050,7 +9050,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://anikuro.ru/static/favicon/favicon-96x96.png",
+        "iconUrl": "https://anidap.lol/logo.png",
         "apiVersion": 1,
         "fileHash": "sha256-5cf078cd8292f5512f34c18abe7bb1310c483b576d4edc4f3d10e4c8e052bd2d"
       },
@@ -9182,7 +9182,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://anisuge.tv/assets/images/favicon.png",
+        "iconUrl": "https://animesuge.at/storage/media/2026/08/logo.png",
         "apiVersion": 1,
         "fileHash": "sha256-d967186909e978f8e871e7e2d7e02af2681e6c57fdd579bcfd6b10db58da6881"
       },
@@ -9204,7 +9204,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://aniwaves.ru/assets/images/aniwave.png",
+        "iconUrl": "https://play-lh.googleusercontent.com/F3jWPSrcSNIACoBThPkbgzWu0ejHPmlCNUTNnfOkDfTTzW027WhzhfmWaT18bYwTT9vM-gGs7bRuU8z6rqqudA",
         "apiVersion": 1,
         "fileHash": "sha256-0dcd437c206f398c09ba43c5a0ffcac84d9115c9c8c00e39ce702d4f0a7aa3f0"
       },
@@ -9288,7 +9288,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "iconUrl": "https://gotaku.to/images/icons/logo.png",
+        "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
         "apiVersion": 1,
         "fileHash": "sha256-71c127845f2fee6ea2e10c120f6e08084199206547f84c3dd44aa1e1284d0b4b"
       },
@@ -9662,7 +9662,7 @@
         "tvTypes": [
           "Live"
         ],
-        "iconUrl": "https://streamed.pk/favicon.png",
+        "iconUrl": "https://i.ytimg.com/vi/qBCn0qRCRYE/mqdefault.jpg",
         "apiVersion": 1,
         "fileHash": "sha256-78bf744db928627484b9d177d604470d8e2f58d35febbdabaff43e27e4002a9c"
       },
@@ -11628,9 +11628,9 @@
         "fileHash": "sha256-c40114f5211decfde234f3191e13a5ac04ea1fd469782926dc706b5b8f4a0097"
       },
       {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",
+        "url": "https://raw.githubusercontent.com/nilofarwitch-ux/CSX/builds/Ott.cs3",
         "status": 1,
-        "version": 7,
+        "version": 4,
         "name": "OttSource",
         "internalName": "OttSource",
         "authors": [
@@ -11646,7 +11646,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/2504929.png",
         "apiVersion": 1,
-        "fileHash": "sha256-440e892b2f4ef3e24983e2d43515331daebbbec31f98fe29fbe2c3dfa44a1811"
+        "fileHash": "sha256-c950ef0c268e00df1cfc68795015783c3c0726ba81944988757ac869d9c3c52b"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",

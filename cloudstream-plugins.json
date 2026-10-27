@@ -79,7 +79,7 @@
       "Anime",
       "AnimeMovie"
     ],
-    "iconUrl": "https://www.google.com/s2/favicons?domain=anichan.net&sz=%size%",
+    "iconUrl": "https://play-lh.googleusercontent.com/YxgDK6JP2h08FlpZs__vP2otL3HKp3IXfvb9jVUt0HgWy1V9xcWbIdkH8_o9Z6QQYnRVYPatjcPTcOIpeWtI",
     "apiVersion": 1,
     "fileHash": "sha256-88712f3601c4666019cea673730537f0e146dc8d0180116d61df129ae5554371"
   },
@@ -123,7 +123,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "iconUrl": "https://anikuro.ru/static/favicon/favicon-96x96.png",
+    "iconUrl": "https://anidap.lol/logo.png",
     "apiVersion": 1,
     "fileHash": "sha256-5cf078cd8292f5512f34c18abe7bb1310c483b576d4edc4f3d10e4c8e052bd2d"
   },
@@ -426,7 +426,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "iconUrl": "https://anisuge.tv/assets/images/favicon.png",
+    "iconUrl": "https://animesuge.at/storage/media/2026/08/logo.png",
     "apiVersion": 1,
     "fileHash": "sha256-d967186909e978f8e871e7e2d7e02af2681e6c57fdd579bcfd6b10db58da6881"
   },
@@ -448,7 +448,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "iconUrl": "https://aniwaves.ru/assets/images/aniwave.png",
+    "iconUrl": "https://play-lh.googleusercontent.com/F3jWPSrcSNIACoBThPkbgzWu0ejHPmlCNUTNnfOkDfTTzW027WhzhfmWaT18bYwTT9vM-gGs7bRuU8z6rqqudA",
     "apiVersion": 1,
     "fileHash": "sha256-0dcd437c206f398c09ba43c5a0ffcac84d9115c9c8c00e39ce702d4f0a7aa3f0"
   },
@@ -1075,7 +1075,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "iconUrl": "https://gotaku.to/images/icons/logo.png",
+    "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
     "apiVersion": 1,
     "fileHash": "sha256-71c127845f2fee6ea2e10c120f6e08084199206547f84c3dd44aa1e1284d0b4b"
   },
@@ -2186,7 +2186,7 @@
     "tvTypes": [
       "Live"
     ],
-    "iconUrl": "https://streamed.pk/favicon.png",
+    "iconUrl": "https://i.ytimg.com/vi/qBCn0qRCRYE/mqdefault.jpg",
     "apiVersion": 1,
     "fileHash": "sha256-78bf744db928627484b9d177d604470d8e2f58d35febbdabaff43e27e4002a9c"
   },
@@ -2221,7 +2221,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 2064706,
+    "fileSize": 2069528,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2234,7 +2234,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-2b5ab52df0c647731cd42abd6bc8dd1cfe46fb2db4ed3f19a95b91f4ae4dd095"
+    "fileHash": "sha256-1726577c5677292ac4c7c7cb8c7e46457f509ca2a116b0972cdd1f3e96ea7b94"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
