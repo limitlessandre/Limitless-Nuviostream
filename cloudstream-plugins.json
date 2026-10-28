@@ -1,6 +1,6 @@
 [
   {
-    "version": 8,
+    "version": 9,
     "internalName": "Rate",
     "name": "All4U Rate",
     "pluginClassName": "com.allforu.RatePlugin",
@@ -14,11 +14,11 @@
       "Movie"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v8.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v9.cs3",
     "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-    "fileHash": "sha256-35df41d810f8816845723617818b3f2d81dcebe67095ed80882aee9a52924378",
-    "fileSize": 52437
+    "fileHash": "sha256-d45bf942fa9ad43a3e205dc4d7f7ca5222dd9c86246ed43ebcb1e0a9dd4ade28",
+    "fileSize": 54059
   },
   {
     "version": 4,
@@ -591,6 +591,29 @@
     "fileHash": "sha256-d7244d846adc02b44306c952dc0e01d3dcb460f57532a4b26fd3286c6bb61842"
   },
   {
+    "version": 2,
+    "internalName": "Bilibili",
+    "name": "Bilibili",
+    "pluginClassName": "com.allforu.BilibiliPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "zh",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Others",
+      "Movie",
+      "TvSeries"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v2.cs3",
+    "description": "Bilibili - 哔哩哔哩 videos: recommendations, popular, ranking, categories & search (720P MP4)",
+    "iconUrl": "https://s1.hdslb.com/bfs/static/jinkela/long/images/512.png",
+    "fileHash": "sha256-178f8cd14a9d86fabcbba327e5eaba0073e0ef33664d4cd11d76aca4f6b34ce0",
+    "fileSize": 40927
+  },
+  {
     "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/BingeCloud/icon.png",
     "fileHash": "sha256-c84564962d2a77ef6896fc54584469eadcf7105ef30a5b1bbfd1d3eb7856df48",
     "apiVersion": 1,
@@ -855,6 +878,70 @@
     "fileSize": 3276326
   },
   {
+    "url": "https://cs.eclipsia.dpdns.org/files/06075c440e9751d3/Eclipsia.cs3",
+    "status": 1,
+    "version": 6,
+    "name": "Eclipsia",
+    "internalName": "Eclipsia",
+    "authors": [
+      "Eclipsia"
+    ],
+    "description": "Curated collection of Providers",
+    "fileSize": 434260,
+    "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-06075c440e9751d3c1dfa4de8b748da2febed31c8f10b79fb21b794a190bcde8"
+  },
+  {
+    "url": "https://cs.eclipsia.dpdns.org/files/d61b5a084c6a5292/EclipsiaAnime.cs3",
+    "status": 1,
+    "version": 4,
+    "name": "EclipsiaAnime",
+    "internalName": "EclipsiaAnime",
+    "authors": [
+      "Eclipsia"
+    ],
+    "description": "AniList & Kitsu Catalog with Anime Providers",
+    "fileSize": 306195,
+    "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+    "language": "en",
+    "tvTypes": [
+      "Anime",
+      "AnimeMovie",
+      "OVA"
+    ],
+    "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-d61b5a084c6a52923183833d847223cb64ab32b0545c7133b2c5719bb294a8ee"
+  },
+  {
+    "url": "https://cs.eclipsia.dpdns.org/files/68b0ec7df7cd9dfe/EclipsiaBDIX.cs3",
+    "status": 1,
+    "version": 2,
+    "name": "EclipsiaBDIX",
+    "internalName": "EclipsiaBDIX",
+    "authors": [
+      "Eclipsia"
+    ],
+    "description": "Bangladesh Only",
+    "fileSize": 223744,
+    "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "iconUrl": "https://cs3-server.orkestr.run/img/113e041859b58540.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-68b0ec7df7cd9dfe006e318443a0d16beb060fb3b20633516a22899953e1b24c"
+  },
+  {
     "name": "FlappyBird",
     "internalName": "FlappyBird",
     "description": "Play Flappy Bird.",
@@ -1060,14 +1147,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
     "status": 1,
-    "version": 8,
+    "version": 9,
     "name": "GoTaku",
     "internalName": "GoTaku",
     "authors": [
       "raghav"
     ],
     "description": "Hardsub and dub from Gotaku",
-    "fileSize": 65546,
+    "fileSize": 66086,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1077,7 +1164,7 @@
     ],
     "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
     "apiVersion": 1,
-    "fileHash": "sha256-71c127845f2fee6ea2e10c120f6e08084199206547f84c3dd44aa1e1284d0b4b"
+    "fileHash": "sha256-c52b1a018f1dab8db9622008736c89892438df018a63c3caab1dc260aa6107bc"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
@@ -1374,6 +1461,26 @@
     "fileSize": 4475388
   },
   {
+    "url": "https://cs.eclipsia.dpdns.org/files/a4e6e34def8eeedd/LiveSports.cs3",
+    "status": 1,
+    "version": 4,
+    "name": "LiveSports",
+    "internalName": "LiveSports",
+    "authors": [
+      "Eclipsia"
+    ],
+    "description": "Live Sports Events",
+    "fileSize": 2166153,
+    "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+    "language": "en",
+    "tvTypes": [
+      "Live"
+    ],
+    "iconUrl": "https://cs3-server.orkestr.run/img/1af19da1f4cde7ed.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-a4e6e34def8eeedd007b66fc722e46d59e83b027c259dac67b12288fd4397c24"
+  },
+  {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
     "status": 1,
     "version": 42,
@@ -1601,6 +1708,27 @@
     "fileHash": "sha256-b481fdc0b0b64a29e1db580abda59d9a54a18cf2f5ebd9ea204978e2245f243b"
   },
   {
+    "url": "https://cs.eclipsia.dpdns.org/files/0ba3a116736eccc1/NetMirror.cs3",
+    "status": 1,
+    "version": 6,
+    "name": "NetMirror",
+    "internalName": "NetMirror",
+    "authors": [
+      "Eclipsia"
+    ],
+    "description": "Netflix, Prime Video, Disney+ & more",
+    "fileSize": 85013,
+    "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+    "language": "en",
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "iconUrl": "https://cs3-server.orkestr.run/img/66620f82ee5045fb.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-0ba3a116736eccc17cfdc3c02a05f3e1510d629cd295209db69a32df9c428220"
+  },
+  {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
     "status": 1,
     "version": 20,
@@ -1645,6 +1773,28 @@
     "iconUrl": "https://netnaija.film/favicon.ico",
     "apiVersion": 1,
     "fileHash": "sha256-8ed81aa45543992f4199055eab5f987c0b08ef13328fb8969b0a2583471b7a3a"
+  },
+  {
+    "version": 2,
+    "internalName": "NextGenTV",
+    "name": "NextGenTV",
+    "pluginClassName": "com.allforu.NextGenTvPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v2.cs3",
+    "description": "NextGenTV - Live TV & IPTV: JioTV+, India Max, ZEE5, Sun NXT, Dish TV, Samsung/LG/Tablo/Vizio, Fancode (catalog picker, landscape rows)",
+    "iconUrl": "https://nextgeniptvin.pages.dev/logo.png",
+    "fileHash": "sha256-951c52d01ee8d2608f7aabff16eb7bfd7afcac89a99bdd8ba16cc741b67e6b78",
+    "fileSize": 47207
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
@@ -1890,14 +2040,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
     "status": 1,
-    "version": 91,
+    "version": 92,
     "name": "RaghavAnime",
     "internalName": "RaghavAnime",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 668600,
+    "fileSize": 669240,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1907,19 +2057,19 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-df7b027a0d131d77a75db618bcf4ff7521b4472c56277c3ffcde25738b892bfc"
+    "fileHash": "sha256-bb505b6bee1aa01abada23506ad5bc45371afb91d33bb7d3eb4bf0fb94bc5203"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
     "status": 1,
-    "version": 42,
+    "version": 43,
     "name": "RaghavAnimeKitsu",
     "internalName": "RaghavAnimeKitsu",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-    "fileSize": 656137,
+    "fileSize": 656764,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1929,7 +2079,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-8f62bac8fde539eaeefc0ea774501916538bef5ba66316fa1e729ea92f53a278"
+    "fileHash": "sha256-3710f00327ed9e2fe997cf76b28ffb933901b9acd901003cd0aa252e71174670"
   },
   {
     "internalName": "Reanime",
@@ -2129,7 +2279,7 @@
     "name": "SkymoviesHD"
   },
   {
-    "version": 5,
+    "version": 6,
     "internalName": "SmartTube",
     "name": "SmartTube",
     "pluginClassName": "com.allforu.SmartTubePlugin",
@@ -2144,11 +2294,11 @@
       "Movie"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v5.cs3",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v6.cs3",
     "description": "SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)",
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/smarttube.png",
-    "fileHash": "sha256-80fdc98e70651b0beb7dfb8431f2c792465d51350f955a623dfd3eb901adf545",
-    "fileSize": 28551
+    "fileHash": "sha256-f34cb4e10eedfc9006024982974042fb3b30bad605b7865194dda8684a742895",
+    "fileSize": 28576
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Streamed.cs3",
@@ -2213,7 +2363,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 692,
+    "version": 693,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -2221,7 +2371,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 2069528,
+    "fileSize": 2071341,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2234,7 +2384,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-1726577c5677292ac4c7c7cb8c7e46457f509ca2a116b0972cdd1f3e96ea7b94"
+    "fileHash": "sha256-07bd0c303baa8e029cc998c5a388ee8b59861a797612cdce092c055b21922b77"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

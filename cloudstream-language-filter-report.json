@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 370,
+  "excluded_count": 377,
   "excluded": [
     {
       "internalName": "Rate",
@@ -175,6 +175,20 @@
         "el"
       ],
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/An1me-v1.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Anichin",
+      "name": "Anichin",
+      "source": "Indostream Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Anichin.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -760,6 +774,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Arabdrama",
+      "name": "Arabdrama",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Arabdrama.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "ArabicToons",
       "name": "ArabicToons",
       "source": "Cartoony Repo",
@@ -771,6 +799,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/med1245/cartoonyrepo/builds/ArabicToons.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Aradrama",
+      "name": "Aradrama",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Aradrama.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -813,6 +855,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aia2tv 2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AsiaShow",
+      "name": "AsiaShow",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/AsiaShow.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1904,20 +1960,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "FilmFly",
-      "name": "FilmFly",
-      "source": "Desi Extensions",
-      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/FilmFly.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "FilmFrei24",
       "name": "FilmFrei24",
       "source": "German providers repository",
@@ -1971,6 +2013,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fivemovierulz.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FiveTV",
+      "name": "FiveTV",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/FiveTV.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2105,6 +2161,20 @@
         "es"
       ],
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Hackstore.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "HayyaShoot",
+      "name": "HayyaShoot",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/HayyaShoot.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3492,7 +3562,21 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/nilofarwitch-ux/CSX/builds/Ott.cs3",
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "OurDrama",
+      "name": "OurDrama",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/OurDrama.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4237,6 +4321,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Syria-live.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Takkiadrama",
+      "name": "Takkiadrama",
+      "source": "SM-ARB",
+      "sourceRepo": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Takkiadrama.cs3",
       "reason": "no-allowed-language"
     },
     {

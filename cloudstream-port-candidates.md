@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **132**  
-No obvious native overlap: **129**  
+Filtered CloudStream providers: **139**  
+No obvious native overlap: **135**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **3**
+Exact/alias overlap: **4**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -60,6 +60,7 @@ Exact/alias overlap: **3**
 - **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
 - **Comix** (`Comix`) — en; Anime, Others — Comix - Read manhwa, manhua & manga online (premium in-app reader)
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
+- **EclipsiaAnime** (`EclipsiaAnime`) — en; Anime, AnimeMovie, OVA — AniList & Kitsu Catalog with Anime Providers
 - **GoTaku** (`GoTaku`) — en; Anime, AnimeMovie, OVA — Hardsub and dub from Gotaku
 - **HiAnime** (`HiAnime`) — en; Anime, OVA
 - **Kickassanime** (`Kickassanime`) — en; AnimeMovie, Anime, OVA
@@ -79,8 +80,11 @@ Exact/alias overlap: **3**
 - **All4U Rate** (`Rate`) — en; Movie — All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)
 - **AllOtt** (`AllOtt`) — en; Movie, TvSeries — AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
+- **Bilibili** (`Bilibili`) — zh; Others, Movie, TvSeries — Bilibili - 哔哩哔哩 videos: recommendations, popular, ranking, categories & search (720P MP4)
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
 - **DiviCast** (`DiviCast`) — en; Movie, TvSeries — Watch movies and TV series from DiviCast
+- **Eclipsia** (`Eclipsia`) — en; Movie, TvSeries — Curated collection of Providers
+- **EclipsiaBDIX** (`EclipsiaBDIX`) — en; Movie, TvSeries — Bangladesh Only
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
@@ -110,10 +114,12 @@ Exact/alias overlap: **3**
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.
+- **NextGenTV** (`NextGenTV`) — en; Movie, TvSeries — NextGenTV - Live TV & IPTV: JioTV+, India Max, ZEE5, Sun NXT, Dish TV, Samsung/LG/Tablo/Vizio, Fancode (catalog picker, landscape rows)
 - **SmartTube** (`SmartTube`) — en; Others, Movie — SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
+- **LiveSports** (`LiveSports`) — en; Live — Live Sports Events
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
@@ -158,3 +164,4 @@ None.
 - **KisskhProvider** (`KisskhProvider`) — en; AsianDrama, TvSeries, Anime, Movie — native match: KissKH
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: KissKH
 - **Re:ANIME** (`Reanime`) — en; AnimeMovie, Anime, OVA — Re:ANIME - Stream anime free online (sub & dub, multi-quality) — native match: Re:ANIME
+- **NetMirror** (`NetMirror`) — en; Movie, TvSeries — Netflix, Prime Video, Disney+ & more — native match: NetMirror

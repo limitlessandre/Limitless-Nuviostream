@@ -1,17 +1,17 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 31,
-  "repositories_loaded": 29,
+  "repository_database_entries": 34,
+  "repositories_loaded": 32,
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 547,
-  "eligible_plugin_entries_before_dedupe": 142,
-  "unique_plugins": 132,
+  "raw_plugin_entries": 569,
+  "eligible_plugin_entries_before_dedupe": 149,
+  "unique_plugins": 139,
   "duplicate_groups": 9,
-  "language_filtered_entries": 370,
+  "language_filtered_entries": 377,
   "unknown_language_metadata_entries": 26,
-  "inactive_filtered_entries": 35,
+  "inactive_filtered_entries": 43,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -141,7 +141,7 @@
       "name": "Indostream Repo",
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "status": "ok",
-      "plugins": 25,
+      "plugins": 26,
       "verified": false
     },
     {
@@ -211,7 +211,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 37,
+      "plugins": 39,
       "verified": false
     },
     {
@@ -232,7 +232,28 @@
       "name": "Desi Extensions",
       "url": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
       "status": "ok",
-      "plugins": 23,
+      "plugins": 22,
+      "verified": false
+    },
+    {
+      "name": "Eclipsia",
+      "url": "https://cs.eclipsia.dpdns.org/repo.json",
+      "status": "ok",
+      "plugins": 5,
+      "verified": false
+    },
+    {
+      "name": "aslafy-z CloudStream plugins - Stable",
+      "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/catalog-stable/repo.json",
+      "status": "ok",
+      "plugins": 8,
+      "verified": false
+    },
+    {
+      "name": "SM-ARB",
+      "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json",
+      "status": "ok",
+      "plugins": 7,
       "verified": false
     }
   ]

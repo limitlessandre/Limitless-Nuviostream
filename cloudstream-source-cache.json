@@ -2331,7 +2331,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 692,
+        "version": 693,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2339,7 +2339,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2069528,
+        "fileSize": 2071341,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2352,7 +2352,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-1726577c5677292ac4c7c7cb8c7e46457f509ca2a116b0972cdd1f3e96ea7b94"
+        "fileHash": "sha256-07bd0c303baa8e029cc998c5a388ee8b59861a797612cdce092c055b21922b77"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -4723,7 +4723,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 42902,
+        "fileSize": 42931,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4732,7 +4732,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ10TEG3tTtkEF9_g3IslEP3xs0wx9EVhBs7b_H5M1gpg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-0d9353f8bd3daa0d533f746aaecae5d9379302369da7f439a2c181cb0e771808"
+        "fileHash": "sha256-752af5fd56bb7cfd1f70036a31fe797d1d582c2529e6f4eda12125eee7634e68"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/TuniflexBlog.cs3",
@@ -6367,6 +6367,28 @@
     "description": "Cloudstream Indonesia Repo",
     "plugins": [
       {
+        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Anichin.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Anichin",
+        "internalName": "Anichin",
+        "authors": [
+          "TeKuma25"
+        ],
+        "description": "Nonton streaming anime terlengkap dan terupdate dari Anichin.",
+        "fileSize": 21378,
+        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
+        "language": "id",
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie",
+          "OVA"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?domain=anichin.moe&sz=%size%",
+        "apiVersion": 1,
+        "fileHash": "sha256-6349e4dcf8d00d41b807dcb9c206039b85033768fd4357f04f3b41b73fe767b6"
+      },
+      {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Animasu.cs3",
         "status": 1,
         "version": 18,
@@ -6544,14 +6566,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Idlix.cs3",
         "status": 1,
-        "version": 28,
+        "version": 29,
         "name": "Idlix",
         "internalName": "Idlix",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming film dan serial TV subtitle Indonesia terlengkap dari Idlix.",
-        "fileSize": 73704,
+        "fileSize": 74990,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6562,7 +6584,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=z2.idlixku.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-3c3b8170d0909b47467061e93990c5659b77ff25cbde9fc1c4068fc5f022e341"
+        "fileHash": "sha256-a31f69ca046ec5f69fc84fd1f1284f5a347cbce022382be91929251b9731b78a"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/IndoTV.cs3",
@@ -9273,14 +9295,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
         "status": 1,
-        "version": 8,
+        "version": 9,
         "name": "GoTaku",
         "internalName": "GoTaku",
         "authors": [
           "raghav"
         ],
         "description": "Hardsub and dub from Gotaku",
-        "fileSize": 65546,
+        "fileSize": 66086,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9290,7 +9312,7 @@
         ],
         "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
         "apiVersion": 1,
-        "fileHash": "sha256-71c127845f2fee6ea2e10c120f6e08084199206547f84c3dd44aa1e1284d0b4b"
+        "fileHash": "sha256-c52b1a018f1dab8db9622008736c89892438df018a63c3caab1dc260aa6107bc"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/HiCine.cs3",
@@ -9538,14 +9560,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
         "status": 1,
-        "version": 91,
+        "version": 92,
         "name": "RaghavAnime",
         "internalName": "RaghavAnime",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 668600,
+        "fileSize": 669240,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9555,19 +9577,19 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-df7b027a0d131d77a75db618bcf4ff7521b4472c56277c3ffcde25738b892bfc"
+        "fileHash": "sha256-bb505b6bee1aa01abada23506ad5bc45371afb91d33bb7d3eb4bf0fb94bc5203"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
         "status": 1,
-        "version": 42,
+        "version": 43,
         "name": "RaghavAnimeKitsu",
         "internalName": "RaghavAnimeKitsu",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 656137,
+        "fileSize": 656764,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9577,7 +9599,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8f62bac8fde539eaeefc0ea774501916538bef5ba66316fa1e729ea92f53a278"
+        "fileHash": "sha256-3710f00327ed9e2fe997cf76b28ffb933901b9acd901003cd0aa252e71174670"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -10041,7 +10063,7 @@
     "description": "MovieBox, Netflix, Hotstar & Prime Video — all in one",
     "plugins": [
       {
-        "version": 8,
+        "version": 9,
         "internalName": "Rate",
         "name": "All4U Rate",
         "pluginClassName": "com.allforu.RatePlugin",
@@ -10055,11 +10077,11 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v9.cs3",
         "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-35df41d810f8816845723617818b3f2d81dcebe67095ed80882aee9a52924378",
-        "fileSize": 52437
+        "fileHash": "sha256-d45bf942fa9ad43a3e205dc4d7f7ca5222dd9c86246ed43ebcb1e0a9dd4ade28",
+        "fileSize": 54059
       },
       {
         "version": 5,
@@ -10397,7 +10419,7 @@
         "fileSize": 41521
       },
       {
-        "version": 5,
+        "version": 6,
         "internalName": "SmartTube",
         "name": "SmartTube",
         "pluginClassName": "com.allforu.SmartTubePlugin",
@@ -10412,11 +10434,11 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v5.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v6.cs3",
         "description": "SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/smarttube.png",
-        "fileHash": "sha256-80fdc98e70651b0beb7dfb8431f2c792465d51350f955a623dfd3eb901adf545",
-        "fileSize": 28551
+        "fileHash": "sha256-f34cb4e10eedfc9006024982974042fb3b30bad605b7865194dda8684a742895",
+        "fileSize": 28576
       },
       {
         "version": 5,
@@ -10754,6 +10776,51 @@
         "iconUrl": "https://pelishaxpro.com/assets/img/logo.png",
         "fileHash": "sha256-c4feb293a7b71b1dee643e09ef31510736b468e92c30e9b8cfd06c1a38f2a763",
         "fileSize": 60591
+      },
+      {
+        "version": 2,
+        "internalName": "Bilibili",
+        "name": "Bilibili",
+        "pluginClassName": "com.allforu.BilibiliPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "zh",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Others",
+          "Movie",
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v2.cs3",
+        "description": "Bilibili - 哔哩哔哩 videos: recommendations, popular, ranking, categories & search (720P MP4)",
+        "iconUrl": "https://s1.hdslb.com/bfs/static/jinkela/long/images/512.png",
+        "fileHash": "sha256-178f8cd14a9d86fabcbba327e5eaba0073e0ef33664d4cd11d76aca4f6b34ce0",
+        "fileSize": 40927
+      },
+      {
+        "version": 2,
+        "internalName": "NextGenTV",
+        "name": "NextGenTV",
+        "pluginClassName": "com.allforu.NextGenTvPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v2.cs3",
+        "description": "NextGenTV - Live TV & IPTV: JioTV+, India Max, ZEE5, Sun NXT, Dish TV, Samsung/LG/Tablo/Vizio, Fancode (catalog picker, landscape rows)",
+        "iconUrl": "https://nextgeniptvin.pages.dev/logo.png",
+        "fileHash": "sha256-951c52d01ee8d2608f7aabff16eb7bfd7afcac89a99bdd8ba16cc741b67e6b78",
+        "fileSize": 47207
       },
       {
         "version": 2,
@@ -11452,28 +11519,6 @@
         "fileHash": "sha256-ceac6f2bead12bf073b5fbcac686628f12386288f5be1dc41e6eec91c1eb589b"
       },
       {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/FilmFly.cs3",
-        "status": 1,
-        "version": 27,
-        "name": "FilmFly",
-        "internalName": "FilmFly",
-        "authors": [
-          "Faisal"
-        ],
-        "description": "FilmyFly Provider for Bollywood, South Hindi Dubbed, Hollywood Movies & Web Series",
-        "fileSize": 29907,
-        "repositoryUrl": "https://github.com/Faisal0786/Desi",
-        "language": "hi",
-        "tvTypes": [
-          "Movie",
-          "TvSeries",
-          "Anime"
-        ],
-        "iconUrl": "https://img.iwebp.store/images/files/afaa901b76bc48d57a346319423035dd384208.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-f1ec51af3aa384e16db9bfb1ab947397778234fe857e9a1e97e1e9be31a1daca"
-      },
-      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Joya9.cs3",
         "status": 1,
         "version": 3,
@@ -11628,16 +11673,16 @@
         "fileHash": "sha256-c40114f5211decfde234f3191e13a5ac04ea1fd469782926dc706b5b8f4a0097"
       },
       {
-        "url": "https://raw.githubusercontent.com/nilofarwitch-ux/CSX/builds/Ott.cs3",
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/OttSource.cs3",
         "status": 1,
-        "version": 4,
+        "version": 8,
         "name": "OttSource",
         "internalName": "OttSource",
         "authors": [
           "Faisal"
         ],
         "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
-        "fileSize": 101182,
+        "fileSize": 102240,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11646,7 +11691,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/2504929.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c950ef0c268e00df1cfc68795015783c3c0726ba81944988757ac869d9c3c52b"
+        "fileHash": "sha256-2e78d8511a263be8338d695d2fbd1186cf8449c51d8b78a33eac7419d2e62122"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ReelFren.cs3",
@@ -11681,7 +11726,7 @@
           "Faisal"
         ],
         "description": "Multi language Movies and Tv shows provider",
-        "fileSize": 36885,
+        "fileSize": 36939,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11693,7 +11738,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/3a33c253fe5e25b4d61a6a8eb78da2a1.webp",
         "apiVersion": 1,
-        "fileHash": "sha256-1706c269ad4f820d38b751e2c8e7db6a3dd080913e7496dabf7687d6aa75374d"
+        "fileHash": "sha256-3da768f13f74df57b6b711febec7e759f53ecfba98af89efcf150eef465f9166"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
@@ -11752,7 +11797,7 @@
           "Faisal"
         ],
         "description": "TheMoviesFlix provider for Dual Audio, Bollywood and Hollywood Movies and TV Shows",
-        "fileSize": 63519,
+        "fileSize": 63430,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11762,7 +11807,7 @@
         ],
         "iconUrl": "https://moviesflixi.com/favicon.ico",
         "apiVersion": 1,
-        "fileHash": "sha256-399b64d8f49dea33bd0ed4a29e7dc209d0f2e497841ab3ed7c9e962e558de206"
+        "fileHash": "sha256-846e8ff9aa5563c54e08b1b69bf9aa6069868ab23d9ef61c975ddda489f1b5ac"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/vegamovies.cs3",
@@ -11807,6 +11852,430 @@
         "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
         "apiVersion": 1,
         "fileHash": "sha256-ae656085800cacc31ed0c0d47bc8fbd0f710bb498a2f5b63946155d5f2fd6887"
+      }
+    ]
+  },
+  "https://cs.eclipsia.dpdns.org/repo.json": {
+    "name": "Eclipsia",
+    "description": "Curated Collection of Providers",
+    "plugins": [
+      {
+        "url": "https://cs.eclipsia.dpdns.org/files/06075c440e9751d3/Eclipsia.cs3",
+        "status": 1,
+        "version": 6,
+        "name": "Eclipsia",
+        "internalName": "Eclipsia",
+        "authors": [
+          "Eclipsia"
+        ],
+        "description": "Curated collection of Providers",
+        "fileSize": 434260,
+        "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-06075c440e9751d3c1dfa4de8b748da2febed31c8f10b79fb21b794a190bcde8"
+      },
+      {
+        "url": "https://cs.eclipsia.dpdns.org/files/d61b5a084c6a5292/EclipsiaAnime.cs3",
+        "status": 1,
+        "version": 4,
+        "name": "EclipsiaAnime",
+        "internalName": "EclipsiaAnime",
+        "authors": [
+          "Eclipsia"
+        ],
+        "description": "AniList & Kitsu Catalog with Anime Providers",
+        "fileSize": 306195,
+        "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+        "language": "en",
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie",
+          "OVA"
+        ],
+        "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-d61b5a084c6a52923183833d847223cb64ab32b0545c7133b2c5719bb294a8ee"
+      },
+      {
+        "url": "https://cs.eclipsia.dpdns.org/files/68b0ec7df7cd9dfe/EclipsiaBDIX.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "EclipsiaBDIX",
+        "internalName": "EclipsiaBDIX",
+        "authors": [
+          "Eclipsia"
+        ],
+        "description": "Bangladesh Only",
+        "fileSize": 223744,
+        "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://cs3-server.orkestr.run/img/113e041859b58540.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-68b0ec7df7cd9dfe006e318443a0d16beb060fb3b20633516a22899953e1b24c"
+      },
+      {
+        "url": "https://cs.eclipsia.dpdns.org/files/a4e6e34def8eeedd/LiveSports.cs3",
+        "status": 1,
+        "version": 4,
+        "name": "LiveSports",
+        "internalName": "LiveSports",
+        "authors": [
+          "Eclipsia"
+        ],
+        "description": "Live Sports Events",
+        "fileSize": 2166153,
+        "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+        "language": "en",
+        "tvTypes": [
+          "Live"
+        ],
+        "iconUrl": "https://cs3-server.orkestr.run/img/1af19da1f4cde7ed.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-a4e6e34def8eeedd007b66fc722e46d59e83b027c259dac67b12288fd4397c24"
+      },
+      {
+        "url": "https://cs.eclipsia.dpdns.org/files/0ba3a116736eccc1/NetMirror.cs3",
+        "status": 1,
+        "version": 6,
+        "name": "NetMirror",
+        "internalName": "NetMirror",
+        "authors": [
+          "Eclipsia"
+        ],
+        "description": "Netflix, Prime Video, Disney+ & more",
+        "fileSize": 85013,
+        "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://cs3-server.orkestr.run/img/66620f82ee5045fb.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-0ba3a116736eccc17cfdc3c02a05f3e1510d629cd295209db69a32df9c428220"
+      }
+    ]
+  },
+  "https://github.com/aslafy-z/cloudstream-plugins/releases/download/catalog-stable/repo.json": {
+    "name": "aslafy-z CloudStream plugins - Stable",
+    "description": "Validated plugin builds.",
+    "plugins": [
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "ARTE documentaries, films, series and concerts",
+        "fileHash": "sha256-9384f720f7ddf51f6c9dc3d2bc625f3e898988bcb0c1ff76af22061510f695aa",
+        "fileSize": 22295,
+        "internalName": "ARTE",
+        "language": "fr",
+        "name": "ARTE",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/ARTE-v2026.10.22.46/ARTE.cs3",
+        "version": 46
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "France 2, France 3, France 4, France 5 and franceinfo replays",
+        "fileHash": "sha256-6a3592c334daaaa9f0730d6d2c4ddc12b9ebe4333b225a19e613aa3ae96dc1d1",
+        "fileSize": 23873,
+        "internalName": "FranceTV",
+        "language": "fr",
+        "name": "FranceTV",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/FranceTV-v2026.10.22.47/FranceTV.cs3",
+        "version": 47
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "M6+, W9, 6ter and Gulli replays with Widevine playback",
+        "fileHash": "sha256-e906c6c17914d706df56a8a43cef18779f8aaa2d841ffa378e2e17939379f76b",
+        "fileSize": 83068,
+        "internalName": "M6Plus",
+        "language": "fr",
+        "name": "M6Plus",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/M6Plus-v2026.10.22.43/M6Plus.cs3",
+        "version": 43
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "NOVO19 films, documentaries and replay series",
+        "fileHash": "sha256-d561d701cab0555ae397bb4f9449c357e9c6797f29703ad712d8b49dae0bea2e",
+        "fileSize": 23238,
+        "internalName": "Novo19",
+        "language": "fr",
+        "name": "Novo19",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/Novo19-v2026.10.22.50/Novo19.cs3",
+        "version": 50
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "RMC+ documentaries, films and replay programmes",
+        "fileHash": "sha256-91d0925a642f97b60e34552ba79f9cd1bbfdc6064a8d380bc599b6435e827db0",
+        "fileSize": 38147,
+        "internalName": "RMCPlus",
+        "language": "fr",
+        "name": "RMCPlus",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/RMCPlus-v2026.10.22.48/RMCPlus.cs3",
+        "version": 48
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "T18 programmes and Dailymotion replays",
+        "fileHash": "sha256-61b46a457ea8f1cb6b6303c1c1ffaff77ccfb53d34b00376dd496baf18771eab",
+        "fileSize": 22791,
+        "internalName": "T18",
+        "language": "fr",
+        "name": "T18",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/T18-v2026.10.22.55/T18.cs3",
+        "version": 55
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "TF1+, TMC, TFX, TF1 Series Films and LCI replays with Widevine",
+        "fileHash": "sha256-e5ef63b14b456fd2818cdb02c532fba01ffc55662ffd394845e7ee5157b075d2",
+        "fileSize": 77791,
+        "internalName": "TF1Plus",
+        "language": "fr",
+        "name": "TF1Plus",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/TF1Plus-v2026.10.22.44/TF1Plus.cs3",
+        "version": 44
+      },
+      {
+        "apiVersion": 1,
+        "authors": [
+          "aslafy-z"
+        ],
+        "description": "TV5MONDEplus films, series and documentaries",
+        "fileHash": "sha256-d7a9fc188bce0a6916191dd4e2128b24b25740169d90c94f059555ec21d6386e",
+        "fileSize": 23323,
+        "internalName": "TV5MONDEPlus",
+        "language": "fr",
+        "name": "TV5MONDEPlus",
+        "repositoryUrl": "https://github.com/aslafy-z/cloudstream-plugins",
+        "status": 3,
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "url": "https://github.com/aslafy-z/cloudstream-plugins/releases/download/TV5MONDEPlus-v2026.10.22.49/TV5MONDEPlus.cs3",
+        "version": 49
+      }
+    ]
+  },
+  "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/repo.json": {
+    "name": "SM-ARB",
+    "description": "CloudStream plugins by sagemoon1996",
+    "plugins": [
+      {
+        "fileHash": "sha256-3c689f93a05d2a345c7a8a8fa745fe2d39f5a9733a84625f7a976aa934462474",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 30003,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "Arabdrama",
+        "description": "Arabdrama Arabic streaming provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Arabdrama.cs3",
+        "name": "Arabdrama"
+      },
+      {
+        "fileHash": "sha256-ff51d26a0e5eeb750b68c417141397222860ce11fb04d495386fe41068cc1267",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 19012,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "Aradrama",
+        "description": "Aradrama Arabic streaming provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Aradrama.cs3",
+        "name": "Aradrama"
+      },
+      {
+        "fileHash": "sha256-b5e6b2b7c703fbac1bb1b51a2031938eec82f2a6ae99bacfc0cc80f18e9cb7aa",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 38814,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 2,
+        "internalName": "AsiaShow",
+        "description": "AsiaShow Arabic streaming provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/AsiaShow.cs3",
+        "name": "AsiaShow"
+      },
+      {
+        "iconUrl": "https://new61.5tv.lol/wp-content/uploads/2026/09/yjPlfO23INYLyMWr1yr7rhwJhKO.jpg",
+        "fileHash": "sha256-d8c5bb4eff9a960b34c5658189d94e3bee00bf0eb7d7354d3ee282f409ca83fb",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 35781,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "FiveTV",
+        "description": "FiveTV Arabic streaming provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/FiveTV.cs3",
+        "name": "FiveTV"
+      },
+      {
+        "iconUrl": "https://hayyashoot.com/favicon.ico",
+        "fileHash": "sha256-d07ac0e33e6c5addcd9ba39075b0b53e8c827be8404d527de5cbc873147e08b3",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 141069,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 2,
+        "internalName": "HayyaShoot",
+        "description": "HayyaShoot Arabic movies and TV series provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/HayyaShoot.cs3",
+        "name": "HayyaShoot"
+      },
+      {
+        "fileHash": "sha256-c0648886d5569ca8cee828208f6234e90fac200549e88a0b31b771b2fc5f482e",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 35552,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "OurDrama",
+        "description": "Asian drama and movies",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/OurDrama.cs3",
+        "name": "OurDrama"
+      },
+      {
+        "fileHash": "sha256-07e8c8ae8642dff6d3859fbc0db429746703f0a2279490c5dd9a6843e565fc0f",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
+        "fileSize": 23800,
+        "status": 1,
+        "language": "ar",
+        "authors": [
+          "sagemoon1996"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "Takkiadrama",
+        "description": "Takkiadrama Arabic streaming provider",
+        "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/Takkiadrama.cs3",
+        "name": "Takkiadrama"
       }
     ]
   }
