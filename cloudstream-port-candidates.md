@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **139**  
-No obvious native overlap: **135**  
+Filtered CloudStream providers: **140**  
+No obvious native overlap: **136**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -18,6 +18,7 @@ Exact/alias overlap: **4**
 - **ReelFren** (`ReelFren`) — en; Movie, TvSeries, Anime, AsianDrama — ReelFren Provide Shorts Videos From Various Providers
 - **ShowBox** (`ShowBox`) — en; AsianDrama, Anime, TvSeries, Movie — ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.
 - **TorraStream** (`TorraStream`) — en; Movie, Torrent, AsianDrama, TvSeries, Anime — #1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings
+- **HindiDrama** (`HindiDrama`) — en; AsianDrama, TvSeries, Movie — HindiDrama - Hindi-dubbed Korean, Chinese, Japanese & Indian dramas: Top 10, latest episodes, latest added, categories, search & HLS playback
 - **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
 - **Nepu** (`Nepu`) — en; Movie, TvSeries, Anime, AnimeMovie, Cartoon — Movies, shows, cartoons and anime in HD
