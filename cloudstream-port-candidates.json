@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 140,
-  "no_obvious_native_overlap_count": 136,
+  "cloudstream_provider_count": 141,
+  "no_obvious_native_overlap_count": 137,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -2452,6 +2452,28 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.438,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "PpvProvider",
+      "name": "PpvProvider",
+      "description": "Live PPV sports events and 24/7 channels",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
+      "repositoryUrl": "https://github.com/redblacker8/storm-ext",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
         "native_matches": []
       },
       "priority": "utility-or-review",

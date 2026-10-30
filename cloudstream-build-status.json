@@ -5,9 +5,9 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 570,
-  "eligible_plugin_entries_before_dedupe": 150,
-  "unique_plugins": 140,
+  "raw_plugin_entries": 571,
+  "eligible_plugin_entries_before_dedupe": 151,
+  "unique_plugins": 141,
   "duplicate_groups": 9,
   "language_filtered_entries": 377,
   "unknown_language_metadata_entries": 26,
@@ -162,7 +162,7 @@
       "name": "Storm-ext Fork by redblacker8",
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 36,
+      "plugins": 37,
       "verified": false
     },
     {

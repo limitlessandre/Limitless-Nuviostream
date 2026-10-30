@@ -2003,6 +2003,26 @@
     "fileSize": 5460456
   },
   {
+    "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "PpvProvider",
+    "internalName": "PpvProvider",
+    "authors": [
+      "redblacker8"
+    ],
+    "description": "Live PPV sports events and 24/7 channels",
+    "fileSize": 33920,
+    "repositoryUrl": "https://github.com/redblacker8/storm-ext",
+    "language": "en",
+    "tvTypes": [
+      "Live"
+    ],
+    "iconUrl": "https://ppv.st/assets/img/ppv.png",
+    "apiVersion": 1,
+    "fileHash": "sha256-1100ed3339354dbfb963ff11849899e290ccc6037710f07f5710c80d304387c0"
+  },
+  {
     "name": "PrinceOfPersia",
     "internalName": "PrinceOfPersia",
     "description": "Play Prince of Persia.",
@@ -2394,7 +2414,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 2071341,
+    "fileSize": 2079718,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2407,7 +2427,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-07bd0c303baa8e029cc998c5a388ee8b59861a797612cdce092c055b21922b77"
+    "fileHash": "sha256-fe0c8b2ac5daecaca9a7f502d0cd54e575793d7d4f64a0aae4ea20ab5abf8fcd"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

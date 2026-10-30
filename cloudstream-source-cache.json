@@ -1949,14 +1949,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 39,
+        "version": 40,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 153064,
+        "fileSize": 158960,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1965,7 +1965,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-79d3b0264756c539a05438b7c92282745a1041ef2a87fbbd3bd70ccf80ebe29c"
+        "fileHash": "sha256-7fc9c67543a684dded6a0291ce2cf758cd414917fda44575a8b23d0ed5431ec1"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2339,7 +2339,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2071341,
+        "fileSize": 2079718,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2352,7 +2352,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-07bd0c303baa8e029cc998c5a388ee8b59861a797612cdce092c055b21922b77"
+        "fileHash": "sha256-fe0c8b2ac5daecaca9a7f502d0cd54e575793d7d4f64a0aae4ea20ab5abf8fcd"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2835,11 +2835,11 @@
         "name": "CineTvProvider"
       },
       {
-        "iconUrl": "https://cinevood.chat/cinevood-logo.webp",
-        "fileHash": "sha256-dc4653a8fc4243eddffda96ffdf574f1038113b04d002dc1e0afd169397a3365",
+        "iconUrl": "https://cinevood.garden/cinevood-logo.webp",
+        "fileHash": "sha256-e9ceb0f20182208b3c19691783284e3abd5e38f35bb0a9accd3ef91dc11aca6d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 112044,
+        "fileSize": 120428,
         "status": 1,
         "language": "hi",
         "authors": [
@@ -2849,7 +2849,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 3,
+        "version": 6,
         "internalName": "CineVoodProvider",
         "description": "Bollywood, Hollywood, Hindi dubbed and South movies & series from CineVood",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineVoodProvider.cs3",
@@ -2878,10 +2878,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CNC%20Verse%20Mobile/logo.jpeg",
-        "fileHash": "sha256-e4c19e7590d8d6aaf558058fab579721d6c751856a6e36110abd629419d58a64",
+        "fileHash": "sha256-6ebd3135b4731ea7154275426570d9948011e1dec5fd600357d303f3fb683167",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 97534,
+        "fileSize": 98226,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2891,7 +2891,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 12,
+        "version": 13,
         "internalName": "CNC Verse Mobile",
         "description": "NetMirror Mobile API",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CNC Verse Mobile.cs3",
@@ -8477,6 +8477,26 @@
         "fileHash": "sha256-e71c24f03079e50a938bef0bba3649b4e698f5236ebdaeda53977fcde90e4c7d"
       },
       {
+        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "PpvProvider",
+        "internalName": "PpvProvider",
+        "authors": [
+          "redblacker8"
+        ],
+        "description": "Live PPV sports events and 24/7 channels",
+        "fileSize": 33920,
+        "repositoryUrl": "https://github.com/redblacker8/storm-ext",
+        "language": "en",
+        "tvTypes": [
+          "Live"
+        ],
+        "iconUrl": "https://ppv.st/assets/img/ppv.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-1100ed3339354dbfb963ff11849899e290ccc6037710f07f5710c80d304387c0"
+      },
+      {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/ReyDonghuaProvider.cs3",
         "status": 1,
         "version": 2,
@@ -11773,7 +11793,7 @@
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1176456,
+        "fileSize": 1179406,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -11785,7 +11805,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-9c67f95cd0daf77ad2146f82bac94ef7a8cd1abbbd5eba160c70210a2d8f76d5"
+        "fileHash": "sha256-23f7ea9b0eee4f3aaf1b1ae634599a0fd12f6acf7f8abf7d8221af4fac70a03a"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -12199,10 +12219,10 @@
         "name": "Aradrama"
       },
       {
-        "fileHash": "sha256-807c826fff1e7180af3832017fdcd8f8153c7e4f8519ee7497e37e816ecdbedb",
+        "fileHash": "sha256-58ab265d41ac40096baf4e1dc81e41194fb8a4a280cb5f7b921a2311fdfcdc59",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
-        "fileSize": 40118,
+        "fileSize": 43525,
         "status": 1,
         "language": "ar",
         "authors": [

@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **140**  
-No obvious native overlap: **136**  
+Filtered CloudStream providers: **141**  
+No obvious native overlap: **137**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -122,6 +122,7 @@ Exact/alias overlap: **4**
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LiveSports** (`LiveSports`) — en; Live — Live Sports Events
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
+- **PpvProvider** (`PpvProvider`) — en; Live — Live PPV sports events and 24/7 channels
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **SimpMusic** (`SimpMusic`) — en; Music — SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)
