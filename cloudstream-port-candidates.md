@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **141**  
-No obvious native overlap: **137**  
+Filtered CloudStream providers: **142**  
+No obvious native overlap: **138**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -30,6 +30,7 @@ Exact/alias overlap: **4**
 - **Movy** (`Movy`) — en; Movie, TvSeries, Anime, AnimeMovie — Movy - Movies and TV shows with multi-language audio (English, German, French, Hindi, Spanish, Tamil and more)
 - **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
+- **OFC Movies** (`OFC`) — en; Movie, TvSeries, Anime, AnimeMovie — OFC Movies - Movies, web series, anime & Bollywood, plus optional Live TV (1,200+ channels) with multi-audio and subtitles
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 - **WatchDrama** (`WatchDrama`) — en; TvSeries, Anime, Movie — WatchDrama — Free Short Drama Streaming
