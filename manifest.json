@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.41",
+  "version": "2.3.42",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -54,15 +54,15 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "WCO production provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and evidence-based Nexus quality/audio/subtitle labels.",
-      "version": "2.7.1",
+      "description": "Nexus-only WCO verification rebuild (device playback testing pending): player session beacon, 13s countdown, bounded busy retries, direct getvid playback, and concurrent dub/sub collection; existing title and episode safeguards retained.",
+      "version": "2.8.0",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": [
         "movie",
         "tv",
         "anime"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-production-v5.js?rev=271",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-verification-nexus-v1.js?rev=280",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
