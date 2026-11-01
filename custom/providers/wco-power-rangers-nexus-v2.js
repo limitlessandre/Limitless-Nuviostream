@@ -82,7 +82,7 @@ function patchResolver(source) {
   );
   out = out.replace(
     '    const score=scoreTitle(text,wantedName);',
-    '    const cleanTitle=text.replace(/^\\s*Season\\s*\\d+\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").replace(/^\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").trim();\n    const score=Math.max(scoreTitle(text,wantedName),scoreTitle(cleanTitle,wantedName));'
+    '    const cleanTitle=text.replace(/^\\s*Season\\s*\\d+\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").replace(/^\\s*Episode\\s*\\d+(?:\\.\\d+)?\\s*[-:–—]?\\s*/i,"").trim();\n    const score=__wcoResolverEpisodeName(cleanTitle)===__wcoResolverEpisodeName(wantedName)?100:0;'
   );
   out = out.replace(
     '    out.push({href,text,variant:forcedVariant||detected,season:explicitSeason(combined),episode:ep?Number(ep[1]):null,score});',

@@ -111,14 +111,14 @@ async function __wcoDirectSeriesCandidates(t){
       const u=o+"/anime/"+slug,r=await req(u,{headers:{"Referer":o+"/"}});if(!r.ok)continue;
       const hm=String(r.body||"").match(/<h1\\b[^>]*>([\\s\\S]*?)<\\/h1>/i),tm=String(r.body||"").match(/<title\\b[^>]*>([\\s\\S]*?)<\\/title>/i);
       const label=text((hm&&hm[1])||(tm&&tm[1])||seed),href=r.url||u,s=best(label+" "+href,t.series);
-      if(s>=70)out.push({href:href,text:label||seed,score:s});
+      if(s>=70 && String(href).replace(/[?#].*$/,"").replace(/\\/$/,"").split("/").pop()===slug){out.push({href:href,text:label||seed,score:s});return out;}
     }
     if(out.some(x=>x.score>=95))break;
   }
   return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i).slice(0,6);
 }
 const __wcoOriginalSeriesCandidates=seriesCandidates;
-seriesCandidates=async function(t){const normal=await __wcoOriginalSeriesCandidates(t);return normal&&normal.length?normal:await __wcoDirectSeriesCandidates(t);};
+seriesCandidates=async function(t){const direct=await __wcoDirectSeriesCandidates(t);return direct.length?direct:await __wcoOriginalSeriesCandidates(t);};
 `;
 }
 
@@ -160,7 +160,8 @@ function augmentSpecialSource(source) {
   const replacement = [
     'function fractionalNo(v){const s=String(v||"");let m=s.match(/\\bEpisode\\s*(\\d+\\.\\d+)\\b/i);if(!m)m=s.match(/episode[-_ ]?(\\d+\\.\\d+)(?:\\D|$)/i);return m?m[1]:"";}',
     'async function fractionalEntries(seriesUrl,wantedVariant){const base=String(seriesUrl||"").replace(/[?#].*$/,"").replace(/\\/$/,"");const lang=wantedVariant==="Sub"?"sub":"dub",u=base+"/?season=all&lang="+lang,r=await req(u,{headers:{"Referer":seriesUrl}});if(!r.ok)return[];const out=[];for(const x of links(r.body,u,null)){if(/\\/anime\\//i.test(x.href))continue;const id=x.text+" "+x.href;if(!fractionalNo(id))continue;const detected=variant(id,null),resolved=detected==="Original"?wantedVariant:detected;if(!out.some(y=>y.href===x.href))out.push({...x,variant:resolved});}return out;}',
-    'async function getStreams(inputId,mediaType,season,episode){const type=String(mediaType||"").toLowerCase()==="movie"?"movie":"tv";if(type==="tv"&&+season!==0)return[];try{const t=await target(inputId,type,season,episode);if(!t)return debug("NO TMDB TARGET",null);const parents=await seriesCandidates(t);let reason="";for(const p of parents){const matched=await entries(p.href,t),collected=[],variants=new Set();for(const e of matched){const r=await extract(e,t);if(r.streams.length){collected.push(...r.streams);variants.add(e.variant);}else if(!reason)reason=r.reason;}if(type==="tv"&&collected.length){for(const wanted of ["Dub","Sub"]){if(variants.has(wanted))continue;const frac=await fractionalEntries(p.href,wanted);if(frac.length!==1)continue;const r=await extract(frac[0],t);if(r.streams.length){collected.push(...r.streams);variants.add(frac[0].variant);}}}if(collected.length)return collected;}if(reason)return debug(reason.slice(0,140),t);return debug(parents.length?"SERIES "+parents[0].text+" • NO SPECIAL MATCH":"NO SERIES MATCH • "+t.title,t);}catch(_){return debug("RUNTIME ERROR",null);}}',
+    'async function safeExtract(e,t){try{return await extract(e,t);}catch(_){return{streams:[],reason:"EXTRACTION FAILED"};}}',
+    'async function getStreams(inputId,mediaType,season,episode){const type=String(mediaType||"").toLowerCase()==="movie"?"movie":"tv";if(type==="tv"&&+season!==0)return[];try{const t=await target(inputId,type,season,episode);if(!t)return debug("NO TMDB TARGET",null);if(type==="movie"){const films=await movieListEntries(t),ready=[];for(const e of films){if(typeof __wcoContext!=="undefined"&&__wcoContext.remaining()<17000)break;const r=await safeExtract(e,t);ready.push(...r.streams);}if(films.length)return ready;}const parents=await seriesCandidates(t);let reason="";for(const p of parents){const matched=await entries(p.href,t),collected=[],variants=new Set();for(const e of matched){const r=await safeExtract(e,t);if(r.streams.length){collected.push(...r.streams);variants.add(e.variant);}else if(!reason)reason=r.reason;}if(type==="tv"&&collected.length){for(const wanted of ["Dub","Sub"]){if(variants.has(wanted))continue;const frac=await fractionalEntries(p.href,wanted);if(frac.length!==1)continue;const r=await safeExtract(frac[0],t);if(r.streams.length){collected.push(...r.streams);variants.add(frac[0].variant);}}}if(collected.length)return collected;}if(reason)return debug(reason.slice(0,140),t);return debug(parents.length?"SERIES "+parents[0].text+" • NO SPECIAL MATCH":"NO SERIES MATCH • "+t.title,t);}catch(_){return debug("RUNTIME ERROR",null);}}',
     ''
   ].join("\n");
 

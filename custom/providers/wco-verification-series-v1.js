@@ -57,27 +57,29 @@ function normalizeFallback(rows) {
 }
 
 async function getStreams(inputId, mediaType, season, episode) {
+  const type = String(mediaType || "tv").toLowerCase();
+  let triedResolver = false;
+  async function resolveSeason() {
+    triedResolver = true;
+    const resolver = await loadModule(RESOLVER_URL, "resolver");
+    if (!resolver) return [];
+    try { return normalizeFallback(await resolver.getStreams(inputId, mediaType, season, episode)); }
+    catch (_) { return []; }
+  }
+  // The generic series title cannot identify Turbo/Zeo/etc. Prefer the existing
+  // TMDB-gated season mapper for the known Power Rangers ID, within this budget.
+  if (Number(inputId) === 2328 && type !== "movie" && Number(season) > 0) {
+    const matched = await resolveSeason();
+    if (matched.length) return matched;
+  }
   const production = await loadModule(PRODUCTION_URL, "production");
   if (!production) return [];
-
   let primary = [];
-  try {
-    primary = await production.getStreams(inputId, mediaType, season, episode);
-  } catch (_) {
-    primary = [];
-  }
+  try { primary = await production.getStreams(inputId, mediaType, season, episode); }
+  catch (_) { primary = []; }
   if (Array.isArray(primary) && primary.length) return primary;
-
-  const type = String(mediaType || "tv").toLowerCase();
-  if (type === "movie" || Number(season) === 0) return Array.isArray(primary) ? primary : [];
-
-  const resolver = await loadModule(RESOLVER_URL, "resolver");
-  if (!resolver) return Array.isArray(primary) ? primary : [];
-  try {
-    return normalizeFallback(await resolver.getStreams(inputId, mediaType, season, episode));
-  } catch (_) {
-    return Array.isArray(primary) ? primary : [];
-  }
+  if (type === "movie" || Number(season) === 0 || triedResolver) return [];
+  return await resolveSeason();
 }
 
 async function onSettings() {

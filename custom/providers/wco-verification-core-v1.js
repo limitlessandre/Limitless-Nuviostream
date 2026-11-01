@@ -170,6 +170,17 @@ async function jsonReq(url, options) {
   try { return JSON.parse(res.text); } catch (_) { return null; }
 }
 
+function isIdentityAlias(value, identityTitles) {
+  const title = normalize(value);
+  const roots = (identityTitles || []).map(normalize).filter(Boolean);
+  if (!title) return false;
+  if (roots.includes(title)) return true;
+  if (title.length < 4) return false; // Short optional acronyms are ambiguous.
+  const editions = /\b(?:kai|shippuden|lego|recap|compilation|abridged|movies?|junior|remaster(?:ed)?|redux|gyojin|barto)\b|lost girls|no regrets|final season|dai tannou/g;
+  const permitted = new Set(roots.flatMap(root => root.match(editions) || []));
+  return (title.match(editions) || []).every(edition => permitted.has(edition));
+}
+
 async function tmdbInfo(inputId, mediaType) {
   const type = String(mediaType || "tv").toLowerCase() === "movie" ? "movie" : "tv";
   const raw = String(inputId || "").trim();
@@ -180,16 +191,21 @@ async function tmdbInfo(inputId, mediaType) {
     id = Array.isArray(list) && list[0] && list[0].id ? parseInt(list[0].id, 10) : null;
   }
   if (!id) return null;
-  const data = await jsonReq(`https://api.themoviedb.org/3/${type}/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);
+  const data = await jsonReq(`https://api.themoviedb.org/3/${type}/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles,external_ids`);
   if (!data) return null;
-  const alt = type === "movie"
-    ? ((data.alternative_titles && data.alternative_titles.titles) || []).map(x => x && x.title)
-    : ((data.alternative_titles && data.alternative_titles.results) || []).map(x => x && x.title);
+  const alternatives = type === "movie"
+    ? ((data.alternative_titles && data.alternative_titles.titles) || [])
+    : ((data.alternative_titles && data.alternative_titles.results) || []);
+  // Prefer useful English/romaji aliases over arbitrary database country order.
+  const priority = x => x.iso_3166_1 === "JP" ? 0 : /^(US|GB)$/.test(x.iso_3166_1 || "") ? 1 : 2;
+  const alt = alternatives.slice().sort((a, b) => priority(a) - priority(b)).map(x => x && x.title);
   const title = type === "movie" ? (data.title || data.original_title) : (data.name || data.original_name);
   const original = type === "movie" ? data.original_title : data.original_name;
   return {
     id, type, title: title || `TMDB ${id}`,
-    titles: uniq([title, original].concat(alt)).slice(0, 6),
+    isAnime: (data.genres || []).some(g => g.id === 16) && (data.original_language === "ja" || (data.origin_country || []).includes("JP") || (data.production_countries || []).some(c => c.iso_3166_1 === "JP")),
+    identityTitles: [title, original],
+    titles: uniq([title, original].concat(alt)).filter(alias => isIdentityAlias(alias, [title, original])).slice(0, 12),
     originalLanguage: String(data.original_language || "").toLowerCase(),
     year: String(data.release_date || data.first_air_date || "").slice(0, 4)
   };
@@ -380,6 +396,11 @@ async function wcoPause(ms){
   if(ms>0)await new Promise(resolve=>setTimeout(resolve,ms));
 }
 async function playerLookup(embedUrl){
+  if (typeof __wcoContext !== "undefined") return __wcoContext.player(embedUrl,()=>playerLookupUncached(embedUrl));
+  return playerLookupUncached(embedUrl);
+}
+async function playerLookupUncached(embedUrl){
+  if(typeof __wcoContext!=="undefined" && __wcoContext.remaining()<17000)return "";
   const o=originOf(embedUrl),query=String(embedUrl||"").split("?").slice(1).join("?");
   const pid=new URLSearchParams(query).get("pid");
   if(o&&pid){
@@ -392,11 +413,11 @@ async function playerLookup(embedUrl){
       body:JSON.stringify({nonce,status:"clear",id:pid})
     });
     if(!verified.ok)return "";
-    await wcoPause(Math.max(0,13000-(Date.now()-started)));
+    await wcoPause(13000);
     const suffix=(query?query+"&":"")+"n="+encodeURIComponent(nonce);
     const headers={"Referer":embedUrl,"Origin":o};
     for(let attempt=0;attempt<3;attempt++){
-      if(attempt)await wcoPause(3000);
+      if(attempt){if(typeof __wcoContext!=="undefined"&&__wcoContext.remaining()<7000)break;await wcoPause(3000);}
       const page=await req(o+"/inc/embed/video-js.php?"+suffix,{headers});
       if(page.ok){const url=getJsonPath(page.text);if(url)return absolute(url,o);}
       if(page.status!==503)break;
@@ -582,7 +603,7 @@ function finalize(streams, info) {
   const merged = [];
   for (const stream of byMedia.values()) {
     let meta;
-    if (stream._variants.has("Dub") && stream._variants.has("Sub")) meta = { label: "Dual Audio + Subs", language: "Multi" };
+    if (stream._variants.has("Dub") && stream._variants.has("Sub")) meta = variantMeta("Original", info.originalLanguage);
     else if (stream._variants.has("Multi")) meta = { label: "Multi Audio + Subs", language: "Multi" };
     else if (stream._variants.has("Dub")) meta = variantMeta("Dub", info.originalLanguage);
     else if (stream._variants.has("Sub")) meta = variantMeta("Sub", info.originalLanguage);

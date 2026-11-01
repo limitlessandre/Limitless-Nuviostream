@@ -5,7 +5,7 @@
 // while we validate it against Power Rangers. Production WCO remains untouched.
 
 const PROVIDER_NAME = "WCO Power Rangers Nexus";
-const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco.js";
+const CORE_URL = "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-verification-core-v1.js";
 const DIAG_URL = "https://www.wcostream.tv/favicon.ico";
 let cachedCore = null;
 
@@ -58,12 +58,29 @@ function __wcoResolverSearchTitles(showTitle,seasonName){
   out.push({title:show,kind:"show"});
   return out.filter((x,i,a)=>x.title&&a.findIndex(y=>normalize(y.title)===normalize(x.title))===i);
 }
+function __wcoResolverOwns(href,pageUrl){
+  const slug=(String(pageUrl||"").match(/\/anime\/([^/?#]+)/i)||[])[1];
+  if(!slug)return false;
+  const path=String(href||"").replace(/^https?:\/\/[^/]+/i,"").split(/[?#]/)[0].toLowerCase();
+  return path.startsWith("/"+slug.toLowerCase()+"-episode-")||path.startsWith("/"+slug.toLowerCase()+"-season-");
+}
+function __wcoResolverEpisodeName(value){
+  const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+  const cleaned=String(value||"").replace(/\s+(?:SD|HD|FullHD|FHD|\d{3,4}p)\s*$/i,"")
+    .replace(/\bpart\s+(i{1,3}|iv|v|vi{1,3}|ix|x|\d+)\b/gi,(_,n)=>"part "+(roman[n.toLowerCase()]||Number(n)))
+    .replace(/\((\d+)\)\s*$/," part $1");
+  return normalize(cleaned);
+}
 async function __wcoResolverSearch(title){
   const all=[];
   for(const origin of ORIGINS){
     const page=await req(origin+"/search",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded","Origin":origin,"Referer":origin+"/"},body:"catara="+encodeURIComponent(title)+"&konuara=series"});
     if(!page.ok)continue;
     for(const item of searchLinks(page.text,origin)){
+      // This resolver is gated to TMDB 2328. A season named "Turbo" is not
+      // evidence that Turbo Dogs or Beyblade belongs to Power Rangers.
+      const family=normalize(item.title+" "+item.href.replace(/[-_]/g," "));
+      if(!/\bpower rangers\b|\bmighty morphin\b/.test(family))continue;
       const score=scoreTitle(item.title,title);
       if(score<45)continue;
       const found=all.find(x=>x.href===item.href);
@@ -86,7 +103,7 @@ function __wcoResolverNameEntries(html,pageUrl,wantedName,forcedVariant){
   while((m=re.exec(String(html||"")))&&out.length<700){
     const text=stripTags(m[2]);
     const href=absolute(m[1],pageUrl);
-    if(!href||!text||/\/anime\//i.test(href))continue;
+    if(!href||!text||/\/anime\//i.test(href)||!__wcoResolverOwns(href,pageUrl))continue;
     const combined=text+" "+href;
     if(!/episode/i.test(combined))continue;
     const score=scoreTitle(text,wantedName);
@@ -123,7 +140,7 @@ function __wcoResolverNumericEntries(html,pageUrl,wantedEpisode,forcedVariant){
   while((m=re.exec(String(html||"")))&&out.length<700){
     const text=stripTags(m[2]);
     const href=absolute(m[1],pageUrl);
-    if(!href||!text||/\/anime\//i.test(href))continue;
+    if(!href||!text||/\/anime\//i.test(href)||!__wcoResolverOwns(href,pageUrl))continue;
     const combined=text+" "+href;
     const ep=text.match(/Episode\s*(\d+(?:\.\d+)?)/i)||href.match(/episode[-_ ]?(\d+(?:\.\d+)?)/i);
     if(!ep||Number(ep[1])!==Number(wantedEpisode||1))continue;

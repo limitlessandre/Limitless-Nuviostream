@@ -182,6 +182,11 @@ async function wcoPause(ms){
   if(ms>0)await new Promise(resolve=>setTimeout(resolve,ms));
 }
 async function lookup(frame){
+  if (typeof __wcoContext !== "undefined") return __wcoContext.player(frame,()=>lookupUncached(frame));
+  return lookupUncached(frame);
+}
+async function lookupUncached(frame){
+  if(typeof __wcoContext!=="undefined" && __wcoContext.remaining()<17000)return "";
   const o=origin(frame),query=String(frame||"").split("?").slice(1).join("?");
   const pid=new URLSearchParams(query).get("pid");
   if(o&&pid){
@@ -194,11 +199,11 @@ async function lookup(frame){
       body:JSON.stringify({nonce,status:"clear",id:pid})
     });
     if(!verified.ok)return "";
-    await wcoPause(Math.max(0,13000-(Date.now()-started)));
+    await wcoPause(13000);
     const suffix=(query?query+"&":"")+"n="+encodeURIComponent(nonce);
     const headers={"Referer":frame,"Origin":o};
     for(let attempt=0;attempt<3;attempt++){
-      if(attempt)await wcoPause(3000);
+      if(attempt){if(typeof __wcoContext!=="undefined"&&__wcoContext.remaining()<7000)break;await wcoPause(3000);}
       const page=await req(o+"/inc/embed/video-js.php?"+suffix,{headers});
       if(page.ok){const url=getJsonPath(page.body);if(url)return abs(url,o);}
       if(page.status!==503)break;

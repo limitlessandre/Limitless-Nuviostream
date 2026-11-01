@@ -24,8 +24,32 @@ function meta(v,lang){if(v==="Sub")return{label:"Japanese + English Hard Subs",l
 async function req(url,opt){try{const o=opt||{},r=await fetch(url,{...o,headers:{"User-Agent":UA,"Accept":"*/*","Accept-Language":"en-US,en;q=0.9",...(o.headers||{})},skipSizeCheck:true});return{ok:!!r.ok,status:r.status||0,url:r.url||url,body:String(await r.text()||"")};}catch(_){return{ok:false,status:0,url,body:""};}}
 async function json(url){const r=await req(url);if(!r.ok)return null;try{return JSON.parse(r.body);}catch(_){return null;}}
 async function tmdbId(input,type){const r=String(input||"");if(/^\d+$/.test(r))return +r;if(!/^tt\d+$/i.test(r))return null;const d=await json(`https://api.themoviedb.org/3/find/${encodeURIComponent(r)}?api_key=${TMDB_API_KEY}&external_source=imdb_id`);const a=type==="movie"?d&&d.movie_results:d&&d.tv_results;return a&&a[0]&&a[0].id?+a[0].id:null;}
-async function target(input,type,season,episode){const id=await tmdbId(input,type);if(!id)return null;if(type==="movie"){const d=await json(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);if(!d)return null;const alt=((d.alternative_titles&&d.alternative_titles.titles)||[]).map(x=>x&&x.title).filter(Boolean);const title=d.title||d.original_title;return{title,aliases:targetAliases(title),series:roots(title,[d.original_title].concat(alt)),lang:d.original_language||"en"};}if(+season!==0)return null;const show=await json(`https://api.themoviedb.org/3/tv/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);const sp=await json(`https://api.themoviedb.org/3/tv/${id}/season/0/episode/${+(episode||1)}?api_key=${TMDB_API_KEY}`);if(!show||!sp)return null;const alt=((show.alternative_titles&&show.alternative_titles.results)||[]).map(x=>x&&x.title).filter(Boolean);return{title:`${show.name||show.original_name} • ${sp.name}`,aliases:targetAliases(sp.name),series:uniq([show.name,show.original_name].concat(alt)),lang:show.original_language||""};}
-function links(html,base,forced){const out=[],re=/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;let m;while((m=re.exec(String(html||"")))&&out.length<1400){const href=abs(m[1],base),label=text(m[2]);if(!href||!label||!allowed(href))continue;out.push({href,text:label,variant:variant(`${label} ${href}`,forced)});}return out;}
+async function target(input,type,season,episode){const id=await tmdbId(input,type);if(!id)return null;if(type==="movie"){const d=await json(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);if(!d)return null;const alt=((d.alternative_titles&&d.alternative_titles.titles)||[]).map(x=>x&&x.title).filter(Boolean);const title=d.title||d.original_title;return{title,year:String(d.release_date||"").slice(0,4),aliases:targetAliases(title),series:roots(title,[d.original_title].concat(alt)),lang:d.original_language||"en"};}if(+season!==0)return null;const show=await json(`https://api.themoviedb.org/3/tv/${id}?api_key=${TMDB_API_KEY}&append_to_response=alternative_titles`);const sp=await json(`https://api.themoviedb.org/3/tv/${id}/season/0/episode/${+(episode||1)}?api_key=${TMDB_API_KEY}`);if(!show||!sp)return null;const alt=((show.alternative_titles&&show.alternative_titles.results)||[]).map(x=>x&&x.title).filter(Boolean);return{title:`${show.name||show.original_name} • ${sp.name}`,aliases:targetAliases(sp.name),series:uniq([show.name,show.original_name].concat(alt)),lang:show.original_language||""};}
+function links(html,base,forced,limit=1400){const out=[],re=/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;let m;while((m=re.exec(String(html||"")))&&out.length<limit){const href=abs(m[1],base),label=text(m[2]);if(!href||!label||!allowed(href))continue;out.push({href,text:label,variant:variant(`${label} ${href}`,forced)});}return out;}
+// WCO's public movie index contains standalone film pages, not /anime/ series.
+// Require an exact normalized title; never infer identity from a prefix match.
+function movieIdentity(value) {
+  // OVA is an animation format label, not a different named story. Keep every
+  // non-format title word: no franchise prefixes or edition words are dropped.
+  return norm(String(value || "").replace(/\bOVA(?:\s*\d+)?\b/gi, " "));
+}
+async function movieListEntries(t) {
+  for (const index of ["/movie-list", "/ova-list"]) {
+    const r = await req(ORIGINS[0] + index);
+    if (!r.ok) continue;
+    const matches = links(r.body, r.url || ORIGINS[0], null, 10000).filter(e => {
+      if (/\/anime\//i.test(e.href)) return false;
+      return t.aliases.some(alias => movieIdentity(alias) && movieIdentity(alias) === movieIdentity(e.text));
+    });
+    if (!matches.length) continue;
+    const years = matches.map(e => (e.text.match(/\b(?:19|20)\d{2}\b/) || [])[0]);
+    const explicitYear = years.some(Boolean);
+    return matches.filter((e, i) => !explicitYear || (t.year && years[i] === t.year))
+      .filter((e, i, a) => a.findIndex(x => x.href === e.href) === i).slice(0, 4);
+  }
+  return [];
+}
+
 async function search(q){const out=[];for(const o of ORIGINS){const r=await req(`${o}/search`,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded","Origin":o,"Referer":`${o}/`},body:`catara=${encodeURIComponent(q)}&konuara=series`});if(r.ok)out.push(...links(r.body,o));}return out;}
 async function seriesCandidates(t){const out=[];for(const seed of t.series.slice(0,4)){for(const x of await search(seed)){if(!/\/anime\//i.test(x.href))continue;const s=best(`${x.text} ${x.href}`,t.series);if(s>=75)out.push({...x,score:s});}if(out.some(x=>x.score>=95))break;}return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href)===i).slice(0,6);}
 async function entries(seriesUrl,t){const base=String(seriesUrl).replace(/[?#].*$/,"").replace(/\/$/,""),out=[];for(const p of [{u:`${base}/?season=all`,v:null},{u:`${base}/?season=all&lang=dub`,v:"Dub"},{u:`${base}/?season=all&lang=sub`,v:"Sub"}]){const r=await req(p.u,{headers:{"Referer":seriesUrl}});if(!r.ok)continue;for(const x of links(r.body,p.u,p.v)){if(/\/anime\//i.test(x.href))continue;const id=`${x.text} ${x.href}`;if(!distinct(id,t.aliases))continue;out.push({...x,score:best(id,t.aliases)});}}return out.sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.href===x.href&&y.variant===x.variant)===i).slice(0,8);}
@@ -42,6 +66,11 @@ async function wcoPause(ms){
   if(ms>0)await new Promise(resolve=>setTimeout(resolve,ms));
 }
 async function lookup(frame){
+  if (typeof __wcoContext !== "undefined") return __wcoContext.player(frame,()=>lookupUncached(frame));
+  return lookupUncached(frame);
+}
+async function lookupUncached(frame){
+  if(typeof __wcoContext!=="undefined" && __wcoContext.remaining()<17000)return "";
   const o=origin(frame),query=String(frame||"").split("?").slice(1).join("?");
   const pid=new URLSearchParams(query).get("pid");
   if(o&&pid){
@@ -54,11 +83,11 @@ async function lookup(frame){
       body:JSON.stringify({nonce,status:"clear",id:pid})
     });
     if(!verified.ok)return "";
-    await wcoPause(Math.max(0,13000-(Date.now()-started)));
+    await wcoPause(13000);
     const suffix=(query?query+"&":"")+"n="+encodeURIComponent(nonce);
     const headers={"Referer":frame,"Origin":o};
     for(let attempt=0;attempt<3;attempt++){
-      if(attempt)await wcoPause(3000);
+      if(attempt){if(typeof __wcoContext!=="undefined"&&__wcoContext.remaining()<7000)break;await wcoPause(3000);}
       const page=await req(o+"/inc/embed/video-js.php?"+suffix,{headers});
       if(page.ok){const url=getJsonPath(page.body);if(url)return abs(url,o);}
       if(page.status!==503)break;

@@ -1,8 +1,8 @@
 "use strict";
 
-// WCO production adapter. Anime titles use the shared MAL/AniList-first identity
-// resolver, then fall back to WCO core's existing TMDB aliases when anime metadata
-// is unavailable. Non-anime titles never call the anime databases.
+// WCO production adapter. Start with trusted TMDB aliases; consult the shared
+// anime identity resolver only if direct matching produced no streams. Optional
+// service failures must not delay already matched public streams.
 //
 // Anime episode ownership is alias-aware: WCO sometimes uses a dubbed/English slug
 // for the series page and a romaji/native-derived slug for the subbed episode URL.
@@ -39,19 +39,19 @@ async function __wcoLoadIdentity(){
 }
 async function __wcoEnrichAnimeIdentity(info,inputId,type,season,episode){
   try{
-    if(!info)return info;
+    if(!info||!info.isAnime)return info;
     const helper=await __wcoLoadIdentity();
     if(!helper)return info;
-    const identity=await helper.resolveAnimeIdentity(inputId,type,season,episode,TMDB_API_KEY);
+    const identity=await __wcoContext.bounded(()=>helper.resolveAnimeIdentity(inputId,type,season,episode,TMDB_API_KEY),2500,null);
     if(!identity||!identity.isAnime)return info;
-    const aliases=uniq([].concat(identity.aliases||[]).concat(info.titles||[])).slice(0,24);
+    const aliases=uniq([].concat(info.titles||[]).concat(identity.aliases||[])).filter(title=>isIdentityAlias(title,info.identityTitles||[info.title])).slice(0,24);
     if(!aliases.length)return info;
     return {...info,title:identity.title||info.title,titles:aliases,isAnime:true,malId:identity.malId||null,anilistId:identity.anilistId||null};
   }catch(_){return info;}
 }
 function __wcoDirectAnimeCandidates(info,existing){
   const prior=Array.isArray(existing)?existing:[];
-  if(!info||!info.isAnime||!Array.isArray(info.titles))return prior;
+  if(!info||!Array.isArray(info.titles))return prior;
   const direct=[],seen=new Set(prior.map(x=>String(x&&x.href||"")));
   const origin=ORIGINS&&ORIGINS.length?ORIGINS[0]:"https://www.wcostream.tv";
   for(const title of info.titles.slice(0,8)){
@@ -73,10 +73,6 @@ function augmentAnimeIdentity(source) {
   const getStreamsMarker = "const info = await tmdbInfo(inputId, type);\n    if (!info) return [];";
   if (!out.includes(tmdbMarker) || !out.includes(getStreamsMarker)) return out;
   out = out.replace(tmdbMarker, coreAnimeAddonSource() + "\n" + tmdbMarker);
-  out = out.replace(
-    getStreamsMarker,
-    "let info = await tmdbInfo(inputId, type);\n    if (!info) return [];\n    info = await __wcoEnrichAnimeIdentity(info, inputId, type, season, episode);"
-  );
   return out;
 }
 
@@ -96,24 +92,10 @@ function augmentAnimeEpisodeOwnership(source) {
 }`;
   const newOwnership = `function episodeBelongsToSeries(href, pageUrl, allowedTitles) {
   const series = seriesSlugParts(pageUrl);
-  if (!series.slug) return true;
-  const path = String(href || "").replace(/^https?:\\/\\/[^/]+/i, "").toLowerCase();
-  if (path.includes(\`/\${series.slug}-episode-\`) || path.includes(\`/\${series.slug}-season-\`)) return true;
-  if (!series.tokens.length) return true;
-  const actual = new Set(path.split(/[^a-z0-9]+/).filter(Boolean));
-  let hits = 0;
-  for (const token of series.tokens) if (actual.has(token)) hits += 1;
-  if (series.tokens.length > 1 && hits >= Math.max(2, Math.ceil(series.tokens.length * 0.6))) return true;
-
-  for (const title of Array.isArray(allowedTitles) ? allowedTitles : []) {
-    const tokens = normalize(title).split(" ").filter(token => token.length >= 3 && !/^\\d+$/.test(token));
-    if (tokens.length < 2) continue;
-    const unique = [...new Set(tokens)];
-    let aliasHits = 0;
-    for (const token of unique) if (actual.has(token)) aliasHits += 1;
-    if (aliasHits >= Math.max(2, Math.ceil(unique.length * 0.7))) return true;
-  }
-  return false;
+  if (!series.slug) return false;
+  const path = String(href || "").replace(/^https?:\\/\\/[^/]+/i, "").split(/[?#]/)[0].toLowerCase();
+  const slugs = [series.slug].concat((Array.isArray(allowedTitles) ? allowedTitles : []).map(title => normalize(title).replace(/\\s+/g, "-"))).filter(Boolean);
+  return slugs.some(slug => path.startsWith("/" + slug + "-episode-") || path.startsWith("/" + slug + "-season-"));
 }`;
   if (!out.includes(oldOwnership)) return out;
   out = out.replace(oldOwnership, newOwnership);
@@ -161,41 +143,53 @@ function augmentAnimeVariantCollection(source) {
   return [];
 }`;
   const newTv = `async function tvStreams(info, season, episode) {
-  const wantedSeason = Number(season || 1);
-  const wantedEpisode = Number(episode || 1);
-  let candidates = await searchWco(info, wantedSeason);
-  if (info.isAnime) candidates = __wcoDirectAnimeCandidates(info, candidates);
-  const displayTitle = \`${'${info.title}'} S${'${String(wantedSeason).padStart(2, "0")}'}E${'${String(wantedEpisode).padStart(2, "0")}'}\`;
-
-  if (!info.isAnime) {
-    for (const candidate of candidates.slice(0, 6)) {
+  const wantedSeason = Number(season || 1), wantedEpisode = Number(episode || 1);
+  const displayTitle = \`\${info.title} S\${String(wantedSeason).padStart(2, "0")}E\${String(wantedEpisode).padStart(2, "0")}\`;
+  const collected = [], attempted = new Set(), knownSeries = [];
+  let haveDub = false, haveSub = false;
+  const remaining = () => typeof __wcoContext === "undefined" ? 60000 : __wcoContext.remaining();
+  async function collect(candidates) {
+    for (const candidate of candidates.slice(0, 4)) {
+      if (remaining() < 18000) break;
+      const key = basePageUrl(candidate.href);
+      if (attempted.has(key)) continue;
+      attempted.add(key);
+      const requestedSlug = key.split("/").pop().replace(/[-_]/g, " ");
+      if (/\\/anime\\//i.test(key) && !info.titles.some(title => normalize(title) && normalize(title) === normalize(requestedSlug))) continue;
       const series = await candidatePage(candidate);
-      if (!series) continue;
-      if (series.season != null && series.season !== wantedSeason) continue;
-      const [dub, sub] = await Promise.all([
-          extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info),
-          extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info)
-        ]);
-      const combined = dub.concat(sub);
-      if (combined.length) return finalize(combined, info);
+      if (!series || (series.season != null && series.season !== wantedSeason)) continue;
+      // A prefix match (Naruto -> Naruto Kai/Shippuden) is not identity evidence.
+      const slug = String(series.pageUrl).replace(/[?#].*$/, "").replace(/\\/$/, "").split("/").pop().replace(/[-_]/g, " ");
+      if (!info.titles.some(title => normalize(title) && normalize(title) === normalize(slug))) continue;
+      knownSeries.push({href: series.pageUrl, title: candidate.title});
+      const lane = async variant => {
+        if (remaining() < 17000) return;
+        try {
+          const rows = await extractVariantFromSeries(series, variant, wantedSeason, wantedEpisode, displayTitle, info);
+          if (rows.length) {
+            collected.push(...rows);
+            if (variant === "Dub") haveDub = true; else haveSub = true;
+          }
+        } catch (_) { /* Keep the other lane's completed rows. */ }
+      };
+      const work = () => Promise.all([haveDub ? Promise.resolve() : lane("Dub"), haveSub ? Promise.resolve() : lane("Sub")]);
+      if (typeof __wcoContext === "undefined") await work();
+      else await __wcoContext.bounded(work, remaining() - 1200, null);
+      if (haveDub && (haveSub || remaining() < 21000)) break;
     }
-    return [];
   }
-
-  const collected = [];
-  let haveDub = false;
-  let haveSub = false;
-  for (const candidate of candidates.slice(0, 8)) {
-    const series = await candidatePage(candidate);
-    if (!series) continue;
-    if (series.season != null && series.season !== wantedSeason) continue;
-    const [dub, sub] = await Promise.all([
-      haveDub ? Promise.resolve([]) : extractVariantFromSeries(series, "Dub", wantedSeason, wantedEpisode, displayTitle, info),
-      haveSub ? Promise.resolve([]) : extractVariantFromSeries(series, "Sub", wantedSeason, wantedEpisode, displayTitle, info)
-    ]);
-    if (dub.length) { collected.push(...dub); haveDub = true; }
-    if (sub.length) { collected.push(...sub); haveSub = true; }
-    if (haveDub && haveSub) break;
+  // Confident direct slugs first, for cartoons as well as anime; retain all the
+  // existing season/episode ownership validation inside extractVariantFromSeries.
+  await collect(__wcoDirectAnimeCandidates(info, []));
+  if (!collected.length && info.isAnime && remaining() >= 24000) {
+    info = await __wcoEnrichAnimeIdentity(info, info.id, "tv", season, episode);
+    await collect(__wcoDirectAnimeCandidates(info, []));
+  }
+  if (!collected.length && remaining() >= 21000) {
+    if (knownSeries.length) {
+      const mirrors = ORIGINS.slice(1).flatMap(origin => knownSeries.slice(0, 1).map(candidate => ({...candidate, href: origin + candidate.href.slice(originOf(candidate.href).length)})));
+      await collect(mirrors);
+    } else await collect(await searchWco(info, wantedSeason));
   }
   return collected.length ? finalize(collected, info) : [];
 }`;
