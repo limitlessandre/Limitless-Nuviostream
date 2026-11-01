@@ -322,6 +322,28 @@
     "name": "AnimeSuge"
   },
   {
+    "version": 2,
+    "internalName": "AnimeVillage",
+    "name": "AnimeVillage",
+    "pluginClassName": "com.allforu.AnimeVillagePlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Anime",
+      "AnimeMovie"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v2.cs3",
+    "description": "AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)",
+    "iconUrl": "https://www.animevillage.org/opengraph-image",
+    "fileHash": "sha256-6154e38e8c7583d57b3d31cb2a8ee6d1870fa91f6dffa1805250fd59723880a1",
+    "fileSize": 42298
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animexin.cs3",
     "status": 1,
     "version": 16,
@@ -1864,7 +1886,27 @@
     "fileSize": 64767
   },
   {
-    "version": 1,
+    "iconUrl": "https://ntv.st/assets/img/icons/favicon-96x96.png",
+    "fileHash": "sha256-c65c09580f9862bd9a08e0c8893a29cd8ea29474db726665843fcc988bce7950",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+    "fileSize": 61051,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "NivinCNC"
+    ],
+    "tvTypes": [
+      "Live"
+    ],
+    "version": 2,
+    "internalName": "NTVProvider",
+    "description": "Live sports from NTV (ntv.st): four servers of live matches and channels",
+    "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
+    "name": "NTVProvider"
+  },
+  {
+    "version": 4,
     "internalName": "OFC",
     "name": "OFC Movies",
     "pluginClassName": "com.allforu.OfcPlugin",
@@ -1878,14 +1920,15 @@
       "Movie",
       "TvSeries",
       "Anime",
-      "AnimeMovie"
+      "AnimeMovie",
+      "Live"
     ],
     "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v1.cs3",
-    "description": "OFC Movies - Movies, web series, anime & Bollywood, plus optional Live TV (1,200+ channels) with multi-audio and subtitles",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v4.cs3",
+    "description": "OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles",
     "iconUrl": "https://ofcmovies.com/apple-touch-icon.png",
-    "fileHash": "sha256-c4f1141e7220173ee17e5125bbd8ff99006c1a1b54e1bd424f87c3cbbfc88b9e",
-    "fileSize": 67184
+    "fileHash": "sha256-b0c55fd034a72f5c6cb6cd36f892ef2c123532866be58746dc33dd6e8869fe17",
+    "fileSize": 69318
   },
   {
     "version": 13,
@@ -2027,24 +2070,24 @@
     "fileSize": 5460456
   },
   {
-    "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=ppv.st&sz=128",
+    "fileHash": "sha256-93e0fd9fdafff7fd47be03c6f4758105eeb00d29a2562df9b2b808ecffb61fc4",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+    "fileSize": 49475,
     "status": 1,
-    "version": 1,
-    "name": "PpvProvider",
-    "internalName": "PpvProvider",
-    "authors": [
-      "redblacker8"
-    ],
-    "description": "Live PPV sports events and 24/7 channels",
-    "fileSize": 33920,
-    "repositoryUrl": "https://github.com/redblacker8/storm-ext",
     "language": "en",
+    "authors": [
+      "NivinCNC"
+    ],
     "tvTypes": [
       "Live"
     ],
-    "iconUrl": "https://ppv.st/assets/img/ppv.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-1100ed3339354dbfb963ff11849899e290ccc6037710f07f5710c80d304387c0"
+    "version": 1,
+    "internalName": "PPVProvider",
+    "description": "Live sports events and 24/7 sports channels from PPV (ppv.st)",
+    "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
+    "name": "PPVProvider"
   },
   {
     "name": "PrinceOfPersia",
@@ -2789,6 +2832,28 @@
     "description": "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
     "name": "Watch32"
+  },
+  {
+    "version": 2,
+    "internalName": "WatchAnimeWorld",
+    "name": "WatchAnimeWorld",
+    "pluginClassName": "com.allforu.WatchAnimeWorldPlugin",
+    "status": 1,
+    "apiVersion": 1,
+    "language": "en",
+    "authors": [
+      "AllForU"
+    ],
+    "tvTypes": [
+      "Anime",
+      "AnimeMovie"
+    ],
+    "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+    "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v2.cs3",
+    "description": "WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback",
+    "iconUrl": "https://watchanimeworld.ro/wp-content/uploads/2026/08/favicon.webp",
+    "fileHash": "sha256-8b880d9c6d766d4e0bd26845a69e398989a488192687d6b1c6084e1ee0670d65",
+    "fileSize": 42598
   },
   {
     "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/WatchDrama.cs3",

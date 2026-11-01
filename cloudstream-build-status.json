@@ -5,13 +5,13 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 572,
-  "eligible_plugin_entries_before_dedupe": 152,
-  "unique_plugins": 142,
-  "duplicate_groups": 9,
-  "language_filtered_entries": 377,
+  "raw_plugin_entries": 579,
+  "eligible_plugin_entries_before_dedupe": 156,
+  "unique_plugins": 145,
+  "duplicate_groups": 10,
+  "language_filtered_entries": 379,
   "unknown_language_metadata_entries": 26,
-  "inactive_filtered_entries": 43,
+  "inactive_filtered_entries": 44,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -85,7 +85,7 @@
       "name": "CNC Repo(All Language)",
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
       "status": "ok",
-      "plugins": 38,
+      "plugins": 41,
       "verified": false
     },
     {
@@ -141,7 +141,7 @@
       "name": "Indostream Repo",
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "status": "ok",
-      "plugins": 26,
+      "plugins": 28,
       "verified": false
     },
     {
@@ -211,7 +211,7 @@
       "name": "AllForU",
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
       "status": "ok",
-      "plugins": 41,
+      "plugins": 43,
       "verified": false
     },
     {

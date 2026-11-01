@@ -271,6 +271,40 @@
       }
     ]
   },
+  "internal:ppvprovider": {
+    "chosen": {
+      "internalName": "PPVProvider",
+      "name": "PPVProvider",
+      "version": 1,
+      "language": "en",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "PPVProvider",
+        "name": "PPVProvider",
+        "version": 1,
+        "language": "en",
+        "source": "CNC Repo(All Language)",
+        "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3"
+      },
+      {
+        "internalName": "PpvProvider",
+        "name": "PpvProvider",
+        "version": 1,
+        "language": "en",
+        "source": "Storm-ext Fork by redblacker8",
+        "sourceRepo": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3"
+      }
+    ]
+  },
   "internal:reanime": {
     "chosen": {
       "internalName": "Reanime",

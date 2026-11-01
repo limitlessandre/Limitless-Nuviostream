@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 142,
-  "no_obvious_native_overlap_count": 138,
+  "cloudstream_provider_count": 145,
+  "no_obvious_native_overlap_count": 141,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -543,16 +543,17 @@
     {
       "internalName": "OFC",
       "name": "OFC Movies",
-      "description": "OFC Movies - Movies, web series, anime & Bollywood, plus optional Live TV (1,200+ channels) with multi-audio and subtitles",
+      "description": "OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries",
         "Anime",
-        "AnimeMovie"
+        "AnimeMovie",
+        "Live"
       ],
-      "version": 1,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v1.cs3",
+      "version": 4,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v4.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -991,6 +992,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.625,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "AnimeVillage",
+      "name": "AnimeVillage",
+      "description": "AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v2.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.526,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -1530,6 +1554,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "medium-priority",
+      "priority_score": 4,
+      "reasons": [
+        "Anime coverage"
+      ]
+    },
+    {
+      "internalName": "WatchAnimeWorld",
+      "name": "WatchAnimeWorld",
+      "description": "WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback",
+      "language": "en",
+      "tvTypes": [
+        "Anime",
+        "AnimeMovie"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v2.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.455,
         "native_matches": []
       },
       "priority": "medium-priority",
@@ -2487,16 +2534,38 @@
       ]
     },
     {
-      "internalName": "PpvProvider",
-      "name": "PpvProvider",
-      "description": "Live PPV sports events and 24/7 channels",
+      "internalName": "NTVProvider",
+      "name": "NTVProvider",
+      "description": "Live sports from NTV (ntv.st): four servers of live matches and channels",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "PPVProvider",
+      "name": "PPVProvider",
+      "description": "Live sports events and 24/7 sports channels from PPV (ppv.st)",
       "language": "en",
       "tvTypes": [
         "Live"
       ],
       "version": 1,
-      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
-      "repositoryUrl": "https://github.com/redblacker8/storm-ext",
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.333,

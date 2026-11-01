@@ -191,10 +191,10 @@
     "plugins": [
       {
         "iconUrl": "https://animeon.club/assets/images/short-logo.png",
-        "fileHash": "sha256-3207f89f57074cc912f9fc29351aa5cf36391da39b4324dd38d0c2da3bcb96ef",
+        "fileHash": "sha256-e377c5a550d9ec6229f4380a86b5e24d03dee08dc2d3210dc042a298f0b5cbdd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 127420,
+        "fileSize": 137648,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -206,7 +206,7 @@
           "AnimeMovie",
           "OVA"
         ],
-        "version": 43,
+        "version": 45,
         "internalName": "AnimeONProvider",
         "description": "AnimeON - Дивитися аніме україньскою",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/AnimeONProvider.cs3",
@@ -517,10 +517,10 @@
         "name": "SimpsonsUATvProvider"
       },
       {
-        "fileHash": "sha256-ee8d723cb35ed7955c4e3bef2ce7f762273b95b3f69f7d135334aad99d45261f",
+        "fileHash": "sha256-b5ed63681b50514b7e0fb292a2db264c2cd5beed256bd873777c4e10593751f7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 98356,
+        "fileSize": 110129,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -2814,6 +2814,27 @@
         "name": "CastleTvProvider"
       },
       {
+        "iconUrl": "https://cinedoze.tv/wp-content/uploads/2024/05/CineDoze.Com-Logo.png",
+        "fileHash": "sha256-befad2d15470f9f11d06a0fdd89589e84758a33ab2a5d0a5d48b6bccc1cac383",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 109642,
+        "status": 1,
+        "language": "bn",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "CineDozeProvider",
+        "description": "Bangla, Hindi dubbed, dual audio movies and web series from CineDoze",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineDozeProvider.cs3",
+        "name": "CineDozeProvider"
+      },
+      {
         "iconUrl": "https://modapk.world/wp-content/uploads/2025/11/Et-90x90.png",
         "fileHash": "sha256-e84c3506e21f4af3227f4a56d5c033f3dcb08be7436f3a6ce446b69081f89ca4",
         "apiVersion": 1,
@@ -3210,6 +3231,26 @@
         "name": "MoviezwapProvider"
       },
       {
+        "iconUrl": "https://ntv.st/assets/img/icons/favicon-96x96.png",
+        "fileHash": "sha256-c65c09580f9862bd9a08e0c8893a29cd8ea29474db726665843fcc988bce7950",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 61051,
+        "status": 1,
+        "language": "en",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Live"
+        ],
+        "version": 2,
+        "internalName": "NTVProvider",
+        "description": "Live sports from NTV (ntv.st): four servers of live matches and channels",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
+        "name": "NTVProvider"
+      },
+      {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/PikashowProvider/logo.png",
         "fileHash": "sha256-1ea7c40ebcf1372b0df2182a41c554de0a4bd2c628fdc0ecfe3dd49e6e82fbc1",
         "apiVersion": 1,
@@ -3269,6 +3310,26 @@
         "description": "Watch Live TV channels & sports via PlayZTV",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PlayZTVProvider.cs3",
         "name": "PlayZTVProvider"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=ppv.st&sz=128",
+        "fileHash": "sha256-93e0fd9fdafff7fd47be03c6f4758105eeb00d29a2562df9b2b808ecffb61fc4",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 49475,
+        "status": 1,
+        "language": "en",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Live"
+        ],
+        "version": 1,
+        "internalName": "PPVProvider",
+        "description": "Live sports events and 24/7 sports channels from PPV (ppv.st)",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
+        "name": "PPVProvider"
       },
       {
         "iconUrl": "https://cdn.mytuner.mobi/static/ctr/icons/App_192x192/in.png",
@@ -4081,7 +4142,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 30584,
+        "fileSize": 30590,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4090,7 +4151,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vuGLv4zY3XpoN2jza2unCQ95xFfypfe-h3k3xteMbGxl7taw-ziXyNg&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-b7d3e7e03576ed07f7971ae23245a654a15805ebd045e6e3f93f1f3e93aba5b7"
+        "fileHash": "sha256-8bd033994d342dcd0f8cf33356ed474aad3adc48e908d5329dd9d012f5d26560"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Alooytv.cs3",
@@ -4123,7 +4184,7 @@
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 36516,
+        "fileSize": 29742,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4132,7 +4193,7 @@
         ],
         "iconUrl": "https://images.anime3rb.com/favicon/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-99b3077c567fe62084729d04529f0a0ba831dae8376992b7b0be23f785880f71"
+        "fileHash": "sha256-06ace8dd11e728d071ec7035836ef6d4f29dd8d1f2cf8aa39483a30e00075561"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Anime-Phoenix.cs3",
@@ -4564,7 +4625,7 @@
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/OscarTv.cs3",
-        "status": 1,
+        "status": 2,
         "version": 1,
         "name": "OscarTv",
         "internalName": "OscarTv",
@@ -6497,6 +6558,27 @@
         "fileHash": "sha256-8a868e01f6fc89e97793be79cedff369850ec4f9efdc24366ba7901415419137"
       },
       {
+        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/DramaQu.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "DramaQu",
+        "internalName": "DramaQu",
+        "authors": [
+          "TeKuma25"
+        ],
+        "description": "Nonton streaming drama Korea, drama Asia, dan film subtitle Indonesia terupdate dari DramaQu.",
+        "fileSize": 26344,
+        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
+        "language": "id",
+        "tvTypes": [
+          "AsianDrama",
+          "Movie"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?domain=dramaqu.ad&sz=%size%",
+        "apiVersion": 1,
+        "fileHash": "sha256-9dc665ca3d919ede10981a272af0a783d83b5b27838d78b8956ee79e245455d1"
+      },
+      {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Dubbindo.cs3",
         "status": 1,
         "version": 5,
@@ -6566,14 +6648,14 @@
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Idlix.cs3",
         "status": 1,
-        "version": 29,
+        "version": 34,
         "name": "Idlix",
         "internalName": "Idlix",
         "authors": [
           "TeKuma25"
         ],
         "description": "Nonton streaming film dan serial TV subtitle Indonesia terlengkap dari Idlix.",
-        "fileSize": 74990,
+        "fileSize": 79641,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6584,7 +6666,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=z2.idlixku.com&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-a31f69ca046ec5f69fc84fd1f1284f5a347cbce022382be91929251b9731b78a"
+        "fileHash": "sha256-a62f3dfe40932e58253e8cd5ff05d2b225116d34be8a5e3f419b4d3202305b26"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/IndoTV.cs3",
@@ -6819,6 +6901,27 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=oploverz.xin&sz=%size%",
         "apiVersion": 1,
         "fileHash": "sha256-b1cab387c6953c0c2d1b9f89877f12e9d144c55c8e7b941bfc150e9d23fef046"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Oppadrama.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "Oppadrama",
+        "internalName": "Oppadrama",
+        "authors": [
+          "TeKuma25"
+        ],
+        "description": "Nonton streaming drama Korea, drama Asia, dan film subtitle Indonesia terlengkap dari Oppadrama.",
+        "fileSize": 25183,
+        "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
+        "language": "id",
+        "tvTypes": [
+          "AsianDrama",
+          "Movie"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?domain=oppadrama.cc&sz=%size%",
+        "apiVersion": 1,
+        "fileHash": "sha256-a44e8db888b2ddc23927235585064dccd90762c284c19d572383ed8982ce8506"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Otakudesu.cs3",
@@ -10680,7 +10783,7 @@
         "fileSize": 37580
       },
       {
-        "version": 7,
+        "version": 9,
         "internalName": "PiratexPlay",
         "name": "PiratexPlay",
         "pluginClassName": "com.allforu.PiratexPlayPlugin",
@@ -10697,11 +10800,11 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v9.cs3",
         "description": "PiratexPlay - Multi-language anime streaming (India)",
         "iconUrl": "https://piratexplay.cc/public/img/favicon/apple-icon-180x180.png",
-        "fileHash": "sha256-f26ebfa31c53bab4f5f0c6b3a667b09fe55eb4707883d1e222836c66f4114f9e",
-        "fileSize": 49372
+        "fileHash": "sha256-5707b26e6a4a30796c965e2700d009cea23e709b6e01d2fa450ab83c194033b6",
+        "fileSize": 56855
       },
       {
         "version": 5,
@@ -10974,7 +11077,7 @@
         "fileSize": 56345
       },
       {
-        "version": 1,
+        "version": 4,
         "internalName": "OFC",
         "name": "OFC Movies",
         "pluginClassName": "com.allforu.OfcPlugin",
@@ -10988,14 +11091,59 @@
           "Movie",
           "TvSeries",
           "Anime",
+          "AnimeMovie",
+          "Live"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v4.cs3",
+        "description": "OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles",
+        "iconUrl": "https://ofcmovies.com/apple-touch-icon.png",
+        "fileHash": "sha256-b0c55fd034a72f5c6cb6cd36f892ef2c123532866be58746dc33dd6e8869fe17",
+        "fileSize": 69318
+      },
+      {
+        "version": 2,
+        "internalName": "AnimeVillage",
+        "name": "AnimeVillage",
+        "pluginClassName": "com.allforu.AnimeVillagePlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Anime",
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v1.cs3",
-        "description": "OFC Movies - Movies, web series, anime & Bollywood, plus optional Live TV (1,200+ channels) with multi-audio and subtitles",
-        "iconUrl": "https://ofcmovies.com/apple-touch-icon.png",
-        "fileHash": "sha256-c4f1141e7220173ee17e5125bbd8ff99006c1a1b54e1bd424f87c3cbbfc88b9e",
-        "fileSize": 67184
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v2.cs3",
+        "description": "AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)",
+        "iconUrl": "https://www.animevillage.org/opengraph-image",
+        "fileHash": "sha256-6154e38e8c7583d57b3d31cb2a8ee6d1870fa91f6dffa1805250fd59723880a1",
+        "fileSize": 42298
+      },
+      {
+        "version": 2,
+        "internalName": "WatchAnimeWorld",
+        "name": "WatchAnimeWorld",
+        "pluginClassName": "com.allforu.WatchAnimeWorldPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v2.cs3",
+        "description": "WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback",
+        "iconUrl": "https://watchanimeworld.ro/wp-content/uploads/2026/08/favicon.webp",
+        "fileHash": "sha256-8b880d9c6d766d4e0bd26845a69e398989a488192687d6b1c6084e1ee0670d65",
+        "fileSize": 42598
       }
     ]
   },
@@ -12243,10 +12391,10 @@
         "name": "Aradrama"
       },
       {
-        "fileHash": "sha256-58ab265d41ac40096baf4e1dc81e41194fb8a4a280cb5f7b921a2311fdfcdc59",
+        "fileHash": "sha256-379899bad9e791b720ac2d712f74c05d7833e18119a03014456590d07bef630a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/sagemoon1996/cloudstream-repo",
-        "fileSize": 43525,
+        "fileSize": 46177,
         "status": 1,
         "language": "ar",
         "authors": [

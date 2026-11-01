@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 377,
+  "excluded_count": 379,
   "excluded": [
     {
       "internalName": "Rate",
@@ -1300,6 +1300,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "CineDozeProvider",
+      "name": "CineDozeProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CineDozeProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Cinefreak",
       "name": "Cinefreak",
       "source": "Phisher Repo",
@@ -1691,6 +1705,20 @@
         "uk"
       ],
       "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/DoramyWorldProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DramaQu",
+      "name": "DramaQu",
+      "source": "Indostream Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
+      "language": [
+        "id"
+      ],
+      "normalizedLanguages": [
+        "id"
+      ],
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/DramaQu.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3524,17 +3552,17 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "OscarTv",
-      "name": "OscarTv",
-      "source": "3rabi عربي",
-      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
+      "internalName": "Oppadrama",
+      "name": "Oppadrama",
+      "source": "Indostream Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "language": [
-        "ar"
+        "id"
       ],
       "normalizedLanguages": [
-        "ar"
+        "id"
       ],
-      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/OscarTv.cs3",
+      "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Oppadrama.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3744,7 +3772,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v7.cs3",
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v9.cs3",
       "reason": "no-allowed-language"
     },
     {

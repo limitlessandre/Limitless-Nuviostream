@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **142**  
-No obvious native overlap: **138**  
+Filtered CloudStream providers: **145**  
+No obvious native overlap: **141**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -30,7 +30,7 @@ Exact/alias overlap: **4**
 - **Movy** (`Movy`) — en; Movie, TvSeries, Anime, AnimeMovie — Movy - Movies and TV shows with multi-language audio (English, German, French, Hindi, Spanish, Tamil and more)
 - **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
-- **OFC Movies** (`OFC`) — en; Movie, TvSeries, Anime, AnimeMovie — OFC Movies - Movies, web series, anime & Bollywood, plus optional Live TV (1,200+ channels) with multi-audio and subtitles
+- **OFC Movies** (`OFC`) — en; Movie, TvSeries, Anime, AnimeMovie, Live — OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
 - **TorrentsV1** (`TorrentsV1`) — en; Anime, AnimeMovie, OVA, Movie, TvSeries, Torrent — Torrent support for Anime, Movies and TV via Torrentio, TorrentsDB, Animetosho and custom Stremio addons
 - **WatchDrama** (`WatchDrama`) — en; TvSeries, Anime, Movie — WatchDrama — Free Short Drama Streaming
@@ -52,6 +52,7 @@ Exact/alias overlap: **4**
 - **Animekhor** (`Animekhor`) — zh; AnimeMovie, Anime — Anime and Movies includes (Donghuaword)
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
+- **AnimeVillage** (`AnimeVillage`) — en; Anime, AnimeMovie — AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)
 - **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
 - **AniStream** (`AniStream`) — en; Anime, AnimeMovie — Watch anime in HD with English Sub and Dub from AniStream
@@ -75,6 +76,7 @@ Exact/alias overlap: **4**
 - **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — Anime with sub & dub, multi-language subtitles
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
+- **WatchAnimeWorld** (`WatchAnimeWorld`) — en; Anime, AnimeMovie — WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback
 - **Xanime** (`Xanime`) — en; Anime, AnimeMovie, OVA — anime with sub and dub
 
 ## Low-priority unique candidates
@@ -123,7 +125,8 @@ Exact/alias overlap: **4**
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LiveSports** (`LiveSports`) — en; Live — Live Sports Events
 - **LIVETVProvider** (`LIVETVProvider`) — en; Live — Watch LIVE TV channels & sports via LIVE TV
-- **PpvProvider** (`PpvProvider`) — en; Live — Live PPV sports events and 24/7 channels
+- **NTVProvider** (`NTVProvider`) — en; Live — Live sports from NTV (ntv.st): four servers of live matches and channels
+- **PPVProvider** (`PPVProvider`) — en; Live — Live sports events and 24/7 sports channels from PPV (ppv.st)
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **SimpMusic** (`SimpMusic`) — en; Music — SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)
