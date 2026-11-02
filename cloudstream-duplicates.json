@@ -275,7 +275,7 @@
     "chosen": {
       "internalName": "PPVProvider",
       "name": "PPVProvider",
-      "version": 1,
+      "version": 3,
       "language": "en",
       "source": "CNC Repo(All Language)",
       "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -286,7 +286,7 @@
       {
         "internalName": "PPVProvider",
         "name": "PPVProvider",
-        "version": 1,
+        "version": 3,
         "language": "en",
         "source": "CNC Repo(All Language)",
         "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",

@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 145,
-  "no_obvious_native_overlap_count": 141,
+  "cloudstream_provider_count": 146,
+  "no_obvious_native_overlap_count": 142,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -962,7 +962,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 47,
+      "version": 48,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2377,14 +2377,14 @@
     {
       "internalName": "NextGenTV",
       "name": "NextGenTV",
-      "description": "NextGenTV - Live TV & IPTV: JioTV+, India Max, ZEE5, Sun NXT, Dish TV, Samsung/LG/Tablo/Vizio, Fancode (catalog picker, landscape rows)",
+      "description": "NextGenTV - Live TV & IPTV: S1 Xtream, JioTV+, India Max, ZEE5, Sun NXT, Dish/Samsung/LG/Tablo/Vizio, Fancode + 71 CRICFY servers (catalog picker, landscape rows)",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v4.cs3",
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v7.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2419,6 +2419,28 @@
       "priority_score": -1,
       "reasons": [
         "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "DaddyLiveProvider",
+      "name": "DaddyLiveProvider",
+      "description": "Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
         "Likely utility/live/special-purpose extension"
       ]
     },
@@ -2541,7 +2563,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 2,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2563,7 +2585,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 1,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
