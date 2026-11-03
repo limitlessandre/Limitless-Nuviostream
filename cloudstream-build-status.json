@@ -5,13 +5,13 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 581,
+  "raw_plugin_entries": 583,
   "eligible_plugin_entries_before_dedupe": 157,
   "unique_plugins": 146,
   "duplicate_groups": 10,
-  "language_filtered_entries": 380,
+  "language_filtered_entries": 381,
   "unknown_language_metadata_entries": 26,
-  "inactive_filtered_entries": 44,
+  "inactive_filtered_entries": 45,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -141,7 +141,7 @@
       "name": "Indostream Repo",
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/repo.json",
       "status": "ok",
-      "plugins": 26,
+      "plugins": 27,
       "verified": false
     },
     {
@@ -162,7 +162,7 @@
       "name": "Storm-ext Fork by redblacker8",
       "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 37,
+      "plugins": 38,
       "verified": false
     },
     {
