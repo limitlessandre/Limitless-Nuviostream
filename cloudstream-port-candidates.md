@@ -131,10 +131,10 @@ Exact/alias overlap: **4**
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **SimpMusic** (`SimpMusic`) — en; Music — SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)
-- **StreamedPk** (`StreamedPk`) — en; Live — ALL LIVE SPORTS WITH MULTIPLE SERVER
 - **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
 - **WatchParty** (`WatchParty`) — en; All — Synchronized Watch Party: Watch movies and series together with real-time playback sync, persistent chat window, and host moderation.
 - **AriaOfSorrow** (`AriaOfSorrow`) — en; Others — Play Aria of Sorrow.
+- **AryaVidya** (`AryaVidya`) — en; Others — Free PW batches, lectures, OTT videos.
 - **AvatarAirbender** (`AvatarAirbender`) — en; Others — Play Avatar Airbender.
 - **Castlevania** (`Castlevania`) — en; Others — Play Castlevania.
 - **Contra** (`Contra`) — en; Others — Play Contra.
