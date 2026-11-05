@@ -65,7 +65,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
     "status": 1,
-    "version": 17,
+    "version": 18,
     "name": "AniChan",
     "internalName": "AniChan",
     "authors": [
@@ -81,7 +81,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/YxgDK6JP2h08FlpZs__vP2otL3HKp3IXfvb9jVUt0HgWy1V9xcWbIdkH8_o9Z6QQYnRVYPatjcPTcOIpeWtI",
     "apiVersion": 1,
-    "fileHash": "sha256-07fe48b13a8c3150e6fec95311cef1109a5a6cf6d969864fc9b88a77166869b4"
+    "fileHash": "sha256-2ab2fac8c64abe91ed58758b74b45d19f68b6df00f874b1e436d0c427dd367c8"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
@@ -108,7 +108,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
     "status": 1,
-    "version": 20,
+    "version": 21,
     "name": "Anidap",
     "internalName": "Anidap",
     "authors": [
@@ -125,7 +125,7 @@
     ],
     "iconUrl": "https://anidap.lol/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-2afca234ee01333b8c6e2992ea6cd3b169304d4da3b14d6db0fb5eefe6f54b7f"
+    "fileHash": "sha256-bdff27216b77da1690921a6f8109ec047a7c597649ebed3724b750283dbe8cfa"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3",
@@ -172,7 +172,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
     "status": 1,
-    "version": 20,
+    "version": 21,
     "name": "AniKotoAnime",
     "internalName": "AniKotoAnime",
     "authors": [
@@ -189,7 +189,7 @@
     ],
     "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-c839462370351931de47360fc63f0a00678288177966515f3774ee922cac6401"
+    "fileHash": "sha256-068ce2b5a83b559b1849341e33a01a4aa3db5fec3f3a1791fd71c6d6ba7e1934"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anilight.cs3",
@@ -368,7 +368,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "AniPM",
     "internalName": "AniPM",
     "authors": [
@@ -385,7 +385,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
     "apiVersion": 1,
-    "fileHash": "sha256-967439edb9f0cc7eccc8eb9c80c22b7c4ed6f18af4b0f45471b28169dbf97c96"
+    "fileHash": "sha256-948fc41fbedc2a47aab7074c137afe74c00cdd5863b4f814fe5bd825be6c4f2c"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -433,7 +433,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "AniSuge",
     "internalName": "AniSuge",
     "authors": [
@@ -450,12 +450,12 @@
     ],
     "iconUrl": "https://animesuge.cz/animesuge/images/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-854e57e644cd03dbbe09d1fcbd8858f27f98a2db0d52c5c9dbb39192e7cce051"
+    "fileHash": "sha256-62983888354e6eb0df775807727be904fd4e993e346a88b0de30ff3bd7bb91b4"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
     "status": 1,
-    "version": 10,
+    "version": 11,
     "name": "AniWaves",
     "internalName": "AniWaves",
     "authors": [
@@ -472,7 +472,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/F3jWPSrcSNIACoBThPkbgzWu0ejHPmlCNUTNnfOkDfTTzW027WhzhfmWaT18bYwTT9vM-gGs7bRuU8z6rqqudA",
     "apiVersion": 1,
-    "fileHash": "sha256-1910565b834c698246d0e955e63c8d6f01a717ee3d86c389ddf58f0c3ef1ea7a"
+    "fileHash": "sha256-4ccc9546f47df1e22eee664f1c0fcb70e5d44840f4b19d80a59a619dd885de5f"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
@@ -497,7 +497,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anv.cs3",
     "status": 1,
-    "version": 5,
+    "version": 6,
     "name": "Anv",
     "internalName": "Anv",
     "authors": [
@@ -514,7 +514,7 @@
     ],
     "iconUrl": "https://anv.to/brand/icon-512.png",
     "apiVersion": 1,
-    "fileHash": "sha256-b60accc5a0b2820e53c85d8888770a182be0074b360e67060be59b3ceb2de0cd"
+    "fileHash": "sha256-58cc72a53b3e5315af71aad07442eef11f8998e3315b9b8ed30ad22f9de65d22"
   },
   {
     "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/AreaDocumentalProvider.cs3",
@@ -824,7 +824,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
     "status": 1,
-    "version": 28,
+    "version": 29,
     "name": "DamiTVProvider",
     "internalName": "DamiTVProvider",
     "authors": [
@@ -839,7 +839,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvvc01IqbjrBZ-AhXwvyrIblnaJBA04IUNKmJNRbqEh46fWVItaGuoRsj&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-ba9fe8f2fb6e1bac1b37e3780bfd0d0ec1c4238e12d796f373f6eb26951c28b9"
+    "fileHash": "sha256-6c2d153a4cee6a4ebd399b1eb5d7c9859b621ccab7ad27017e93134013140df4"
   },
   {
     "name": "DesertStrike",
@@ -1209,14 +1209,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
     "status": 1,
-    "version": 11,
+    "version": 13,
     "name": "GoTaku",
     "internalName": "GoTaku",
     "authors": [
       "raghav"
     ],
     "description": "Hardsub and dub from Gotaku",
-    "fileSize": 71499,
+    "fileSize": 71498,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1226,7 +1226,7 @@
     ],
     "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
     "apiVersion": 1,
-    "fileHash": "sha256-b301636038cea7984f52a30a0b984d11e765c4d72b3e3be65a211e7cf82d6e6c"
+    "fileHash": "sha256-2419cda253908120ba99ef1bd329f2ba0b1fd4d7ae33b3d03bcd03b5f5372b9c"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
@@ -1357,7 +1357,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 30,
+    "version": 31,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
@@ -1373,12 +1373,12 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-9c77c94f3dfbc012a1b5d810e8bafca69dab2bdb65925c434e556ffd66266e5d"
+    "fileHash": "sha256-7a99f7cf4e5002ffe912b4475f0144c6ab8a6460f5dec7a6c7008bf43aa0e931"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
     "status": 1,
-    "version": 7,
+    "version": 8,
     "name": "Kdesa",
     "internalName": "Kdesa",
     "authors": [
@@ -1395,7 +1395,7 @@
     ],
     "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
     "apiVersion": 1,
-    "fileHash": "sha256-86162dffe4d63d6918068e26ede4a9fcfc666061237cdfbc82abd175f45b7c0a"
+    "fileHash": "sha256-215b1c964671f3e37b6ace7ae71dd9e1e165f57cc176eba32acd656ef76241b2"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
@@ -1568,7 +1568,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
     "status": 1,
-    "version": 43,
+    "version": 44,
     "name": "LIVETVProvider",
     "internalName": "LIVETVProvider",
     "authors": [
@@ -1583,7 +1583,7 @@
     ],
     "iconUrl": "https://png.pngtree.com/png-vector/20191026/ourmid/pngtree-live-icon-design-template-vector-isolated-illustration-png-image_1874482.jpg",
     "apiVersion": 1,
-    "fileHash": "sha256-e21debd8836c0f326feaf5398597c2c96004d15003d01eaa9fa5110b6cd91eef"
+    "fileHash": "sha256-8a45e9df95fc0305d1eabf09e20a4a67cd5b3d493aade4bdc018a50c81f83482"
   },
   {
     "version": 32,
@@ -1706,7 +1706,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3",
     "status": 1,
-    "version": 4,
+    "version": 5,
     "name": "Movy",
     "internalName": "Movy",
     "authors": [
@@ -1724,12 +1724,12 @@
     ],
     "iconUrl": "https://www.movy.sx/icon-192x192.png",
     "apiVersion": 1,
-    "fileHash": "sha256-de0c7177e5e2c056f2ab9bf3b5eb3b4a0693710f5d9159816ea8d63414a412f1"
+    "fileHash": "sha256-f42f61e4172ac116e35065c8f9fba76d3cc0e70cd97f954b00c36818ebc29761"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
     "status": 1,
-    "version": 12,
+    "version": 13,
     "name": "Multimovies",
     "internalName": "Multimovies",
     "authors": [
@@ -1746,7 +1746,7 @@
     ],
     "iconUrl": "https://m1.multimovies.courses/assets/img/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-15b33bf5d1096efed44f8fdd99f91a8d37033ef888886c97b7327289f01bcea8"
+    "fileHash": "sha256-8dc9b3f955ff1ff88d2219781996140f0369df0229efe6aa9d0868f51c94f20f"
   },
   {
     "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/Nebula.cs3",
@@ -1771,7 +1771,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
     "status": 1,
-    "version": 6,
+    "version": 7,
     "name": "Nepu",
     "internalName": "Nepu",
     "authors": [
@@ -1790,7 +1790,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/RVADHx9LB0v5T0icvbhDrnVN32jrNMGG6MpDKWnHK6uPIQESx0yIIbQNQBCj_GcX42HqnQ6Bf1sfkTKDMSrnQQ=w240-h480-rw",
     "apiVersion": 1,
-    "fileHash": "sha256-3efd04f68456efba350d552d3109e714c09c52736545659e94a60bfd7cb18177"
+    "fileHash": "sha256-0f79cf3f5406f4783faab0aaa47b195eb5e39908034e6bf66e17efc717346ccf"
   },
   {
     "url": "https://cs.eclipsia.dpdns.org/files/0ba3a116736eccc1/NetMirror.cs3",
@@ -1816,7 +1816,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
     "status": 1,
-    "version": 21,
+    "version": 22,
     "name": "NetNaija",
     "internalName": "NetNaija",
     "authors": [
@@ -1835,12 +1835,12 @@
     ],
     "iconUrl": "https://netnaija.film/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-639372efb502c77260a7aef1e87263f783077541f608b659583831408a475990"
+    "fileHash": "sha256-544d438715d18a63261f07c3d29179e700e8be5b3d5a8bc4222cdc9293d26939"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
     "status": 1,
-    "version": 5,
+    "version": 6,
     "name": "NetNaija-box",
     "internalName": "NetNaija-box",
     "authors": [
@@ -1857,7 +1857,7 @@
     ],
     "iconUrl": "https://netnaija.film/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-0487e9614ff99b63406130de6d3d1ab4fce15751c8a1e1d2ba4cb55ccfeb6507"
+    "fileHash": "sha256-9bf3f3aeb9f644f06facb6c602d15f255b10efe0851b698e440e7743b1aa683b"
   },
   {
     "version": 9,
@@ -1884,7 +1884,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "NineAnime",
     "internalName": "NineAnime",
     "authors": [
@@ -1901,7 +1901,7 @@
     ],
     "iconUrl": "https://cachedimages.podchaser.com/256x256/aHR0cHM6Ly9pLmF1ZGlvbWFjay5jb20vOWFuaW1lcy8zODE4MDE3MGZmLndlYnA%2FbWluPXRydWUmaGVpZ2h0PTE0MDAmd2lkdGg9MTQwMA%3D%3D/aHR0cHM6Ly93d3cucG9kY2hhc2VyLmNvbS9pbWFnZXMvbWlzc2luZy1pbWFnZS5wbmc%3D",
     "apiVersion": 1,
-    "fileHash": "sha256-c7673f54b57c1f58d2bd5c16135073d80cbff1087761bce01c71e2cc9bdc9a44"
+    "fileHash": "sha256-10ce19acaf0070869fb14682468c0f5e181b817d6ae4db4bce3761eb5643ccc1"
   },
   {
     "version": 9,
@@ -2190,14 +2190,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
     "status": 1,
-    "version": 94,
+    "version": 96,
     "name": "RaghavAnime",
     "internalName": "RaghavAnime",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 674192,
+    "fileSize": 674210,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2207,19 +2207,19 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-b733c6b883f057bce38e1f82d4e64f6923813117b1a857d08196445dc9187287"
+    "fileHash": "sha256-89b7f6dba39e5df32b73c24db4a6b74bd180259f7752ab9f94f0af64ea79b754"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
     "status": 1,
-    "version": 45,
+    "version": 47,
     "name": "RaghavAnimeKitsu",
     "internalName": "RaghavAnimeKitsu",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-    "fileSize": 661800,
+    "fileSize": 661785,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2229,7 +2229,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-338eb456945936363eed614f332600fefd6a20f398f8c4c5fb2ad496a75c7a04"
+    "fileHash": "sha256-bb021f95507ee2e3877b1f3f2991a68ec4838b5e0311b924b49b263432ec161e"
   },
   {
     "internalName": "Reanime",
@@ -2280,7 +2280,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
     "status": 1,
-    "version": 13,
+    "version": 14,
     "name": "Senshi",
     "internalName": "Senshi",
     "authors": [
@@ -2297,7 +2297,7 @@
     ],
     "iconUrl": "https://senshi.to/assets/Senshi_Logo-D4bDbCzd.png",
     "apiVersion": 1,
-    "fileHash": "sha256-78f0c8e0374608872790dfa3ca79e6da03a09dfbc11ca09035ba1af12a8adb23"
+    "fileHash": "sha256-f21d2fed4095c0d70d3f3e647a466f98ee3c148f55e5b6bf43a78f7bc44ce8c2"
   },
   {
     "name": "SeriousSam",
@@ -2663,7 +2663,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
     "status": 1,
-    "version": 25,
+    "version": 26,
     "name": "TheMoviesFlix",
     "internalName": "TheMoviesFlix",
     "authors": [
@@ -2679,7 +2679,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj_C9WX4AwepepLyw_cF-EIJeRpqgI4wDiquYSoP9xDFFAKFtTVM-P_zo&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-91f111196cff3a173861e05f9937aedaf921fbccb5b7db256c31ebd4f0c4fe64"
+    "fileHash": "sha256-07ba9d520134179ee7c654ea9626cba560e6d496fb5c59083e92096dbdfa3c0a"
   },
   {
     "name": "TombRaider",
@@ -2726,7 +2726,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
     "status": 1,
-    "version": 26,
+    "version": 27,
     "name": "TorrentsV1",
     "internalName": "TorrentsV1",
     "authors": [
@@ -2746,7 +2746,7 @@
     ],
     "iconUrl": "https://png.pngtree.com/element_our/png/20181227/movie-icon-which-is-designed-for-all-application-purpose-new-png_287896.jpg",
     "apiVersion": 1,
-    "fileHash": "sha256-c96a4b94dd0fde05e18c26fdab1a9949eaf648ef2f6d61cd7b44982da95572c8"
+    "fileHash": "sha256-bd88183ba7f3381ac2b5d94eed2ba081aa8ec666f44b82e6f445db4553152a21"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3",
@@ -2771,7 +2771,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
     "status": 1,
-    "version": 20,
+    "version": 21,
     "name": "TwoDHive",
     "internalName": "TwoDHive",
     "authors": [
@@ -2788,7 +2788,7 @@
     ],
     "iconUrl": "https://wallpapers.com/images/hd/anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.jpg",
     "apiVersion": 1,
-    "fileHash": "sha256-066728a23d87eda71c6c64d2696b76d7e78c9ef6f18421a7df0967bf4bec7d62"
+    "fileHash": "sha256-7df4c2f45a58ee776e8c8ec0315f7bcc42c4389bf26203edffa230e390f719e9"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
@@ -2814,7 +2814,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
     "status": 1,
-    "version": 5,
+    "version": 6,
     "name": "VegaMovies",
     "internalName": "VegaMovies",
     "authors": [
@@ -2830,7 +2830,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/rU_X9wYHWc1V4OeSodaIhDRJF3cf7VNtc9zRcpP9Y2vHgAOttPcDqnbChe_Nx7M7KDt1oJ4hva6WXGjnPurQcuc",
     "apiVersion": 1,
-    "fileHash": "sha256-2b04cfe4541f3095507ae00070cf6605f2471e1d41cd066e1a99cd932442690e"
+    "fileHash": "sha256-50935b8d53acfde949871cee8972223d6c323ad24ed021923fa39766938d2aef"
   },
   {
     "iconUrl": "https://editorialge.com/wp-content/uploads/2023/07/Watch32..jpg",
@@ -2962,7 +2962,7 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
     "status": 1,
-    "version": 4,
+    "version": 5,
     "name": "Xanime",
     "internalName": "Xanime",
     "authors": [
@@ -2979,7 +2979,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=xanime.me&sz=%size%",
     "apiVersion": 1,
-    "fileHash": "sha256-57b3d629b7fbeaad09c0138185bf3c5498835ca3dc8ed96526fb2f629f1408ae"
+    "fileHash": "sha256-be3a8b8b0c48a255e8cfe5e3b1e4672739542a536a61573d0d59abedeba2bd6f"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",

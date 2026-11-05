@@ -37,7 +37,7 @@
     "chosen": {
       "internalName": "AniPM",
       "name": "AniPM",
-      "version": 9,
+      "version": 10,
       "language": "en",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -48,7 +48,7 @@
       {
         "internalName": "AniPM",
         "name": "AniPM",
-        "version": 9,
+        "version": 10,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -207,7 +207,7 @@
     "chosen": {
       "internalName": "NetNaija",
       "name": "NetNaija",
-      "version": 21,
+      "version": 22,
       "language": "en",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -218,7 +218,7 @@
       {
         "internalName": "NetNaija",
         "name": "NetNaija",
-        "version": 21,
+        "version": 22,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -330,7 +330,7 @@
       {
         "internalName": "ReAnime",
         "name": "ReAnime",
-        "version": 8,
+        "version": 9,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
