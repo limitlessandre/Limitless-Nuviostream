@@ -2794,10 +2794,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/CastleTvProvider/icon.png",
-        "fileHash": "sha256-d173ac7d19af1e8ab672cd2a2dfae69a66a51d763554ca1942fbd47bd2950200",
+        "fileHash": "sha256-205d9af18856f3732790452fe5d3f60c10c4a35175a076d5e604406bc663f183",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 85659,
+        "fileSize": 88297,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -2807,7 +2807,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 44,
+        "version": 47,
         "internalName": "CastleTvProvider",
         "description": "Castle TV Movies and Series Provider (Play in VLC or MPV for multi-audio support)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/CastleTvProvider.cs3",
@@ -8278,15 +8278,15 @@
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/DisneyPlusProvider.cs3",
-        "status": 3,
-        "version": 2,
+        "status": 1,
+        "version": 3,
         "name": "DisneyPlusProvider",
         "internalName": "DisneyPlusProvider",
         "authors": [
           "redblacker8"
         ],
         "description": "Disney+ (contenido oficial). REQUIERE una cuenta Disney+ con suscripción activa. Inicia sesión en: Ajustes del proveedor (icono de engranaje) -> Disney+ Login.",
-        "fileSize": 128395,
+        "fileSize": 135661,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "mx",
         "tvTypes": [
@@ -8296,7 +8296,7 @@
         ],
         "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/2560px-Disney%2B_logo.svg.png",
         "apiVersion": 1,
-        "fileHash": "sha256-0e73187c993f77c9dbafa5d6f3284619b87b58fa81b309ef4ad344035ff38592"
+        "fileHash": "sha256-6b1d5f81ffac57938e4f6b6ba26b78865ddbd27d713c0e27da8081f51695f917"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/DocumaniaTVProvider.cs3",
@@ -9507,14 +9507,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 31,
+        "version": 33,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 545088,
+        "fileSize": 584184,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9523,7 +9523,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-7a99f7cf4e5002ffe912b4475f0144c6ab8a6460f5dec7a6c7008bf43aa0e931"
+        "fileHash": "sha256-b98ce133fdd8810e7b687b9b50e02ab83c134ffed0f2a4874ec5e0113cb7bfbe"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9613,14 +9613,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
         "status": 1,
-        "version": 13,
+        "version": 14,
         "name": "Multimovies",
         "internalName": "Multimovies",
         "authors": [
           "raghav,phisher,csksy"
         ],
         "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt",
-        "fileSize": 149512,
+        "fileSize": 149529,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9630,7 +9630,7 @@
         ],
         "iconUrl": "https://m1.multimovies.courses/assets/img/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-8dc9b3f955ff1ff88d2219781996140f0369df0229efe6aa9d0868f51c94f20f"
+        "fileHash": "sha256-8f79f5e35dbbb36b092ef5da428a7e976e2e001d657cb8bc3793fa60d752b840"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
@@ -9929,14 +9929,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
         "status": 1,
-        "version": 6,
+        "version": 7,
         "name": "VegaMovies",
         "internalName": "VegaMovies",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer",
-        "fileSize": 87577,
+        "fileSize": 88443,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9945,7 +9945,7 @@
         ],
         "iconUrl": "https://play-lh.googleusercontent.com/rU_X9wYHWc1V4OeSodaIhDRJF3cf7VNtc9zRcpP9Y2vHgAOttPcDqnbChe_Nx7M7KDt1oJ4hva6WXGjnPurQcuc",
         "apiVersion": 1,
-        "fileHash": "sha256-50935b8d53acfde949871cee8972223d6c323ad24ed021923fa39766938d2aef"
+        "fileHash": "sha256-2b3f1a8abc4e8d637f57522537e8110de771f3f1aca9ff0520838e33df287f66"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
@@ -11168,6 +11168,27 @@
         "iconUrl": "https://watchanimeworld.ro/wp-content/uploads/2026/08/favicon.webp",
         "fileHash": "sha256-54acb48902f5e0ba810395741665a124a18b28b975238d3a99a27b8e1b7be344",
         "fileSize": 43143
+      },
+      {
+        "version": 2,
+        "internalName": "QuickPlay",
+        "name": "QuickPlay",
+        "pluginClassName": "com.allforu.QuickPlayPlugin",
+        "status": 1,
+        "apiVersion": 1,
+        "language": "en",
+        "authors": [
+          "AllForU"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/QuickPlay-v2.cs3",
+        "description": "QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)",
+        "iconUrl": "https://m.quickplay.my.id/icon.png",
+        "fileHash": "sha256-f666966b996d09e010fb83e49ca42783596f15610d04df4378115c4d331df2b9",
+        "fileSize": 54247
       }
     ]
   },
@@ -12024,14 +12045,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 81,
+        "version": 82,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1298908,
+        "fileSize": 1326457,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12043,7 +12064,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-099378262df857e80cbb0cd40c5db7f52381b0a962261f428c1f8d07fbc8bb6a"
+        "fileHash": "sha256-78c2fac5a0651b9245c780937e07a19efce93855e290942ee2c832e584f3957b"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",

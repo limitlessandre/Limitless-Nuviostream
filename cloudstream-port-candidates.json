@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 146,
-  "no_obvious_native_overlap_count": 142,
+  "cloudstream_provider_count": 147,
+  "no_obvious_native_overlap_count": 143,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -498,7 +498,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 13,
+      "version": 14,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1909,6 +1909,28 @@
       ]
     },
     {
+      "internalName": "QuickPlay",
+      "name": "QuickPlay",
+      "description": "QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)",
+      "language": "en",
+      "tvTypes": [
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/QuickPlay-v2.cs3",
+      "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.308,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "SkymoviesHD",
       "name": "SkymoviesHD",
       "description": "just testing",
@@ -2034,7 +2056,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2287,7 +2309,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 31,
+      "version": 33,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {

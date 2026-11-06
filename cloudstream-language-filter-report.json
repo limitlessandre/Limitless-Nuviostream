@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 380,
+  "excluded_count": 381,
   "excluded": [
     {
       "internalName": "Rate",
@@ -1593,6 +1593,20 @@
         "de"
       ],
       "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/Discovery.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DisneyPlusProvider",
+      "name": "DisneyPlusProvider",
+      "source": "Storm-ext Fork by redblacker8",
+      "sourceRepo": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
+      "language": [
+        "mx"
+      ],
+      "normalizedLanguages": [
+        "mx"
+      ],
+      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/DisneyPlusProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
