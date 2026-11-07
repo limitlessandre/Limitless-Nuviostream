@@ -1267,8 +1267,8 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 4,
-      "url": "https://cs.eclipsia.dpdns.org/files/d61b5a084c6a5292/EclipsiaAnime.cs3",
+      "version": 9,
+      "url": "https://cs.eclipsia.dpdns.org/files/0581377f2119f773/EclipsiaAnime.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1756,8 +1756,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 6,
-      "url": "https://cs.eclipsia.dpdns.org/files/06075c440e9751d3/Eclipsia.cs3",
+      "version": 9,
+      "url": "https://cs.eclipsia.dpdns.org/files/05c5c0119b0c5820/Eclipsia.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1779,8 +1779,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 2,
-      "url": "https://cs.eclipsia.dpdns.org/files/68b0ec7df7cd9dfe/EclipsiaBDIX.cs3",
+      "version": 9,
+      "url": "https://cs.eclipsia.dpdns.org/files/634b498f8635e82f/EclipsiaBDIX.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2541,8 +2541,8 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 4,
-      "url": "https://cs.eclipsia.dpdns.org/files/a4e6e34def8eeedd/LiveSports.cs3",
+      "version": 9,
+      "url": "https://cs.eclipsia.dpdns.org/files/5aec637b5d2d89c7/LiveSports.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -3447,8 +3447,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 6,
-      "url": "https://cs.eclipsia.dpdns.org/files/0ba3a116736eccc1/NetMirror.cs3",
+      "version": 9,
+      "url": "https://cs.eclipsia.dpdns.org/files/a5610670557d674f/NetMirror.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "exact-or-alias",

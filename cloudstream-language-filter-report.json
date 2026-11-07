@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 381,
+  "excluded_count": 379,
   "excluded": [
     {
       "internalName": "Rate",
@@ -3720,20 +3720,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "Pelisplus4KProvider",
-      "name": "Pelisplus4KProvider",
-      "source": "Storm-ext Fork by redblacker8",
-      "sourceRepo": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
-      "language": [
-        "mx"
-      ],
-      "normalizedLanguages": [
-        "mx"
-      ],
-      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/Pelisplus4KProvider.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "PelisplusHDProvider",
       "name": "PelisplusHDProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -3955,20 +3941,6 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "ReyDonghuaProvider",
-      "name": "ReyDonghuaProvider",
-      "source": "Storm-ext Fork by redblacker8",
-      "sourceRepo": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
-      "language": [
-        "mx"
-      ],
-      "normalizedLanguages": [
-        "mx"
-      ],
-      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/ReyDonghuaProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
