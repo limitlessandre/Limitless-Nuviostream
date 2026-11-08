@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 379,
+  "excluded_count": 378,
   "excluded": [
     {
       "internalName": "Rate",
@@ -3339,20 +3339,6 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/Mp4Moviez.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "MPlayerProvider",
-      "name": "MPlayerProvider",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MPlayerProvider.cs3",
       "reason": "no-allowed-language"
     },
     {
