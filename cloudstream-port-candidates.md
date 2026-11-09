@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **147**  
-No obvious native overlap: **143**  
+Filtered CloudStream providers: **148**  
+No obvious native overlap: **144**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -122,7 +122,8 @@ Exact/alias overlap: **4**
 - **NextGenTV** (`NextGenTV`) — en; Movie, TvSeries — NextGenTV - Live TV & IPTV: S1 Xtream, JioTV+, India Max, ZEE5, Sun NXT, Dish/Samsung/LG/Tablo/Vizio, Fancode + 71 CRICFY servers (catalog picker, landscape ...
 - **SmartTube** (`SmartTube`) — en; Others, Movie — SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)
 - **DaddyLiveProvider** (`DaddyLiveProvider`) — en; Live — Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)
-- **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports HIGH QAULITY
+- **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels
+- **EasyPlayProvider** (`EasyPlayProvider`) — en; Live — EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...
 - **LiveSports** (`LiveSports`) — en; Live — Live Sports Events

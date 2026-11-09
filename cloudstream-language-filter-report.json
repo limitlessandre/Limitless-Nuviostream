@@ -2077,10 +2077,10 @@
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "language": [
-        "hi"
+        "ta"
       ],
       "normalizedLanguages": [
-        "hi"
+        "ta"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fivemovierulz.cs3",
       "reason": "no-allowed-language"

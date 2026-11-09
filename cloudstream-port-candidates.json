@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 147,
-  "no_obvious_native_overlap_count": 143,
+  "cloudstream_provider_count": 148,
+  "no_obvious_native_overlap_count": 144,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -2469,17 +2469,39 @@
     {
       "internalName": "DamiTVProvider",
       "name": "DamiTVProvider",
-      "description": "Live sports HIGH QAULITY",
+      "description": "Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels",
       "language": "en",
       "tvTypes": [
         "Live"
       ],
-      "version": 29,
+      "version": 30,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.435,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "EasyPlayProvider",
+      "name": "EasyPlayProvider",
+      "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
         "native_matches": []
       },
       "priority": "utility-or-review",

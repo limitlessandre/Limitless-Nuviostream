@@ -1207,7 +1207,7 @@
           "Phisher98"
         ],
         "description": "AniSnatch - Watch Anime Online Free",
-        "fileSize": 125136,
+        "fileSize": 125408,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1217,7 +1217,7 @@
         ],
         "iconUrl": "https://a.favicon.im/anisnatch.to?larger=true",
         "apiVersion": 1,
-        "fileHash": "sha256-ec1987431a35b8fcebd9b7eba30d6ae48c43b332fff67304db5e09f314812fea"
+        "fileHash": "sha256-7008a0e7d09bee04c653627cab9da36a6815b235962d566ea5b1edc46fc3ed11"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniVortex.cs3",
@@ -1519,7 +1519,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Fivemovierulz.cs3",
         "status": 1,
-        "version": 8,
+        "version": 10,
         "name": "Fivemovierulz",
         "internalName": "Fivemovierulz",
         "authors": [
@@ -1527,16 +1527,16 @@
           "Dilip"
         ],
         "description": "Movies & Series",
-        "fileSize": 40909,
+        "fileSize": 59479,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "hi",
+        "language": "ta",
         "tvTypes": [
           "TvSeries",
           "Movie"
         ],
         "iconUrl": "https://i.ibb.co/SwQRhsn/20241016-074942.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-faba3cf69004cdb1f2b5b5e2f052920871de23076cb0ba743baa39623b0892ab"
+        "fileHash": "sha256-892f80883877266bf61c0c6c60991748c1c5211bbae6bec03981b818a7489765"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/FourKHDHub.cs3",
@@ -2446,14 +2446,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Toonstream.cs3",
         "status": 1,
-        "version": 11,
+        "version": 12,
         "name": "Toonstream",
         "internalName": "Toonstream",
         "authors": [
           "Phisher98"
         ],
         "description": "ToonStream Multi Language",
-        "fileSize": 83757,
+        "fileSize": 85862,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -2465,7 +2465,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/toonstream.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ad85cebf9255cfb5ce1f719f563bcf94e474e18226853b78de58510a325e84d0"
+        "fileHash": "sha256-cbf3d551c7020acb48e309fbeb12322844177a6dc3f38b98444843d8486cc83d"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ToonTales.cs3",
@@ -2976,6 +2976,26 @@
         "description": "DoFlix Provider for Movies and TV Series",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DoFlixProvider.cs3",
         "name": "DoFlixProvider"
+      },
+      {
+        "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
+        "fileHash": "sha256-09540e9e47c0f3b07b5b36d463710943ab3541e060f27214fbdd5c85bafec9f2",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 60476,
+        "status": 1,
+        "language": "en",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Live"
+        ],
+        "version": 2,
+        "internalName": "EasyPlayProvider",
+        "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
+        "name": "EasyPlayProvider"
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/heads/master/Logos/EinthusanProvider/icon.png",
@@ -4111,14 +4131,14 @@
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Aia2tv 2.cs3",
         "status": 1,
-        "version": 4,
+        "version": 5,
         "name": "Asia2tv 2",
         "internalName": "Aia2tv 2",
         "authors": [
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 14287,
+        "fileSize": 25322,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4128,7 +4148,7 @@
         ],
         "iconUrl": "https://media.licdn.com/dms/image/v2/C4D0BAQEhyYSi351HRw/company-logo_200_200/company-logo_200_200/0/1630489719119?e=2147483647&v=beta&t=Br69OJ2AwT5vdJHgl-DTvliEqOmp6VQLYwUWcFqG4u4",
         "apiVersion": 1,
-        "fileHash": "sha256-d28dac44087f36ac58277c1a45dda5276bdc79f778d12792b1893586d0e14025"
+        "fileHash": "sha256-ad0a5830db004c19eaa71775c25eba00eeb743564121ff19d677017c8051c499"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Akwam.cs3",
@@ -9400,14 +9420,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
         "status": 1,
-        "version": 29,
+        "version": 30,
         "name": "DamiTVProvider",
         "internalName": "DamiTVProvider",
         "authors": [
           "KSHITIJ8473"
         ],
-        "description": "Live sports HIGH QAULITY",
-        "fileSize": 67349,
+        "description": "Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels",
+        "fileSize": 69160,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9415,7 +9435,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvvc01IqbjrBZ-AhXwvyrIblnaJBA04IUNKmJNRbqEh46fWVItaGuoRsj&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-6c2d153a4cee6a4ebd399b1eb5d7c9859b621ccab7ad27017e93134013140df4"
+        "fileHash": "sha256-425d96e2d11ff7ed12cf5578b65b5cabca232942049d3990d8b2b7d8923c24f3"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/EliteStreams.cs3",
@@ -12023,14 +12043,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 83,
+        "version": 85,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1345173,
+        "fileSize": 1347465,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12042,7 +12062,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-933826c13da93951bd1da1e65fc9e0e1004d714a1e0c54da429158626e288488"
+        "fileHash": "sha256-c79712e366414f7cca106878e7ebacaba7b7348334109eb286518f2512660d63"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",

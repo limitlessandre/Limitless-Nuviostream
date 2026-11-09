@@ -397,7 +397,7 @@
       "Phisher98"
     ],
     "description": "AniSnatch - Watch Anime Online Free",
-    "fileSize": 125136,
+    "fileSize": 125408,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -407,7 +407,7 @@
     ],
     "iconUrl": "https://a.favicon.im/anisnatch.to?larger=true",
     "apiVersion": 1,
-    "fileHash": "sha256-ec1987431a35b8fcebd9b7eba30d6ae48c43b332fff67304db5e09f314812fea"
+    "fileHash": "sha256-7008a0e7d09bee04c653627cab9da36a6815b235962d566ea5b1edc46fc3ed11"
   },
   {
     "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AniStream.cs3",
@@ -824,14 +824,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
     "status": 1,
-    "version": 29,
+    "version": 30,
     "name": "DamiTVProvider",
     "internalName": "DamiTVProvider",
     "authors": [
       "KSHITIJ8473"
     ],
-    "description": "Live sports HIGH QAULITY",
-    "fileSize": 67349,
+    "description": "Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels",
+    "fileSize": 69160,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -839,7 +839,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvvc01IqbjrBZ-AhXwvyrIblnaJBA04IUNKmJNRbqEh46fWVItaGuoRsj&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-6c2d153a4cee6a4ebd399b1eb5d7c9859b621ccab7ad27017e93134013140df4"
+    "fileHash": "sha256-425d96e2d11ff7ed12cf5578b65b5cabca232942049d3990d8b2b7d8923c24f3"
   },
   {
     "name": "DesertStrike",
@@ -938,6 +938,26 @@
     "language": "en",
     "iconUrl": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Game_Boy_Advance/master/Named_Boxarts/Doom%20%28USA%2C%20Europe%29.png",
     "fileSize": 3276326
+  },
+  {
+    "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
+    "fileHash": "sha256-09540e9e47c0f3b07b5b36d463710943ab3541e060f27214fbdd5c85bafec9f2",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+    "fileSize": 60476,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "NivinCNC"
+    ],
+    "tvTypes": [
+      "Live"
+    ],
+    "version": 2,
+    "internalName": "EasyPlayProvider",
+    "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
+    "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
+    "name": "EasyPlayProvider"
   },
   {
     "url": "https://cs.eclipsia.dpdns.org/files/05c5c0119b0c5820/Eclipsia.cs3",
