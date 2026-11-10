@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 378,
+  "excluded_count": 380,
   "excluded": [
     {
       "internalName": "Rate",
@@ -189,6 +189,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Anichin.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Anidap",
+      "name": "Anidap",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Anidap.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2959,6 +2973,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Lodynet.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "LunarX",
+      "name": "LunarX",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/LunarX.cs3",
       "reason": "no-allowed-language"
     },
     {

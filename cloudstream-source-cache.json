@@ -1373,14 +1373,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Coflix.cs3",
         "status": 1,
-        "version": 19,
+        "version": 20,
         "name": "Coflix",
         "internalName": "Coflix",
         "authors": [
           "Phisher98"
         ],
         "description": "Movies,Series and Anime French Extension ",
-        "fileSize": 56596,
+        "fileSize": 74834,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "fr",
         "tvTypes": [
@@ -1389,7 +1389,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Coflix.png",
         "apiVersion": 1,
-        "fileHash": "sha256-5e256016afac7184a5a51bdcb49c3a6f8b32581825884cafad546e5caefc8726"
+        "fileHash": "sha256-8a076bad457e39b61072477a77439c866f5df878416d31fe8bbfd75e9bf75b71"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3",
@@ -2309,7 +2309,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 694,
+        "version": 695,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2317,7 +2317,7 @@
           "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2106820,
+        "fileSize": 2125645,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2330,7 +2330,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-a63bd63f0203db0c62ed0e85a1d3f039a9e98d7cdc9fa79f233af6cce825f805"
+        "fileHash": "sha256-a58a27c075c636c59f9dea96592313c4ebee9d401285771c13ab2af4e1d238b7"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2979,10 +2979,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-        "fileHash": "sha256-09540e9e47c0f3b07b5b36d463710943ab3541e060f27214fbdd5c85bafec9f2",
+        "fileHash": "sha256-886dcad925ce2274075ef642b8ac178b7b684fb42c17b874f7711d0c6b9d91ea",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 60476,
+        "fileSize": 62569,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2991,7 +2991,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 2,
+        "version": 5,
         "internalName": "EasyPlayProvider",
         "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -8357,13 +8357,13 @@
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/EntrepeliculasyseriesProvider.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "EntrepeliculasyseriesProvider",
         "internalName": "EntrepeliculasyseriesProvider",
         "authors": [
           "Stormunblessed"
         ],
-        "fileSize": 39046,
+        "fileSize": 42488,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "mx",
         "tvTypes": [
@@ -8372,7 +8372,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=entrepeliculasyseries.nz&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-30629339802ac0a49b08cfd7e4f2e64883fba92e0d618510997ce9838dd023ca"
+        "fileHash": "sha256-8b24b29e9123a7f1fd1e29c3f1e3e45df244a4169ab66a818d4b898a030868e8"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/HDFullProvider.cs3",
@@ -8543,13 +8543,13 @@
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PeliculasFlixProvider.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "PeliculasFlixProvider",
         "internalName": "PeliculasFlixProvider",
         "authors": [
           "Stormunblessed"
         ],
-        "fileSize": 34430,
+        "fileSize": 31798,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "es",
         "tvTypes": [
@@ -8557,7 +8557,7 @@
         ],
         "iconUrl": "https://peliculasflix.co/img/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bf598a75b9a6acbe9859b565c575456a5b47bef03cf3ca8b25d5cd18290f4623"
+        "fileHash": "sha256-725c49cf82dd80040b0d0781b69197ebd1ac26863a7eb6d8f0174e7da0fcad72"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PelispediaProvider.cs3",
@@ -8604,13 +8604,13 @@
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PelisplusHDProvider.cs3",
         "status": 1,
-        "version": 12,
+        "version": 13,
         "name": "PelisplusHDProvider",
         "internalName": "PelisplusHDProvider",
         "authors": [
           "Stormunblessed"
         ],
-        "fileSize": 40681,
+        "fileSize": 41019,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "mx",
         "tvTypes": [
@@ -8619,19 +8619,19 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=pelisplushd.nu&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-278471aae9ae0dba6ef8d5ced46907df4e8c310d9a20ec1b7c9663e7a6d03d52"
+        "fileHash": "sha256-2c063f634539507884f0b78300277401c829728abdc66ed84fed4bcf8ac1f2fe"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
         "status": 1,
-        "version": 1,
+        "version": 2,
         "name": "PpvProvider",
         "internalName": "PpvProvider",
         "authors": [
           "redblacker8"
         ],
         "description": "Live PPV sports events and 24/7 channels",
-        "fileSize": 33920,
+        "fileSize": 34943,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "en",
         "tvTypes": [
@@ -8639,7 +8639,7 @@
         ],
         "iconUrl": "https://ppv.st/assets/img/ppv.png",
         "apiVersion": 1,
-        "fileHash": "sha256-1100ed3339354dbfb963ff11849899e290ccc6037710f07f5710c80d304387c0"
+        "fileHash": "sha256-6d1ebbff9c19ae25ae7c827609dc72aa4b08d72e45a9739e38c2df3fa4b4c7b9"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/ReyDonghuaProvider.cs3",
@@ -8703,14 +8703,14 @@
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/SoloLatinoProvider.cs3",
         "status": 1,
-        "version": 9,
+        "version": 11,
         "name": "SoloLatinoProvider",
         "internalName": "SoloLatinoProvider",
         "authors": [
           "redblacker8"
         ],
         "description": "Peliculas, series, animes y cartoons en Español y Español Latio",
-        "fileSize": 43584,
+        "fileSize": 52750,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "mx",
         "tvTypes": [
@@ -8721,7 +8721,7 @@
         ],
         "iconUrl": "https://sololatino.net/wp-content/uploads/2020/10/cropped-logo-final-192x192.png",
         "apiVersion": 1,
-        "fileHash": "sha256-f382319fef79c70a243bd634e08d6f9cc10fe8d7d5534b257238e8e05443dba7"
+        "fileHash": "sha256-d72eab69b82ce856f97fd72d0748d41b01f205ee12414c4bd1268be196627f41"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/StreamedProvider.cs3",
@@ -9512,7 +9512,7 @@
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 584184,
+        "fileSize": 584176,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9521,7 +9521,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-b98ce133fdd8810e7b687b9b50e02ab83c134ffed0f2a4874ec5e0113cb7bfbe"
+        "fileHash": "sha256-1c7b4aabcad4bf8cc25e1a2ec4f7a3474ae04a6af8ee7c3200d65d4cd07707d6"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -11646,6 +11646,28 @@
         "fileHash": "sha256-bfdf1701f1397e5ebb3865aa5eac43302b7640f75708a98caca31315da7a529f"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Anidap.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Anidap",
+        "internalName": "Anidap",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Free anime streaming portal with HD sub & dub, powered by AniList metadata",
+        "fileSize": 34249,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://anidap.lol/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-75f1f09f63ca02946dd1d8bd278ee9e238bcf75221093119823c42c476c3941c"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeDubHindi.cs3",
         "status": 1,
         "version": 4,
@@ -11863,6 +11885,28 @@
         "fileHash": "sha256-284d74af0a3da6bf37a307d6dbac3d1129b42c7bc97a0c92bdebff1e0b79950a"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/LunarX.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "LunarX",
+        "internalName": "LunarX",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "German & English anime streaming with Sub/Dub/HSub",
+        "fileSize": 50737,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://lunarx.to/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-b807fe41f493bc803446e493215c3a1c687dd6ff06460e508f6cf1c01e019978"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
         "status": 1,
         "version": 14,
@@ -12043,14 +12087,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 85,
+        "version": 86,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1347465,
+        "fileSize": 1354221,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12062,7 +12106,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-c79712e366414f7cca106878e7ebacaba7b7348334109eb286518f2512660d63"
+        "fileHash": "sha256-0bb037de4bd054e1becaf1c63ccefcd58b1feab5c2f14580abb45f81b99d406f"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -12152,6 +12196,28 @@
         "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
         "apiVersion": 1,
         "fileHash": "sha256-ae656085800cacc31ed0c0d47bc8fbd0f710bb498a2f5b63946155d5f2fd6887"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Xanime.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Xanime",
+        "internalName": "Xanime",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "Online anime platform with Sub/Dub streaming, ratings, and multi-genre filtering",
+        "fileSize": 21582,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "en",
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime"
+        ],
+        "iconUrl": "https://xanime.me/favicon.ico",
+        "apiVersion": 1,
+        "fileHash": "sha256-19ddb202063305d13075c816532e4db2248eea81f4c9ea1c041e6617f6d643b5"
       }
     ]
   },

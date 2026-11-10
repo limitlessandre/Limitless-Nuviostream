@@ -941,10 +941,10 @@
   },
   {
     "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-    "fileHash": "sha256-09540e9e47c0f3b07b5b36d463710943ab3541e060f27214fbdd5c85bafec9f2",
+    "fileHash": "sha256-886dcad925ce2274075ef642b8ac178b7b684fb42c17b874f7711d0c6b9d91ea",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 60476,
+    "fileSize": 62569,
     "status": 1,
     "language": "en",
     "authors": [
@@ -953,7 +953,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 2,
+    "version": 5,
     "internalName": "EasyPlayProvider",
     "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -1384,7 +1384,7 @@
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-    "fileSize": 584184,
+    "fileSize": 584176,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1393,7 +1393,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-b98ce133fdd8810e7b687b9b50e02ab83c134ffed0f2a4874ec5e0113cb7bfbe"
+    "fileHash": "sha256-1c7b4aabcad4bf8cc25e1a2ec4f7a3474ae04a6af8ee7c3200d65d4cd07707d6"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -2534,7 +2534,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 694,
+    "version": 695,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -2542,7 +2542,7 @@
       "Hexated"
     ],
     "description": "#1 best extention based on MultiAPI",
-    "fileSize": 2106820,
+    "fileSize": 2125645,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2555,7 +2555,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-a63bd63f0203db0c62ed0e85a1d3f039a9e98d7cdc9fa79f233af6cce825f805"
+    "fileHash": "sha256-a58a27c075c636c59f9dea96592313c4ebee9d401285771c13ab2af4e1d238b7"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

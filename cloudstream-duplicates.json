@@ -296,7 +296,7 @@
       {
         "internalName": "PpvProvider",
         "name": "PpvProvider",
-        "version": 1,
+        "version": 2,
         "language": "en",
         "source": "Storm-ext Fork by redblacker8",
         "sourceRepo": "https://raw.githubusercontent.com/redblacker8/storm-ext/refs/heads/builds/repo.json",
@@ -346,6 +346,40 @@
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+      }
+    ]
+  },
+  "internal:xanime": {
+    "chosen": {
+      "internalName": "Xanime",
+      "name": "Xanime",
+      "version": 5,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Xanime",
+        "name": "Xanime",
+        "version": 5,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3"
+      },
+      {
+        "internalName": "Xanime",
+        "name": "Xanime",
+        "version": 1,
+        "language": "en",
+        "source": "Desi Extensions",
+        "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Xanime.cs3"
       }
     ]
   }
