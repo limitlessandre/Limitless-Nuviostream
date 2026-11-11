@@ -7,39 +7,9 @@
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
-      "internalName": "Jellyfin",
-      "name": "Jellyfin",
-      "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media",
-      "language": "en",
-      "tvTypes": [
-        "AsianDrama",
-        "TvSeries",
-        "Anime",
-        "Movie",
-        "Cartoon",
-        "AnimeMovie"
-      ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.4,
-        "native_matches": []
-      },
-      "priority": "high-priority",
-      "priority_score": 13,
-      "reasons": [
-        "Asian drama / K-drama coverage",
-        "Anime coverage",
-        "Movies / Western TV coverage",
-        "Cartoon coverage"
-      ]
-    },
-    {
       "internalName": "StreamPlay",
       "name": "StreamPlay",
-      "description": "#1 best extention based on MultiAPI",
+      "description": "#1 best extension based on MultiAPI",
       "language": "en",
       "tvTypes": [
         "AsianDrama",
@@ -49,7 +19,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 695,
+      "version": 701,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -109,7 +79,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 27,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -246,8 +216,8 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 5,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HindiDrama-v5.cs3",
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HindiDrama-v8.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -270,8 +240,8 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v7.cs3",
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v10.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -307,6 +277,33 @@
       "reasons": [
         "Asian drama / K-drama coverage",
         "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Jellyfin",
+      "name": "Jellyfin",
+      "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media",
+      "language": "en",
+      "tvTypes": [
+        "TvSeries",
+        "Anime",
+        "Movie",
+        "Cartoon"
+      ],
+      "version": 8,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
+      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 7,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage",
+        "Cartoon coverage"
       ]
     },
     {
@@ -376,8 +373,8 @@
         "Movie",
         "Anime"
       ],
-      "version": 15,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v15.cs3",
+      "version": 18,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v18.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -447,8 +444,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 93,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v93.cs3",
+      "version": 96,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v96.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -552,8 +549,8 @@
         "AnimeMovie",
         "Live"
       ],
-      "version": 6,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v6.cs3",
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v9.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -962,7 +959,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 48,
+      "version": 51,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1009,8 +1006,8 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v4.cs3",
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v7.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1221,8 +1218,8 @@
         "Anime",
         "Others"
       ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v10.cs3",
+      "version": 13,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v13.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1385,8 +1382,8 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 15,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v15.cs3",
+      "version": 18,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v18.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1571,8 +1568,8 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 4,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v4.cs3",
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v7.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1617,8 +1614,8 @@
       "tvTypes": [
         "Movie"
       ],
-      "version": 13,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v13.cs3",
+      "version": 16,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v16.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1640,8 +1637,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 8,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v8.cs3",
+      "version": 11,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v11.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1687,8 +1684,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 6,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v6.cs3",
+      "version": 9,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v9.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1894,8 +1891,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 9,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NoirX-v9.cs3",
+      "version": 12,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NoirX-v12.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2033,7 +2030,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 42,
+      "version": 45,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2309,7 +2306,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 33,
+      "version": 34,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2356,8 +2353,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 32,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v32.cs3",
+      "version": 35,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v35.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2405,8 +2402,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 9,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v9.cs3",
+      "version": 12,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v12.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2429,8 +2426,8 @@
         "Others",
         "Movie"
       ],
-      "version": 10,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v10.cs3",
+      "version": 13,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v13.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2695,8 +2692,8 @@
       "tvTypes": [
         "Music"
       ],
-      "version": 7,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v7.cs3",
+      "version": 10,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v10.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2710,19 +2707,19 @@
       ]
     },
     {
-      "internalName": "StreamedProvider",
-      "name": "StreamedProvider",
-      "description": "Multilang live sports",
+      "internalName": "SportsBiteProvider",
+      "name": "SportsBiteProvider",
+      "description": "Live sports from SportsBite",
       "language": "en",
       "tvTypes": [
         "Live"
       ],
-      "version": 3,
-      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/StreamedProvider.cs3",
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/SportsBiteProvider.cs3",
       "repositoryUrl": "https://github.com/redblacker8/storm-ext",
       "overlap": {
         "status": "no-obvious-overlap",
-        "score": 0.667,
+        "score": 0.429,
         "native_matches": []
       },
       "priority": "utility-or-review",
@@ -3440,8 +3437,8 @@
         "Anime",
         "OVA"
       ],
-      "version": 34,
-      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v34.cs3",
+      "version": 37,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v37.cs3",
       "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
       "overlap": {
         "status": "exact-or-alias",

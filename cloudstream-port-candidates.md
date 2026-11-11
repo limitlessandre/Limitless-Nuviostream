@@ -10,8 +10,7 @@ Exact/alias overlap: **4**
 
 ## High-priority unique candidates
 
-- **Jellyfin** (`Jellyfin`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media
-- **StreamPlay** (`StreamPlay`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — #1 best extention based on MultiAPI
+- **StreamPlay** (`StreamPlay`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — #1 best extension based on MultiAPI
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies
 - **CineStream** (`CineStream`) — en; TvSeries, Movie, AsianDrama, Anime, Torrent — One stop solution for Movies, Series, Anime, AsianDrama and Torrents
@@ -21,6 +20,7 @@ Exact/alias overlap: **4**
 - **HindiDrama** (`HindiDrama`) — en; AsianDrama, TvSeries, Movie — HindiDrama - Hindi-dubbed Korean, Chinese, Japanese & Indian dramas: Top 10, latest episodes, latest added, categories, search & HLS playback
 - **KissAsian** (`KissAsian`) — zh; TvSeries, Movie — KissAsian - Asian dramas & movies with direct HLS
 - **OneTouchTV** (`OneTouchTV`) — en; AsianDrama, TvSeries — Asian Dramas
+- **Jellyfin** (`Jellyfin`) — en; TvSeries, Anime, Movie, Cartoon — Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media
 - **Nepu** (`Nepu`) — en; Movie, TvSeries, Anime, AnimeMovie, Cartoon — Movies, shows, cartoons and anime in HD
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
@@ -133,7 +133,7 @@ Exact/alias overlap: **4**
 - **PublicSportsIPTV** (`PublicSportsIPTV`) — en; Live — Sports Live Streams (FanCode)
 - **QuickIPTV** (`QuickIPTV`) — en; Live — Includes PirateIPTV,Sports IPTV,Japanese IPTV,Sony IPTV
 - **SimpMusic** (`SimpMusic`) — en; Music — SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)
-- **StreamedProvider** (`StreamedProvider`) — en; Live — Multilang live sports
+- **SportsBiteProvider** (`SportsBiteProvider`) — en; Live — Live sports from SportsBite
 - **WatchParty** (`WatchParty`) — en; All — Synchronized Watch Party: Watch movies and series together with real-time playback sync, persistent chat window, and host moderation.
 - **AriaOfSorrow** (`AriaOfSorrow`) — en; Others — Play Aria of Sorrow.
 - **AryaVidya** (`AryaVidya`) — en; Others — Free PW batches, lectures, OTT videos.

@@ -191,10 +191,10 @@
     "plugins": [
       {
         "iconUrl": "https://animeon.club/assets/images/short-logo.png",
-        "fileHash": "sha256-d6d259c6eacc06342e629ec84a75d2528630948be91f54c1cb8a24e593215334",
+        "fileHash": "sha256-231b95ae40e038a7fc1affc547b90baa125dd09cdd7a23696c8f61f0c133500e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 144346,
+        "fileSize": 144491,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -214,10 +214,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animeua.club&sz=%size%",
-        "fileHash": "sha256-31647bcf6bdd87404e7df5a8db621ee1d100c605ef3d9f2a342d389cd8a386a8",
+        "fileHash": "sha256-e2a6a4d776208a6cc11854a5bdf433f13647f84d0f9c56bdded1b9540ba2c41f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 31463,
+        "fileSize": 31607,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -236,10 +236,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=anitube.in.ua&sz=%size%",
-        "fileHash": "sha256-7403502cc562abe59a66f49b612c00ef74a9302c228df1d5a4a222cc7fb09d10",
+        "fileHash": "sha256-0151709a66775fce683573e8bd0f798b853271ebee602a14d1d35d2c63172032",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 78568,
+        "fileSize": 78725,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -257,10 +257,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bambooua.com&sz=%size%",
-        "fileHash": "sha256-8cd686f970ca4b0e1e0c842a7f9abaead45aac6755e75b31151af41b4c10d39d",
+        "fileHash": "sha256-40b4009a086d6eb4e6bee1086d7693b1c0ee429d8e08da2c4c4d1e60091e2290",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 28655,
+        "fileSize": 28796,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -278,10 +278,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cikava-ideya.top&sz=%size%",
-        "fileHash": "sha256-5f46c4519fb47b8cbd28504b73b9bcd0faebe717bc8cb7179251257fc62fba80",
+        "fileHash": "sha256-ea6b4b466fa40d48a3230e6bd4d12a901ac2c0dfc3afc1f5878e6234c9d33a4e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 21495,
+        "fileSize": 21636,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -300,10 +300,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=coani.net&sz=%size%",
-        "fileHash": "sha256-7f4c9defedee0bba30b77866dab0e32d94c4f8b7570b2818afd634cd4ea8aa7e",
+        "fileHash": "sha256-a3429bc4ecac16a4d211744e68ab6127b7ac95ff81edd15105cc86f33175bc9e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 33394,
+        "fileSize": 33547,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -320,11 +320,11 @@
         "name": "CoaninetProvider"
       },
       {
-        "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrZAw8JCRhrw1pDMb5_nYDPYQOPVC4T1JDH3PpLB5Bf35ts32ohXNFsRic&s=10",
-        "fileHash": "sha256-87f49601ced2329805caecb60cdc4892b3176df75c77d42a1a1b514651b62dfd",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=doramy.world&sz=%size%",
+        "fileHash": "sha256-cfd1b3fac2b50c93e8e1b10f523d9ac96e5f5a05d58b8669a6294add630dc0dd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 24164,
+        "fileSize": 24291,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -334,7 +334,7 @@
           "AsianDrama",
           "Movie"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "DoramyWorldProvider",
         "description": "СВІТ ДОРАМ – платформа для українського шанувальника азійської культури, яка відкрилася 22 лютого 2021.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/DoramyWorldProvider.cs3",
@@ -342,10 +342,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=eneyida.tv&sz=%size%",
-        "fileHash": "sha256-41d81d5332832599e174637cbe7884ac6b302be61612a978b684c2fddfb3b286",
+        "fileHash": "sha256-2947d81d3b8aeace00ad5efe95bd753a08fb65853e1fbdd5e495a86026f1079c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 40007,
+        "fileSize": 40189,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -356,7 +356,7 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 19,
+        "version": 20,
         "internalName": "EneyidaProvider",
         "description": "Мета проекту «Енеїда» - популяризація української мови, демонстрація її різнобарвності та сучасності. Ми плануємо робити це через ретрансляцію якісного кіно, мультфільмів, телесеріалів та різноманітних телешоу в якісному українському перекладі. Тож, у добрий шлях дорогі конфіденти!.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/EneyidaProvider.cs3",
@@ -364,10 +364,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hentaiukr.com&sz=%size%",
-        "fileHash": "sha256-bd9a0f9ada45b059123adb3593c8c5853ec5c2af43c3a91438165ec548a93d09",
+        "fileHash": "sha256-9b4bbc67f398dd1f49abac18a0f685051e3a7ac976a25bc9dea4b90b0fb276f4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 22941,
+        "fileSize": 23093,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -384,10 +384,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinostrain.com&sz=%size%",
-        "fileHash": "sha256-c1cc40a54f5b6265af8efd93ced48a829e26cf0886dbc5f1a90a3d6e8c21ec8b",
+        "fileHash": "sha256-24620e20935384ebc9680ea12a934f3797570945402535ea0c9a21aad33ef252",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 37871,
+        "fileSize": 38006,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -408,10 +408,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinotron.top&sz=%size%",
-        "fileHash": "sha256-dcd17948b6b6384803613a74ea4b78f640f78f6e5b91a8ae69f8916ae36f0c75",
+        "fileHash": "sha256-543933599ead4f2f656d7b9e448f1b4cce8e613563e24160204f93d178e95d9c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 26970,
+        "fileSize": 27109,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -431,10 +431,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kinovezha.com&sz=%size%",
-        "fileHash": "sha256-2756b2e60e56c4e512864ccd1fb2626ffcdae241d2786baf31631e523adafe5e",
+        "fileHash": "sha256-d3d32cb496f62a8422c99658f608a725590b79cd5dbf64e950e9d8c3b9b9470e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 29036,
+        "fileSize": 29187,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -452,11 +452,11 @@
         "name": "KinoVezhaProvider"
       },
       {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=klon.tv&sz=%size%",
-        "fileHash": "sha256-d39d0bdf3cf9a8a9f8b0bdb8aff7b3048ba5bc4b7f8f7154fde1aac5407137da",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=klonua.com&sz=%size%",
+        "fileHash": "sha256-a32c9f51be0d5f3f6bdd10d3882b2af5acfffc27aca92fb06f6e764f7c54aff8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 40203,
+        "fileSize": 40345,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -468,7 +468,7 @@
           "Cartoon",
           "Movie"
         ],
-        "version": 24,
+        "version": 25,
         "internalName": "KlonTVProvider",
         "description": "Команда Klon.TV створила безкоштовний онлайн-сервіс, щоб кожен наш глядач з легкістю та без зайвих суперечок вибрав цікавий фільм, або одразу продовжив дивитися улюблений серіал. Минула та пора, коли треба стежити за афішами твого міста, і вгадувати якість майбутньої стрічки. Також вже можна забути про трату часу на довгу дорогу в кінотеатр, півгодинного перегляду трейлерів перед показом, сусідами, що чавкають, яким не зрозуміти, що фільм треба іноді й слухати, а не тільки дивитися. Вибравши наш сервіс для перегляду фільмів онлайн безкоштовно, ви будете приємно здивовані: українське озвучення, перегляд без реєстрації, ніякої реклами на весь екран, і багато інших цікавих можливостей. Klon.TV - цінує кожного глядача, і зробить все можливе, щоб Ви до нас повернулися:).",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/KlonTVProvider.cs3",
@@ -476,10 +476,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=serialno.tv&sz=%size%",
-        "fileHash": "sha256-a17631fb29dd710d59144cb1b80e9b0fdd17fe2b0f1eb816fba66f239855bf54",
+        "fileHash": "sha256-62576c1e8d18a095f8eb41bb792a50c4a95f5f038114de3625022290d58c1784",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 27254,
+        "fileSize": 27385,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -497,10 +497,10 @@
       },
       {
         "iconUrl": "https://simpsonsua.tv/templates/simpsonsua/images/favicon.ico",
-        "fileHash": "sha256-54c79ce42b2d45fcca183af3e10490f5e486892dc7b2040d90d0676a105808c9",
+        "fileHash": "sha256-d1b91a395bdce4d1c5e0d3cfdc931cd53a4b4c9561895d3aeb1f5b9bd285aa44",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 44662,
+        "fileSize": 45177,
         "status": 3,
         "language": "uk",
         "authors": [
@@ -510,17 +510,17 @@
           "Cartoon",
           "TvSeries"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "SimpsonsUATvProvider",
         "description": "Сайт СІМПСОНИ UA - на якому можна дивитися Сімпсони всі сезони  українською мовою онлайн",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/SimpsonsUATvProvider.cs3",
         "name": "SimpsonsUATvProvider"
       },
       {
-        "fileHash": "sha256-b5ed63681b50514b7e0fb292a2db264c2cd5beed256bd873777c4e10593751f7",
+        "fileHash": "sha256-d09744d27a6ec25404fd09618da9e9436b77a163db382ff4d2f30a3d0c4e8c51",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 110129,
+        "fileSize": 110283,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -537,10 +537,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uafix.net&sz=%size%",
-        "fileHash": "sha256-6ffeea729e8f89a99d17088cbfa8eee6c002b524f0d6e5645aa1a7f827bdbb38",
+        "fileHash": "sha256-84d950d86794c364e991e89ec85f6d0c6d97064d3f8dabad0d8ed4ceb5e6af6e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 38269,
+        "fileSize": 38072,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -552,7 +552,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 23,
+        "version": 24,
         "internalName": "UAFlixProvider",
         "description": "UAFLIX - фільми і серіали NETFLIX українською",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UAFlixProvider.cs3",
@@ -560,10 +560,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.cx&sz=%size%",
-        "fileHash": "sha256-4ec709c64b2a7020d78d9e74bfbf13a25617cc1d6f6e41f8bcabc07324feb2ef",
+        "fileHash": "sha256-18f50c34389cb748b29c38039fcd943b495ed3344ab39d6665f91a6834d2e352",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 41074,
+        "fileSize": 41453,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -575,7 +575,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "UaKinoCXProvider",
         "description": "Дивитися фільми та серіали онлайн в HD 720 - 1080 якості. У нас можна дивитися кіно онлайн безкоштовно, у високій якості та з якісним українським дубляжем",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UaKinoCXProvider.cs3",
@@ -583,10 +583,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.club&sz=%size%",
-        "fileHash": "sha256-6fdbc82b103c12eddb6533708f05d4b104bf1abb3fb5e4954f177e83a735a464",
+        "fileHash": "sha256-5a393fede3d66b624c8d65f9a4325bd2a2eeab13f0f1e19da866d38a9e7a9414",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 51016,
+        "fileSize": 51549,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -598,7 +598,7 @@
           "Movie",
           "AsianDrama"
         ],
-        "version": 34,
+        "version": 35,
         "internalName": "UakinoProvider",
         "description": "Дивіться фільми та серіали онлайн в HD якості. У нас можна дивитися кіно онлайн безкоштовно, у високій якості та з якісним українським дубляжем.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UakinoProvider.cs3",
@@ -606,10 +606,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uaserials.pro&sz=%size%",
-        "fileHash": "sha256-b9725c353ca62643099a0b3b7b0fab85d3652250ac9a2e3985505d0412499610",
+        "fileHash": "sha256-d6dff69efb4c3e4a9bed261224650bb7dda694d617a5c5131dcad494ae10a759",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 45218,
+        "fileSize": 45423,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -621,7 +621,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 28,
+        "version": 29,
         "internalName": "UASerialsProProvider",
         "description": "UASerials.pro — твої улюблені серіали українською мовою онлайн.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UASerialsProProvider.cs3",
@@ -629,10 +629,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ufdub.com&sz=%size%",
-        "fileHash": "sha256-beedbe938480377c046d635cec0f374f44bb065a914d35beef525e0dcf4ea677",
+        "fileHash": "sha256-b057e9ca41acb208e2bc315ffc868a5e2dcba11b8f1f4a3fff057dbb0392695f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 17239,
+        "fileSize": 17365,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -646,7 +646,7 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 13,
+        "version": 14,
         "internalName": "UFDubProvider",
         "description": "UFDUB.com - Це команда любителів, що озвучують з душею те, що бажають глядачі й учасники проєкту! 🧡",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UFDubProvider.cs3",
@@ -654,10 +654,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=unimay.media&sz=%size%",
-        "fileHash": "sha256-68046c39c52a8945d31befb2c81b0f40614a367a7d7a162d88044548d9a37109",
+        "fileHash": "sha256-e3ab433d976abd8f187d67759d92e8091f62f74db08200b168b7205e244f93b1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 32610,
+        "fileSize": 32741,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -1112,14 +1112,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
         "status": 1,
-        "version": 48,
+        "version": 51,
         "name": "AnimePahe",
         "internalName": "AnimePahe",
         "authors": [
           "Cloudburst,Lorem Ipsum,Phisher98"
         ],
         "description": "Animes (SUB/DUB)",
-        "fileSize": 156445,
+        "fileSize": 157710,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -1129,7 +1129,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/animepahe.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c2655d7ff019fb789ee12b2f5b7215c86fdf51b0446bfc416c6868758f012b92"
+        "fileHash": "sha256-b45170f46f6174e42bc340f79d6b45fe2e740488b1ac707b647633890418f779"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animesalt.cs3",
@@ -1754,27 +1754,25 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
         "status": 1,
-        "version": 7,
+        "version": 8,
         "name": "Jellyfin",
         "internalName": "Jellyfin",
         "authors": [
           "Phisher98"
         ],
         "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media",
-        "fileSize": 99586,
+        "fileSize": 109751,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
-          "AsianDrama",
           "TvSeries",
           "Anime",
           "Movie",
-          "Cartoon",
-          "AnimeMovie"
+          "Cartoon"
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/jellyfin.png",
         "apiVersion": 1,
-        "fileHash": "sha256-70f8adeb1c4ac2037ceb092f3c6c649c017d48d8472f6507510ca3d8a3286500"
+        "fileHash": "sha256-b923442610d06d5c10f409218256ef259a624b72395d2904b2c32939219f2e01"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kartoons.cs3",
@@ -2309,15 +2307,15 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 695,
+        "version": 701,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
           "Phisher98",
           "Hexated"
         ],
-        "description": "#1 best extention based on MultiAPI",
-        "fileSize": 2125645,
+        "description": "#1 best extension based on MultiAPI",
+        "fileSize": 2133620,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2330,7 +2328,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-a58a27c075c636c59f9dea96592313c4ebee9d401285771c13ab2af4e1d238b7"
+        "fileHash": "sha256-1263d1e738686b2fb06bd71bc992fea7cd77651d398d9b2ee72adaa3c6da0b87"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2555,14 +2553,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
         "status": 1,
-        "version": 42,
+        "version": 45,
         "name": "UHDmoviesProvider",
         "internalName": "UHDmoviesProvider",
         "authors": [
           "Phisher98"
         ],
         "description": "Indian Multi-language 4K Provider",
-        "fileSize": 86815,
+        "fileSize": 87892,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2571,7 +2569,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/UHDmoviesProvider/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-13ef29ef23bd471979edcb844d8f9eb93301a2530e007d5a519a971b1c6642f2"
+        "fileHash": "sha256-4ae5f0a706c51ef824ccf60cfbee5477514e2a2efd2655526ce3469e7492864c"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Ultima.cs3",
@@ -2616,14 +2614,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
         "status": 1,
-        "version": 27,
+        "version": 28,
         "name": "XDMovies",
         "internalName": "XDMovies",
         "authors": [
           "Phisher98"
         ],
         "description": "Watch Latest Movies",
-        "fileSize": 163539,
+        "fileSize": 163955,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2636,7 +2634,7 @@
         ],
         "iconUrl": "https://huh.xdmovies.wtf/assets/logo1.png",
         "apiVersion": 1,
-        "fileHash": "sha256-af9e99f0a2b73cb6ea3f4616b4478bfeb5687166652c9cd2314e58f6049ac69d"
+        "fileHash": "sha256-ce277c1043fd83fdfaa14f4d5a589914a1f9ee759091c10ce61723e3ff4f46e7"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",
@@ -4949,14 +4947,14 @@
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Witanime.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "Witanime",
         "internalName": "Witanime",
         "authors": [
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 60603,
+        "fileSize": 106282,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4965,7 +4963,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7AH2oC7LwumXRpHM8_WLpIFvDIfmS67jkjlhsCKpPaZdqcneigzUQX4g&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-61567898515085b543b7a1b17399c93fcbaafca1ca09bdf903546836b0972078"
+        "fileHash": "sha256-02cedcc7f14db657f5ae0482edaecfa909b98cff27828b8474b006dde458a595"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Yacintv.cs3",
@@ -8012,6 +8010,26 @@
         "fileHash": "sha256-028b67fbde0b861ca085ee4f8c46d1afac3488a415a1cfacac4e0f70f0c02196"
       },
       {
+        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/AngulismoTvProvider.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "AngulismoTvProvider",
+        "internalName": "AngulismoTvProvider",
+        "authors": [
+          "redblacker8"
+        ],
+        "description": "Agenda deportiva y canales en vivo desde AngulismoTV.",
+        "fileSize": 68186,
+        "repositoryUrl": "https://github.com/redblacker8/storm-ext",
+        "language": "mx",
+        "tvTypes": [
+          "Live"
+        ],
+        "iconUrl": "https://angulismotv.pages.dev/assets/logo.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-8055e1d1d9a22cfadee8d84d23af4e33f8357954082475b26275fa0c34928469"
+      },
+      {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/AnimeAV1Provider.cs3",
         "status": 1,
         "version": 1,
@@ -8253,26 +8271,6 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=cuevana3.me&sz=%size%",
         "apiVersion": 1,
         "fileHash": "sha256-3b3c01ac4d04e34b7beed5969c1d6ad964b9bc957c3f892b9094d373974f17fc"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/DeporTVProvider.cs3",
-        "status": 1,
-        "version": 34,
-        "name": "DeporTVProvider",
-        "internalName": "DeporTVProvider",
-        "authors": [
-          "redblacker8"
-        ],
-        "description": "Deportes eventos en vivo. Sports live events. Futbol. Soccer.",
-        "fileSize": 121659,
-        "repositoryUrl": "https://github.com/redblacker8/storm-ext",
-        "language": "mx",
-        "tvTypes": [
-          "Live"
-        ],
-        "iconUrl": "https://yt3.googleusercontent.com/T_d2j2xZMjAxPCehiFR6hAv7jE3swcUzfgV8wCXzv1IL7rCEDv3cgQtIxjdmLVyP6ZrSgIu0nw=s900-c-k-c0x00ffffff-no-rj",
-        "apiVersion": 1,
-        "fileHash": "sha256-0997424ce790efd3cee2fb04d99409fa7801f69f67e31d206abc75b06f379849"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/DisneyPlusProvider.cs3",
@@ -8624,14 +8622,14 @@
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/PpvProvider.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "PpvProvider",
         "internalName": "PpvProvider",
         "authors": [
           "redblacker8"
         ],
         "description": "Live PPV sports events and 24/7 channels",
-        "fileSize": 34943,
+        "fileSize": 34894,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "en",
         "tvTypes": [
@@ -8639,7 +8637,7 @@
         ],
         "iconUrl": "https://ppv.st/assets/img/ppv.png",
         "apiVersion": 1,
-        "fileHash": "sha256-6d1ebbff9c19ae25ae7c827609dc72aa4b08d72e45a9739e38c2df3fa4b4c7b9"
+        "fileHash": "sha256-ee9ce6d5cb6e940dae7878dfd7b798b507333833d2310b94fd4baa4e9e2602a2"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/ReyDonghuaProvider.cs3",
@@ -8724,16 +8722,16 @@
         "fileHash": "sha256-d72eab69b82ce856f97fd72d0748d41b01f205ee12414c4bd1268be196627f41"
       },
       {
-        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/StreamedProvider.cs3",
+        "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/SportsBiteProvider.cs3",
         "status": 1,
-        "version": 3,
-        "name": "StreamedProvider",
-        "internalName": "StreamedProvider",
+        "version": 1,
+        "name": "SportsBiteProvider",
+        "internalName": "SportsBiteProvider",
         "authors": [
           "redblacker8"
         ],
-        "description": "Multilang live sports",
-        "fileSize": 43092,
+        "description": "Live sports from SportsBite",
+        "fileSize": 60111,
         "repositoryUrl": "https://github.com/redblacker8/storm-ext",
         "language": "en",
         "tvTypes": [
@@ -8741,7 +8739,7 @@
         ],
         "iconUrl": "https://sportsbite.org/og-image.png",
         "apiVersion": 1,
-        "fileHash": "sha256-9caed42a9132a3fdb21f6f1bcdf03314b608997135d0e01f1d68e218fd5ea15f"
+        "fileHash": "sha256-ea36bb395ca4a9ca1dbe577cc00c1f178f5f6e31d642b39b883fc749c8bdfc56"
       },
       {
         "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/TioAnimeProvider.cs3",
@@ -9505,14 +9503,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 33,
+        "version": 34,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
-        "fileSize": 584176,
+        "fileSize": 582510,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9521,7 +9519,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-1c7b4aabcad4bf8cc25e1a2ec4f7a3474ae04a6af8ee7c3200d65d4cd07707d6"
+        "fileHash": "sha256-ed232ab101ff677bbaab1a7904ea00b8629fbe30275a5fb5b69c6e0d6c6b46ce"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -10208,7 +10206,7 @@
     "description": "MovieBox, Netflix, Hotstar & Prime Video — all in one",
     "plugins": [
       {
-        "version": 13,
+        "version": 16,
         "internalName": "Rate",
         "name": "All4U Rate",
         "pluginClassName": "com.allforu.RatePlugin",
@@ -10222,14 +10220,14 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v13.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Rate-v16.cs3",
         "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-e7a54691780015b2cc309b3641c953292d56cbf25880f93a7f3a43a6fff0ddca",
-        "fileSize": 58781
+        "fileHash": "sha256-aff5de07aca8e24cf2c0ebe0e1954c64c589f1ccde67fbae5c281e8ef4af2e75",
+        "fileSize": 70210
       },
       {
-        "version": 9,
+        "version": 12,
         "internalName": "NoirX",
         "name": "NoirX",
         "pluginClassName": "com.allforu.NoirXPlugin",
@@ -10244,18 +10242,18 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NoirX-v9.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NoirX-v12.cs3",
         "description": "NoirX - Movies & TV shows in HD (multi-language, multi-quality, subtitles)",
         "iconUrl": "https://noirx.me/apple-touch-icon.png",
-        "fileHash": "sha256-9642ae650a6cf738f8c459764979a05aa2a9854a563697b5c69d9e8edf175f67",
-        "fileSize": 65249
+        "fileHash": "sha256-802c71ff883f025ce1bc02fc09b1f6adee2db66d80267924299bf65d9fd87b39",
+        "fileSize": 77428
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/moviebox.png",
-        "fileHash": "sha256-aa579f718cfd6f2eb5ee11eb98939f4abc1a87e0d0644daa88b760b31bf2df8a",
+        "fileHash": "sha256-dba3dfa0a73278b366e787dab4c84e2bf15d63bd80f6dae5664bfeabc5d01dd0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "fileSize": 84189,
+        "fileSize": 96456,
         "status": 1,
         "language": "en",
         "authors": [
@@ -10265,15 +10263,15 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 93,
+        "version": 96,
         "internalName": "MovieBox",
         "description": "MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v93.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v96.cs3",
         "name": "MovieBox",
         "pluginClassName": "com.allforu.StreamBoxPlugin"
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "AllOtt",
         "name": "AllOtt",
         "pluginClassName": "com.allforu.allott.AllOttPlugin",
@@ -10288,14 +10286,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AllOtt-v11.cs3",
         "description": "AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-7927094d50371b23be30c136fe409b67ebc6e8f5a136e073605a4833f70438d8",
-        "fileSize": 144323
+        "fileHash": "sha256-c01c6e7898a12eaf67252c1131085186cc98295a44f3c204ce23192e2e9b19a6",
+        "fileSize": 156690
       },
       {
-        "version": 49,
+        "version": 52,
         "internalName": "JioTV",
         "name": "JioTV",
         "pluginClassName": "com.allforu.JioTvPlugin",
@@ -10310,14 +10308,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v49.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/JioTV-v52.cs3",
         "description": "JioTV - Live JioTV channels + Live Sports (live events, sports channels & highlights)",
-        "fileHash": "sha256-01d16455051330f30548b1e15977a7adc10bcc7d94fa53d0ce60add5af7ea600",
-        "fileSize": 95953,
+        "fileHash": "sha256-c33f65a6a0d52068bae34e9ca4d52ce625df3279eacea0bbb7daf9d15bc2944e",
+        "fileSize": 108511,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/jiotv.png"
       },
       {
-        "version": 32,
+        "version": 35,
         "internalName": "M3UPlayer",
         "name": "M3U Player",
         "pluginClassName": "com.allforu.M3uPlayerPlugin",
@@ -10332,10 +10330,10 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v32.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/M3UPlayer-v35.cs3",
         "description": "M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)",
-        "fileHash": "sha256-67896337213e9680f0171b42dea6241520adbb05ebfc8cca38c4c685b7c44df1",
-        "fileSize": 59281,
+        "fileHash": "sha256-5a3ce4a285136e4aa4593cfbaa52ba88e1a460e714be89500c879b7a846fd387",
+        "fileSize": 71394,
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/m3uplayer.png"
       },
       {
@@ -10354,15 +10352,15 @@
           "OVA"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v34.cs3",
-        "version": 34,
-        "fileHash": "sha256-048e00900d824a27c75c6b7bcf22546ef3ab2429e44ba410e2973787c3410dd5",
-        "fileSize": 56196,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Reanime-v37.cs3",
+        "version": 37,
+        "fileHash": "sha256-a81712c74014d3ca05b01c37440303f7033dcac1bacb8d62f40beb4c749b920f",
+        "fileSize": 68276,
         "description": "Re:ANIME - Stream anime free online (sub & dub, multi-quality)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/reanime.png"
       },
       {
-        "version": 3,
+        "version": 6,
         "internalName": "An1me",
         "name": "An1me",
         "pluginClassName": "com.allforu.An1mePlugin",
@@ -10377,14 +10375,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/An1me-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/An1me-v6.cs3",
         "description": "An1me - Anime με ελληνικούς υπότιτλους και μεταγλώττιση (Greek subs & dub)",
         "iconUrl": "https://an1me.to/wp-content/uploads/2024/12/logo_copy.png",
-        "fileHash": "sha256-b9aad9bb09f19354fc65b65ad096ab5720c5fb22f8467ef0ab1446bbb54ab4f8",
-        "fileSize": 65481
+        "fileHash": "sha256-c69e2e6ea7d3905b3a56554765de00e176f02ce20c32fa0a21d40e9ba735a317",
+        "fileSize": 77647
       },
       {
-        "version": 16,
+        "version": 19,
         "internalName": "Animeav1",
         "name": "AnimeAv1",
         "pluginClassName": "com.allforu.Animeav1Plugin",
@@ -10399,14 +10397,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v16.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Animeav1-v19.cs3",
         "description": "AnimeAv1 - Anime en espanol latino (multi-servidor, sub)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/animeav1.png",
-        "fileHash": "sha256-e365f870496a8b46c5612cd55be0b3ed5f3cb3bdcaa86e87c669ef385f3709ea",
-        "fileSize": 32176
+        "fileHash": "sha256-21c29d3ef887cf8493b57e1b7631fc1d97954fa81f60895c4b048fe0d103b481",
+        "fileSize": 44550
       },
       {
-        "version": 16,
+        "version": 19,
         "internalName": "Latanime",
         "name": "Latanime",
         "pluginClassName": "com.allforu.LatanimePlugin",
@@ -10421,14 +10419,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v16.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Latanime-v19.cs3",
         "description": "Latanime - Anime en espanol latino (sub & doblaje)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/latanime.png",
-        "fileHash": "sha256-a7dcb016e6cb80366e851c9a86198a991c3b46ed5091c573c1c6b88d84a3260c",
-        "fileSize": 29091
+        "fileHash": "sha256-e46c994185febab36adb97cd6228222cb051e517586ae2c242610db564372fe8",
+        "fileSize": 41560
       },
       {
-        "version": 16,
+        "version": 19,
         "internalName": "Netcinez",
         "name": "Netcinez",
         "pluginClassName": "com.allforu.NetcinezPlugin",
@@ -10443,14 +10441,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v16.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Netcinez-v19.cs3",
         "description": "Netcinez - Filmes, Series & Animes dublados (Portugues)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/netcinez.png",
-        "fileHash": "sha256-6b3300848813dd2810b5fa12caf2f5435975c9141d74095e226dbbb5dccd978e",
-        "fileSize": 52901
+        "fileHash": "sha256-35b543945799425e81c7993761f23e2f509ec6cf939709e121e5828add2b5082",
+        "fileSize": 64705
       },
       {
-        "version": 15,
+        "version": 18,
         "internalName": "Chikianimation",
         "name": "Chikianimation",
         "pluginClassName": "com.allforu.ChikianimationPlugin",
@@ -10465,14 +10463,14 @@
           "Anime"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v15.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Chikianimation-v18.cs3",
         "description": "Chikianimation - Donghua (Chinese anime) in multiple subtitles",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/chikianimation.png",
-        "fileHash": "sha256-7a4d842e2c1cc75a8141fe7dc6124a1528925f3f2267f6d9cb557b396f551079",
-        "fileSize": 46838
+        "fileHash": "sha256-e2641cc9363a8a266cb5f30609eed2dec46ba74305a1324870dbf896643a4041",
+        "fileSize": 58851
       },
       {
-        "version": 15,
+        "version": 18,
         "internalName": "OHLI24",
         "name": "OHLI24",
         "pluginClassName": "com.allforu.Ohli24Plugin",
@@ -10487,14 +10485,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v15.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OHLI24-v18.cs3",
         "description": "OHLI24 - Korean anime streaming (K-sub)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/ohli24.png",
-        "fileHash": "sha256-7f336443edd3c1c5e87171e3b5a821ffb2077b06b5e8c6cec0798762fe90e8c6",
-        "fileSize": 33241
+        "fileHash": "sha256-fce0d760025660dfd563d3d49c240758f7c3897fcc317fa21b1022a6f8ab733f",
+        "fileSize": 45629
       },
       {
-        "version": 17,
+        "version": 20,
         "internalName": "AniVortex",
         "name": "AniVortex",
         "pluginClassName": "com.allforu.AniVortexPlugin",
@@ -10511,14 +10509,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v17.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AniVortex-v20.cs3",
         "description": "AniVortex - Anime, movies & series from many OTT catalogues",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/anivortex.png",
-        "fileHash": "sha256-c2abc9c83e329142ed29b1a24d27eef5206a184530059576f65eb5fe33b3ff04",
-        "fileSize": 59835
+        "fileHash": "sha256-90bc8d24f064988c887fcd7ae9348823b3accfaa432e13c52d1b06c799ae9ddd",
+        "fileSize": 72145
       },
       {
-        "version": 17,
+        "version": 20,
         "internalName": "NetNaija",
         "name": "AllDubz",
         "pluginClassName": "com.allforu.NetNaijaPlugin",
@@ -10535,14 +10533,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v17.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NetNaija-v20.cs3",
         "description": "AllDubz - Movies, series & anime in every region dub (configurable host, sources & sections)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/alldubz.png",
-        "fileHash": "sha256-fc5b2cc07768bfbf2e647fb74a79f0be1e3cdd0e488652ea2c0243ebaab4c6fb",
-        "fileSize": 90730
+        "fileHash": "sha256-0c2f12e944edba4642d5506a903313ff19e5ba474eb9c3b330c5e90ee386630a",
+        "fileSize": 103247
       },
       {
-        "version": 10,
+        "version": 13,
         "internalName": "Comix",
         "name": "Comix",
         "pluginClassName": "com.allforu.ComixPlugin",
@@ -10557,14 +10555,14 @@
           "Others"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v10.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Comix-v13.cs3",
         "description": "Comix - Read manhwa, manhua & manga online (premium in-app reader)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/comix.png",
-        "fileHash": "sha256-2fc07485e0fbcefec9b8847227218a93da3b8b89d057e29a0c88f0779115eac5",
-        "fileSize": 46723
+        "fileHash": "sha256-c5853d20aa10d9f03739ade225980542a6e413292588962b7f770d39e6e9d7be",
+        "fileSize": 58847
       },
       {
-        "version": 10,
+        "version": 13,
         "internalName": "SmartTube",
         "name": "SmartTube",
         "pluginClassName": "com.allforu.SmartTubePlugin",
@@ -10579,14 +10577,14 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v10.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SmartTube-v13.cs3",
         "description": "SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/smarttube.png",
-        "fileHash": "sha256-fb279aa8710c9881a116aa7ae0de69b757b0283554382d82cfe5385a21f9db05",
-        "fileSize": 33947
+        "fileHash": "sha256-ab40e5bb3682b2b748942038d96043a05f4070307e6d189620a0d982ce95d289",
+        "fileSize": 46341
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "SimpMusic",
         "name": "SimpMusic",
         "pluginClassName": "com.allforu.SimpMusicPlugin",
@@ -10600,14 +10598,14 @@
           "Music"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/SimpMusic-v10.cs3",
         "description": "SimpMusic - YouTube Music playlists, albums, artists & songs (in-app playback)",
         "iconUrl": "https://www.simpmusic.org/logo.png",
-        "fileHash": "sha256-276bba69fd4b12a67dcd6b849cb8d3e58a6ebb4d60167fbac33cabb3ec1d54fc",
-        "fileSize": 71596
+        "fileHash": "sha256-48ddde5668d33ad864e1c8c559da7f04f6050830fcebe72c3ae0783b894fd53b",
+        "fileSize": 83771
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "EgyBest",
         "name": "EgyBest",
         "pluginClassName": "com.allforu.EgyBestPlugin",
@@ -10622,14 +10620,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/EgyBest-v11.cs3",
         "description": "EgyBest - Arabic movies & series (افلام و مسلسلات)",
         "iconUrl": "https://egybest.co.in/favicon/icon-192x192.png",
-        "fileHash": "sha256-7a83a323507673dc1285367eeab497a607378af89e23efb55241ca6ab1f95c77",
-        "fileSize": 35658
+        "fileHash": "sha256-03289759255864fea7477c04e34b95909194a12826fd175c0a82976d51e63fb7",
+        "fileSize": 48108
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "AnimePhoenix",
         "name": "Anime Phoenix",
         "pluginClassName": "com.allforu.AnimePhoenixPlugin",
@@ -10644,14 +10642,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimePhoenix-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimePhoenix-v11.cs3",
         "description": "Anime Phoenix - Arabic anime streaming (انمي مترجم)",
         "iconUrl": "https://anime-phoenix.com/wp-content/uploads/2025/06/cropped-Icon-Cover2-1-192x192.jpg",
-        "fileHash": "sha256-496eaf565c79d74c4188d7c52bf9bb0d95a97697875dd66ebe4049f70d300996",
-        "fileSize": 37769
+        "fileHash": "sha256-5c5caf0bf9077cf98c97e145095270ff7db3f340b77e6a7d3137fa9ea3ba9e09",
+        "fileSize": 50246
       },
       {
-        "version": 9,
+        "version": 12,
         "internalName": "FS27",
         "name": "FrenchStream",
         "pluginClassName": "com.allforu.FS27Plugin",
@@ -10666,14 +10664,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v9.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/FS27-v12.cs3",
         "description": "FrenchStream - Films et series en streaming (French)",
         "iconUrl": "https://fs27.lol/apple-touch-icon.png",
-        "fileHash": "sha256-8d84cbacda49b6d324e0aaf207212ea72e867a5e4cbcee2aa44caa4d533dfe75",
-        "fileSize": 44822
+        "fileHash": "sha256-a22f76b5ae61581be38fc27372d1e9aff84ee49572ef197e70533e85a557020d",
+        "fileSize": 56934
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "Movie2K",
         "name": "Movie2K",
         "pluginClassName": "com.allforu.Movie2KPlugin",
@@ -10688,14 +10686,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Movie2K-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Movie2K-v10.cs3",
         "description": "Movie2K - Filme und Serien online (German)",
         "iconUrl": "https://movie2k.cx/img/logo.png",
-        "fileHash": "sha256-a7bbe3ec96d68a679396ba5b4bc328fd30779c7f7bec91f25472569ee52b44b1",
-        "fileSize": 35296
+        "fileHash": "sha256-2e381fd59335e6bbad8f8b6928929395120954cedf4c29ced20e8e0607639994",
+        "fileSize": 47702
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "Samehadaku",
         "name": "Samehadaku",
         "pluginClassName": "com.allforu.SamehadakuPlugin",
@@ -10710,14 +10708,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Samehadaku-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Samehadaku-v10.cs3",
         "description": "Samehadaku - Nonton anime sub Indo (Indonesian)",
         "iconUrl": "https://v2.samehadaku.how/wp-content/uploads/2020/04/cropped-download-1-192x192.jpg",
-        "fileHash": "sha256-ded0f2ff61f72bc662b6915b0466daa83a084e393fce30b6bd74916c250ec8d4",
-        "fileSize": 36852
+        "fileHash": "sha256-24019895678f8eeb25cd754efbf8bd711e65ac28e8ce78ea7f8ec52d71f1bcdd",
+        "fileSize": 49295
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "StreamUnity",
         "name": "StreamUnity",
         "pluginClassName": "com.allforu.StreamUnityPlugin",
@@ -10732,14 +10730,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v11.cs3",
         "description": "StreamUnity - Film e serie TV in streaming (Italian)",
         "iconUrl": "https://streamingunity.fun/apple-touch-icon.png?v=2",
-        "fileHash": "sha256-dc5a6dd9eaedffbbd68c3579167b19eb6cd2b154bbce34cf24e6ce2b1115a739",
-        "fileSize": 38793
+        "fileHash": "sha256-721a365a38f617714e18bb362f20003aaeadd708993e0ffea1618ba1bec4fc72",
+        "fileSize": 51305
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "AnimeOdcinki",
         "name": "AnimeOdcinki",
         "pluginClassName": "com.allforu.AnimeOdcinkiPlugin",
@@ -10754,14 +10752,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeOdcinki-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeOdcinki-v10.cs3",
         "description": "AnimeOdcinki - Anime online po polsku (Polish)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/odcinki.png",
-        "fileHash": "sha256-e2473b690d7b6f36ec69572080b51fea176b8df292118acda1b3706ea68768cb",
-        "fileSize": 31800
+        "fileHash": "sha256-547ec73e33bfa2a0e8bd826b511786041fd551253d5214671c52cbbcd4e0b040",
+        "fileSize": 44312
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "Kinogo",
         "name": "Kinogo",
         "pluginClassName": "com.allforu.KinogoPlugin",
@@ -10776,14 +10774,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Kinogo-v11.cs3",
         "description": "Kinogo - Russian movies & series (фильмы и сериалы)",
         "iconUrl": "https://kinogo.la/templates/Kinogo/images/favicon/apple-touch-icon.png",
-        "fileHash": "sha256-05e246e88593700cf076ec27ef3ff76f689a182d428cde1d86211eec59b0c9e0",
-        "fileSize": 33800
+        "fileHash": "sha256-e7815c069523051dcbfa75cbda529a5fe05156268b0bb6fb9ce330088a680ef3",
+        "fileSize": 46220
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "YummyAni",
         "name": "YummyAni",
         "pluginClassName": "com.allforu.YummyAniPlugin",
@@ -10798,14 +10796,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/YummyAni-v10.cs3",
         "description": "YummyAni - Russian anime online (смотреть аниме)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/yummy.png",
-        "fileHash": "sha256-86dbdf5eb2480fac44b7fb4713d88b07cf1f5e36410e7b531b4550bcd2624cb9",
-        "fileSize": 38101
+        "fileHash": "sha256-5a655a94f1a944ee2ea37d562b61fe70c21e1567516a2a6853c1900324a5ba0d",
+        "fileSize": 50542
       },
       {
-        "version": 11,
+        "version": 14,
         "internalName": "PiratexPlay",
         "name": "PiratexPlay",
         "pluginClassName": "com.allforu.PiratexPlayPlugin",
@@ -10822,14 +10820,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v11.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PiratexPlay-v14.cs3",
         "description": "PiratexPlay - Multi-language anime streaming (India)",
         "iconUrl": "https://piratexplay.cc/public/img/favicon/apple-icon-180x180.png",
-        "fileHash": "sha256-95c05f563c7ff2ca17bfd9a125b708488453aac7368f53ebfc4a27e3f578495b",
-        "fileSize": 57366
+        "fileHash": "sha256-83f67cb6feb7a1083b9d62123dc68232e19b6ccd1b6277b3d4acb1aac684876e",
+        "fileSize": 69704
       },
       {
-        "version": 7,
+        "version": 10,
         "internalName": "KissAsian",
         "name": "KissAsian",
         "pluginClassName": "com.allforu.KissAsianPlugin",
@@ -10844,14 +10842,14 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v7.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/KissAsian-v10.cs3",
         "description": "KissAsian - Asian dramas & movies with direct HLS",
         "iconUrl": "https://kissasian.gr/wp-content/uploads/2026/10/cropped-kiss-icon-150x150-1-300x300.png",
-        "fileHash": "sha256-d7bc25c264f36955e0217e828e82e47a3e50174ed7c5125d586670e5dfe5faf6",
-        "fileSize": 34718
+        "fileHash": "sha256-6e6b788caa1071d4fc8f15598d6f70b39c7eab1b7fed78da19dbf82d24b10f1a",
+        "fileSize": 47136
       },
       {
-        "version": 9,
+        "version": 12,
         "internalName": "LaMovie",
         "name": "LaMovie",
         "pluginClassName": "com.allforu.LaMoviePlugin",
@@ -10868,14 +10866,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v9.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/LaMovie-v12.cs3",
         "description": "LaMovie - Peliculas, series y anime en HD (Spanish)",
         "iconUrl": "https://lamovie.org/wp-content/uploads/2025/05/cropped-La.movie_-192x192.png",
-        "fileHash": "sha256-44556c5d2a772729e8d93b1dfce24d434b7ee1ec5d524322c77149e6f13ceae3",
-        "fileSize": 47658
+        "fileHash": "sha256-5f0e918f8fb35b5d167258aac0a003b5935c6140808ef123a8e508e62b0a141b",
+        "fileSize": 59548
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "TamilTvToons",
         "name": "TamilTvToons",
         "pluginClassName": "com.allforu.TamilTvToonsPlugin",
@@ -10892,14 +10890,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/TamilTvToons-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/TamilTvToons-v11.cs3",
         "description": "TamilTvToons - Tamil & multi-audio dubbed movies, series & cartoons (Tamil, Hindi, Telugu, Malayalam)",
         "iconUrl": "https://v1.tamiltvtoons.sbs/wp-content/uploads/2025/10/cropped-photo_2025-05-20_17-44-49-192x192.jpg",
-        "fileHash": "sha256-d1f48045e293c78bc3149fa97be017d45b6b4f3f83feab620ad4d9ce8a450080",
-        "fileSize": 46198
+        "fileHash": "sha256-ce176fc9d4cf9368fbfae26e99d6abe98759a29b9e5443672f3a3334bab32ef6",
+        "fileSize": 58313
       },
       {
-        "version": 8,
+        "version": 11,
         "internalName": "PelishaxPro",
         "name": "PelishaxPro",
         "pluginClassName": "com.allforu.PelishaxProPlugin",
@@ -10916,14 +10914,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PelishaxPro-v8.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/PelishaxPro-v11.cs3",
         "description": "PelishaxPro - Peliculas, series y anime en HD (Latino, Castellano y Subtitulado)",
         "iconUrl": "https://pelishaxpro.com/assets/img/logo.png",
-        "fileHash": "sha256-189aba9881d085eed1e82f81164288a2ff2058f47fd3308a52190c54f2a654c5",
-        "fileSize": 65985
+        "fileHash": "sha256-4c26034842d9d1fa4285b1fcf2e3ff11b9a300cccde8eec07edd41eddc841e9d",
+        "fileSize": 78181
       },
       {
-        "version": 6,
+        "version": 9,
         "internalName": "Bilibili",
         "name": "Bilibili",
         "pluginClassName": "com.allforu.BilibiliPlugin",
@@ -10939,14 +10937,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v6.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bilibili-v9.cs3",
         "description": "Bilibili - 哔哩哔哩 videos: recommendations, popular, ranking, categories & search (720P MP4)",
         "iconUrl": "https://s1.hdslb.com/bfs/static/jinkela/long/images/512.png",
-        "fileHash": "sha256-7f07b3499de0a16ae5b1839ed6998b40232d1499f21fdbbbc6620fa7ac883a48",
-        "fileSize": 46128
+        "fileHash": "sha256-dc27764aaf94ded06ca0ce5c4998ed0d62b8ca4cdcbc97fc786ea67b4fefd980",
+        "fileSize": 58362
       },
       {
-        "version": 5,
+        "version": 8,
         "internalName": "HindiDrama",
         "name": "HindiDrama",
         "pluginClassName": "com.allforu.HindiDramaPlugin",
@@ -10962,14 +10960,14 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HindiDrama-v5.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HindiDrama-v8.cs3",
         "description": "HindiDrama - Hindi-dubbed Korean, Chinese, Japanese & Indian dramas: Top 10, latest episodes, latest added, categories, search & HLS playback",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/hindidrama.png",
-        "fileHash": "sha256-985b4d9b0150cf40f413889199aa23ac0a79fb6f84027906350478ba9c0d7af0",
-        "fileSize": 49539
+        "fileHash": "sha256-740325679129462f2279b8359f56878955d05a69b222a4836f6a09bf127efaae",
+        "fileSize": 61493
       },
       {
-        "version": 9,
+        "version": 12,
         "internalName": "NextGenTV",
         "name": "NextGenTV",
         "pluginClassName": "com.allforu.NextGenTvPlugin",
@@ -10984,14 +10982,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v9.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/NextGenTV-v12.cs3",
         "description": "NextGenTV - Live TV & IPTV: S1 Xtream, JioTV+, India Max, ZEE5, Sun NXT, Dish/Samsung/LG/Tablo/Vizio, Fancode + 71 CRICFY servers (catalog picker, landscape rows)",
         "iconUrl": "https://nextgeniptvin.pages.dev/logo.png",
-        "fileHash": "sha256-3179caef2a88456a3cddf70fe3a6a5ffc1764737dd90e0c45cd476642dabd6f8",
-        "fileSize": 73491
+        "fileHash": "sha256-a39b331840586a0696b9790507536b42ffe0c15e73dc35d5922887a79d53f38c",
+        "fileSize": 85670
       },
       {
-        "version": 4,
+        "version": 7,
         "internalName": "HDMozi",
         "name": "HDMozi",
         "pluginClassName": "com.allforu.HDMoziPlugin",
@@ -11006,14 +11004,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HDMozi-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/HDMozi-v7.cs3",
         "description": "HDMozi - Magyar filmek és sorozatok online (Hungarian, HD)",
         "iconUrl": "https://hdmozi.hu/wp-content/uploads/2024/07/3D-smile-2.jpg",
-        "fileHash": "sha256-a1c9522eb5844971205be0013508a13cda75caad114ff2138331801b970b3c42",
-        "fileSize": 47398
+        "fileHash": "sha256-1c525a32f4ff8f0aebb6a51843075334e52f9d3415c3b943024f76c2cdd8f31a",
+        "fileSize": 59385
       },
       {
-        "version": 3,
+        "version": 6,
         "internalName": "Dizipal",
         "name": "Dizipal",
         "pluginClassName": "com.allforu.DizipalPlugin",
@@ -11027,14 +11025,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Dizipal-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Dizipal-v6.cs3",
         "description": "Dizipal - Türkçe altyazılı ve dublajlı yabancı diziler (Turkish subs & dubs)",
         "iconUrl": "https://dizipal1453.com/wp-content/uploads/2026/04/dpalsymbol.png",
-        "fileHash": "sha256-e5b6062b031aa845a50ba4548920bce5d341e4c0ea8a45304670f7062494238c",
-        "fileSize": 47920
+        "fileHash": "sha256-726665a4f1548884215421a8f1236eca5b2f5447880839121b47a93b37fa0f7c",
+        "fileSize": 59841
       },
       {
-        "version": 3,
+        "version": 6,
         "internalName": "MoviesNiPipay",
         "name": "Movies Ni Pipay",
         "pluginClassName": "com.allforu.MoviesNiPipayPlugin",
@@ -11049,14 +11047,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MoviesNiPipay-v3.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MoviesNiPipay-v6.cs3",
         "description": "Movies Ni Pipay - Filipino movies & series (Tagalog, HD, fast updates)",
         "iconUrl": "https://moviesnipipay.me/wp-content/uploads/2019/11/Movies-Ni-Pipay_small.png",
-        "fileHash": "sha256-3dba91074f5825973dd4580faa97da369023869a93ef0115936e8ec5a9d9c9a0",
-        "fileSize": 45315
+        "fileHash": "sha256-371ee5f186e131618c6466d340f379f40364a6726fe4c4dd223acec7a6c51afe",
+        "fileSize": 57391
       },
       {
-        "version": 4,
+        "version": 7,
         "internalName": "MicroTV",
         "name": "MicroTV",
         "pluginClassName": "com.allforu.MicroTvPlugin",
@@ -11070,14 +11068,14 @@
           "Movie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MicroTV-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MicroTV-v7.cs3",
         "description": "MicroTV - Short dramas, vertical reels & full episodes (Hindi/Bangla)",
         "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/allforu-logo.jpg",
-        "fileHash": "sha256-53dccc926f6e718b3ca41292871ef9347e43f35b49587d911aa63914b3ac3333",
-        "fileSize": 31860
+        "fileHash": "sha256-9d72dd8f9afdf1e884aec3d5e99c3e2ebbcbe4be9f574c7005a6e45da01970fd",
+        "fileSize": 44340
       },
       {
-        "version": 4,
+        "version": 7,
         "internalName": "Bombuj",
         "name": "Bombuj",
         "pluginClassName": "com.allforu.BombujPlugin",
@@ -11092,14 +11090,14 @@
           "TvSeries"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bombuj-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/Bombuj-v7.cs3",
         "description": "Bombuj - České a slovenské filmy a seriály online",
         "iconUrl": "https://www.bombuj.si/images/favicon.png",
-        "fileHash": "sha256-ec2ad4536f454ad346b723fd039f8091f52e07b0aecce2e5674b07cc79e98cf3",
-        "fileSize": 71502
+        "fileHash": "sha256-a40159012741e00ec24ca0d89b34034d602be10ba46b60e2b672c86ebd123e70",
+        "fileSize": 83543
       },
       {
-        "version": 6,
+        "version": 9,
         "internalName": "OFC",
         "name": "OFC Movies",
         "pluginClassName": "com.allforu.OfcPlugin",
@@ -11117,14 +11115,14 @@
           "Live"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v6.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/OFC-v9.cs3",
         "description": "OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles",
         "iconUrl": "https://ofcmovies.com/apple-touch-icon.png",
-        "fileHash": "sha256-7f09f4a9150e98a12d719e73bd6c5938625f054bf52912011a31a9d5637cad3d",
-        "fileSize": 69851
+        "fileHash": "sha256-47db1634c45c69421d045d029a660fd55ad6cfd19401d9fc1cfdbdeb7784fa76",
+        "fileSize": 82071
       },
       {
-        "version": 4,
+        "version": 7,
         "internalName": "AnimeVillage",
         "name": "AnimeVillage",
         "pluginClassName": "com.allforu.AnimeVillagePlugin",
@@ -11139,14 +11137,14 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/AnimeVillage-v7.cs3",
         "description": "AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)",
         "iconUrl": "https://www.animevillage.org/opengraph-image",
-        "fileHash": "sha256-a8e0a4713dd47481bdf36d1810d7b899112f57aea239aefb5aff909a6c0af36b",
-        "fileSize": 42803
+        "fileHash": "sha256-e516775783961dfdfc3cef6742af26e09edac361dd09a35f2e39ba3c25916bab",
+        "fileSize": 55121
       },
       {
-        "version": 4,
+        "version": 7,
         "internalName": "WatchAnimeWorld",
         "name": "WatchAnimeWorld",
         "pluginClassName": "com.allforu.WatchAnimeWorldPlugin",
@@ -11161,11 +11159,11 @@
           "AnimeMovie"
         ],
         "repositoryUrl": "https://github.com/RVRBEAST76/allforu-repo",
-        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v4.cs3",
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/WatchAnimeWorld-v7.cs3",
         "description": "WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback",
         "iconUrl": "https://watchanimeworld.ro/wp-content/uploads/2026/08/favicon.webp",
-        "fileHash": "sha256-54acb48902f5e0ba810395741665a124a18b28b975238d3a99a27b8e1b7be344",
-        "fileSize": 43143
+        "fileHash": "sha256-30114fcf8d2e3dfa3d3e99134837dd3744be8735f1f454a274b1d53aee562171",
+        "fileSize": 55395
       },
       {
         "version": 2,
@@ -11646,28 +11644,6 @@
         "fileHash": "sha256-bfdf1701f1397e5ebb3865aa5eac43302b7640f75708a98caca31315da7a529f"
       },
       {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Anidap.cs3",
-        "status": 1,
-        "version": 1,
-        "name": "Anidap",
-        "internalName": "Anidap",
-        "authors": [
-          "Faisal"
-        ],
-        "description": "Free anime streaming portal with HD sub & dub, powered by AniList metadata",
-        "fileSize": 34249,
-        "repositoryUrl": "https://github.com/Faisal0786/Desi",
-        "language": "hi",
-        "tvTypes": [
-          "Movie",
-          "TvSeries",
-          "Anime"
-        ],
-        "iconUrl": "https://anidap.lol/favicon.ico",
-        "apiVersion": 1,
-        "fileHash": "sha256-75f1f09f63ca02946dd1d8bd278ee9e238bcf75221093119823c42c476c3941c"
-      },
-      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/AnimeDubHindi.cs3",
         "status": 1,
         "version": 4,
@@ -11841,6 +11817,27 @@
         "fileHash": "sha256-ceac6f2bead12bf073b5fbcac686628f12386288f5be1dc41e6eec91c1eb589b"
       },
       {
+        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Hdhub4u.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "Hdhub4u",
+        "internalName": "Hdhub4u",
+        "authors": [
+          "Faisal"
+        ],
+        "description": "HDHub4u: Download & Stream Latest Bollywood, Hollywood, South Hindi, Hindi Dubbed Movies & Web Series in 480p, 720p, 1080p & 4K — with direct HubCloud, HubDrive & PlayDrive links.",
+        "fileSize": 56452,
+        "repositoryUrl": "https://github.com/Faisal0786/Desi",
+        "language": "hi",
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/hdhub4u.png⁠",
+        "apiVersion": 1,
+        "fileHash": "sha256-2889d9dc00d180ece647d04f492ac7395d56df1fa83ddd86ac6217ced0cf9b9c"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Joya9.cs3",
         "status": 1,
         "version": 3,
@@ -11883,28 +11880,6 @@
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/kmmovies.png",
         "apiVersion": 1,
         "fileHash": "sha256-284d74af0a3da6bf37a307d6dbac3d1129b42c7bc97a0c92bdebff1e0b79950a"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/LunarX.cs3",
-        "status": 1,
-        "version": 1,
-        "name": "LunarX",
-        "internalName": "LunarX",
-        "authors": [
-          "Faisal"
-        ],
-        "description": "German & English anime streaming with Sub/Dub/HSub",
-        "fileSize": 50737,
-        "repositoryUrl": "https://github.com/Faisal0786/Desi",
-        "language": "hi",
-        "tvTypes": [
-          "Movie",
-          "TvSeries",
-          "Anime"
-        ],
-        "iconUrl": "https://lunarx.to/favicon.ico",
-        "apiVersion": 1,
-        "fileHash": "sha256-b807fe41f493bc803446e493215c3a1c687dd6ff06460e508f6cf1c01e019978"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
@@ -12087,14 +12062,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 86,
+        "version": 87,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1354221,
+        "fileSize": 1320947,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12106,7 +12081,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-0bb037de4bd054e1becaf1c63ccefcd58b1feab5c2f14580abb45f81b99d406f"
+        "fileHash": "sha256-bb7b9b06a58721d81ca4e98b7f5355e6d260656d2bf96f04a6f3d33ee037e611"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -12196,28 +12171,6 @@
         "iconUrl": "https://watchdrama.app/icon.png?utm_source=chatgpt.com",
         "apiVersion": 1,
         "fileHash": "sha256-ae656085800cacc31ed0c0d47bc8fbd0f710bb498a2f5b63946155d5f2fd6887"
-      },
-      {
-        "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Xanime.cs3",
-        "status": 1,
-        "version": 1,
-        "name": "Xanime",
-        "internalName": "Xanime",
-        "authors": [
-          "Faisal"
-        ],
-        "description": "Online anime platform with Sub/Dub streaming, ratings, and multi-genre filtering",
-        "fileSize": 21582,
-        "repositoryUrl": "https://github.com/Faisal0786/Desi",
-        "language": "en",
-        "tvTypes": [
-          "Movie",
-          "TvSeries",
-          "Anime"
-        ],
-        "iconUrl": "https://xanime.me/favicon.ico",
-        "apiVersion": 1,
-        "fileHash": "sha256-19ddb202063305d13075c816532e4db2248eea81f4c9ea1c041e6617f6d643b5"
       }
     ]
   },
