@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 379,
+  "excluded_count": 382,
   "excluded": [
     {
       "internalName": "Rate",
@@ -49,6 +49,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/3isk.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "4khdHub",
+      "name": "4khdHub",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/4khdHub.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -898,6 +912,14 @@
       ],
       "url": "https://raw.githubusercontent.com/sagemoon1996/cloudstream-repo/builds/AsiaShow.cs3",
       "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AutoExtensions",
+      "name": "AutoExtensions",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AutoExtensions.cs3",
+      "reason": "unknown-language"
     },
     {
       "internalName": "BambooUAProvider",
@@ -4882,6 +4904,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "WatchParty",
+      "name": "WatchParty",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/WatchParty.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "Wecima",
       "name": "WeCima",
       "source": "3rabi عربي",
@@ -5160,7 +5190,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 26,
+  "unknown_language_metadata_count": 28,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -5168,6 +5198,13 @@
       "source": "Aniyomi Compat",
       "sourceRepo": "https://raw.githubusercontent.com/CranberrySoup/AniyomiCompatExtension/master/repo.json",
       "url": "https://raw.githubusercontent.com/CranberrySoup/AniyomiCompatExtension/builds/AniyomiProvider.cs3"
+    },
+    {
+      "internalName": "AutoExtensions",
+      "name": "AutoExtensions",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AutoExtensions.cs3"
     },
     {
       "internalName": "BingedReview",
@@ -5308,6 +5345,13 @@
       "source": "Vietnamese Extension",
       "sourceRepo": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/repo.json",
       "url": "https://gitlab.com/tearrs/cloudstream-vietnamese/-/raw/main/ViStreamProvider.cs3"
+    },
+    {
+      "internalName": "WatchParty",
+      "name": "WatchParty",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/WatchParty.cs3"
     },
     {
       "internalName": "Wrapped",
