@@ -5,10 +5,10 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 585,
-  "eligible_plugin_entries_before_dedupe": 159,
+  "raw_plugin_entries": 586,
+  "eligible_plugin_entries_before_dedupe": 160,
   "unique_plugins": 148,
-  "duplicate_groups": 10,
+  "duplicate_groups": 11,
   "language_filtered_entries": 382,
   "unknown_language_metadata_entries": 28,
   "inactive_filtered_entries": 44,
@@ -190,7 +190,7 @@
       "name": "raghav repo",
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "status": "ok",
-      "plugins": 35,
+      "plugins": 36,
       "verified": false
     },
     {

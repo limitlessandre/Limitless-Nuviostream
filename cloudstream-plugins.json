@@ -2229,14 +2229,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
     "status": 1,
-    "version": 96,
+    "version": 97,
     "name": "RaghavAnime",
     "internalName": "RaghavAnime",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-    "fileSize": 674210,
+    "fileSize": 712010,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2246,19 +2246,19 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-89b7f6dba39e5df32b73c24db4a6b74bd180259f7752ab9f94f0af64ea79b754"
+    "fileHash": "sha256-dd5d794adc7a6b40c0567d128ff8ad9265080aa268cab21528dc33c3058b3681"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
     "status": 1,
-    "version": 47,
+    "version": 48,
     "name": "RaghavAnimeKitsu",
     "internalName": "RaghavAnimeKitsu",
     "authors": [
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-    "fileSize": 661785,
+    "fileSize": 699978,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2268,7 +2268,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-bb021f95507ee2e3877b1f3f2991a68ec4838b5e0311b924b49b263432ec161e"
+    "fileHash": "sha256-53ebd1a19d6fcd0c9d47b95b6e9e29fb8f74ca230f41fffdcf395e74dca424b7"
   },
   {
     "internalName": "Reanime",

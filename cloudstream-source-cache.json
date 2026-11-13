@@ -9262,6 +9262,28 @@
         "fileHash": "sha256-068ce2b5a83b559b1849341e33a01a4aa3db5fec3f3a1791fd71c6d6ba7e1934"
       },
       {
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniLight.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "AniLight",
+        "internalName": "AniLight",
+        "authors": [
+          "KSHITIJ8473"
+        ],
+        "description": "Anime with Sub & Dub",
+        "fileSize": 78640,
+        "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+        "language": "en",
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie",
+          "OVA"
+        ],
+        "iconUrl": "https://anilight.live/favicon-96x96.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-3d5444e746768072e1b7c86b51ff7b799ed53043f5f8c9d16731861c29c509f8"
+      },
+      {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AnimeInWeb.cs3",
         "status": 1,
         "version": 8,
@@ -9544,24 +9566,24 @@
         "fileHash": "sha256-58317141a5e1a02337fa61776abc7d8c48abc942f4b80b4617c207e394457650"
       },
       {
-        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTgTv.cs3",
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTGTV + M3U PLAYER.cs3",
         "status": 1,
-        "version": 6,
-        "name": "LiveTgTv",
-        "internalName": "LiveTgTv",
+        "version": 7,
+        "name": "LiveTGTV + M3U PLAYER",
+        "internalName": "LiveTGTV + M3U PLAYER",
         "authors": [
           "KSHITIJ8473"
         ],
-        "description": "INDIAN TV CHANNELS",
-        "fileSize": 49858,
+        "description": "Indian TV channels through m3u playlists ",
+        "fileSize": 62623,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
           "Live"
         ],
-        "iconUrl": "https://img.magnific.com/free-vector/live-webcast-broadcasting-symbol-online-events_1017-62406.jpg?semt=ais_hybrid&w=740&q=80",
+        "iconUrl": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_HD.png",
         "apiVersion": 1,
-        "fileHash": "sha256-d30a967884506fe5a0a7223e86634f76c822761fd8185d4b9a096796252de49b"
+        "fileHash": "sha256-44b751df10fa8b635ccdd7bd769d5aeb0a1575a8717f812cce1ff0fd8a32d9b2"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
@@ -9723,14 +9745,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
         "status": 1,
-        "version": 96,
+        "version": 97,
         "name": "RaghavAnime",
         "internalName": "RaghavAnime",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
-        "fileSize": 674210,
+        "fileSize": 712010,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9740,19 +9762,19 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-89b7f6dba39e5df32b73c24db4a6b74bd180259f7752ab9f94f0af64ea79b754"
+        "fileHash": "sha256-dd5d794adc7a6b40c0567d128ff8ad9265080aa268cab21528dc33c3058b3681"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
         "status": 1,
-        "version": 47,
+        "version": 48,
         "name": "RaghavAnimeKitsu",
         "internalName": "RaghavAnimeKitsu",
         "authors": [
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
-        "fileSize": 661785,
+        "fileSize": 699978,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9762,7 +9784,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bb021f95507ee2e3877b1f3f2991a68ec4838b5e0311b924b49b263432ec161e"
+        "fileHash": "sha256-53ebd1a19d6fcd0c9d47b95b6e9e29fb8f74ca230f41fffdcf395e74dca424b7"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -12090,7 +12112,7 @@
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1320947,
+        "fileSize": 1349911,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12102,7 +12124,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-bb7b9b06a58721d81ca4e98b7f5355e6d260656d2bf96f04a6f3d33ee037e611"
+        "fileHash": "sha256-af5c587f59da867ff1ea34af41482e89997469922275990da3281c1a1703de16"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",

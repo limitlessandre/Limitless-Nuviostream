@@ -2956,8 +2956,8 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "LiveTgTv",
-      "name": "LiveTgTv",
+      "internalName": "LiveTGTV + M3U PLAYER",
+      "name": "LiveTGTV + M3U PLAYER",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
       "language": [
@@ -2966,7 +2966,7 @@
       "normalizedLanguages": [
         "hi"
       ],
-      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTgTv.cs3",
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTGTV + M3U PLAYER.cs3",
       "reason": "no-allowed-language"
     },
     {
