@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **148**  
-No obvious native overlap: **144**  
+Filtered CloudStream providers: **149**  
+No obvious native overlap: **145**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **4**
 
@@ -25,10 +25,10 @@ Exact/alias overlap: **4**
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
-- **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio
+- **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc
 - **MovieBox** (`MovieBox`) — en; Movie, TvSeries — MovieBox - Movies, Series & Anime in Tamil, English, Hindi, Telugu, Malayalam & more
 - **Movy** (`Movy`) — en; Movie, TvSeries, Anime, AnimeMovie — Movy - Movies and TV shows with multi-language audio (English, German, French, Hindi, Spanish, Tamil and more)
-- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt
+- **Multimovies** (`Multimovies`) — en; Movie, TvSeries, Anime — Multimovies - Movies, TV Shows & Anime
 - **NetNaija** (`NetNaija`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA — NetNaija - Watch Movies, TV Series, Anime, bollywood, Korean & Hollywood. HD streaming with multi-language.
 - **OFC Movies** (`OFC`) — en; Movie, TvSeries, Anime, AnimeMovie, Live — OFC Movies - Movies, web series, anime & Bollywood, plus an optional separate OFC Live source (1,200+ channels) with multi-audio and subtitles
 - **OnShort** (`OnShort`) — en; AsianDrama — Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.
@@ -43,7 +43,7 @@ Exact/alias overlap: **4**
 - **AllWish** (`AllWish`) — en; All — Anime from all-wish.me
 - **AniChan** (`AniChan`) — en; Anime, AnimeMovie — Watch Anime in HD with Sub, Dub and Hardsub
 - **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA — AllManga/Mkissa Source
-- **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub & Hardsub from Anidap
+- **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub from Anidap
 - **Anikage** (`Anikage`) — en; AnimeMovie, Anime, OVA
 - **AniKoto** (`AniKoto`) — en; Anime, AnimeMovie, OVA
 - **AniKotoAnime** (`AniKotoAnime`) — en; Anime, AnimeMovie, OVA — AniKoto Anime - Watch Anime Sub & Dub in HD
@@ -53,13 +53,13 @@ Exact/alias overlap: **4**
 - **AnimePahe** (`AnimePahe`) — en; AnimeMovie, Anime, OVA — Animes (SUB/DUB)
 - **AnimeSuge** (`AnimeSuge`) — en; Anime, AnimeMovie, OVA
 - **AnimeVillage** (`AnimeVillage`) — en; Anime, AnimeMovie — AnimeVillage - Anime series, movies & OVAs with English subs and dubs (multi-quality HLS)
-- **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub from ani.pm
+- **AniPM** (`AniPM`) — en; Anime, AnimeMovie, OVA — Anime with Sub & Dub and multi audio
 - **AniSnatch** (`AniSnatch`) — en; Anime, AnimeMovie, OVA — AniSnatch - Watch Anime Online Free
 - **AniStream** (`AniStream`) — en; Anime, AnimeMovie — Watch anime in HD with English Sub and Dub from AniStream
-- **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub support
-- **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — 720p sub and dub anime
+- **AniSuge** (`AniSuge`) — en; Anime, AnimeMovie, OVA — Anime from AniSuge with Sub and Dub
+- **AniWaves** (`AniWaves`) — en; Anime, AnimeMovie, OVA — mostly 720p sub and dub anime
 - **Anizone** (`Anizone`) — en; Anime — Anizone.to streams latest anime content in multiple language.
-- **Anv** (`Anv`) — en; Anime, AnimeMovie, OVA — Anime sub and dub from multiple servers with subtitle language support
+- **Anv** (`Anv`) — en; Anime, AnimeMovie, OVA — Anime sub and dub
 - **BingeCloud** (`BingeCloud`) — en; Movies, TV Series, Anime — TV Series, Movies, Anime
 - **Comix** (`Comix`) — en; Anime, Others — Comix - Read manhwa, manhua & manga online (premium in-app reader)
 - **Donghuastream** (`Donghuastream`) — zh; Anime — Contains SeaTV (Chinese)
@@ -71,9 +71,9 @@ Exact/alias overlap: **4**
 - **OHLI24** (`OHLI24`) — en; Anime, AnimeMovie — OHLI24 - Korean anime streaming (K-sub)
 - **OnePace** (`OnePace`) — en; Anime — One Pace
 - **Otakutsu** (`Otakutsu`) — en; Anime, AnimeMovie — Anime streaming from Otakutsu
-- **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )
-- **RaghavAnimeKitsu** (`RaghavAnimeKitsu`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog
-- **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — Anime with sub & dub, multi-language subtitles
+- **RaghavAnime** (`RaghavAnime`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources
+- **RaghavAnimeKitsu** (`RaghavAnimeKitsu`) — en; Anime, AnimeMovie, OVA — ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog
+- **Senshi** (`Senshi`) — en; Anime, AnimeMovie, OVA — site is down dont download
 - **Subsplease** (`Subsplease`) — en; Anime — One stop shop for new animes!
 - **TwoDHive** (`TwoDHive`) — en; Anime, AnimeMovie, OVA — Anime and movies from 2Dhive with Sub and Dub support
 - **WatchAnimeWorld** (`WatchAnimeWorld`) — en; Anime, AnimeMovie — WatchAnimeWorld - Hindi, Tamil, Telugu & English anime with Mega multi-audio HLS playback
@@ -94,13 +94,14 @@ Exact/alias overlap: **4**
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
 - **NoirX** (`NoirX`) — en; Movie, TvSeries — NoirX - Movies & TV shows in HD (multi-language, multi-quality, subtitles)
+- **Play4u** (`Play4u`) — en; Movie, TvSeries — Play4u - Movies and series with multi-language audio and quality options
 - **QuickPlay** (`QuickPlay`) — en; TvSeries — QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
 - **TheMoviesFlix** (`TheMoviesFlix`) — en; Movie, TvSeries — stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider
 - **UHDmoviesProvider** (`UHDmoviesProvider`) — en; Movie, TvSeries — Indian Multi-language 4K Provider
-- **VegaMovies** (`VegaMovies`) — en; Movie, TvSeries — Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer
+- **VegaMovies** (`VegaMovies`) — en; Movie, TvSeries — Movies and series from Vegamovies and Rogmovies in one place
 - **Watch32** (`Watch32`) — en; Movie, TvSeries — Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.
 - **YoTurkish** (`YoTurkish`) — en; TvSeries — YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to
 - **YTS** (`YTS`) — en; Movie, Torrent — YTS Movies 4K Support (Torrent)
@@ -115,14 +116,14 @@ Exact/alias overlap: **4**
 - **Streamed** (`Streamed`) — en; Live — Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.
 - **TVGarden** (`TVGarden`) — en; Live — With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.
 - **WatchWrestling** (`WatchWrestling`) — en; Live — Watch WWE | WWE Raw | Smackdown Live
-- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links
+- **JustPlay** (`JustPlay`) — en; Movie, TvSeries — Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support
 - **LibraryOfLadev** (`LibraryOfLadev`) — en; Movie — Library of Ladev - Neuro-sama stream transcript search with YouTube playback
 - **M3U Player** (`M3UPlayer`) — en; Movie, TvSeries — M3U Player - Play your own M3U/M3U8 IPTV playlists (add URLs in plugin settings)
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.
 - **NextGenTV** (`NextGenTV`) — en; Movie, TvSeries — NextGenTV - Live TV & IPTV: S1 Xtream, JioTV+, India Max, ZEE5, Sun NXT, Dish/Samsung/LG/Tablo/Vizio, Fancode + 71 CRICFY servers (catalog picker, landscape ...
 - **SmartTube** (`SmartTube`) — en; Others, Movie — SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)
 - **DaddyLiveProvider** (`DaddyLiveProvider`) — en; Live — Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)
-- **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels
+- **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports in HD: football, NBA, NFL, UFC, cricket and  live sports channels
 - **EasyPlayProvider** (`EasyPlayProvider`) — en; Live — EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)
 - **Footballia** (`Footballia`) — en; Live — 1950’lerden günümüze… 40.000’den fazla maç ve 100.000’den fazla oyuncu.
 - **FullRaces** (`FullRaces`) — en; Live, Others — Formula 1 is one of the most popular and dramatic sports in the world. You can watch Formula One races replays videos online and enjoy every moment of this e...

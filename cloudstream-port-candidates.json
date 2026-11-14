@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 148,
-  "no_obvious_native_overlap_count": 144,
+  "cloudstream_provider_count": 149,
+  "no_obvious_native_overlap_count": 145,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 4,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -318,7 +318,7 @@
         "AnimeMovie",
         "Cartoon"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Nepu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -413,14 +413,14 @@
     {
       "internalName": "Kdesa",
       "name": "Kdesa",
-      "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio",
+      "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries",
         "Anime"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -470,7 +470,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 6,
+      "version": 7,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -488,14 +488,14 @@
     {
       "internalName": "Multimovies",
       "name": "Multimovies",
-      "description": "Multimovies - Movies, TV Shows & Anime. Sources: Cineverse (multi-server), GD Mirror, Vidrift, Vidout, Filmu, VidBolt",
+      "description": "Multimovies - Movies, TV Shows & Anime",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries",
         "Anime"
       ],
-      "version": 14,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -522,7 +522,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 22,
+      "version": 23,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -599,7 +599,7 @@
         "TvSeries",
         "Torrent"
       ],
-      "version": 27,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -744,7 +744,7 @@
         "Anime",
         "AnimeMovie"
       ],
-      "version": 18,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -785,14 +785,14 @@
     {
       "internalName": "Anidap",
       "name": "Anidap",
-      "description": "Anime with Sub, Dub & Hardsub from Anidap",
+      "description": "Anime with Sub, Dub from Anidap",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 21,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anidap.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -864,7 +864,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 21,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniKotoAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1023,14 +1023,14 @@
     {
       "internalName": "AniPM",
       "name": "AniPM",
-      "description": "Anime with Sub & Dub from ani.pm",
+      "description": "Anime with Sub & Dub and multi audio",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 10,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1094,14 +1094,14 @@
     {
       "internalName": "AniSuge",
       "name": "AniSuge",
-      "description": "Anime from AniSuge with Sub and Dub support",
+      "description": "Anime from AniSuge with Sub and Dub",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 10,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1118,14 +1118,14 @@
     {
       "internalName": "AniWaves",
       "name": "AniWaves",
-      "description": "720p sub and dub anime",
+      "description": "mostly 720p sub and dub anime",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1164,14 +1164,14 @@
     {
       "internalName": "Anv",
       "name": "Anv",
-      "description": "Anime sub and dub from multiple servers with subtitle language support",
+      "description": "Anime sub and dub",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 7,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anv.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1264,8 +1264,8 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 10,
-      "url": "https://cs.eclipsia.dpdns.org/files/65dba6a6857e5571/EclipsiaAnime.cs3",
+      "version": 11,
+      "url": "https://cs.eclipsia.dpdns.org/files/bf4b74f398e3f106/EclipsiaAnime.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1288,7 +1288,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 13,
+      "version": 14,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1359,7 +1359,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 10,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NineAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1444,14 +1444,14 @@
     {
       "internalName": "RaghavAnime",
       "name": "RaghavAnime",
-      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Raghav Aggregated Anime Pluginn )",
+      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 97,
+      "version": 98,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1468,14 +1468,14 @@
     {
       "internalName": "RaghavAnimeKitsu",
       "name": "RaghavAnimeKitsu",
-      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB) - Kitsu Catalog",
+      "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 48,
+      "version": 49,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1492,14 +1492,14 @@
     {
       "internalName": "Senshi",
       "name": "Senshi",
-      "description": "Anime with sub & dub, multi-language subtitles",
+      "description": "site is down dont download",
       "language": "en",
       "tvTypes": [
         "Anime",
         "AnimeMovie",
         "OVA"
       ],
-      "version": 14,
+      "version": 15,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Senshi.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1545,7 +1545,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 21,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1592,7 +1592,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1753,8 +1753,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 10,
-      "url": "https://cs.eclipsia.dpdns.org/files/dad43e637d70eca3/Eclipsia.cs3",
+      "version": 11,
+      "url": "https://cs.eclipsia.dpdns.org/files/d00d8b1596315ce9/Eclipsia.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1776,8 +1776,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 9,
-      "url": "https://cs.eclipsia.dpdns.org/files/634b498f8635e82f/EclipsiaBDIX.cs3",
+      "version": 10,
+      "url": "https://cs.eclipsia.dpdns.org/files/1758b60e2025909a/EclipsiaBDIX.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1906,6 +1906,29 @@
       ]
     },
     {
+      "internalName": "Play4u",
+      "name": "Play4u",
+      "description": "Play4u - Movies and series with multi-language audio and quality options",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Play4u.cs3",
+      "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.211,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "QuickPlay",
       "name": "QuickPlay",
       "description": "QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)",
@@ -2007,7 +2030,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 27,
+      "version": 28,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TheMoviesFlix.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2047,13 +2070,13 @@
     {
       "internalName": "VegaMovies",
       "name": "VegaMovies",
-      "description": "Movies and series from Vegamovies and Rogmovies in one place with every server the sites offer",
+      "description": "Movies and series from Vegamovies and Rogmovies in one place",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries"
       ],
-      "version": 8,
+      "version": 9,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2300,13 +2323,13 @@
     {
       "internalName": "JustPlay",
       "name": "JustPlay",
-      "description": "Movies, series and live sports from multiple sources with a Manage Sources screen that filters download and stream links",
+      "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
       "language": "en",
       "tvTypes": [
         "Movie",
         "TvSeries"
       ],
-      "version": 39,
+      "version": 41,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2378,7 +2401,7 @@
         "TvSeries",
         "Live"
       ],
-      "version": 7,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/NetNaija-box.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2466,12 +2489,12 @@
     {
       "internalName": "DamiTVProvider",
       "name": "DamiTVProvider",
-      "description": "Live sports in HD: football, NBA, NFL, UFC, cricket and 120 live sports channels",
+      "description": "Live sports in HD: football, NBA, NFL, UFC, cricket and  live sports channels",
       "language": "en",
       "tvTypes": [
         "Live"
       ],
-      "version": 31,
+      "version": 32,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/DamiTVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -2560,8 +2583,8 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 9,
-      "url": "https://cs.eclipsia.dpdns.org/files/5aec637b5d2d89c7/LiveSports.cs3",
+      "version": 10,
+      "url": "https://cs.eclipsia.dpdns.org/files/ac788dcd6aeb50fd/LiveSports.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -2582,7 +2605,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 44,
+      "version": 45,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LIVETVProvider.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -3466,8 +3489,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 9,
-      "url": "https://cs.eclipsia.dpdns.org/files/a5610670557d674f/NetMirror.cs3",
+      "version": 10,
+      "url": "https://cs.eclipsia.dpdns.org/files/04b7bc0a586924a8/NetMirror.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "exact-or-alias",

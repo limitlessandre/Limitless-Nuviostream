@@ -10,20 +10,6 @@
   "excluded_count": 382,
   "excluded": [
     {
-      "internalName": "Rate",
-      "name": ".Extension Rating تقييم الاضافات",
-      "source": "3rabi عربي",
-      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo",
-      "language": [
-        "ar"
-      ],
-      "normalizedLanguages": [
-        "ar"
-      ],
-      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Rate.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "18+",
       "name": "18+",
       "source": "Desi Extensions",
@@ -4327,6 +4313,20 @@
         "it"
       ],
       "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/StreamUnity-v11.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Stremio",
+      "name": "Stremio",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Stremio.cs3",
       "reason": "no-allowed-language"
     },
     {
