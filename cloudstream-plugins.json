@@ -375,7 +375,7 @@
       "raghav"
     ],
     "description": "Anime with Sub & Dub and multi audio",
-    "fileSize": 90019,
+    "fileSize": 91174,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -385,7 +385,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
     "apiVersion": 1,
-    "fileHash": "sha256-6c8238753e22246567b894a40496eb7ee3908fd39786aa9044abdb66b30fee70"
+    "fileHash": "sha256-b3e2bb19feb80eb01679d1484f92f3b65e612f72ce2d2a735e2f885f81f561dc"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -2257,7 +2257,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources",
-    "fileSize": 712661,
+    "fileSize": 723810,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2267,7 +2267,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-7a025372b283979292da4afc9ea9613bc3e8c10e394dba165ee3f382a74af8a7"
+    "fileHash": "sha256-07fb0a31a6c233af2becea05a9df65054155890f46f57201d2824d8d3187bfbf"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -2279,7 +2279,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog",
-    "fileSize": 700816,
+    "fileSize": 711588,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2289,7 +2289,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-bce2eb5a2c8b980e99b87568860eab7a7970be98909cfe897c186abdaa2db2ee"
+    "fileHash": "sha256-40d8bac3b36fb0a67204df5e364c4deb12c18f92ebb1bbd0971d7c2ad67c9378"
   },
   {
     "internalName": "Reanime",
@@ -2561,7 +2561,7 @@
       "Hexated"
     ],
     "description": "#1 best extension based on MultiAPI",
-    "fileSize": 2181036,
+    "fileSize": 2181035,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2574,7 +2574,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-b4ad26b1d2f18cd30450e4dd75242dd8bfcaf475e30dcca4924613abe9f5397e"
+    "fileHash": "sha256-bf58030b4a58e8f919d433e1f5fb1983ac306ed85d625f998ca2afa7742fbaab"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

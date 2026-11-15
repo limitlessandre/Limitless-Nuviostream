@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 382,
+  "excluded_count": 385,
   "excluded": [
     {
       "internalName": "18+",
@@ -2200,6 +2200,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "GuardaPlay",
+      "name": "GuardaPlay",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/GuardaPlay.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "GuardaSerie",
       "name": "GuardaSerie",
       "source": "DieGon Repository",
@@ -4148,6 +4162,14 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "SleepGuard",
+      "name": "SleepGuard",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/SleepGuard.cs3",
+      "reason": "unknown-language"
+    },
+    {
       "internalName": "Sokuja",
       "name": "Sokuja",
       "source": "cs-karma",
@@ -4976,6 +4998,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "XonProvider",
+      "name": "XonProvider",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XonProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "XtreamIPTVProvider",
       "name": "XtreamIPTVProvider",
       "source": "Vietnamese Extension",
@@ -5190,7 +5226,7 @@
       "reason": "no-allowed-language"
     }
   ],
-  "unknown_language_metadata_count": 28,
+  "unknown_language_metadata_count": 29,
   "unknown_language_metadata": [
     {
       "internalName": "AniyomiProvider",
@@ -5296,6 +5332,13 @@
       "source": "Megix Repo(Hindi & English)",
       "sourceRepo": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CS.json",
       "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/Moviesmod.cs3"
+    },
+    {
+      "internalName": "SleepGuard",
+      "name": "SleepGuard",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/SleepGuard.cs3"
     },
     {
       "internalName": "StremioProvider",

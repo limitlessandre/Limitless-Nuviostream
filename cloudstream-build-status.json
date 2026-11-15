@@ -5,13 +5,13 @@
   "repositories_using_cache": 1,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 588,
+  "raw_plugin_entries": 590,
   "eligible_plugin_entries_before_dedupe": 161,
   "unique_plugins": 149,
   "duplicate_groups": 11,
-  "language_filtered_entries": 382,
-  "unknown_language_metadata_entries": 28,
-  "inactive_filtered_entries": 45,
+  "language_filtered_entries": 385,
+  "unknown_language_metadata_entries": 29,
+  "inactive_filtered_entries": 44,
   "meta_plugin_entries_filtered": 0,
   "allowed_languages": [
     "en",
@@ -78,7 +78,7 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 86,
+      "plugins": 87,
       "verified": false
     },
     {
@@ -120,7 +120,7 @@
       "name": "DieGon Repository",
       "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
       "status": "ok",
-      "plugins": 21,
+      "plugins": 22,
       "verified": false
     },
     {

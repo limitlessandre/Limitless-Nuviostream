@@ -537,10 +537,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uafix.net&sz=%size%",
-        "fileHash": "sha256-84d950d86794c364e991e89ec85f6d0c6d97064d3f8dabad0d8ed4ceb5e6af6e",
+        "fileHash": "sha256-f33890e7812d58519066e216d63b252a0c74337fbf02a0d293eea9285bf8d6aa",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 38072,
+        "fileSize": 43186,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -552,7 +552,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 24,
+        "version": 25,
         "internalName": "UAFlixProvider",
         "description": "UAFLIX - фільми і серіали NETFLIX українською",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UAFlixProvider.cs3",
@@ -583,10 +583,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=uakino.club&sz=%size%",
-        "fileHash": "sha256-5868652a7aa92e12241e1cc8db9a12ce0fe9c5f7ebb496a816d42cd2d7594548",
+        "fileHash": "sha256-b86689af701a73fff2a744ef19b79f960a38da52327e6e7cf8233fc33043be08",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/CakesTwix/cloudstream-extensions-uk",
-        "fileSize": 51547,
+        "fileSize": 56393,
         "status": 1,
         "language": "uk",
         "authors": [
@@ -598,7 +598,7 @@
           "Movie",
           "AsianDrama"
         ],
-        "version": 36,
+        "version": 37,
         "internalName": "UakinoProvider",
         "description": "Дивіться фільми та серіали онлайн в HD якості. У нас можна дивитися кіно онлайн безкоштовно, у високій якості та з якісним українським дубляжем.",
         "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/UakinoProvider.cs3",
@@ -940,23 +940,23 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniKoto.cs3",
         "status": 1,
-        "version": 6,
+        "version": 7,
         "name": "AniKoto",
         "internalName": "AniKoto",
         "authors": [
           "phisher98"
         ],
         "description": "AniKoto",
-        "fileSize": 82813,
+        "fileSize": 83032,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
           "Anime",
           "AnimeMovie"
         ],
-        "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
+        "iconUrl": "https://anikototv.bz/AnikotoTheme/assets/images/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-da02652fc7fe17a7b904453cb714a447bac87af60371f84eb01afdd95d2cf51d"
+        "fileHash": "sha256-fd6926b0c08c1cc9ccb832b1f5fa1a34055fe3a468498d1539a4f31168f36dec"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anilight.cs3",
@@ -2315,7 +2315,7 @@
           "Hexated"
         ],
         "description": "#1 best extension based on MultiAPI",
-        "fileSize": 2181036,
+        "fileSize": 2181035,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2328,7 +2328,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-b4ad26b1d2f18cd30450e4dd75242dd8bfcaf475e30dcca4924613abe9f5397e"
+        "fileHash": "sha256-bf58030b4a58e8f919d433e1f5fb1983ac306ed85d625f998ca2afa7742fbaab"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2635,6 +2635,28 @@
         "iconUrl": "https://huh.xdmovies.wtf/assets/logo1.png",
         "apiVersion": 1,
         "fileHash": "sha256-92dcb836c74e4d921077899a29d7156dfbd0705a793c9683e038a9d46ac8cd4e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XonProvider.cs3",
+        "status": 1,
+        "version": 11,
+        "name": "XonProvider",
+        "internalName": "XonProvider",
+        "authors": [
+          "Phisher98"
+        ],
+        "description": "Xon Provider for Anime and Cartoons - Tamil, Hindi, Telugu, English, Japanese",
+        "fileSize": 76118,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "hi",
+        "tvTypes": [
+          "TvSeries",
+          "Movie",
+          "Anime"
+        ],
+        "iconUrl": "https://play-lh.googleusercontent.com/zVq_wAus2snoO-ggyI6IomlsCzfybAozQOGYpBrv71r1--rOYOYWsr_N7DWwVp9t7ro=s248-rw",
+        "apiVersion": 1,
+        "fileHash": "sha256-866fc8915b84ebc2664f6cf0edd9945b994c51da16166f6d8955097eb1a821be"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/YTS.cs3",
@@ -5526,25 +5548,26 @@
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/GuardaPlay.cs3",
-        "status": 3,
-        "version": 1,
+        "status": 1,
+        "version": 2,
         "name": "GuardaPlay",
         "internalName": "GuardaPlay",
         "authors": [
           "DieGon"
         ],
-        "description": "Film in Streaming da GuardaPlay !BETA!",
-        "fileSize": 22538,
+        "description": "Film e Serie TV in Streaming da GuardaPlay",
+        "fileSize": 63556,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "language": "it",
         "tvTypes": [
           "Movie",
+          "TvSeries",
           "Cartoon",
           "Documentary"
         ],
-        "iconUrl": "https://guardaplay.store/wp-content/uploads/2021/05/cropped-Guarda-Flix-192x192.png",
+        "iconUrl": "https://guardaplay.autos/wp-content/uploads/2021/05/cropped-Guarda-Flix-192x192.png",
         "apiVersion": 1,
-        "fileHash": "sha256-15f46155b79ab8423d14262a3ddc31ee7c64e3fd4f881e495e22a8f5b03a7845"
+        "fileHash": "sha256-67aef6909db5a9838017e7f25093506f883e63d64a114a373656b6249def3509"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/GuardaSerie.cs3",
@@ -5585,6 +5608,27 @@
         "iconUrl": "https://huhu.to/favicon.ico",
         "apiVersion": 1,
         "fileHash": "sha256-0421b344eb277e392fd3c7746091f211b87f7ace34abb146532368e7e8ddf32e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/Nuvio.cs3",
+        "status": 3,
+        "version": 1,
+        "name": "Nuvio",
+        "internalName": "Nuvio",
+        "authors": [
+          "DieGon"
+        ],
+        "description": "Usa gli scraper dei repository Nuvio (JavaScript) dentro CloudStream",
+        "fileSize": 122984,
+        "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
+        "language": "it",
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/Nuvio/nuvio_icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-3b9686a41b565589c70ab0471da205fa9a5d683df2e04361fe969e5ea2c4ffa4"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/OnlineSerieTV.cs3",
@@ -5631,22 +5675,22 @@
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/SleepGuard.cs3",
-        "status": 3,
-        "version": 1,
+        "status": 1,
+        "version": 2,
         "name": "SleepGuard",
         "internalName": "SleepGuard",
         "authors": [
           "DieGon"
         ],
         "description": "Detects inactivity during playback (no touch, no input) and pauses to ask if you're still watching",
-        "fileSize": 29724,
+        "fileSize": 29783,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "tvTypes": [
           "Others"
         ],
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/SleepGuard/SleepGuard_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-385a2b82340da8fbcf481c600f76df95e54f1834ec7bed1abb9582f47d41740c"
+        "fileHash": "sha256-e5625aa2b8cb2a487adf4fdd366e63dbe6931fb56b1add7dfb1e2906f7bb6c07"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/StreamingCommunity.cs3",
@@ -6909,7 +6953,7 @@
           "TeKuma25"
         ],
         "description": "Nonton anime subtitle Indonesia terlengkap dan terupdate gratis dari NontonAnimeID.",
-        "fileSize": 36266,
+        "fileSize": 36113,
         "repositoryUrl": "https://github.com/TeKuma25/IndoStream",
         "language": "id",
         "tvTypes": [
@@ -6919,7 +6963,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=nontonanime.id&sz=%size%",
         "apiVersion": 1,
-        "fileHash": "sha256-56c1c57a53c68b0ed00c910b397b9c8d2129ce2fbea03cc34f179c7f2a2e2c24"
+        "fileHash": "sha256-24b547c87dd68d1a28cb6e3bef3b56a332e6772db49a5da8ceda67f3b131fa40"
       },
       {
         "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/NontonDrama.cs3",
@@ -9381,7 +9425,7 @@
           "raghav"
         ],
         "description": "Anime with Sub & Dub and multi audio",
-        "fileSize": 90019,
+        "fileSize": 91174,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9391,7 +9435,7 @@
         ],
         "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
         "apiVersion": 1,
-        "fileHash": "sha256-6c8238753e22246567b894a40496eb7ee3908fd39786aa9044abdb66b30fee70"
+        "fileHash": "sha256-b3e2bb19feb80eb01679d1484f92f3b65e612f72ce2d2a735e2f885f81f561dc"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniSuge.cs3",
@@ -9795,7 +9839,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources",
-        "fileSize": 712661,
+        "fileSize": 723810,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9805,7 +9849,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-7a025372b283979292da4afc9ea9613bc3e8c10e394dba165ee3f382a74af8a7"
+        "fileHash": "sha256-07fb0a31a6c233af2becea05a9df65054155890f46f57201d2824d8d3187bfbf"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -9817,7 +9861,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog",
-        "fileSize": 700816,
+        "fileSize": 711588,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9827,7 +9871,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bce2eb5a2c8b980e99b87568860eab7a7970be98909cfe897c186abdaa2db2ee"
+        "fileHash": "sha256-40d8bac3b36fb0a67204df5e364c4deb12c18f92ebb1bbd0971d7c2ad67c9378"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -12155,7 +12199,7 @@
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1358058,
+        "fileSize": 1357987,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12167,7 +12211,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-cca2b8bdbd6eb6ee15ec0d3b65bc8b100e5c968db30b0d9494299628cf008711"
+        "fileHash": "sha256-d55340492869fdce423a9d640e4b8a1770f3fece178fa34700f9feba88d34694"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
