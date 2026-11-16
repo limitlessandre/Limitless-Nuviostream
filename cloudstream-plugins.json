@@ -1,5 +1,26 @@
 [
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/4KHDHub.png",
+    "fileHash": "sha256-e5265e4f73a66e1654513f2880634b692465548b6d1293b6fbc7abd93ed1a13f",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50117,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "4KHDHub",
+    "description": "The 4KHDHub source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/4KHDHub.cs3",
+    "name": "4KHDHub"
+  },
+  {
     "version": 16,
     "internalName": "Rate",
     "name": "All4U Rate",
@@ -150,10 +171,10 @@
   },
   {
     "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
-    "fileHash": "sha256-7a9dffe5de406679c382c252f69c7c16cb1b755b2ef7eb35914088e2725d9eab",
+    "fileHash": "sha256-5ce4df1afde0bff6ebb41926c9ef1b70293117d1b50e9045315ef23d2cfebc03",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 66292,
+    "fileSize": 66384,
     "status": 1,
     "language": "en",
     "authors": [
@@ -164,7 +185,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "version": 11,
+    "version": 12,
     "internalName": "AniKoto",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3",
     "name": "AniKoto"
@@ -288,7 +309,7 @@
       "Cloudburst,Lorem Ipsum,Phisher98"
     ],
     "description": "Animes (SUB/DUB)",
-    "fileSize": 200602,
+    "fileSize": 202281,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -298,14 +319,14 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/animepahe.png",
     "apiVersion": 1,
-    "fileHash": "sha256-d9fd455a2c90554bda04f2d3b8226b80db1f70c9d41bc3c07abe4aaf994af04f"
+    "fileHash": "sha256-aa5297734f6e5c18a44b0cd287a495406f7e8718a19725f5729f194d1e706e4f"
   },
   {
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animesuge.cz&size=64",
-    "fileHash": "sha256-f0c1cde6ebbc30d8ca9612173e4871226e09fe54226c4753769db1816de7c065",
+    "fileHash": "sha256-acfe5a662986414530adf3f4c03e69f5a83598a1bbfde7370c2821f4bf785ba9",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 61531,
+    "fileSize": 61602,
     "status": 1,
     "language": "en",
     "authors": [
@@ -316,7 +337,7 @@
       "AnimeMovie",
       "OVA"
     ],
-    "version": 11,
+    "version": 12,
     "internalName": "AnimeSuge",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AnimeSuge.cs3",
     "name": "AnimeSuge"
@@ -353,7 +374,7 @@
       "Phisher98"
     ],
     "description": "Anime and Movies",
-    "fileSize": 127057,
+    "fileSize": 128210,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -363,7 +384,7 @@
     ],
     "iconUrl": "https://a.favicon.im/animexin.dev?larger=true",
     "apiVersion": 1,
-    "fileHash": "sha256-0a530c9ba752e1eb04d993bcb8464e93b51603bc06a2dc50ba59c47c59eccfd5"
+    "fileHash": "sha256-a24a08403e54f5a055be0db53f9b4afe2b2a53a4a5a8f412ea128e8b0670a930"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniPM.cs3",
@@ -484,7 +505,7 @@
       "ycngmn"
     ],
     "description": "Anizone.to streams latest anime content in multiple language.",
-    "fileSize": 109028,
+    "fileSize": 109360,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -492,7 +513,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/anizone.png",
     "apiVersion": 1,
-    "fileHash": "sha256-26d40dba08259c4c96073a799dec10f3ad8da0ec12a40233b725f74f62c786c9"
+    "fileHash": "sha256-2a9d9beed9092612f0e61ad2a5c77698a42af490f92b41751f2d68368dfc1ef0"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Anv.cs3",
@@ -615,14 +636,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
     "status": 1,
-    "version": 5,
+    "version": 6,
     "name": "BasketballReplays",
     "internalName": "BasketballReplays",
     "authors": [
       "ByAyzen"
     ],
     "description": "BA Replay full games online Free . Stream NBA Basketball replays full games. Spoiler Free , No Blackouts. No signup. Free Download High quality video in HD.",
-    "fileSize": 55689,
+    "fileSize": 56329,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -630,7 +651,7 @@
     ],
     "iconUrl": "https://basketballreplays.net/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-d7244d846adc02b44306c952dc0e01d3dcb460f57532a4b26fd3286c6bb61842"
+    "fileHash": "sha256-c9b73b8516a9689a55bab37782b85ad95b9f91f799dedd74d3340ee961f80d4c"
   },
   {
     "version": 9,
@@ -677,6 +698,27 @@
     "name": "BingeCloud"
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Castle.png",
+    "fileHash": "sha256-0a07d11a4ba4dad94195abb3249d1d92635cc9339d310daf1af6c2b69ae268fc",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50103,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Castle",
+    "description": "The Castle source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Castle.cs3",
+    "name": "Castle"
+  },
+  {
     "name": "Castlevania",
     "internalName": "Castlevania",
     "description": "Play Castlevania.",
@@ -717,6 +759,48 @@
     "fileSize": 58851
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-92cd0daabb7a0ecf042cea32587438a4c8bd154b05a2b0b4d6a796a3c94c9794",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50109,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "CineCalidad",
+    "description": "The CineCalidad source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/CineCalidad.cs3",
+    "name": "CineCalidad"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Cinejoy.png",
+    "fileHash": "sha256-a0c45cfd03e7299e2b01f5dc70a0281603ddb4356c6b5f9aa2b750edb25a6ce6",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50116,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Cinejoy",
+    "description": "The Cinejoy source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Cinejoy.cs3",
+    "name": "Cinejoy"
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
     "status": 1,
     "version": 30,
@@ -726,7 +810,7 @@
       "Phisher98"
     ],
     "description": "Watch Movies & TvSeries (Multi-Lang/Audio)",
-    "fileSize": 176877,
+    "fileSize": 178591,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -735,7 +819,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?domain=cinemacity.cc&sz=%size%",
     "apiVersion": 1,
-    "fileHash": "sha256-c2f624e35e22ab9a9fc1418f61bbcde12bdbf6ea43dc9e3417364fd49d4a5f69"
+    "fileHash": "sha256-d5a66b8d33265fbc2bef935346ee1c164482542bf30ee75cffe145d6832428cb"
   },
   {
     "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
@@ -760,6 +844,27 @@
     "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
     "apiVersion": 1,
     "fileHash": "sha256-30dc643628702d6b2fe139339e59996783c95a0c1d41efe0a31872ae4d10908b"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Cinezo.png",
+    "fileHash": "sha256-01e3b36e39fddfe853a9ee5cb6b1df4b8cd48aeec40dfa7ef42bc43c037d2168",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50105,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Cinezo",
+    "description": "The Cinezo source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Cinezo.cs3",
+    "name": "Cinezo"
   },
   {
     "version": 13,
@@ -803,10 +908,10 @@
   },
   {
     "iconUrl": "https://thedaddy.pk/assets/logos/favicon-32x32.png",
-    "fileHash": "sha256-4fec6a6953973f12b5ae6ab31235c33a4858accc1eec9bd88f54c9ec67bf59fa",
+    "fileHash": "sha256-9c39536e728c24ccebe2efcb935e0bf735738dc3cddc969d4e30282dc75ce6f7",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 72423,
+    "fileSize": 72528,
     "status": 1,
     "language": "en",
     "authors": [
@@ -815,7 +920,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 2,
+    "version": 3,
     "internalName": "DaddyLiveProvider",
     "description": "Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
@@ -858,6 +963,27 @@
     "language": "en",
     "iconUrl": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Game_Boy_Advance/master/Named_Boxarts/Desert%20Strike%20Advance%20(USA).png",
     "fileSize": 2396453
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-aabbf2c503c32e721354491750f650c7245cfd86bc3ed39dd5c3b23653261a61",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50098,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "Dexter",
+    "description": "The Dexter source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Dexter.cs3",
+    "name": "Dexter"
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=divicast.study&sz=64",
@@ -940,11 +1066,32 @@
     "fileSize": 3276326
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Dulo.png",
+    "fileHash": "sha256-48ffcadda08a44fb91a2172a5a161b74c1ab77ac0308525f7712268e32bbbd0a",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50091,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Dulo",
+    "description": "The Dulo source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Dulo.cs3",
+    "name": "Dulo"
+  },
+  {
     "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-    "fileHash": "sha256-886dcad925ce2274075ef642b8ac178b7b684fb42c17b874f7711d0c6b9d91ea",
+    "fileHash": "sha256-9d09ad14e004a00f179425f2d662c0463cc63a522fdac7401fe3bf97c9788aeb",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 62569,
+    "fileSize": 60967,
     "status": 1,
     "language": "en",
     "authors": [
@@ -953,7 +1100,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 5,
+    "version": 10,
     "internalName": "EasyPlayProvider",
     "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -1022,6 +1169,27 @@
     "iconUrl": "https://cs3-server.orkestr.run/img/113e041859b58540.png",
     "apiVersion": 1,
     "fileHash": "sha256-1758b60e2025909abacb22b9edc9eab140f706ab82cd0c48ecae0bf25244674e"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-3047dd56a8fde832b77b3ba64b06f3a422fad546ac1d49e58aef983e153d0319",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50112,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "Einthusan",
+    "description": "The Einthusan source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Einthusan.cs3",
+    "name": "Einthusan"
   },
   {
     "name": "FlappyBird",
@@ -1166,10 +1334,10 @@
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=goldenaudiobook.com/&sz=%size%",
-    "fileHash": "sha256-8b5b8dddd9d8021502be5472aad549bae435f0f0fff3a848907d3fbf77f4deca",
+    "fileHash": "sha256-c50fb21075caec65763ace2fd6f1c03865d233d369449ad944c0253a10b3b2c2",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 38034,
+    "fileSize": 38105,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1178,7 +1346,7 @@
     "tvTypes": [
       "Others"
     ],
-    "version": 35,
+    "version": 36,
     "internalName": "GoldenAudiobook",
     "description": "Audiobooks - Use Picture in Picture or VLC as external player",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/GoldenAudiobook.cs3",
@@ -1247,6 +1415,69 @@
     "iconUrl": "https://gotaku.to/images/icons/logo-white.png?v21",
     "apiVersion": 1,
     "fileHash": "sha256-790da407529867811a456e561ae722b6603d776b6bad20c8ae5e6d744dbb6899"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/HackStore.png",
+    "fileHash": "sha256-2c576f6c8096427d5cc60c47468352e4567f005708a3094ba3f5dcf829ed6d63",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50112,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "HackStore",
+    "description": "The HackStore source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HackStore.cs3",
+    "name": "HackStore"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/HDHub4u.png",
+    "fileHash": "sha256-34c1b639ce3b007201fe18c74e4335285898573f6f788023df661a3a57761000",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50120,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "HDHub4u",
+    "description": "The HDHub4u source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HDHub4u.cs3",
+    "name": "HDHub4u"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/HDMovie4.png",
+    "fileHash": "sha256-8e2fca4ea7816cc0059191530e3249230031ad5fc493ef47a59128243ae0f6ef",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50110,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "HDMovie4",
+    "description": "The HDMovie4 source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HDMovie4.cs3",
+    "name": "HDMovie4"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HiAnime.cs3",
@@ -1339,7 +1570,7 @@
       "Phisher98"
     ],
     "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media",
-    "fileSize": 152270,
+    "fileSize": 153303,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -1350,19 +1581,19 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/jellyfin.png",
     "apiVersion": 1,
-    "fileHash": "sha256-3bcd76922194656b0a019601a98e7b1b7f61670306ea444f3ea1e687ed8284f2"
+    "fileHash": "sha256-2bfde70041df54dbf505d06c9e25424344a80cca82e13654de42a4b24888d3d8"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "JPFilms",
     "internalName": "JPFilms",
     "authors": [
       "ByAyzen"
     ],
     "description": "Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.",
-    "fileSize": 16896,
+    "fileSize": 16874,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -1370,7 +1601,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kodasusaka.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-1b736e0cda249cbac483658a2abe2b8c90075c232dd26fd8739797b79a5e5f5f"
+    "fileHash": "sha256-cfb3559349aacc4138567f4492b5e6943d7820bb0e88ebdeec251bef355849ab"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
@@ -1502,6 +1733,48 @@
     "fileHash": "sha256-db305d3d29f8b911a434a68955c3dfb5020e90512a262350b445482127d27fe8"
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/KmMovies.png",
+    "fileHash": "sha256-0642825785d1bd0ce651c42c3743affce4acd2f048713ccfdff2a371fb23d060",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50103,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "KmMovies",
+    "description": "The KmMovies source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/KmMovies.cs3",
+    "name": "KmMovies"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-6f42a26738e9dfa1fcea6d181999b3c69614ebac430dc094c584186587255e08",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50119,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "LaMovie",
+    "description": "The LaMovie source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/LaMovie.cs3",
+    "name": "LaMovie"
+  },
+  {
     "iconUrl": "https://www.google.com/s2/favicons?domain=libraryofladev.com&sz=%size%",
     "jarFileSize": 157711,
     "fileHash": "sha256-8772a17e50c8e7049707976a51b6a4c19f498ccc0efbc13f733e9ad56e459d69",
@@ -1527,10 +1800,10 @@
   },
   {
     "iconUrl": "https://librivox.org/wp-content/themes/librivox/images/librivox-logo.png",
-    "fileHash": "sha256-d7336d8fb29299e789195d966983b732848c5e8e9f7485adfb63007cfa2adee3",
+    "fileHash": "sha256-3e249f8af9a558b80549295bceabc4c7e7494414a520702bd1949b81d18c6031",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 36138,
+    "fileSize": 36251,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1539,7 +1812,7 @@
     "tvTypes": [
       "Others"
     ],
-    "version": 35,
+    "version": 36,
     "internalName": "LibriVoxAudiobook",
     "description": "Audiobooks in public domain",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LibriVoxAudiobook.cs3",
@@ -1627,10 +1900,10 @@
   },
   {
     "iconUrl": "https://play-lh.googleusercontent.com/V4t4JeQV2Cu9u72hKuqOW5c0IfwcZuuVS1d9PF2uJsW3rlIq-aOMTrT5bABVGaAFTcM=w480-h960-rw",
-    "fileHash": "sha256-1739a3f2f7b289eb51f73602feb9ac739545c6b5146c718258cb48ef0bcd7da7",
+    "fileHash": "sha256-abe2e18b24a65d38f012b53fe915c2952ff4d5206f34491815d00e9b986d8c61",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 65790,
+    "fileSize": 65907,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1639,11 +1912,74 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 20,
+    "version": 21,
     "internalName": "M3UPlaylistPlayerProvider",
     "description": "Add your own m3u playlists",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
     "name": "M3UPlaylistPlayerProvider"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/MalluMV.png",
+    "fileHash": "sha256-9f95d9465a5b8562fd9d303bb725565f3b1689656332141f5876073e0be2fb86",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50120,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "MalluMV",
+    "description": "The MalluMV source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MalluMV.cs3",
+    "name": "MalluMV"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Mapple.png",
+    "fileHash": "sha256-3d1417bc0bbd47a934030b30b83697934a514697f9287e199216d8eeb44d711d",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50099,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Mapple",
+    "description": "The Mapple source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Mapple.cs3",
+    "name": "Mapple"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/MaxVOD.png",
+    "fileHash": "sha256-19c16c8222ba98cf0117bd7335493c3ca87026f3020da4000e80bd724839078e",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50114,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "MaxVOD",
+    "description": "The MaxVOD source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MaxVOD.cs3",
+    "name": "MaxVOD"
   },
   {
     "name": "MedalOfHonor",
@@ -1720,6 +2056,132 @@
     "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v96.cs3",
     "name": "MovieBox",
     "pluginClassName": "com.allforu.StreamBoxPlugin"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/MovieLinkBD.png",
+    "fileHash": "sha256-02a5d40d8ce507fb42c9413032dc35e868bff7a589a83fa49d5d16731c891329",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50116,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "MovieLinkBD",
+    "description": "The MovieLinkBD source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MovieLinkBD.cs3",
+    "name": "MovieLinkBD"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-278d50b0eee05ee19f244d3845555afd7e0b19ad806ea935957cde953ea2abeb",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50102,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "Movies4u",
+    "description": "The Movies4u source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Movies4u.cs3",
+    "name": "Movies4u"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/MoviesBazar.png",
+    "fileHash": "sha256-6e029ccb0f3ad9826e462953e361fdba2622cbb98d68e4d824fd623a0fd3c4a5",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50114,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "MoviesBazar",
+    "description": "The MoviesBazar source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesBazar.cs3",
+    "name": "MoviesBazar"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-c37b42326fb1b172ee201a77e5f42d1682f76baba2594583ece7e7b2f91bcc79",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50115,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "MoviesDrive",
+    "description": "The MoviesDrive source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesDrive.cs3",
+    "name": "MoviesDrive"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-c9b7b369b89bd766dc70d6b6ee3bf1343e1e8f6441c89ae1c153afceb9b9fc8b",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50115,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "MoviesHunt",
+    "description": "The MoviesHunt source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesHunt.cs3",
+    "name": "MoviesHunt"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-dc33ce61ebadecaf55272e5d2a1fd4b756ba81add66f7a6fe2c7e7d31b91a064",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50105,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "MoviesMod",
+    "description": "The MoviesMod source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesMod.cs3",
+    "name": "MoviesMod"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3",
@@ -1945,10 +2407,10 @@
   },
   {
     "iconUrl": "https://ntv.st/assets/img/icons/favicon-96x96.png",
-    "fileHash": "sha256-01e2789a325b34f632698d97ed1c6e3251003131ee3d12ad38137d0857c2c2cd",
+    "fileHash": "sha256-262b0619dfe6a19300301973e3d50f2e34446389dd7c5cb4cbd793e7e1540ee8",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 80791,
+    "fileSize": 80920,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1957,11 +2419,53 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 5,
+    "version": 6,
     "internalName": "NTVProvider",
     "description": "Live sports from NTV (ntv.st): four servers of live matches and channels",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
     "name": "NTVProvider"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Nxsha.png",
+    "fileHash": "sha256-d3fe13860bb0d89392291f50d646c1fb645fda12f5c8d3ddc963979876186c95",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50109,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Nxsha",
+    "description": "The Nxsha source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Nxsha.cs3",
+    "name": "Nxsha"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Obejrzyj.png",
+    "fileHash": "sha256-8d0182aba9ee6a234d3657cecca7e355a4ae610ef5c664a50ff4ce1ee7b20d22",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50114,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Obejrzyj",
+    "description": "The Obejrzyj source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Obejrzyj.cs3",
+    "name": "Obejrzyj"
   },
   {
     "version": 9,
@@ -2009,6 +2513,27 @@
     "iconUrl": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/main/ohli24.png",
     "fileHash": "sha256-fce0d760025660dfd563d3d49c240758f7c3897fcc317fa21b1022a6f8ab733f",
     "fileSize": 45629
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-dac86f8c0b2c6512cf792a1785bb280c92d18885366d292b7ae177ce5a4980d3",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50111,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "OndaSpanish",
+    "description": "The OndaSpanish source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/OndaSpanish.cs3",
+    "name": "OndaSpanish"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/OnePace.cs3",
@@ -2072,14 +2597,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
     "status": 1,
-    "version": 3,
+    "version": 4,
     "name": "OnShort",
     "internalName": "OnShort",
     "authors": [
       "kraptor"
     ],
     "description": "Discover dubbed and subtitled short dramas from multiple platforms and open every available episode on ONShort.",
-    "fileSize": 21396,
+    "fileSize": 18101,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -2087,7 +2612,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=https://onshort.net",
     "apiVersion": 1,
-    "fileHash": "sha256-6e87e9b6ad2422698829c07e4262f987605fb71339434061d898faf78e589aad"
+    "fileHash": "sha256-ce7f50c2caf1eff1cf39b13589e68a434bda258fc252aa8a6fd36be340124c7f"
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/FlummoxGamer/FLUMMOX-Repo/main/Otakutsu/icon.png",
@@ -2150,10 +2675,10 @@
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=ppv.st&sz=128",
-    "fileHash": "sha256-a2e215325f32266d7f48113b42043b7d96ed7ef25df0ae4f2bbbf87948300eec",
+    "fileHash": "sha256-3c09ce84cac4cfc589ad983ef05b57090edebb6f2aaeecaf1b65607c09953c70",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 61529,
+    "fileSize": 61578,
     "status": 1,
     "language": "en",
     "authors": [
@@ -2162,11 +2687,32 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 3,
+    "version": 4,
     "internalName": "PPVProvider",
     "description": "Live sports events and 24/7 sports channels from PPV (ppv.st)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
     "name": "PPVProvider"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/PremiumSmart.png",
+    "fileHash": "sha256-6677d43f14deda509f0d42a1712d0ef2c31309afb19a97e701e9aa95e8113935",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50110,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "PremiumSmart",
+    "description": "The PremiumSmart source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/PremiumSmart.cs3",
+    "name": "PremiumSmart"
   },
   {
     "name": "PrinceOfPersia",
@@ -2387,7 +2933,7 @@
       "Phisher98"
     ],
     "description": "ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.",
-    "fileSize": 193119,
+    "fileSize": 194146,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2398,7 +2944,7 @@
     ],
     "iconUrl": "https://miro.medium.com/v2/1*DyU8bmnyyEiJbFROEXO2VA.png",
     "apiVersion": 1,
-    "fileHash": "sha256-6d84bb5f720d3f7902c84c73f5d2f10427ca3d5d6ac956a5989ff6270df4f14b"
+    "fileHash": "sha256-a87bb95ea883a7a14aa31950e08af60003374bf160956cdfdfcaa9d7aee4dd60"
   },
   {
     "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/SimklProvider.cs3",
@@ -2511,6 +3057,48 @@
     "fileSize": 46341
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/SoraStream.png",
+    "fileHash": "sha256-6c19155ea41e2bd47925cf2ace3e4458e6a1022c8a6893a2835f82da39bdb0f6",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50118,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "SoraStream",
+    "description": "The SoraStream source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/SoraStream.cs3",
+    "name": "SoraStream"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/SpaceDom.png",
+    "fileHash": "sha256-38766f894b59b5a9b1cbdbb4d45b0d6ce29d2819edfda0740ac12b05750a20fc",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50105,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "SpaceDom",
+    "description": "The SpaceDom source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/SpaceDom.cs3",
+    "name": "SpaceDom"
+  },
+  {
     "url": "https://raw.githubusercontent.com/redblacker8/storm-ext/builds/SportsBiteProvider.cs3",
     "status": 1,
     "version": 1,
@@ -2533,14 +3121,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Streamed.cs3",
     "status": 1,
-    "version": 29,
+    "version": 30,
     "name": "Streamed",
     "internalName": "Streamed",
     "authors": [
       "kraptor"
     ],
     "description": "Streamed ile Canlı Spor Yayınlarını İzleyebilirsiniz.",
-    "fileSize": 31145,
+    "fileSize": 32923,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -2548,12 +3136,12 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://streamed.pk/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-3ac142f8ccfcc3be876418f9034e982c9753d29ee1fe411dfebcbd6048359164"
+    "fileHash": "sha256-ca97ea8a05797c90e282fafaef6668088f8e88df15028336a7c59d9ba729223a"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 709,
+    "version": 711,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -2561,7 +3149,7 @@
       "Hexated"
     ],
     "description": "#1 best extension based on MultiAPI",
-    "fileSize": 2181035,
+    "fileSize": 2184369,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2574,7 +3162,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-bf58030b4a58e8f919d433e1f5fb1983ac306ed85d625f998ca2afa7742fbaab"
+    "fileHash": "sha256-d4b1becaf0dfc304d6228e3414c93b814aa804785482b14dfe77fae1f01442d8"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2586,7 +3174,7 @@
       "Hexated,phisher98,erynith"
     ],
     "description": "[!] Requires Setup \n- Allows you to use any Stremio addon by pasting their manifest.json url",
-    "fileSize": 154985,
+    "fileSize": 155050,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2596,7 +3184,7 @@
     ],
     "iconUrl": "https://files.catbox.moe/ol63rm.png",
     "apiVersion": 1,
-    "fileHash": "sha256-4fd665fb65311f3473e47f7671d855f12714edb8403b38f1cae0439713dbae83"
+    "fileHash": "sha256-bf049b3732676bb9c070c40bd08426c78e0773670e7f25fc8fde26daca3f0b0c"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioX.cs3",
@@ -2608,7 +3196,7 @@
       "Hexated,phisher98"
     ],
     "description": "[!] Requires Setup \n- StremioX allows you to use stream addons \n- StremioC allows you to use catalog addons",
-    "fileSize": 250602,
+    "fileSize": 250942,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2617,7 +3205,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/hexated/cloudstream-extensions-hexated/master/StremioX/icon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-a137ca07fb4b7d94fd150765ff3b993d261eeb7bf2aec1b59eadcad26d2a2dbc"
+    "fileHash": "sha256-4024a54b1681ba4b9158ccc85eb2ee3989aa30f6b12f4cf45085397d57569440"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Subsplease.cs3",
@@ -2687,7 +3275,7 @@
       "Phisher98"
     ],
     "description": "SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.",
-    "fileSize": 211583,
+    "fileSize": 212960,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2700,7 +3288,28 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.showbox.media/&size=256",
     "apiVersion": 1,
-    "fileHash": "sha256-7214e896a3d42a152812bf5df6b001a7c23b2860ae036c114cf7e45f14e6a199"
+    "fileHash": "sha256-b79921646db71ad580d48764630744408c074b202fd6f18a58f87e82c6bd8587"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-62168d8513d5942bd6fab047784a3d9c96247fcbb42dbee7a6984038f6dbe333",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50119,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "TamilBlasters",
+    "description": "The TamilBlasters source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/TamilBlasters.cs3",
+    "name": "TamilBlasters"
   },
   {
     "name": "TekkenAdvance",
@@ -2760,6 +3369,27 @@
     "fileSize": 6711363
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/ToonWorld4All.png",
+    "fileHash": "sha256-c25f0184572741ceb69aa56add96e4f4c03d899f49d1c628a7c04d2b2acfb75a",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50116,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "ToonWorld4All",
+    "description": "The ToonWorld4All source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/ToonWorld4All.cs3",
+    "name": "ToonWorld4All"
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
     "status": 1,
     "version": 98,
@@ -2769,7 +3399,7 @@
       "Phisher98"
     ],
     "description": "#1 Best Extension – MultiAPI-Based with 4K Torrent Support (Debian) Use Extension Settings",
-    "fileSize": 293916,
+    "fileSize": 294376,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -2781,7 +3411,7 @@
     ],
     "iconUrl": "https://torrentio.strem.fun/images/logo_v1.png",
     "apiVersion": 1,
-    "fileHash": "sha256-6e8b3fe1e26ca7c968ddbbb481c71e9309b6135eed2c87e62ca9ff0aac62174e"
+    "fileHash": "sha256-d6b6e7dc725bcf7ae0e1c1ab285bf998ee311e75367fcb32549a2c3cf1fdf8f1"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TorrentsV1.cs3",
@@ -2811,14 +3441,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3",
     "status": 1,
-    "version": 11,
+    "version": 12,
     "name": "TVGarden",
     "internalName": "TVGarden",
     "authors": [
       "ByAyzen"
     ],
     "description": "With TVGarden, you can watch the local and legal channels you are looking for from both domestic and international sources.",
-    "fileSize": 14941,
+    "fileSize": 14939,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -2826,7 +3456,7 @@
     ],
     "iconUrl": "https://favicons.teamtailor-cdn.com/icon?size=80..120..200&url=tv.garden",
     "apiVersion": 1,
-    "fileHash": "sha256-365ffcdd7b4426873950b1dbbed82bbacf3fd4e7c9f611ccffaa0a6baa03efa8"
+    "fileHash": "sha256-58795752c0aaa19ac9e587007cd551d2ed5d477133de83b629d0b194ff993897"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/TwoDHive.cs3",
@@ -2851,6 +3481,27 @@
     "fileHash": "sha256-13f9636077114d0c42a5d0b78272393f82456c76e89e107328f46af1b5c6ce09"
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/UHDMovies.png",
+    "fileHash": "sha256-c985a4ca0423d79a2d61182a9ef233c413497e8ca38618ebe904a6b16549e6fd",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50110,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "UHDMovies",
+    "description": "The UHDMovies source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/UHDMovies.cs3",
+    "name": "UHDMovies"
+  },
+  {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/UHDmoviesProvider.cs3",
     "status": 1,
     "version": 45,
@@ -2870,6 +3521,27 @@
     "iconUrl": "https://raw.githubusercontent.com/LikDev-256/likdev256-tamil-providers/master/UHDmoviesProvider/icon.png",
     "apiVersion": 1,
     "fileHash": "sha256-f99f3726315259491cfbda735ac248945d512d7f764d74483703fabfef92dd17"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
+    "fileHash": "sha256-4339cf1b30bc931246a5db19bd76ce78b8713a52d390753b7476efe85011d23d",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50100,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "VAplayer",
+    "description": "The VAplayer source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VAplayer.cs3",
+    "name": "VAplayer"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
@@ -2893,11 +3565,116 @@
     "fileHash": "sha256-61c4daea98834f7fbdd83ac086aed86d187e7d81ae4e6cf3de994781c9c543ea"
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/VidBolt.png",
+    "fileHash": "sha256-1960166c41edcebc74e669faeb8d0ef46ccc0cbc5d008e6033171b01e5b5644c",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50105,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "VidBolt",
+    "description": "The VidBolt source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidBolt.cs3",
+    "name": "VidBolt"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/VidFast.png",
+    "fileHash": "sha256-099beb47526b23654d1dba09092eee06b71a2f27f3ee4e94f502d0c8d12924c0",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50105,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "VidFast",
+    "description": "The VidFast source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidFast.cs3",
+    "name": "VidFast"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Vidlink.png",
+    "fileHash": "sha256-1e3aada41bc4206a1c1dd4a6aaa335cf4e5531aa5ea6aa7c4b180d2fb060c54a",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50108,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Vidlink",
+    "description": "The Vidlink source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Vidlink.cs3",
+    "name": "Vidlink"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/VidNest.png",
+    "fileHash": "sha256-e7f893409fdcc4fdf4d226ace0b2c33c21939283d22a7a346a62adbff6c96bde",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50115,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "VidNest",
+    "description": "The VidNest source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidNest.cs3",
+    "name": "VidNest"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Vidrock.png",
+    "fileHash": "sha256-65f230a310b7a2f82f7f85a872e657e279f2ac0f1391b0c1c49247e295d8ca54",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50116,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Vidrock",
+    "description": "The Vidrock source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Vidrock.cs3",
+    "name": "Vidrock"
+  },
+  {
     "iconUrl": "https://editorialge.com/wp-content/uploads/2023/07/Watch32..jpg",
-    "fileHash": "sha256-1b628e071356dc2b1dbcf36deb4beb0681ef1d3089bf7e751a5a2a4aae1842cd",
+    "fileHash": "sha256-370ff58df1d1b1aad25d50d748a59eb1b54e399d8b12b28289925e0049d7b76f",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 48158,
+    "fileSize": 48276,
     "status": 1,
     "language": "en",
     "authors": [
@@ -2907,7 +3684,7 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 36,
+    "version": 37,
     "internalName": "Watch32",
     "description": "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
@@ -2980,14 +3757,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
     "status": 1,
-    "version": 18,
+    "version": 19,
     "name": "WatchWrestling",
     "internalName": "WatchWrestling",
     "authors": [
       "kraptor"
     ],
     "description": "Watch WWE | WWE Raw | Smackdown Live",
-    "fileSize": 18830,
+    "fileSize": 20293,
     "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
     "language": "en",
     "tvTypes": [
@@ -2995,7 +3772,28 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://instapro.ac&size=32",
     "apiVersion": 1,
-    "fileHash": "sha256-e60c081865d5584f9fa4dec3006be7cd81cc016499c8d558972bede4d855b5b3"
+    "fileHash": "sha256-87810f2811d5b0e87686b4c7acfa1336aeb252d2ad7c4557bebd99ab4b4c7a06"
+  },
+  {
+    "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/Way2Movies.png",
+    "fileHash": "sha256-b58aa722acfc9c65a782964919e9244c63a0ed42528a05aae40e080212eb8520",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+    "fileSize": 50124,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Kotlinsyd"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "Way2Movies",
+    "description": "The Way2Movies source only, powered by the PlavioHD addon.",
+    "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Way2Movies.cs3",
+    "name": "Way2Movies"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Wcoflix.cs3",
@@ -3051,7 +3849,7 @@
       "Phisher98"
     ],
     "description": "Watch Latest Movies",
-    "fileSize": 210951,
+    "fileSize": 212124,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -3064,7 +3862,7 @@
     ],
     "iconUrl": "https://huh.xdmovies.wtf/assets/logo1.png",
     "apiVersion": 1,
-    "fileHash": "sha256-92dcb836c74e4d921077899a29d7156dfbd0705a793c9683e038a9d46ac8cd4e"
+    "fileHash": "sha256-eada61f35e4301fc79d396a3a1aece1973716f340b931a119b4c150c6ad40671"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/YoTurkish.cs3",

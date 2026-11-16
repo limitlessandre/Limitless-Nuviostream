@@ -1,9 +1,9 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 149,
-  "no_obvious_native_overlap_count": 145,
+  "cloudstream_provider_count": 187,
+  "no_obvious_native_overlap_count": 182,
   "likely_overlap_count": 0,
-  "exact_or_alias_overlap_count": 4,
+  "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
     {
@@ -19,7 +19,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 709,
+      "version": 711,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -396,7 +396,7 @@
       "tvTypes": [
         "AsianDrama"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/JPFilms.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -572,7 +572,7 @@
       "tvTypes": [
         "AsianDrama"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/OnShort.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -840,7 +840,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AniKoto.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -983,7 +983,7 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/AnimeSuge.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -1607,6 +1607,29 @@
       ]
     },
     {
+      "internalName": "4KHDHub",
+      "name": "4KHDHub",
+      "description": "The 4KHDHub source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/4KHDHub.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Rate",
       "name": "All4U Rate",
       "description": "All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)",
@@ -1699,6 +1722,75 @@
       ]
     },
     {
+      "internalName": "Castle",
+      "name": "Castle",
+      "description": "The Castle source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Castle.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "CineCalidad",
+      "name": "CineCalidad",
+      "description": "The CineCalidad source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/CineCalidad.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.421,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Cinejoy",
+      "name": "Cinejoy",
+      "description": "The Cinejoy source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Cinejoy.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Cinemacity",
       "name": "Cinemacity",
       "description": "Watch Movies & TvSeries (Multi-Lang/Audio)",
@@ -1722,6 +1814,52 @@
       ]
     },
     {
+      "internalName": "Cinezo",
+      "name": "Cinezo",
+      "description": "The Cinezo source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Cinezo.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Dexter",
+      "name": "Dexter",
+      "description": "The Dexter source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Dexter.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "DiviCast",
       "name": "DiviCast",
       "description": "Watch movies and TV series from DiviCast",
@@ -1736,6 +1874,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.381,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Dulo",
+      "name": "Dulo",
+      "description": "The Dulo source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Dulo.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1782,6 +1943,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.5,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Einthusan",
+      "name": "Einthusan",
+      "description": "The Einthusan source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Einthusan.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.375,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1861,6 +2045,75 @@
       ]
     },
     {
+      "internalName": "HackStore",
+      "name": "HackStore",
+      "description": "The HackStore source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HackStore.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "HDHub4u",
+      "name": "HDHub4u",
+      "description": "The HDHub4u source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HDHub4u.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "HDMovie4",
+      "name": "HDMovie4",
+      "description": "The HDMovie4 source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/HDMovie4.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.286,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Iwatchtheoffice",
       "name": "Iwatchtheoffice",
       "description": "Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC",
@@ -1874,6 +2127,259 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.348,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "KmMovies",
+      "name": "KmMovies",
+      "description": "The KmMovies source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/KmMovies.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "LaMovie",
+      "name": "LaMovie",
+      "description": "The LaMovie source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/LaMovie.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MalluMV",
+      "name": "MalluMV",
+      "description": "The MalluMV source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MalluMV.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.3,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Mapple",
+      "name": "Mapple",
+      "description": "The Mapple source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Mapple.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.333,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MaxVOD",
+      "name": "MaxVOD",
+      "description": "The MaxVOD source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MaxVOD.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.308,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MovieLinkBD",
+      "name": "MovieLinkBD",
+      "description": "The MovieLinkBD source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MovieLinkBD.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.667,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Movies4u",
+      "name": "Movies4u",
+      "description": "The Movies4u source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Movies4u.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.476,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MoviesBazar",
+      "name": "MoviesBazar",
+      "description": "The MoviesBazar source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesBazar.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MoviesDrive",
+      "name": "MoviesDrive",
+      "description": "The MoviesDrive source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesDrive.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.519,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MoviesHunt",
+      "name": "MoviesHunt",
+      "description": "The MoviesHunt source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesHunt.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.435,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "MoviesMod",
+      "name": "MoviesMod",
+      "description": "The MoviesMod source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MoviesMod.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.476,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1906,6 +2412,75 @@
       ]
     },
     {
+      "internalName": "Nxsha",
+      "name": "Nxsha",
+      "description": "The Nxsha source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Nxsha.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Obejrzyj",
+      "name": "Obejrzyj",
+      "description": "The Obejrzyj source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Obejrzyj.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.235,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "OndaSpanish",
+      "name": "OndaSpanish",
+      "description": "The OndaSpanish source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/OndaSpanish.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.421,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Play4u",
       "name": "Play4u",
       "description": "Play4u - Movies and series with multi-language audio and quality options",
@@ -1920,6 +2495,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.211,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "PremiumSmart",
+      "name": "PremiumSmart",
+      "description": "The PremiumSmart source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/PremiumSmart.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -1966,6 +2564,52 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.385,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "SoraStream",
+      "name": "SoraStream",
+      "description": "The SoraStream source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/SoraStream.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.471,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "SpaceDom",
+      "name": "SpaceDom",
+      "description": "The SpaceDom source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/SpaceDom.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.3,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -2022,6 +2666,29 @@
       ]
     },
     {
+      "internalName": "TamilBlasters",
+      "name": "TamilBlasters",
+      "description": "The TamilBlasters source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/TamilBlasters.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.4,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "TheMoviesFlix",
       "name": "TheMoviesFlix",
       "description": "stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider",
@@ -2036,6 +2703,52 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.476,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "ToonWorld4All",
+      "name": "ToonWorld4All",
+      "description": "The ToonWorld4All source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/ToonWorld4All.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.273,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "UHDMovies",
+      "name": "UHDMovies",
+      "description": "The UHDMovies source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/UHDMovies.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.381,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -2068,6 +2781,29 @@
       ]
     },
     {
+      "internalName": "VAplayer",
+      "name": "VAplayer",
+      "description": "The VAplayer source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VAplayer.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.267,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "VegaMovies",
       "name": "VegaMovies",
       "description": "Movies and series from Vegamovies and Rogmovies in one place",
@@ -2091,6 +2827,98 @@
       ]
     },
     {
+      "internalName": "VidBolt",
+      "name": "VidBolt",
+      "description": "The VidBolt source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidBolt.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "VidFast",
+      "name": "VidFast",
+      "description": "The VidFast source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidFast.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.429,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "VidNest",
+      "name": "VidNest",
+      "description": "The VidNest source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VidNest.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Vidrock",
+      "name": "Vidrock",
+      "description": "The Vidrock source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Vidrock.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.571,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
       "internalName": "Watch32",
       "name": "Watch32",
       "description": "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.",
@@ -2099,12 +2927,35 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 36,
+      "version": 37,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/Watch32.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.211,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Way2Movies",
+      "name": "Way2Movies",
+      "description": "The Way2Movies source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Way2Movies.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.364,
         "native_matches": []
       },
       "priority": "low-priority",
@@ -2208,7 +3059,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/BasketballReplays.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2248,7 +3099,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 20,
+      "version": 21,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2268,7 +3119,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 29,
+      "version": 30,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/Streamed.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2288,7 +3139,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/TVGarden.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2308,7 +3159,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 18,
+      "version": 19,
       "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/WatchWrestling.cs3",
       "repositoryUrl": "https://github.com/Kraptor123/Cs-Karma",
       "overlap": {
@@ -2472,7 +3323,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2516,7 +3367,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 5,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2627,7 +3478,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/NTVProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -2649,7 +3500,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 3,
+      "version": 4,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/PPVProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -3001,7 +3852,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 35,
+      "version": 36,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/GoldenAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -3067,7 +3918,7 @@
       "tvTypes": [
         "Others"
       ],
-      "version": 35,
+      "version": 36,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/LibriVoxAudiobook.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -3500,6 +4351,35 @@
             "id": "limitless-netmirror",
             "name": "NetMirror",
             "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/netmirror-master.js?rev=202"
+          }
+        ]
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "Vidlink",
+      "name": "Vidlink",
+      "description": "The Vidlink source only, powered by the PlavioHD addon.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Vidlink.cs3",
+      "repositoryUrl": "https://github.com/kotlinsyd/plaviohd",
+      "overlap": {
+        "status": "exact-or-alias",
+        "score": 1.0,
+        "native_matches": [
+          {
+            "id": "limitless-vidlink",
+            "name": "Vidlink",
+            "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/vidlink-master.js?rev=120"
           }
         ]
       },

@@ -1,10 +1,10 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **149**  
-No obvious native overlap: **145**  
+Filtered CloudStream providers: **187**  
+No obvious native overlap: **182**  
 Likely overlap requiring review: **0**  
-Exact/alias overlap: **4**
+Exact/alias overlap: **5**
 
 > This is a coverage audit, not an automatic-conversion guarantee. Portability must be checked against each extension's Kotlin source and its CloudStream API dependencies.
 
@@ -81,28 +81,65 @@ Exact/alias overlap: **4**
 
 ## Low-priority unique candidates
 
+- **4KHDHub** (`4KHDHub`) — en; Movie, TvSeries — The 4KHDHub source only, powered by the PlavioHD addon.
 - **All4U Rate** (`Rate`) — en; Movie — All4U Rate - Like, dislike & 1-5 star rate every AllForU plugin (live community scores, premium ratings page)
 - **AllOtt** (`AllOtt`) — en; Movie, TvSeries — AllOtt - Netflix, Hotstar, Disney+ & Prime Video in ONE install (Tamil, English, Hindi & more)
 - **AreaDocumentalProvider** (`AreaDocumentalProvider`) — en; Movie, TvSeries
 - **Bilibili** (`Bilibili`) — zh; Others, Movie, TvSeries — Bilibili - 哔哩哔哩 videos: recommendations, popular, ranking, categories & search (720P MP4)
+- **Castle** (`Castle`) — en; Movie, TvSeries — The Castle source only, powered by the PlavioHD addon.
+- **CineCalidad** (`CineCalidad`) — en; Movie, TvSeries — The CineCalidad source only, powered by the PlavioHD addon.
+- **Cinejoy** (`Cinejoy`) — en; Movie, TvSeries — The Cinejoy source only, powered by the PlavioHD addon.
 - **Cinemacity** (`Cinemacity`) — en; Movie, TvSeries — Watch Movies & TvSeries (Multi-Lang/Audio)
+- **Cinezo** (`Cinezo`) — en; Movie, TvSeries — The Cinezo source only, powered by the PlavioHD addon.
+- **Dexter** (`Dexter`) — en; Movie, TvSeries — The Dexter source only, powered by the PlavioHD addon.
 - **DiviCast** (`DiviCast`) — en; Movie, TvSeries — Watch movies and TV series from DiviCast
+- **Dulo** (`Dulo`) — en; Movie, TvSeries — The Dulo source only, powered by the PlavioHD addon.
 - **Eclipsia** (`Eclipsia`) — en; Movie, TvSeries — Curated collection of Providers
 - **EclipsiaBDIX** (`EclipsiaBDIX`) — en; Movie, TvSeries — Bangladesh Only
+- **Einthusan** (`Einthusan`) — en; Movie, TvSeries — The Einthusan source only, powered by the PlavioHD addon.
 - **FourKHDHub** (`FourKHDHub`) — en; Movie, TvSeries — 4K Movies Extension by HDHUB4U
 - **FullMatchShows** (`Replaymatch`) — en; Movie, Others, live
 - **Goojara** (`Goojara`) — en; Movie, TvSeries — Movies and Series (Mostly 720p)
+- **HackStore** (`HackStore`) — en; Movie, TvSeries — The HackStore source only, powered by the PlavioHD addon.
+- **HDHub4u** (`HDHub4u`) — en; Movie, TvSeries — The HDHub4u source only, powered by the PlavioHD addon.
+- **HDMovie4** (`HDMovie4`) — en; Movie, TvSeries — The HDMovie4 source only, powered by the PlavioHD addon.
 - **Iwatchtheoffice** (`Iwatchtheoffice`) — en; Movie — Stream The Office (US) Online Free in HD on XBOX, Playstation, MOBILE, TABLET and PC
+- **KmMovies** (`KmMovies`) — en; Movie, TvSeries — The KmMovies source only, powered by the PlavioHD addon.
+- **LaMovie** (`LaMovie`) — en; Movie, TvSeries — The LaMovie source only, powered by the PlavioHD addon.
+- **MalluMV** (`MalluMV`) — en; Movie, TvSeries — The MalluMV source only, powered by the PlavioHD addon.
+- **Mapple** (`Mapple`) — en; Movie, TvSeries — The Mapple source only, powered by the PlavioHD addon.
+- **MaxVOD** (`MaxVOD`) — en; Movie, TvSeries — The MaxVOD source only, powered by the PlavioHD addon.
+- **MovieLinkBD** (`MovieLinkBD`) — en; Movie, TvSeries — The MovieLinkBD source only, powered by the PlavioHD addon.
+- **Movies4u** (`Movies4u`) — en; Movie, TvSeries — The Movies4u source only, powered by the PlavioHD addon.
+- **MoviesBazar** (`MoviesBazar`) — en; Movie, TvSeries — The MoviesBazar source only, powered by the PlavioHD addon.
+- **MoviesDrive** (`MoviesDrive`) — en; Movie, TvSeries — The MoviesDrive source only, powered by the PlavioHD addon.
+- **MoviesHunt** (`MoviesHunt`) — en; Movie, TvSeries — The MoviesHunt source only, powered by the PlavioHD addon.
+- **MoviesMod** (`MoviesMod`) — en; Movie, TvSeries — The MoviesMod source only, powered by the PlavioHD addon.
 - **NoirX** (`NoirX`) — en; Movie, TvSeries — NoirX - Movies & TV shows in HD (multi-language, multi-quality, subtitles)
+- **Nxsha** (`Nxsha`) — en; Movie, TvSeries — The Nxsha source only, powered by the PlavioHD addon.
+- **Obejrzyj** (`Obejrzyj`) — en; Movie, TvSeries — The Obejrzyj source only, powered by the PlavioHD addon.
+- **OndaSpanish** (`OndaSpanish`) — en; Movie, TvSeries — The OndaSpanish source only, powered by the PlavioHD addon.
 - **Play4u** (`Play4u`) — en; Movie, TvSeries — Play4u - Movies and series with multi-language audio and quality options
+- **PremiumSmart** (`PremiumSmart`) — en; Movie, TvSeries — The PremiumSmart source only, powered by the PlavioHD addon.
 - **QuickPlay** (`QuickPlay`) — en; TvSeries — QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
+- **SoraStream** (`SoraStream`) — en; Movie, TvSeries — The SoraStream source only, powered by the PlavioHD addon.
+- **SpaceDom** (`SpaceDom`) — en; Movie, TvSeries — The SpaceDom source only, powered by the PlavioHD addon.
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url
 - **StremioX** (`StremioX`) — en; TvSeries, Movie — [!] Requires Setup  - StremioX allows you to use stream addons  - StremioC allows you to use catalog addons
+- **TamilBlasters** (`TamilBlasters`) — en; Movie, TvSeries — The TamilBlasters source only, powered by the PlavioHD addon.
 - **TheMoviesFlix** (`TheMoviesFlix`) — en; Movie, TvSeries — stream movies & TV series HINDI,ENGLISH - TheMoviesFlix Provider
+- **ToonWorld4All** (`ToonWorld4All`) — en; Movie, TvSeries — The ToonWorld4All source only, powered by the PlavioHD addon.
+- **UHDMovies** (`UHDMovies`) — en; Movie, TvSeries — The UHDMovies source only, powered by the PlavioHD addon.
 - **UHDmoviesProvider** (`UHDmoviesProvider`) — en; Movie, TvSeries — Indian Multi-language 4K Provider
+- **VAplayer** (`VAplayer`) — en; Movie, TvSeries — The VAplayer source only, powered by the PlavioHD addon.
 - **VegaMovies** (`VegaMovies`) — en; Movie, TvSeries — Movies and series from Vegamovies and Rogmovies in one place
+- **VidBolt** (`VidBolt`) — en; Movie, TvSeries — The VidBolt source only, powered by the PlavioHD addon.
+- **VidFast** (`VidFast`) — en; Movie, TvSeries — The VidFast source only, powered by the PlavioHD addon.
+- **VidNest** (`VidNest`) — en; Movie, TvSeries — The VidNest source only, powered by the PlavioHD addon.
+- **Vidrock** (`Vidrock`) — en; Movie, TvSeries — The Vidrock source only, powered by the PlavioHD addon.
 - **Watch32** (`Watch32`) — en; Movie, TvSeries — Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series.
+- **Way2Movies** (`Way2Movies`) — en; Movie, TvSeries — The Way2Movies source only, powered by the PlavioHD addon.
 - **YoTurkish** (`YoTurkish`) — en; TvSeries — YoTurkish - is the most favorite website for watching turkish series with english subtitles for free online, only at yoturkish.to
 - **YTS** (`YTS`) — en; Movie, Torrent — YTS Movies 4K Support (Torrent)
 - **Supercartoons** (`Supercartoons`) — en; Cartoon — Watch Cartoons Online. Here you can Watch old Classical Cartoons like Bugs Bunny, Mickey Mouse, Pink Panther, Tom and Jerry and Many Many More!
@@ -175,3 +212,4 @@ None.
 - **KissKH** (`KissKH`) — en; AsianDrama — Watch drama online in high quality. Free download high quality drama. Various formats from 240p to 720p HD (or even 1080p). Feel Free To Watch! — native match: KissKH
 - **Re:ANIME** (`Reanime`) — en; AnimeMovie, Anime, OVA — Re:ANIME - Stream anime free online (sub & dub, multi-quality) — native match: Re:ANIME
 - **NetMirror** (`NetMirror`) — en; Movie, TvSeries — Netflix, Prime Video, Disney+ & more — native match: NetMirror
+- **Vidlink** (`Vidlink`) — en; Movie, TvSeries — The Vidlink source only, powered by the PlavioHD addon. — native match: Vidlink

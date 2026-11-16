@@ -1,9 +1,43 @@
 {
+  "internal:anikage": {
+    "chosen": {
+      "internalName": "Anikage",
+      "name": "Anikage",
+      "version": 8,
+      "language": "en",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Anikage",
+        "name": "Anikage",
+        "version": 8,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anikage.cs3"
+      },
+      {
+        "internalName": "AniKage",
+        "name": "AniKage",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/AniKage.cs3"
+      }
+    ]
+  },
   "internal:anikoto": {
     "chosen": {
       "internalName": "AniKoto",
       "name": "AniKoto",
-      "version": 11,
+      "version": 12,
       "language": "en",
       "source": "CNC Repo(All Language)",
       "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -14,7 +48,7 @@
       {
         "internalName": "AniKoto",
         "name": "AniKoto",
-        "version": 11,
+        "version": 12,
         "language": "en",
         "source": "CNC Repo(All Language)",
         "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -132,6 +166,16 @@
         "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/Anizone.cs3"
+      },
+      {
+        "internalName": "AniZone",
+        "name": "AniZone",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/AniZone.cs3"
       }
     ]
   },
@@ -237,6 +281,176 @@
       }
     ]
   },
+  "internal:kisskh": {
+    "chosen": {
+      "internalName": "KissKH",
+      "name": "KissKH",
+      "version": 5,
+      "language": "en",
+      "source": "cs-karma",
+      "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/KissKH.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "KissKH",
+        "name": "KissKH",
+        "version": 5,
+        "language": "en",
+        "source": "cs-karma",
+        "sourceRepo": "https://raw.githubusercontent.com/Kraptor123/cs-Karma/refs/heads/master/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/Kraptor123/Cs-Karma/builds/KissKH.cs3"
+      },
+      {
+        "internalName": "KissKH",
+        "name": "KissKH",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/KissKH.cs3"
+      }
+    ]
+  },
+  "internal:moviebox": {
+    "chosen": {
+      "internalName": "MovieBox",
+      "name": "MovieBox",
+      "version": 96,
+      "language": "en",
+      "source": "AllForU",
+      "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v96.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "MovieBox",
+        "name": "MovieBox",
+        "version": 96,
+        "language": "en",
+        "source": "AllForU",
+        "sourceRepo": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/RVRBEAST76/allforu-repo/builds/MovieBox-v96.cs3"
+      },
+      {
+        "internalName": "MovieBox",
+        "name": "MovieBox",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MovieBox.cs3"
+      }
+    ]
+  },
+  "internal:movy": {
+    "chosen": {
+      "internalName": "Movy",
+      "name": "Movy",
+      "version": 7,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Movy",
+        "name": "Movy",
+        "version": 7,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Movy.cs3"
+      },
+      {
+        "internalName": "Movy",
+        "name": "Movy",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/Movy.cs3"
+      }
+    ]
+  },
+  "internal:multimovies": {
+    "chosen": {
+      "internalName": "Multimovies",
+      "name": "Multimovies",
+      "version": 15,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "Multimovies",
+        "name": "Multimovies",
+        "version": 15,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Multimovies.cs3"
+      },
+      {
+        "internalName": "MultiMovies",
+        "name": "MultiMovies",
+        "version": 1,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MultiMovies.cs3"
+      }
+    ]
+  },
+  "internal:netmirror": {
+    "chosen": {
+      "internalName": "NetMirror",
+      "name": "NetMirror",
+      "version": 10,
+      "language": "en",
+      "source": "Eclipsia",
+      "sourceRepo": "https://cs.eclipsia.dpdns.org/repo.json",
+      "verifiedRepo": false,
+      "url": "https://cs.eclipsia.dpdns.org/files/04b7bc0a586924a8/NetMirror.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "NetMirror",
+        "name": "NetMirror",
+        "version": 10,
+        "language": "en",
+        "source": "Eclipsia",
+        "sourceRepo": "https://cs.eclipsia.dpdns.org/repo.json",
+        "verifiedRepo": false,
+        "url": "https://cs.eclipsia.dpdns.org/files/04b7bc0a586924a8/NetMirror.cs3"
+      },
+      {
+        "internalName": "NetMirror",
+        "name": "NetMirror",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/NetMirror.cs3"
+      }
+    ]
+  },
   "internal:netnaija": {
     "chosen": {
       "internalName": "NetNaija",
@@ -309,7 +523,7 @@
     "chosen": {
       "internalName": "PPVProvider",
       "name": "PPVProvider",
-      "version": 3,
+      "version": 4,
       "language": "en",
       "source": "CNC Repo(All Language)",
       "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -320,7 +534,7 @@
       {
         "internalName": "PPVProvider",
         "name": "PPVProvider",
-        "version": 3,
+        "version": 4,
         "language": "en",
         "source": "CNC Repo(All Language)",
         "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
@@ -380,6 +594,40 @@
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Reanime.cs3"
+      }
+    ]
+  },
+  "internal:vegamovies": {
+    "chosen": {
+      "internalName": "VegaMovies",
+      "name": "VegaMovies",
+      "version": 9,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "VegaMovies",
+        "name": "VegaMovies",
+        "version": 9,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3"
+      },
+      {
+        "internalName": "VegaMovies",
+        "name": "VegaMovies",
+        "version": 2,
+        "language": "en",
+        "source": "PlavioHD",
+        "sourceRepo": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/VegaMovies.cs3"
       }
     ]
   }
