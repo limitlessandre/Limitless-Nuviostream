@@ -1330,14 +1330,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinefreak.cs3",
         "status": 1,
-        "version": 23,
+        "version": 24,
         "name": "Cinefreak",
         "internalName": "Cinefreak",
         "authors": [
           "Phisher98"
         ],
         "description": "Bangla/Hindi Movies/Series",
-        "fileSize": 260012,
+        "fileSize": 246588,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "bn",
         "tvTypes": [
@@ -1347,7 +1347,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/cinefreak.png",
         "apiVersion": 1,
-        "fileHash": "sha256-cd75f64149bdb642a404c9d45ef1f832eb4914afe3430bd1ae41d8fcf53d8263"
+        "fileHash": "sha256-d30e14cfbc1205fe2dbba78b730679715347cba29aac841e9c2e1ff87e554241"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
@@ -1947,14 +1947,14 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
-        "version": 41,
+        "version": 42,
         "name": "MovieBoxProvider",
         "internalName": "MovieBoxProvider",
         "authors": [
           "NivinCNC,Phisher98"
         ],
         "description": "Multi Language Movies and Series Provider",
-        "fileSize": 221104,
+        "fileSize": 223306,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "hi",
         "tvTypes": [
@@ -1963,7 +1963,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/moviebox.png",
         "apiVersion": 1,
-        "fileHash": "sha256-96d23b5e4782c72e88ea6476560091c2b70cd494cc4f57a326219dacf5f8c403"
+        "fileHash": "sha256-5beb3f3aea11266b349f69789f8f4a510d5fd9446c8f8e1d8dc82c75047abe12"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Movies4u.cs3",
@@ -2307,7 +2307,7 @@
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 711,
+        "version": 713,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -2315,7 +2315,7 @@
           "Hexated"
         ],
         "description": "#1 best extension based on MultiAPI",
-        "fileSize": 2184369,
+        "fileSize": 2191950,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -2328,7 +2328,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-d4b1becaf0dfc304d6228e3414c93b814aa804785482b14dfe77fae1f01442d8"
+        "fileHash": "sha256-9a9e5f073d5e2b179cbeebf508509d615c89eef315609db78667a46e94f28808"
       },
       {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
@@ -2938,10 +2938,10 @@
       },
       {
         "iconUrl": "https://thedaddy.pk/assets/logos/favicon-32x32.png",
-        "fileHash": "sha256-9c39536e728c24ccebe2efcb935e0bf735738dc3cddc969d4e30282dc75ce6f7",
+        "fileHash": "sha256-65e96c1260fcf23db35155f5c8934a5eaeefb9732a3a8adcfca57800bf4eb1f1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 72528,
+        "fileSize": 73704,
         "status": 1,
         "language": "en",
         "authors": [
@@ -2950,7 +2950,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 3,
+        "version": 8,
         "internalName": "DaddyLiveProvider",
         "description": "Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
@@ -2999,10 +2999,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-        "fileHash": "sha256-9d09ad14e004a00f179425f2d662c0463cc63a522fdac7401fe3bf97c9788aeb",
+        "fileHash": "sha256-f98865f694c5f0ad4c4c3075f93f24451fe515649e54fff87722a8915a9f7621",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 60967,
+        "fileSize": 74898,
         "status": 1,
         "language": "en",
         "authors": [
@@ -3011,7 +3011,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 10,
+        "version": 11,
         "internalName": "EasyPlayProvider",
         "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -3250,10 +3250,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/MoviePlusProvider/icon.png",
-        "fileHash": "sha256-20da80f8e5e8a69df7088ff8de0856d3b89bf43f9e33465c12184f5a7a28e781",
+        "fileHash": "sha256-1696ae02a910a92f09082fad23196790098468384bb3f39bdbb23ae39983d1a3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 84083,
+        "fileSize": 87670,
         "status": 1,
         "language": "mx",
         "authors": [
@@ -3263,7 +3263,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 2,
+        "version": 5,
         "internalName": "MoviePlusProvider",
         "description": "Movie! Plus — Spanish/Latino movies & series (TMDB metadata, Yandex.Disk sources, no login)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MoviePlusProvider.cs3",
@@ -4967,16 +4967,37 @@
         "fileHash": "sha256-cfe2f00d6c432a168708832ac48464d17b18622512311f556cd6e18c9126f9e9"
       },
       {
+        "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Vodu.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "Vodu",
+        "internalName": "Vodu",
+        "authors": [
+          "Abodabodd"
+        ],
+        "description": "تاكد من انك تفتحه في العراق 🇮🇶 وعلى شبكة مدعومة",
+        "fileSize": 27324,
+        "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
+        "language": "ar",
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/Vodu/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-fd2875dd35ab465d3c48e05b950d7b85a0051b869a67755242ac058634d12b3b"
+      },
+      {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Wecima.cs3",
         "status": 1,
-        "version": 3,
+        "version": 4,
         "name": "WeCima",
         "internalName": "Wecima",
         "authors": [
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 163418,
+        "fileSize": 163420,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4985,7 +5006,7 @@
         ],
         "iconUrl": "https://wecima.ac/static/img/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-d7d3271f227ec545529a2f2a8f1768a665a82185339c8b5a2d02e0a9fcbd4412"
+        "fileHash": "sha256-89a52544b366ba42e53cd85ce5e8ecff604e9775dcb6531c160558b1c6178ad7"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Witanime.cs3",
@@ -5086,14 +5107,14 @@
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeUnity.cs3",
         "status": 1,
-        "version": 29,
+        "version": 30,
         "name": "AnimeUnity",
         "internalName": "AnimeUnity",
         "authors": [
           "doGior"
         ],
         "description": "Anime from AnimeUnity",
-        "fileSize": 134706,
+        "fileSize": 151019,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -5101,9 +5122,9 @@
           "Anime",
           "OVA"
         ],
-        "iconUrl": "https://www.animeunity.to/apple-touch-icon.png",
+        "iconUrl": "https://animeunity.cx/icon/apple-touch-icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c23ec91d08adfdda43bb5307ef4bc6d73ba7459bbbfe1e98e53908a46eea860c"
+        "fileHash": "sha256-30ec1c65396a8629258a3761adee7a2f9397ff11bf2add5a84e322c5271a3704"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/AnimeWorld.cs3",
@@ -5290,7 +5311,7 @@
           "Italiani"
         ],
         "description": "Film, Serie TV, Anime e TV in un unico posto.",
-        "fileSize": 5905970,
+        "fileSize": 5905939,
         "repositoryUrl": "https://github.com/doGior/doGiorsHadEnough",
         "language": "it",
         "tvTypes": [
@@ -5304,7 +5325,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/master/StreamCenter/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-07e996079d23bc10b64b19d59dcda8af050d0aa372fe685283e009bf5edecd9e"
+        "fileHash": "sha256-76081259eddf1dae9a59149374c94484f55dac1175a2d225325163e54808f592"
       },
       {
         "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/StreamingCommunity.cs3",
@@ -5440,16 +5461,38 @@
         "fileHash": "sha256-7097d0d48b711f79a1ce35d33a8ba76cc25f1fce74acd761add22fbd9194e4e3"
       },
       {
+        "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AnimeUnion.cs3",
+        "status": 1,
+        "version": 1,
+        "name": "AnimeUnion",
+        "internalName": "AnimeUnion",
+        "authors": [
+          "DieGon"
+        ],
+        "description": "Anime da AnimeUnion",
+        "fileSize": 33403,
+        "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
+        "language": "it",
+        "tvTypes": [
+          "Anime",
+          "AnimeMovie",
+          "OVA"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/AnimeUnion/animeunion_icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-466eeaae2a32dfcd543ae2f7082615830862039d4025297447f06558d7e7deb4"
+      },
+      {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AnimeUnity.cs3",
         "status": 1,
-        "version": 20,
+        "version": 21,
         "name": "AnimeUnity",
         "internalName": "AnimeUnity",
         "authors": [
           "DieGon"
         ],
         "description": "Anime da AnimeUnity",
-        "fileSize": 40302,
+        "fileSize": 46462,
         "repositoryUrl": "https://github.com/DieGon7771/ItaliaInStreaming",
         "language": "it",
         "tvTypes": [
@@ -5459,7 +5502,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/master/AnimeUnity/animeunity_icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-b182eee87dc7f4653a5ca7786c34a3fbcd45feef8e6cc44566b1760f2178ae94"
+        "fileHash": "sha256-9801bb5028f88d9a55310bd5eede2728362f73f84bc78053e75adfb7f3647ab7"
       },
       {
         "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AnimeWorld.cs3",
@@ -9336,7 +9379,7 @@
           "KSHITIJ8473"
         ],
         "description": "AniKoto Anime - Watch Anime Sub & Dub in HD",
-        "fileSize": 63676,
+        "fileSize": 65043,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9346,7 +9389,7 @@
         ],
         "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-a26ddf672ec0671fa9deb18c3889198f6e57808f32d48268fa85ed3ca82e4425"
+        "fileHash": "sha256-bc2ef8826a19cfcf88571adc84a3e00156e1bac6abc33906fbabae4013630c0c"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniLight.cs3",
@@ -9468,7 +9511,7 @@
           "raghav"
         ],
         "description": "Anime from AniSuge with Sub and Dub",
-        "fileSize": 77983,
+        "fileSize": 78873,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9478,7 +9521,7 @@
         ],
         "iconUrl": "https://animesuge.at/storage/media/2026/08/logo.png",
         "apiVersion": 1,
-        "fileHash": "sha256-3ec68c9bfd18b9ac370ca54472d0b5c9a7019ebe05b80574178041a5cf943263"
+        "fileHash": "sha256-e9547cd5779c43ff29e88aadc2ea627436230c40c2ee0629352093d4abacb02a"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
@@ -9612,14 +9655,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 41,
+        "version": 42,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-        "fileSize": 625238,
+        "fileSize": 626533,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9628,7 +9671,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-3544c56e3a685ba0efd5ee01d25ec353346e4647ce28a500548c20296f28ac48"
+        "fileHash": "sha256-af87858a6c79dd9d34029e22370e3c463cd745c93358e3c00b05d4adc5f05329"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -9860,7 +9903,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources",
-        "fileSize": 723810,
+        "fileSize": 724600,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9870,7 +9913,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-07fb0a31a6c233af2becea05a9df65054155890f46f57201d2824d8d3187bfbf"
+        "fileHash": "sha256-6df3177750d9d0e6bffb8a039746e214c2c85d029fd3aa064aaf803e7d024e51"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -9882,7 +9925,7 @@
           "raghav"
         ],
         "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog",
-        "fileSize": 711588,
+        "fileSize": 712247,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9892,7 +9935,7 @@
         ],
         "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
         "apiVersion": 1,
-        "fileHash": "sha256-40d8bac3b36fb0a67204df5e364c4deb12c18f92ebb1bbd0971d7c2ad67c9378"
+        "fileHash": "sha256-dae3d3fb3dd147b55bb75ed1fbd210d7b1f538a8906a454ff44e7ebbd9d96d44"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RareAnimesIndia.cs3",
@@ -12888,6 +12931,26 @@
         "name": "Animeler"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=animetr.co&sz=%size%",
+        "fileHash": "sha256-87968bd97e1473dbe1e62086192f48edb980c4e0c1a247393a5fc72169fdfdcf",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 36884,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Anime"
+        ],
+        "version": 1,
+        "internalName": "AnimeTR",
+        "description": "AnimeTR — anime ve donghua arşivi (animetr.co)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AnimeTR.cs3",
+        "name": "AnimeTR"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=anizium.co&sz=%size%",
         "fileHash": "sha256-83cd761c09e78f9de61a3cab978bab945110d3ae6ead5134202f7b8c04de3843",
         "apiVersion": 1,
@@ -13013,6 +13076,27 @@
         "name": "Asyadizileriizle"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=asyafanatikleri.vip&sz=%size%",
+        "fileHash": "sha256-d6e3d4fd0ef7c82595cfc219768a0785613ab48fd77577581c643bc47a994e13",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 43071,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 2,
+        "internalName": "AsyaFanatikleri",
+        "description": "Asya Fanatikleri — Kore/Çin/Japon/Tayland/Tayvan/Filipin dizileri ve filmleri (asyafanatikleri.vip)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaFanatikleri.cs3",
+        "name": "AsyaFanatikleri"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyalog.co&sz=%size%",
         "fileHash": "sha256-d029a2ec38ad41204173e06f1099569ef61d45056468230cf7e758d376f87c2f",
         "apiVersion": 1,
@@ -13032,6 +13116,27 @@
         "description": "AsyaLog — Asya dizileri ve filmleri (asyalog.co)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaLog.cs3",
         "name": "AsyaLog"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=asyamax.com&sz=%size%",
+        "fileHash": "sha256-0fcba76f85d34592b879eb2307a3b9a743d551b2eaa94b4bcbed6906e03ab6b0",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 37323,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "AsyaMax",
+        "description": "AsyaMax — Türkçe altyazılı Asya dizileri ve filmleri (asyamax.com)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaMax.cs3",
+        "name": "AsyaMax"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyawatch.com&sz=%size%",
@@ -13093,6 +13198,26 @@
         "description": "BelgeselX — Türkçe belgesel arşivi (belgeselx.com)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/BelgeselX.cs3",
         "name": "BelgeselX"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=bicaps.live&sz=%size%",
+        "fileHash": "sha256-b967f42a39014209879204ef5370b978e65bcbcd18a15dcdf71d4d6b6c1ad734",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 43577,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "BiCaps",
+        "description": "BiCaps — Türkçe dublaj & altyazılı HD film arşivi",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/BiCaps.cs3",
+        "name": "BiCaps"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=birasyadizi.cx&sz=%size%",
@@ -13199,10 +13324,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ddizi.tel&sz=%size%",
-        "fileHash": "sha256-3e0874d43b1a3e93887dc4e27504871418cf35448f7ad1785604309960d3377a",
+        "fileHash": "sha256-ca72da69815f76ef66ee4fd5e5dd3b6f47bfe1366609359a537e273a95615b59",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38976,
+        "fileSize": 40760,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13211,7 +13336,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 6,
+        "version": 8,
         "internalName": "Ddizi",
         "description": "DDizi — Türkçe dizi izle (ddizi.im → ddizi.tel)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Ddizi.cs3",
@@ -13365,10 +13490,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizibox.live&sz=%size%",
-        "fileHash": "sha256-55147a508be263c51f719f4253136ef188e0bba90fee1ce7e9d94347a519d91a",
+        "fileHash": "sha256-8b6038ea37117c3f97f36ca3256d54f82e5bf31ba8d95ebb689bd74dd4ab1cc6",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 40814,
+        "fileSize": 40851,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13377,7 +13502,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 12,
+        "version": 13,
         "internalName": "Dizibox",
         "description": "DiziBox — yabancı dizi izle (dizibox.live mirror'ları)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizibox.cs3",
@@ -13385,10 +13510,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziboxizle.com&sz=%size%",
-        "fileHash": "sha256-9533b1fee58b589ad20a90fd334d14345c68e9f7e60b34c977c6f9988b12d652",
+        "fileHash": "sha256-b20be4c3263a22bbd0ab67f3574be25040040ecd1d3a53c5b0d47dcffb9ba7bf",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41554,
+        "fileSize": 41601,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13397,7 +13522,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 10,
+        "version": 11,
         "internalName": "DiziboxIzle",
         "description": "DiziboxIzle — güncel yabancı dizi (diziboxizle.com)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziboxIzle.cs3",
@@ -13468,10 +13593,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizifon.cc&sz=%size%",
-        "fileHash": "sha256-3ee272a2c21b3aca66a32f8dd1f07870fb3f94b1cdabb02d27f74457cca1bdd6",
+        "fileHash": "sha256-25da201bb4fc9cdb3972e2539eabd57465972e329f642ab175e949c4fa64470f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43469,
+        "fileSize": 48215,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13481,7 +13606,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 7,
+        "version": 9,
         "internalName": "Dizifon",
         "description": "Dizifon — Türkçe içerik",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizifon.cs3",
@@ -13529,6 +13654,26 @@
         "name": "Dizigom"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=diziizle.cloud&sz=%size%",
+        "fileHash": "sha256-7dfb8ca9be58888d4324c2573d5bc5695efb9bb382d83a9b92de9277ec125592",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 37386,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 3,
+        "internalName": "Diziizle",
+        "description": "Diziizle — Güncel yabancı dizi arşivi, TR/EN altyazı",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Diziizle.cs3",
+        "name": "Diziizle"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizikorea3.com&sz=%size%",
         "fileHash": "sha256-0d08df0c8f9a663e297194406f6a8f2b961f8d7a64231b2175ea1644c34ea496",
         "apiVersion": 1,
@@ -13548,6 +13693,26 @@
         "description": "Dizikorea3 — Kore/Asya dizileri ve filmleri (dizikorea3.com)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizikorea3.cs3",
         "name": "Dizikorea3"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=dizikutusu.com&sz=%size%",
+        "fileHash": "sha256-28769493895eb5494c3b159332e1296b58a5f1e87e79d44c5f804a8e921982d0",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 39210,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 2,
+        "internalName": "DiziKutusu",
+        "description": "DiziKutusu — Batı & Asya dizileri arşivi (dizikutusu.com)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziKutusu.cs3",
+        "name": "DiziKutusu"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizilab.cc&sz=%size%",
@@ -13570,8 +13735,8 @@
         "name": "Dizilab"
       },
       {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=dizi85.life&sz=%size%",
-        "fileHash": "sha256-388f459eb78ea2c731db5da848b69444117fa651caf4f260e065cf2e31edb1d1",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=dizi86.life&sz=%size%",
+        "fileHash": "sha256-68a6f29158ca30379c8c752bdd779fa2007c7304aee97213ca5a73f94f3e7026",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
         "fileSize": 50021,
@@ -13584,9 +13749,9 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 11,
+        "version": 12,
         "internalName": "DiziLife",
-        "description": "DiziLife — dizi85.life dizi ve film arşivi",
+        "description": "DiziLife — dizi86.life dizi ve film arşivi",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziLife.cs3",
         "name": "DiziLife"
       },
@@ -13817,6 +13982,26 @@
         "name": "DramaDizilerim"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmdozu.com&sz=%size%",
+        "fileHash": "sha256-9d2c0cbba6144834aef94a18de9f1c55e16e710c345fa9832201c08643db29ed",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 34110,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "FilmDozu",
+        "description": "FilmDozu — Türkçe dublaj & altyazılı film arşivi",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmDozu.cs3",
+        "name": "FilmDozu"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmekseni.vip&sz=%size%",
         "fileHash": "sha256-c0e1dce298a1e4dac8a7630469c4cc8433395444c26590d12cb7df75970e86f6",
         "apiVersion": 1,
@@ -13835,6 +14020,27 @@
         "description": "FilmEkseni — Türkçe dublaj film arşivi (filmekseni.vip)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmEkseni.cs3",
         "name": "FilmEkseni"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmgecesi.vip&sz=%size%",
+        "fileHash": "sha256-82960a7337c1be67f294add8784505f242e7e45b4bac3bc630eb2dd00ee01f53",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 39895,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 3,
+        "internalName": "Filmgecesi",
+        "description": "Filmgecesi — Türkçe dublajlı film arşivi ve film serileri (filmgecesi.vip)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Filmgecesi.cs3",
+        "name": "Filmgecesi"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmizyon.net&sz=%size%",
@@ -13858,11 +14064,11 @@
         "name": "Filmizyon"
       },
       {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=filmmakinesi.co&sz=%size%",
-        "fileHash": "sha256-c71c8ac417ba117d72490d3fca622c784803cbcea566609819a50bbcfa8a40dd",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmkovasi.co&sz=%size%",
+        "fileHash": "sha256-fdf3a9a0f07a32bc35e0f7781d0cf7e7bdb75f58e2344aa6c310fbb88cb23bc7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38080,
+        "fileSize": 38302,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13871,7 +14077,27 @@
         "tvTypes": [
           "Movie"
         ],
-        "version": 3,
+        "version": 2,
+        "internalName": "FilmKovasi",
+        "description": "Filmkovası — Türkçe dublaj & altyazılı film arşivi (filmkovasi.co)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmKovasi.cs3",
+        "name": "FilmKovasi"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmmakinesi.co&sz=%size%",
+        "fileHash": "sha256-332472b7ed7af2c0c6b997ea5eb567f8537607465093186510025cc5e198eeec",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 39808,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 5,
         "internalName": "FilmMakinesi",
         "description": "FilmMakinesi — Türkçe dublaj/altyazılı film izle (filmmakinesi.co)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmMakinesi.cs3",
@@ -14043,10 +14269,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmizle.best&sz=%size%",
-        "fileHash": "sha256-5762ef9985c2f89c492ab784a74aede4d2c0b5c54031a0d1873abe25ef830bdb",
+        "fileHash": "sha256-a7375899ac89d6be83f1c3efad5ef4e84f10e6843ace81a7da59b34824a6cb2b",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 50170,
+        "fileSize": 50171,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14056,11 +14282,32 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "HDFilmizleBest",
         "description": "HDFilmizleBest — Türkçe içerik",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/HDFilmizleBest.cs3",
         "name": "HDFilmizleBest"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.izle7.com&sz=%size%",
+        "fileHash": "sha256-d0e5450319f042a71dce48bb3530aa957b7af70fd71ebf04c6c80ce0abb75bc8",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 35767,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 2,
+        "internalName": "Izle7",
+        "description": "İzle7 — Kanal 7 dizi ve TV filmi arşivi (izle7.com)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Izle7.cs3",
+        "name": "Izle7"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=izlefilm.net&sz=%size%",
@@ -14245,6 +14492,27 @@
         "name": "NetFilmizle"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=nowtv.com.tr&sz=%size%",
+        "fileHash": "sha256-67a29618743fd3d9ac12058f3f4913e4ac4405846141be732f2a9f3f17fe8048",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 38250,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "NowTV",
+        "description": "NowTV — Türkçe dizi, program ve film arşivi (nowtv.com.tr)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/NowTV.cs3",
+        "name": "NowTV"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=onepacetr.net&sz=%size%",
         "fileHash": "sha256-15c7f8706966c83fc2db0e594a84da6284053895aa31c78e450968aeb2899f56",
         "apiVersion": 1,
@@ -14263,6 +14531,46 @@
         "description": "One Pace TR — One Piece fan edit, Türkçe altyazılı (onepacetr.net)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Onepacetr.cs3",
         "name": "Onepacetr"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=onlinedizi.sbs&sz=%size%",
+        "fileHash": "sha256-54401d15d43afba0e5d87d15964f41909000501f652f8509a0dbd93db7d64ae7",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 34862,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "OnlineDizi",
+        "description": "OnlineDizi — Türkçe dublaj & altyazılı yabancı/Asya dizileri (onlinedizi.sbs)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/OnlineDizi.cs3",
+        "name": "OnlineDizi"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=720pizle.my&sz=%size%",
+        "fileHash": "sha256-7703f75ec1566a9849497e1046909656a6b663611e0585af85e042bc088ebcbd",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 46307,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "P720pizle",
+        "description": "720pizle — Türkçe altyazılı ve dublajlı HD/4K film arşivi",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/P720pizle.cs3",
+        "name": "P720pizle"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=puhutv.com&sz=%size%",
@@ -14514,10 +14822,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=startv.com.tr&sz=%size%",
-        "fileHash": "sha256-06a03f35f7799629c10cde72e7023214707f4714cf07b6e0113331de00050305",
+        "fileHash": "sha256-91a4517c1383d528a5e83b8193ddcf187f01ae4ce98198cc008c72479cbb227f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35625,
+        "fileSize": 37222,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14526,7 +14834,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "StarTV",
         "description": "StarTV — Yalı Çapkını ve diğer dizilerin bölümleri",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/StarTV.cs3",
@@ -14554,6 +14862,26 @@
         "name": "TLCtr"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=turkceanime.com&sz=%size%",
+        "fileHash": "sha256-ee235a39d4d8fbdcf94d865950cfc7854a5522484738803698730237a742abd0",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 39766,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Anime"
+        ],
+        "version": 3,
+        "internalName": "Toruko",
+        "description": "TORUKO — Türkçe altyazılı anime izle (turkceanime.com)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Toruko.cs3",
+        "name": "Toruko"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=trdiziizle.tv&sz=%size%",
         "fileHash": "sha256-0566d375c6be9b0a1a3313d460563760681d30164aaecfc8ece432eff998e15f",
         "apiVersion": 1,
@@ -14572,6 +14900,26 @@
         "description": "TrDiziIzle — trdiziizle.tv (Türkçe dizi arşivi, son bölümler, IMDb sıralı liste)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TrDiziIzle.cs3",
         "name": "TrDiziIzle"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=trt1.com.tr&sz=%size%",
+        "fileHash": "sha256-cbad4b978adfe691cf3f689991abf700bca2611082ba80a6f1398690ac2b6257",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 34706,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "TRT1",
+        "description": "TRT1 — TRT 1 dizi arşivi ve güncel bölümler",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TRT1.cs3",
+        "name": "TRT1"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkanime.live&sz=%size%",
@@ -14596,10 +14944,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkcedizi.com&sz=%size%",
-        "fileHash": "sha256-e06215e9e5c7d91a514adc4963e30b0d954a599692d371a8e546967105d46838",
+        "fileHash": "sha256-2a6c2b1c9a6133774eb35bd8954ac7e63ffedfb78b2c13e7ae683025c6d50194",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 61331,
+        "fileSize": 62961,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14609,11 +14957,52 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 11,
+        "version": 12,
         "internalName": "TurkceDizi",
         "description": "TurkceDizi — Türkçe içerik",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TurkceDizi.cs3",
         "name": "TurkceDizi"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tv2.com.tr&sz=%size%",
+        "fileHash": "sha256-4bd89d2b13865cbbfc06e1dac25917a22bbbe2538ce7677300955408c00504cd",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 36343,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries",
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "TV2",
+        "description": "TV2 — tv2.com.tr resmi dizi ve film arşivi",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TV2.cs3",
+        "name": "TV2"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tvdiziler.tv&sz=%size%",
+        "fileHash": "sha256-1e9b24470a42302621f6b83fb96ab08371b69b1b90f15736c2e33286d6e61e93",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 38397,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "TvDiziler",
+        "description": "TvDiziler — Türkçe yerli dizi arşivi (tvdiziler.tv)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TvDiziler.cs3",
+        "name": "TvDiziler"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ufilmizle.com&sz=%size%",
@@ -14636,6 +15025,26 @@
         "name": "UltraFilmizle"
       },
       {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=venusfilmizle.com&sz=%size%",
+        "fileHash": "sha256-ad8bbf60901302037c78856c2ad5cb56b1b19b5cb7356569bf51cb5637e18ae4",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 39859,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "VenusFilmizle",
+        "description": "VenusFilmizle — Türkçe dublaj & altyazılı film arşivi (venusfilmizle.com)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/VenusFilmizle.cs3",
+        "name": "VenusFilmizle"
+      },
+      {
         "iconUrl": "https://www.google.com/s2/favicons?domain=webdramaturkey2.com&sz=%size%",
         "fileHash": "sha256-65839364e0ce6e439959fd5a9a98d937ea41a74917c8dcf72457c1229e080710",
         "apiVersion": 1,
@@ -14656,6 +15065,26 @@
         "description": "WebdramaTurkey2 — Kore, Çin ve Japon dizileri, TR altyazılı (webdramaturkey2.com)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/WebdramaTurkey2.cs3",
         "name": "WebdramaTurkey2"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=webfilmizle.com&sz=%size%",
+        "fileHash": "sha256-da0d8446c2c2c80bf530280a4769fcbc63731dfae6fb06fe7315ee44ae6a0908",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 32666,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "Movie"
+        ],
+        "version": 1,
+        "internalName": "WebFilmizle",
+        "description": "WebFilmizle — Türkçe dublaj/altyazılı film arşivi",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/WebFilmizle.cs3",
+        "name": "WebFilmizle"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=weboo.com.tr&sz=%size%",
@@ -14720,11 +15149,31 @@
         "name": "Yabancidizi"
       },
       {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=yesilcamtv.com.tr&sz=%size%",
-        "fileHash": "sha256-fb998f9980756040a88d63210d07ac4206198de6ca42b0de31d7629b9dba50d8",
+        "iconUrl": "https://www.google.com/s2/favicons?domain=yerlidiziler.com.tr&sz=%size%",
+        "fileHash": "sha256-5140ec15ff8afeeeccfb0e9139e9f3551ce634300a85b19bb51c8321718196f3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42726,
+        "fileSize": 42202,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+          "F0Rextasy"
+        ],
+        "tvTypes": [
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "YerliDiziler",
+        "description": "YerliDiziler — yerlidiziler.com.tr (Güncel Türkçe yerli diziler)",
+        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/YerliDiziler.cs3",
+        "name": "YerliDiziler"
+      },
+      {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=yesilcamtv.com.tr&sz=%size%",
+        "fileHash": "sha256-22137f7087c7e9756ff87e632b4e1a18152f6a80daf1c47ed67c5990dfed1fe7",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
+        "fileSize": 43807,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14734,7 +15183,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "YesilCamTv",
         "description": "YesilCamTv — Türkçe içerik",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/YesilCamTv.cs3",
@@ -14744,14 +15193,14 @@
   },
   "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/master/repo.json": {
     "name": "🇧🇩 Mamun015 BDIX Repository",
-    "description": "Bangladesh BDIX sources for Cloudstream: DhakaFlix, Circle FTP, Dflix, ICC FTP. Works only on BDIX-connected networks.",
+    "description": "BDIX and Bangladeshi sources for Cloudstream: DhakaFlix, Circle FTP, Dflix, ICC FTP, MovieNestBD. The BDIX plugins need a BDIX line; MovieNestBD works on any network.",
     "plugins": [
       {
         "iconUrl": "http://new.circleftp.net/static/media/logo.fce2c9029060a10687b8.png",
-        "fileHash": "sha256-6c7b1c4a639d3e12e9db7fd6d6322eb213bf329867f083a5001acf3cae27f8a1",
+        "fileHash": "sha256-bd3c543a605608de320c631e8b25f1d45e4ed8f413959307624218c163063c28",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
-        "fileSize": 20812,
+        "fileSize": 21039,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -14764,7 +15213,7 @@
           "Documentary",
           "Others"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "BdixCircleftp",
         "description": "Circle FTP (BDIX). Movies and TV series from new.circleftp.net. Works only on a BDIX line.",
         "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/BdixCircleftp.cs3",
@@ -14825,10 +15274,10 @@
       },
       {
         "iconUrl": "http://10.16.100.244/images/logo-purple.svg",
-        "fileHash": "sha256-9a82051bc5aa8339ece0e5b445c6d6fa98ea074afc04e62dea7e37fd22f8dae6",
+        "fileHash": "sha256-9a0dfc759bc42b05c69c12406befa215fdb89f6e46f271c073b68dded442972a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
-        "fileSize": 17194,
+        "fileSize": 18052,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -14841,11 +15290,38 @@
           "Documentary",
           "Others"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "BdixICCFtp",
         "description": "ICC Ftp (BDIX). Movies and TV series from http://10.16.100.244/. Works only on a BDIX line.",
         "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/BdixICCFtp.cs3",
         "name": "BdixICCFtp"
+      },
+      {
+        "iconUrl": "https://movienestbd.best/favicon.png",
+        "fileHash": "sha256-ae9c874b77066ad9c33799fa6a2f01cf097421350a4114510600af0b27a04dcf",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
+        "fileSize": 26583,
+        "status": 1,
+        "language": "en",
+        "authors": [
+          "Mamun015"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries",
+          "Anime",
+          "AnimeMovie",
+          "Cartoon",
+          "AsianDrama",
+          "Documentary",
+          "Others"
+        ],
+        "version": 2,
+        "internalName": "Movienestbd",
+        "description": "MovieNestBD. Movies, web series and anime in many languages, with direct HLS links.",
+        "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",
+        "name": "Movienestbd"
       }
     ]
   },

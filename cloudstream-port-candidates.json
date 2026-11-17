@@ -1,11 +1,43 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 187,
-  "no_obvious_native_overlap_count": 182,
+  "cloudstream_provider_count": 188,
+  "no_obvious_native_overlap_count": 183,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
   "candidates": [
+    {
+      "internalName": "Movienestbd",
+      "name": "Movienestbd",
+      "description": "MovieNestBD. Movies, web series and anime in many languages, with direct HLS links.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AnimeMovie",
+        "Cartoon",
+        "AsianDrama",
+        "Documentary",
+        "Others"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",
+      "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.5,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 13,
+      "reasons": [
+        "Asian drama / K-drama coverage",
+        "Anime coverage",
+        "Movies / Western TV coverage",
+        "Cartoon coverage"
+      ]
+    },
     {
       "internalName": "StreamPlay",
       "name": "StreamPlay",
@@ -19,7 +51,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 711,
+      "version": 713,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -3180,7 +3212,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 41,
+      "version": 42,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -3323,7 +3355,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 3,
+      "version": 8,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
@@ -3367,7 +3399,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 10,
+      "version": 11,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {

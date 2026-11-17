@@ -200,7 +200,7 @@
       "KSHITIJ8473"
     ],
     "description": "AniKoto Anime - Watch Anime Sub & Dub in HD",
-    "fileSize": 63676,
+    "fileSize": 65043,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -210,7 +210,7 @@
     ],
     "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-a26ddf672ec0671fa9deb18c3889198f6e57808f32d48268fa85ed3ca82e4425"
+    "fileHash": "sha256-bc2ef8826a19cfcf88571adc84a3e00156e1bac6abc33906fbabae4013630c0c"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anilight.cs3",
@@ -461,7 +461,7 @@
       "raghav"
     ],
     "description": "Anime from AniSuge with Sub and Dub",
-    "fileSize": 77983,
+    "fileSize": 78873,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -471,7 +471,7 @@
     ],
     "iconUrl": "https://animesuge.at/storage/media/2026/08/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-3ec68c9bfd18b9ac370ca54472d0b5c9a7019ebe05b80574178041a5cf943263"
+    "fileHash": "sha256-e9547cd5779c43ff29e88aadc2ea627436230c40c2ee0629352093d4abacb02a"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniWaves.cs3",
@@ -908,10 +908,10 @@
   },
   {
     "iconUrl": "https://thedaddy.pk/assets/logos/favicon-32x32.png",
-    "fileHash": "sha256-9c39536e728c24ccebe2efcb935e0bf735738dc3cddc969d4e30282dc75ce6f7",
+    "fileHash": "sha256-65e96c1260fcf23db35155f5c8934a5eaeefb9732a3a8adcfca57800bf4eb1f1",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 72528,
+    "fileSize": 73704,
     "status": 1,
     "language": "en",
     "authors": [
@@ -920,7 +920,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 3,
+    "version": 8,
     "internalName": "DaddyLiveProvider",
     "description": "Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/DaddyLiveProvider.cs3",
@@ -1088,10 +1088,10 @@
   },
   {
     "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-    "fileHash": "sha256-9d09ad14e004a00f179425f2d662c0463cc63a522fdac7401fe3bf97c9788aeb",
+    "fileHash": "sha256-f98865f694c5f0ad4c4c3075f93f24451fe515649e54fff87722a8915a9f7621",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 60967,
+    "fileSize": 74898,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1100,7 +1100,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 10,
+    "version": 11,
     "internalName": "EasyPlayProvider",
     "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -1606,14 +1606,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 41,
+    "version": 42,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-    "fileSize": 625238,
+    "fileSize": 626533,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1622,7 +1622,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-3544c56e3a685ba0efd5ee01d25ec353346e4647ce28a500548c20296f28ac48"
+    "fileHash": "sha256-af87858a6c79dd9d34029e22370e3c463cd745c93358e3c00b05d4adc5f05329"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -2077,6 +2077,33 @@
     "description": "The MovieLinkBD source only, powered by the PlavioHD addon.",
     "url": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/builds/MovieLinkBD.cs3",
     "name": "MovieLinkBD"
+  },
+  {
+    "iconUrl": "https://movienestbd.best/favicon.png",
+    "fileHash": "sha256-ae9c874b77066ad9c33799fa6a2f01cf097421350a4114510600af0b27a04dcf",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
+    "fileSize": 26583,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Mamun015"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Anime",
+      "AnimeMovie",
+      "Cartoon",
+      "AsianDrama",
+      "Documentary",
+      "Others"
+    ],
+    "version": 2,
+    "internalName": "Movienestbd",
+    "description": "MovieNestBD. Movies, web series and anime in many languages, with direct HLS links.",
+    "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",
+    "name": "Movienestbd"
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icon.png",
@@ -2803,7 +2830,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources",
-    "fileSize": 723810,
+    "fileSize": 724600,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2813,7 +2840,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-07fb0a31a6c233af2becea05a9df65054155890f46f57201d2824d8d3187bfbf"
+    "fileHash": "sha256-6df3177750d9d0e6bffb8a039746e214c2c85d029fd3aa064aaf803e7d024e51"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/RaghavAnimeKitsu.cs3",
@@ -2825,7 +2852,7 @@
       "raghav"
     ],
     "description": "ONE STOP SOLUTION FOR ANIME(SUB,DUB,hardsub) collection of best sources - Kitsu Catalog",
-    "fileSize": 711588,
+    "fileSize": 712247,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -2835,7 +2862,7 @@
     ],
     "iconUrl": "https://www.pngall.com/wp-content/uploads/13/Anime-Logo-PNG-Images.png",
     "apiVersion": 1,
-    "fileHash": "sha256-40d8bac3b36fb0a67204df5e364c4deb12c18f92ebb1bbd0971d7c2ad67c9378"
+    "fileHash": "sha256-dae3d3fb3dd147b55bb75ed1fbd210d7b1f538a8906a454ff44e7ebbd9d96d44"
   },
   {
     "internalName": "Reanime",
@@ -3141,7 +3168,7 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
     "status": 1,
-    "version": 711,
+    "version": 713,
     "name": "StreamPlay",
     "internalName": "StreamPlay",
     "authors": [
@@ -3149,7 +3176,7 @@
       "Hexated"
     ],
     "description": "#1 best extension based on MultiAPI",
-    "fileSize": 2184369,
+    "fileSize": 2191950,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -3162,7 +3189,7 @@
     ],
     "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
     "apiVersion": 1,
-    "fileHash": "sha256-d4b1becaf0dfc304d6228e3414c93b814aa804785482b14dfe77fae1f01442d8"
+    "fileHash": "sha256-9a9e5f073d5e2b179cbeebf508509d615c89eef315609db78667a46e94f28808"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",

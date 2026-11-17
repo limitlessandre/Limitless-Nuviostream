@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **187**  
-No obvious native overlap: **182**  
+Filtered CloudStream providers: **188**  
+No obvious native overlap: **183**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **5**
 
@@ -10,6 +10,7 @@ Exact/alias overlap: **5**
 
 ## High-priority unique candidates
 
+- **Movienestbd** (`Movienestbd`) — en; Movie, TvSeries, Anime, AnimeMovie, Cartoon, AsianDrama, Documentary, Others — MovieNestBD. Movies, web series and anime in many languages, with direct HLS links.
 - **StreamPlay** (`StreamPlay`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — #1 best extension based on MultiAPI
 - **SuperStream** (`SuperStream`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.
 - **XDMovies** (`XDMovies`) — en; AsianDrama, TvSeries, Anime, Movie, Cartoon, AnimeMovie — Watch Latest Movies

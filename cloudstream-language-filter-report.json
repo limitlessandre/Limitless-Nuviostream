@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 486,
+  "excluded_count": 508,
   "excluded": [
     {
       "internalName": "18+",
@@ -626,6 +626,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AnimeTR",
+      "name": "AnimeTR",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AnimeTR.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "AnimeUAProvider",
       "name": "AnimeUAProvider",
       "source": "CakesTwix Providers Repository Codeberg",
@@ -637,6 +651,20 @@
         "uk"
       ],
       "url": "https://raw.githubusercontent.com/CakesTwix/cloudstream-extensions-uk/builds/AnimeUAProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimeUnion",
+      "name": "AnimeUnion",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/AnimeUnion.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1026,6 +1054,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AsyaFanatikleri",
+      "name": "AsyaFanatikleri",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaFanatikleri.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "AsyaLog",
       "name": "AsyaLog",
       "source": "BigBullApp",
@@ -1037,6 +1079,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaLog.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AsyaMax",
+      "name": "AsyaMax",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaMax.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1255,6 +1311,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/BelgeselX.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "BiCaps",
+      "name": "BiCaps",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/BiCaps.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2136,6 +2206,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Diziizle",
+      "name": "Diziizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Diziizle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Dizikorea3",
       "name": "Dizikorea3",
       "source": "BigBullApp",
@@ -2147,6 +2231,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizikorea3.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DiziKutusu",
+      "name": "DiziKutusu",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziKutusu.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2752,6 +2850,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "FilmDozu",
+      "name": "FilmDozu",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmDozu.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "FilmEkseni",
       "name": "FilmEkseni",
       "source": "BigBullApp",
@@ -2780,6 +2892,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Filmgecesi",
+      "name": "Filmgecesi",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Filmgecesi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Filmizyon",
       "name": "Filmizyon",
       "source": "BigBullApp",
@@ -2791,6 +2917,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Filmizyon.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FilmKovasi",
+      "name": "FilmKovasi",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmKovasi.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3457,6 +3597,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/IStreamFlare.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Izle7",
+      "name": "Izle7",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Izle7.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4638,6 +4792,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "NowTV",
+      "name": "NowTV",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/NowTV.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "ObejrzyjTo",
       "name": "ObejrzyjTo",
       "source": "Phisher Repo",
@@ -4677,6 +4845,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Onepacetr.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "OnlineDizi",
+      "name": "OnlineDizi",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/OnlineDizi.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4775,6 +4957,20 @@
         "pt-br"
       ],
       "url": "https://raw.githubusercontent.com/saimuelbr/saimuelrepo/main/builds/OverFlix.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "P720pizle",
+      "name": "P720pizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/P720pizle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -5950,6 +6146,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Toruko",
+      "name": "Toruko",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Toruko.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "TrDiziIzle",
       "name": "TrDiziIzle",
       "source": "BigBullApp",
@@ -5961,6 +6171,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TrDiziIzle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TRT1",
+      "name": "TRT1",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TRT1.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -6048,6 +6272,34 @@
       "sourceRepo": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/refs/heads/builds/repo.json",
       "url": "https://raw.githubusercontent.com/doGior/doGiorsHadEnough/builds/TV.cs3",
       "reason": "unknown-language"
+    },
+    {
+      "internalName": "TV2",
+      "name": "TV2",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TV2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TvDiziler",
+      "name": "TvDiziler",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TvDiziler.cs3",
+      "reason": "no-allowed-language"
     },
     {
       "internalName": "TVgarden",
@@ -6248,6 +6500,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "VenusFilmizle",
+      "name": "VenusFilmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/VenusFilmizle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "ViStreamProvider",
       "name": "ViStreamProvider",
       "source": "Vietnamese Extension",
@@ -6270,6 +6536,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Vodu",
+      "name": "Vodu",
+      "source": "3rabi عربي",
+      "sourceRepo": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/refs/heads/main/repo.json",
+      "language": [
+        "ar"
+      ],
+      "normalizedLanguages": [
+        "ar"
+      ],
+      "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Vodu.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "WatchParty",
       "name": "WatchParty",
       "source": "DieGon Repository",
@@ -6289,6 +6569,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/WebdramaTurkey2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "WebFilmizle",
+      "name": "WebFilmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/WebFilmizle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -6445,6 +6739,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Yacintv.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "YerliDiziler",
+      "name": "YerliDiziler",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/YerliDiziler.cs3",
       "reason": "no-allowed-language"
     },
     {
