@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **188**  
-No obvious native overlap: **183**  
+Filtered CloudStream providers: **187**  
+No obvious native overlap: **182**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **5**
 
@@ -41,7 +41,6 @@ Exact/alias overlap: **5**
 - **Animenosub** (`Animenosub`) — en; AnimeMovie, Anime, Cartoon — Anime and Movies
 - **Animexin** (`Animexin`) — en; AnimeMovie, Anime, Cartoon — Anime and Movies
 - **Wcoflix** (`Wcoflix`) — en; Anime, Cartoon — We have wide range of cartoons and anime that you can watch in HD and High quality for free.
-- **AllWish** (`AllWish`) — en; All — Anime from all-wish.me
 - **AniChan** (`AniChan`) — en; Anime, AnimeMovie — Watch Anime in HD with Sub, Dub and Hardsub
 - **Anichi** (`Anichi`) — en; AnimeMovie, Anime, OVA — AllManga/Mkissa Source
 - **Anidap** (`Anidap`) — en; Anime, AnimeMovie, OVA — Anime with Sub, Dub from Anidap

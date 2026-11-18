@@ -64,26 +64,6 @@
     "fileSize": 156690
   },
   {
-    "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AllWish.cs3",
-    "status": 1,
-    "version": 18,
-    "name": "AllWish",
-    "internalName": "AllWish",
-    "authors": [
-      "Phisher98"
-    ],
-    "description": "Anime from all-wish.me",
-    "fileSize": 73200,
-    "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-    "language": "en",
-    "tvTypes": [
-      "All"
-    ],
-    "iconUrl": "https://all-wish.me/assets/logo.png",
-    "apiVersion": 1,
-    "fileHash": "sha256-bd139c832fd67dac10abd23fdea6f7d0dcea6d2886ef407e1deb170fce8d207c"
-  },
-  {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/AniChan.cs3",
     "status": 1,
     "version": 19,
@@ -1088,10 +1068,10 @@
   },
   {
     "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-    "fileHash": "sha256-f98865f694c5f0ad4c4c3075f93f24451fe515649e54fff87722a8915a9f7621",
+    "fileHash": "sha256-de00e35b8508a1fc4907a2ac9afa9de4866949838a136d66d64e913f17097553",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 74898,
+    "fileSize": 74459,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1100,7 +1080,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 11,
+    "version": 12,
     "internalName": "EasyPlayProvider",
     "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -1606,14 +1586,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 42,
+    "version": 48,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-    "fileSize": 626533,
+    "fileSize": 636897,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1622,7 +1602,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-af87858a6c79dd9d34029e22370e3c463cd745c93358e3c00b05d4adc5f05329"
+    "fileHash": "sha256-aef2c884e22bad887185699cf75dfbcfada306a4634ef7d969ae3817e3d3aff4"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",

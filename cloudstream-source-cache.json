@@ -875,26 +875,6 @@
         "fileHash": "sha256-ef5a86023a81298534f3423bdae56f296a8a1945738df8c7855d5a765bd1f8cc"
       },
       {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AllWish.cs3",
-        "status": 1,
-        "version": 18,
-        "name": "AllWish",
-        "internalName": "AllWish",
-        "authors": [
-          "Phisher98"
-        ],
-        "description": "Anime from all-wish.me",
-        "fileSize": 73200,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-          "All"
-        ],
-        "iconUrl": "https://all-wish.me/assets/logo.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-bd139c832fd67dac10abd23fdea6f7d0dcea6d2886ef407e1deb170fce8d207c"
-      },
-      {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anichi.cs3",
         "status": 1,
         "version": 29,
@@ -1987,6 +1967,28 @@
         "fileHash": "sha256-aa8676e2dd50eaf0f3107ad5f8c562a86425251cbcede3606876403db1af2396"
       },
       {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MPlayerProvider.cs3",
+        "status": 1,
+        "version": 9,
+        "name": "MPlayerProvider",
+        "internalName": "MPlayerProvider",
+        "authors": [
+          "Phisher98"
+        ],
+        "description": "Indian Movies/Series/Kdrama(Hindi Dubbed)",
+        "fileSize": 123651,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "hi",
+        "tvTypes": [
+          "AsianDrama",
+          "TvSeries",
+          "Movie"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.mxplayer.in&sz=%size%",
+        "apiVersion": 1,
+        "fileHash": "sha256-f2c5c94df93bc7d1556d2a621c17fb7c015c2ec30544f6998c703c45ddc423ae"
+      },
+      {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MultiMoviesProvider.cs3",
         "status": 1,
         "version": 55,
@@ -2999,10 +3001,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/EasyPlayProvider/icon.png",
-        "fileHash": "sha256-f98865f694c5f0ad4c4c3075f93f24451fe515649e54fff87722a8915a9f7621",
+        "fileHash": "sha256-de00e35b8508a1fc4907a2ac9afa9de4866949838a136d66d64e913f17097553",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 74898,
+        "fileSize": 74459,
         "status": 1,
         "language": "en",
         "authors": [
@@ -3011,7 +3013,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 11,
+        "version": 12,
         "internalName": "EasyPlayProvider",
         "description": "EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
@@ -3250,10 +3252,10 @@
       },
       {
         "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/Logos/MoviePlusProvider/icon.png",
-        "fileHash": "sha256-1696ae02a910a92f09082fad23196790098468384bb3f39bdbb23ae39983d1a3",
+        "fileHash": "sha256-32bd76961660cbfbfe806b4ad19945ec283381c0127ed6bd0e5e236efa147704",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 87670,
+        "fileSize": 88733,
         "status": 1,
         "language": "mx",
         "authors": [
@@ -3263,7 +3265,7 @@
           "Movie",
           "TvSeries"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "MoviePlusProvider",
         "description": "Movie! Plus — Spanish/Latino movies & series (TMDB metadata, Yandex.Disk sources, no login)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MoviePlusProvider.cs3",
@@ -4450,14 +4452,14 @@
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Cimalight.cs3",
         "status": 1,
-        "version": 2,
+        "version": 3,
         "name": "Cimalight",
         "internalName": "Cimalight",
         "authors": [
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 25913,
+        "fileSize": 159133,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4467,7 +4469,7 @@
         ],
         "iconUrl": "https://yt3.googleusercontent.com/n2PDvQiQVV00JjGsg66dvMZKmyoolvCeu59Xe40pmEvhiMNE1tHqKsoEY1IpfdNNXdlle4It=s900-c-k-c0x00ffffff-no-rj",
         "apiVersion": 1,
-        "fileHash": "sha256-f6b309909655043648791734c450893e9b1c4170c914d2aff2ed868c07c712ca"
+        "fileHash": "sha256-702532c7e59618ce7aabfd35a3b69b41a79525b57b1b365a08303e2ee9aa0226"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Cimatn.cs3",
@@ -9632,14 +9634,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/HiCine.cs3",
         "status": 1,
-        "version": 7,
+        "version": 10,
         "name": "HiCine",
         "internalName": "HiCine",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "HiCine - Bollywood and Hollywood movies, web series, anime and TV shows in dual audio.",
-        "fileSize": 62941,
+        "fileSize": 73250,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "hi",
         "tvTypes": [
@@ -9650,19 +9652,19 @@
         ],
         "iconUrl": "https://png.pngtree.com/element_our/png/20181227/movie-icon-which-is-designed-for-all-application-purpose-new-png_287896.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-76e9589395db983bbf4d30299527d629cf1c6b61d4e483706df71ecd07b9c3b7"
+        "fileHash": "sha256-2806510307d5b1e1814d4fdb04e21896672552ab475ca6acef40c6b8ebe015a9"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 42,
+        "version": 48,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-        "fileSize": 626533,
+        "fileSize": 636897,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9671,7 +9673,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-af87858a6c79dd9d34029e22370e3c463cd745c93358e3c00b05d4adc5f05329"
+        "fileHash": "sha256-aef2c884e22bad887185699cf75dfbcfada306a4634ef7d969ae3817e3d3aff4"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -12871,10 +12873,10 @@
     "plugins": [
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=aniarsiv.com&sz=%size%",
-        "fileHash": "sha256-57439748c1f899c0ba24d9ae10cf23c2cea8950ed9ebbdb254b781b33a9a7e86",
+        "fileHash": "sha256-44c8c1c114b0b064a9e916cd9f703c6965b2189d92a52abbd375f2cecb360d3e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37348,
+        "fileSize": 75475,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12892,10 +12894,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animecix.tv&sz=%size%",
-        "fileHash": "sha256-d267aef5147cff4cad4d77488351dbc35b0d4bd48d16957aac2c7dc314f41728",
+        "fileHash": "sha256-72633a372dff2c97fc339f048e5a9cc40b3a18395c1b7ff3c7c9a560a435a669",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35128,
+        "fileSize": 73401,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12912,10 +12914,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animeler.live&sz=%size%",
-        "fileHash": "sha256-a2e2bd0482d0a1b9f1a766d23a635732128210fc92db13a38b8106964a1457d0",
+        "fileHash": "sha256-d1eeba9ad18dbc80e0c90a5f5beff3ecd9cb1ab526bf8cb6162077d95ba03a37",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 40236,
+        "fileSize": 78125,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12932,10 +12934,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=animetr.co&sz=%size%",
-        "fileHash": "sha256-87968bd97e1473dbe1e62086192f48edb980c4e0c1a247393a5fc72169fdfdcf",
+        "fileHash": "sha256-a50c7f5e488163122ea507bf0001c90352b813854e9f4a8a9a4bdbf4cd358946",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 36884,
+        "fileSize": 74989,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12952,10 +12954,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=anizium.co&sz=%size%",
-        "fileHash": "sha256-83cd761c09e78f9de61a3cab978bab945110d3ae6ead5134202f7b8c04de3843",
+        "fileHash": "sha256-64dcc3fecd38f3bc6e59ee0ec9f3a43989fdb51d5380442a4d5fff6d25c5e96c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37016,
+        "fileSize": 75296,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12973,10 +12975,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkanime.info&sz=%size%",
-        "fileHash": "sha256-633c0029b0342b479388e1ce3a729f150cb2fdb1fd2a859d622367470d4ec902",
+        "fileHash": "sha256-5400612ce35d2bcf28beac9895d956d0d0f12289469510ecf0d691a80d75e000",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 40918,
+        "fileSize": 78832,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -12993,10 +12995,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyaanimeleri.top&sz=%size%",
-        "fileHash": "sha256-9957ae21a4c7137917f70957eed9e60dcde0134bb77a4f6cce3c52e762651585",
+        "fileHash": "sha256-a7cfa08a0ecd606cc0335e84c45351c9112d7a8fd341dfe84494dcb1f898ee4f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46779,
+        "fileSize": 84647,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13014,10 +13016,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyabox.co&sz=%size%",
-        "fileHash": "sha256-03bdae4c4613085aee5a3563fc979c318a037b3d00400c735df7022d9d4c83b1",
+        "fileHash": "sha256-a2da5b85b4a8a7ec41421012125bc062dc95115fadb38abaef230ccbec795d40",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46435,
+        "fileSize": 84021,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13035,10 +13037,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyadizi.com&sz=%size%",
-        "fileHash": "sha256-c244379f0383a8fd76307752367bd4b1f367ece6a18b708708ace3f501709f06",
+        "fileHash": "sha256-423419d996f6dfc37b639e597d7bea3c6f4912b0550560a2aa54810ceacc72b2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46966,
+        "fileSize": 84512,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13056,10 +13058,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyadizileriizle.com&sz=%size%",
-        "fileHash": "sha256-7d1d8878b4eb3972345da5817fe536175b80898f55ae9dbded2dbc2a3a2540d4",
+        "fileHash": "sha256-35f443df7e4d173a37e7ec8e36f8b78730b83e9c78941c233789d6c4dddf28a7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46406,
+        "fileSize": 83976,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13077,10 +13079,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyafanatikleri.vip&sz=%size%",
-        "fileHash": "sha256-d6e3d4fd0ef7c82595cfc219768a0785613ab48fd77577581c643bc47a994e13",
+        "fileHash": "sha256-18a11ccdeb5f69a9823e74d4d3b5f9a8cb27461062ca97672f65ecb7a0f34c76",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43071,
+        "fileSize": 80834,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13098,10 +13100,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyalog.co&sz=%size%",
-        "fileHash": "sha256-d029a2ec38ad41204173e06f1099569ef61d45056468230cf7e758d376f87c2f",
+        "fileHash": "sha256-26ef5860f1d086a6667b70224d273a3bf2c75f7a2025a1e9e4001cbd9264fa11",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38880,
+        "fileSize": 76960,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13119,10 +13121,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyamax.com&sz=%size%",
-        "fileHash": "sha256-0fcba76f85d34592b879eb2307a3b9a743d551b2eaa94b4bcbed6906e03ab6b0",
+        "fileHash": "sha256-15d0492cc7b56cbb76700e0f36f47915ccaa312d4d33826247fa2ea0772f5464",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37323,
+        "fileSize": 75406,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13140,10 +13142,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=asyawatch.com&sz=%size%",
-        "fileHash": "sha256-dcf36336e0ab4083f1366f017f19a351c6625739acde47ec90ceaae731245a1d",
+        "fileHash": "sha256-96cbfc4a29e7b66817ca3bb5dcd34ea35cc0d871d7857a1228ac5b1ce3d4a687",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39081,
+        "fileSize": 77229,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13161,10 +13163,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=atv.com.tr&sz=%size%",
-        "fileHash": "sha256-baa83324e0898613dda1db16d38917e16b00cc56bfc567cafb12bfb74aec469f",
+        "fileHash": "sha256-1230acf0c27db831bae5dc6fe236c076c13f86d9dc7372ce09d169271201d8de",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 36835,
+        "fileSize": 75001,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13181,10 +13183,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=belgeselx.com&sz=%size%",
-        "fileHash": "sha256-12135b480c505385af0fe0fa4401b531ad6569dd275e4bea51830b72505e6950",
+        "fileHash": "sha256-f309196571c0387f740b148990009e4286cb646807f3320b91233b9e8f3a4403",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 44511,
+        "fileSize": 82524,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13201,10 +13203,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=bicaps.live&sz=%size%",
-        "fileHash": "sha256-b967f42a39014209879204ef5370b978e65bcbcd18a15dcdf71d4d6b6c1ad734",
+        "fileHash": "sha256-983c8dfc9f63355bbd644bd5fe9fd74eb02a3f6e27f6c58c655c343284ab5202",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43577,
+        "fileSize": 81502,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13221,10 +13223,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=birasyadizi.cx&sz=%size%",
-        "fileHash": "sha256-42bdb416daa31e6b0e1f8d69a956e4dce1a64817924514d3bb249a789bec4d23",
+        "fileHash": "sha256-f385122d7cf29331430d07efe515c02ac68284f0025a42e2aa067cd9600cd8ec",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 49264,
+        "fileSize": 86443,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13242,10 +13244,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=canlidizi.sbs&sz=%size%",
-        "fileHash": "sha256-1323076e9433703bcb26afd05132627010c96b37e50f4edcf759c0f18f462da1",
+        "fileHash": "sha256-9b179fda4cf6a88db0c9cc77a05425f7e6ac4acb545de0ef75ad756515065224",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45215,
+        "fileSize": 82926,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13263,10 +13265,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=iptv-org.github.io&sz=%size%",
-        "fileHash": "sha256-dd28cbd73c34b0d712115a273a88b7b3e662e34ac62465c414fb666927886ae0",
+        "fileHash": "sha256-3f6d6eafd78628d19771899e91d71cb3c98d0f7ce32616ccd926ee0ab8eb47fa",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35039,
+        "fileSize": 73363,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13283,10 +13285,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cizgimax.online&sz=%size%",
-        "fileHash": "sha256-adfce9558484dcf158f7fa9615ea5a3326f955a548b7dacc29e0d2aacbe61fcd",
+        "fileHash": "sha256-b5acfd40f373386f1e54908e414e08491f216e23f99407afd70c2c11ae30723f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 49548,
+        "fileSize": 87013,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13303,10 +13305,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=cizgi.site&sz=%size%",
-        "fileHash": "sha256-9bae2d1f1118976378358ebb608e690b528c896141583f4d9e21ef680e99a6f6",
+        "fileHash": "sha256-02a27ff1463bd3c3dbc1cc732c3463c6fdbe5bb1fcaf90b4dd6e181fe94c81b4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35554,
+        "fileSize": 73694,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13324,10 +13326,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ddizi.tel&sz=%size%",
-        "fileHash": "sha256-ca72da69815f76ef66ee4fd5e5dd3b6f47bfe1366609359a537e273a95615b59",
+        "fileHash": "sha256-ef58d660271178b361a4d82d0294f37e5142f871d2af0cb0a73c053b21d261fb",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 40760,
+        "fileSize": 78808,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13344,10 +13346,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ddizimag.icu&sz=%size%",
-        "fileHash": "sha256-36a5c551cb7e719c83d68c71b0908a0981b0f2b6c065cbf97ac487178b9f0284",
+        "fileHash": "sha256-e007c7a077b2002c147eebd605e305196d701914e5528510c5bc0a9df74b4cdd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39644,
+        "fileSize": 77746,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13365,10 +13367,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=deokwave.com&sz=%size%",
-        "fileHash": "sha256-33b15aadee2070d065ff19284c9c4667c0302956e52ab5d317234fc4c287dcf8",
+        "fileHash": "sha256-3899d2d4ee7014d67c0552c857f68ab88db0c4ce12e451eca07aaf2bbb8b302f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 59752,
+        "fileSize": 96307,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13386,10 +13388,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziabi.net&sz=%size%",
-        "fileHash": "sha256-55a5ac65f310f9699009737fda181248ab7d23a7be1f73a5a8282f2e88fee048",
+        "fileHash": "sha256-9a0114e3cf624f824c1509b5389dafa9b0e0d664bdbbcf47c44c54f37e9bd6c0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45124,
+        "fileSize": 82888,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13407,10 +13409,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziasia.com&sz=%size%",
-        "fileHash": "sha256-32772096b33371dd13b58ee6bb626505a7dfcbb6f2c79deab32ea97fccab1579",
+        "fileHash": "sha256-ba62bd4f9adbab26a458857c5ceaed46608468474aedbc1ccfe15a48087d1942",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41298,
+        "fileSize": 79091,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13428,10 +13430,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizibaba.net&sz=%size%",
-        "fileHash": "sha256-08ffc9d8d038dc63799b7578741ef30b329bfee25f2e557c44e83314109a5a34",
+        "fileHash": "sha256-60dcf7305d84f613236a3df0b53d3b8069ef3f33070429ca8b6eae10db3fc6cc",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 30334,
+        "fileSize": 68487,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13448,10 +13450,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizibal.org&sz=%size%",
-        "fileHash": "sha256-44bdb2666268379a827d72bd5d7fea71dc13056d896d38521ddc607110f0f8c4",
+        "fileHash": "sha256-a935e39df37821e1cd6ca6cca8d7980f6406f88cd4f92e4831ce9a53b6da3b9d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 44111,
+        "fileSize": 81983,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13469,10 +13471,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizibol.org&sz=%size%",
-        "fileHash": "sha256-75de684fd02d635ea80e135bcef0bc4c983084b0c99468f5509e616b52cb2f65",
+        "fileHash": "sha256-4c3fb528e7744b0fde493fa041bb9e758e32c7c45784af601f5c3ad32fda6ff7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43804,
+        "fileSize": 81664,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13490,10 +13492,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizibox.live&sz=%size%",
-        "fileHash": "sha256-8b6038ea37117c3f97f36ca3256d54f82e5bf31ba8d95ebb689bd74dd4ab1cc6",
+        "fileHash": "sha256-26e3a52c1a070875f34282fe3467060851d0863ae8bfed35b187c9a1bd594691",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 40851,
+        "fileSize": 78878,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13510,10 +13512,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziboxizle.com&sz=%size%",
-        "fileHash": "sha256-b20be4c3263a22bbd0ab67f3574be25040040ecd1d3a53c5b0d47dcffb9ba7bf",
+        "fileHash": "sha256-55a21e133a766d41278fecfd3b37f2bdfd157c13ef071cdc89b1cbfa69c60e87",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41601,
+        "fileSize": 79525,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13530,10 +13532,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziboxtv.com&sz=%size%",
-        "fileHash": "sha256-866b3fc641656cd55cf6b9f957612fe7844a3251c56838bc84c63fca05134739",
+        "fileHash": "sha256-7c90e759f035987f5963954850e7cd560f343857dd506c3d266a060fb0fda605",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45239,
+        "fileSize": 82938,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13551,10 +13553,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizican.cc&sz=%size%",
-        "fileHash": "sha256-ce866a46197f83fe572d90625132d33b962a846d8df2d9fb77e678b17d899fdf",
+        "fileHash": "sha256-407b0c33d43144014846d783a6fc04528a747eb905cbf0f8a8f57168528690bb",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 50465,
+        "fileSize": 87650,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13572,10 +13574,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizifilmizle.to&sz=%size%",
-        "fileHash": "sha256-551b60f82690890da5dea1ddfcd3c2f54330746fdd3ab0a40d107b839c3a7de9",
+        "fileHash": "sha256-065fbc35f00bccc9f661a05c55c3114728b8fe885209851e8f006be44ccf80cf",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42958,
+        "fileSize": 80642,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13593,10 +13595,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizifon.cc&sz=%size%",
-        "fileHash": "sha256-25da201bb4fc9cdb3972e2539eabd57465972e329f642ab175e949c4fa64470f",
+        "fileHash": "sha256-3ea0c558398462536f0379360fe991062c26b38ad2e725247eceade3ed70f81f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 48215,
+        "fileSize": 85517,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13614,10 +13616,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizigecesi.com&sz=%size%",
-        "fileHash": "sha256-ca3a31c70589e6bb90b1cac8672df4dc81ac7055b6ebc389dd6b6a008d5f4b88",
+        "fileHash": "sha256-c76e1614c5c8b3b66de1ecc8c78db80195f675102155b6c9a7ba6004cafd567e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46368,
+        "fileSize": 83876,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13634,10 +13636,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizigom.news&sz=%size%",
-        "fileHash": "sha256-9756bb003cf3d1824aa4d184a185803fc008d57fc8fdb437db97ca459a4b3b1f",
+        "fileHash": "sha256-06601832421eebc97728234d91a365fbae648432d4940bd69533469404b37b73",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45149,
+        "fileSize": 82889,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13655,10 +13657,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziizle.cloud&sz=%size%",
-        "fileHash": "sha256-7dfb8ca9be58888d4324c2573d5bc5695efb9bb382d83a9b92de9277ec125592",
+        "fileHash": "sha256-d05c8c0211edf6c3f08a49b23f1f7d72057669f4c85128de4665e5be1b355a17",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37386,
+        "fileSize": 75584,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13675,10 +13677,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizikorea3.com&sz=%size%",
-        "fileHash": "sha256-0d08df0c8f9a663e297194406f6a8f2b961f8d7a64231b2175ea1644c34ea496",
+        "fileHash": "sha256-dea52d7a2e0dfe5865bed0e887a71a5eb26cc43b5c634c0ddd232e4c45f7cae5",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41424,
+        "fileSize": 79218,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13696,10 +13698,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizikutusu.com&sz=%size%",
-        "fileHash": "sha256-28769493895eb5494c3b159332e1296b58a5f1e87e79d44c5f804a8e921982d0",
+        "fileHash": "sha256-413dcf7f770c019f688885188688337836b42b39096232fd2921b6a947f8577d",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39210,
+        "fileSize": 77099,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13716,10 +13718,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizilab.cc&sz=%size%",
-        "fileHash": "sha256-e896a6c7c1e716fffe4161a68a6002ce1c4e61692188806bfb61962768fcb29f",
+        "fileHash": "sha256-f9f95493ba3c81bb7f9220e6edee38feffac28437ef406ac846717cef22b1c8f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 31326,
+        "fileSize": 69479,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13728,7 +13730,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 6,
+        "version": 7,
         "internalName": "Dizilab",
         "description": "Dizilab — Türkçe altyazılı/dublajlı yabancı diziler",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizilab.cs3",
@@ -13736,10 +13738,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizi86.life&sz=%size%",
-        "fileHash": "sha256-68a6f29158ca30379c8c752bdd779fa2007c7304aee97213ca5a73f94f3e7026",
+        "fileHash": "sha256-d4b48394435b48ade7c328f779f5c3d52e1d5ca7675620a66366297571b114ea",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 50021,
+        "fileSize": 86825,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13757,10 +13759,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizilla.nl&sz=%size%",
-        "fileHash": "sha256-2964454b015a9c387cc9c959eef2747b24fb2928280423ee00539218966bfba7",
+        "fileHash": "sha256-c4d437ea835e4cf90791c81959171cffecf7886af329133878d9ddf184f002c5",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42569,
+        "fileSize": 80361,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13777,10 +13779,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizimanya.com&sz=%size%",
-        "fileHash": "sha256-bb457ab0280f6340b656540ff177cc1121d5a92c41d305ca1a9bb59066e60f83",
+        "fileHash": "sha256-71e3bf0f45d50c884ba192bbf273fe53cbb7f22a5980763712cf5f4c57464a0c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41907,
+        "fileSize": 79819,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13797,10 +13799,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ddizimom.net&sz=%size%",
-        "fileHash": "sha256-2e149d7123250fa954b75d71f069782c0dc94591e74e6aea53546f2a51ad21e8",
+        "fileHash": "sha256-e7855f3bf47f01a01492bd7a1c4a5c106484fb7174245a73b38a9481a25c71d2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37277,
+        "fileSize": 75483,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13817,10 +13819,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizipal1593.com&sz=%size%",
-        "fileHash": "sha256-befeb294970ba47c3b4e38e7d464407ee3f2dc74fd11fa96dbf71375b4244bfe",
+        "fileHash": "sha256-6c0122b410ffb2a16522224b73a01ba7a6c0a10cd61b4dc4501ee152f632946a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 47551,
+        "fileSize": 85191,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13830,7 +13832,7 @@
           "TvSeries",
           "Movie"
         ],
-        "version": 11,
+        "version": 12,
         "internalName": "DiziPal",
         "description": "DiziPal — Türkçe dizi & film arşivi, platform bölümleri (dizipal1593.com)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziPal.cs3",
@@ -13838,10 +13840,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizipod.com&sz=%size%",
-        "fileHash": "sha256-48841d177330d35e48830db52e92540dfa0e7319f00aa5accb03c8f11cf572af",
+        "fileHash": "sha256-0309cef86abe828ff54d8b6661b379d95a2e469dac76521bd852a8c628ebd123",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42747,
+        "fileSize": 80356,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13859,10 +13861,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizirella.one&sz=%size%",
-        "fileHash": "sha256-aa3d7f32c563ce995443a44a1963e1ddaf5bb92893d39417ca1ab0a0d9561b9f",
+        "fileHash": "sha256-51f712d4a4b482132982871e5688f62ee737209232173b8325922fd9c279555e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41233,
+        "fileSize": 79089,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13880,10 +13882,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizisol.com&sz=%size%",
-        "fileHash": "sha256-caa5b30da51de0a483332d221c4a5d395a1bdf4c7ca92577ece7e523d32ac5d7",
+        "fileHash": "sha256-2ff5225dba626884d95b465f658ea79567d6264b1dbcd45b8fc8414de2bcbb69",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45731,
+        "fileSize": 83579,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13901,10 +13903,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dizist.live&sz=%size%",
-        "fileHash": "sha256-8e94ae890d4e976d41b95097bdd8a6a2297d7631b597ee9b55d5df941729caf8",
+        "fileHash": "sha256-9e22fa4bb2b8557270d8b84c503529869b5f88586da2ce63b5ccaef6e858cf80",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 44295,
+        "fileSize": 82046,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13913,7 +13915,7 @@
         "tvTypes": [
           "TvSeries"
         ],
-        "version": 7,
+        "version": 9,
         "internalName": "Dizist",
         "description": "Dizist — dizist.live (Türkçe altyazılı yabancı dizi)",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizist.cs3",
@@ -13921,10 +13923,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=diziyou.one&sz=%size%",
-        "fileHash": "sha256-bd1c690d77014bbaea04bc257afe6761e80b867b178a9097a6285787327697b8",
+        "fileHash": "sha256-9290924eaa05ff35bfb5baffb6a0d6590d26e3352e642eae0f8b0c798a308856",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34508,
+        "fileSize": 72653,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13941,10 +13943,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dmax.com.tr&sz=%size%",
-        "fileHash": "sha256-ede173a9501fb33f6c2a2bb27a56b87ed4d378db55abfdd81660ad58c3fbfe57",
+        "fileHash": "sha256-f9ad7102a2e54242789793eb8f233d44ef06b4074065925d1b40aa21970d4bc0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 31965,
+        "fileSize": 70235,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13962,10 +13964,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=dramadizilerim1.com&sz=%size%",
-        "fileHash": "sha256-ea9567c0bae1beaf5f97efe862bebc4161f01df1b576041a5648a2ee7618e504",
+        "fileHash": "sha256-9d22ae43fff24b87d61b79636d775c181503e48c9cb48660dc04e1f5b2e46bb2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35080,
+        "fileSize": 73349,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -13983,10 +13985,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmdozu.com&sz=%size%",
-        "fileHash": "sha256-9d2c0cbba6144834aef94a18de9f1c55e16e710c345fa9832201c08643db29ed",
+        "fileHash": "sha256-920094d70f662a9c148cdb97203e828cc9e238e379639ef02cdd92f6522d1bbe",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34110,
+        "fileSize": 72041,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14003,10 +14005,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmekseni.vip&sz=%size%",
-        "fileHash": "sha256-c0e1dce298a1e4dac8a7630469c4cc8433395444c26590d12cb7df75970e86f6",
+        "fileHash": "sha256-c7133bbc4cee0734e190184c8f19b26cf8eea5266f99de03e53e35adfadc7c49",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38535,
+        "fileSize": 76639,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14023,10 +14025,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmgecesi.vip&sz=%size%",
-        "fileHash": "sha256-82960a7337c1be67f294add8784505f242e7e45b4bac3bc630eb2dd00ee01f53",
+        "fileHash": "sha256-a0ee8a72bf9ba8ceec9dc4da1164898b3b874307ab72aa1cb5bfc7b913bfc2ee",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39895,
+        "fileSize": 77735,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14044,10 +14046,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmizyon.net&sz=%size%",
-        "fileHash": "sha256-dca25c58647b4c92df0ba9fc108735240413283e6e3caae1bc7b2d764ad6739d",
+        "fileHash": "sha256-526a581c1c313a09621597e71d20cbed06bfd8252856c3436722add98716abe7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 41392,
+        "fileSize": 79180,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14065,10 +14067,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmkovasi.co&sz=%size%",
-        "fileHash": "sha256-fdf3a9a0f07a32bc35e0f7781d0cf7e7bdb75f58e2344aa6c310fbb88cb23bc7",
+        "fileHash": "sha256-1f68cdd53cf6ac73b3da17c0eae4141c03aae1f7cda6a23c12431df2d1968c18",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38302,
+        "fileSize": 76197,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14085,10 +14087,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmmakinesi.co&sz=%size%",
-        "fileHash": "sha256-332472b7ed7af2c0c6b997ea5eb567f8537607465093186510025cc5e198eeec",
+        "fileHash": "sha256-5bb6eb704f9c66d4561cf7ce778d365f3bb3f6fc332cae6b3230b34c9b616bfe",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39808,
+        "fileSize": 77733,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14105,10 +14107,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=filmmodu.news&sz=%size%",
-        "fileHash": "sha256-924fda041557b6e4c94b130ad47277a8921a0c179c1e45177d44891f68bea4d2",
+        "fileHash": "sha256-214bd223bdddcbf5bfba2e63e2a727ac9a4843396dc825a6606e9be2808ba330",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34144,
+        "fileSize": 72285,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14125,10 +14127,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullhdfilmizlebox.vip&sz=%size%",
-        "fileHash": "sha256-2ec146dee776bd20370d9e236aba13c39036fb5b6fc1003ba55934c8b53729b2",
+        "fileHash": "sha256-10945d72adff98336734c8a43ba6a210de06bb7d547980149e18a17ceb587e67",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34679,
+        "fileSize": 72897,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14145,10 +14147,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=fullhdfilmizlesene.now&sz=%size%",
-        "fileHash": "sha256-234747a21741990a75d36cc1217bc473b3ba8ff301668970ef5209db92e876cc",
+        "fileHash": "sha256-f1b27f0216b3490c7c79b6c8ee387380e67e86fdac97f01d677df78b117777c8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 36556,
+        "fileSize": 74617,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14165,10 +14167,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmcehennemi.nl&sz=%size%",
-        "fileHash": "sha256-cd312a89709cefdb76611d19130217071f6835f9ff3ca5b93515a985487ea01d",
+        "fileHash": "sha256-20a6ec38cce4bd4f21771818e861082674b400891ff0eef0ee0cc9616ae617b0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 47154,
+        "fileSize": 84445,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14185,10 +14187,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmcehennemi2.biz&sz=%size%",
-        "fileHash": "sha256-0eaa722a16b981e43d2a8cea32348825330797a9c9227b6380bb7c131d60c5ef",
+        "fileHash": "sha256-2bd5fce580c5894336c3b9334f6ee47a41d86c2b17116d72628289424e8372d7",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 49492,
+        "fileSize": 86736,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14206,10 +14208,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmdelisi1.com&sz=%size%",
-        "fileHash": "sha256-c2b357bba11335cd8d002bfd02bcbd2ed4517dcb17eb61d101035931b44afc58",
+        "fileHash": "sha256-d1f34f29fe152d7e242c22d1e2996067b6a69a0eff55f2aff9dbc8b4891a3143",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46574,
+        "fileSize": 84149,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14227,10 +14229,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmdiziizle.com&sz=%size%",
-        "fileHash": "sha256-310f8bb611d7f824fd2f1d0b45d8a4f5291d0e09468e68d39a6a743387ae0dbc",
+        "fileHash": "sha256-fbbae36a72ed8579cc5ed4f8c75e8685ee3f3fc685f3105cedeb002c39136f16",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 54538,
+        "fileSize": 91812,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14248,10 +14250,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmizle.ink&sz=%size%",
-        "fileHash": "sha256-dcef37629669b5661058feaca26a66fc05c6c5ff49ad753808eed33fcde88eee",
+        "fileHash": "sha256-deff5d9cd5d0513bdd805b4d46fd6e914eabde53fefd18c0a276660c46d9f50f",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 47957,
+        "fileSize": 85443,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14269,10 +14271,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmizle.best&sz=%size%",
-        "fileHash": "sha256-a7375899ac89d6be83f1c3efad5ef4e84f10e6843ace81a7da59b34824a6cb2b",
+        "fileHash": "sha256-67c520d1b2f7c5b97322f788208433ceb1b5d26b5f110c30e8afbd96405f14d9",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 50171,
+        "fileSize": 87276,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14290,10 +14292,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=www.izle7.com&sz=%size%",
-        "fileHash": "sha256-d0e5450319f042a71dce48bb3530aa957b7af70fd71ebf04c6c80ce0abb75bc8",
+        "fileHash": "sha256-a7694a1a99a9fdb921c8b851b450d648054390b2eb19e684fb5a9b841c13af41",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35767,
+        "fileSize": 73799,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14311,10 +14313,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=izlefilm.net&sz=%size%",
-        "fileHash": "sha256-0171394da54a5aa2176261f3fd8b1f4c3fb7d7d6f79b4c16d5cce87ca8fdda3c",
+        "fileHash": "sha256-f7ba33a15e62b02bf350a1f4fc32be9eec72d71a777536bf07ec8ee8eb55386b",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34248,
+        "fileSize": 72196,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14331,10 +14333,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=jetfilmizle.app&sz=%size%",
-        "fileHash": "sha256-caa9d2ab6247ca21f11873488aef54265f02df92958821cc37ff40459ff54f7c",
+        "fileHash": "sha256-bb5961c4a68872ed9b0e65bcf38ff251ed92739759653b7541752c03f5830924",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 51270,
+        "fileSize": 88417,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14351,10 +14353,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kanald.com.tr&sz=%size%",
-        "fileHash": "sha256-b83af2a65e655ae05b32d41060b151c1a2dc54fe35c7d616be92e9da37521b05",
+        "fileHash": "sha256-35fa212aec6f1ca127b1b67cbf1d248582767218a88ce058a225e0aea1709c1c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 33506,
+        "fileSize": 71696,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14372,10 +14374,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=koreanturk.tv&sz=%size%",
-        "fileHash": "sha256-c4875bb05f7763845fb282256a68cb7ce8edd96c82f982746d295ea67bbe9b58",
+        "fileHash": "sha256-5a69f5d0d891252c4379e212399e6eb64a5720715798e9bc15562c8396121f82",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 33423,
+        "fileSize": 71468,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14392,10 +14394,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=kultfilmler.net&sz=%size%",
-        "fileHash": "sha256-427fc4a6c3d1a86cb230306fc704d751ecae71ccb1357c8515a0d8c2d1b18dd7",
+        "fileHash": "sha256-b6d31a12c0052b928da22350f4c845195f5adbfaadd61c686f97e59638f6a39a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35641,
+        "fileSize": 73717,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14412,10 +14414,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=lovefilmizle.net&sz=%size%",
-        "fileHash": "sha256-f0edc2f94865c89c32a258827852c1fde1cb24407f6ed76c36a43498bf9bb066",
+        "fileHash": "sha256-be15eea5827cc00259a6acbc574d8cc94f27e0fc4919c300dcf293c5fd9f54ce",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39323,
+        "fileSize": 77223,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14432,10 +14434,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=minikacocuk.com.tr&sz=%size%",
-        "fileHash": "sha256-1128db0db1b3a3571c8cfe13f5dd00a43c44974dc952a8cd013912d7acc485f5",
+        "fileHash": "sha256-7728c1d3528be6750ffc0032f1ef10b822792a60ce8c2c4ebe7cf37bfabef6b4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 31557,
+        "fileSize": 69645,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14453,10 +14455,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=minikago.com.tr&sz=%size%",
-        "fileHash": "sha256-e1078fc83bc39a5223d1e0f21ce1f89f5c042f8ecaa1d7b7f456ed0912fa4be9",
+        "fileHash": "sha256-2deda683fbb3e9e7dd57c86fec0940f0856cdf0933e5a3f739815c03e708b9fe",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 31251,
+        "fileSize": 69426,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14473,10 +14475,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=netfilmizle.com&sz=%size%",
-        "fileHash": "sha256-b045fe9ead84192ef4443288bd310e6d6a8661cfe9f7174a783e10c70df74c1f",
+        "fileHash": "sha256-40e7195aff55b326aceea2f501653c25c7caf3976bf4698a880e02d76fc2830a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 32876,
+        "fileSize": 70906,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14493,10 +14495,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=nowtv.com.tr&sz=%size%",
-        "fileHash": "sha256-67a29618743fd3d9ac12058f3f4913e4ac4405846141be732f2a9f3f17fe8048",
+        "fileHash": "sha256-1e7373854f2ddd0fe2e85bf40e7c9b9cb42a449a722d22ec01b443ab31ef5192",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38250,
+        "fileSize": 76383,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14514,10 +14516,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=onepacetr.net&sz=%size%",
-        "fileHash": "sha256-15c7f8706966c83fc2db0e594a84da6284053895aa31c78e450968aeb2899f56",
+        "fileHash": "sha256-4fd600bf7aa8425abd0373f15d1a9818767050ad9ed8a25488a4deb22e517db2",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 32884,
+        "fileSize": 71287,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14534,10 +14536,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=onlinedizi.sbs&sz=%size%",
-        "fileHash": "sha256-54401d15d43afba0e5d87d15964f41909000501f652f8509a0dbd93db7d64ae7",
+        "fileHash": "sha256-14f06e65408489db96a0231cc5d6a83d8fd442140522d1154fe1757b79a00473",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34862,
+        "fileSize": 72978,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14554,10 +14556,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=720pizle.my&sz=%size%",
-        "fileHash": "sha256-7703f75ec1566a9849497e1046909656a6b663611e0585af85e042bc088ebcbd",
+        "fileHash": "sha256-0f0b79dd2d8dcb8b3a193ccbeb73fbe2f534dce260aa8ffb42348c4b627000e8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46307,
+        "fileSize": 84018,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14574,10 +14576,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=puhutv.com&sz=%size%",
-        "fileHash": "sha256-c38c48e01a1488b8d377befed582e8414da931392f5d0e287f1377de4f30144d",
+        "fileHash": "sha256-66848a0ea2d5e26320911be04ff511c891ee488a67fb7f2c271710e6c82634b0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42936,
+        "fileSize": 80890,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14595,10 +14597,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=rectv.org.tr&sz=%size%",
-        "fileHash": "sha256-0299db36cfb54c0b7395386037a63d4808a1ddb7c3b654272366fde0a8eafdc2",
+        "fileHash": "sha256-705a004e7064c303cdfe597eef5af4ddcdad190bf324b4469afae888c29064a0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 46277,
+        "fileSize": 84098,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14616,10 +14618,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=roketdizi.life&sz=%size%",
-        "fileHash": "sha256-62e6f85c2355e4d91549955cefab3bb13d18695a9c5ba6fddc6c3ca40f947611",
+        "fileHash": "sha256-df556a76919f1e8a5ef9b0dfecd8e5d2498e1be4effedac4841ea0bd95211108",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42377,
+        "fileSize": 80322,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14637,10 +14639,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=selcukflix.app&sz=%size%",
-        "fileHash": "sha256-2d9918790bea9ecdb615b5a81f044f71f46dd8f86ac09e2b90a8d61e05f4cd8f",
+        "fileHash": "sha256-5ddf69379cc6f58e1fa660112b132b6425ee7bd64f811910fd0b9c14ffa024e3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 52918,
+        "fileSize": 89965,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14658,10 +14660,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=setfilmizle.ltd&sz=%size%",
-        "fileHash": "sha256-4444781ff59240db8a76f522923195b84fba33c556400e59a4b780a9cf55ec30",
+        "fileHash": "sha256-1a00c4b0431702bc94e8133a368fd5c47e7135d342546e0c7be8cd69cb5ea177",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42867,
+        "fileSize": 80443,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14679,10 +14681,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sezonlukdizi.cc&sz=%size%",
-        "fileHash": "sha256-f407b57017169a8f1f03f0889eb549539041cfcae4e77ae1afda99b41b0d255a",
+        "fileHash": "sha256-766675728abaa9a85b80ba5ff2a1c5d8b2639ead6925aa7aed20517ebc93124c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 62322,
+        "fileSize": 99500,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14699,10 +14701,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=showtv.com.tr&sz=%size%",
-        "fileHash": "sha256-a03a05c4ce44325fb8188f0eef7dfc8c20fb3533af8d7523760801989e1f4b66",
+        "fileHash": "sha256-417a9b35dfcb33e08625e14db0b2623b46927c8e001e35a8f9254770dbb48c63",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 30888,
+        "fileSize": 69024,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14720,10 +14722,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sinemacc.com&sz=%size%",
-        "fileHash": "sha256-636d5fd8030c7062d6e73da7edfc53307a26ea93e51cd6b1dc666c830e115a33",
+        "fileHash": "sha256-aca4e5f26776aa9484ed65119fe06a868850d017b4213d846cbdc3efd43120f4",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35825,
+        "fileSize": 73645,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14740,10 +14742,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sinemakolik.com&sz=%size%",
-        "fileHash": "sha256-421dbcf3819479c90fc9e482c657f4315183ec66dfef25351eb60cb99fdc9fc9",
+        "fileHash": "sha256-92b447ca59878f9276ee8816a12cff88821efa90a462b62531adc3ab145ce0d0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 32984,
+        "fileSize": 71034,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14760,10 +14762,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sinemetrik.com&sz=%size%",
-        "fileHash": "sha256-a2594bc6836dfc8354a0799cd1008523d6607f95acf7cfabcb1ddfeb6d90c79e",
+        "fileHash": "sha256-d76ae21467455c3e5ca57780bb37c30d558e9853bc960d2afcd2e88ed5d33395",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43735,
+        "fileSize": 81612,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14781,10 +14783,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sinezy.si&sz=%size%",
-        "fileHash": "sha256-0969f507394d20865acfd49c3df0c0d5570ec5062fb72f1cfe6704fc2ee7b6e6",
+        "fileHash": "sha256-de69e5b224db710e4f5fe66a60d3d3e0a56e19f6260657e2c912b7ddb1e4a105",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 33396,
+        "fileSize": 71307,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14801,10 +14803,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=sonanime.com&sz=%size%",
-        "fileHash": "sha256-49c426754332c721a616878816f2a8174bb7b768a1c89deda6bc4ee889893a87",
+        "fileHash": "sha256-9bcc0b1d522d6d5c0cb4e93d4cea8f7e004863648c242718264c376b639be3b3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 45352,
+        "fileSize": 83147,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14822,10 +14824,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=startv.com.tr&sz=%size%",
-        "fileHash": "sha256-91a4517c1383d528a5e83b8193ddcf187f01ae4ce98198cc008c72479cbb227f",
+        "fileHash": "sha256-7fdf52f759f4a34d107293e109c28c475486238ccc8b5699dd6336c2db529e91",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 37222,
+        "fileSize": 75326,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14842,10 +14844,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tlctv.com.tr&sz=%size%",
-        "fileHash": "sha256-053f85a826890196e65a9d3d2acca9dfc53ab5f52d0ad760d1db518ae47f42fc",
+        "fileHash": "sha256-f0b611a6ba1956212bead8f1e5067507b29218e2b606a455218ca073497c8049",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39674,
+        "fileSize": 77752,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14863,10 +14865,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkceanime.com&sz=%size%",
-        "fileHash": "sha256-ee235a39d4d8fbdcf94d865950cfc7854a5522484738803698730237a742abd0",
+        "fileHash": "sha256-e7842bc0e98496e5b362ffd717c8ddd75e996a3d46c6be5f35bbeeea2b17d795",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39766,
+        "fileSize": 77651,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14883,10 +14885,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=trdiziizle.tv&sz=%size%",
-        "fileHash": "sha256-0566d375c6be9b0a1a3313d460563760681d30164aaecfc8ece432eff998e15f",
+        "fileHash": "sha256-108e2331dd738b4c5972996db073f90835a83de329dac8622122038f666b1a9a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 36019,
+        "fileSize": 74240,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14903,10 +14905,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=trt1.com.tr&sz=%size%",
-        "fileHash": "sha256-cbad4b978adfe691cf3f689991abf700bca2611082ba80a6f1398690ac2b6257",
+        "fileHash": "sha256-02dad54f23c5f98cec24eeb0fa65b6b155fade04e5d52872dd1ba6eadb0c11e0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 34706,
+        "fileSize": 72890,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14923,10 +14925,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkanime.live&sz=%size%",
-        "fileHash": "sha256-6686b211c0845029211c4287a96531c2d931e2b496c93279e8097c093e215b0c",
+        "fileHash": "sha256-22bf583d68885c60d9ffa3d3527324a293fa5f54ea30b6445c7084bf4f2ca42e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42087,
+        "fileSize": 79936,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14944,10 +14946,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=turkcedizi.com&sz=%size%",
-        "fileHash": "sha256-2a6c2b1c9a6133774eb35bd8954ac7e63ffedfb78b2c13e7ae683025c6d50194",
+        "fileHash": "sha256-ac8b45db1f3a8c735681b37e65562ade69fda74defd361f7458bfdbc44b50c48",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 62961,
+        "fileSize": 99856,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14965,10 +14967,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tv2.com.tr&sz=%size%",
-        "fileHash": "sha256-4bd89d2b13865cbbfc06e1dac25917a22bbbe2538ce7677300955408c00504cd",
+        "fileHash": "sha256-ebcdf8388c87d3a5e52f1c9e41a01e84fb3b5888db3ee8b258bba27104a212db",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 36343,
+        "fileSize": 74612,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14986,10 +14988,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=tvdiziler.tv&sz=%size%",
-        "fileHash": "sha256-1e9b24470a42302621f6b83fb96ab08371b69b1b90f15736c2e33286d6e61e93",
+        "fileHash": "sha256-05d8d31caad20a518065258ee5811e60023278b59bf4c307e13a2ae20dc0b26c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 38397,
+        "fileSize": 76459,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15006,10 +15008,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ufilmizle.com&sz=%size%",
-        "fileHash": "sha256-89b3f71c8ab2e85c2a89d09e927f1579574eb7105c15dfe731cff3d24910b35b",
+        "fileHash": "sha256-e877c8cf2a396b67ab9d59ad597ca91383623f15a325b0c5c0b1621c27bc4cb5",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 35596,
+        "fileSize": 73538,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15026,10 +15028,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=venusfilmizle.com&sz=%size%",
-        "fileHash": "sha256-ad8bbf60901302037c78856c2ad5cb56b1b19b5cb7356569bf51cb5637e18ae4",
+        "fileHash": "sha256-bd5ede7b53e7ef242648328e058226723362dbbc83f8dc123a6903bf628b943e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 39859,
+        "fileSize": 77570,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15046,10 +15048,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=webdramaturkey2.com&sz=%size%",
-        "fileHash": "sha256-65839364e0ce6e439959fd5a9a98d937ea41a74917c8dcf72457c1229e080710",
+        "fileHash": "sha256-abcfea7b3f8a472506e8c3fd1dfb8e8c5bf8bec557f5f47712a281f9b96d71b3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 44803,
+        "fileSize": 82506,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15068,10 +15070,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=webfilmizle.com&sz=%size%",
-        "fileHash": "sha256-da0d8446c2c2c80bf530280a4769fcbc63731dfae6fb06fe7315ee44ae6a0908",
+        "fileHash": "sha256-6119086f2da7a92cca92e41ea4d92d6ace37de74e1acd98fdaaa4d986c6f82c0",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 32666,
+        "fileSize": 70775,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15088,10 +15090,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=weboo.com.tr&sz=%size%",
-        "fileHash": "sha256-481bc303a0521aac7f9be8b157f78c90e63e847dc9e4802d2a5505871703645b",
+        "fileHash": "sha256-9a01aefdca614e5fa7b658486f348f0f04cf1ffa7fb33c0561424c548813d73c",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43584,
+        "fileSize": 81310,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15109,10 +15111,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=webteizle.info&sz=%size%",
-        "fileHash": "sha256-0255617e2e02ca581e79b0c251b0b09578db4a916a25c7d097ad2dcd8cd40ecb",
+        "fileHash": "sha256-0a0f884d24ee2ebdb7c5b81a015f0c34579c0cce595c2bac5fb15766a7e61ea3",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43288,
+        "fileSize": 80860,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15129,10 +15131,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ybncidizi.com&sz=%size%",
-        "fileHash": "sha256-9372249e98bd8997697b84ddcef13e36a39e6e66ac9038ed4294389e9867211a",
+        "fileHash": "sha256-dbef64d15dec239fed94144f943703846c681c63aff76d398dc7a1336e5a7be1",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 47620,
+        "fileSize": 85032,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15150,10 +15152,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=yerlidiziler.com.tr&sz=%size%",
-        "fileHash": "sha256-5140ec15ff8afeeeccfb0e9139e9f3551ce634300a85b19bb51c8321718196f3",
+        "fileHash": "sha256-04891e3f1e44036ca2ca2b0d823957654fd4f963058353d3062b4cf0fc92509a",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 42202,
+        "fileSize": 79722,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -15170,10 +15172,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=yesilcamtv.com.tr&sz=%size%",
-        "fileHash": "sha256-22137f7087c7e9756ff87e632b4e1a18152f6a80daf1c47ed67c5990dfed1fe7",
+        "fileHash": "sha256-0e4c7bab1198e5281850ca2f33afbbcf2958d3727a0f042c9c929227e6b0481e",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 43807,
+        "fileSize": 81612,
         "status": 1,
         "language": "tr",
         "authors": [

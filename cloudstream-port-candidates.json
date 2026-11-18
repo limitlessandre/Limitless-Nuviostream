@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 188,
-  "no_obvious_native_overlap_count": 183,
+  "cloudstream_provider_count": 187,
+  "no_obvious_native_overlap_count": 182,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -743,28 +743,6 @@
       "reasons": [
         "Anime coverage",
         "Cartoon coverage"
-      ]
-    },
-    {
-      "internalName": "AllWish",
-      "name": "AllWish",
-      "description": "Anime from all-wish.me",
-      "language": "en",
-      "tvTypes": [
-        "All"
-      ],
-      "version": 18,
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AllWish.cs3",
-      "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-      "overlap": {
-        "status": "no-obvious-overlap",
-        "score": 0.462,
-        "native_matches": []
-      },
-      "priority": "medium-priority",
-      "priority_score": 4,
-      "reasons": [
-        "Anime coverage"
       ]
     },
     {
@@ -3212,7 +3190,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 42,
+      "version": 48,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -3399,7 +3377,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/EasyPlayProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
