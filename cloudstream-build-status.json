@@ -5,10 +5,10 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 761,
-  "eligible_plugin_entries_before_dedupe": 207,
-  "unique_plugins": 187,
-  "duplicate_groups": 18,
+  "raw_plugin_entries": 763,
+  "eligible_plugin_entries_before_dedupe": 209,
+  "unique_plugins": 188,
+  "duplicate_groups": 19,
   "language_filtered_entries": 509,
   "unknown_language_metadata_entries": 29,
   "inactive_filtered_entries": 45,
@@ -77,14 +77,14 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 87,
+      "plugins": 88,
       "verified": false
     },
     {
       "name": "CNC Repo(All Language)",
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
       "status": "ok",
-      "plugins": 44,
+      "plugins": 45,
       "verified": false
     },
     {

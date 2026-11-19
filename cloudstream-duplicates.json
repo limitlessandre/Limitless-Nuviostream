@@ -139,7 +139,7 @@
     "chosen": {
       "internalName": "Anizone",
       "name": "Anizone",
-      "version": 15,
+      "version": 16,
       "language": "en",
       "source": "Phisher Repo",
       "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
@@ -150,7 +150,7 @@
       {
         "internalName": "Anizone",
         "name": "Anizone",
-        "version": 15,
+        "version": 16,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
@@ -272,12 +272,46 @@
       {
         "internalName": "Comix",
         "name": "Comix",
-        "version": 6,
+        "version": 8,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
         "verifiedRepo": false,
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Comix.cs3"
+      }
+    ]
+  },
+  "internal:gotaku": {
+    "chosen": {
+      "internalName": "GoTaku",
+      "name": "GoTaku",
+      "version": 14,
+      "language": "en",
+      "source": "raghav repo",
+      "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+      "verifiedRepo": false,
+      "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3"
+    },
+    "candidates": [
+      {
+        "internalName": "GoTaku",
+        "name": "GoTaku",
+        "version": 14,
+        "language": "en",
+        "source": "raghav repo",
+        "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/GoTaku.cs3"
+      },
+      {
+        "internalName": "Gotaku",
+        "name": "Gotaku",
+        "version": 2,
+        "language": "en",
+        "source": "Phisher Repo",
+        "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+        "verifiedRepo": false,
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Gotaku.cs3"
       }
     ]
   },

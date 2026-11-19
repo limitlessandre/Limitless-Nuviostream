@@ -2864,20 +2864,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "FilmEkseni",
-      "name": "FilmEkseni",
-      "source": "BigBullApp",
-      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmEkseni.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "FilmFrei24",
       "name": "FilmFrei24",
       "source": "German providers repository",
@@ -6299,6 +6285,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TV2.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "TV8",
+      "name": "TV8",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/TV8.cs3",
       "reason": "no-allowed-language"
     },
     {

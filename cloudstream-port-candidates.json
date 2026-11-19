@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 187,
-  "no_obvious_native_overlap_count": 182,
+  "cloudstream_provider_count": 188,
+  "no_obvious_native_overlap_count": 183,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -51,7 +51,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 713,
+      "version": 715,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -81,7 +81,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 43,
+      "version": 44,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -111,7 +111,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 29,
+      "version": 31,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/XDMovies.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -194,7 +194,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -222,7 +222,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 98,
+      "version": 99,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -322,7 +322,7 @@
         "Movie",
         "Cartoon"
       ],
-      "version": 9,
+      "version": 10,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Jellyfin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -706,7 +706,7 @@
         "Anime",
         "Cartoon"
       ],
-      "version": 23,
+      "version": 25,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Animexin.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -969,7 +969,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 55,
+      "version": 58,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1157,7 +1157,7 @@
       "tvTypes": [
         "Anime"
       ],
-      "version": 15,
+      "version": 16,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Anizone.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1809,7 +1809,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 30,
+      "version": 32,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Cinemacity.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2638,7 +2638,7 @@
         "Movie",
         "Torrent"
       ],
-      "version": 17,
+      "version": 18,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioAddon.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -2661,7 +2661,7 @@
         "TvSeries",
         "Movie"
       ],
-      "version": 28,
+      "version": 29,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StremioX.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -3322,6 +3322,28 @@
       "priority_score": -1,
       "reasons": [
         "Movies / Western TV coverage",
+        "Likely utility/live/special-purpose extension"
+      ]
+    },
+    {
+      "internalName": "ClownIPTVProvider",
+      "name": "ClownIPTVProvider",
+      "description": "Clown IPTV - 28k+ live TV channels from around the world (HLS)",
+      "language": "en",
+      "tvTypes": [
+        "Live"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/ClownIPTVProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.385,
+        "native_matches": []
+      },
+      "priority": "utility-or-review",
+      "priority_score": -3,
+      "reasons": [
         "Likely utility/live/special-purpose extension"
       ]
     },

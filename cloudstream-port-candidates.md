@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **187**  
-No obvious native overlap: **182**  
+Filtered CloudStream providers: **188**  
+No obvious native overlap: **183**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **5**
 
@@ -159,6 +159,7 @@ Exact/alias overlap: **5**
 - **NetNaija-box** (`NetNaija-box`) — en; Movie, TvSeries, Live — NetNaija-box - Multi Language Movies, Series and Live Sports. HD streaming with multiple dubs and subtitles.
 - **NextGenTV** (`NextGenTV`) — en; Movie, TvSeries — NextGenTV - Live TV & IPTV: S1 Xtream, JioTV+, India Max, ZEE5, Sun NXT, Dish/Samsung/LG/Tablo/Vizio, Fancode + 71 CRICFY servers (catalog picker, landscape ...
 - **SmartTube** (`SmartTube`) — en; Others, Movie — SmartTube - YouTube for CloudStream (trending, channels, playlists, videos)
+- **ClownIPTVProvider** (`ClownIPTVProvider`) — en; Live — Clown IPTV - 28k+ live TV channels from around the world (HLS)
 - **DaddyLiveProvider** (`DaddyLiveProvider`) — en; Live — Live sports schedule and 900+ 24/7 channels from DaddyLive (thedaddy.pk)
 - **DamiTVProvider** (`DamiTVProvider`) — en; Live — Live sports in HD: football, NBA, NFL, UFC, cricket and  live sports channels
 - **EasyPlayProvider** (`EasyPlayProvider`) — en; Live — EasyPlay IPTV Live TV channels (auto-leased Xtream playlist, no login)
