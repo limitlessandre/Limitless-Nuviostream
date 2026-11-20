@@ -160,7 +160,7 @@
       {
         "internalName": "Anizone",
         "name": "Anizone",
-        "version": 3,
+        "version": 4,
         "language": "en",
         "source": "Desi Extensions",
         "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
@@ -306,7 +306,7 @@
       {
         "internalName": "Gotaku",
         "name": "Gotaku",
-        "version": 2,
+        "version": 3,
         "language": "en",
         "source": "Phisher Repo",
         "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",

@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 509,
+  "excluded_count": 512,
   "excluded": [
     {
       "internalName": "18+",
@@ -1012,20 +1012,6 @@
       "reason": "no-allowed-language"
     },
     {
-      "internalName": "AsyaBox",
-      "name": "AsyaBox",
-      "source": "BigBullApp",
-      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaBox.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
       "internalName": "AsyaDizi",
       "name": "AsyaDizi",
       "source": "BigBullApp",
@@ -1065,20 +1051,6 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaFanatikleri.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "AsyaLog",
-      "name": "AsyaLog",
-      "source": "BigBullApp",
-      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaLog.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1798,6 +1770,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "CizgiVeDizi",
+      "name": "CizgiVeDizi",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/CizgiVeDizi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "CNC Verse",
       "name": "CNC Verse",
       "source": "CNC Repo(All Language)",
@@ -2301,6 +2287,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizimanya.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DiziModu",
+      "name": "DiziModu",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziModu.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -6034,6 +6034,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "ToonPlay",
+      "name": "ToonPlay",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ToonPlay.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Toonstream",
       "name": "Toonstream",
       "source": "Phisher Repo",
@@ -6853,6 +6867,34 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ZDKSerials.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ZeeFliz",
+      "name": "ZeeFliz",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ZeeFliz.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ZeeFliz4k",
+      "name": "ZeeFliz4k",
+      "source": "Desi Extensions",
+      "sourceRepo": "https://raw.githubusercontent.com/Faisal0786/Desi/main/repo.json",
+      "language": [
+        "hi"
+      ],
+      "normalizedLanguages": [
+        "hi"
+      ],
+      "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ZeeFliz4k.cs3",
       "reason": "no-allowed-language"
     },
     {
