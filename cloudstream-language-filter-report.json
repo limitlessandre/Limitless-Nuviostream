@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 512,
+  "excluded_count": 513,
   "excluded": [
     {
       "internalName": "18+",
@@ -595,6 +595,20 @@
         "pt-br"
       ],
       "url": "https://raw.githubusercontent.com/saimuelbr/saimuelrepo/main/builds/AnimesDigital.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "AnimesFHD",
+      "name": "AnimesFHD",
+      "source": "AnimesFHD",
+      "sourceRepo": "https://raw.githubusercontent.com/animesfhd/cloudstream-extensions/main/builds/repo.json",
+      "language": [
+        "pt-br"
+      ],
+      "normalizedLanguages": [
+        "pt-br"
+      ],
+      "url": "https://raw.githubusercontent.com/animesfhd/cloudstream-extensions/main/builds/AnimesFHD.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3642,6 +3656,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "JioTVPlusProvider",
+      "name": "JioTVPlusProvider",
+      "source": "CNC Repo(All Language)",
+      "sourceRepo": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
+      "language": [
+        "ta"
+      ],
+      "normalizedLanguages": [
+        "ta"
+      ],
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/JioTVPlusProvider.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "JKAnimeProvider",
       "name": "JKAnimeProvider",
       "source": "Storm-ext Fork by redblacker8",
@@ -4537,20 +4565,6 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/redowan99/Redowan-CloudStream/builds/Mp4Moviez.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "MPlayerProvider",
-      "name": "MPlayerProvider",
-      "source": "Phisher Repo",
-      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
-      "language": [
-        "hi"
-      ],
-      "normalizedLanguages": [
-        "hi"
-      ],
-      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MPlayerProvider.cs3",
       "reason": "no-allowed-language"
     },
     {

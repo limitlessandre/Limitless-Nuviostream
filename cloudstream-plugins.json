@@ -282,14 +282,14 @@
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
     "status": 1,
-    "version": 59,
+    "version": 62,
     "name": "AnimePahe",
     "internalName": "AnimePahe",
     "authors": [
       "Cloudburst,Lorem Ipsum,Phisher98"
     ],
     "description": "Animes (SUB/DUB)",
-    "fileSize": 232726,
+    "fileSize": 247501,
     "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
     "language": "en",
     "tvTypes": [
@@ -299,7 +299,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/animepahe.png",
     "apiVersion": 1,
-    "fileHash": "sha256-4d66134d20bddbb5c1dc71fe2f91f362e7a06a2d8bad1978b0ce75633fd39cd9"
+    "fileHash": "sha256-e45d4ef24e0bda028c2512e1148a88b56332fa60e52b507387df3a73d3f6c12e"
   },
   {
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animesuge.cz&size=64",
@@ -387,6 +387,33 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=ani.pm&sz=64",
     "apiVersion": 1,
     "fileHash": "sha256-b3e2bb19feb80eb01679d1484f92f3b65e612f72ce2d2a735e2f885f81f561dc"
+  },
+  {
+    "iconUrl": "https://anirex.to/images/fav.png",
+    "fileHash": "sha256-59148fddb47258b878a6428eaa0f708ce78e1035ece53f31df63406b5e6c238e",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
+    "fileSize": 21345,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "Mamun015"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Anime",
+      "AnimeMovie",
+      "OVA",
+      "ONA",
+      "Special",
+      "Others"
+    ],
+    "version": 3,
+    "internalName": "AnirexTo",
+    "description": "Anime from anirex.to with sub/dub support. Works on any network.",
+    "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/AnirexTo.cs3",
+    "name": "AnirexTo"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AniSnatch.cs3",
@@ -1900,10 +1927,10 @@
   },
   {
     "iconUrl": "https://play-lh.googleusercontent.com/V4t4JeQV2Cu9u72hKuqOW5c0IfwcZuuVS1d9PF2uJsW3rlIq-aOMTrT5bABVGaAFTcM=w480-h960-rw",
-    "fileHash": "sha256-abe2e18b24a65d38f012b53fe915c2952ff4d5206f34491815d00e9b986d8c61",
+    "fileHash": "sha256-514ebc2e96c3ef7ba22db1088f19e70a42b0eb65313096ecd38427256fc6c74e",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-    "fileSize": 65907,
+    "fileSize": 65759,
     "status": 1,
     "language": "en",
     "authors": [
@@ -1912,7 +1939,7 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 21,
+    "version": 22,
     "internalName": "M3UPlaylistPlayerProvider",
     "description": "Add your own m3u playlists",
     "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",

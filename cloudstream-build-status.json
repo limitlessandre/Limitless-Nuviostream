@@ -1,15 +1,15 @@
 {
   "repository_database_url": "https://raw.githubusercontent.com/recloudstream/cs-repos/master/repos-db.json",
-  "repository_database_entries": 39,
-  "repositories_loaded": 38,
+  "repository_database_entries": 40,
+  "repositories_loaded": 39,
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 766,
-  "eligible_plugin_entries_before_dedupe": 209,
-  "unique_plugins": 188,
+  "raw_plugin_entries": 768,
+  "eligible_plugin_entries_before_dedupe": 210,
+  "unique_plugins": 189,
   "duplicate_groups": 19,
-  "language_filtered_entries": 512,
+  "language_filtered_entries": 513,
   "unknown_language_metadata_entries": 29,
   "inactive_filtered_entries": 45,
   "meta_plugin_entries_filtered": 0,
@@ -77,14 +77,14 @@
       "name": "Phisher Repo",
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
       "status": "ok",
-      "plugins": 88,
+      "plugins": 87,
       "verified": false
     },
     {
       "name": "CNC Repo(All Language)",
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/builds/CNC.json",
       "status": "ok",
-      "plugins": 45,
+      "plugins": 46,
       "verified": false
     },
     {
@@ -273,7 +273,7 @@
       "name": "🇧🇩 Mamun015 BDIX Repository",
       "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/master/repo.json",
       "status": "ok",
-      "plugins": 5,
+      "plugins": 6,
       "verified": false
     },
     {
@@ -286,6 +286,13 @@
     {
       "name": "North",
       "url": "https://raw.githubusercontent.com/sealinwater/north/builds/repo.json",
+      "status": "ok",
+      "plugins": 1,
+      "verified": false
+    },
+    {
+      "name": "AnimesFHD",
+      "url": "https://raw.githubusercontent.com/animesfhd/cloudstream-extensions/main/builds/repo.json",
       "status": "ok",
       "plugins": 1,
       "verified": false

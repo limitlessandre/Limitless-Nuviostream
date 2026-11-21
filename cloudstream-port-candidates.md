@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **188**  
-No obvious native overlap: **183**  
+Filtered CloudStream providers: **189**  
+No obvious native overlap: **184**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **5**
 
@@ -24,6 +24,7 @@ Exact/alias overlap: **5**
 - **Jellyfin** (`Jellyfin`) — en; TvSeries, Anime, Movie, Cartoon — Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media
 - **Nepu** (`Nepu`) — en; Movie, TvSeries, Anime, AnimeMovie, Cartoon — Movies, shows, cartoons and anime in HD
 - **SimklProvider** (`SimklProvider`) — en; AnimeMovie, Anime, OVA, TvSeries, Movie, Documentary, Cartoon — No Streaming. This is just to open the info page of a show from the simkl library
+- **AnirexTo** (`AnirexTo`) — en; Movie, TvSeries, Anime, AnimeMovie, OVA, ONA, Special, Others — Anime from anirex.to with sub/dub support. Works on any network.
 - **Chikianimation** (`Chikianimation`) — zh; Movie, Anime — Chikianimation - Donghua (Chinese anime) in multiple subtitles
 - **JPFilms** (`JPFilms`) — en; AsianDrama — Watch online The Yagyu Code: Secret Scrolls on Japanese Classic Movies and TVSeries (https://jp-films.com) with English Subtitle.
 - **Kdesa** (`Kdesa`) — en; Movie, TvSeries, Anime — KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc

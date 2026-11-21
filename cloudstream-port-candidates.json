@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 188,
-  "no_obvious_native_overlap_count": 183,
+  "cloudstream_provider_count": 189,
+  "no_obvious_native_overlap_count": 184,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -394,6 +394,36 @@
         "Anime coverage",
         "Movies / Western TV coverage",
         "Cartoon coverage"
+      ]
+    },
+    {
+      "internalName": "AnirexTo",
+      "name": "AnirexTo",
+      "description": "Anime from anirex.to with sub/dub support. Works on any network.",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries",
+        "Anime",
+        "AnimeMovie",
+        "OVA",
+        "ONA",
+        "Special",
+        "Others"
+      ],
+      "version": 3,
+      "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/AnirexTo.cs3",
+      "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.533,
+        "native_matches": []
+      },
+      "priority": "high-priority",
+      "priority_score": 6,
+      "reasons": [
+        "Anime coverage",
+        "Movies / Western TV coverage"
       ]
     },
     {
@@ -969,7 +999,7 @@
         "Anime",
         "OVA"
       ],
-      "version": 59,
+      "version": 62,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/AnimePahe.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -3109,7 +3139,7 @@
       "tvTypes": [
         "Live"
       ],
-      "version": 21,
+      "version": 22,
       "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/M3UPlaylistPlayerProvider.cs3",
       "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
       "overlap": {
