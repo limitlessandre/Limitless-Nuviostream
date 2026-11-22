@@ -3124,10 +3124,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/JioTVPlusProvider/logo.png",
-        "fileHash": "sha256-883acd765a1ee611553c4095f999753d75f91e69bf7cb19c95cfec3b58c8aeec",
+        "fileHash": "sha256-1bd6a043a951bf5988bbbee6f18ffc10805ddc66a90a51eb5c04955ba262d8a8",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 59929,
+        "fileSize": 60612,
         "status": 1,
         "language": "ta",
         "authors": [
@@ -3136,7 +3136,7 @@
         "tvTypes": [
           "Live"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "JioTVPlusProvider",
         "description": "Jio TV+ premium live channels (Sun bouquet, sports & more)",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/JioTVPlusProvider.cs3",
@@ -9697,14 +9697,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 50,
+        "version": 52,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-        "fileSize": 645358,
+        "fileSize": 646428,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9713,19 +9713,19 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-cdecaa81b90fdd996aadb3a8fbd73b693700b6e5609779fd92ae9c4b7c0fd08e"
+        "fileHash": "sha256-6eb75c1fbca353f92f8e021b3c6439a2404262456071f180112bf1603b732292"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
         "status": 1,
-        "version": 10,
+        "version": 11,
         "name": "Kdesa",
         "internalName": "Kdesa",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc",
-        "fileSize": 72143,
+        "fileSize": 87424,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9735,7 +9735,7 @@
         ],
         "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
         "apiVersion": 1,
-        "fileHash": "sha256-2aaeee0e6c50e325343daa96c409c71b20d5c27c01e332351abc17b1f19d8c8f"
+        "fileHash": "sha256-42e75e9d438094c4002d3c21cfecc7cacdd598c3429c53a60580ed77a80e4d70"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/LiveTGTV + M3U PLAYER.cs3",
@@ -10140,14 +10140,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
         "status": 1,
-        "version": 9,
+        "version": 10,
         "name": "VegaMovies",
         "internalName": "VegaMovies",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies and series from Vegamovies and Rogmovies in one place",
-        "fileSize": 92166,
+        "fileSize": 92620,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -10156,7 +10156,7 @@
         ],
         "iconUrl": "https://play-lh.googleusercontent.com/rU_X9wYHWc1V4OeSodaIhDRJF3cf7VNtc9zRcpP9Y2vHgAOttPcDqnbChe_Nx7M7KDt1oJ4hva6WXGjnPurQcuc",
         "apiVersion": 1,
-        "fileHash": "sha256-61c4daea98834f7fbdd83ac086aed86d187e7d81ae4e6cf3de994781c9c543ea"
+        "fileHash": "sha256-6cb227889da33d99f95a3d148d430a3d3435ba4d9f2762bbe8cafa4cfc7bf79b"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Xanime.cs3",
@@ -12105,7 +12105,7 @@
           "Faisal"
         ],
         "description": "KMMovies: Download & Stream Free Latest Hindi, English & Dubbed Movies in 480p, 720p, 1080p & 4K – Formerly Khatrimaza.",
-        "fileSize": 40380,
+        "fileSize": 32425,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12115,7 +12115,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/kmmovies.png",
         "apiVersion": 1,
-        "fileHash": "sha256-fdb74870180116c1d6b91f74dd6a3b73d9729c96ebe7a1621aaea98924eee0b2"
+        "fileHash": "sha256-0f240d8180f144d8a9354cc1ea1ae1ed341e62138d9c0b65ce1c888d82167729"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/MovieBox.cs3",
@@ -12298,14 +12298,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/StreamHubOne.cs3",
         "status": 1,
-        "version": 89,
+        "version": 90,
         "name": "StreamHubOne",
         "internalName": "StreamHubOne",
         "authors": [
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1357841,
+        "fileSize": 1341731,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12317,7 +12317,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-90da8a3a259585d816847e5be435777d9fb3406809479b4e66f0b26daa5572c9"
+        "fileHash": "sha256-7af7ea407d8516726b3f0dc22a5b52dc251021ec24d90c9e2b327c9a07f4b779"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -12433,14 +12433,14 @@
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ZeeFliz.cs3",
         "status": 1,
-        "version": 1,
+        "version": 2,
         "name": "ZeeFliz",
         "internalName": "ZeeFliz",
         "authors": [
           "Faisal"
         ],
         "description": "ZeeFliz: Download & Stream Latest Bollywood, Hollywood, South Hindi, Hindi Dubbed Movies & Web Series in 480p, 720p, 1080p",
-        "fileSize": 81943,
+        "fileSize": 76245,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12449,7 +12449,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/zeefliz.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-cf0f31223e35ad5afdc50bdd9cfd913cb93967ca9f37e4b40569ebab4ebdd3ff"
+        "fileHash": "sha256-6a9803cecd02e645d087119c778ff7e8ffcbf67d04de1f373dfb42444cbc29ab"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/ZeeFliz4k.cs3",
@@ -12905,14 +12905,14 @@
       {
         "url": "https://raw.githubusercontent.com/dipender98/Indflix/builds/IndStream.cs3",
         "status": 1,
-        "version": 117,
+        "version": 123,
         "name": "IndStream",
         "internalName": "IndStream",
         "authors": [
           "Indflix"
         ],
         "description": "Federated embed-server resolver keyed by TMDB/IMDB id. Races dozens of independent HLS/DASH servers, picks the fastest CDN per title, and exposes multi-language audio + per-quality links.",
-        "fileSize": 396197,
+        "fileSize": 404101,
         "repositoryUrl": "https://github.com/dipender98/Indflix",
         "language": "hi",
         "tvTypes": [
@@ -12922,7 +12922,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/dipender98/Indflix/main/IndStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-2e3c691329b121c4a8471f6964483a67e4532242e0d6baf7cab4b55ab014793e"
+        "fileHash": "sha256-9535756baa81eb70c2fda9900b3606cbed33945859b6037312313d46e4260a01"
       },
       {
         "url": "https://raw.githubusercontent.com/dipender98/Indflix/builds/Multimovies.cs3",
@@ -12934,7 +12934,7 @@
           "Indflix"
         ],
         "description": "Fast and Multi-Language Provider",
-        "fileSize": 132276,
+        "fileSize": 131683,
         "repositoryUrl": "https://github.com/dipender98/Indflix",
         "language": "hi",
         "tvTypes": [
@@ -12946,7 +12946,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/dipender98/Indflix/main/Multimovies/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c289368d8021c6519c59a9907abc621da5dfc992ac236eda0cfe1608769d7597"
+        "fileHash": "sha256-7aee80288a08066c5103d14d1b87dfa449b35c6b734d61b8d1164c536086150f"
       },
       {
         "url": "https://raw.githubusercontent.com/dipender98/Indflix/builds/Vegamovies.cs3",
@@ -12967,7 +12967,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/dipender98/Indflix/main/Vegamovies/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-a85ea9de2275384ed1b032f6ed1f4c6ccca71124972874e8a979edfe794cd05c"
+        "fileHash": "sha256-9baa5df1e9d880769627684180e24836eadf342bcb9ba693155563b2b70c1df7"
       }
     ]
   },
@@ -13880,26 +13880,6 @@
         "description": "Dizimanya — Türkçe altyazılı yabancı dizi izle",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizimanya.cs3",
         "name": "Dizimanya"
-      },
-      {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=dizimodu.com&sz=%size%",
-        "fileHash": "sha256-6bf46be72c0e5461182cf458dd653a23dee57cadf50b191f94923bf5288812c0",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 78293,
-        "status": 1,
-        "language": "tr",
-        "authors": [
-          "F0Rextasy"
-        ],
-        "tvTypes": [
-          "TvSeries"
-        ],
-        "version": 3,
-        "internalName": "DiziModu",
-        "description": "DiziModu — ToroFlix yabancı dizi arşivi (dizimodu.com)",
-        "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziModu.cs3",
-        "name": "DiziModu"
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=ddizimom.icu&sz=%size%",
@@ -15304,10 +15284,10 @@
     "plugins": [
       {
         "iconUrl": "https://anirex.to/images/fav.png",
-        "fileHash": "sha256-59148fddb47258b878a6428eaa0f708ce78e1035ece53f31df63406b5e6c238e",
+        "fileHash": "sha256-58fbf02e4e7d7aae7d728b6a8cd24107488f3c2803f8875c492f4ddbe73c9e84",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
-        "fileSize": 21345,
+        "fileSize": 32084,
         "status": 1,
         "language": "en",
         "authors": [
@@ -15323,7 +15303,7 @@
           "Special",
           "Others"
         ],
-        "version": 3,
+        "version": 5,
         "internalName": "AnirexTo",
         "description": "Anime from anirex.to with sub/dub support. Works on any network.",
         "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/AnirexTo.cs3",
@@ -16432,20 +16412,20 @@
     ]
   },
   "https://raw.githubusercontent.com/sealinwater/north/builds/repo.json": {
-    "name": "North",
-    "description": "North • Deep Blue Nordic Cloudstream Extension Repository (by sealinwater)",
+    "name": "North (Account API Key Required)",
+    "description": "North • Deep Blue Nordic & Danish Cloudstream Extension (by sealinwater). ⚠️ ACCOUNT API KEY REQUIRED: Requires a NordicBytes account & UNIT3D API Key to work. Apply at https://nordicbytes.org/application (application text is public for community vouching — never include real name/PII; email & 2 tracker proof screenshot/profile URLs are staff-only), then copy your API key from Profile -> Settings -> API Key into North Settings.",
     "plugins": [
       {
         "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3",
         "status": 1,
-        "version": 28,
+        "version": 30,
         "name": "North",
         "internalName": "North",
         "authors": [
           "North • sealinwater"
         ],
         "description": "⚠️ ACCOUNT API KEY REQUIRED: North requires a NordicBytes (nordicbytes.org) account & API Key to work. HOW TO SIGN UP & GET A KEY: 1) Apply at https://nordicbytes.org/application — your application text & experience level are public for community vouching (NEVER include your real name, address, or personal info!), while your email and at least 2 tracker proof screenshots + profile URLs are staff-only (required; no proof = rejection). 2) Once logged in at nordicbytes.org, go to Profile -> Settings -> API Key and copy your UNIT3D API Token. 3) Open Cloudstream -> Settings -> Extensions -> North (Gear Icon), paste your key, and Save. Features NORTH Studio Intro, Companion Proxy API, Seekable MKV/MP4 Streaming, Chromecast Stereo AAC Transcoding, TheIntroDB Skip Buttons & Ghost Ratio Protection.",
-        "fileSize": 225914,
+        "fileSize": 232715,
         "repositoryUrl": "https://github.com/sealinwater/north",
         "language": "da",
         "tvTypes": [
@@ -16456,7 +16436,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/sealinwater/north/builds/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-473ca9788f2b74cd4eeb3987fea23576dc4b2eeca6d13e0fd4b2eadcaa528e2d"
+        "fileHash": "sha256-8c74ea3efbed98874d81c56f851663d190384bc4eddfa90bb0e4e41191216167"
       }
     ]
   },

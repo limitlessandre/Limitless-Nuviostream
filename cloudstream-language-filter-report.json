@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 513,
+  "excluded_count": 512,
   "excluded": [
     {
       "internalName": "18+",
@@ -2301,20 +2301,6 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizimanya.cs3",
-      "reason": "no-allowed-language"
-    },
-    {
-      "internalName": "DiziModu",
-      "name": "DiziModu",
-      "source": "BigBullApp",
-      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
-      "language": [
-        "tr"
-      ],
-      "normalizedLanguages": [
-        "tr"
-      ],
-      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziModu.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4794,7 +4780,7 @@
     {
       "internalName": "North",
       "name": "North",
-      "source": "North",
+      "source": "North (Account API Key Required)",
       "sourceRepo": "https://raw.githubusercontent.com/sealinwater/north/builds/repo.json",
       "language": [
         "da"

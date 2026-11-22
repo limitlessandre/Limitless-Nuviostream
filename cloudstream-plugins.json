@@ -390,10 +390,10 @@
   },
   {
     "iconUrl": "https://anirex.to/images/fav.png",
-    "fileHash": "sha256-59148fddb47258b878a6428eaa0f708ce78e1035ece53f31df63406b5e6c238e",
+    "fileHash": "sha256-58fbf02e4e7d7aae7d728b6a8cd24107488f3c2803f8875c492f4ddbe73c9e84",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
-    "fileSize": 21345,
+    "fileSize": 32084,
     "status": 1,
     "language": "en",
     "authors": [
@@ -409,7 +409,7 @@
       "Special",
       "Others"
     ],
-    "version": 3,
+    "version": 5,
     "internalName": "AnirexTo",
     "description": "Anime from anirex.to with sub/dub support. Works on any network.",
     "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/AnirexTo.cs3",
@@ -1633,14 +1633,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 50,
+    "version": 52,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-    "fileSize": 645358,
+    "fileSize": 646428,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1649,19 +1649,19 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-cdecaa81b90fdd996aadb3a8fbd73b693700b6e5609779fd92ae9c4b7c0fd08e"
+    "fileHash": "sha256-6eb75c1fbca353f92f8e021b3c6439a2404262456071f180112bf1603b732292"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
     "status": 1,
-    "version": 10,
+    "version": 11,
     "name": "Kdesa",
     "internalName": "Kdesa",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc",
-    "fileSize": 72143,
+    "fileSize": 87424,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1671,7 +1671,7 @@
     ],
     "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
     "apiVersion": 1,
-    "fileHash": "sha256-2aaeee0e6c50e325343daa96c409c71b20d5c27c01e332351abc17b1f19d8c8f"
+    "fileHash": "sha256-42e75e9d438094c4002d3c21cfecc7cacdd598c3429c53a60580ed77a80e4d70"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
@@ -3600,14 +3600,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
     "status": 1,
-    "version": 9,
+    "version": 10,
     "name": "VegaMovies",
     "internalName": "VegaMovies",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies and series from Vegamovies and Rogmovies in one place",
-    "fileSize": 92166,
+    "fileSize": 92620,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -3616,7 +3616,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/rU_X9wYHWc1V4OeSodaIhDRJF3cf7VNtc9zRcpP9Y2vHgAOttPcDqnbChe_Nx7M7KDt1oJ4hva6WXGjnPurQcuc",
     "apiVersion": 1,
-    "fileHash": "sha256-61c4daea98834f7fbdd83ac086aed86d187e7d81ae4e6cf3de994781c9c543ea"
+    "fileHash": "sha256-6cb227889da33d99f95a3d148d430a3d3435ba4d9f2762bbe8cafa4cfc7bf79b"
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/VidBolt.png",

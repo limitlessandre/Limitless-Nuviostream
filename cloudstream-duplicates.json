@@ -635,7 +635,7 @@
     "chosen": {
       "internalName": "VegaMovies",
       "name": "VegaMovies",
-      "version": 9,
+      "version": 10,
       "language": "en",
       "source": "raghav repo",
       "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
@@ -646,7 +646,7 @@
       {
         "internalName": "VegaMovies",
         "name": "VegaMovies",
-        "version": 9,
+        "version": 10,
         "language": "en",
         "source": "raghav repo",
         "sourceRepo": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/repo.json",
