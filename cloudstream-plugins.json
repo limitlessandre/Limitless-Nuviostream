@@ -1134,16 +1134,16 @@
     "name": "EasyPlayProvider"
   },
   {
-    "url": "https://cs.eclipsia.dpdns.org/files/daa24c6835722c56/Eclipsia.cs3",
+    "url": "https://cs.eclipsia.dpdns.org/files/bded44e278f53fe3/Eclipsia.cs3",
     "status": 1,
-    "version": 13,
+    "version": 14,
     "name": "Eclipsia",
     "internalName": "Eclipsia",
     "authors": [
       "Eclipsia"
     ],
     "description": "Curated collection of Providers",
-    "fileSize": 1066723,
+    "fileSize": 1072881,
     "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
     "language": "en",
     "tvTypes": [
@@ -1152,7 +1152,7 @@
     ],
     "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
     "apiVersion": 1,
-    "fileHash": "sha256-daa24c6835722c560c941acc00d38aa66ab429c6ffce462d81265d12df0fdb03"
+    "fileHash": "sha256-bded44e278f53fe3208039f2e74c5893789512a9f8c7d717a6d386870170382f"
   },
   {
     "url": "https://cs.eclipsia.dpdns.org/files/70ff4d46d9b87506/EclipsiaAnime.cs3",
@@ -1654,14 +1654,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
     "status": 1,
-    "version": 11,
+    "version": 12,
     "name": "Kdesa",
     "internalName": "Kdesa",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "KDesa - Movies, TV Shows & Anime Multi-source,Multi-audio in hindi,english etc",
-    "fileSize": 87424,
+    "fileSize": 81702,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1671,7 +1671,7 @@
     ],
     "iconUrl": "https://kdesa.stream/android-chrome-192x192.png?v=6",
     "apiVersion": 1,
-    "fileHash": "sha256-42e75e9d438094c4002d3c21cfecc7cacdd598c3429c53a60580ed77a80e4d70"
+    "fileHash": "sha256-cf0ecc9df56dc8aed74b5d168016c4b25f68691f6417a52b1f55423828d901b3"
   },
   {
     "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Kickassanime.cs3",
@@ -2107,10 +2107,10 @@
   },
   {
     "iconUrl": "https://movienestbd.best/favicon.png",
-    "fileHash": "sha256-ae9c874b77066ad9c33799fa6a2f01cf097421350a4114510600af0b27a04dcf",
+    "fileHash": "sha256-4093229ad83ae0a4b8d7a8628a6bff5990eb224c05265e21b0ca0063873394e6",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
-    "fileSize": 26583,
+    "fileSize": 31372,
     "status": 1,
     "language": "en",
     "authors": [
@@ -2126,7 +2126,7 @@
       "Documentary",
       "Others"
     ],
-    "version": 2,
+    "version": 3,
     "internalName": "Movienestbd",
     "description": "MovieNestBD. Movies, web series and anime in many languages, with direct HLS links.",
     "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",

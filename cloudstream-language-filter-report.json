@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 512,
+  "excluded_count": 513,
   "excluded": [
     {
       "internalName": "18+",
@@ -4392,6 +4392,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "MovieNestBD",
+      "name": "MovieNestBD",
+      "source": "Phisher Repo",
+      "sourceRepo": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json",
+      "language": [
+        "bn"
+      ],
+      "normalizedLanguages": [
+        "bn"
+      ],
+      "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieNestBD.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "MoviePlusProvider",
       "name": "MoviePlusProvider",
       "source": "CNC Repo(All Language)",
@@ -4788,7 +4802,7 @@
       "normalizedLanguages": [
         "da"
       ],
-      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3",
+      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=31",
       "reason": "no-allowed-language"
     },
     {

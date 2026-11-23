@@ -21,7 +21,7 @@
         "Documentary",
         "Others"
       ],
-      "version": 2,
+      "version": 3,
       "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",
       "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
       "overlap": {
@@ -482,7 +482,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 11,
+      "version": 12,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {
@@ -1954,8 +1954,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 13,
-      "url": "https://cs.eclipsia.dpdns.org/files/daa24c6835722c56/Eclipsia.cs3",
+      "version": 14,
+      "url": "https://cs.eclipsia.dpdns.org/files/bded44e278f53fe3/Eclipsia.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
