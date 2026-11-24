@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 513,
+  "excluded_count": 514,
   "excluded": [
     {
       "internalName": "18+",
@@ -2864,6 +2864,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "FilmEkseni",
+      "name": "FilmEkseni",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmEkseni.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "FilmFrei24",
       "name": "FilmFrei24",
       "source": "German providers repository",
@@ -4802,7 +4816,7 @@
       "normalizedLanguages": [
         "da"
       ],
-      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=31",
+      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=32",
       "reason": "no-allowed-language"
     },
     {

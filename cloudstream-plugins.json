@@ -1633,14 +1633,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
     "status": 1,
-    "version": 52,
+    "version": 53,
     "name": "JustPlay",
     "internalName": "JustPlay",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-    "fileSize": 646428,
+    "fileSize": 649710,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -1649,7 +1649,7 @@
     ],
     "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
     "apiVersion": 1,
-    "fileHash": "sha256-6eb75c1fbca353f92f8e021b3c6439a2404262456071f180112bf1603b732292"
+    "fileHash": "sha256-2f469e9ffea7b0da2e6e2c19777b2fecf34bc1b75bb88cc2dc7267814dd00413"
   },
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -3600,14 +3600,14 @@
   {
     "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/VegaMovies.cs3",
     "status": 1,
-    "version": 10,
+    "version": 11,
     "name": "VegaMovies",
     "internalName": "VegaMovies",
     "authors": [
       "KSHITIJ8473"
     ],
     "description": "Movies and series from Vegamovies and Rogmovies in one place",
-    "fileSize": 92620,
+    "fileSize": 93056,
     "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
     "language": "en",
     "tvTypes": [
@@ -3616,7 +3616,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/rU_X9wYHWc1V4OeSodaIhDRJF3cf7VNtc9zRcpP9Y2vHgAOttPcDqnbChe_Nx7M7KDt1oJ4hva6WXGjnPurQcuc",
     "apiVersion": 1,
-    "fileHash": "sha256-6cb227889da33d99f95a3d148d430a3d3435ba4d9f2762bbe8cafa4cfc7bf79b"
+    "fileHash": "sha256-566daecae653df761a199c36bafd8aeff8327c3d2c2e9632bec658ef03334158"
   },
   {
     "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/VidBolt.png",
