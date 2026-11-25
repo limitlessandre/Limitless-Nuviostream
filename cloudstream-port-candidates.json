@@ -1954,8 +1954,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 14,
-      "url": "https://cs.eclipsia.dpdns.org/files/bded44e278f53fe3/Eclipsia.cs3",
+      "version": 15,
+      "url": "https://cs.eclipsia.dpdns.org/files/0be3c8e602b6ca71/Eclipsia.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -3220,7 +3220,7 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 53,
+      "version": 54,
       "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
       "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
       "overlap": {

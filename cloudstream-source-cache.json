@@ -3291,10 +3291,10 @@
       },
       {
         "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/movielinkbd.webp",
-        "fileHash": "sha256-9f33044d7f643fbf2ed7de68cf0085b9398a39eed582ee680bfbfe7f299075c9",
+        "fileHash": "sha256-0aed7f8078304190bf60d0b41870188230131e1bcce9b4ecb8dfe3983d4fcb64",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 64041,
+        "fileSize": 64686,
         "status": 1,
         "language": "bn",
         "authors": [
@@ -3306,7 +3306,7 @@
           "AnimeMovie",
           "AsianDrama"
         ],
-        "version": 28,
+        "version": 29,
         "internalName": "MovieLinkBDProvider",
         "description": "MovieLinkBD - Largest Movie Download Site in Bangladesh",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieLinkBDProvider.cs3",
@@ -3517,6 +3517,27 @@
         "description": "Watch Live sports and TV channels via SK Tech",
         "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SKTechProvider.cs3",
         "name": "SKTechProvider"
+      },
+      {
+        "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/SonyLIVProvider/logo.png",
+        "fileHash": "sha256-71b3b7960905b1b9ec0fb42df42efbc0849d8ef7160203699fdd3b1012b4a74f",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+        "fileSize": 41310,
+        "status": 3,
+        "language": "en",
+        "authors": [
+          "NivinCNC"
+        ],
+        "tvTypes": [
+          "Movie",
+          "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "SonyLIVProvider",
+        "description": "SonyLIV movies & shows via the JioTV+ aggregation (POC VOD template)",
+        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SonyLIVProvider.cs3",
+        "name": "SonyLIVProvider"
       },
       {
         "iconUrl": "https://sportzxlive.com/wp-content/uploads/2026/04/cropped-logo-1-2048x1611-1-1024x806.png",
@@ -4428,14 +4449,14 @@
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Bristege.cs3",
         "status": 1,
-        "version": 3,
+        "version": 4,
         "name": "Brstej",
         "internalName": "Bristege",
         "authors": [
           "Abodabodd"
         ],
         "description": "",
-        "fileSize": 29912,
+        "fileSize": 30187,
         "repositoryUrl": "https://github.com/Abodabodd/re-3arabi",
         "language": "ar",
         "tvTypes": [
@@ -4443,7 +4464,7 @@
         ],
         "iconUrl": "https://amd.brstej.com/22.png",
         "apiVersion": 1,
-        "fileHash": "sha256-51faf0090b198ada78e65af15b2d3c09620d2ffd92ab3995c5ff2e5b34fed3bf"
+        "fileHash": "sha256-8812f5dbe5fe5dd926a90dab1fe47c298d79ab5641b25e48cb3cb27204e5881c"
       },
       {
         "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Carateen.cs3",
@@ -9719,14 +9740,14 @@
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/JustPlay.cs3",
         "status": 1,
-        "version": 53,
+        "version": 54,
         "name": "JustPlay",
         "internalName": "JustPlay",
         "authors": [
           "KSHITIJ8473"
         ],
         "description": "Movies, series and live sports from multiple sources all in one collection of best sources with stream and download support ",
-        "fileSize": 649710,
+        "fileSize": 657586,
         "repositoryUrl": "https://github.com/KSHITIJ8473/raghav",
         "language": "en",
         "tvTypes": [
@@ -9735,7 +9756,7 @@
         ],
         "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknDTJSN2AhrHzfxF75gr9-qG4x-JzwHRnvPDjZP2aa-93KRaXPF1_ZQdm&s=10",
         "apiVersion": 1,
-        "fileHash": "sha256-2f469e9ffea7b0da2e6e2c19777b2fecf34bc1b75bb88cc2dc7267814dd00413"
+        "fileHash": "sha256-3fcbc8db3054526a67345af8a3908fc042391994eaf254ca2359728704015b3d"
       },
       {
         "url": "https://raw.githubusercontent.com/KSHITIJ8473/raghav/builds/Kdesa.cs3",
@@ -12327,7 +12348,7 @@
           "Faisal"
         ],
         "description": "StreamHub -  Multilingual provider Non-Stop Solution For Streaming Movies/Tv series & Anime ",
-        "fileSize": 1349791,
+        "fileSize": 1387202,
         "repositoryUrl": "https://github.com/Faisal0786/Desi",
         "language": "hi",
         "tvTypes": [
@@ -12339,7 +12360,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/Faisal0786/Desi/main/Icons/images%20(1).jpeg",
         "apiVersion": 1,
-        "fileHash": "sha256-7e3ececffbcff9df4ad37679e726bd6582014fe476134119ac1f50fcbb19a943"
+        "fileHash": "sha256-5b2f15592ad09f42733938bf0aa922e3c3ca3780e9f9d017b47e9003f25d2aa7"
       },
       {
         "url": "https://raw.githubusercontent.com/Faisal0786/Desi/builds/TamilToon.cs3",
@@ -12501,16 +12522,16 @@
     "description": "Curated Collection of Providers",
     "plugins": [
       {
-        "url": "https://cs.eclipsia.dpdns.org/files/bded44e278f53fe3/Eclipsia.cs3",
+        "url": "https://cs.eclipsia.dpdns.org/files/0be3c8e602b6ca71/Eclipsia.cs3",
         "status": 1,
-        "version": 14,
+        "version": 15,
         "name": "Eclipsia",
         "internalName": "Eclipsia",
         "authors": [
           "Eclipsia"
         ],
         "description": "Curated collection of Providers",
-        "fileSize": 1072881,
+        "fileSize": 1073167,
         "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
         "language": "en",
         "tvTypes": [
@@ -12519,7 +12540,7 @@
         ],
         "iconUrl": "https://cs3-server.orkestr.run/img/47cdacc9a3f2f869.png",
         "apiVersion": 1,
-        "fileHash": "sha256-bded44e278f53fe3208039f2e74c5893789512a9f8c7d717a6d386870170382f"
+        "fileHash": "sha256-0be3c8e602b6ca71ca0133b7114f21330e99169c3aedcd63cf207a174a67069e"
       },
       {
         "url": "https://cs.eclipsia.dpdns.org/files/70ff4d46d9b87506/EclipsiaAnime.cs3",
@@ -14400,10 +14421,10 @@
       },
       {
         "iconUrl": "https://www.google.com/s2/favicons?domain=izlefilm.net&sz=%size%",
-        "fileHash": "sha256-ce28a836337bb33928b4993bf0be3beafc677e205d068f7ff69635de4238fc58",
+        "fileHash": "sha256-463de194e26f48ac51f417ff2cc7992e3e7c427b226d2f3c56a9c99b3d99d4fb",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/F0Rextasy/bigbullapp-cs",
-        "fileSize": 112253,
+        "fileSize": 112256,
         "status": 1,
         "language": "tr",
         "authors": [
@@ -14412,7 +14433,7 @@
         "tvTypes": [
           "Movie"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "IzleFilm",
         "description": "IzleFilm — izlefilm.net Full HD Türkçe dublaj/altyazılı film arşivi",
         "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/IzleFilm.cs3",
@@ -16432,19 +16453,19 @@
   },
   "https://raw.githubusercontent.com/sealinwater/north/builds/repo.json": {
     "name": "North (Account API Key Required)",
-    "description": "North • Deep Blue Nordic & Danish Cloudstream Extension (by sealinwater). ⚠️ ACCOUNT API KEY REQUIRED: Requires a NordicBytes account & UNIT3D API Key to work. Apply at https://nordicbytes.org/application (application text is public for community vouching — never include real name/PII; email & 2 tracker proof screenshot/profile URLs are staff-only), then copy your API key from Profile -> Settings -> API Key into North Settings.",
+    "description": "North • Nordic & Danish Cloudstream Extension (by sealinwater). ⚠️ ACCOUNT API KEY REQUIRED: You need a NordicBytes account and UNIT3D API key to use North. Apply at https://nordicbytes.org/application (your application text is public so members can vouch for you, so don't include your real name or personal info; your email and 2 tracker proof screenshot/profile links are only visible to staff), then copy your API key from Profile -> Settings -> API Key into North Settings.",
     "plugins": [
       {
-        "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=32",
+        "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=38",
         "status": 1,
-        "version": 32,
+        "version": 38,
         "name": "North",
         "internalName": "North",
         "authors": [
           "North • sealinwater"
         ],
-        "description": "⚠️ ACCOUNT API KEY REQUIRED: North requires a NordicBytes (nordicbytes.org) account & API Key to work. HOW TO SIGN UP & GET A KEY: 1) Apply at https://nordicbytes.org/application — your application text & experience level are public for community vouching (NEVER include your real name, address, or personal info!), while your email and at least 2 tracker proof screenshots + profile URLs are staff-only (required; no proof = rejection). 2) Once logged in at nordicbytes.org, go to Profile -> Settings -> API Key and copy your UNIT3D API Token. 3) Open Cloudstream -> Settings -> Extensions -> North (Gear Icon), paste your key, and Save. Features NORTH Studio Intro, Companion Proxy API, Seekable MKV/MP4 Streaming, Chromecast Stereo AAC Transcoding, TheIntroDB Skip Buttons & Ghost Ratio Protection.",
-        "fileSize": 236328,
+        "description": "⚠️ ACCOUNT API KEY REQUIRED: You need a NordicBytes (nordicbytes.org) account and API key to use North. How to get set up: 1) Apply at https://nordicbytes.org/application. Everything you write in your application text and experience level is public so members can vouch for you, so never put your real name, address, or personal info in there. Your email and at least 2 tracker proof screenshots + profile links are only shown to staff (you do need proofs or the application gets rejected). 2) Once you can log in at nordicbytes.org, go to Profile -> Settings -> API Key and copy your UNIT3D API token. 3) In Cloudstream, go to Settings -> Extensions -> North (gear icon), paste your key, and hit Save. Includes the Nordic Aurora intro, seekable MKV/MP4 playback, Chromecast stereo audio support, skip intro buttons, and Ghost Ratio protection.",
+        "fileSize": 264532,
         "repositoryUrl": "https://github.com/sealinwater/north",
         "language": "da",
         "tvTypes": [
@@ -16455,7 +16476,7 @@
         ],
         "iconUrl": "https://raw.githubusercontent.com/sealinwater/north/builds/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-ce6d3a5b254b99e5f5152ba1ae9f6cbd2217a476d6d839b1b3e71a5d51115efe"
+        "fileHash": "sha256-071ec9f85b5beff5199b0fa1eb82887bc3875b9b6df8b74aa392e407138c3a7d"
       }
     ]
   },
