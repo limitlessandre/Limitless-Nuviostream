@@ -1,7 +1,7 @@
 {
   "native_provider_count": 7,
-  "cloudstream_provider_count": 189,
-  "no_obvious_native_overlap_count": 184,
+  "cloudstream_provider_count": 190,
+  "no_obvious_native_overlap_count": 185,
   "likely_overlap_count": 0,
   "exact_or_alias_overlap_count": 5,
   "method_note": "Name/ID comparison only. A unique result is a port candidate, not proof that the extension can be automatically converted or will work in Nuvio JS.",
@@ -2604,6 +2604,29 @@
       "overlap": {
         "status": "no-obvious-overlap",
         "score": 0.385,
+        "native_matches": []
+      },
+      "priority": "low-priority",
+      "priority_score": 2,
+      "reasons": [
+        "Movies / Western TV coverage"
+      ]
+    },
+    {
+      "internalName": "SonyLIVProvider",
+      "name": "SonyLIVProvider",
+      "description": "SonyLIV movies & shows via jio",
+      "language": "en",
+      "tvTypes": [
+        "Movie",
+        "TvSeries"
+      ],
+      "version": 2,
+      "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SonyLIVProvider.cs3",
+      "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+      "overlap": {
+        "status": "no-obvious-overlap",
+        "score": 0.417,
         "native_matches": []
       },
       "priority": "low-priority",

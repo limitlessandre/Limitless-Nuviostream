@@ -7,7 +7,7 @@
   ],
   "keep_unknown_language": false,
   "keep_multilingual": true,
-  "excluded_count": 514,
+  "excluded_count": 537,
   "excluded": [
     {
       "internalName": "18+",
@@ -1068,6 +1068,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "AsyaFilmIzle",
+      "name": "AsyaFilmIzle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/AsyaFilmIzle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "AsyaMax",
       "name": "AsyaMax",
       "source": "BigBullApp",
@@ -1389,6 +1403,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Budi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "BuzFilmizle3",
+      "name": "BuzFilmizle3",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/BuzFilmizle3.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -1926,6 +1954,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "DDiziBox",
+      "name": "DDiziBox",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DDiziBox.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DDizimag",
       "name": "DDizimag",
       "source": "BigBullApp",
@@ -2147,6 +2189,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziCaN.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DiziDad",
+      "name": "DiziDad",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziDad.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2374,6 +2430,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "DiziRoll",
+      "name": "DiziRoll",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziRoll.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DiziSol",
       "name": "DiziSol",
       "source": "BigBullApp",
@@ -2399,6 +2469,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Dizist.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DiziWatch",
+      "name": "DiziWatch",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DiziWatch.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2570,6 +2654,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "DramaDunyam",
+      "name": "DramaDunyam",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DramaDunyam.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "DramaQu",
       "name": "DramaQu",
       "source": "Indostream Repo",
@@ -2581,6 +2679,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/DramaQu.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "DramaVakti",
+      "name": "DramaVakti",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/DramaVakti.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -2906,6 +3018,34 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "Filmizle",
+      "name": "Filmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Filmizle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "FilmizleHell",
+      "name": "FilmizleHell",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmizleHell.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Filmizyon",
       "name": "Filmizyon",
       "source": "BigBullApp",
@@ -2945,6 +3085,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/FilmMakinesi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Filmmirasim",
+      "name": "Filmmirasim",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Filmmirasim.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3345,6 +3499,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/HDhub4u.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Hdkore",
+      "name": "Hdkore",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Hdkore.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -3866,6 +4034,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "KralFilmizle",
+      "name": "KralFilmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/KralFilmizle.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "Krmzy",
       "name": "Krmzy",
       "source": "3rabi عربي",
@@ -3933,6 +4115,20 @@
         "id"
       ],
       "url": "https://raw.githubusercontent.com/TeKuma25/IndoStream/builds/Kuronime.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "La7Play",
+      "name": "La7Play",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/La7Play.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4090,6 +4286,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "LiderFilm",
+      "name": "LiderFilm",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/LiderFilm.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "LiveTGTV + M3U PLAYER",
       "name": "LiveTGTV + M3U PLAYER",
       "source": "raghav repo",
@@ -4227,6 +4437,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Microtv.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "MiniDiziIzle",
+      "name": "MiniDiziIzle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/MiniDiziIzle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -4816,7 +5040,7 @@
       "normalizedLanguages": [
         "da"
       ],
-      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=38",
+      "url": "https://raw.githubusercontent.com/sealinwater/north/builds/North.cs3?v=39",
       "reason": "no-allowed-language"
     },
     {
@@ -4887,6 +5111,20 @@
         "tr"
       ],
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/OnlineDizi.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "OnlineFilmizle",
+      "name": "OnlineFilmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/OnlineFilmizle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -5184,6 +5422,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "PlexWatch",
+      "name": "PlexWatch",
+      "source": "DieGon Repository",
+      "sourceRepo": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/repo.json",
+      "language": [
+        "it"
+      ],
+      "normalizedLanguages": [
+        "it"
+      ],
+      "url": "https://raw.githubusercontent.com/DieGon7771/ItaliaInStreaming/builds/PlexWatch.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "PlutoTV",
       "name": "PlutoTV",
       "source": "German providers repository",
@@ -5380,6 +5632,20 @@
       "reason": "no-allowed-language"
     },
     {
+      "internalName": "SeiCode",
+      "name": "SeiCode",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/SeiCode.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "SelcukFlix",
       "name": "SelcukFlix",
       "source": "BigBullApp",
@@ -5531,6 +5797,20 @@
         "ar"
       ],
       "url": "https://raw.githubusercontent.com/Abodabodd/re-3arabi/builds/Shahidwbas.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Shortizle",
+      "name": "Shortizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Shortizle.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -6848,6 +7128,20 @@
       "reason": "unknown-language"
     },
     {
+      "internalName": "YouTubeDiziFilm",
+      "name": "YouTubeDiziFilm",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/YouTubeDiziFilm.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
       "internalName": "YoutubeProvider",
       "name": "YoutubeProvider",
       "source": "Cloudstream providers repository",
@@ -6881,6 +7175,20 @@
         "de"
       ],
       "url": "https://raw.githubusercontent.com/Bnyro/GermanProviders/builds/ZDF.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "Zdizi",
+      "name": "Zdizi",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/Zdizi.cs3",
       "reason": "no-allowed-language"
     },
     {
@@ -6937,6 +7245,20 @@
         "hi"
       ],
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Zinkmovies.cs3",
+      "reason": "no-allowed-language"
+    },
+    {
+      "internalName": "ZipFilmizle",
+      "name": "ZipFilmizle",
+      "source": "BigBullApp",
+      "sourceRepo": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
+      "language": [
+        "tr"
+      ],
+      "normalizedLanguages": [
+        "tr"
+      ],
+      "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/builds/ZipFilmizle.cs3",
       "reason": "no-allowed-language"
     },
     {

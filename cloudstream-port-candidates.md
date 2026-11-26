@@ -1,8 +1,8 @@
 # CloudStream → Nuvio port candidate audit
 
 Native Limitless providers: **7**  
-Filtered CloudStream providers: **189**  
-No obvious native overlap: **184**  
+Filtered CloudStream providers: **190**  
+No obvious native overlap: **185**  
 Likely overlap requiring review: **0**  
 Exact/alias overlap: **5**
 
@@ -124,6 +124,7 @@ Exact/alias overlap: **5**
 - **PremiumSmart** (`PremiumSmart`) — en; Movie, TvSeries — The PremiumSmart source only, powered by the PlavioHD addon.
 - **QuickPlay** (`QuickPlay`) — en; TvSeries — QuickPlay - 52 short-drama OTTs in one plugin (pick platforms in settings; per-OTT Home rows, search, subtitles & HLS/MP4 playback)
 - **SkymoviesHD** (`SkymoviesHD`) — en; Movie, TvSeries, NSFW — just testing
+- **SonyLIVProvider** (`SonyLIVProvider`) — en; Movie, TvSeries — SonyLIV movies & shows via jio
 - **SoraStream** (`SoraStream`) — en; Movie, TvSeries — The SoraStream source only, powered by the PlavioHD addon.
 - **SpaceDom** (`SpaceDom`) — en; Movie, TvSeries — The SpaceDom source only, powered by the PlavioHD addon.
 - **StremioAddon** (`StremioAddon`) — en; TvSeries, Movie, Torrent — [!] Requires Setup  - Allows you to use any Stremio addon by pasting their manifest.json url

@@ -3111,6 +3111,27 @@
     "fileSize": 46341
   },
   {
+    "iconUrl": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/Logos/SonyLIVProvider/logo.png",
+    "fileHash": "sha256-210cac2137bb3fb5baab7996a764714253db342e956e6ccdd1898f0fc305b4ad",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
+    "fileSize": 55704,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "NivinCNC"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 2,
+    "internalName": "SonyLIVProvider",
+    "description": "SonyLIV movies & shows via jio",
+    "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/SonyLIVProvider.cs3",
+    "name": "SonyLIVProvider"
+  },
+  {
     "iconUrl": "https://raw.githubusercontent.com/kotlinsyd/plaviohd/main/icons/SoraStream.png",
     "fileHash": "sha256-6c19155ea41e2bd47925cf2ace3e4458e6a1022c8a6893a2835f82da39bdb0f6",
     "apiVersion": 1,
