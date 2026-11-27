@@ -21,7 +21,7 @@
         "Documentary",
         "Others"
       ],
-      "version": 3,
+      "version": 5,
       "url": "https://raw.githubusercontent.com/Mamun015/mamun015-cloudstream-bdix/builds/Movienestbd.cs3",
       "repositoryUrl": "https://github.com/Mamun015/mamun015-cloudstream-bdix",
       "overlap": {
@@ -51,7 +51,7 @@
         "Cartoon",
         "AnimeMovie"
       ],
-      "version": 715,
+      "version": 716,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -222,7 +222,7 @@
         "TvSeries",
         "Anime"
       ],
-      "version": 99,
+      "version": 100,
       "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/TorraStream.cs3",
       "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
       "overlap": {
@@ -1304,8 +1304,8 @@
         "AnimeMovie",
         "OVA"
       ],
-      "version": 11,
-      "url": "https://cs.eclipsia.dpdns.org/files/70ff4d46d9b87506/EclipsiaAnime.cs3",
+      "version": 12,
+      "url": "https://cs.eclipsia.dpdns.org/files/c48fec895ce7053c/EclipsiaAnime.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",
@@ -1954,8 +1954,8 @@
         "Movie",
         "TvSeries"
       ],
-      "version": 15,
-      "url": "https://cs.eclipsia.dpdns.org/files/0be3c8e602b6ca71/Eclipsia.cs3",
+      "version": 16,
+      "url": "https://cs.eclipsia.dpdns.org/files/091b124bcc63dcff/Eclipsia.cs3",
       "repositoryUrl": "https://gitea.com/eclipsia/cloudstream",
       "overlap": {
         "status": "no-obvious-overlap",

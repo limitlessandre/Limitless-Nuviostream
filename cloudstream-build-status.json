@@ -5,11 +5,11 @@
   "repositories_using_cache": 0,
   "repositories_failed_without_cache": 0,
   "repositories_excluded_as_meta": 1,
-  "raw_plugin_entries": 793,
+  "raw_plugin_entries": 801,
   "eligible_plugin_entries_before_dedupe": 211,
   "unique_plugins": 190,
   "duplicate_groups": 19,
-  "language_filtered_entries": 537,
+  "language_filtered_entries": 545,
   "unknown_language_metadata_entries": 29,
   "inactive_filtered_entries": 45,
   "meta_plugin_entries_filtered": 0,
@@ -266,7 +266,7 @@
       "name": "BigBullApp",
       "url": "https://raw.githubusercontent.com/F0Rextasy/bigbullapp-cs/master/repo.json",
       "status": "ok",
-      "plugins": 134,
+      "plugins": 142,
       "verified": false
     },
     {
