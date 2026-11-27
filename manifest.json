@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.43",
+  "version": "2.3.44",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -63,6 +63,31 @@
         "anime"
       ],
       "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-verification-nexus-v1.js?rev=281",
+      "enabled": true,
+      "hasSettings": true,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "id": "limitless-wco-unified-test",
+      "name": "WCO Unified TEST",
+      "description": "Experimental standalone unified WCO provider. Uses strict TMDB episode-title matching for combined cartoon episodes, the preferred verified extraction engine with an independent frozen legacy fallback, bounded execution, validated media and evidence-based quality/audio labels. Desktop playback testing pending.",
+      "version": "0.1.0",
+      "author": "Limitless Nexus WCO Unified TEST",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-unified.js?rev=010",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
