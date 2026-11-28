@@ -1,6 +1,6 @@
 {
   "name": "Limitless Nexus",
-  "version": "2.3.47",
+  "version": "2.3.48",
   "description": "Nexus build repository for Limitless providers. Active playable providers follow the canonical root-level NAMING_STANDARDS.md quality/audio/subtitle/mirror scheme; unknown stream classes are labeled [UNK] instead of guessed.",
   "scrapers": [
     {
@@ -54,15 +54,15 @@
     {
       "id": "limitless-wco",
       "name": "WCO",
-      "description": "Nexus-only reliability repair (Desktop playback testing pending): invocation request cache and deadline, bounded optional identity and 503 recovery, strict series/episode aliases, preserved direct MP4 playback.",
-      "version": "2.8.1",
+      "description": "Standalone unified WCO provider with strict episode identity, combined-episode matching, independent frozen legacy fallback, verified playback headers, measured or first-party-evidenced quality, and stage-specific diagnostics.",
+      "version": "2.9.0",
       "author": "Limitless Nexus WCO production merge",
       "supportedTypes": [
         "movie",
         "tv",
         "anime"
       ],
-      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-verification-nexus-v1.js?rev=281",
+      "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-unified-production-v1.js?rev=290",
       "enabled": true,
       "hasSettings": true,
       "limited": true,
