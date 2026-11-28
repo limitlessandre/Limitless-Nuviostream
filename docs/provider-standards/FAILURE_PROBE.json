@@ -1,0 +1,99 @@
+{
+  "scenario": "All entry-path requests are HTTP 503; trusted-code subprocesses, not a live/native test.",
+  "nativeDesktopExecuted": false,
+  "providers": [
+    {
+      "id": "limitless-reanime",
+      "name": "Re:ANIME",
+      "version": "1.8.0",
+      "gitBlob": "1f311c76f331c7db2a8c650a294994c159f2262c",
+      "silentEmpty": true,
+      "uncaughtError": "",
+      "rows": []
+    },
+    {
+      "id": "limitless-anikoto-resurrection-test",
+      "name": "AniKoto Resurrection Test",
+      "version": "0.2.1",
+      "gitBlob": "4e0499c717ba5682fdb10ca17098e8f010290bdf",
+      "silentEmpty": false,
+      "uncaughtError": "",
+      "rows": [
+        {
+          "name": "AniKoto Resurrection Test • DIAG IDENTITY LOAD FAIL",
+          "quality": "DIAG",
+          "urlClass": "HTTP direct",
+          "autoplayEligibleInPinnedPluginPredicate": true
+        }
+      ]
+    },
+    {
+      "id": "limitless-wco",
+      "name": "WCO",
+      "version": "2.9.0",
+      "gitBlob": "66018f7395b962c5f62f2835870bc787cba676dc",
+      "silentEmpty": false,
+      "uncaughtError": "",
+      "rows": [
+        {
+          "name": "WCO • DIAG TMDB LOOKUP FAILED • S1E2",
+          "quality": "DIAG",
+          "urlClass": "magnet",
+          "autoplayEligibleInPinnedPluginPredicate": false
+        }
+      ]
+    },
+    {
+      "id": "limitless-asiaflix",
+      "name": "AsiaFlix",
+      "version": "0.5.3",
+      "gitBlob": "072544b64b8b866989e164a1c0e992910eb77ac3",
+      "silentEmpty": true,
+      "uncaughtError": "",
+      "rows": []
+    },
+    {
+      "id": "limitless-tubi",
+      "name": "Tubi",
+      "version": "1.3.1",
+      "gitBlob": "e2a656d86e7ce99ece04281522f8f54936dc0809",
+      "silentEmpty": true,
+      "uncaughtError": "",
+      "rows": []
+    },
+    {
+      "id": "limitless-netmirror",
+      "name": "NetMirror",
+      "version": "2.0.2",
+      "gitBlob": "91a7d5c64b1e22269b8dc84b9a8cd0bd9670a0fd",
+      "silentEmpty": true,
+      "uncaughtError": "",
+      "rows": []
+    },
+    {
+      "id": "limitless-vidlink",
+      "name": "Vidlink",
+      "version": "1.2.0",
+      "gitBlob": "bd854ce1c0e462b2247518eb2e89ec16eff8694a",
+      "silentEmpty": true,
+      "uncaughtError": "",
+      "rows": []
+    },
+    {
+      "id": "limitless-kisskh",
+      "name": "KissKH",
+      "version": "1.1.1",
+      "gitBlob": "6394ed4608c19717865e3372bcdbb4e8d8dde6ea",
+      "silentEmpty": false,
+      "uncaughtError": "",
+      "rows": [
+        {
+          "name": "KissKH • DIAG NO SOURCE FOUND",
+          "quality": "DIAG",
+          "urlClass": "HTTP direct",
+          "autoplayEligibleInPinnedPluginPredicate": true
+        }
+      ]
+    }
+  ]
+}

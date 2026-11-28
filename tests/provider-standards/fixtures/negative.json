@@ -1,0 +1,99 @@
+{
+  "policy": {
+    "provider": "Example"
+  },
+  "items": [
+    {
+      "row": {
+        "name": "Example \u2022 FHD 1080p \u2022 [DUB]",
+        "url": "https://media.invalid/example/1080.mp4",
+        "quality": "1080p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 360,
+          "audioLanguage": "en"
+        }
+      }
+    },
+    {
+      "row": {
+        "name": "Example \u2022 HD 720p \u2022 [DUB]",
+        "url": "https://media.invalid/example/720.mp4",
+        "quality": "720p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 720,
+          "audioLanguage": "en"
+        }
+      }
+    },
+    {
+      "row": {
+        "name": "Example \u2022 SD 480p \u2022 [DUB]",
+        "url": "https://media.invalid/example/480.mp4",
+        "quality": "480p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 480,
+          "audioLanguage": "en"
+        }
+      }
+    }
+  ],
+  "candidateInventory": [
+    {
+      "row": {
+        "name": "Example \u2022 FHD 1080p \u2022 [DUB]",
+        "url": "https://media.invalid/example/1080.mp4",
+        "quality": "1080p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 360,
+          "audioLanguage": "en"
+        }
+      }
+    },
+    {
+      "row": {
+        "name": "Example \u2022 HD 720p \u2022 [DUB]",
+        "url": "https://media.invalid/example/720.mp4",
+        "quality": "720p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 720,
+          "audioLanguage": "en"
+        }
+      }
+    },
+    {
+      "row": {
+        "name": "Example \u2022 SD 480p \u2022 [DUB]",
+        "url": "https://media.invalid/example/480.mp4",
+        "quality": "480p",
+        "language": "English"
+      },
+      "evidence": {
+        "media": {
+          "validated": true,
+          "height": 480,
+          "audioLanguage": "en"
+        }
+      }
+    }
+  ]
+}

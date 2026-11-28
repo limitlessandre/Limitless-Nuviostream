@@ -1,0 +1,160 @@
+{
+  "mode": "nonblocking-source-audit",
+  "manifestVersion": "2.3.49",
+  "providerCount": 8,
+  "providers": [
+    {
+      "id": "limitless-reanime",
+      "name": "Re:ANIME",
+      "version": "1.8.0",
+      "path": "custom/providers/reanime-production-v5.js",
+      "sha256": "d737995411d6277847b869d7465d84156f997e5998257b531f75a5f40a1ff213",
+      "gitBlob": "1f311c76f331c7db2a8c650a294994c159f2262c",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": false,
+        "diagnosticText": true,
+        "httpIconLiteral": false,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 2,
+        "rawCodeUrlCount": 1,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-anikoto-resurrection-test",
+      "name": "AniKoto Resurrection Test",
+      "version": "0.2.1",
+      "path": "custom/providers/anikoto-resurrection-nexus-v1.js",
+      "sha256": "45daa0aa82dd65df3627d1b908120c83efa13e29ec5ab8c667130c073a577386",
+      "gitBlob": "4e0499c717ba5682fdb10ca17098e8f010290bdf",
+      "facts": {
+        "canonicalLabelFunction": false,
+        "topTwoPattern": false,
+        "diagnosticText": true,
+        "httpIconLiteral": true,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 0,
+        "rawCodeUrlCount": 1,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-wco",
+      "name": "WCO",
+      "version": "2.9.0",
+      "path": "custom/providers/wco-unified-production-v1.js",
+      "sha256": "513d3fdf26e3060a8fe3ad98d9b45d93e63e4e6ee909b2e6507c4e34c17a11d2",
+      "gitBlob": "66018f7395b962c5f62f2835870bc787cba676dc",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": true,
+        "diagnosticText": true,
+        "httpIconLiteral": true,
+        "hashlessSentinelLiteral": true,
+        "emptyArrayReturnCount": 162,
+        "rawCodeUrlCount": 22,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-asiaflix",
+      "name": "AsiaFlix",
+      "version": "0.5.3",
+      "path": "custom/providers/asiaflix-production-v3.js",
+      "sha256": "8c710c71d736ed237c70666a5677e074ee4aabc05f0afdee7b721324b0e4bce2",
+      "gitBlob": "072544b64b8b866989e164a1c0e992910eb77ac3",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": false,
+        "diagnosticText": false,
+        "httpIconLiteral": false,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 7,
+        "rawCodeUrlCount": 0,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-tubi",
+      "name": "Tubi",
+      "version": "1.3.1",
+      "path": "custom/providers/tubi-production-v4.js",
+      "sha256": "06880517932e5353f4b99bf67259560cba2e5b98f964d810d682ba78ec021b8f",
+      "gitBlob": "e2a656d86e7ce99ece04281522f8f54936dc0809",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": false,
+        "diagnosticText": true,
+        "httpIconLiteral": false,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 2,
+        "rawCodeUrlCount": 1,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-netmirror",
+      "name": "NetMirror",
+      "version": "2.0.2",
+      "path": "custom/providers/netmirror-helix-nexus-v1.js",
+      "sha256": "a667d76cec1994b03db8ee91cbb9b12bb75f4ee4fd8f4a414a25a647ee2f8029",
+      "gitBlob": "91a7d5c64b1e22269b8dc84b9a8cd0bd9670a0fd",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": true,
+        "diagnosticText": false,
+        "httpIconLiteral": false,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 5,
+        "rawCodeUrlCount": 0,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-vidlink",
+      "name": "Vidlink",
+      "version": "1.2.0",
+      "path": "custom/providers/vidlink-standalone-production-v1.js",
+      "sha256": "6a77ef1e654eaac15263b6c490f1616ed56ff95ac9390d86888a3a7d60aaca1c",
+      "gitBlob": "bd854ce1c0e462b2247518eb2e89ec16eff8694a",
+      "facts": {
+        "canonicalLabelFunction": false,
+        "topTwoPattern": false,
+        "diagnosticText": false,
+        "httpIconLiteral": false,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 7,
+        "rawCodeUrlCount": 0,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    },
+    {
+      "id": "limitless-kisskh",
+      "name": "KissKH",
+      "version": "1.1.1",
+      "path": "custom/providers/kisskh-production-v2.js",
+      "sha256": "6446f14028071cc0d8e2bf0a775d1b3db91728242b99cf5164fb1f61d9dd0644",
+      "gitBlob": "6394ed4608c19717865e3372bcdbb4e8d8dde6ea",
+      "facts": {
+        "canonicalLabelFunction": true,
+        "topTwoPattern": false,
+        "diagnosticText": true,
+        "httpIconLiteral": true,
+        "hashlessSentinelLiteral": false,
+        "emptyArrayReturnCount": 0,
+        "rawCodeUrlCount": 1,
+        "trackFields": true
+      },
+      "review": "Heuristics only: inspect transitive code, emitted rows, evidence and native playback. Embedded historical strings may be unreachable; pattern presence/absence is not a compliance verdict."
+    }
+  ],
+  "nativePlaybackProved": false
+}

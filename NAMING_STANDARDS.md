@@ -2,7 +2,7 @@
 
 This file is the canonical reference for user-facing stream names in **Limitless Nexus**. When a future development chat is asked to "use the naming standards", "follow the Nexus naming scheme", or similar, inspect this file before changing provider labels.
 
-These rules apply to presentation only. They must not be used to invent media properties that the provider, returned tracks, or prior manual verification do not establish.
+These rules govern user-facing presentation and the final quality-selection default. They must not be used to invent media properties that the provider, returned tracks, or prior scoped manual verification do not establish, or to rewrite extraction outside the authorized maintenance scope.
 
 ## Stream-card grammar
 
@@ -26,7 +26,7 @@ NetMirror • SD 480p • [DUB]
 Diagnostics are not normal stream classifications and keep their diagnostic form, for example:
 
 ```text
-KissKH • DIAG NO SOURCE FOUND
+KissKH • DIAG NO SOURCE FOUND • S1E2
 ```
 
 ## Audio/subtitle tag decision tree
@@ -35,7 +35,7 @@ Tags are evidence-based. Apply them in this priority order.
 
 ### 1. `[DUAL]`
 
-Use when the source explicitly identifies dual/multiple audio, or the returned media metadata exposes more than one selectable audio track.
+Use only when multiple selectable audio tracks are genuinely available in the returned media. Actual track metadata or an explicit trustworthy player/source declaration of selectable multiple audio can establish this; a marketing label, multiple servers, or separate dub/original encodes cannot.
 
 `[DUAL]` takes priority whether selectable subtitle tracks are present or not.
 
@@ -62,7 +62,7 @@ verified hard-sub → [HSUB]
 anything else     → [UNK]
 ```
 
-`[DUB]` requires explicit dub evidence such as a provider/source label saying Dub/English Dub or equivalent verified metadata. English language by itself is not enough.
+`[DUB]` is the English/default-English audio bucket, whether English-original or an English dub, on the verified evidence and scoped fallback rules below. Actual stream/player audio evidence comes first; a Dub label or trusted English-original content fallback must not override contradictory media evidence. An unproven display string saying English is not, by itself, verification.
 
 `[HSUB]` requires explicit hard-sub evidence from the source/provider or a provider/stream class that has been manually verified in playback. Japanese/original audio by itself is not enough.
 
@@ -124,6 +124,29 @@ unknown/adaptive without a known height → Unknown Auto
 ```
 
 Use the actual detected height in the label rather than forcing the examples above when a source reports a different resolution in the same tier.
+
+## Global quality-selection default
+
+Return the **two highest distinct verified qualities per meaningful audio category**, independently for actual language/track variants and useful independent mirrors. Apply selection after identity/media validation and sufficient quality evidence, not before discovering which candidates actually work.
+
+| Available valid qualities within one category/mirror | Keep |
+|---|---|
+| 1080p DUB, 720p DUB, 480p DUB | 1080p DUB and 720p DUB |
+| 1080p HSUB, 720p HSUB, 480p HSUB | 1080p HSUB and 720p HSUB independently of DUB |
+| 480p and 360p | Both; no minimum resolution |
+| Only one valid tier | That tier |
+
+Measured resolution wins over contradictory labels. If binary probing cannot measure dimensions, explicitly trustworthy first-party player information may supply a height only when it belongs to the approved content/player and exact media URL. Preserve measured/source-reported/unknown provenance internally. Filenames, guessed URLs and unsupported labels are not quality evidence. Adaptive sources without a verified available height remain **Unknown Auto**; do not duplicate an identical master URL under invented fixed resolutions.
+
+Unknown resolution is not a shared height-zero tier. Preserve distinct useful valid unknown URLs; never collapse them merely because dimensions are unavailable. Where two better evidenced tiers already exist within the **same** category/mirror, unrankable extras may be omitted under a documented provider-specific selection decision (the existing WCO policy). Preserve unknowns when fewer than two evidenced alternatives exist. Candidate-inventory tests must show that a known superior source or an otherwise lost audio category was not discarded.
+
+Two qualities is not a two-row limit across the provider. Distinct languages, genuine selectable audio/track sets and useful independent mirrors retain their own choices. Redundant URLs/headers or repeated known tiers without independent value should be deduplicated. A CDN hostname difference alone is not mirror evidence. Document exceptions such as a useful independent fallback or an adaptive master; never use an exception to advertise unsupported properties.
+
+## Evidence priority and diagnostic separation
+
+Use actual verified stream/track/media facts first, then trustworthy player/source evidence tied to the selected content, then scoped manual verification or trusted content-language fallback when stronger facts are unavailable. Content metadata never overrides contrary stream evidence. Preserve genuine selectable subtitle tracks; hard subtitles are not selectable tracks. Keep every provider-specific verification section above in its recorded scope.
+
+Diagnostics use the separate `Provider • DIAG CODE • Concise Explanation` grammar and no audio/quality stream tag. Codes, sanitization, failure evidence and release behavior are owned by [PROVIDER_DEVELOPMENT_STANDARDS.md](PROVIDER_DEVELOPMENT_STANDARDS.md#4-diagnostic-contract). Their transport must satisfy the [versioned Desktop contract investigation](docs/provider-standards/DESKTOP_DIAGNOSTIC_COMPATIBILITY.md); a correctly named HTTP-icon diagnostic is still potentially playable.
 
 ## Mirrors and other disambiguators
 

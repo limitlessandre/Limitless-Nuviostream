@@ -1,123 +1,56 @@
 # Limitless Nexus
 
-**Limitless Nexus** is the active custom-provider development branch for Limitless Nuviostream. Providers are researched, rebuilt, tested, and cleaned up here before their production implementation is promoted individually to `Limitless-Master-Nexus`.
+**Limitless Nexus** is the active provider development and Nuvio Desktop testing branch of Limitless Nuviostream. Production-ready work is promoted individually to Master only after verification and explicit authorization. Nexus is not a mirror of Master.
 
-Nexus is intentionally not a mirror of Master. It may contain newer provider implementations, test providers, diagnostic scripts, and branch-specific production filenames.
+## Development standards — start here
+
+- [AGENTS.md](AGENTS.md): concise mandatory instructions automatically discoverable at the repository root by Codex when this branch is checked out.
+- [PROVIDER_DEVELOPMENT_STANDARDS.md](PROVIDER_DEVELOPMENT_STANDARDS.md): identity, reliability, diagnostics, tests, branch lifecycle and release/rollback requirements.
+- [NAMING_STANDARDS.md](NAMING_STANDARDS.md): authoritative labels, quality selection and scoped provider-specific audio/subtitle evidence.
+- [Compliance tools](docs/provider-standards/COMPLIANCE_CHECKS.md): nonblocking existing-provider audits and strict checks for new/explicitly updated providers.
+- [Desktop diagnostic compatibility](docs/provider-standards/DESKTOP_DIAGNOSTIC_COMPATIBILITY.md), [active-provider audit](docs/provider-standards/ACTIVE_PROVIDER_AUDIT.md), and [prioritized remediation](docs/provider-standards/REMEDIATION_PLAN.md).
+
+These specifications apply from the beginning for new providers and during maintenance/significant updates of existing ones. They do not authorize blanket rewrites or claim all existing providers already conform. Audit tools are read-only and do not change extraction behavior.
 
 ## Install
 
-Nuvio development manifest:
+The active Nexus manifest is the root [manifest.json](manifest.json):
 
 ```text
 https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/manifest.json
 ```
 
-The root `manifest.json` is the active Nexus manifest.
+## Branch model and promotion
 
-## Branch model
+| Branch | Role |
+|---|---|
+| Limitless-Provider-Lab | Experiments, alternate approaches and reproducible historical archives |
+| Limitless-nexus | Focused development, maintenance and Desktop testing |
+| Limitless-Master-Nexus | Stable, verified implementations promoted individually with explicit authorization |
 
-- **`Limitless-Provider-Lab`**: historical provider bench, old ports, broad experiments, alternate architectures, and unfinished research.
-- **`Limitless-nexus`**: focused development and device-testing branch.
-- **`Limitless-Master-Nexus`**: stable day-to-day catalog containing only individually promoted provider implementations.
+Never merge an entire branch to promote one provider. Preserve stable IDs, verified matching/fallbacks, unrelated providers and rollback references. Prepare minimal provider/manifest changes, validate artifacts, device-test and verify deployed hashes under the detailed lifecycle standard. Branch filenames or packaging can differ only with documented, tested adaptations; blob differences alone do not establish promotion state. For a release intended to use identical bytes, verify identical artifact hashes on both branches.
 
-### Promotion is provider-by-provider
+## Active Nexus checkpoint
 
-Do **not** merge Nexus wholesale into Master merely to promote a completed provider. The branches intentionally have unrelated/divergent history.
+The current root manifest is authoritative; this table is a documentation checkpoint, not a second manifest.
 
-For a promotion:
-
-1. finish the provider here;
-2. device-test its identity, episode, playback, audio, subtitles, quality, and naming behavior;
-3. copy only the tested production implementation into the corresponding Master provider file;
-4. update only that provider's Master manifest entry and the Master repository version as appropriate;
-5. synchronize relevant canonical documentation;
-6. leave unrelated Nexus experiments and diagnostics here.
-
-Master and Nexus provider files are not expected to be byte-identical. Same-version providers can legitimately have different filenames, SHAs, comments, or branch packaging. Compare **provider version and actual promotion state**, not blob size alone.
-
-## Canonical naming
-
-The root `NAMING_STANDARDS.md` is authoritative.
-
-General grammar:
-
-```text
-Provider • Quality • [TAG] • Optional Mirror/Disambiguator
-```
-
-Evidence priority is:
-
-```text
-actual stream/audio metadata
-→ provider/source evidence
-→ content metadata such as TMDB original language
-→ [UNK]
-```
-
-TMDB original language is a fallback, not proof that a particular returned stream uses that language. `[DUAL]` is reserved for media with genuinely selectable multiple audio tracks, not separate original/dub encodes.
-
-Do not add redundant suffixes such as `English Dub` or `Original` when the canonical tag already communicates the distinction.
-
-## Current Nexus providers
-
-The active manifest is authoritative for exact versions. Current checkpoint:
-
-| Provider | Version | State |
+| Provider | Version | Status / next validation |
 |---|---:|---|
-| Re:ANIME | 1.8.0 | Established |
-| WCO | 2.7.1 | Established |
-| AsiaFlix Test | 0.3.6 | Active development/test provider |
-| Tubi | 1.3.1 | Established |
-| NetMirror | 2.0.2 | Complete and promoted to Master |
-| Vidlink | 1.2.0 | Newer than Master; next clear promotion-review candidate |
-| KissKH | 1.1.1 | Established |
+| Re:ANIME | 1.8.0 | Established; diagnostic/silent-failure audit findings remain |
+| AniKoto Resurrection Test | 0.2.1 | Experimental Nexus diagnostic rebuild; no Master promotion implied |
+| WCO | 2.9.0 | Unified normal WCO deployed; native Desktop validation in progress; Master unchanged at 2.7.1 |
+| AsiaFlix | 0.5.3 | Active provider; no longer the old AsiaFlix Test 0.3.6 checkpoint |
+| Tubi | 1.3.1 | Established; wrapper/diagnostic audit findings remain |
+| NetMirror | 2.0.2 | Fast verified route; separate language encodes, not fabricated dual audio |
+| Vidlink | 1.2.0 | General naming decision tree; preserve actual caption tracks |
+| KissKH | 1.1.1 | Scoped first-party Japanese hard-sub verification; diagnostic remediation needed |
 
-Repository version: **2.3.14**
+Repository manifest version: **2.3.49**. The separate WCO Unified TEST manifest entry was removed after normal WCO installation. Historical WCO implementations remain preserved in Provider Lab. WCO source, manifest metadata and version are unchanged by this standards/testing update.
 
-Re:ANIME, WCO, Tubi, and KissKH currently share their advertised provider versions with Master. Their branch files differ by design and should **not** be treated as unpromoted solely because the blobs differ.
+## Working principles and next work
 
-## NetMirror checkpoint
+Preserve working content identity while debugging extraction. A playable URL is not finished until the series/episode, quality, audio/subtitle class, headers and mirror value are verified. Prefer independent useful fallbacks over duplicate frontends. Do not generalize one provider's playback evidence to another.
 
-NetMirror **2.0.2** is complete on Nexus and has been promoted individually to Master.
+New work follows the global two-quality default and the detailed standards. Existing providers are initially audited nonblockingly, then maintained one authorized source at a time. HTTP-icon diagnostics and silent wrapper failures are prioritized in the remediation plan, not migrated automatically by this update.
 
-The fast production route uses Net27 plus Aoneroom subject topology. It resolves verified English-dub and original encodes separately, fails closed on subject/episode mismatch, preserves selectable subtitles, and keeps only the **two highest distinct qualities per audio lane**.
-
-Production names rely on canonical tags rather than redundant `English Dub` / `Original` suffixes. TMDB `original_language` is used as a fallback for original-language classification when stronger stream evidence is unavailable.
-
-A separate slow session-based NetMirror route can expose genuine multi-audio masters. Its cold bootstrap remains too slow for production, so that implementation is parked in Provider Lab as **NetMirror Multi-Audio Lab**. Future work on true `[DUAL]` NetMirror should resume there rather than complicating the fast production resolver.
-
-## Current next steps
-
-At this checkpoint:
-
-1. **Vidlink** is the obvious stable-vs-development version gap: Nexus 1.2.0 vs Master 1.0.0. Review/test it before promotion.
-2. **AsiaFlix Test** remains Nexus-only and should get its own development cycle next rather than being promoted just because it is absent from Master.
-3. Re:ANIME, WCO, Tubi, and KissKH should be considered version-synchronized unless provider history shows a post-promotion change.
-4. Provider Lab should be reviewed separately when choosing new provider candidates.
-
-## Provider development principles
-
-Nexus aims for a compact catalog, roughly twenty or fewer maintainable providers, with useful independent overlap across anime, Western animation, Asian drama, movies, and live-action television.
-
-Prefer providers with reliable identity paths, explicit episode structure, useful language metadata, and extraction paths that work directly in Nuvio. Independent fallbacks are more valuable than several frontends backed by the same source.
-
-Identity resolution and extraction are separate concerns. Preserve a working matching layer while debugging playback. Likewise, a playable URL is not considered finished until the returned media's quality, audio, subtitle, and mirror labels are evidence-based.
-
-Site labels are clues, not proof of media tracks.
-
-## Notes for future chats
-
-When continuing work in a new conversation:
-
-- Start by reading this README, the Master README, `NAMING_STANDARDS.md`, and the active manifests.
-- Assume `Limitless-nexus` is the working branch unless the user explicitly asks for promotion.
-- Never promote the whole Nexus branch to Master for a single provider.
-- Fetch current files before GitHub writes and update using the current blob SHA.
-- Keep production changes isolated from unrelated providers.
-- Bump provider/cache revisions when necessary to defeat stale Nuvio caching.
-- Preserve episode/title identity safeguards.
-- Do not infer audio language from a dub/source label when stronger media evidence contradicts it.
-- Keep diagnostic providers out of Master.
-- After device testing succeeds, promote only the finished provider's production code and manifest metadata.
-
-The point of Nexus is to make provider work understandable one source at a time, rather than turning the repository back into a single giant experiment.
+WCO 2.9.0 remains under native Desktop testing. Do not begin Master promotion without separate authorization. Read current branch files/manifest and relevant provider regression/release evidence before making changes; this README's checkpoint must not override a newer manifest. The goal is a compact maintainable catalog with reliable, independently useful coverage.

@@ -1,0 +1,24 @@
+{
+  "repository": "NuvioMedia/NuvioDesktop",
+  "branch": "Dev",
+  "commit": "1ece6d7ae5dbda29d0ab05952375692a56d81078",
+  "nativeDesktopExecuted": false,
+  "files": [
+    {
+      "name": "PluginRuntime.kt",
+      "gitBlob": "8e650ddef1dd441e6be894e76a32e459f2b62b36"
+    },
+    {
+      "name": "StreamModels.kt",
+      "gitBlob": "b380ba0bf968cd2c839aca0b359d79158973f77c"
+    },
+    {
+      "name": "StreamFetchSupport.kt",
+      "gitBlob": "5bfa30be3d7ce135aaa4846f0df11b732ad6cea7"
+    },
+    {
+      "name": "StreamAutoPlaySelector.kt",
+      "gitBlob": "dfcc0c9982a9c516614c590491c083e3a68fce36"
+    }
+  ]
+}

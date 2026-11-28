@@ -1,0 +1,13 @@
+# Standards update validation
+
+Nexus baseline: `738168f359312f48aa63d203591af9c0989e6b0b`, manifest 2.3.49. Runtime: Node 24.19.0.
+
+- **63/63 new standards-tool tests pass**: canonical tiers/tags/grammar, measured/source quality precedence, lower-only/single/unknown sources, candidate-inventory loss, explicit unknown omission exceptions, meaningful audio/mirrors, duplicate/redundant rows, subtitles/languages, genuine multi-audio, manifests, diagnostics, sanitization, pinned client predicates, static audit non-execution and optional mock-probe behavior.
+- **205/205 existing local WCO regressions pass** as an additional freeze/no-regression check. They remain in the preserved development package; this commit does not silently add that entire suite or its private/local evidence to Nexus.
+- **268/268 combined tests pass**, 0 failures. Command: `node --test tests/provider-standards/*.test.js tests/wco-unified/*.test.js wco-audit/audit.test.js` in the preserved local workspace. In a fresh Nexus checkout, run the self-contained `tests/provider-standards/*.test.js` suite; the WCO development package is separately required for its 205 tests.
+- Positive JSON fixture passes strict mode; negative fixture reports violations with audit exit 0 and strict exit 1. Invalid input exits 2. Baseline manifest passes metadata validation. No runtime filter or CI blocker for existing providers was installed.
+- Static audit inspected all eight active entry sources; their Git blobs match the pinned Nexus tree. Nine non-WCO transitive source modules were inspected read-only. Failure probe used mocked 503 responses, not live provider requests. Desktop source was inspected at current public Dev head `1ece6d7ae5dbda29d0ab05952375692a56d81078`.
+- Root AGENTS.md and required references exist. Local documentation links resolve. All four current provider-specific naming-verification sections (NetMirror, KissKH, Vidlink, WCO) are preserved exactly from the live Nexus naming document.
+- WCO production SHA-256 remains `513d3fdf26e3060a8fe3ad98d9b45d93e63e4e6ee909b2e6507c4e34c17a11d2`. Manifest blob remains `3eca7862e75d22c88a48700c04e0f12994a9e1df`, version 2.3.49. No provider entry, extraction source, source URL, cache revision or provider version changes are included.
+
+The source/fixture checks do not prove installed native Desktop playback, native diagnostic rendering/interaction, current site health, authentication or complete active-provider regression compliance. Legacy/candidate suites identified in the audit were inspected, not reported as newly passing current-version gates. WCO normal-entry Desktop testing remains in progress. Master and Provider Lab must remain unchanged by publication.

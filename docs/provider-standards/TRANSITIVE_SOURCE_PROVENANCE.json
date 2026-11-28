@@ -1,0 +1,69 @@
+{
+  "sourceNexusCommit": "738168f359312f48aa63d203591af9c0989e6b0b",
+  "scope": "Nine literal executable-source dependencies inspected for non-WCO active wrappers. WCO is independently frozen in its standalone; source bodies are not republished here.",
+  "modules": [
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/anime-identity.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/anime-identity.js",
+      "file": "module-1-anime-identity.js",
+      "gitBlob": "d73f2923e29c791c4ea822b384b1f6e544a0753d",
+      "sha256": "d2c6c7567191cd580d7ec8900443a486e97013f6263c19ae8bd0625ec0a29a1f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-season-aware-v1.js?rev=180",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/reanime-season-aware-v1.js?rev=180",
+      "file": "module-0-reanime-season-aware-v1.js",
+      "gitBlob": "b02ea81f444438184e96fa21b7442e0b92aa008b",
+      "sha256": "93917c233f3cf36d0613e5e465a6d1f5f31665fce1aa45925903d1cbb7f82b23"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production-v3.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/tubi-production-v3.js",
+      "file": "module-2-tubi-production-v3.js",
+      "gitBlob": "e83aa2854760e9a83a01755b311980055dea338d",
+      "sha256": "7a02bae20ef4f406e5927742d9259d0b3c8ce069b64ffa40e4237f7f1588b9a1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8e48328bf8b5367cead3a31ee0498cde013376d3/custom/providers/kisskh-standalone-nexus-v1.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/8e48328bf8b5367cead3a31ee0498cde013376d3/custom/providers/kisskh-standalone-nexus-v1.js",
+      "file": "module-3-kisskh-standalone-nexus-v1.js",
+      "gitBlob": "214b888ba5a7b78f9a1153d431a28bfbd5b1c03d",
+      "sha256": "58d81a060ee7fab17ad561be56129a2452127c921928ab9fe2008dbace946907"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient-v2.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/reanime-resilient-v2.js",
+      "file": "module-5-reanime-resilient-v2.js",
+      "gitBlob": "d2bf72709f48ebd0d3c902debc5b7d033f57e8de",
+      "sha256": "7258abd525653ef2c70330da92ebe5dbd960062fcc1e8710371de1f1397f27c5"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/a6e9abb6318fdd68a86a0a561f396599de7a952e/custom/providers/anime-identity.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/a6e9abb6318fdd68a86a0a561f396599de7a952e/custom/providers/anime-identity.js",
+      "file": "module-4-anime-identity.js",
+      "gitBlob": "7c5ddef0346d7febccafc71d1fe36e6c174f5959",
+      "sha256": "1c8aaba18c196e3754288a9674bcba2c2ff6cc0d1903d7854beea915030883af"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-production.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/tubi-production.js",
+      "file": "module-6-tubi-production.js",
+      "gitBlob": "20736162091bf72134cc42fd13b2164b6a1cb494",
+      "sha256": "2b66ad3152e3705a01ee21bcea063ee20f63bce0544992393676ab0dd4f3ff7f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/reanime-resilient.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/reanime-resilient.js",
+      "file": "module-7-reanime-resilient.js",
+      "gitBlob": "27385486d9426496a8adcd20ceecd2e52d931604",
+      "sha256": "752c9319992f0e514673db6661dfabb872081e9d8c6befa47922a145d44966ba"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/tubi-nexus-probe-v5.js",
+      "resolvedUrl": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/738168f359312f48aa63d203591af9c0989e6b0b/custom/providers/tubi-nexus-probe-v5.js",
+      "file": "module-8-tubi-nexus-probe-v5.js",
+      "gitBlob": "3e29497440795007e10fffe05e7dbc200cc9495a",
+      "sha256": "7208c894ba017dc8df0e754d0bda55f9dcaaea06ad939c3ecce2cc10e34d1171"
+    }
+  ]
+}
