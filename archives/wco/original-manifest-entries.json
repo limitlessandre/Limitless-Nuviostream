@@ -1,0 +1,77 @@
+{
+  "master": {
+    "id": "limitless-wco",
+    "name": "WCO",
+    "description": "Confirmed WCO provider with mirror coverage, strict title/episode ownership, anime identity support, specials handling, Power Rangers mapping, and Nexus naming standards.",
+    "version": "2.7.1",
+    "author": "Limitless Nexus WCO production merge",
+    "supportedTypes": [
+      "movie",
+      "tv",
+      "anime"
+    ],
+    "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-Master-Nexus/custom/providers/wco-master.js?rev=271p2",
+    "enabled": true,
+    "hasSettings": true,
+    "limited": true,
+    "formats": [
+      "mp4",
+      "m3u8"
+    ],
+    "logo": "https://www.wcostream.tv/favicon.ico",
+    "contentLanguage": [
+      "en",
+      "ja"
+    ]
+  },
+  "nexus": {
+    "id": "limitless-wco",
+    "name": "WCO",
+    "description": "Nexus-only reliability repair (Desktop playback testing pending): invocation request cache and deadline, bounded optional identity and 503 recovery, strict series/episode aliases, preserved direct MP4 playback.",
+    "version": "2.8.1",
+    "author": "Limitless Nexus WCO production merge",
+    "supportedTypes": [
+      "movie",
+      "tv",
+      "anime"
+    ],
+    "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-verification-nexus-v1.js?rev=281",
+    "enabled": true,
+    "hasSettings": true,
+    "limited": true,
+    "formats": [
+      "mp4",
+      "m3u8"
+    ],
+    "logo": "https://www.wcostream.tv/favicon.ico",
+    "contentLanguage": [
+      "en",
+      "ja"
+    ]
+  },
+  "unified": {
+    "id": "limitless-wco-unified-test",
+    "name": "WCO Unified TEST",
+    "description": "Experimental standalone unified WCO provider. Uses strict TMDB episode-title matching for combined cartoon episodes, the preferred verified extraction engine with an independent frozen legacy fallback, bounded execution, validated media and evidence-based quality/audio labels. Desktop playback testing pending.",
+    "version": "0.1.3",
+    "author": "Limitless Nexus WCO Unified TEST",
+    "supportedTypes": [
+      "movie",
+      "tv",
+      "anime"
+    ],
+    "filename": "https://raw.githubusercontent.com/limitlessandre/Limitless-Nuviostream/refs/heads/Limitless-nexus/custom/providers/wco-unified.js?rev=013",
+    "enabled": true,
+    "hasSettings": true,
+    "limited": true,
+    "formats": [
+      "mp4",
+      "m3u8"
+    ],
+    "logo": "https://www.wcostream.tv/favicon.ico",
+    "contentLanguage": [
+      "en",
+      "ja"
+    ]
+  }
+}

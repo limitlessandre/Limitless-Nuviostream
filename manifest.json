@@ -1,6 +1,6 @@
 {
   "name": "Limitless Anime Baseline",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "Anime-first Nuvio provider baseline maintained directly in Limitless-Nuviostream. Parked experiments are retained here disabled for later probing rather than kept on the active Nexus branch.",
   "scrapers": [
     {
@@ -592,6 +592,81 @@
         "ko",
         "ja",
         "hi"
+      ]
+    },
+    {
+      "id": "limitless-wco-master-271-archive-lab",
+      "name": "WCO Master 2.7.1 Archive Lab",
+      "description": "Disabled historical Master WCO 2.7.1 archive. Exact entry and all 14 transitive JavaScript dependencies frozen and embedded; originally mutable Nexus dependencies captured at 38f0d64b5558a93ea0e9074ad056f5321ed7c6d9. Historical behavior is preserved, including its limitations.",
+      "version": "2.7.1",
+      "author": "Limitless Provider Lab WCO historical archive",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "providers/wco-master-271-archive-lab.js",
+      "enabled": false,
+      "hasSettings": true,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "id": "limitless-wco-nexus-281-archive-lab",
+      "name": "WCO Nexus 2.8.1 Archive Lab",
+      "description": "Disabled historical Nexus WCO 2.8.1 archive. Exact entry and all 12 transitive JavaScript dependencies frozen and embedded; no runtime JavaScript downloads. Historical behavior is preserved, including its limitations.",
+      "version": "2.8.1",
+      "author": "Limitless Provider Lab WCO historical archive",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "providers/wco-nexus-281-archive-lab.js",
+      "enabled": false,
+      "hasSettings": true,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "id": "limitless-wco-unified-013-archive-lab",
+      "name": "WCO Unified TEST 0.1.3 Archive Lab",
+      "description": "Disabled archive of the manually Desktop-validated Unified TEST 0.1.3 standalone. Exact published artifact preserved with reproducible development sources, fixtures, tests and 30 frozen dependency snapshots.",
+      "version": "0.1.3",
+      "author": "Limitless Provider Lab WCO historical archive",
+      "supportedTypes": [
+        "movie",
+        "tv",
+        "anime"
+      ],
+      "filename": "providers/wco-unified-013-archive-lab.js",
+      "enabled": false,
+      "hasSettings": true,
+      "limited": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://www.wcostream.tv/favicon.ico",
+      "contentLanguage": [
+        "en",
+        "ja"
       ]
     }
   ]

@@ -1,0 +1,27 @@
+[
+  {
+    "label": "master-2.7.1",
+    "artifact": "wco-master-271-archive-lab.js",
+    "dependencies": 14,
+    "jsFiles": 15,
+    "bytes": 184398,
+    "sha256": "9a035fbd5a93f09accf7bf45aa61f4dceaf0d6f6d0b84485de77e05e16b0bd84"
+  },
+  {
+    "label": "nexus-2.8.1",
+    "artifact": "wco-nexus-281-archive-lab.js",
+    "dependencies": 12,
+    "jsFiles": 13,
+    "bytes": 170331,
+    "sha256": "4c6ed49c91df04f8757556a698e26030866b0c3312a7474722aa8f9b59bded54"
+  },
+  {
+    "label": "unified-test-0.1.3",
+    "artifact": "wco-unified-013-archive-lab.js",
+    "bytes": 412239,
+    "sha256": "313efd7892b77fb7cca702856ccd9d0f0a8346df9c41ac0ec7951bc239e0fc61",
+    "frozenSnapshots": 30,
+    "sourceMap": "unified-test-0.1.3.json",
+    "sourceMapSha256": "e0cab8724fd9dae3dd0d52246ec87f9ccbda9197c90534a64c9a093e2399e49d"
+  }
+]
